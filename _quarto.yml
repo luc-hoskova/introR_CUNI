@@ -9,7 +9,8 @@ website:
       - href: index.qmd
         aria-label: pokus
         icon: github
-      - about.qmd
+      - href: about.qmd
+        icon: github
 
 format:
   html:
