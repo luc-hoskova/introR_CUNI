@@ -3,11 +3,12 @@ project:
   output-dir: docs
 
 website:
-  title: "website"
+  title: "Zpracovávání výzkumných dat v R"
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        aria-label: pokus
+        icon: github
       - about.qmd
 
 format:
