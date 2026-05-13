@@ -12,9 +12,9 @@ website:
         icon: github
       - href: zkouška.qmd
         text: zkouším navabr
-      - href: https://google.com
-        icon: github
-        aria-label: pokus
+      - href: mailto:lucie.hoskova@ruk.cuni.cz
+        icon: envelope-at
+        aria-label: alt text
 
 format:
   html:
