@@ -7,10 +7,13 @@ website:
   navbar:
     left:
       - href: index.qmd
+        text: hlavní strana
         aria-label: pokus
         icon: github
       - href: about.qmd
         icon: github
+      - href: zkouška.qmd
+        text: zkouším navabr
 
 format:
   html:
