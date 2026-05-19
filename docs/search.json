@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "website2",
     "section": "",
-    "text": "POKUS\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "O kurzu\njaký je cíl\nkdy a kde se to učí\nkdo to učí\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,40 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#date-and-location",
+    "href": "index.html#date-and-location",
+    "title": "website2",
+    "section": "Date and location",
+    "text": "Date and location\nThe school will be held from 16 to 20 September 2024 at the Institute of Archaeology, Czech Academy of Sciences, Brno (https://arub.cz/) at the address given below:\n\nČechyňská 363/19\n602 00 Brno\nCzech Republic"
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "website2",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nBring your own laptop!\nInstall R and RStudio (follow the concise quide here).\nIf you are familiar with R, feel free to use a GUI of your choice."
+  },
+  {
+    "objectID": "sylabus.html",
+    "href": "sylabus.html",
+    "title": "Sylabus",
+    "section": "",
+    "text": "ke každé hodině datum"
+  },
+  {
+    "objectID": "sylabus.html#úvod",
+    "href": "sylabus.html#úvod",
+    "title": "Sylabus",
+    "section": "Úvod",
+    "text": "Úvod\ntext"
+  },
+  {
+    "objectID": "sylabus.html#lekce",
+    "href": "sylabus.html#lekce",
+    "title": "Sylabus",
+    "section": "2 lekce",
+    "text": "2 lekce\n\no čem to bude"
   }
 ]

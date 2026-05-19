@@ -2,12 +2,30 @@
 title: "website2"
 ---
 
-POKUS
+O kurzu
 
-This is a Quarto website.
+jaký je cíl
+
+kdy a kde se to učí
+
+kdo to učí
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
 ```{r}
 1 + 1
 ```
+
+## Date and location
+
+The school will be held from **16 to 20 September 2024** at the **Institute of Archaeology, Czech Academy of Sciences, Brno** ([https://arub.cz/](https://arub.cz/){.external}) at the address given below:
+
+> Čechyňská 363/19\
+> 602 00 Brno\
+> Czech Republic
+
+## Prerequisites
+
+-   **Bring your own laptop!**
+-   Install **R** and **RStudio** (follow the concise quide [here](https://rstudio-education.github.io/hopr/starting.html)).\
+    *If you are familiar with R, feel free to use a GUI of your choice.*
