@@ -24,7 +24,7 @@ ke každé hodině datum
 
 ## 3. Transformace dat (29.09.2026)
 
--   balíček *dplyr*
+-   balíček [`dplyr` package](https://dplyr.tidyverse.org/)
 -   tidy data
 -   faktory
 -   pipes
