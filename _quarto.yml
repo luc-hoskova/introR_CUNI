@@ -5,20 +5,17 @@ project:
 website:
   title: "Zpracovávání výzkumných dat v R"
   navbar:
-    background: "#A6503E"
-    foreground: "#E8DAC8"
     pinned: true
     left:
-      - href: index.qmd
-        icon: github
+      - href: about.qmd
+        icon: info
+        aria-label: ikona i pro informace
       - href: sylabus.qmd
         icon: calendar-event
         aria-label: ikona kalendáře
       - href: vyukove_materialy.qmd
         icon: book
         aria-label: ikona učebnice
-      - href: zkouška.qmd
-        text: zkouším navabr
     right:
       - href: https://forms.office.com/e/c5CYh4LfQS
         text: Zpětná vazba a podněty
@@ -30,7 +27,7 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: united
     css: styles.css
     toc: true
     toc-title: Na stránce

@@ -9,7 +9,7 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "O kurzu",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
@@ -47,5 +47,96 @@
     "title": "Sylabus",
     "section": "2 lekce",
     "text": "2 lekce\n\no čem to bude"
+  },
+  {
+    "objectID": "sylabus.html#úvodní-hodina-1.9.2026",
+    "href": "sylabus.html#úvodní-hodina-1.9.2026",
+    "title": "Sylabus",
+    "section": "Úvodní hodina (1.9.2026)",
+    "text": "Úvodní hodina (1.9.2026)\n\norientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\ndatové typy\noperátory\nukládání do proměnných"
+  },
+  {
+    "objectID": "sylabus.html#struktury-a-indexace-15.9.2026",
+    "href": "sylabus.html#struktury-a-indexace-15.9.2026",
+    "title": "Sylabus",
+    "section": "Struktury a indexace (15.9.2026)",
+    "text": "Struktury a indexace (15.9.2026)\n\ndatové struktury v R\nindexace\núvod do balíčku dplyr\nnačítání dat do R\nkontrola dat"
+  },
+  {
+    "objectID": "sylabus.html#transformace-dat-29.9.2026",
+    "href": "sylabus.html#transformace-dat-29.9.2026",
+    "title": "Sylabus",
+    "section": "Transformace dat (29.9.2026)",
+    "text": "Transformace dat (29.9.2026)\n\nbalíček dplyr\ntidy data\nfaktory\npipes"
+  },
+  {
+    "objectID": "sylabus.html#funkce-13.10.2026",
+    "href": "sylabus.html#funkce-13.10.2026",
+    "title": "Sylabus",
+    "section": "4. Funkce (13.10.2026)",
+    "text": "4. Funkce (13.10.2026)\n\nsyntax funkce\ntvorba vlastní funkce\ncykly\nfunkce apply() a celá apply rodina funkcí\nvektorizace vs. itinerární přístup"
+  },
+  {
+    "objectID": "sylabus.html#úvodní-hodina-01.09.2026",
+    "href": "sylabus.html#úvodní-hodina-01.09.2026",
+    "title": "Sylabus",
+    "section": "1. Úvodní hodina (01.09.2026)",
+    "text": "1. Úvodní hodina (01.09.2026)\n\norientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\ndatové typy\noperátory\nukládání do proměnných"
+  },
+  {
+    "objectID": "sylabus.html#struktury-a-indexace-15.09.2026",
+    "href": "sylabus.html#struktury-a-indexace-15.09.2026",
+    "title": "Sylabus",
+    "section": "2. Struktury a indexace (15.09.2026)",
+    "text": "2. Struktury a indexace (15.09.2026)\n\ndatové struktury v R\nindexace\núvod do balíčku dplyr\nnačítání dat do R\nkontrola dat"
+  },
+  {
+    "objectID": "sylabus.html#transformace-dat-29.09.2026",
+    "href": "sylabus.html#transformace-dat-29.09.2026",
+    "title": "Sylabus",
+    "section": "3. Transformace dat (29.09.2026)",
+    "text": "3. Transformace dat (29.09.2026)\n\nbalíček dplyr\ntidy data\nfaktory\npipes"
+  },
+  {
+    "objectID": "sylabus.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-27.10.2026",
+    "href": "sylabus.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-27.10.2026",
+    "title": "Sylabus",
+    "section": "5. Základy vizualizace dat a práce s grafy v R (27.10.2026)",
+    "text": "5. Základy vizualizace dat a práce s grafy v R (27.10.2026)\n\npřemýšlení nad účelem tvorby grafu\nbodové, čárové a sloupcové grafy\nzákladní vizualizace v R\nvizualizace pomocí balíčku ggplot2"
+  },
+  {
+    "objectID": "sylabus.html#pokročilá-vizualizace-dat-10.11.2026",
+    "href": "sylabus.html#pokročilá-vizualizace-dat-10.11.2026",
+    "title": "Sylabus",
+    "section": "6. Pokročilá vizualizace dat (10.11.2026)",
+    "text": "6. Pokročilá vizualizace dat (10.11.2026)\n\nbarploty\nhistogramy\ndenseploty\nheat mapy\nviolin grafy"
+  },
+  {
+    "objectID": "sylabus.html#mapy-3d-a-interaktivní-grafy-24.11.2026",
+    "href": "sylabus.html#mapy-3d-a-interaktivní-grafy-24.11.2026",
+    "title": "Sylabus",
+    "section": "7. Mapy, 3D a interaktivní grafy (24.11.2026)",
+    "text": "7. Mapy, 3D a interaktivní grafy (24.11.2026)\n\nprostorová data v R\nbodové mapy\nchloropleth mapy\n3D grafy\ninteraktivní grafy"
+  },
+  {
+    "objectID": "sylabus.html#typy-dat-a-deskriptivní-statistika-08.12.2026",
+    "href": "sylabus.html#typy-dat-a-deskriptivní-statistika-08.12.2026",
+    "title": "Sylabus",
+    "section": "8. Typy dat a deskriptivní statistika (08.12.2026)",
+    "text": "8. Typy dat a deskriptivní statistika (08.12.2026)\n\nkvalitativní vs kvantitivní data\nnominální, ordinální, intervalová, poměrová, diskrétní a spojitá data\nzáklady popisné statistiky\nprůměr, medián, mode\nmíry variability\nbalíček psych"
+  },
+  {
+    "objectID": "sylabus.html#úvod-do-inferenční-statistiky-05.01.2027",
+    "href": "sylabus.html#úvod-do-inferenční-statistiky-05.01.2027",
+    "title": "Sylabus",
+    "section": "9. Úvod do inferenční statistiky (05.01.2027)",
+    "text": "9. Úvod do inferenční statistiky (05.01.2027)\n\npopulace, výběr\nurčování normality dat\nparametrické testy\nt-testy"
+  },
+  {
+    "objectID": "sylabus.html#analýza-kategoriálních-dat-korelace-a-regrese-19.01.2027",
+    "href": "sylabus.html#analýza-kategoriálních-dat-korelace-a-regrese-19.01.2027",
+    "title": "Sylabus",
+    "section": "10. Analýza kategoriálních dat, korelace a regrese (19.01.2027)",
+    "text": "10. Analýza kategoriálních dat, korelace a regrese (19.01.2027)\n\nkontringenční tabulka\nneparametrické testy\nchí-kvadrát\nPearson/Spearman korelace\nregrese"
   }
 ]

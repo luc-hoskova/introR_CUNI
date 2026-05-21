@@ -4,9 +4,82 @@ title: "Sylabus"
 
 ke každé hodině datum
 
-## Úvod
+## 1. Úvodní hodina (01.09.2026)
 
-text
+-   orientace v IDE [RStudio](https://posit.co/download/rstudio-desktop)
+-   projekty a organizace skriptů
+-   nápověda
+-   balíčky
+-   datové typy
+-   operátory
+-   ukládání do proměnných
 
-## 2 lekce
-### o čem to bude
+## 2. Struktury a indexace (15.09.2026)
+
+-   datové struktury v R
+-   indexace
+-   úvod do balíčku *dplyr*
+-   načítání dat do R
+-   kontrola dat
+
+## 3. Transformace dat (29.09.2026)
+
+-   balíček *dplyr*
+-   tidy data
+-   faktory
+-   pipes
+
+## 4. Funkce (13.10.2026)
+
+-   syntax funkce
+-   tvorba vlastní funkce
+-   cykly
+-   funkce apply() a celá *apply* rodina funkcí
+-   vektorizace vs. itinerární přístup
+
+## 5. Základy vizualizace dat a práce s grafy v R (27.10.2026)
+
+-   přemýšlení nad účelem tvorby grafu
+-   bodové, čárové a sloupcové grafy
+-   základní vizualizace v R
+-   vizualizace pomocí balíčku *ggplot2*
+
+## 6. Pokročilá vizualizace dat (10.11.2026)
+
+-   barploty
+-   histogramy
+-   denseploty
+-   heat mapy
+-   violin grafy
+
+## 7. Mapy, 3D a interaktivní grafy (24.11.2026)
+
+-   prostorová data v R
+-   bodové mapy
+-   chloropleth mapy
+-   3D grafy
+-   interaktivní grafy
+
+## 8. Typy dat a deskriptivní statistika (08.12.2026)
+
+-   kvalitativní vs kvantitivní data
+-   nominální, ordinální, intervalová, poměrová, diskrétní a spojitá data
+-   základy popisné statistiky
+-   průměr, medián, mode
+-   míry variability
+-   balíček *psych*
+
+## 9. Úvod do inferenční statistiky (05.01.2027)
+
+-   populace, výběr
+-   určování normality dat
+-   parametrické testy
+-   t-testy
+
+## 10. Analýza kategoriálních dat, korelace a regrese (19.01.2027)
+
+-   kontringenční tabulka
+-   neparametrické testy
+-   chí-kvadrát
+-   Pearson/Spearman korelace
+-   regrese
