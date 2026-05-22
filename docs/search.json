@@ -1,80 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "O kurzu",
-    "section": "",
-    "text": "Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "O kurzu",
-    "section": "",
-    "text": "Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio."
-  },
-  {
-    "objectID": "index.html#date-and-location",
-    "href": "index.html#date-and-location",
-    "title": "website2",
-    "section": "Date and location",
-    "text": "Date and location\nThe school will be held from 16 to 20 September 2024 at the Institute of Archaeology, Czech Academy of Sciences, Brno (https://arub.cz/) at the address given below:\n\nČechyňská 363/19\n602 00 Brno\nCzech Republic"
-  },
-  {
-    "objectID": "index.html#prerequisites",
-    "href": "index.html#prerequisites",
-    "title": "website2",
-    "section": "Prerequisites",
-    "text": "Prerequisites\n\nBring your own laptop!\nInstall R and RStudio (follow the concise quide here).\nIf you are familiar with R, feel free to use a GUI of your choice."
-  },
-  {
     "objectID": "sylabus.html",
     "href": "sylabus.html",
     "title": "Sylabus",
     "section": "",
     "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\ndatové typy\noperátory\nukládání do proměnných"
-  },
-  {
-    "objectID": "sylabus.html#úvod",
-    "href": "sylabus.html#úvod",
-    "title": "Sylabus",
-    "section": "Úvod",
-    "text": "Úvod\ntext"
-  },
-  {
-    "objectID": "sylabus.html#lekce",
-    "href": "sylabus.html#lekce",
-    "title": "Sylabus",
-    "section": "2 lekce",
-    "text": "2 lekce\n\no čem to bude"
-  },
-  {
-    "objectID": "sylabus.html#úvodní-hodina-1.9.2026",
-    "href": "sylabus.html#úvodní-hodina-1.9.2026",
-    "title": "Sylabus",
-    "section": "Úvodní hodina (1.9.2026)",
-    "text": "Úvodní hodina (1.9.2026)\n\norientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\ndatové typy\noperátory\nukládání do proměnných"
-  },
-  {
-    "objectID": "sylabus.html#struktury-a-indexace-15.9.2026",
-    "href": "sylabus.html#struktury-a-indexace-15.9.2026",
-    "title": "Sylabus",
-    "section": "Struktury a indexace (15.9.2026)",
-    "text": "Struktury a indexace (15.9.2026)\n\ndatové struktury v R\nindexace\núvod do balíčku dplyr\nnačítání dat do R\nkontrola dat"
-  },
-  {
-    "objectID": "sylabus.html#transformace-dat-29.9.2026",
-    "href": "sylabus.html#transformace-dat-29.9.2026",
-    "title": "Sylabus",
-    "section": "Transformace dat (29.9.2026)",
-    "text": "Transformace dat (29.9.2026)\n\nbalíček dplyr\ntidy data\nfaktory\npipes"
-  },
-  {
-    "objectID": "sylabus.html#funkce-13.10.2026",
-    "href": "sylabus.html#funkce-13.10.2026",
-    "title": "Sylabus",
-    "section": "4. Funkce (13.10.2026)",
-    "text": "4. Funkce (13.10.2026)\n\nsyntax funkce\ntvorba vlastní funkce\ncykly\nfunkce apply() a celá apply rodina funkcí\nvektorizace vs. itinerární přístup"
   },
   {
     "objectID": "sylabus.html#úvodní-hodina-01.09.2026",
@@ -96,6 +26,13 @@
     "title": "Sylabus",
     "section": "3. Transformace dat (29.09.2026)",
     "text": "3. Transformace dat (29.09.2026)\n\nbalíček dplyr\ntidy data\nfaktory\npipes"
+  },
+  {
+    "objectID": "sylabus.html#funkce-13.10.2026",
+    "href": "sylabus.html#funkce-13.10.2026",
+    "title": "Sylabus",
+    "section": "4. Funkce (13.10.2026)",
+    "text": "4. Funkce (13.10.2026)\n\nsyntax funkce\ntvorba vlastní funkce\ncykly\nfunkce apply() a celá apply rodina funkcí\nvektorizace vs. itinerární přístup"
   },
   {
     "objectID": "sylabus.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-27.10.2026",
@@ -140,67 +77,18 @@
     "text": "10. Analýza kategoriálních dat, korelace a regrese (19.01.2027)\n\nkontringenční tabulka\nneparametrické testy\nchí-kvadrát\nPearson/Spearman korelace\nregrese"
   },
   {
-    "objectID": "about.html#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocetifikátu",
-    "href": "about.html#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocetifikátu",
-    "title": "O kurzu",
-    "section": "",
-    "text": "Pro získání mikrocertifikátu je potřeba splnit následující podmínky:\n\nalespoň 80% docházka\nodevzdané průběžné domácí úkoly\nvypracování závěrečného projektu\n\nV případě nemoci či jiné neočekávané situace, která by způsobila dlouhodobou nepřítomnost, bude zajištěna individuální náhrada výuky."
-  },
-  {
-    "objectID": "about.html#místo-výuky",
-    "href": "about.html#místo-výuky",
-    "title": "O kurzu",
-    "section": "Místo výuky",
-    "text": "Místo výuky"
-  },
-  {
-    "objectID": "mainpage.html",
-    "href": "mainpage.html",
-    "title": "website2",
-    "section": "",
-    "text": "O kurzu\njaký je cíl\nkdy a kde se to učí\nkdo to učí\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "mainpage.html#date-and-location",
-    "href": "mainpage.html#date-and-location",
-    "title": "website2",
-    "section": "Date and location",
-    "text": "Date and location\nThe school will be held from 16 to 20 September 2024 at the Institute of Archaeology, Czech Academy of Sciences, Brno (https://arub.cz/) at the address given below:\n\nČechyňská 363/19\n602 00 Brno\nCzech Republic"
-  },
-  {
-    "objectID": "mainpage.html#prerequisites",
-    "href": "mainpage.html#prerequisites",
-    "title": "website2",
-    "section": "Prerequisites",
-    "text": "Prerequisites\n\nBring your own laptop!\nInstall R and RStudio (follow the concise quide here).\nIf you are familiar with R, feel free to use a GUI of your choice."
-  },
-  {
-    "objectID": "about.html#místo-a-čas-výuky",
-    "href": "about.html#místo-a-čas-výuky",
-    "title": "O kurzu",
-    "section": "Místo a čas výuky",
-    "text": "Místo a čas výuky\nVýuka bude probíhat každé druhé úterý v měsící v průběhu podzimního semestru (září až říjen). Termíny jednotlivých lekcí jsou vypsány v sylabu.\nČas výuky je 09:00-12:00 (včetně přestávek).\nVýuka je pouze v prezenční formě a odehrává se v prostorách Ústřední Knihovny UK.\n\n\n\n\n\n\nÚstřední knihovna se nachází v druhém patře Hotelu Krystal.\n\n\n\n\n\n\n\nučebna 216\nJosé Martího 407\nÚstřední Knihovna UK\nPraha\n\nUčebna má k dispozici náhradní notebooky v případě potřeby výjimečného zapůjčení během lekce."
-  },
-  {
-    "objectID": "about.html#komu-je-kurz-určen",
-    "href": "about.html#komu-je-kurz-určen",
-    "title": "O kurzu",
-    "section": "Komu je kurz určen?",
-    "text": "Komu je kurz určen?\nTeto kurz je cílen především na osoby, které se věnují analýze výzkumných dat. Může se jednat jak o akademiky a jiné výzkumníky a výzkumnice, ale také o vědeckou podporu; osoby, které pomáhají těmto osobám pracovat s jejich daty (například data stewardi).\nUrčen je převážně pro osoby, které jsou již aktivně součástí pracovního procesu, a nemohou si tak dovolit docházet každý týden na kratší lekce uprostřed dne."
-  },
-  {
-    "objectID": "about.html#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu",
-    "href": "about.html#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu",
-    "title": "O kurzu",
-    "section": "Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu",
-    "text": "Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu\nPro získání mikrocertifikátu je potřeba splnit následující podmínky:\n\nalespoň 80% docházka\nodevzdané průběžné domácí úkoly\nvypracování závěrečného projektu\n\nV případě nemoci či jiné neočekávané situace, která by způsobila dlouhodobou nepřítomnost, bude zajištěna individuální náhrada výuky."
-  },
-  {
     "objectID": "vyukove_materialy.html",
     "href": "vyukove_materialy.html",
     "title": "Výukové materiály",
     "section": "",
     "text": "V této sekci naleznou účastníci výukové materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.\nMateriály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "O kurzu",
+    "section": "",
+    "text": "Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio."
   },
   {
     "objectID": "index.html#komu-je-kurz-určen",
