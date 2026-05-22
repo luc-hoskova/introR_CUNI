@@ -10,7 +10,11 @@ Cílem kurzu je vybavit účastníky praktickými dovednostmi pro efektivní pr�
 
 ### Náplň lekcí
 
-Kurz je koncipován jako série deseti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce: **úvod do R a příprava dat pro následující analýzu, vizualizace dat, statistická analýza**.
+Kurz je koncipován jako série deseti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce:
+
+-   **úvod do R a příprava dat pro následující analýzu**
+-    **vizualizace dat,**
+-   **statistická analýza**.
 
 Přehled náplně jednotlivých lekcí se nachází v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus.html) kurzu.
 

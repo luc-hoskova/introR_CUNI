@@ -20,7 +20,16 @@ website:
         icon: envelope-at
         text: Kontakt
         aria-label: ikona dopisní obálky s email symbolem zavináče
-    
+  page-footer: 
+    left: 
+      - href: https://www.quarto.org/
+        text: "Vytvořeno v RStudio pomocí Quarto."
+    center:
+      - text: "Licencováno pod MIT a CC BY-SA 4.0"
+    right: 
+      - icon: info
+        href: https://orcid.org/0009-0001-9695-2342 
+        text: Lucie Hošková
 
 format:
   html:
