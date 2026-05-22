@@ -1,6 +1,7 @@
 ---
 title: "Sylabus"
 ---
+
 ## 1. Úvodní hodina (01.09.2026)
 
 -   orientace v IDE [RStudio](https://posit.co/download/rstudio-desktop)
@@ -24,6 +25,7 @@ title: "Sylabus"
 -   balíček [`dplyr`](https://dplyr.tidyverse.org/)
 -   tidy data
 -   faktory
+-   čas a datum
 -   pipes
 
 ## 4. Funkce (13.10.2026)
