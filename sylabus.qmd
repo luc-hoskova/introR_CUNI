@@ -1,9 +1,6 @@
 ---
 title: "Sylabus"
 ---
-
-ke každé hodině datum
-
 ## 1. Úvodní hodina (01.09.2026)
 
 -   orientace v IDE [RStudio](https://posit.co/download/rstudio-desktop)
@@ -18,13 +15,13 @@ ke každé hodině datum
 
 -   datové struktury v R
 -   indexace
--   úvod do balíčku *dplyr*
+-   úvod do balíčku [`dplyr`](https://dplyr.tidyverse.org/)
 -   načítání dat do R
 -   kontrola dat
 
 ## 3. Transformace dat (29.09.2026)
 
--   balíček [`dplyr` package](https://dplyr.tidyverse.org/)
+-   balíček [`dplyr`](https://dplyr.tidyverse.org/)
 -   tidy data
 -   faktory
 -   pipes
@@ -42,7 +39,7 @@ ke každé hodině datum
 -   přemýšlení nad účelem tvorby grafu
 -   bodové, čárové a sloupcové grafy
 -   základní vizualizace v R
--   vizualizace pomocí balíčku *ggplot2*
+-   úvod do vizualizace pomocí balíčku [`ggplot2`](https://ggplot2.tidyverse.org/)
 
 ## 6. Pokročilá vizualizace dat (10.11.2026)
 
@@ -67,7 +64,6 @@ ke každé hodině datum
 -   základy popisné statistiky
 -   průměr, medián, mode
 -   míry variability
--   balíček *psych*
 
 ## 9. Úvod do inferenční statistiky (05.01.2027)
 

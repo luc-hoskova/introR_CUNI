@@ -1,3 +1,7 @@
 ---
 title: "Výukové materiály"
 ---
+
+V této sekci naleznou účastníci výukové materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.
+
+Materiály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení).

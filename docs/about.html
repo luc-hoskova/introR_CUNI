@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -122,7 +88,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link active" href="./about.html" aria-current="page"> <i class="bi bi-info" role="img" aria-label="ikona i pro informace">
+</i> 
 <span class="menu-text">O kurzu</span></a>
   </li>  
   <li class="nav-item">
@@ -158,7 +125,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Na stránce</h2>
+   
+  <ul>
+  <li><a href="#cíl-kurzu" id="toc-cíl-kurzu" class="nav-link active" data-scroll-target="#cíl-kurzu">Cíl kurzu&nbsp;</a></li>
+  <li><a href="#náplň-lekcí" id="toc-náplň-lekcí" class="nav-link" data-scroll-target="#náplň-lekcí">Náplň lekcí</a></li>
+  <li><a href="#komu-je-kurz-určen" id="toc-komu-je-kurz-určen" class="nav-link" data-scroll-target="#komu-je-kurz-určen">Komu je kurz určen?</a></li>
+  <li><a href="#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu" id="toc-podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu" class="nav-link" data-scroll-target="#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu">Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu</a></li>
+  <li><a href="#místo-a-čas-výuky" id="toc-místo-a-čas-výuky" class="nav-link" data-scroll-target="#místo-a-čas-výuky">Místo a čas výuky</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -182,15 +159,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>About this site</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<p>Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio.</p>
+<section id="cíl-kurzu" class="level3">
+<h3 class="anchored" data-anchor-id="cíl-kurzu">Cíl kurzu&nbsp;</h3>
+<p>Cílem kurzu je vybavit účastníky praktickými dovednostmi pro efektivní práci s daty v prostředí R a RStudia tak, aby dokázali samostatně zpracovávat, analyzovat a prezentovat výsledky svých výzkumů. Naučí se systematicky organizovat projekty, připravit a transformovat data do podoby vhodné pro vizualizaci a analýzu. Součástí je i rozvoj schopnosti kriticky vybírat a používat statistické a vizualizační metody, interpretovat jejich výstupy a zohledňovat limity jednotlivých postupů. Absolventi kurzu tak budou schopni aplikovat R ve vlastní výzkumné praxi, posílit kvalitu svých analýz a zvýšit jejich transparentnost i důvěryhodnost.&nbsp;</p>
+</section>
+<section id="náplň-lekcí" class="level3">
+<h3 class="anchored" data-anchor-id="náplň-lekcí">Náplň lekcí</h3>
+<p>Kurz je koncipován jako série deseti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce: <strong>úvod do R a příprava dat pro následující analýzu, vizualizace dat, statistická analýza</strong>.</p>
+<p>Přehled náplně jednotlivých lekcí se nachází v <a href="https://luc-hoskova.github.io/introR_CUNI/sylabus.html">sylabu</a> kurzu.</p>
+</section>
+<section id="komu-je-kurz-určen" class="level2">
+<h2 class="anchored" data-anchor-id="komu-je-kurz-určen">Komu je kurz určen?</h2>
+<p>Teto kurz je cílen především na osoby, které se věnují analýze výzkumných dat. Může se jednat jak o akademiky a jiné výzkumníky a výzkumnice, ale také o vědeckou podporu; osoby, které pomáhají těmto osobám pracovat s jejich daty (například data stewardi).</p>
+<p>Určen je převážně pro osoby, které jsou již aktivně součástí pracovního procesu, a nemohou si tak dovolit docházet každý týden na kratší lekce uprostřed dne.</p>
+</section>
+<section id="podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu" class="level2">
+<h2 class="anchored" data-anchor-id="podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu">Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu</h2>
+<p>Pro získání mikrocertifikátu je potřeba splnit následující podmínky:</p>
+<ol type="1">
+<li>alespoň 80% docházka</li>
+<li>odevzdané průběžné domácí úkoly</li>
+<li>vypracování závěrečného projektu</li>
+</ol>
+<p>V případě nemoci či jiné neočekávané situace, která by způsobila dlouhodobou nepřítomnost, bude zajištěna individuální náhrada výuky.</p>
+</section>
+<section id="místo-a-čas-výuky" class="level2">
+<h2 class="anchored" data-anchor-id="místo-a-čas-výuky">Místo a čas výuky</h2>
+<p>Výuka bude probíhat <strong>každé druhé úterý</strong> v měsící v průběhu podzimního semestru (<strong>září až říjen</strong>). Termíny jednotlivých lekcí jsou vypsány v <a href="https://luc-hoskova.github.io/introR_CUNI/sylabus.html">sylabu</a>.</p>
+<p>Čas výuky je <strong>09:00-12:00</strong> (včetně přestávek).</p>
+<p>Výuka je <strong>pouze v prezenční formě</strong> a odehrává se v prostorách <strong>Ústřední Knihovny UK</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ústřední knihovna se nachází v druhém patře Hotelu Krystal.
 </div>
 </div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<blockquote class="blockquote">
+<p>učebna 216<br>
+José Martího 407<br>
+Ústřední Knihovna UK<br>
+Praha</p>
+</blockquote>
+<p>Učebna má k dispozici náhradní notebooky v případě potřeby výjimečného zapůjčení během lekce.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
