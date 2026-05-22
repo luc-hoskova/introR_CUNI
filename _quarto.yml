@@ -7,9 +7,6 @@ website:
   navbar:
     pinned: true
     left:
-      - href: about.qmd
-        icon: info
-        aria-label: ikona i pro informace
       - href: sylabus.qmd
         icon: calendar-event
         aria-label: ikona kalendáře
