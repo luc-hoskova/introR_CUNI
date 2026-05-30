@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Zpracovávání výzkumných dat v R - O kurzu</title>
+<title>Zpracovávání výzkumných dat v R - website2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -124,11 +158,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Na stránce</h2>
    
   <ul>
-  <li><a href="#cíl-kurzu" id="toc-cíl-kurzu" class="nav-link active" data-scroll-target="#cíl-kurzu">Cíl kurzu&nbsp;</a></li>
-  <li><a href="#náplň-lekcí" id="toc-náplň-lekcí" class="nav-link" data-scroll-target="#náplň-lekcí">Náplň lekcí</a></li>
-  <li><a href="#komu-je-kurz-určen" id="toc-komu-je-kurz-určen" class="nav-link" data-scroll-target="#komu-je-kurz-určen">Komu je kurz určen?</a></li>
-  <li><a href="#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu" id="toc-podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu" class="nav-link" data-scroll-target="#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu">Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu</a></li>
-  <li><a href="#místo-a-čas-výuky" id="toc-místo-a-čas-výuky" class="nav-link" data-scroll-target="#místo-a-čas-výuky">Místo a čas výuky</a></li>
+  <li><a href="#date-and-location" id="toc-date-and-location" class="nav-link active" data-scroll-target="#date-and-location">Date and location</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
   </ul>
 </nav>
     </div>
@@ -137,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">O kurzu</h1>
+<h1 class="title">website2</h1>
 </div>
 
 
@@ -154,61 +185,33 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio.</p>
-<section id="cíl-kurzu" class="level3">
-<h3 class="anchored" data-anchor-id="cíl-kurzu">Cíl kurzu&nbsp;</h3>
-<p>Cílem kurzu je vybavit účastníky praktickými dovednostmi pro efektivní práci s daty v prostředí R a RStudia tak, aby dokázali samostatně zpracovávat, analyzovat a prezentovat výsledky svých výzkumů. Naučí se systematicky organizovat projekty, připravit a transformovat data do podoby vhodné pro vizualizaci a analýzu. Součástí je i rozvoj schopnosti kriticky vybírat a používat statistické a vizualizační metody, interpretovat jejich výstupy a zohledňovat limity jednotlivých postupů. Absolventi kurzu tak budou schopni aplikovat R ve vlastní výzkumné praxi, posílit kvalitu svých analýz a zvýšit jejich transparentnost i důvěryhodnost.&nbsp;</p>
-</section>
-<section id="náplň-lekcí" class="level3">
-<h3 class="anchored" data-anchor-id="náplň-lekcí">Náplň lekcí</h3>
-<p>Kurz je koncipován jako série deseti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce:</p>
-<ul>
-<li><strong>úvod do R a příprava dat pro následující analýzu</strong></li>
-<li><strong>vizualizace dat,</strong></li>
-<li><strong>statistická analýza</strong>.</li>
-</ul>
-<p>Přehled náplně jednotlivých lekcí se nachází v <a href="https://luc-hoskova.github.io/introR_CUNI/sylabus.html">sylabu</a> kurzu.</p>
-</section>
-<section id="komu-je-kurz-určen" class="level2">
-<h2 class="anchored" data-anchor-id="komu-je-kurz-určen">Komu je kurz určen?</h2>
-<p>Teto kurz je cílen především na osoby, které se věnují analýze výzkumných dat. Může se jednat jak o akademiky a jiné výzkumníky a výzkumnice, ale také o vědeckou podporu; osoby, které pomáhají těmto osobám pracovat s jejich daty (například data stewardi).</p>
-<p>Určen je převážně pro osoby, které jsou již aktivně součástí pracovního procesu, a nemohou si tak dovolit docházet každý týden na kratší lekce uprostřed dne.</p>
-</section>
-<section id="podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu" class="level2">
-<h2 class="anchored" data-anchor-id="podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu">Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu</h2>
-<p>Pro získání mikrocertifikátu je potřeba splnit následující podmínky:</p>
-<ol type="1">
-<li>alespoň 80% docházka</li>
-<li>odevzdané průběžné domácí úkoly</li>
-<li>vypracování závěrečného projektu</li>
-</ol>
-<p>V případě nemoci či jiné neočekávané situace, která by způsobila dlouhodobou nepřítomnost, bude zajištěna individuální náhrada výuky.</p>
-</section>
-<section id="místo-a-čas-výuky" class="level2">
-<h2 class="anchored" data-anchor-id="místo-a-čas-výuky">Místo a čas výuky</h2>
-<p>Výuka bude probíhat <strong>každé druhé úterý</strong> v měsící v průběhu podzimního semestru (<strong>září až půlka ledna</strong>). Termíny jednotlivých lekcí jsou vypsány v <a href="https://luc-hoskova.github.io/introR_CUNI/sylabus.html">sylabu</a>.</p>
-<p>Čas výuky je <strong>09:00-12:00</strong> (včetně přestávek).</p>
-<p>Výuka je <strong>pouze v prezenční formě</strong> a odehrává se v prostorách <strong>Ústřední Knihovny UK</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ústřední knihovna se nachází v druhém patře Hotelu Krystal.
+<p>O kurzu</p>
+<p>jaký je cíl</p>
+<p>kdy a kde se to učí</p>
+<p>kdo to učí</p>
+<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
+<section id="date-and-location" class="level2">
+<h2 class="anchored" data-anchor-id="date-and-location">Date and location</h2>
+<p>The school will be held from <strong>16 to 20 September 2024</strong> at the <strong>Institute of Archaeology, Czech Academy of Sciences, Brno</strong> (<a href="https://arub.cz/" class="external">https://arub.cz/</a>) at the address given below:</p>
 <blockquote class="blockquote">
-<p>učebna 216<br>
-José Martího 407<br>
-Ústřední Knihovna UK<br>
-Praha</p>
+<p>Čechyňská 363/19<br>
+602 00 Brno<br>
+Czech Republic</p>
 </blockquote>
-<p>Učebna má k dispozici náhradní notebooky v případě potřeby výjimečného zapůjčení během lekce.</p>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>Bring your own laptop!</strong></li>
+<li>Install <strong>R</strong> and <strong>RStudio</strong> (follow the concise quide <a href="https://rstudio-education.github.io/hopr/starting.html">here</a>).<br>
+<em>If you are familiar with R, feel free to use a GUI of your choice.</em></li>
+</ul>
 
 
 </section>

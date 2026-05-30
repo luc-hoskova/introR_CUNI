@@ -4,14 +4,14 @@
     "href": "sylabus.html",
     "title": "Sylabus",
     "section": "",
-    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\ndatové typy\noperátory\nukládání do proměnných"
+    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\nčas a datum\noperátory\nukládání do proměnných"
   },
   {
     "objectID": "sylabus.html#úvodní-hodina-01.09.2026",
     "href": "sylabus.html#úvodní-hodina-01.09.2026",
     "title": "Sylabus",
     "section": "",
-    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\ndatové typy\noperátory\nukládání do proměnných"
+    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\nčas a datum\noperátory\nukládání do proměnných"
   },
   {
     "objectID": "sylabus.html#struktury-a-indexace-15.09.2026",
@@ -25,7 +25,7 @@
     "href": "sylabus.html#transformace-dat-29.09.2026",
     "title": "Sylabus",
     "section": "3. Transformace dat (29.09.2026)",
-    "text": "3. Transformace dat (29.09.2026)\n\nbalíček dplyr\ntidy data\nfaktory\nčas a datum\npipes"
+    "text": "3. Transformace dat (29.09.2026)\n\npipes\nbalíček dplyr\ntidy data\nfaktory\ndatové typy"
   },
   {
     "objectID": "sylabus.html#funkce-13.10.2026",
@@ -46,7 +46,7 @@
     "href": "sylabus.html#pokročilá-vizualizace-dat-10.11.2026",
     "title": "Sylabus",
     "section": "6. Pokročilá vizualizace dat (10.11.2026)",
-    "text": "6. Pokročilá vizualizace dat (10.11.2026)\n\nbarploty\nhistogramy\ndenseploty\nheat mapy\nviolin grafy"
+    "text": "6. Pokročilá vizualizace dat (10.11.2026)\n\nboxploty\nhistogramy\ndenseploty\nheat mapy\nviolin grafy"
   },
   {
     "objectID": "sylabus.html#mapy-3d-a-interaktivní-grafy-24.11.2026",
@@ -109,6 +109,27 @@
     "href": "index.html#místo-a-čas-výuky",
     "title": "O kurzu",
     "section": "Místo a čas výuky",
-    "text": "Místo a čas výuky\nVýuka bude probíhat každé druhé úterý v měsící v průběhu podzimního semestru (září až říjen). Termíny jednotlivých lekcí jsou vypsány v sylabu.\nČas výuky je 09:00-12:00 (včetně přestávek).\nVýuka je pouze v prezenční formě a odehrává se v prostorách Ústřední Knihovny UK.\n\n\n\n\n\n\nÚstřední knihovna se nachází v druhém patře Hotelu Krystal.\n\n\n\n\n\n\n\nučebna 216\nJosé Martího 407\nÚstřední Knihovna UK\nPraha\n\nUčebna má k dispozici náhradní notebooky v případě potřeby výjimečného zapůjčení během lekce."
+    "text": "Místo a čas výuky\nVýuka bude probíhat každé druhé úterý v měsící v průběhu podzimního semestru (září až půlka ledna). Termíny jednotlivých lekcí jsou vypsány v sylabu.\nČas výuky je 09:00-12:00 (včetně přestávek).\nVýuka je pouze v prezenční formě a odehrává se v prostorách Ústřední Knihovny UK.\n\n\n\n\n\n\nÚstřední knihovna se nachází v druhém patře Hotelu Krystal.\n\n\n\n\n\n\n\nučebna 216\nJosé Martího 407\nÚstřední Knihovna UK\nPraha\n\nUčebna má k dispozici náhradní notebooky v případě potřeby výjimečného zapůjčení během lekce."
+  },
+  {
+    "objectID": "mainpage.html",
+    "href": "mainpage.html",
+    "title": "website2",
+    "section": "",
+    "text": "O kurzu\njaký je cíl\nkdy a kde se to učí\nkdo to učí\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "mainpage.html#date-and-location",
+    "href": "mainpage.html#date-and-location",
+    "title": "website2",
+    "section": "Date and location",
+    "text": "Date and location\nThe school will be held from 16 to 20 September 2024 at the Institute of Archaeology, Czech Academy of Sciences, Brno (https://arub.cz/) at the address given below:\n\nČechyňská 363/19\n602 00 Brno\nCzech Republic"
+  },
+  {
+    "objectID": "mainpage.html#prerequisites",
+    "href": "mainpage.html#prerequisites",
+    "title": "website2",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nBring your own laptop!\nInstall R and RStudio (follow the concise quide here).\nIf you are familiar with R, feel free to use a GUI of your choice."
   }
 ]

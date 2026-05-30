@@ -13,7 +13,7 @@ Cílem kurzu je vybavit účastníky praktickými dovednostmi pro efektivní pr�
 Kurz je koncipován jako série deseti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce:
 
 -   **úvod do R a příprava dat pro následující analýzu**
--    **vizualizace dat,**
+-   **vizualizace dat,**
 -   **statistická analýza**.
 
 Přehled náplně jednotlivých lekcí se nachází v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus.html) kurzu.
@@ -36,7 +36,7 @@ V případě nemoci či jiné neočekávané situace, která by způsobila dlouh
 
 ## Místo a čas výuky
 
-Výuka bude probíhat **každé druhé úterý** v měsící v průběhu podzimního semestru (**září až říjen**). Termíny jednotlivých lekcí jsou vypsány v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus.html).
+Výuka bude probíhat **každé druhé úterý** v měsící v průběhu podzimního semestru (**září až půlka ledna**). Termíny jednotlivých lekcí jsou vypsány v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus.html).
 
 Čas výuky je **09:00-12:00** (včetně přestávek).
 

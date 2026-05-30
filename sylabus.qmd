@@ -8,7 +8,7 @@ title: "Sylabus"
 -   projekty a organizace skriptů
 -   nápověda
 -   balíčky
--   datové typy
+-   čas a datum
 -   operátory
 -   ukládání do proměnných
 
@@ -22,11 +22,11 @@ title: "Sylabus"
 
 ## 3. Transformace dat (29.09.2026)
 
+-   pipes
 -   balíček [`dplyr`](https://dplyr.tidyverse.org/)
 -   tidy data
 -   faktory
--   čas a datum
--   pipes
+-   datové typy
 
 ## 4. Funkce (13.10.2026)
 
@@ -45,7 +45,7 @@ title: "Sylabus"
 
 ## 6. Pokročilá vizualizace dat (10.11.2026)
 
--   barploty
+-   boxploty
 -   histogramy
 -   denseploty
 -   heat mapy
