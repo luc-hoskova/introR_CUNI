@@ -2,7 +2,7 @@
 title: "Sylabus"
 ---
 
-## 1. Úvodní hodina (01.09.2026)
+## 1. Úvodní hodina (15.09.2026)
 
 -   orientace v IDE [RStudio](https://posit.co/download/rstudio-desktop)
 -   projekty a organizace skriptů
@@ -12,7 +12,7 @@ title: "Sylabus"
 -   operátory
 -   ukládání do proměnných
 
-## 2. Struktury a indexace (15.09.2026)
+## 2. Struktury a indexace (29.09.2026)
 
 -   datové struktury v R
 -   indexace
@@ -20,7 +20,7 @@ title: "Sylabus"
 -   načítání dat do R
 -   kontrola dat
 
-## 3. Transformace dat (29.09.2026)
+## 3. Transformace dat (13.10.2026)
 
 -   pipes
 -   balíček [`dplyr`](https://dplyr.tidyverse.org/)
@@ -28,7 +28,7 @@ title: "Sylabus"
 -   faktory
 -   datové typy
 
-## 4. Funkce (13.10.2026)
+## 4. Funkce (27.10.2026)
 
 -   syntax funkce
 -   tvorba vlastní funkce
@@ -36,14 +36,14 @@ title: "Sylabus"
 -   funkce apply() a celá *apply* rodina funkcí
 -   vektorizace vs. itinerární přístup
 
-## 5. Základy vizualizace dat a práce s grafy v R (27.10.2026)
+## 5. Základy vizualizace dat a práce s grafy v R (10.11.2026)
 
 -   přemýšlení nad účelem tvorby grafu
 -   bodové, čárové a sloupcové grafy
 -   základní vizualizace v R
 -   úvod do vizualizace pomocí balíčku [`ggplot2`](https://ggplot2.tidyverse.org/)
 
-## 6. Pokročilá vizualizace dat (10.11.2026)
+## 6. Pokročilá vizualizace dat (24.11.2026)
 
 -   boxploty
 -   histogramy
@@ -51,7 +51,7 @@ title: "Sylabus"
 -   heat mapy
 -   violin grafy
 
-## 7. Mapy, 3D a interaktivní grafy (24.11.2026)
+## 7. Mapy, 3D a interaktivní grafy (08.12.2026)
 
 -   prostorová data v R
 -   bodové mapy
@@ -59,7 +59,7 @@ title: "Sylabus"
 -   3D grafy
 -   interaktivní grafy
 
-## 8. Typy dat a deskriptivní statistika (08.12.2026)
+## 8. Typy dat a deskriptivní statistika (05.01.2027)
 
 -   kvalitativní vs kvantitivní data
 -   nominální, ordinální, intervalová, poměrová, diskrétní a spojitá data
@@ -67,14 +67,14 @@ title: "Sylabus"
 -   průměr, medián, mode
 -   míry variability
 
-## 9. Úvod do inferenční statistiky (05.01.2027)
+## 9. Úvod do inferenční statistiky (19.01.2027)
 
 -   populace, výběr
 -   určování normality dat
 -   parametrické testy
 -   t-testy
 
-## 10. Analýza kategoriálních dat, korelace a regrese (19.01.2027)
+## 10. Analýza kategoriálních dat, korelace a regrese (02.02.2027)
 
 -   kontringenční tabulka
 -   neparametrické testy

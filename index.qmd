@@ -36,7 +36,7 @@ V případě nemoci či jiné neočekávané situace, která by způsobila dlouh
 
 ## Místo a čas výuky
 
-Výuka bude probíhat **každé druhé úterý** v měsící v průběhu podzimního semestru (**září až půlka ledna**). Termíny jednotlivých lekcí jsou vypsány v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus.html).
+Výuka bude probíhat **každé druhé úterý** v měsící v průběhu podzimního semestru (**půlka** **září až začátek února**). Termíny jednotlivých lekcí jsou vypsány v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus.html).
 
 Čas výuky je **09:00-12:00** (včetně přestávek).
 
