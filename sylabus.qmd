@@ -76,7 +76,7 @@ title: "Sylabus"
 
 ## 10. Analýza kategoriálních dat, korelace a regrese (02.02.2027)
 
--   kontringenční tabulka
+-   kontingenční tabulka
 -   neparametrické testy
 -   chí-kvadrát
 -   Pearson/Spearman korelace
