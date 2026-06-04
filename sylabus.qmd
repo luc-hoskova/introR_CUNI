@@ -50,6 +50,7 @@ title: "Sylabus"
 -   denseploty
 -   heat mapy
 -   violin grafy
+-   časové řady
 
 ## 7. Mapy, 3D a interaktivní grafy (08.12.2026)
 
