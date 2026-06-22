@@ -21,6 +21,9 @@
 #3 hodina
 #faktory
   #ukládá se to jako číslo tzn když se dá as.numeric() tak je to zobrazí tak jak je to srovnané (asi podle abecedy)
+#library(waldo)
+  #compare(s2, s3)
+  #if identical() == FALSE, what are the differences?
 
 #4 hodina
 #if-else, for, while
