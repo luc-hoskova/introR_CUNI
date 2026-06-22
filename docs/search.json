@@ -4,7 +4,7 @@
     "href": "sylabus.html",
     "title": "Sylabus",
     "section": "",
-    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\nčas a datum\noperátory\nukládání do proměnných"
+    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\noperátory\nukládání do proměnných\ndatové typy v R"
   },
   {
     "objectID": "sylabus.html#úvodní-hodina-01.09.2026",
@@ -137,7 +137,7 @@
     "href": "sylabus.html#úvodní-hodina-15.09.2026",
     "title": "Sylabus",
     "section": "",
-    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\nčas a datum\noperátory\nukládání do proměnných"
+    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\noperátory\nukládání do proměnných\ndatové typy v R"
   },
   {
     "objectID": "sylabus.html#struktury-a-indexace-29.09.2026",
@@ -151,7 +151,7 @@
     "href": "sylabus.html#transformace-dat-13.10.2026",
     "title": "Sylabus",
     "section": "3. Transformace dat (13.10.2026)",
-    "text": "3. Transformace dat (13.10.2026)\n\npipes\nbalíček dplyr\ntidy data\nfaktory\ndatové typy"
+    "text": "3. Transformace dat (13.10.2026)\n\npipes\nbalíček dplyr\ntidy data\nfaktory\nčas a datum"
   },
   {
     "objectID": "sylabus.html#funkce-27.10.2026",

@@ -11,7 +11,17 @@
   #RData, workspace, load()
 
 #2 hodina
+#vektory mohou byt numeric integer char a logical
+#vektor muze mit hodnoty pojmenovane
+  # vektor <- c(jan = 22, dan = 667, sam = 6)
+  #lze to prejmenovat  
+    # names(vektor) <- c("josh", "lin", "abe")
+#indexovat jde dalsim cislovym vektorem, charaktery a logical
+  #vektor[dan]
+    #tabulka jsou slozene sloupce proto muzeme podle jmena brat jen sloupce
+  #vektor[c(TRUE, FALSE, TRUE)]
 #x[3] <- 10
+#co se stane kdyz si rekneme o vetsi cislo nez je length vektoru? NA
   #nahrazení třetí pozice v x číslem 10
 #sort() a order()
 #názvy sloupců a řádků

@@ -8,9 +8,9 @@ title: "Sylabus"
 -   projekty a organizace skriptů
 -   nápověda
 -   balíčky
--   čas a datum
 -   operátory
 -   ukládání do proměnných
+-   datové typy v R
 
 ## 2. Struktury a indexace (29.09.2026)
 
@@ -26,7 +26,7 @@ title: "Sylabus"
 -   balíček [`dplyr`](https://dplyr.tidyverse.org/)
 -   tidy data
 -   faktory
--   datové typy
+-   čas a datum
 
 ## 4. Funkce (27.10.2026)
 
