@@ -5,6 +5,7 @@ title-slide-attributes:
   data-background-color: rgb(233, 84, 32)
 format:
   revealjs:
+    self-contained: true
     theme: night
     scrollable: false
     footer: "[Zpracovávání výzkumných dat v R](https://luc-hoskova.github.io/introR_CUNI/) | [Úvodní hodina](/1_úvod/01_prezentace.qmd)"
