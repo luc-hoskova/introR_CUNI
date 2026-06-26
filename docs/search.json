@@ -270,7 +270,7 @@
     "href": "materialy/1_uvod/index.html#o-vyučujícím",
     "title": "Úvodní hodina",
     "section": "O vyučujícím",
-    "text": "O vyučujícím\nMgr. Lucie Hošková\n\nmanažer repozitáře pro výzkumná data na UK\nvýuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS\ndatová práce všeho druhu\n\ndatová analýza pro Akademii Věd\nkonzultace pro dizertační, diplomové a bakalářské práce\nKPZ (kolega poslední záchrany)"
+    "text": "O vyučujícím\nMgr. Lucie Hošková\n\nmanažer repozitáře pro výzkumná data na UK\nvýuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS\ndatová práce všeho druhu\n\ndatová analýza pro Akademii Věd\nkonzultace pro dizertační, diplomové a bakalářské práce\nKPZ (kolega poslední záchrany)\n\npopularizačně naučné přednášky nejen o datové analýze"
   },
   {
     "objectID": "materialy/1_uvod/index.html#organizace-kurzu",
@@ -284,6 +284,48 @@
     "href": "materialy/1_uvod/index.html#hodnocení-kurzu",
     "title": "Úvodní hodina",
     "section": "Hodnocení kurzu",
-    "text": "Hodnocení kurzu\n\nprůběžné domácí úkoly\nminiprojekt přes Vánoce\n80% docházka\n\nv případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale prosím choďte pokud můžete\nv případě absence či online výuky domácí práce navíc\nje to vše o domluvě :]\n\n\nPrůběh hodin\n\núvodní opakování z předchozí hodiny\nvýklad nové látky, kombinace prezentace, code-along a samostatné práce\ncvičení z probrané látky\n\n\n\n\n\nZpracovávání výzkumných dat v R | Úvodní hodina"
+    "text": "Hodnocení kurzu\n\nprůběžné domácí úkoly\nminiprojekt přes Vánoce\n80% docházka\n\nv případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale prosím choďte pokud můžete\nv případě absence či online výuky domácí práce navíc\nje to vše o domluvě :]"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#průběh-hodin",
+    "href": "materialy/1_uvod/index.html#průběh-hodin",
+    "title": "Úvodní hodina",
+    "section": "Průběh hodin",
+    "text": "Průběh hodin\n\núvodní opakování z předchozí hodiny\nvýklad nové látky\n\nkombinace prezentace, code-along a samostatné práce\n\ncvičení z probrané látky\n\nkombinace nové látky a znalostí z předchozích hodin\n\nřešení “chuťovek” z minulých hodin a z dotazů\n\nproblémy týkající se tématu dané a předchozích hodin, které vás napadly mezi hodinami či v průběhu výuky\n\nzadání domácího úkolu"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#program",
+    "href": "materialy/1_uvod/index.html#program",
+    "title": "Úvodní hodina",
+    "section": "Program",
+    "text": "Program\n\n\norganizační a administrativní informace ke kurzu\nkrátké seznamovací okénko\nseznámení se s prostředí IDE RStudio\nR projekty, .Rfile a jak to vlastně celé funguje?\ndatové typy v R\noperátory\nukládání dat do paměti\netiketa psaní kódu"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#skriptovací-jazyk-r",
+    "href": "materialy/1_uvod/index.html#skriptovací-jazyk-r",
+    "title": "Úvodní hodina",
+    "section": "Skriptovací jazyk R",
+    "text": "Skriptovací jazyk R\nOpen source programovací jazyk určený ke statistické analýze a datové vizualizaci."
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#r-vs-rstudio",
+    "href": "materialy/1_uvod/index.html#r-vs-rstudio",
+    "title": "Úvodní hodina",
+    "section": "R vs RStudio",
+    "text": "R vs RStudio\n\n\nR\n\n\nRStudio\n\n\nIDE - vývojářské prostředí\nusnadňuje práci s R"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#rstudio",
+    "href": "materialy/1_uvod/index.html#rstudio",
+    "title": "Úvodní hodina",
+    "section": "RStudio",
+    "text": "RStudio\n\n\n\n\nZpracovávání výzkumných dat v R | Úvodní hodina"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#programovací-jazyk-r",
+    "href": "materialy/1_uvod/index.html#programovací-jazyk-r",
+    "title": "Úvodní hodina",
+    "section": "Programovací jazyk R",
+    "text": "Programovací jazyk R\nOpen source programovací jazyk určený ke statistické analýze a datové vizualizaci.\n\nv současnosti jeden ze standardů pro datovou analýzu ve vědecké sféře\naktivně využívaný, spravovaný a uržovaný globální vědeckou komunitou\n\ndlouhá historie: spuštěn v roce 1993\n\nnepřeberné množství specializovaných rozšíření"
   }
 ]

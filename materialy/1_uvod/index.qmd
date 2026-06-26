@@ -6,16 +6,16 @@ title-slide-attributes:
 format:
   revealjs:
     self-contained: true
-    theme: night
-    scrollable: false
-    footer: "[Zpracovávání výzkumných dat v R](https://luc-hoskova.github.io/introR_CUNI/) | [Úvodní hodina](/1_úvod/01_prezentace.qmd)"
+    theme: default
+    scrollable: true
+    footer: "[Zpracovávání výzkumných dat v R](https://luc-hoskova.github.io/introR_CUNI/) | [Úvodní hodina](/materialy/1_uvod/index.qmd)"
 execute:
   echo: true
   warning: false
   cache: true
 ---
 
-## Obsah
+## Program
 
 ::: incremental
 -   organizační a administrativní informace ke kurzu
@@ -38,7 +38,7 @@ execute:
 
 ## O vyučujícím
 
-#### Mgr. Lucie Hošková {.smaller}
+#### Mgr. Lucie Hošková
 
 -   manažer repozitáře pro výzkumná data na UK
 
@@ -51,6 +51,8 @@ execute:
     -   konzultace pro dizertační, diplomové a bakalářské práce
 
     -   KPZ (kolega poslední záchrany)
+
+-   popularizačně naučné přednášky nejen o datové analýze
 
 ## Organizace kurzu
 
@@ -71,12 +73,68 @@ execute:
     -   v případě absence či online výuky domácí práce navíc
     -   je to vše o domluvě :\]
 
-Průběh hodin
+## Průběh hodin
 
 1.  úvodní opakování z předchozí hodiny
 
-2.  výklad nové látky, kombinace prezentace, code-along a samostatné práce
+2.  výklad nové látky
+
+    -   kombinace prezentace, code-along a samostatné práce
 
 3.  cvičení z probrané látky
 
-4.  
+    -   kombinace nové látky a znalostí z předchozích hodin
+
+4.  řešení "chuťovek" z minulých hodin a z dotazů
+
+    -   problémy týkající se tématu dané a předchozích hodin, které vás napadly mezi hodinami či v průběhu výuky
+
+5.  zadání domácího úkolu
+
+# Představovací kolečko
+
+1.  jméno
+
+2.  obor
+
+3.  zkušenosti se skriptováním (potažmo R)
+
+4.  zkušenosti se statistikou
+
+5.  co se chcete naučit
+
+## Programovací jazyk R
+
+Open source programovací jazyk určený ke statistické analýze a datové vizualizaci.
+
+-   v současnosti jeden ze standardů pro datovou analýzu ve vědecké sféře
+
+-   aktivně využívaný, spravovaný a uržovaný globální vědeckou komunitou
+
+    -   dlouhá historie: spuštěn v roce 1993
+
+-   nepřeberné množství specializovaných rozšíření
+
+## R vs RStudio
+
+::: columns
+::: {.column width="50%"}
+R
+
+![](images/clipboard-3110489029.png)
+:::
+
+::: {.column width="50%"}
+RStudio
+
+![](images/clipboard-3107190026.png)
+
+-   IDE - vývojářské prostředí
+
+-   usnadňuje práci s R
+:::
+:::
+
+## RStudio
+
+![](images/clipboard-1352057128.png)
