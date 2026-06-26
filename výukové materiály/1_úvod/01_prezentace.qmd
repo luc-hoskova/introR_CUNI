@@ -1,0 +1,81 @@
+---
+title: "Úvodní hodina"
+author: "Lucie Hošková"
+title-slide-attributes:
+  data-background-color: rgb(233, 84, 32)
+format:
+  revealjs:
+    theme: night
+    scrollable: false
+    footer: "[Zpracovávání výzkumných dat v R](https://luc-hoskova.github.io/introR_CUNI/) | [Úvodní hodina](/1_úvod/01_prezentace.qmd)"
+execute:
+  echo: true
+  warning: false
+  cache: true
+---
+
+## Obsah
+
+::: incremental
+-   organizační a administrativní informace ke kurzu
+-   krátké seznamovací okénko
+-   seznámení se s prostředí IDE RStudio
+-   R projekty, .Rfile a jak to vlastně celé funguje?
+-   datové typy v R
+-   operátory
+-   ukládání dat do paměti
+-   etiketa psaní kódu
+:::
+
+## O kurzu
+
+-   kurz s cílem poskytnout účastníkům **solidní základy práce s R** za účelem následné práce s vědeckými daty
+
+-   **zakončení mikrocerfikátem**: oficiální [certifikát uznávaný napříč EU](https://cczv.cuni.cz/CCZV-521.html) s jasně definovanými dovednostmi
+
+-   pokračování: do budoucna jsou plánována **jednorázová školení na specifická pokročilá témata** o která bude zájem
+
+## O vyučujícím
+
+#### Mgr. Lucie Hošková {.smaller}
+
+-   manažer repozitáře pro výzkumná data na UK
+
+-   výuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS
+
+-   datová práce všeho druhu
+
+    -   datová analýza pro Akademii Věd
+
+    -   konzultace pro dizertační, diplomové a bakalářské práce
+
+    -   KPZ (kolega poslední záchrany)
+
+## Organizace kurzu
+
+-   **10 lekcí po třech hodinách**
+    -   bloky 3 x cca 50 minut
+    -   výuka jednou za dva týdny, přes Vánoce pauza
+-   **3 tématické bloky**
+    -   zpracovávání dat
+    -   vizualizace dat
+    -   analýza dat
+
+## Hodnocení kurzu
+
+1.  **průběžné domácí úkoly**
+2.  **miniprojekt přes Vánoce**
+3.  **80% docházka**
+    -   v případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale **prosím choďte pokud můžete**
+    -   v případě absence či online výuky domácí práce navíc
+    -   je to vše o domluvě :\]
+
+Průběh hodin
+
+1.  úvodní opakování z předchozí hodiny
+
+2.  výklad nové látky, kombinace prezentace, code-along a samostatné práce
+
+3.  cvičení z probrané látky
+
+4.  

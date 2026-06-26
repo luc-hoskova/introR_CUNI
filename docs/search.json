@@ -208,5 +208,40 @@
     "title": "O kurzu",
     "section": "Návod na přihlášení",
     "text": "Návod na přihlášení\n1) Na stránce kurzu vyberte „Podrobné informace a přihláška“.\n\n2) Sjeďte dolů po stránce “Detail programu s mikrocertifikátem” a po přečtení informací o kurzu klikněte na „podat přihlášku“.\n\n3) Přihlašte se do systému. Pokud jste zaměstnanci či studenti UK, použijte přihlašovací systém CAS. Jinak je třeba, abyste si zaregistrovali e-mail a až poté se přihlásili.\n\n4) Po přihlášení se Vám zobrazí stránka Přijímací řízení“. Klikněte na „Založení nové přihlášky“.\n\n5) V seznamu fakult vyberte Ústřední knihovnu.\n\n6) Vyberte kurz.\n\n7) Vyplňte a odešlete přihlášku."
+  },
+  {
+    "objectID": "výukové materiály/1_úvod/01_prezentace.html#organizace-kurzu",
+    "href": "výukové materiály/1_úvod/01_prezentace.html#organizace-kurzu",
+    "title": "Úvodní hodina",
+    "section": "Organizace kurzu",
+    "text": "Organizace kurzu\n\n10 lekcí po třech hodinách\n\nbloky 3 x cca 50 minut\nvýuka jednou za dva týdny, přes Vánoce pauza\n\n3 tématické bloky\n\nzpracovávání dat\nvizualizace dat\nanalýza dat"
+  },
+  {
+    "objectID": "výukové materiály/1_úvod/01_prezentace.html#hodnocení-kurzu",
+    "href": "výukové materiály/1_úvod/01_prezentace.html#hodnocení-kurzu",
+    "title": "Úvodní hodina",
+    "section": "Hodnocení kurzu",
+    "text": "Hodnocení kurzu\n\nprůběžné domácí úkoly\nminiprojekt přes Vánoce\n80% docházka\n\nv případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale prosím choďte pokud můžete\nv případě absence či online výuky domácí práce navíc\nje to vše o domluvě :]\n\n\nPrůběh hodin\n\núvodní opakování z předchozí hodiny\nvýklad nové látky, kombinace prezentace, code-along a samostatné práce\ncvičení z probrané látky\n\n\n\n\n\nZpracovávání výzkumných dat v R | Úvodní hodina"
+  },
+  {
+    "objectID": "výukové materiály/1_úvod/01_prezentace.html#obsah",
+    "href": "výukové materiály/1_úvod/01_prezentace.html#obsah",
+    "title": "Úvodní hodina",
+    "section": "Obsah",
+    "text": "Obsah\n\n\norganizační a administrativní informace ke kurzu\nkrátké seznamovací okénko\nseznámení se s prostředí IDE RStudio\nR projekty, .Rfile a jak to vlastně celé funguje?\ndatové typy v R\noperátory\nukládání dat do paměti\netiketa psaní kódu"
+  },
+  {
+    "objectID": "výukové materiály/1_úvod/01_prezentace.html#o-kurzu",
+    "href": "výukové materiály/1_úvod/01_prezentace.html#o-kurzu",
+    "title": "Úvodní hodina",
+    "section": "O kurzu",
+    "text": "O kurzu\n\nkurz s cílem poskytnout účastníkům solidní základy práce s R za účelem následné práce s vědeckými daty\nzakončení mikrocerfikátem: oficiální certifikát uznávaný napříč EU s jasně definovanými dovednostmi\npokračování: do budoucna jsou plánována jednorázová školení na specifická pokročilá témata o která bude zájem"
+  },
+  {
+    "objectID": "výukové materiály/1_úvod/01_prezentace.html#o-vyučujícím",
+    "href": "výukové materiály/1_úvod/01_prezentace.html#o-vyučujícím",
+    "title": "Úvodní hodina",
+    "section": "O vyučujícím",
+    "text": "O vyučujícím\nMgr. Lucie Hošková\n\nmanažer repozitáře pro výzkumná data na UK\nvýuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS\ndatová práce všeho druhu\n\ndatová analýza pro Akademii Věd\nkonzultace pro dizertační, diplomové a bakalářské práce\nKPZ (kolega poslední záchrany)"
   }
 ]
