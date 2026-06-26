@@ -243,5 +243,47 @@
     "title": "Úvodní hodina",
     "section": "O vyučujícím",
     "text": "O vyučujícím\nMgr. Lucie Hošková\n\nmanažer repozitáře pro výzkumná data na UK\nvýuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS\ndatová práce všeho druhu\n\ndatová analýza pro Akademii Věd\nkonzultace pro dizertační, diplomové a bakalářské práce\nKPZ (kolega poslední záchrany)"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html",
+    "href": "materialy/1_uvod/index.html",
+    "title": "Úvodní hodina",
+    "section": "",
+    "text": "organizační a administrativní informace ke kurzu\nkrátké seznamovací okénko\nseznámení se s prostředí IDE RStudio\nR projekty, .Rfile a jak to vlastně celé funguje?\ndatové typy v R\noperátory\nukládání dat do paměti\netiketa psaní kódu"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#obsah",
+    "href": "materialy/1_uvod/index.html#obsah",
+    "title": "Úvodní hodina",
+    "section": "",
+    "text": "organizační a administrativní informace ke kurzu\nkrátké seznamovací okénko\nseznámení se s prostředí IDE RStudio\nR projekty, .Rfile a jak to vlastně celé funguje?\ndatové typy v R\noperátory\nukládání dat do paměti\netiketa psaní kódu"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#o-kurzu",
+    "href": "materialy/1_uvod/index.html#o-kurzu",
+    "title": "Úvodní hodina",
+    "section": "O kurzu",
+    "text": "O kurzu\n\nkurz s cílem poskytnout účastníkům solidní základy práce s R za účelem následné práce s vědeckými daty\nzakončení mikrocerfikátem: oficiální certifikát uznávaný napříč EU s jasně definovanými dovednostmi\npokračování: do budoucna jsou plánována jednorázová školení na specifická pokročilá témata o která bude zájem"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#o-vyučujícím",
+    "href": "materialy/1_uvod/index.html#o-vyučujícím",
+    "title": "Úvodní hodina",
+    "section": "O vyučujícím",
+    "text": "O vyučujícím\n\nMgr. Lucie Hošková\n\nmanažer repozitáře pro výzkumná data na UK\nvýuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS\ndatová práce všeho druhu\n\ndatová analýza pro Akademii Věd\nkonzultace pro dizertační, diplomové a bakalářské práce\nKPZ (kolega poslední záchrany)"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#organizace-kurzu",
+    "href": "materialy/1_uvod/index.html#organizace-kurzu",
+    "title": "Úvodní hodina",
+    "section": "Organizace kurzu",
+    "text": "Organizace kurzu\n\n10 lekcí po třech hodinách\n\nbloky 3 x cca 50 minut\nvýuka jednou za dva týdny, přes Vánoce pauza\n\n3 tématické bloky\n\nzpracovávání dat\nvizualizace dat\nanalýza dat"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#hodnocení-kurzu",
+    "href": "materialy/1_uvod/index.html#hodnocení-kurzu",
+    "title": "Úvodní hodina",
+    "section": "Hodnocení kurzu",
+    "text": "Hodnocení kurzu\n\nprůběžné domácí úkoly\nminiprojekt přes Vánoce\n80% docházka\n\nv případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale prosím choďte pokud můžete\nv případě absence či online výuky domácí práce navíc\nje to vše o domluvě :]\n\n\nPrůběh hodin\n\núvodní opakování z předchozí hodiny\nvýklad nové látky, kombinace prezentace, code-along a samostatné práce\ncvičení z probrané látky"
   }
 ]
