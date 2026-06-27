@@ -9,6 +9,9 @@ format:
     theme: default
     scrollable: true
     footer: "[Zpracovávání výzkumných dat v R](https://luc-hoskova.github.io/introR_CUNI/) | [Úvodní hodina](/materialy/1_uvod/01_prezentace.qmd)" #doresit
+engine: knitr
+filters:
+  - webr
 execute:
   echo: true
   warning: false
