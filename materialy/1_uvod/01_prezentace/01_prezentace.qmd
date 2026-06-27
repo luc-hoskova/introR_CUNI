@@ -24,11 +24,11 @@ execute:
 -   organizační a administrativní informace ke kurzu
 -   krátké seznamovací okénko
 -   seznámení se s prostředí IDE RStudio
--   R projekty, .Rfile a jak to vlastně celé funguje?
 -   datové typy v R
+-   ukládání dat do proměnných
 -   operátory
--   ukládání dat do paměti
 -   etiketa psaní kódu
+-   R projekty, .Rfile a jak to vlastně celé funguje
 :::
 
 ## O kurzu
@@ -92,7 +92,7 @@ execute:
 
 5.  zadání domácího úkolu
 
-## Představovací kolečko
+# Představovací kolečko
 
 1.  jméno
 
@@ -104,13 +104,15 @@ execute:
 
 5.  co se chcete naučit
 
+    ------------------------------------------------------------------------
+
 ## Programovací jazyk R
 
-Open source programovací jazyk určený ke statistické analýze a datové vizualizaci.
+**Open source** programovací jazyk určený ke statistické analýze a datové vizualizaci.
 
--   v současnosti jeden ze standardů pro datovou analýzu ve vědecké sféře
+-   v současnosti jeden ze **standardů pro datovou analýzu ve vědecké sféře**
 
--   aktivně využívaný, spravovaný a uržovaný globální vědeckou komunitou
+-   aktivně využívaný, spravovaný a uržovaný **globální vědeckou komunitou**
 
     -   dlouhá historie: spuštěn v roce 1993
 
@@ -237,7 +239,18 @@ Uložené proměnné jsou vždy vypsána v globálním prostředí.
 ![](images/clipboard-358450353.png){fig-align="center"}
 
 ------------------------------------------------------------------------
-K přiřazení do proměnné se používá symbol šipky jde to oběmi směry ale pozor R čte kód zásadně postupně zleva doprava takže lepší <-
+
+r čte zpravidla zleva do prava
+
+6 -\> sest
+
+ale umi to i obracene
+
+proto x \<- 66
+
+je to lepší protože člověk hned jasně vidí co je výsledek
+
+proč ne ukládání pomocí =
 
 ------------------------------------------------------------------------
 
@@ -265,7 +278,7 @@ K přiřazení do proměnné se používá symbol šipky jde to oběmi směry al
 
 ## Procvičení
 
-Ulož do proměnné x číslo, do y text a do z boolean
+Ulož do proměnné x číslo, do y text a do z boolean.
 
 ```{webr}
 #| exercise: ex_1
@@ -273,9 +286,23 @@ x ______
 y ______
 z ______
 
-x
-y
-z
+x; y; z
+```
+
+Jaký bude výsledek následujícího kódu?
+
+```{webr}
+#| exercise: ex_2
+a <- "5"
+b <- 6
+a + b
+```
+
+```{r}
+#| eval: false
+a <- "5"
+b <- 6
+a + b
 ```
 
 ## Operátory
@@ -364,11 +391,26 @@ hodnoty <- c(12, 87, 55, 1098)
 1 + 2 + 3 + ______
 ```
 
-## Samostatné cvičení
+## Samostatné cvičení {background-color="burlywood1"}
 
 Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory 65+ či děti a studenty až do 26 let včetně.
 
 Kódem ověř, zda má Franta na tuto slevu nárok.
+
+-\*-
+
+Studentstvo může získat stipendium za podmínek: mají průměr známek menší než 1.8 a zároveň absolvovali alespoň 80 % docházky, nebo reprezentují školu na soutěžích.
+
+Saša má průměr 1.7, zameškáno 3 hodin z 10 a pravidelně vyhrává biologickou olympiádu. Zjisti, zda má Saša právo na stipendium.
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 8,
+                     seconds = 0,
+                     start_immediately = TRUE,
+                     warn_when = 60,
+                     top = "0")
+```
 
 ## Etiketa psaní kódu
 
