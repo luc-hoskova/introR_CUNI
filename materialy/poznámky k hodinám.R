@@ -23,10 +23,16 @@
 #x[3] <- 10
 #co se stane kdyz si rekneme o vetsi cislo nez je length vektoru? NA
   #nahrazení třetí pozice v x číslem 10
+#´pouzivani apostrofu u nazvu s mezerou´
 #sort() a order()
 #názvy sloupců a řádků
 #přidání sloupců a řádků
 #dataframe vs tibble
+#nahravani dat nejenom z hlavni slozky
+  #Use of the relative path. Accesses data in the Data folder
+  #read.csv('./Data/Dataset.csv')
+  # Goes up a folder first, then into the Data folder
+  #read.csv('../Data/Dataset.csv')
 
 #3 hodina
 #faktory

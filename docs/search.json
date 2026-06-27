@@ -277,7 +277,7 @@
     "href": "materialy/1_uvod/index.html#organizace-kurzu",
     "title": "Úvodní hodina",
     "section": "Organizace kurzu",
-    "text": "Organizace kurzu\n\n10 lekcí po třech hodinách\n\nbloky 3 x cca 50 minut\nvýuka jednou za dva týdny, přes Vánoce pauza\n\n3 tématické bloky\n\nzpracovávání dat\nvizualizace dat\nanalýza dat"
+    "text": "Organizace kurzu\n\n10 lekcí po třech hodinách\n\nbloky 3 x cca 50 minut\nvýuka jednou za dva týdny, přes Vánoce pauza\n\n3 tématické okruhy\n\nzpracovávání dat\nvizualizace dat\nanalýza dat"
   },
   {
     "objectID": "materialy/1_uvod/index.html#hodnocení-kurzu",
@@ -291,7 +291,7 @@
     "href": "materialy/1_uvod/index.html#průběh-hodin",
     "title": "Úvodní hodina",
     "section": "Průběh hodin",
-    "text": "Průběh hodin\n\núvodní opakování z předchozí hodiny\nvýklad nové látky\n\nkombinace prezentace, code-along a samostatné práce\n\ncvičení z probrané látky\n\nkombinace nové látky a znalostí z předchozích hodin\n\nřešení “chuťovek” z minulých hodin a z dotazů\n\nproblémy týkající se tématu dané a předchozích hodin, které vás napadly mezi hodinami či v průběhu výuky\n\nzadání domácího úkolu"
+    "text": "Průběh hodin\n\núvodní opakování z předchozí hodiny\nvýklad nové látky\n\nkombinace prezentace, code-along a samostatné práce\n\ncvičení z probrané látky\n\nkombinace nové látky a znalostí z předchozích hodin\n\nřešení “chuťovek” z minulých hodin a z dotazů\nzadání domácího úkolu"
   },
   {
     "objectID": "materialy/1_uvod/index.html#program",
@@ -319,7 +319,7 @@
     "href": "materialy/1_uvod/index.html#rstudio",
     "title": "Úvodní hodina",
     "section": "RStudio",
-    "text": "RStudio\n\n\n\n\nZpracovávání výzkumných dat v R | Úvodní hodina"
+    "text": "RStudio"
   },
   {
     "objectID": "materialy/1_uvod/index.html#programovací-jazyk-r",
@@ -327,5 +327,54 @@
     "title": "Úvodní hodina",
     "section": "Programovací jazyk R",
     "text": "Programovací jazyk R\nOpen source programovací jazyk určený ke statistické analýze a datové vizualizaci.\n\nv současnosti jeden ze standardů pro datovou analýzu ve vědecké sféře\naktivně využívaný, spravovaný a uržovaný globální vědeckou komunitou\n\ndlouhá historie: spuštěn v roce 1993\n\nnepřeberné množství specializovaných rozšíření"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#datové-typy-v-r",
+    "href": "materialy/1_uvod/index.html#datové-typy-v-r",
+    "title": "Úvodní hodina",
+    "section": "Datové typy v R",
+    "text": "Datové typy v R\n\n\nNumeric\n\ninteger\n\n5, 0, 123\n\ndouble\n\n1.87, 0.3679\nInf\n-Inf\n\n\n\nCharacter\n\n“Hello world!”\n“žluťoučký”\n“532”\n‘kolo’\n\n\nLogical\n\ntaktéž popisovány jako boolean\nTRUE\nFALSE"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#operátory",
+    "href": "materialy/1_uvod/index.html#operátory",
+    "title": "Úvodní hodina",
+    "section": "Operátory",
+    "text": "Operátory\nMatematické operátory\n+ - sčítání a odčítání\n\n5 + 7\n\n[1] 12\n\n8 - 2\n\n[1] 6\n\n\n* násobení\n\n10 * 7\n\n[1] 70\n\n\n/ dělení\n\n10 / 5\n\n[1] 2\n\n\n%% zbytek po dělení\n\n10 %% 7\n\n[1] 3\n\n10 %% 5\n\n[1] 0\n\n\n%/% dělení bez zbytku\n\n10 %/% 7\n\n[1] 1\n\n10 %/% 5\n\n[1] 2\n\n\n** nebo ^ umocnění\n\n5 ^ 2\n\n[1] 25\n\n5 ** 2\n\n[1] 25\n\n\n&lt;= &gt;= menší/větší nebo rovno\n\n8 &gt;= 8\n\n[1] TRUE\n\n5699 &lt;= 3456\n\n[1] FALSE"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#ukládání-proměnných",
+    "href": "materialy/1_uvod/index.html#ukládání-proměnných",
+    "title": "Úvodní hodina",
+    "section": "Ukládání proměnných",
+    "text": "Ukládání proměnných\nff\nZakázané způsoby pojmenovávání proměnných\n\nmezera mezi slovy\npet aut &lt;- 5\nzačínat symbolem\n&lt;6&gt;4aut &lt;- 5\nzačínat číslicí\n5aut &lt;- 5\n\nPozor na diakritiku!"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#etiketa-psaní-kódu",
+    "href": "materialy/1_uvod/index.html#etiketa-psaní-kódu",
+    "title": "Úvodní hodina",
+    "section": "Etiketa psaní kódu",
+    "text": "Etiketa psaní kódu\nR je case sensitive!\n\nidentical(\"data\", \"Data\")\n\n[1] FALSE\n\n\n\n\nPoužívejte co chcete ale buďte konzistentní.\nKterý styl se vám používá nejsnadněji? U kterého děláte nejvíc chyb?\nJaké jsou zvysklosti ve vašem oboru/laboratoři?\n\nMožné styly zápisu:\n\ncamelCase\nPascalCase\nsnake_case\nkebab-dash\na jiné"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#rprojects",
+    "href": "materialy/1_uvod/index.html#rprojects",
+    "title": "Úvodní hodina",
+    "section": "RProjects",
+    "text": "RProjects\nrovbou načte i setdw() a uložené proměnné takže se může rovnou pokračovat\nje dobré si všechno držet pohromadě\nco je Rfile RData a tak\nrelativní cesta k souborům takže jde celý projekt prostě jen zkopírovat a poslat, ale k tomu víc u ukládání dat\n\n\n\nZpracovávání výzkumných dat v R | Úvodní hodina"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#představovací-kolečko",
+    "href": "materialy/1_uvod/index.html#představovací-kolečko",
+    "title": "Úvodní hodina",
+    "section": "Představovací kolečko",
+    "text": "Představovací kolečko\n\njméno\nobor\nzkušenosti s programováním (potažmo R)\nzkušenosti se statistikou\nco se chcete naučit"
+  },
+  {
+    "objectID": "materialy/1_uvod/index.html#procvičení",
+    "href": "materialy/1_uvod/index.html#procvičení",
+    "title": "Úvodní hodina",
+    "section": "Procvičení",
+    "text": "Procvičení\n\n1 + 2 + 3 + ______"
   }
 ]
