@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "O kurzu",
+    "section": "",
+    "text": "Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio."
+  },
+  {
+    "objectID": "index.html#komu-je-kurz-určen",
+    "href": "index.html#komu-je-kurz-určen",
+    "title": "O kurzu",
+    "section": "Komu je kurz určen?",
+    "text": "Komu je kurz určen?\nTeto kurz je cílen především na osoby, které se věnují analýze výzkumných dat. Může se jednat jak o akademiky a jiné výzkumníky a výzkumnice, ale také o vědeckou podporu; osoby, které pomáhají těmto osobám pracovat s jejich daty (například data stewardi).\nUrčen je převážně pro osoby, které jsou již aktivně součástí pracovního procesu, a nemohou si tak dovolit docházet každý týden na kratší lekce uprostřed dne."
+  },
+  {
+    "objectID": "index.html#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu",
+    "href": "index.html#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu",
+    "title": "O kurzu",
+    "section": "Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu",
+    "text": "Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu\nPro získání mikrocertifikátu je potřeba splnit následující podmínky:\n\nalespoň 80% docházka\nodevzdané průběžné domácí úkoly\nvypracování závěrečného projektu\n\nV případě nemoci či jiné neočekávané situace, která by způsobila dlouhodobou nepřítomnost, bude zajištěna individuální náhrada výuky."
+  },
+  {
+    "objectID": "index.html#místo-a-čas-výuky",
+    "href": "index.html#místo-a-čas-výuky",
+    "title": "O kurzu",
+    "section": "Místo a čas výuky",
+    "text": "Místo a čas výuky\nVýuka bude probíhat každé druhé úterý v měsící v průběhu podzimního semestru (půlka září až začátek února). Termíny jednotlivých lekcí jsou vypsány v sylabu.\nČas výuky je 09:00-12:00 (včetně přestávek).\nVýuka je pouze v prezenční formě a odehrává se v prostorách Ústřední Knihovny UK.\n\n\n\n\n\n\nÚstřední knihovna se nachází v druhém patře Hotelu Krystal.\n\n\n\n\n\n\n\nučebna 216\nJosé Martího 407\nÚstřední Knihovna UK\nPraha\n\nUčebna má k dispozici náhradní notebooky v případě potřeby výjimečného zapůjčení během lekce."
+  },
+  {
+    "objectID": "index.html#návod-na-přihlášení",
+    "href": "index.html#návod-na-přihlášení",
+    "title": "O kurzu",
+    "section": "Návod na přihlášení",
+    "text": "Návod na přihlášení\n1) Na stránce kurzu vyberte „Podrobné informace a přihláška“.\n\n2) Sjeďte dolů po stránce “Detail programu s mikrocertifikátem” a po přečtení informací o kurzu klikněte na „podat přihlášku“.\n\n3) Přihlašte se do systému. Pokud jste zaměstnanci či studenti UK, použijte přihlašovací systém CAS. Jinak je třeba, abyste si zaregistrovali e-mail a až poté se přihlásili.\n\n4) Po přihlášení se Vám zobrazí stránka Přijímací řízení“. Klikněte na „Založení nové přihlášky“.\n\n5) V seznamu fakult vyberte Ústřední knihovnu.\n\n6) Vyberte kurz.\n\n7) Vyplňte a odešlete přihlášku."
+  },
+  {
+    "objectID": "sylabus.html",
+    "href": "sylabus.html",
+    "title": "Sylabus",
+    "section": "",
+    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\noperátory\nukládání do proměnných\ndatové typy v R"
+  },
+  {
+    "objectID": "sylabus.html#úvodní-hodina-15.09.2026",
+    "href": "sylabus.html#úvodní-hodina-15.09.2026",
+    "title": "Sylabus",
+    "section": "",
+    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\nbalíčky\noperátory\nukládání do proměnných\ndatové typy v R"
+  },
+  {
+    "objectID": "sylabus.html#struktury-a-indexace-29.09.2026",
+    "href": "sylabus.html#struktury-a-indexace-29.09.2026",
+    "title": "Sylabus",
+    "section": "2. Struktury a indexace (29.09.2026)",
+    "text": "2. Struktury a indexace (29.09.2026)\n\ndatové struktury v R\nindexace\núvod do balíčku dplyr\nnačítání dat do R\nkontrola dat"
+  },
+  {
+    "objectID": "sylabus.html#transformace-dat-13.10.2026",
+    "href": "sylabus.html#transformace-dat-13.10.2026",
+    "title": "Sylabus",
+    "section": "3. Transformace dat (13.10.2026)",
+    "text": "3. Transformace dat (13.10.2026)\n\npipes\nbalíček dplyr\ntidy data\nfaktory\nčas a datum"
+  },
+  {
+    "objectID": "sylabus.html#funkce-27.10.2026",
+    "href": "sylabus.html#funkce-27.10.2026",
+    "title": "Sylabus",
+    "section": "4. Funkce (27.10.2026)",
+    "text": "4. Funkce (27.10.2026)\n\nsyntax funkce\ntvorba vlastní funkce\ncykly\nfunkce apply() a celá apply rodina funkcí\nvektorizace vs. itinerární přístup"
+  },
+  {
+    "objectID": "sylabus.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-10.11.2026",
+    "href": "sylabus.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-10.11.2026",
+    "title": "Sylabus",
+    "section": "5. Základy vizualizace dat a práce s grafy v R (10.11.2026)",
+    "text": "5. Základy vizualizace dat a práce s grafy v R (10.11.2026)\n\npřemýšlení nad účelem tvorby grafu\nbodové, čárové a sloupcové grafy\nzákladní vizualizace v R\núvod do vizualizace pomocí balíčku ggplot2"
+  },
+  {
+    "objectID": "sylabus.html#pokročilá-vizualizace-dat-24.11.2026",
+    "href": "sylabus.html#pokročilá-vizualizace-dat-24.11.2026",
+    "title": "Sylabus",
+    "section": "6. Pokročilá vizualizace dat (24.11.2026)",
+    "text": "6. Pokročilá vizualizace dat (24.11.2026)\n\nboxploty\nhistogramy\ndenseploty\nheat mapy\nviolin grafy\nčasové řady"
+  },
+  {
+    "objectID": "sylabus.html#mapy-3d-a-interaktivní-grafy-08.12.2026",
+    "href": "sylabus.html#mapy-3d-a-interaktivní-grafy-08.12.2026",
+    "title": "Sylabus",
+    "section": "7. Mapy, 3D a interaktivní grafy (08.12.2026)",
+    "text": "7. Mapy, 3D a interaktivní grafy (08.12.2026)\n\nprostorová data v R\nbodové mapy\nchloropleth mapy\n3D grafy\ninteraktivní grafy"
+  },
+  {
+    "objectID": "sylabus.html#typy-dat-a-deskriptivní-statistika-05.01.2027",
+    "href": "sylabus.html#typy-dat-a-deskriptivní-statistika-05.01.2027",
+    "title": "Sylabus",
+    "section": "8. Typy dat a deskriptivní statistika (05.01.2027)",
+    "text": "8. Typy dat a deskriptivní statistika (05.01.2027)\n\nkvalitativní vs kvantitivní data\nnominální, ordinální, intervalová, poměrová, diskrétní a spojitá data\nzáklady popisné statistiky\nprůměr, medián, mode\nmíry variability"
+  },
+  {
+    "objectID": "sylabus.html#úvod-do-inferenční-statistiky-19.01.2027",
+    "href": "sylabus.html#úvod-do-inferenční-statistiky-19.01.2027",
+    "title": "Sylabus",
+    "section": "9. Úvod do inferenční statistiky (19.01.2027)",
+    "text": "9. Úvod do inferenční statistiky (19.01.2027)\n\npopulace, výběr\nurčování normality dat\nparametrické testy\nt-testy"
+  },
+  {
+    "objectID": "sylabus.html#analýza-kategoriálních-dat-korelace-a-regrese-02.02.2027",
+    "href": "sylabus.html#analýza-kategoriálních-dat-korelace-a-regrese-02.02.2027",
+    "title": "Sylabus",
+    "section": "10. Analýza kategoriálních dat, korelace a regrese (02.02.2027)",
+    "text": "10. Analýza kategoriálních dat, korelace a regrese (02.02.2027)\n\nkontingenční tabulka\nneparametrické testy\nchí-kvadrát\nPearson/Spearman korelace\nregrese"
+  },
+  {
+    "objectID": "vyukove_materialy.html",
+    "href": "vyukove_materialy.html",
+    "title": "Výukové materiály",
+    "section": "",
+    "text": "V této sekci naleznou účastníci výukové materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.\nMateriály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení)."
+  }
+]
