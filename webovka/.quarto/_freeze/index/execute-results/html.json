@@ -1,0 +1,15 @@
+{
+  "hash": "9f2959c9839a7c678b1e056c3e36511f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"website2\"\n---\n\n\nO kurzu\n\njaký je cíl\n\nkdy a kde se to učí\n\nkdo to učí\n\nTo learn more about Quarto websites visit <https://quarto.org/docs/websites>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n\n## Date and location\n\nThe school will be held from **16 to 20 September 2024** at the **Institute of Archaeology, Czech Academy of Sciences, Brno** ([https://arub.cz/](https://arub.cz/){.external}) at the address given below:\n\n> Čechyňská 363/19\\\n> 602 00 Brno\\\n> Czech Republic\n\n## Prerequisites\n\n-   **Bring your own laptop!**\n-   Install **R** and **RStudio** (follow the concise quide [here](https://rstudio-education.github.io/hopr/starting.html)).\\\n    *If you are familiar with R, feel free to use a GUI of your choice.*\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
