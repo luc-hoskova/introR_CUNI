@@ -5,11 +5,12 @@ title-slide-attributes:
   data-background-color: rgb(233, 84, 32)
 format:
   revealjs:
-    self-contained: true
     theme: default
     scrollable: true
-    footer: "[Zpracovávání výzkumných dat v R](https://luc-hoskova.github.io/introR_CUNI/) | [Úvodní hodina](/materialy/1_uvod/index.qmd)"
-
+    footer: "[Zpracovávání výzkumných dat v R](https://luc-hoskova.github.io/introR_CUNI/) | [Úvodní hodina](/materialy/1_uvod/01_prezentace.qmd)" #doresit
+engine: knitr
+filters:
+  - webr
 execute:
   echo: true
   warning: false
@@ -120,13 +121,13 @@ Open source programovací jazyk určený ke statistické analýze a datové vizu
 ::: {.column width="50%"}
 R
 
-![](images/clipboard-3110489029.png)
+![](images/clipboard-3339902769.png)
 :::
 
 ::: {.column width="50%"}
 RStudio
 
-![](images/clipboard-3107190026.png)
+![](images/clipboard-596025863.png)
 
 -   IDE - vývojářské prostředí
 
@@ -136,7 +137,7 @@ RStudio
 
 ## RStudio
 
-![](images/clipboard-1352057128.png)
+![](images/clipboard-516070855.png)
 
 ## Datové typy v R
 
@@ -367,7 +368,7 @@ Jaké jsou zvysklosti ve vašem oboru/laboratoři?
 
 ------------------------------------------------------------------------
 
-![](images/01-drunken-gorilla-1405383724.jpg){fig-align="center"}
+![](images/clipboard-1044733788.png)
 
 ------------------------------------------------------------------------
 
