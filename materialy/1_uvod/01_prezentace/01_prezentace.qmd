@@ -1,6 +1,6 @@
 ---
 title: "Úvodní hodina"
-author: "Lucie Hošková"
+subtitle: "Zpracovávání výzkumných dat pomocí jazyka R"
 title-slide-attributes:
   data-background-color: rgb(233, 84, 32)
 format:
@@ -8,7 +8,7 @@ format:
     self-contained: true
     theme: default
     scrollable: true
-    footer: "[Zpracovávání výzkumných dat v R](https://luc-hoskova.github.io/introR_CUNI/) | [Úvodní hodina](/materialy/1_uvod/01_prezentace.qmd)" #doresit
+    footer: "[Zpracovávání výzkumných dat pomocí jazyka R](https://luc-hoskova.github.io/introR_CUNI/) | [Lucie Hošková](https://orcid.org/0009-0001-9695-2342)"
 engine: knitr
 filters:
   - webr
@@ -219,6 +219,65 @@ NaN
 
 -   NaN je naopak bráno jako numeric hodnota
 
+## Ukládání proměnných
+
+R umožňuje uložit si informace pomocí proměnných.
+
+Místo toho, abyste poté museli informaci znovu definovat, tak si můžete zavolat proměnnou.
+
+```{r}
+mnozstviZkumavek <- 85554343
+mnozstviKadinek <- 981100009
+
+mnozstviZkumavek + mnozstviKadinek
+```
+
+Uložené proměnné jsou vždy vypsána v globálním prostředí.
+
+![](images/clipboard-358450353.png){fig-align="center"}
+
+------------------------------------------------------------------------
+K přiřazení do proměnné se používá symbol šipky jde to oběmi směry ale pozor R čte kód zásadně postupně zleva doprava takže lepší <-
+
+------------------------------------------------------------------------
+
+### Zakázané způsoby pojmenovávání proměnných
+
+-   mezera mezi slovy
+
+    ``` r
+    pet aut <- 5
+    ```
+
+-   začínat symbolem
+
+    ``` r
+    <6>4aut <- 5
+    ```
+
+-   začínat číslicí
+
+    ``` r
+    5aut <- 5
+    ```
+
+    **Pozor na diakritiku!**
+
+## Procvičení
+
+Ulož do proměnné x číslo, do y text a do z boolean
+
+```{webr}
+#| exercise: ex_1
+x ______
+y ______
+z ______
+
+x
+y
+z
+```
+
 ## Operátory
 
 ### Matematické operátory
@@ -270,8 +329,6 @@ NaN
 5699 <= 3456
 ```
 
-------------------------------------------------------------------------
-
 ### Logické operátory
 
 Logické operátory lze použít při výběru (vyber x NEBO y, x A y) či spojování podmínek, ale také umí vracet boolean hodnoty.
@@ -307,33 +364,11 @@ hodnoty <- c(12, 87, 55, 1098)
 1 + 2 + 3 + ______
 ```
 
-## Ukládání proměnných
+## Samostatné cvičení
 
-ff
+Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory 65+ či děti a studenty až do 26 let včetně.
 
-### Zakázané způsoby pojmenovávání proměnných
-
--   mezera mezi slovy
-
-    ``` r
-    pet aut <- 5
-    ```
-
--   začínat symbolem
-
-    ``` r
-    <6>4aut <- 5
-    ```
-
--   začínat číslicí
-
-    ``` r
-    5aut <- 5
-    ```
-
-**Pozor na diakritiku!**
-
-------------------------------------------------------------------------
+Kódem ověř, zda má Franta na tuto slevu nárok.
 
 ## Etiketa psaní kódu
 
