@@ -28,6 +28,7 @@ execute:
 -   ukládání dat do proměnných
 -   operátory
 -   etiketa psaní kódu
+-   working directory
 -   R projekty, .Rfile a jak to vlastně celé funguje
 :::
 
@@ -92,6 +93,16 @@ execute:
 
 5.  zadání domácího úkolu
 
+## Práce s materiály
+
+Před každou hodinou (maximálně pondělí ráno daného týdne) bude **do výukových materiálů nahrána prezentace k dané lekci, stejně tak veškerá potřebná data.**
+
+Pokud bude potřeba abyste si pro práci v hodině nějaká data stáhli, učiňte tak prosím a **uložte si je do dedikované složky** na vašem počítači.
+
+Doporučuji **mít prezentaci během hodiny otevřenou** pro nahlížení a kopírování kódu.
+
+Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky vám umožní vytisknout si snímky prezentace v PDF.
+
 # Představovací kolečko
 
 1.  jméno
@@ -141,6 +152,26 @@ RStudio
 ## RStudio
 
 ![](images/clipboard-516070855.png)
+
+------------------------------------------------------------------------
+
+**Skript:** místo pro psaní kódu
+
+**Konzole:** samotné R, místo výpočtů a zobrazování výsledků či chybových hlášek
+
+**Terminal:** psaní přímo do příkazové řádky
+
+**Globální prostředí:** přehled uložených proměných
+
+**History:** historie spuštěného kódu
+
+**Files:** soubory v daném adresáři se kterými R může pracovat
+
+**Plots:** místo pro zobrazování grafů
+
+**Packages:** plug-iny pro R
+
+**Help:** nápověda
 
 ## Datové typy v R
 
@@ -234,23 +265,30 @@ mnozstviKadinek <- 981100009
 mnozstviZkumavek + mnozstviKadinek
 ```
 
-Uložené proměnné jsou vždy vypsána v globálním prostředí.
+Uložené proměnné jsou vždy vypsané v globálním prostředí.
 
 ![](images/clipboard-358450353.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-r čte zpravidla zleva do prava
+Hodnota se uloží pomocí následujícího postupu:
 
-6 -\> sest
+**název proměnné \<- hodnota**
 
-ale umi to i obracene
+-   R čte zpravidla zleva do prava, proto je možné i hodnota -\> proměnná
 
-proto x \<- 66
+    -   silně nedoporučuji, je to nepřehledné
 
-je to lepší protože člověk hned jasně vidí co je výsledek
+```{r}
+123456789123456789123456789123456789 -> cisloNaruby
+cisloPoradne <- 123456789123456789123456789123456789 
+```
 
-proč ne ukládání pomocí =
+**Proč není vhodné ukládání pomocí = ?**
+
+-   symbol = se používá k určování argumentů ve funkcích
+
+-   samo o sobě to funguje, ale jakmile byste ukládali proměnné vnořené ve funkcích tak by kód přestal fungovat
 
 ------------------------------------------------------------------------
 
@@ -293,13 +331,6 @@ Jaký bude výsledek následujícího kódu?
 
 ```{webr}
 #| exercise: ex_2
-a <- "5"
-b <- 6
-a + b
-```
-
-```{r}
-#| eval: false
 a <- "5"
 b <- 6
 a + b
@@ -356,6 +387,8 @@ a + b
 5699 <= 3456
 ```
 
+------------------------------------------------------------------------
+
 ### Logické operátory
 
 Logické operátory lze použít při výběru (vyber x NEBO y, x A y) či spojování podmínek, ale také umí vracet boolean hodnoty.
@@ -371,9 +404,9 @@ Logické operátory lze použít při výběru (vyber x NEBO y, x A y) či spojo
 **\|** nebo
 
 ```{r}
-#je cislo nizsi nez 7 nebo vyssi nez 25
-cislo <- c(13, 87, 2, 23)
-(cislo < 7) | (cislo > 25)
+#jsou hodnoty v z nizsi nez 7 nebo vyssi nez 25
+z <- c(13, 87, 2, 23)
+(z < 7) | (z > 25)
 ```
 
 **%in%** je v, nachází se v
@@ -384,31 +417,70 @@ hodnoty <- c(12, 87, 55, 1098)
 345 %in% hodnoty
 ```
 
+**==** je přesně
+
+```{r}
+x <- 5
+x == 6
+x == 5
+```
+
+**!** není, not, negace
+
+```{r}
+!TRUE
+x <- 3
+!(x == 4)
+```
+
+------------------------------------------------------------------------
+
+![](images/transform-logical.png){fig-align="center"}
+
 ## Procvičení
+
+Jaký zbytek nám zbyde po vydělení násobku devíti a desíti číslem čtyři?
 
 ```{webr}
 #| exercise: ex_1
-1 + 2 + 3 + ______
 ```
+
+Jaký bude výsledek tohoto výpočtu?
+
+```{webr}
+#| exercise: ex_2
+6 ^ 2 - 3 * 5
+```
+
+Na dopravní hřiště mohou pouze děti ve věku 15+, mladší pouze s povolením rodičů. Může toto dítě na hřiště?
+
+```{webr}
+#| exercise: ex_3
+vek <- 13
+povoleni <- FALSE
+```
+
+------------------------------------------------------------------------
 
 ## Samostatné cvičení {background-color="burlywood1"}
 
-Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory 65+ či děti a studenty až do 26 let včetně.
+1.  Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory 65+ či děti a studenty až do 26 let včetně.\
+    Ověř, zda má Franta na tuto slevu nárok.
 
-Kódem ověř, zda má Franta na tuto slevu nárok.
+2.  Studentstvo může získat stipendium za následujících podmínek: mají průměr známek menší než 1.8 a zároveň absolvovali alespoň 80 % docházky, nebo reprezentují školu na soutěžích.\
+    Saša má průměr 1.7, zameškáno 3 hodin z 10 a pravidelně vyhrává biologickou olympiádu.\
+    Zjisti, zda má Saša právo na stipendium.
 
--\*-
-
-Studentstvo může získat stipendium za podmínek: mají průměr známek menší než 1.8 a zároveň absolvovali alespoň 80 % docházky, nebo reprezentují školu na soutěžích.
-
-Saša má průměr 1.7, zameškáno 3 hodin z 10 a pravidelně vyhrává biologickou olympiádu. Zjisti, zda má Saša právo na stipendium.
+3.  Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní hodnocení na lepším stupni než 5 a v posledním testu získali jiný počet než nula bodů. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy pokud vypracovali seminární práci navíc a v písemce měli alespoň 50 bodů.\
+    Julie má dosavadní hodnocení sice na 5, aní písemka se jí nepovedla a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
+    Dostane Julie zápočet?
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 8,
+countdown::countdown(minutes = 10,
                      seconds = 0,
-                     start_immediately = TRUE,
-                     warn_when = 60,
+                     start_immediately = FALSE,
+                     warn_when = 120,
                      top = "0")
 ```
 
@@ -446,7 +518,7 @@ Jaké jsou zvysklosti ve vašem oboru/laboratoři?
 
 ------------------------------------------------------------------------
 
-![](images/clipboard-1044733788.png)
+![](images/clipboard-1044733788.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -465,18 +537,44 @@ Pište si poznámky, ale zase to **nepřežeňte** - není to román.
 
 ```{r}
 #VYPOCET PRUMERNE VYSKY 
-#nahodny vyber ctyr reprezentatntu z kazde tridy
+#nahodny vyber peti reprezentantu z kazde tridy
 ctvrtaTrida <- c(154, 155, 143, 156)
 pataTrida <- c(171, 158, 162, 144)
 mean(c(ctvrtaTrida, pataTrida)) #prumerna vyska obou trid v cm
 ```
 
-## RProjects
+## Working directory
 
-rovbou načte i setdw() a uložené proměnné takže se může rovnou pokračovat
+Pokud chcete v skriptu načíst datasety a pak s nimi pracovat, **je potřeba mít určené, z jaké složky má R datasety tahat**.
 
-je dobré si všechno držet pohromadě
+Nastavení je možné buď skrz Session \> Set working directory a nebo skrz `setwd()` funkci.
 
-co je Rfile RData a tak
+Pozor, při použití `setwd()` funce je **třeba nadefinovat přesně cestu v počítači** jak se má R ke složce dostat!
 
-relativní cesta k souborům takže jde celý projekt prostě jen zkopírovat a poslat, ale k tomu víc u ukládání dat
+V jaké složce se nyní pohybujete lze zjistit pomocí funkce `getwd()`.
+
+```{r}
+getwd()
+```
+
+## RProjekty
+
+Co kdybychom ale chtěli, aby se nám všechny naše skripty tahaly rovnou z jednoho specifického adresáře, který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
+
+Toho můžete docílit pomocí vytvoření **RProjektu**.
+
+RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř tohoto adresáře budou svázané dohromady, budou se vám **automaticky znovu nahrávat uložené proměnné** bez nutnosti opakovaného spouštění kódu, a hlavně k nim bude **relativní, nikoliv absolutní cesta**.
+
+------------------------------------------------------------------------
+
+absolutní cesta:
+
+`"C:/Users/Lucie Hošková/Desktop/prace/vyzkum/zmeny_na_zubech/2026/pribice/data.csv"`
+
+relativní cesta:
+
+`"zmeny_na_zubech/2026/pribice/data.csv"`
+
+Relativní cesta odkazuje na soubor uvnitř struktury, nikoliv pouze na specifické místo na počítači. Složku s RProjektem tak můžete zazipovat a poslat komu je třeba, přičemž daný člověk je schopen skript a soubory bez problému používat.
+
+-   To by nešlo s absolutní cestou, jelikož jednak by se jeho účet jmenoval jinak a hlavně by měl data uložena někde jinde = cesta by nebyla platná a R by nebylo schopné soubory nalézt.

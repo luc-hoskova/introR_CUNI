@@ -11,6 +11,7 @@
   #RData, workspace, load()
 
 #2 hodina
+#syntax funkce argumenty a tak
 #vektory mohou byt numeric integer char a logical
 #vektor muze mit hodnoty pojmenovane
   # vektor <- c(jan = 22, dan = 667, sam = 6)
