@@ -29,7 +29,7 @@ execute:
 -   operátory
 -   etiketa psaní kódu
 -   working directory
--   R projekty, .Rfile a jak to vlastně celé funguje
+-   RProjekty, .RData
 :::
 
 ## O kurzu
@@ -115,8 +115,6 @@ Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky
 
 5.  co se chcete naučit
 
-    ------------------------------------------------------------------------
-
 ## Programovací jazyk R
 
 **Open source** programovací jazyk určený ke statistické analýze a datové vizualizaci.
@@ -172,6 +170,10 @@ RStudio
 **Packages:** plug-iny pro R
 
 **Help:** nápověda
+
+Help
+
+:   nápověda
 
 ## Datové typy v R
 
@@ -559,7 +561,7 @@ getwd()
 
 ## RProjekty
 
-Co kdybychom ale chtěli, aby se nám všechny naše skripty tahaly rovnou z jednoho specifického adresáře, který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
+Co kdybychom ale chtěli, aby se nám všechny naše skripty tahaly rovnou z **jednoho specifického adresáře**, který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
 
 Toho můžete docílit pomocí vytvoření **RProjektu**.
 
@@ -567,14 +569,42 @@ RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř 
 
 ------------------------------------------------------------------------
 
+### Absolutní vs. relativní cesta
+
 absolutní cesta:
 
-`"C:/Users/Lucie Hošková/Desktop/prace/vyzkum/zmeny_na_zubech/2026/pribice/data.csv"`
+`"C:/Users/Jana/Desktop/vyzkum/M433/data/pribice.csv"`
 
-relativní cesta:
+relativní cesta při RProjektu s adresářem M433:
 
-`"zmeny_na_zubech/2026/pribice/data.csv"`
+`"data/pribice.csv"`
 
-Relativní cesta odkazuje na soubor uvnitř struktury, nikoliv pouze na specifické místo na počítači. Složku s RProjektem tak můžete zazipovat a poslat komu je třeba, přičemž daný člověk je schopen skript a soubory bez problému používat.
+Relativní cesta odkazuje na **soubor uvnitř projektu**, nikoliv pouze na specifické místo na počítači jako absolutní cesta. Složku s RProjektem tak můžete zazipovat a poslat komu je třeba, přičemž daný člověk je schopen skript a soubory bez problému používat.
 
--   To by nešlo s absolutní cestou, jelikož jednak by se jeho účet jmenoval jinak a hlavně by měl data uložena někde jinde = cesta by nebyla platná a R by nebylo schopné soubory nalézt.
+## Nahrávání uložených proměnných
+
+V základním nastavení RProjekty **automaticky ukládají a následně nahrávají uložené proměnné zpět do globálního prostředí**. Je ovšem možné si uložit vybranné proměnné i ručně.
+
+```{r}
+typVozidla <- "automobil"
+pocetVozidel <- 6
+jmenoModelu <- "škoda octavia"
+save(typVozidla, pocetVozidel, jmenoModelu,
+     file = "vozidla.RData")
+```
+
+Objekt RData v sobě obsahuje informace o jednotlivých proměnných. DO globálního prostředí se nahrají funcí `load()`.
+
+```{r}
+load("vozidla.RData")
+```
+
+## Domácí práce
+
+1.  Vytvořte RProjekt
+
+2.  Nahrajte do globálního prostředí proměnné z `promenne.RData`
+
+3.  Zjistěte, kolik zaměstnanců lze z rozpočtu platit po uvedenou dobu měsíců
+
+4.  RProjekt s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)

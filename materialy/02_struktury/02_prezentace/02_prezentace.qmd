@@ -1,0 +1,101 @@
+---
+title: "Struktury a indexace"
+subtitle: "Zpracovávání výzkumných dat pomocí jazyka R"
+title-slide-attributes:
+  data-background-color: rgb(233, 84, 32)
+format:
+  revealjs:
+    self-contained: true
+    theme: default
+    scrollable: true
+    footer: "[Zpracovávání výzkumných dat pomocí jazyka R](https://luc-hoskova.github.io/introR_CUNI/) | [Lucie Hošková](https://orcid.org/0009-0001-9695-2342)"
+engine: knitr
+filters:
+  - webr
+execute:
+  echo: true
+  warning: false
+  cache: true
+---
+
+## Program
+
+::: incremental
+-   opakování z minulé hodiny
+-   kontrola domácího úkolu
+-   funkce v R a jejich syntax
+-   datové struktury v R
+-   ukládání dat do proměnných
+-   operátory
+-   etiketa psaní kódu
+-   working directory
+-   RProjekty, .RData
+:::
+
+## Kontrola domácí práce
+
+::: incremental
+1.  vytvoření RProjektu
+
+2.  nový R skript
+
+3.  nahrání uložených dat
+
+    ```{r}
+    load("promenne.RData")
+    ```
+
+4.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
+
+    ```{r}
+    (rozpocet%/%plat)/pocetMesicu
+    ```
+
+5.  A nešlo by to jinak?
+
+    ```{r}
+    identical((rozpocet%/%plat)/pocetMesicu, (rozpocet/plat)%/%pocetMesicu)
+    ```
+:::
+
+## Funkce v R
+
+Nedílnou součástí kódu v R jsou takzvané funkce. Jedná se o **příkazy, které provedou specifickou akci za vámi definovaných podmínek**.
+
+`název funkce(název argumentu = parametry argumentu)`
+
+Pomocí funkce seq vygeneruj sekvenci s rozestupem po 3 od 10 do 20.
+
+```{webr}
+seq(from = 10, to = 20, by = 3)
+```
+
+Co bude výsledkem následujícího kódu?
+
+```{webr}
+seq(from = 2, to = 10, length.out = 5)
+```
+
+------------------------------------------------------------------------
+
+Lze psát příkazy i bez definování argumentů?
+
+```{r}
+rep("ID", 5)
+```
+
+Je pořadí argumentů důležité?
+
+```{r}
+rep(x = "vzorek", times = 10)
+```
+
+```{webr}
+rep(times = 10, x = "vzorek")
+```
+
+Na pořadí argumentu nezáleží, dokud jasně **definujeme k jakému argumentu parametr patří**.
+
+```{r}
+
+```
