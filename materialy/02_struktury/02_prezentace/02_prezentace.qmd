@@ -64,9 +64,9 @@ Nedílnou součástí kódu v R jsou takzvané funkce. Jedná se o **příkazy, 
 
 `název funkce(název argumentu = parametry argumentu)`
 
-Pomocí funkce seq vygeneruj sekvenci s rozestupem po 3 od 10 do 20.
+Pomocí funkce `seq` vygeneruj sekvenci s rozestupem po 3 od 10 do 20.
 
-```{webr}
+```{r}
 seq(from = 10, to = 20, by = 3)
 ```
 
@@ -96,6 +96,34 @@ rep(times = 10, x = "vzorek")
 
 Na pořadí argumentu nezáleží, dokud jasně **definujeme k jakému argumentu parametr patří**.
 
-```{r}
+Jaký bude výsledek tohoto kódu? Je totožný s výsledkem z předchozí ukázky?
 
+```{webr}
+rep(10, "vzorek")
 ```
+
+## Rozdíl mezi = a \<-
+
+sss
+
+```{r}
+rep(osobaID <- 5, 3)
+osobaID + 4
+```
+
+ll
+
+```{webr}
+rep(osobaID = 5, 3)
+osobaID + 4
+```
+
+## Vnořování funkcí
+
+dd
+
+## Funkce `help`
+
+kk
+
+## Procvičení

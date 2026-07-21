@@ -1298,7 +1298,7 @@ min-height: 500px;
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"seq(from = 10, to = 20, by = 3)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"seq(from = 2, to = 10, length.out = 5)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rep(times = 10, x = \"vzorek\")","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+  globalThis.qwebrCellDetails = [{"code":"seq(from = 2, to = 10, length.out = 5)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rep(times = 10, x = \"vzorek\")","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rep(10, \"vzorek\")","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rep(osobaID = 5, 3)\nosobaID + 4","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script>
   <script type="module">
@@ -2901,14 +2901,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Funkce v R</h2>
 <p>Nedílnou součástí kódu v R jsou takzvané funkce. Jedná se o <strong>příkazy, které provedou specifickou akci za vámi definovaných podmínek</strong>.</p>
 <p><code>název funkce(název argumentu = parametry argumentu)</code></p>
-<p>Pomocí funkce seq vygeneruj sekvenci s rozestupem po 3 od 10 do 20.</p>
+<p>Pomocí funkce <code>seq</code> vygeneruj sekvenci s rozestupem po 3 od 10 do 20.</p>
 <div class="cell">
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10 13 16 19</code></pre>
+</div>
 </div>
 <p>Co bude výsledkem následujícího kódu?</p>
 <div class="cell">
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
@@ -2916,24 +2918,59 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p>Lze psát příkazy i bez definování argumentů?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href></a><span class="fu">rep</span>(<span class="st">&quot;ID&quot;</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href></a><span class="fu">rep</span>(<span class="st">&quot;ID&quot;</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;ID&quot; &quot;ID&quot; &quot;ID&quot; &quot;ID&quot; &quot;ID&quot;</code></pre>
 </div>
 </div>
 <p>Je pořadí argumentů důležité?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href></a><span class="fu">rep</span>(<span class="at">x =</span> <span class="st">&quot;vzorek&quot;</span>, <span class="at">times =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href></a><span class="fu">rep</span>(<span class="at">x =</span> <span class="st">&quot;vzorek&quot;</span>, <span class="at">times =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] &quot;vzorek&quot; &quot;vzorek&quot; &quot;vzorek&quot; &quot;vzorek&quot; &quot;vzorek&quot; &quot;vzorek&quot; &quot;vzorek&quot; &quot;vzorek&quot;
  [9] &quot;vzorek&quot; &quot;vzorek&quot;</code></pre>
 </div>
 </div>
 <div class="cell">
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <p>Na pořadí argumentu nezáleží, dokud jasně <strong>definujeme k jakému argumentu parametr patří</strong>.</p>
+<p>Jaký bude výsledek tohoto kódu? Je totožný s výsledkem z předchozí ukázky?</p>
+<div class="cell">
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</section>
+<section id="rozdíl-mezi-a--" class="slide level2">
+<h2>Rozdíl mezi = a &lt;-</h2>
+<p>sss</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href></a><span class="fu">rep</span>(osobaID <span class="ot">&lt;-</span> <span class="dv">5</span>, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 5 5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href></a>osobaID <span class="sc">+</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>ll</p>
+<div class="cell">
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</section>
+<section id="vnořování-funkcí" class="slide level2">
+<h2>Vnořování funkcí</h2>
+<p>dd</p>
+</section>
+<section id="funkce-help" class="slide level2">
+<h2>Funkce <code>help</code></h2>
+<p>kk</p>
+</section>
+<section id="procvičení" class="slide level2">
+<h2>Procvičení</h2>
 
 </section>
     </div>
