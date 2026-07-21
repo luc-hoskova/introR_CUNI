@@ -645,9 +645,9 @@ countdown::countdown(minutes = 5,
                      top = "0")
 ```
 
-1.  Vytvořte si složku s jménem **pokusnaSlozka** na náhodném místě ve svém počítači. Zkuste si sami pomocí funkce `setwd()`a absolutní cesty nastavit pracovní adresář do této lokace.
+1.  Vytvořte si složku s jménem **pokusnaSlozka** na náhodném místě ve svém počítači. Zkuste si sami pomocí funkce `setwd()`a absolutní cesty ručně nastavit pracovní adresář do této lokace.
 
-2.  
+2.  Vytvořte si v pokusnaSlozka sérii podsložek, a třeba až do třetí či páté úrovně (složka ve složce ve složce...) si nahrajte několik náhodných souborů. Vypište jejich seznam pomocí funkce `list.files()`.
 
 ## RProjekty
 
