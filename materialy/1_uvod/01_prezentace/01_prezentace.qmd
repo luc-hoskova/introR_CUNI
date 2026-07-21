@@ -608,3 +608,7 @@ load("vozidla.RData")
 3.  Zjistěte, kolik zaměstnanců lze z rozpočtu platit po uvedenou dobu měsíců
 
 4.  RProjekt s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+
+## Příprava na další hodinu
+
+Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počítejte s tím, že balíček se bude stahovat a instalovat klidně i několik desítek minut.
