@@ -1,0 +1,27 @@
+---
+title: "Transformace dat"
+subtitle: "Zpracovávání výzkumných dat pomocí jazyka R"
+title-slide-attributes:
+  data-background-color: rgb(233, 84, 32)
+format:
+  revealjs:
+    self-contained: true
+    theme: default
+    scrollable: true
+    footer: "[Zpracovávání výzkumných dat pomocí jazyka R](https://luc-hoskova.github.io/introR_CUNI/) | [Lucie Hošková](https://orcid.org/0009-0001-9695-2342)"
+engine: knitr
+filters:
+  - webr
+execute:
+  echo: true
+  warning: false
+  cache: true
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+```{r}
+1 + 1
+```

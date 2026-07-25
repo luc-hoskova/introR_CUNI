@@ -41,6 +41,7 @@
 #library(waldo)
   #compare(s2, s3)
   #if identical() == FALSE, what are the differences?
+#tabulka[cislo sloupce] <- NULL smaze sloupec
 
 #4 hodina
 #if-else, for, while

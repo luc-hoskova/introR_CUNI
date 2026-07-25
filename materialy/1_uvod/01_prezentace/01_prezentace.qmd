@@ -286,11 +286,30 @@ Hodnota se uloží pomocí následujícího postupu:
 cisloPoradne <- 123456789123456789123456789123456789 
 ```
 
-**Proč není vhodné ukládání pomocí = ?**
+**Jaké proměnné mám uložené v globálním prostředí?**
 
--   symbol = se používá k určování argumentů ve funkcích
+Seznam proměnných, které jsou v R uložené a se kterými můžete pracovat, naleznete buď v poli Environment v pravém horním rohu.
 
--   samo o sobě to funguje, ale jakmile byste ukládali proměnné vnořené ve funkcích tak by kód přestal fungovat
+Můžete také ale využít funkce `objects()`. Ta do konzole vypíše seznam všech uložených hodnot.
+
+Totožný výsledek získáte i pomocí funkce `ls().`
+
+**Je možné přepsat hodnoty?**
+
+Ano, pokud uděláte chybu v zápise či potřebujete změnit specifickou proměnnou či její část, není třeba ji mazat - stačí ji přepsat.
+
+```{webr}
+promennaSpatne <- "4"
+promennaSpatne + 5
+```
+
+**Co když chci hodnotu ale i tak smazat?**
+
+Funkce `rm() umožňuje mazat uložené proměnné z globálního prostředí.`
+
+-   `rm() - smaže VŠE`
+
+-   `rm(název proměnné) - smaže specifickou proměnnou`
 
 ------------------------------------------------------------------------
 
@@ -326,7 +345,8 @@ x ______
 y ______
 z ______
 
-x; y; z
+x
+y; z #strednik oddeluje prikazy
 ```
 
 Jaký bude výsledek následujícího kódu?
@@ -336,6 +356,15 @@ Jaký bude výsledek následujícího kódu?
 a <- "5"
 b <- 6
 a + b
+```
+
+Jaký bude výsledek následujícího kódu?
+
+```{webr}
+#| exercise: ex_3
+text <- ahoj!
+
+text
 ```
 
 ## Operátory
@@ -479,7 +508,7 @@ povoleni <- FALSE
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 10,
+countdown::countdown(minutes = 15,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -547,43 +576,90 @@ mean(c(ctvrtaTrida, pataTrida)) #prumerna vyska obou trid v cm
 
 ## Working directory
 
-Pokud chcete v skriptu načíst datasety a pak s nimi pracovat, **je potřeba mít určené, z jaké složky má R datasety tahat**.
+Pokud chcete v skriptu načíst datasety a pak s nimi pracovat, **je potřeba mít určené, z jaké složky má R datasety tahat - v jakém prostředí se R pohybuje**.
 
 Nastavení je možné buď skrz Session \> Set working directory a nebo skrz `setwd()` funkci.
 
-Pozor, při použití `setwd()` funce je **třeba nadefinovat přesně cestu v počítači** jak se má R ke složce dostat!
+::: callout-caution
+Pozor, při použití `setwd()` funkce je **třeba nadefinovat přesně cestu v počítači (absolutní cestu)** jak se má R ke složce dostat!
+:::
 
 V jaké složce se nyní pohybujete lze zjistit pomocí funkce `getwd()`.
 
 ```{r}
-getwd()
+getwd() #ukazka abolutni cesty
 ```
 
-## RProjekty
+Nastavení pracovního adresáře ovlivňuje i další funkcionality R. Například, **při ukládání skriptů se automaticky vybere** jako možnost uložení právě složka pracovního adresáře.
 
-Co kdybychom ale chtěli, aby se nám všechny naše skripty tahaly rovnou z **jednoho specifického adresáře**, který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
+### S jakými soubory mohu pracovat?
 
-Toho můžete docílit pomocí vytvoření **RProjektu**.
+Seznam souborů které má v nastaveném adresáři R dosupné naleznete bud' v okně **Files**, nebo pomocí funkce `list.files()`.
 
-RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř tohoto adresáře budou svázané dohromady, budou se vám **automaticky znovu nahrávat uložené proměnné** bez nutnosti opakovaného spouštění kódu, a hlavně k nim bude **relativní, nikoliv absolutní cesta**.
+Jak vidíte, soubor nám vypíše dostupné soubory a složky v nastaveném pracovním adresáři. Co když se ale v něm chci podívat co je uvnitř specifické složky? K tomu je **potřeba ve funkci definovat nejenom název složky, ale i to, kde se tato složka nachází**.
 
-------------------------------------------------------------------------
+![](images/clipboard-1074189953.png)
 
-### Absolutní vs. relativní cesta
+::: callout-tip
+**Co znamená tečka v `./images`?**
+
+`./`v kódu určuje, že se složka images nachází přímo v námi určeném pracovním adresáři.
+
+Jedná se o takzvanou **relativní cestu** - k tomu si řekneme něco víc v sekci [Absolutní vs. relativní cesta].
+:::
+
+#### Proč zapisujeme cestu ke složce jako textový řetězec, nikoliv jako čisté jméno? Třeba `list.files(./images)`?
+
+::: fragment
+Co znamená text, kolem kterého nejsou uvozovky?
+:::
+
+::: fragment
+Text, kolem kterého nejsou uvozovky značí proměnnou (a nebo funkci či její argument, ale k tomu příště).
+
+R potřebuje znát popis specifické cesty k dané složce. A jelikož popisek je ve své podstatě textový řetezec, musíme ho mít v uvozovkách - tak se v R označuje text.
+:::
+
+#### Absolutní vs. relativní cesta
 
 absolutní cesta:
 
 `"C:/Users/Jana/Desktop/vyzkum/M433/data/pribice.csv"`
 
-relativní cesta při RProjektu s adresářem M433:
+relativní cesta při nastaveném working directory v M433:
 
-`"data/pribice.csv"`
+`"./data/pribice.csv"`
 
-Relativní cesta odkazuje na **soubor uvnitř projektu**, nikoliv pouze na specifické místo na počítači jako absolutní cesta. Složku s RProjektem tak můžete zazipovat a poslat komu je třeba, přičemž daný člověk je schopen skript a soubory bez problému používat.
+Relativní cesta odkazuje na **soubor uvnitř specifického pracovního adresáře**, nikoliv přímo na místo v počítači jako absolutní cesta.
+
+Doporučuji absolutní cestu když už používat, tak pouze při nastavování `setwd()`. Sice lze teoreticky nahrávat soubory a provádět jiné akce uvnitř pracovního adresáře i pomocí absolutní cesty, ale j**akmile by se například složka ve které se pracuje kamkoliv posunula, tak by absolutní cesta přestala fungovat.**
+
+## Samotné cvičení
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+1.  Vytvořte si složku s jménem **pokusnaSlozka** na náhodném místě ve svém počítači. Zkuste si sami pomocí funkce `setwd()`a absolutní cesty ručně nastavit pracovní adresář do této lokace.
+
+2.  Vytvořte si v pokusnaSlozka sérii podsložek, a třeba až do třetí či páté úrovně (složka ve složce ve složce...) si nahrajte několik náhodných souborů. Vypište jejich seznam pomocí funkce `list.files()`.
+
+## RProjekty
+
+Co kdybychom chtěli, aby se nám všechny naše skripty a jejich výsledky ukládaly do a tahaly rovnou z **jednoho specifického adresáře** bez potřeby ho při každé práci na kódu nastavovat, který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
+
+Toho můžete docílit pomocí vytvoření **RProjektu**.
+
+RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř tohoto adresáře budou svázané dohromady, budou se vám **automaticky znovu nahrávat uložené proměnné** bez nutnosti opakovaného spouštění kódu, a hlavně k nim vždy bude **relativní, nikoliv absolutní cesta** = celý projekt si můžete přesouvat mezi složkami či počítači bez potřeby nastavování working directory.
 
 ## Nahrávání uložených proměnných
 
-V základním nastavení RProjekty **automaticky ukládají a následně nahrávají uložené proměnné zpět do globálního prostředí**. Je ovšem možné si uložit vybranné proměnné i ručně.
+V základním nastavení RProjekty **automaticky ukládají a následně nahrávají uložené proměnné zpět do globálního prostředí**. Není proto potřeba pči každém otevření RStudia celý skript projíždět znovu a všechno znovu nahrávat. Je ovšem možné si uložit vybranné proměnné i ručně.
 
 ```{r}
 typVozidla <- "automobil"
@@ -599,6 +675,8 @@ Objekt RData v sobě obsahuje informace o jednotlivých proměnných. DO globál
 load("vozidla.RData")
 ```
 
+Můžete svým kolegům tak například poslat již vyčištěná a připravená data, bez toho aby si sami museli nahrávat původní tabulku a provádět na ní veškeré kontroly.
+
 ## Domácí práce
 
 1.  Vytvořte RProjekt
@@ -608,3 +686,7 @@ load("vozidla.RData")
 3.  Zjistěte, kolik zaměstnanců lze z rozpočtu platit po uvedenou dobu měsíců
 
 4.  RProjekt s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+
+## Příprava na další hodinu
+
+Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počítejte s tím, že balíček se bude stahovat a instalovat klidně i několik desítek minut.
