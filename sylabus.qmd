@@ -14,6 +14,7 @@ title: "Sylabus"
 
 ## 2. Struktury a indexace (29.09.2026)
 
+-   stručný úvod do funkcí
 -   datové struktury v R
 -   indexace
 -   úvod do balíčku [`dplyr`](https://dplyr.tidyverse.org/)

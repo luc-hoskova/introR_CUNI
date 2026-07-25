@@ -26,10 +26,7 @@ execute:
 -   funkce v R a jejich syntax
 -   datové struktury v R
 -   ukládání dat do proměnných
--   operátory
--   etiketa psaní kódu
--   working directory
--   RProjekty, .RData
+-   
 :::
 
 ## Kontrola domácí práce
@@ -70,15 +67,16 @@ Pomocí funkce `seq` vygeneruj sekvenci s rozestupem po 3 od 10 do 20.
 seq(from = 10, to = 20, by = 3)
 ```
 
+::: {.fragment}
 Co bude výsledkem následujícího kódu?
 
 ```{webr}
 seq(from = 2, to = 10, length.out = 5)
 ```
-
+:::
 ------------------------------------------------------------------------
 
-Lze psát příkazy i bez definování argumentů?
+### Lze psát příkazy i bez definování argumentů?
 
 ```{r}
 rep("ID", 5)
@@ -86,7 +84,7 @@ rep("ID", 5)
 
 Je pořadí argumentů důležité?
 
-```{r}
+```{webr}
 rep(x = "vzorek", times = 10)
 ```
 
@@ -94,6 +92,7 @@ rep(x = "vzorek", times = 10)
 rep(times = 10, x = "vzorek")
 ```
 
+::: {.fragment}
 Na pořadí argumentu nezáleží, dokud jasně **definujeme k jakému argumentu parametr patří**.
 
 Jaký bude výsledek tohoto kódu? Je totožný s výsledkem z předchozí ukázky?
@@ -101,21 +100,53 @@ Jaký bude výsledek tohoto kódu? Je totožný s výsledkem z předchozí ukáz
 ```{webr}
 rep(10, "vzorek")
 ```
+:::
 
 ## Rozdíl mezi = a \<-
 
-sss
+Možná jste se setkali s tím, že někdo zapisuje proměnné pomocí operátoru =. Funguje to?
+
+```{r}
+x = 6
+x + 1
+```
+
+Proč se proto místo toho používá \<- ?
 
 ```{r}
 rep(osobaID <- 5, 3)
 osobaID + 4
 ```
 
-ll
+**R umožňuje provádět akce uvnitř "jiných akcí".**
+
+V tomto případě určujeme argument na první pozici, a zároveň jeho hodnotu ukládáme do proměnné `osobaID`.
+
+------------------------------------------------------------------------
+
+Co bude výsledkem následujícího kódu?
 
 ```{webr}
-rep(osobaID = 5, 3)
-osobaID + 4
+rep(osobaID_2 = 5, 3)
+osobaID_2 + 4
+```
+
+::: incremental
+-   Na jaké problémy zde narážíme?
+
+    -   `osobaID` není argument funce `rep`
+
+    -   operátor = ve funkci neznamená přiřazení, ale určení argumentu
+
+        -   nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
+:::
+
+## Procvičení
+
+Mohu zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu?
+
+```{webr}
+seq(1, 10, 3)
 ```
 
 ## Vnořování funkcí
