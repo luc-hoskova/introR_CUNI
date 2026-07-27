@@ -171,10 +171,6 @@ RStudio
 
 **Help:** nápověda
 
-Help
-
-:   nápověda
-
 ## Datové typy v R
 
 ::: columns
@@ -294,6 +290,8 @@ Můžete také ale využít funkce `objects()`. Ta do konzole vypíše seznam v�
 
 Totožný výsledek získáte i pomocí funkce `ls().`
 
+------------------------------------------------------------------------
+
 **Je možné přepsat hodnoty?**
 
 Ano, pokud uděláte chybu v zápise či potřebujete změnit specifickou proměnnou či její část, není třeba ji mazat - stačí ji přepsat.
@@ -305,11 +303,11 @@ promennaSpatne + 5
 
 **Co když chci hodnotu ale i tak smazat?**
 
-Funkce `rm() umožňuje mazat uložené proměnné z globálního prostředí.`
+Funkce `rm()` umožňuje mazat uložené proměnné z globálního prostředí.
 
--   `rm() - smaže VŠE`
+-   `rm()` - smaže VŠE
 
--   `rm(název proměnné) - smaže specifickou proměnnou`
+-   `rm(název proměnné)` - smaže specifickou proměnnou
 
 ------------------------------------------------------------------------
 
@@ -493,7 +491,7 @@ povoleni <- FALSE
 
 ------------------------------------------------------------------------
 
-## Samostatné cvičení {background-color="burlywood1"}
+## Samostatné cvičení
 
 1.  Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory 65+ či děti a studenty až do 26 let včetně.\
     Ověř, zda má Franta na tuto slevu nárok.
@@ -592,6 +590,8 @@ getwd() #ukazka abolutni cesty
 
 Nastavení pracovního adresáře ovlivňuje i další funkcionality R. Například, **při ukládání skriptů se automaticky vybere** jako možnost uložení právě složka pracovního adresáře.
 
+------------------------------------------------------------------------
+
 ### S jakými soubory mohu pracovat?
 
 Seznam souborů které má v nastaveném adresáři R dosupné naleznete bud' v okně **Files**, nebo pomocí funkce `list.files()`.
@@ -608,6 +608,8 @@ Jak vidíte, soubor nám vypíše dostupné soubory a složky v nastaveném prac
 Jedná se o takzvanou **relativní cestu** - k tomu si řekneme něco víc v sekci [Absolutní vs. relativní cesta].
 :::
 
+------------------------------------------------------------------------
+
 #### Proč zapisujeme cestu ke složce jako textový řetězec, nikoliv jako čisté jméno? Třeba `list.files(./images)`?
 
 ::: fragment
@@ -615,10 +617,12 @@ Co znamená text, kolem kterého nejsou uvozovky?
 :::
 
 ::: fragment
-Text, kolem kterého nejsou uvozovky značí proměnnou (a nebo funkci či její argument, ale k tomu příště).
+**Text, kolem kterého nejsou uvozovky značí proměnnou** (a nebo funkci či její argument, ale k tomu příště).
 
-R potřebuje znát popis specifické cesty k dané složce. A jelikož popisek je ve své podstatě textový řetezec, musíme ho mít v uvozovkách - tak se v R označuje text.
+**R potřebuje znát popis specifické cesty k dané složce**. A jelikož popisek je ve své podstatě textový řetezec, musíme ho mít v uvozovkách - tak se v R označuje text.
 :::
+
+------------------------------------------------------------------------
 
 #### Absolutní vs. relativní cesta
 
@@ -632,7 +636,7 @@ relativní cesta při nastaveném working directory v M433:
 
 Relativní cesta odkazuje na **soubor uvnitř specifického pracovního adresáře**, nikoliv přímo na místo v počítači jako absolutní cesta.
 
-Doporučuji absolutní cestu když už používat, tak pouze při nastavování `setwd()`. Sice lze teoreticky nahrávat soubory a provádět jiné akce uvnitř pracovního adresáře i pomocí absolutní cesty, ale j**akmile by se například složka ve které se pracuje kamkoliv posunula, tak by absolutní cesta přestala fungovat.**
+Doporučuji absolutní cestu když už používat, tak pouze při nastavování `setwd()`. Sice lze teoreticky nahrávat soubory a provádět jiné akce uvnitř pracovního adresáře i pomocí absolutní cesty, ale **jakmile by se například složka ve které se pracuje kamkoliv posunula, tak by absolutní cesta přestala fungovat.**
 
 ## Samotné cvičení
 
@@ -647,11 +651,11 @@ countdown::countdown(minutes = 5,
 
 1.  Vytvořte si složku s jménem **pokusnaSlozka** na náhodném místě ve svém počítači. Zkuste si sami pomocí funkce `setwd()`a absolutní cesty ručně nastavit pracovní adresář do této lokace.
 
-2.  Vytvořte si v pokusnaSlozka sérii podsložek, a třeba až do třetí či páté úrovně (složka ve složce ve složce...) si nahrajte několik náhodných souborů. Vypište jejich seznam pomocí funkce `list.files()`.
+2.  Vytvořte si v pokusnaSlozka sérii podsložek, třeba až do třetí či páté úrovně (složka x ve složce y co je ve složce z...) a do finální z nich si nahrajte několik náhodných souborů. **Vypište jejich seznam pomocí funkce `list.files()`.**
 
 ## RProjekty
 
-Co kdybychom chtěli, aby se nám všechny naše skripty a jejich výsledky ukládaly do a tahaly rovnou z **jednoho specifického adresáře** bez potřeby ho při každé práci na kódu nastavovat, který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
+Co kdybychom chtěli, aby se nám všechny naše skripty a jejich výsledky automatick\\ ukládaly do a tahaly rovnou z **jednoho specifického adresáře** bez potřeby ho při každém otevření RStudia nastavovat, a který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
 
 Toho můžete docílit pomocí vytvoření **RProjektu**.
 
@@ -659,7 +663,7 @@ RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř 
 
 ## Nahrávání uložených proměnných
 
-V základním nastavení RProjekty **automaticky ukládají a následně nahrávají uložené proměnné zpět do globálního prostředí**. Není proto potřeba pči každém otevření RStudia celý skript projíždět znovu a všechno znovu nahrávat. Je ovšem možné si uložit vybranné proměnné i ručně.
+V základním nastavení RProjekty **automaticky ukládají a následně nahrávají uložené proměnné zpět do globálního prostředí**. Není proto potřeba při každém otevření projektu v RStudiu celý skript projíždět znovu a všechno znovu nahrávat. Je ovšem možné si uložit vybranné proměnné i ručně.
 
 ```{r}
 typVozidla <- "automobil"
@@ -669,7 +673,7 @@ save(typVozidla, pocetVozidel, jmenoModelu,
      file = "vozidla.RData")
 ```
 
-Objekt RData v sobě obsahuje informace o jednotlivých proměnných. DO globálního prostředí se nahrají funcí `load()`.
+Objekt RData v sobě obsahuje informace o jednotlivých proměnných. Do globálního prostředí se nahrají funcí `load()`.
 
 ```{r}
 load("vozidla.RData")
@@ -684,6 +688,10 @@ Můžete svým kolegům tak například poslat již vyčištěná a připravená
 2.  Nahrajte do globálního prostředí proměnné z `promenne.RData`
 
 3.  Zjistěte, kolik zaměstnanců lze z rozpočtu platit po uvedenou dobu měsíců
+
+    plat = jaký je plat jednoho zaměstnance za jeden měsíc\
+    pocetMesicu = kolik měsíců je potřeba všechny zaměstnance platit\
+    rozpocet = jaký finanční rozpočet máte na dobu pocetMesicu k dispozici
 
 4.  RProjekt s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
 

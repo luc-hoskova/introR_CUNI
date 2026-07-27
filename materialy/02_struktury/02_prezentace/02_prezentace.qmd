@@ -25,7 +25,6 @@ execute:
 -   kontrola domácího úkolu
 -   funkce v R a jejich syntax
 -   datové struktury v R
--   ukládání dat do proměnných
 -   
 :::
 
@@ -41,6 +40,8 @@ execute:
     ```{r}
     load("promenne.RData")
     ```
+
+    Jde nahrát RData soubor i jiným způsobem? Jaké jsou nevýhody tohoto přístupu?
 
 4.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
 
@@ -67,13 +68,14 @@ Pomocí funkce `seq` vygeneruj sekvenci s rozestupem po 3 od 10 do 20.
 seq(from = 10, to = 20, by = 3)
 ```
 
-::: {.fragment}
+::: fragment
 Co bude výsledkem následujícího kódu?
 
 ```{webr}
 seq(from = 2, to = 10, length.out = 5)
 ```
 :::
+
 ------------------------------------------------------------------------
 
 ### Lze psát příkazy i bez definování argumentů?
@@ -82,7 +84,12 @@ seq(from = 2, to = 10, length.out = 5)
 rep("ID", 5)
 ```
 
-Je pořadí argumentů důležité?
+::: fragment
+Ano; bez definování názvu argumentu se pracuje s jeho pořadím.
+:::
+
+::: fragment
+Je pořadí argumentů důležité? Ovlivní výsledek?
 
 ```{webr}
 rep(x = "vzorek", times = 10)
@@ -91,18 +98,26 @@ rep(x = "vzorek", times = 10)
 ```{webr}
 rep(times = 10, x = "vzorek")
 ```
+:::
 
-::: {.fragment}
+::: fragment
+::: callout-caution
+## Pozor!
+
 Na pořadí argumentu nezáleží, dokud jasně **definujeme k jakému argumentu parametr patří**.
+:::
+:::
 
-Jaký bude výsledek tohoto kódu? Je totožný s výsledkem z předchozí ukázky?
+::: fragment
+Jaký bude výsledek těchto kódů? Jsou totožné?
 
 ```{webr}
 rep(10, "vzorek")
+rep(times = 10, x = "vzorek")
 ```
 :::
 
-## Rozdíl mezi = a \<-
+## Rozdíl mezi `=` a `<-`
 
 Možná jste se setkali s tím, že někdo zapisuje proměnné pomocí operátoru =. Funguje to?
 
@@ -111,16 +126,20 @@ x = 6
 x + 1
 ```
 
-Proč se proto místo toho používá \<- ?
+Proč se proto místo toho používá `<-` ?
 
 ```{r}
 rep(osobaID <- 5, 3)
 osobaID + 4
 ```
 
-**R umožňuje provádět akce uvnitř "jiných akcí".**
+::: fragment
+::: callout-tip
+## R umožňuje provádět akce uvnitř "jiných akcí"
 
 V tomto případě určujeme argument na první pozici, a zároveň jeho hodnotu ukládáme do proměnné `osobaID`.
+:::
+:::
 
 ------------------------------------------------------------------------
 
@@ -131,30 +150,216 @@ rep(osobaID_2 = 5, 3)
 osobaID_2 + 4
 ```
 
-::: incremental
--   Na jaké problémy zde narážíme?
-
-    -   `osobaID` není argument funce `rep`
-
-    -   operátor = ve funkci neznamená přiřazení, ale určení argumentu
-
-        -   nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
+::: fragment
+Na jaké problémy zde narazíme?
 :::
 
-## Procvičení
+::: incremental
+-   `osobaID` není argument funce `rep`
 
-Mohu zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu?
+-   operátor `=` ve funkci neznamená přiřazení, ale určení argumentu
 
-```{webr}
+-   nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
+:::
+
+## Samostatné cvičení
+
+1.  Mohu zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, proč?
+
+    ```{webr}
+    seq(1, 10, 3)
+    ```
+
+2.  Bez spuštění kódu určete, jaký bude výsledek této funkce. Používejte nápovědu, zkuste si jednotlivé části rozepsat.
+
+    ```{webr}
+    length(rep(seq(2, 10, 2), 3))
+    ```
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+------------------------------------------------------------------------
+
+1.  Mohu zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu?
+
+```{r}
 seq(1, 10, 3)
 ```
 
+::: fragment
+Ne, jelikož argument na třetí pozici v této funkci není `length.out`, který určuje délku sekvence, ale `by`, který určuje periodu.
+
+V tomto případě určujeme argument na první pozici, a zároveň jeho hodnotu ukládáme do proměnné `osobaID`.
+
+::: callout-important
+## Čtěte dokumentaci pozorně!
+
+R dokumentace je psana mnoha lidmi a nemusí být vždy konzistentní.
+:::
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+2.  Bez spuštění kódu určete, jaký bude výsledek této funkce. Používejte nápovědu, zkuste si jednotlivé části rozepsat.
+
+```{r}
+length(rep(seq(2, 10, 2), 3))
+```
+:::
+
+::: fragment
+Funkce `length` zjišťuje, jaká je "délka", jaký je počet hodnot. Potřebujeme proto spočítat, kolik hodnot nám vznikne jako výsledek funkce `rep`.
+:::
+
+::: fragment
+Funkce `rep` nám zde třikrát zopakuje výsledek daný funkcí `seq`.
+:::
+
+::: fragment
+Funkce `seq(2, 10, 2)` by zde mohla být zapsána na základě pořádí argumentů i jako `seq(from = 2, to = 10, by = 2)`. Výsledkem je tak sekvence `2  4  6  8 10`, která má pět čísel.
+:::
+
+::: fragment
+Třikrát se tedy zopakuje sekvence pěti čísel, což znamená že **výsledek je patnáct**.
+:::
+
 ## Vnořování funkcí
 
-dd
+Jak bylo vidět v přechozích částech, R umožňuje používat funkce uvnitř dalších funkcí.
 
-## Funkce `help`
+Pro R je hlavně důležité, aby **hodnoty v jednotlivých argumentech splňovaly jejich podmínky, nikoliv v jaké podobě tyto hodnoty do funkce vstupují**.
 
-kk
+```{r}
+trojka <- 3
+rep(x = seq(1, 10, 3), times = trojka)
+```
 
-## Procvičení
+V určité chvíli je ovšem dobré **přemýšlet i o čitelnosti samotného kódu**.
+
+Který z následujících kódů je čitelnější?
+
+```{r}
+sample(x = rep(x = seq(1, 10, 3), times = 2), size = 4, replace = FALSE)
+```
+
+nebo
+
+```{r}
+opakovani <- rep(x = seq(1, 10, 3), times = 2)
+
+sample(x = opakovani, size = 4, replace = FALSE)
+```
+
+## Datové struktury v R
+
+### Vektor
+
+> **série za sebou jdoucích hodnot totožného datového typu**
+
+-   vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
+
+-   jednodimenzionální (důležité hlavně při vyhledávání)
+
+-   při použití více datových typů dochází k nucené konverzi do jednotného typu
+
+```{r}
+seq(1, 10, 2)
+```
+
+------------------------------------------------------------------------
+
+#### Jakými jinými způsoby můžeme vektory vytvořit?
+
+-   symbol `:` vytvoří sérii čísel v daných mezích
+
+    -   rozestup vždy po jedné
+
+```{r}
+-5:3
+0.65:9.18
+```
+
+-   funkce `c` spojí hodnoty jakéhokoliv typu do vektoru
+
+```{r}
+c("jmeno", "prijmeni")
+c(1, 5, 77)
+```
+
+-   **způsobů je mnohem více**, tyto se ale hodí znát
+
+## Potenciální zádrhely
+
+Co se stane po projetí následujícího kódu?
+
+```{webr}
+c(6, TRUE, 2:6, "8", 7)
+```
+
+::: fragment
+Datový typ vektoru bude **automaticky převeden na charakterový**, jelikož vektor v sobě **kombinuje několik datatypů** dohromady.
+:::
+
+Jaký bude datový typ následujícího vektoru?
+
+```{r}
+vektorNA <- c(NA, 6, 9)
+```
+
+::: fragment
+NA označuje chybějící hodnotu, nikterak neurčuje samotný datový typ hodnoty.
+:::
+
+::: fragment
+::: callout-tip
+Ke zjištění datového typu je možné použít funkci `mode`.
+
+```{r}
+mode(vektorNA)
+```
+:::
+:::
+
+## Pojmenovávání hodnot ve vektoru
+
+Jednotlivé hodnoty ve vektoru je možné si pojmenovat.
+
+```{r}
+jmena <- c(jan = 22, dan = 667, sam = 6)
+names(jmena) #jake pojmenovani ma danna promenna?
+```
+
+Tato funkcionalita se hodí hlavně při vyhledávání (indexování) jednotlivých hodnot. Více o indexování si řekneme v následující sekci.
+
+Jaká jména má následující vektor?
+
+------------------------------------------------------------------------
+
+### Co když si chci zpětně vektor pojmenovat?
+
+```{r}
+vektorBezJmen <- c("Škoda", "Hyundai", "Vespa"); vektorBezJmen
+names(vektorBezJmen) #ma vektorBezJmen jmena?
+names(vektorBezJmen) <- c("Česko", "Japonsko", "Itálie"); vektorBezJmen
+names(vektorBezJmen)
+```
+
+::: callout-tip
+## Přiřazováním můžete měnit existující hodnoty
+
+Přiřazování neslouží pouze k vytváření proměnných, může na nich provádět i změny. Nemusí se jednat pouze o celé proměnné (které jsou pouze pojmenováním určité hodnoty či jejich skupiny) ale i specifické hodnoty uvnitř nich či hodnoty je popisující.
+:::
+
+## Samostatné cvičení
+
+1.  Vypište alespoň tři rozdílné způsoby, jak získat následující vektor:
+
+2.  

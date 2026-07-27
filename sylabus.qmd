@@ -18,11 +18,11 @@ title: "Sylabus"
 -   datové struktury v R
 -   indexace
 -   úvod do balíčku [`dplyr`](https://dplyr.tidyverse.org/)
--   načítání dat do R
--   kontrola dat
 
 ## 3. Transformace dat (13.10.2026)
 
+-   načítání dat do R
+-   kontrola dat
 -   pipes
 -   balíček [`dplyr`](https://dplyr.tidyverse.org/)
 -   tidy data
