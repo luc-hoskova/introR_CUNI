@@ -601,7 +601,7 @@ Jak vidíte, soubor nám vypíše dostupné soubory a složky v nastaveném prac
 ![](images/clipboard-1074189953.png)
 
 ::: callout-tip
-**Co znamená tečka v `./images`?**
+## Co znamená tečka v ./images?
 
 `./`v kódu určuje, že se složka images nachází přímo v námi určeném pracovním adresáři.
 
@@ -626,11 +626,11 @@ Co znamená text, kolem kterého nejsou uvozovky?
 
 #### Absolutní vs. relativní cesta
 
-absolutní cesta:
+##### absolutní cesta:
 
 `"C:/Users/Jana/Desktop/vyzkum/M433/data/pribice.csv"`
 
-relativní cesta při nastaveném working directory v M433:
+##### relativní cesta při nastaveném working directory v M433:
 
 `"./data/pribice.csv"`
 
@@ -655,7 +655,7 @@ countdown::countdown(minutes = 5,
 
 ## RProjekty
 
-Co kdybychom chtěli, aby se nám všechny naše skripty a jejich výsledky automatick\\ ukládaly do a tahaly rovnou z **jednoho specifického adresáře** bez potřeby ho při každém otevření RStudia nastavovat, a který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
+Co kdybychom chtěli, aby se nám všechny naše skripty a jejich výsledky automaticky ukládaly do a tahaly rovnou z **jednoho specifického adresáře** bez potřeby ho při každém otevření RStudia nastavovat, a který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
 
 Toho můžete docílit pomocí vytvoření **RProjektu**.
 
@@ -669,11 +669,10 @@ V základním nastavení RProjekty **automaticky ukládají a následně nahráv
 typVozidla <- "automobil"
 pocetVozidel <- 6
 jmenoModelu <- "škoda octavia"
-save(typVozidla, pocetVozidel, jmenoModelu,
-     file = "vozidla.RData")
+save(typVozidla, pocetVozidel, jmenoModelu, file = "vozidla.RData")
 ```
 
-Objekt RData v sobě obsahuje informace o jednotlivých proměnných. Do globálního prostředí se nahrají funcí `load()`.
+**Objekt RData v sobě obsahuje informace o jednotlivých proměnných.** Do globálního prostředí se nahrají funcí `load()`.
 
 ```{r}
 load("vozidla.RData")
@@ -697,4 +696,4 @@ Můžete svým kolegům tak například poslat již vyčištěná a připravená
 
 ## Příprava na další hodinu
 
-Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počítejte s tím, že balíček se bude stahovat a instalovat klidně i několik desítek minut.
+Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počítejte s tím, že balíček se bude stahovat a instalovat klidně i **několik desítek minut**.
