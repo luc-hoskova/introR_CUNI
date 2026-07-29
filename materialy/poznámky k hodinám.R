@@ -1,18 +1,9 @@
 #kniha jazyk r a tvorba grafů
 
 #1 hodina
-#operátory
-  #matematické
-  #!, &, %in%, :, ten znak pro nebo
-#ukládání do proměných
-#etiketa psaní kódu
-#ukládání souborů
-  #projekty
-  #RData, workspace, load()
+#funkce help a help.search("nazev hledaneho")
 
 #2 hodina
-#syntax funkce argumenty a tak
-#vektory mohou byt numeric integer char a logical
 #vektor muze mit hodnoty pojmenovane
   # vektor <- c(jan = 22, dan = 667, sam = 6)
   #lze to prejmenovat  
