@@ -596,9 +596,15 @@ Nastavení pracovního adresáře ovlivňuje i další funkcionality R. Napřík
 
 Seznam souborů které má v nastaveném adresáři R dosupné naleznete bud' v okně **Files**, nebo pomocí funkce `list.files()`.
 
+```{r}
+list.files()
+```
+
 Jak vidíte, soubor nám vypíše dostupné soubory a složky v nastaveném pracovním adresáři. Co když se ale v něm chci podívat co je uvnitř specifické složky? K tomu je **potřeba ve funkci definovat nejenom název složky, ale i to, kde se tato složka nachází**.
 
-![](images/clipboard-1074189953.png)
+```{r}
+list.files("./images")
+```
 
 ::: callout-tip
 ## Co znamená tečka v ./images?
