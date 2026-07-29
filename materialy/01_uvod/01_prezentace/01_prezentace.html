@@ -4293,10 +4293,9 @@ Dostane Julie zápočet?</p></li>
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Co znamená tečka v ./images?</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Co znamená tečka v <code>./images</code>?</strong></p>
 <p><code>./</code>v kódu určuje, že se složka images nachází přímo v námi určeném pracovním adresáři.</p>
 <p>Jedná se o takzvanou <strong>relativní cestu</strong> - k tomu si řekneme něco víc v sekci <a href="#/absolutní-vs.-relativní-cesta">Absolutní vs. relativní cesta</a>.</p>
 </div>
@@ -4317,9 +4316,9 @@ Dostane Julie zápočet?</p></li>
 <section class="slide level2">
 
 <h4 id="absolutní-vs.-relativní-cesta">Absolutní vs. relativní cesta</h4>
-<p>absolutní cesta:</p>
+<h5 id="absolutní-cesta">absolutní cesta:</h5>
 <p><code>&quot;C:/Users/Jana/Desktop/vyzkum/M433/data/pribice.csv&quot;</code></p>
-<p>relativní cesta při nastaveném working directory v M433:</p>
+<h5 id="relativní-cesta-při-nastaveném-working-directory-v-m433">relativní cesta při nastaveném working directory v M433:</h5>
 <p><code>&quot;./data/pribice.csv&quot;</code></p>
 <p>Relativní cesta odkazuje na <strong>soubor uvnitř specifického pracovního adresáře</strong>, nikoliv přímo na místo v počítači jako absolutní cesta.</p>
 <p>Doporučuji absolutní cestu když už používat, tak pouze při nastavování <code>setwd()</code>. Sice lze teoreticky nahrávat soubory a provádět jiné akce uvnitř pracovního adresáře i pomocí absolutní cesty, ale <strong>jakmile by se například složka ve které se pracuje kamkoliv posunula, tak by absolutní cesta přestala fungovat.</strong></p>
@@ -4338,7 +4337,7 @@ Dostane Julie zápočet?</p></li>
 </section>
 <section id="rprojekty" class="slide level2">
 <h2>RProjekty</h2>
-<p>Co kdybychom chtěli, aby se nám všechny naše skripty a jejich výsledky automatick\ ukládaly do a tahaly rovnou z <strong>jednoho specifického adresáře</strong> bez potřeby ho při každém otevření RStudia nastavovat, a který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?</p>
+<p>Co kdybychom chtěli, aby se nám všechny naše skripty a jejich výsledky automaticky ukládaly do a tahaly rovnou z <strong>jednoho specifického adresáře</strong> bez potřeby ho při každém otevření RStudia nastavovat, a který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?</p>
 <p>Toho můžete docílit pomocí vytvoření <strong>RProjektu</strong>.</p>
 <p>RProjekt vytvoří “izolované” prostředí, kdy všechny vaše soubory uvnitř tohoto adresáře budou svázané dohromady, budou se vám <strong>automaticky znovu nahrávat uložené proměnné</strong> bez nutnosti opakovaného spouštění kódu, a hlavně k nim vždy bude <strong>relativní, nikoliv absolutní cesta</strong> = celý projekt si můžete přesouvat mezi složkami či počítači bez potřeby nastavování working directory.</p>
 </section>
@@ -4349,10 +4348,9 @@ Dostane Julie zápočet?</p></li>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href></a>typVozidla <span class="ot">&lt;-</span> <span class="st">&quot;automobil&quot;</span></span>
 <span id="cb67-2"><a href></a>pocetVozidel <span class="ot">&lt;-</span> <span class="dv">6</span></span>
 <span id="cb67-3"><a href></a>jmenoModelu <span class="ot">&lt;-</span> <span class="st">&quot;škoda octavia&quot;</span></span>
-<span id="cb67-4"><a href></a><span class="fu">save</span>(typVozidla, pocetVozidel, jmenoModelu,</span>
-<span id="cb67-5"><a href></a>     <span class="at">file =</span> <span class="st">&quot;vozidla.RData&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb67-4"><a href></a><span class="fu">save</span>(typVozidla, pocetVozidel, jmenoModelu, <span class="at">file =</span> <span class="st">&quot;vozidla.RData&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Objekt RData v sobě obsahuje informace o jednotlivých proměnných. Do globálního prostředí se nahrají funcí <code>load()</code>.</p>
+<p><strong>Objekt RData v sobě obsahuje informace o jednotlivých proměnných.</strong> Do globálního prostředí se nahrají funcí <code>load()</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href></a><span class="fu">load</span>(<span class="st">&quot;vozidla.RData&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -4372,7 +4370,7 @@ rozpocet = jaký finanční rozpočet máte na dobu pocetMesicu k dispozici</p><
 </section>
 <section id="příprava-na-další-hodinu" class="slide level2">
 <h2>Příprava na další hodinu</h2>
-<p>Nainstalujte si balíček <a href="https://tidyverse.org/packages/"><code>tidyverse</code></a>. Počítejte s tím, že balíček se bude stahovat a instalovat klidně i několik desítek minut.</p>
+<p>Nainstalujte si balíček <a href="https://tidyverse.org/packages/"><code>tidyverse</code></a>. Počítejte s tím, že balíček se bude stahovat a instalovat klidně i <strong>několik desítek minut</strong>.</p>
 
 </section></section>
     </div>
