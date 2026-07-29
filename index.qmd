@@ -4,6 +4,14 @@ title: "O kurzu"
 
 Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio.
 
+::: callout-warning
+## Kapacity naplněny
+
+**Kapacity na tento běh kurzu jsou již naplněny, počítá se však se spištěním kurzu i během příštího semestru.**
+
+**Pokud chcete být o spuštění informováni, kontaktujte mě na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz "e-mailová adresa").**
+:::
+
 ::: callout-note
 ## odkaz na registraci
 
@@ -61,11 +69,11 @@ Učebna má k dispozici náhradní notebooky v případě potřeby výjimečnéh
 
 ## Návod na přihlášení
 
-**1)** Na stránce kurzu vyberte „Podrobné informace a přihláška“.
+**1)** Na [stránce kurzu](https://celozivotni.cuni.cz/vyhledavac-programu?program=12878) vyberte „Podrobné informace a přihláška“.
 
 ![](img_prihlaseni/uvod.png){width="423"}
 
-**2)** Sjeďte dolů po stránce "Detail programu s mikrocertifikátem" a po přečtení informací o kurzu klikněte na „podat přihlášku“.
+**2)** Sjeďte dolů po stránce "[Detail programu s mikrocertifikátem](https://is.cuni.cz/studium/prijimacky/index.php?do=detail_kurz_mc&cid=12878)" a po přečtení informací o kurzu klikněte na „podat přihlášku“.
 
 ![](img_prihlaseni/podat_prihlasku.png)
 
