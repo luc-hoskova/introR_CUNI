@@ -207,13 +207,11 @@ R dokumentace je psana mnoha lidmi a nemusí být vždy konzistentní.
 
 ------------------------------------------------------------------------
 
-::: fragment
 2.  Bez spuštění kódu určete, jaký bude výsledek této funkce. Používejte nápovědu, zkuste si jednotlivé části rozepsat.
 
 ```{r}
 length(rep(seq(2, 10, 2), 3))
 ```
-:::
 
 ::: fragment
 Funkce `length` zjišťuje, jaká je "délka", jaký je počet hodnot. Potřebujeme proto spočítat, kolik hodnot nám vznikne jako výsledek funkce `rep`.
@@ -241,6 +239,8 @@ Pro R je hlavně důležité, aby **hodnoty v jednotlivých argumentech splňova
 trojka <- 3
 rep(x = seq(1, 10, 3), times = trojka)
 ```
+
+------------------------------------------------------------------------
 
 V určité chvíli je ovšem dobré **přemýšlet i o čitelnosti samotného kódu**.
 
@@ -301,7 +301,7 @@ c(1, 5, 77)
 Co se stane po projetí následujícího kódu?
 
 ```{webr}
-c(6, TRUE, 2:6, "8", 7)
+c(6, TRUE, 2:6, "osm", 7)
 ```
 
 ::: fragment
@@ -339,8 +339,6 @@ names(jmena) #jake pojmenovani ma danna promenna?
 
 Tato funkcionalita se hodí hlavně při vyhledávání (indexování) jednotlivých hodnot. Více o indexování si řekneme v následující sekci.
 
-Jaká jména má následující vektor?
-
 ------------------------------------------------------------------------
 
 ### Co když si chci zpětně vektor pojmenovat?
@@ -355,11 +353,300 @@ names(vektorBezJmen)
 ::: callout-tip
 ## Přiřazováním můžete měnit existující hodnoty
 
-Přiřazování neslouží pouze k vytváření proměnných, může na nich provádět i změny. Nemusí se jednat pouze o celé proměnné (které jsou pouze pojmenováním určité hodnoty či jejich skupiny) ale i specifické hodnoty uvnitř nich či hodnoty je popisující.
+**Přiřazování neslouží pouze k vytváření proměnných, může na nich provádět i změny**. Nemusí se jednat pouze o celé proměnné (které jsou pouze pojmenováním určité hodnoty či jejich skupiny) ale i specifické hodnoty uvnitř nich či hodnoty je popisující.
 :::
 
 ## Samostatné cvičení
 
-1.  Vypište alespoň tři rozdílné způsoby, jak získat následující vektor:
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
 
-2.  
+1.  Vypište alespoň tři rozdílné způsoby, jak získat následující vektor: 1 2 3 1 2 3 9 8 7 2
+
+2.  Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
+
+    ```{r}
+    c(JMENO = "jan", PRIJMENI = "novak")
+    ```
+
+------------------------------------------------------------------------
+
+Vypište alespoň tři rozdílné způsoby, jak získat následující vektor: 1 2 3 1 2 3 9 8 7 2
+
+```{webr}
+
+```
+
+------------------------------------------------------------------------
+
+Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
+
+```{webr}
+
+```
+
+::: fragment
+Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžeme použít?
+
+```{webr}
+
+```
+:::
+
+::: fragment
+**Pokud nevíte, hledejte** - spousta problémů a specifických use cases již byla dávno vyřešena a jsou k nalezení na internetu.
+
+![](images/1612457411219-396187299.png)
+:::
+
+------------------------------------------------------------------------
+
+### Pole (array)
+
+> **objekt složený z vektorů stejného datového typu a délky o několika libovolném počtu dimenzí**
+
+-   jakým způsobem si představit dimenze?
+
+------------------------------------------------------------------------
+
+### Vektor
+
+![](images/clipboard-1675171015.png){fig-align="center"}
+
+### Pole o dvou dimenzích (matice)
+
+![](images/clipboard-815077547.png){fig-align="center"}
+
+### Pole o třech dimenzích
+
+![](images/clipboard-1189974317.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+-   use case
+
+    ```{r}
+    temps <- array(
+    c(
+    20,22,19,21,18,20,17,19,21,23,20,22,19,21,
+    18,20,17,19,16,18,17,20,19,21,18,20,17,19,
+    22,24,21,23,20,22,19,21,23,25,22,24,21,23),
+    dim = c(3, 7, 2),
+    dimnames = list(
+    město = c("Praha", "Brno", "Ostrava"),
+    den = paste0("den_", 1:7),
+    čas = c("ráno", "večer")))
+
+    temps
+    ```
+
+-   nejvíce nás ale bude zajímat **datové pole o dvou dimenzích - matice**
+
+------------------------------------------------------------------------
+
+### Matice (matrix)
+
+> **dvojrozměrné pole**
+
+-   dvojrozměrný objekt znamená, že už se nejedná o objekt co má pouze jednu linii hodnot jako vektor, ale že **má řádky a sloupce**
+
+    ```{r}
+    matrix(1:6, nrow=3, ncol=2) 
+    ```
+
+    -   číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci Indexace
+
+-   při pokusu o vytvoření matice z více datových typů dojde stejně jako u vektoru k nucené konverzi na charakter
+
+```{r}
+cbind(1:3, 4:6, c("jmeno", "prijmeni", "ID"))
+```
+
+------------------------------------------------------------------------
+
+#### Tvorba matice
+
+Matici lze vytvořit pomocí mnoha funkcí. Pokud ji chceme vytvořit celou od začátku, můžeme použít funkcí `matrix()`.
+
+```{webr}
+matrix(1:8, nrow = 2, ncol = 4) 
+```
+
+Jaký bude výsledek této funkce? Co znamenají jednotlivé argumenty?
+
+::: fragment
+Jaký bude výsledek následující funkce?
+
+```{webr}
+matrix(1:2, nrow = 2, ncol = 4) 
+```
+:::
+
+------------------------------------------------------------------------
+
+##### Co když ale chceme vytvořit matici z již existujících vektorů stejného typu a délky?
+
+`cbind()` = spoj vektory po sloupcích (columns)
+
+```{r}
+cbind(1:3, 5:7)
+```
+
+`rbind()` = spoj vektory po řádcích (rows)
+
+```{r}
+rbind(1:3, 5:7)
+```
+
+-   Vytvoření matice po řádcích lze i u funkce `matrix()`. Jak bychom toto provedli?
+
+::: fragment
+-   Argument `byrow` je automaticky nastaven na hodnotu `FALSE`. Pro seřazení po řádcích (by row) je potřeba v matici zahrnout `byrow = TRUE`.
+
+    ```{r}
+    matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE) 
+    ```
+:::
+
+------------------------------------------------------------------------
+
+#### Procvičení
+
+Vytvořte matici z následujících vektorů:
+
+```{r}
+LK3 <- c("Lukáš", "Krchov", "ID_003")
+HG6 <- c("Helga", "Gdovinová", "ID_006")
+TM7 <- c("Tomáš", "Marný")
+```
+
+```{webr}
+
+```
+
+::: fragment
+Nezapomeňte na existenci NA!
+:::
+
+------------------------------------------------------------------------
+
+#### Pojmenování sloupců a řádků
+
+Jak je vidět z předchozího cvičení, stejně jako u vektoru **můžeme pojmenovat každou z jednotlivých součástí**, totéž můžeme provést i u matic.
+
+```{r}
+matice <- matrix(1:6, 2, 3); matice
+rownames(matice) #jaka jsou jmena radku
+colnames(matice) #jaka jsou jmena sloupcu
+```
+
+Pokud chceme přiřadit jména ke sloupcům či řádkům, musíme tak provést přiřazením vektoru o totožné délce.
+
+```{r}
+rownames(matice) <- c("pocetMereni", "pocetProbandu")
+colnames(matice) <- c("pokus1", "pokus2", "pokus3")
+matice
+```
+
+------------------------------------------------------------------------
+
+### Samostatné cvičení
+
+1.  Vytvořte matici, která bude mít 5 sloupců a 2 řádky a bude obsahovat prvních 10 lichých čísel. Následně připojte k matici další sloupec, tentokrát pouze s číslem 2.\
+    Sloupce pojmenujte pomocí numerických a řádky pomocí charakterových hodnot.
+
+2.  Vytvořte matici o šesti řádcích, která bude tvořena pouze dvěma alternujícími se řádky s čísly 15 - 20 a 37 - 42 (vyrobte pruhovanou matici :\] ).
+
+    **HARD MODE: JEDEN ŘÁDEK KÓDU NA DRUHOU ÚLOHU A ŽÁDNÉ RBIND**
+
+    ```{r}
+    #| echo: false
+    countdown::countdown(minutes = 15,
+                         seconds = 0,
+                         start_immediately = FALSE,
+                         warn_when = 120,
+                         top = "0")
+    ```
+
+------------------------------------------------------------------------
+
+#### Řešení úlohy 1)
+
+1.  Vytvořte sekvenci lichých čísel (každé číslo objedno od 1 dále) v počtu deseti hodnot.
+
+    ```{r}
+    seq(by = 2, length.out = 10)
+    #nebo taky samozrejme c(1, 3, 5, 7, 9, 11, 13, 15, 17, 19), ale....
+    ```
+
+::: fragment
+2.  Použij sekvenci jako hodnoty do matice, rozděl je do pěti sloupců a dvou řádků.
+
+    ```{r}
+    hotovaMatice <- matrix(seq(by = 2, length.out = 10), ncol = 5); hotovaMatice
+    ```
+:::
+
+::: fragment
+3.  Připoj k matici další sloupec tvořený vektorem s takovým počtem hodnot jako je počet řádků
+
+    ```{r}
+    hotovaMatice <- cbind(hotovaMatice, c(rep(2, 2))); hotovaMatice
+    ```
+:::
+
+::: fragment
+4.  Pojmenuj sloupce a řádky
+
+    ```{r}
+    colnames(hotovaMatice) <- 1:ncol(hotovaMatice) #fce ncol da zpe pocet sloupcu, stejne jako nrow radku
+    rownames(hotovaMatice) <- c("czech", "slovak")
+    hotovaMatice
+    ```
+:::
+
+------------------------------------------------------------------------
+
+#### Řešení úlohy 2)
+
+1.  Jelikož potřebujeme poskládat numerické vektory 15:20 a 37:42 dohromady šestkrát pod sebou, musí být spojené po řádcích. Kromě `rbind`tuto možnost poskytuje i parametr `byrow = TRUE` ve funkci `matrix`.
+
+    ```{r}
+    #matrix(?, byrow =  TRUE)
+    ```
+
+::: fragment
+2.  Potřebujeme proto vyvořit sekvenci hodnot, které dáme R k dispozici pro vytvoření matice. To znamená, že musíme sestavit sekvenci šestkrát za sebou alternativně opakujících se vektorů 15:20 a 37:42.\
+    Toho dosáhneme pomocí funkce `rep`.
+
+    ```{r}
+    rep(c(15:20, 37:42), 3)
+    ```
+:::
+
+::: fragment
+3.  Je potřeba, aby počet sloupců byl přesně takový, jako je počet hodnot ve vektorech, jinak by se nám nerozdělily do pravidelně opakujících řádků.
+
+    ```{r}
+    matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20), byrow = TRUE,
+           dimnames = list())
+    ```
+:::
+
+------------------------------------------------------------------------
+
+Možná vás napadlo, zda by nešlo určit popisky sloupců a řádků už přímo v zadání matice. Je to možné, a to pomocí atributu `dimnames`.
+
+```{r}
+matrix(1:6, ncol = 3,
+       dimnames = list(c("cesko", "slovensko"), c("jara", "slawa", "pepa")),
+       byrow = TRUE)
+```
+
+Můžeme vytvořit jména rovnou už ve funkci matrix? Dmnames musí být list, návaznost na to co je to list
