@@ -164,7 +164,7 @@ Na jaké problémy zde narazíme?
 
 ## Samostatné cvičení
 
-1.  Mohu zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, proč?
+1.  Mohu zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, opravte?
 
     ```{webr}
     seq(1, 10, 3)
@@ -300,7 +300,7 @@ c(1, 5, 77)
 
 Co se stane po projetí následujícího kódu?
 
-```{webr}
+```{webr-r}
 c(6, TRUE, 2:6, "osm", 7)
 ```
 
@@ -409,9 +409,12 @@ Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžem
 
 ### Pole (array)
 
-> **objekt složený z vektorů stejného datového typu a délky o několika libovolném počtu dimenzí**
+> **objekt složený z vektorů stejného datového typu a délky v několika dimenzích**
 
 -   jakým způsobem si představit dimenze?
+    -   Jedna dimenze: řada hodnot
+    -   Dvě dimenze: hodnoty v sloupcích a řádcích
+    -   Tři dimenze: dvě tabulky se sloupci a řádky naskládané za sebe
 
 ------------------------------------------------------------------------
 
@@ -431,20 +434,19 @@ Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžem
 
 -   use case
 
-    ```{r}
-    temps <- array(
-    c(
-    20,22,19,21,18,20,17,19,21,23,20,22,19,21,
-    18,20,17,19,16,18,17,20,19,21,18,20,17,19,
-    22,24,21,23,20,22,19,21,23,25,22,24,21,23),
-    dim = c(3, 7, 2),
-    dimnames = list(
-    město = c("Praha", "Brno", "Ostrava"),
-    den = paste0("den_", 1:7),
-    čas = c("ráno", "večer")))
-
-    temps
-    ```
+```{webr-r}
+#| context: output
+temps <- array(
+c(20,22,19,21,18,20,17,19,21,23,20,22,19,21,
+18,20,17,19,16,18,17,20,19,21,18,20,17,19,
+22,24,21,23,20,22,19,21,23,25,22,24,21,23),
+dim = c(3, 7, 2),
+dimnames = list(
+město = c("Praha", "Brno", "Ostrava"),
+den = paste0("den_", 1:7),
+čas = c("ráno", "večer")))
+temps
+```
 
 -   nejvíce nás ale bude zajímat **datové pole o dvou dimenzích - matice**
 
@@ -464,7 +466,8 @@ Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžem
 
 -   při pokusu o vytvoření matice z více datových typů dojde stejně jako u vektoru k nucené konverzi na charakter
 
-```{r}
+```{webr-r}
+#| context: output
 cbind(1:3, 4:6, c("jmeno", "prijmeni", "ID"))
 ```
 
@@ -509,25 +512,32 @@ rbind(1:3, 5:7)
 ::: fragment
 -   Argument `byrow` je automaticky nastaven na hodnotu `FALSE`. Pro seřazení po řádcích (by row) je potřeba v matici zahrnout `byrow = TRUE`.
 
-    ```{r}
-    matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE) 
-    ```
+```{r}
+matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE) 
+```
 :::
 
 ------------------------------------------------------------------------
 
 #### Procvičení
 
+Vytvoř následující matici:
+
+```{webr-r}
+#| context: output
+matrix(seq(6, 34, length.out = 6), 2, 3)
+```
+
+```{webr-r}
+
+```
+
 Vytvořte matici z následujících vektorů:
 
-```{r}
+```{webr-r}
 LK3 <- c("Lukáš", "Krchov", "ID_003")
 HG6 <- c("Helga", "Gdovinová", "ID_006")
 TM7 <- c("Tomáš", "Marný")
-```
-
-```{webr}
-
 ```
 
 ::: fragment
@@ -558,21 +568,27 @@ matice
 
 ### Samostatné cvičení
 
+```{r}
+#| echo: false
+countdown::countdown(minutes = 15,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
 1.  Vytvořte matici, která bude mít 5 sloupců a 2 řádky a bude obsahovat prvních 10 lichých čísel. Následně připojte k matici další sloupec, tentokrát pouze s číslem 2.\
     Sloupce pojmenujte pomocí numerických a řádky pomocí charakterových hodnot.
 
-2.  Vytvořte matici o šesti řádcích, která bude tvořena pouze dvěma alternujícími se řádky s čísly 15 - 20 a 37 - 42 (vyrobte pruhovanou matici :\] ).
+2.  Vytvořte následující matici:
 
     **HARD MODE: JEDEN ŘÁDEK KÓDU NA DRUHOU ÚLOHU A ŽÁDNÉ RBIND**
 
-    ```{r}
-    #| echo: false
-    countdown::countdown(minutes = 15,
-                         seconds = 0,
-                         start_immediately = FALSE,
-                         warn_when = 120,
-                         top = "0")
-    ```
+```{webr-r}
+#| context: output
+matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20),
+       byrow = TRUE)
+```
 
 ------------------------------------------------------------------------
 
@@ -634,8 +650,7 @@ matice
 3.  Je potřeba, aby počet sloupců byl přesně takový, jako je počet hodnot ve vektorech, jinak by se nám nerozdělily do pravidelně opakujících řádků.
 
     ```{r}
-    matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20), byrow = TRUE,
-           dimnames = list())
+    matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20), byrow = TRUE)
     ```
 :::
 
@@ -645,8 +660,18 @@ Možná vás napadlo, zda by nešlo určit popisky sloupců a řádků už pří
 
 ```{r}
 matrix(1:6, ncol = 3,
-       dimnames = list(c("cesko", "slovensko"), c("jara", "slawa", "pepa")),
+       dimnames = list(c("cesko", "slovensko"), 10:12),
        byrow = TRUE)
 ```
 
-Můžeme vytvořit jména rovnou už ve funkci matrix? Dmnames musí být list, návaznost na to co je to list
+Do parametru `dimnames` se vloží list, který bude obsahovat názvy pro každou dimenzi (zde řádky a sloupce). Co je to ale list?
+
+------------------------------------------------------------------------
+
+### Seznam (list)
+
+> **objekt složený z jiných objektů které mohou být rozličné délky a datového typu**
+
+-   use case
+    -   třeba ty dimnames (usí se vložit jeden objekt co může mít více data typů)
+    -   Dvě dimenze: hodnoty v sloupcích a řádcích

@@ -1,6 +1,8 @@
 ---
-title: "O kurzu"
+title: "Zpracovávání výzkumných dat pomocí jazyka R"
 ---
+
+## O kurzu
 
 Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio.
 
@@ -18,11 +20,11 @@ Schopnost používat počítačový software či skriptovací jazyky pro potřeb
 Na kurz se přihlašuje skrz portál Centra pro celoživotní vzdělávání UK dostupném [**zde**](https://celozivotni.cuni.cz/vyhledavac-programu?program=12878)**. Podrobný návod provádějící postupem registrace naleznete na** [Návod na přihlášení]**.**
 :::
 
-### Cíl kurzu 
+## Cíl kurzu 
 
 Cílem kurzu je vybavit účastníky praktickými dovednostmi pro efektivní práci s daty v prostředí R a RStudia tak, aby dokázali samostatně zpracovávat, analyzovat a prezentovat výsledky svých výzkumů. Naučí se systematicky organizovat projekty, připravit a transformovat data do podoby vhodné pro vizualizaci a analýzu. Součástí je i rozvoj schopnosti kriticky vybírat a používat statistické a vizualizační metody, interpretovat jejich výstupy a zohledňovat limity jednotlivých postupů. Absolventi kurzu tak budou schopni aplikovat R ve vlastní výzkumné praxi, posílit kvalitu svých analýz a zvýšit jejich transparentnost i důvěryhodnost. 
 
-### Náplň lekcí
+## Náplň lekcí
 
 Kurz je koncipován jako série deseti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce:
 
