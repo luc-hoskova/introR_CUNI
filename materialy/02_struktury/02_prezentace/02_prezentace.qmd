@@ -25,7 +25,13 @@ execute:
 -   kontrola domácího úkolu
 -   funkce v R a jejich syntax
 -   datové struktury v R
--   
+    -   vektor
+    -   pole
+    -   matice
+    -   list
+    -   data frame
+    -   tibble
+-   indexace
 :::
 
 ## Kontrola domácí práce
@@ -337,7 +343,21 @@ jmena <- c(jan = 22, dan = 667, sam = 6)
 names(jmena) #jake pojmenovani ma danna promenna?
 ```
 
-Tato funkcionalita se hodí hlavně při vyhledávání (indexování) jednotlivých hodnot. Více o indexování si řekneme v následující sekci.
+::: callout-note
+## Co znamená pojmenováná?
+
+Při pojmenovávání připojujeme specifické hodnotě či sérii hodnot určitý štítek. Nejenomže popisuje vlastnost hodnot(y), kterou pojmenovává, ale zárověň ho lze použít i k vyhledávání (indexování) jednotlivých hodnot. Více o indexování si řekneme v následující sekci.
+:::
+
+**Pojmenování není to samé co přiřazování**; nevytváříme nové objekty, pouze hodnotám přidáváme novou charakteristiku. Ukázkou toho je, že je možné jedno pojmenování používat víckrát (i když to opravdu není dobrý nápad).
+
+```{r}
+auta <- c(škoda = "octavia", škoda = "felicia", volkswagen = "beetle"); auta
+```
+
+::: callout-tip
+Pojmenování jednotlivých částí můžeme použít i u ostatních datových struktur.
+:::
 
 ------------------------------------------------------------------------
 
@@ -367,12 +387,23 @@ countdown::countdown(minutes = 5,
                      top = "0")
 ```
 
-1.  Vypište alespoň tři rozdílné způsoby, jak získat následující vektor: 1 2 3 1 2 3 9 8 7 2
+1.  Vypište alespoň tři rozdílné způsoby, jak získat následující vektor:
+
+    ```{webr-r}
+    #| context: output
+    c(1,2,3,1,2,3,9,8,7,2)
+    ```
 
 2.  Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
 
     ```{r}
-    c(JMENO = "jan", PRIJMENI = "novak")
+    id <- c(JMENO = "jan", PRIJMENI = "novak")
+    ```
+
+3.  Opravte následující kód tak, aby dával požadovaný výsledek.
+
+    ```{webr-r}
+    rep(škoda = "octavia", 2)
     ```
 
 ------------------------------------------------------------------------
@@ -405,6 +436,25 @@ Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžem
 ![](images/1612457411219-396187299.png)
 :::
 
+------------------------------------------------------------------------
+
+Opravte následující kód tak, aby dával požadovaný výsledek.
+
+```{r}
+rep(škoda = "octavia", 2)
+```
+
+::: fragment
+Nesmíte zapomenout, že symbol = uvnitř funkcí značí argument. Má funkce `rep` argument škoda?
+:::
+
+::: fragment
+Nic ovšem nebrání tomu opakovat vektor s již jednou pojmenovanou hodnotou:
+
+```{r}
+rep(c(škoda = "octavia"), 2)
+```
+:::
 ------------------------------------------------------------------------
 
 ### Pole (array)
@@ -458,7 +508,8 @@ temps
 
 -   dvojrozměrný objekt znamená, že už se nejedná o objekt co má pouze jednu linii hodnot jako vektor, ale že **má řádky a sloupce**
 
-    ```{r}
+    ```{webr-r}
+    #| context: output
     matrix(1:6, nrow=3, ncol=2) 
     ```
 
@@ -673,5 +724,41 @@ Do parametru `dimnames` se vloží list, který bude obsahovat názvy pro každo
 > **objekt složený z jiných objektů které mohou být rozličné délky a datového typu**
 
 -   use case
-    -   třeba ty dimnames (usí se vložit jeden objekt co může mít více data typů)
+    -   třeba ty dimnames (musí se vložit jeden objekt co může mít více data typů)
     -   Dvě dimenze: hodnoty v sloupcích a řádcích
+
+```{webr-r}
+#| context: output
+Doctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","Peter Davison","Colin Baker","Sylvester McCoy","Paul McGann", "John Hurt","Christopher Eccleston"),
+               year=c(55,46,50,40,29,40,44,36,73,41), 
+               episodes=c("134","119","128","172","69","31","42","1","2","13")); Doctor
+Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi", "Jodie Whittaker"), year = c(Doctor$year,34,27,55,36),
+               episodes = c(Doctor$episodes,"47","44","39","10")); Doctor
+```
+
+------------------------------------------------------------------------
+
+### Data frame
+
+> **typ listu, který obsahuje pouze objekty totožné délky**
+
+-   s vektorem nejčastější typ datové struktury v R, se kterým budete pracovat
+
+-   tldr; tabulka
+
+-   ss
+
+    ```{webr-r}
+    #| context: output
+    as.data.frame(cbind(1:4, c("MFF", "FHS", "1LF", "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
+    ```
+
+-   xx
+
+Co by se stalo kdybychom pouze použili cbind?
+
+všechno jako text, co to znamená?
+
+funkce class
+
+rozdíl class a mode
