@@ -5,6 +5,12 @@
 
 #janitor package
 
+#data.frame stringsAsFactors
+
+#!is.na
+
+#problém při vyhledávání pokud totožné názvy sloupců, potřeba kontroly a nebo u velkých datasetů alespoň prohnat check.names
+
 
 
 

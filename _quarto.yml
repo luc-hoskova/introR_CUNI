@@ -25,7 +25,7 @@ website:
       - href: https://www.quarto.org/
         text: "Vytvořeno v RStudio pomocí Quarto."
     center:
-      - text: "Licencováno pod MIT a CC BY-SA 4.0"
+      - text: "Licencováno pod MIT a CC BY-SA-NC 4.0"
     right: 
       - icon: info
         href: https://orcid.org/0009-0001-9695-2342 

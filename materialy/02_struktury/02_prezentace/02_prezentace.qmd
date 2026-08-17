@@ -334,9 +334,9 @@ mode(vektorNA)
 :::
 :::
 
-## Pojmenovávání hodnot ve vektoru
+## Pojmenovávání hodnot
 
-Jednotlivé hodnoty ve vektoru je možné si pojmenovat.
+Jednotlivé hodnoty ve vektoru (ale i zbylých datových strukturách) je možné si pojmenovat.
 
 ```{r}
 jmena <- c(jan = 22, dan = 667, sam = 6)
@@ -352,12 +352,8 @@ Při pojmenovávání připojujeme specifické hodnotě či sérii hodnot určit
 **Pojmenování není to samé co přiřazování**; nevytváříme nové objekty, pouze hodnotám přidáváme novou charakteristiku. Ukázkou toho je, že je možné jedno pojmenování používat víckrát (i když to opravdu není dobrý nápad).
 
 ```{r}
-auta <- c(škoda = "octavia", škoda = "felicia", volkswagen = "beetle"); auta
+c(škoda = "octavia", škoda = "felicia", volkswagen = "beetle")
 ```
-
-::: callout-tip
-Pojmenování jednotlivých částí můžeme použít i u ostatních datových struktur.
-:::
 
 ------------------------------------------------------------------------
 
@@ -376,7 +372,7 @@ names(vektorBezJmen)
 **Přiřazování neslouží pouze k vytváření proměnných, může na nich provádět i změny**. Nemusí se jednat pouze o celé proměnné (které jsou pouze pojmenováním určité hodnoty či jejich skupiny) ale i specifické hodnoty uvnitř nich či hodnoty je popisující.
 :::
 
-## Samostatné cvičení
+### Samostatné cvičení
 
 ```{r}
 #| echo: false
@@ -455,6 +451,7 @@ Nic ovšem nebrání tomu opakovat vektor s již jednou pojmenovanou hodnotou:
 rep(c(škoda = "octavia"), 2)
 ```
 :::
+
 ------------------------------------------------------------------------
 
 ### Pole (array)
@@ -746,19 +743,144 @@ Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi",
 
 -   tldr; tabulka
 
--   ss
+-   ukázka
 
     ```{webr-r}
     #| context: output
-    as.data.frame(cbind(1:4, c("MFF", "FHS", "1LF", "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
+    data.frame(cbind(1:4, c("MFF", "FHS", NA , "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
     ```
 
--   xx
+#### Tvorba data frame
 
-Co by se stalo kdybychom pouze použili cbind?
+Nejjednoduší působ, jak vytvořit data frame je skrz stejnojmou funkci `data.frame`.
+
+```{r}
+data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+           PSČ = c(73912, 36251, 25303),
+           okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
+           row.names = c("id_01", "id_02", "id_03"))
+```
+
+Co se stane, pokud se snažíme do data frame vložit **objekt, který je jiné délky než zbylé**?
+
+```{webr-r}
+data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+           PSČ = c(73912, 36251),
+           okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
+           row.names = c("id_01", "id_02", "id_03"))
+```
+
+::: fragment
+Nezapomeňte na existenci NA!
+
+```{r}
+data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+           PSČ = c(73912, 36251, NA),
+           okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
+           row.names = c("id_01", "id_02", "id_03"))
+```
+:::
+
+------------------------------------------------------------------------
+
+#### Pojmenovávání sloupců a řádků
+
+-   řádky:
+
+    -   pomocí argumentu `row.names,`vždy potřeba definovat název pro každý řádek!
+
+        ```{r}
+        data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+                   PSČ = c(73912, 36251, 25303),
+                   okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
+                   row.names = c("id_01", "id_02"))
+        ```
+
+-   sloupce:
+
+    -   pojmenování jednotlivých datových struktur, ze kterých se má data frame skládat, pomocí štítku (název = hodnota)
+
+    -   použití již dříve vytvořených objektů
+
+    ```{r}
+    obec <- c("Čeladná", "Jáchymov", "Chýně")
+    PSČ <- c(73912, 36251, 25303)
+    okres <- c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ")
+    data.frame(obec, PSČ, okres)
+    ```
+
+    -   pozdější doplnění pomocí funkce `colnames`
+
+        ```{r}
+        lokace <- data.frame(c("Čeladná", "Jáchymov", "Chýně"),
+                   c(73912, 36251, 25303),
+                   c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
+        colnames(lokace) <- c("obec", "PSČ", "okres")
+        lokace
+        ```
+
+-   oboje najednou:
+
+    -   použitím funkce `dimnames` lze najednou nastavit názvy pro obě dimenze
+
+        ```{r}
+        dimnames(lokace) <- list(c("001/kl", "002/oi", "003/us"), c("mesto", "psc", "kraj"))
+        lokace
+        ```
+
+        -   Proč zde používáme list? Pokud nevíte, podívejte se do nápovědy :\]
+
+#### Jiné způsoby tvorby data frame
+
+Nešlo by ale přeci k vytvoření data frame jednoduše použít `cbind` nebo `rbind`? Pojďme si to vyzkoušet.
+
+```{r}
+cbind(c("Čeladná", "Jáchymov", "Chýně"),
+      c(73912, 36251, 25303),
+      c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
+```
+
+**Jaký typ objektu je výsledek?** Jedná se o data frame?
+
+```{webr-r}
+class(cbind(c("Čeladná", "Jáchymov", "Chýně"),
+      c(73912, 36251, 25303),
+      c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ")))
+```
+
+::: callout-tip
+## class vs mode
+
+Funkce `mode` nám zjistí, o jaký datový typ se jedná. Fuknce `class`nám nejenomže řekne více informací, ale hlavně nám řekne, jak se vůči danému objektu R bude chovat.
+:::
+
+Funkce `cbind` a `rbind` vytvoří data frame pouze v případě, že
 
 všechno jako text, co to znamená?
 
 funkce class
 
 rozdíl class a mode
+
+cbind vytvoří data frame pouze pokud jeden ze svazovaných objektů je taktéž dataframe
+
+Místo toho `cbind.data.frame` cc
+
+### Pojmenovávání sloupců a řádků
+
+### Samostatné cvičení
+
+1.  gg
+
+    Vytvořte následující data frame:
+
+    ```{webr-r}
+    #| context: output
+    vek <- c(27,35,30,47,42);vek
+    sex <- c("female","male","male","female","female"); sex
+    strana <-c("sin","sin","dx","dx","dx"); strana
+    id <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020"); id
+    VZOREK <- data.frame(vek, strana, sex, row.names = id); VZOREK
+    ```
+
+2.  gg
