@@ -788,7 +788,7 @@ Na jaké problémy zde narazíme?
 :::
 
 ::: incremental
-- `osobaID` není argument funce `rep`
+- `osobaID_2` není argument funce `rep`
 
 - operátor `=` ve funkci neznamená přiřazení, ale určení argumentu
 

@@ -11,7 +11,8 @@
 
 #problém při vyhledávání pokud totožné názvy sloupců, potřeba kontroly a nebo u velkých datasetů alespoň prohnat check.names
 
-
+#přidávání textu k číslům aka jak to udělat abych měl najendou 50 ID jako texty s "id_01", "id_02" a tak dál
+#paste0()
 
 
 
