@@ -21,17 +21,16 @@ execute:
 ## Program
 
 ::: incremental
--   opakování z minulé hodiny
--   kontrola domácího úkolu
--   funkce v R a jejich syntax
--   datové struktury v R
-    -   vektor
-    -   pole
-    -   matice
-    -   list
-    -   data frame
-    -   tibble
--   indexace
+- opakování z minulé hodiny
+- kontrola domácího úkolu
+- datové struktury v R
+  - vektor
+  - pole
+  - matice
+  - list
+  - data frame
+  - tibble
+- indexace
 :::
 
 ## Kontrola domácí práce
@@ -62,219 +61,17 @@ execute:
     ```
 :::
 
-## Funkce v R
-
-Nedílnou součástí kódu v R jsou takzvané funkce. Jedná se o **příkazy, které provedou specifickou akci za vámi definovaných podmínek**.
-
-`název funkce(název argumentu = parametry argumentu)`
-
-Pomocí funkce `seq` vygeneruj sekvenci s rozestupem po 3 od 10 do 20.
-
-```{r}
-seq(from = 10, to = 20, by = 3)
-```
-
-::: fragment
-Co bude výsledkem následujícího kódu?
-
-```{webr}
-seq(from = 2, to = 10, length.out = 5)
-```
-:::
-
-------------------------------------------------------------------------
-
-### Lze psát příkazy i bez definování argumentů?
-
-```{r}
-rep("ID", 5)
-```
-
-::: fragment
-Ano; bez definování názvu argumentu se pracuje s jeho pořadím.
-:::
-
-::: fragment
-Je pořadí argumentů důležité? Ovlivní výsledek?
-
-```{webr}
-rep(x = "vzorek", times = 10)
-```
-
-```{webr}
-rep(times = 10, x = "vzorek")
-```
-:::
-
-::: fragment
-::: callout-caution
-## Pozor!
-
-Na pořadí argumentu nezáleží, dokud jasně **definujeme k jakému argumentu parametr patří**.
-:::
-:::
-
-::: fragment
-Jaký bude výsledek těchto kódů? Jsou totožné?
-
-```{webr}
-rep(10, "vzorek")
-rep(times = 10, x = "vzorek")
-```
-:::
-
-## Rozdíl mezi `=` a `<-`
-
-Možná jste se setkali s tím, že někdo zapisuje proměnné pomocí operátoru =. Funguje to?
-
-```{r}
-x = 6
-x + 1
-```
-
-Proč se proto místo toho používá `<-` ?
-
-```{r}
-rep(osobaID <- 5, 3)
-osobaID + 4
-```
-
-::: fragment
-::: callout-tip
-## R umožňuje provádět akce uvnitř "jiných akcí"
-
-V tomto případě určujeme argument na první pozici, a zároveň jeho hodnotu ukládáme do proměnné `osobaID`.
-:::
-:::
-
-------------------------------------------------------------------------
-
-Co bude výsledkem následujícího kódu?
-
-```{webr}
-rep(osobaID_2 = 5, 3)
-osobaID_2 + 4
-```
-
-::: fragment
-Na jaké problémy zde narazíme?
-:::
-
-::: incremental
--   `osobaID` není argument funce `rep`
-
--   operátor `=` ve funkci neznamená přiřazení, ale určení argumentu
-
--   nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
-:::
-
-## Samostatné cvičení
-
-1.  Mohu zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, opravte?
-
-    ```{webr}
-    seq(1, 10, 3)
-    ```
-
-2.  Bez spuštění kódu určete, jaký bude výsledek této funkce. Používejte nápovědu, zkuste si jednotlivé části rozepsat.
-
-    ```{webr}
-    length(rep(seq(2, 10, 2), 3))
-    ```
-
-```{r}
-#| echo: false
-countdown::countdown(minutes = 5,
-                     seconds = 0,
-                     start_immediately = FALSE,
-                     warn_when = 120,
-                     top = "0")
-```
-
-------------------------------------------------------------------------
-
-1.  Mohu zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu?
-
-```{r}
-seq(1, 10, 3)
-```
-
-::: fragment
-Ne, jelikož argument na třetí pozici v této funkci není `length.out`, který určuje délku sekvence, ale `by`, který určuje periodu.
-
-V tomto případě určujeme argument na první pozici, a zároveň jeho hodnotu ukládáme do proměnné `osobaID`.
-
-::: callout-important
-## Čtěte dokumentaci pozorně!
-
-R dokumentace je psana mnoha lidmi a nemusí být vždy konzistentní.
-:::
-:::
-
-------------------------------------------------------------------------
-
-2.  Bez spuštění kódu určete, jaký bude výsledek této funkce. Používejte nápovědu, zkuste si jednotlivé části rozepsat.
-
-```{r}
-length(rep(seq(2, 10, 2), 3))
-```
-
-::: fragment
-Funkce `length` zjišťuje, jaká je "délka", jaký je počet hodnot. Potřebujeme proto spočítat, kolik hodnot nám vznikne jako výsledek funkce `rep`.
-:::
-
-::: fragment
-Funkce `rep` nám zde třikrát zopakuje výsledek daný funkcí `seq`.
-:::
-
-::: fragment
-Funkce `seq(2, 10, 2)` by zde mohla být zapsána na základě pořádí argumentů i jako `seq(from = 2, to = 10, by = 2)`. Výsledkem je tak sekvence `2  4  6  8 10`, která má pět čísel.
-:::
-
-::: fragment
-Třikrát se tedy zopakuje sekvence pěti čísel, což znamená že **výsledek je patnáct**.
-:::
-
-## Vnořování funkcí
-
-Jak bylo vidět v přechozích částech, R umožňuje používat funkce uvnitř dalších funkcí.
-
-Pro R je hlavně důležité, aby **hodnoty v jednotlivých argumentech splňovaly jejich podmínky, nikoliv v jaké podobě tyto hodnoty do funkce vstupují**.
-
-```{r}
-trojka <- 3
-rep(x = seq(1, 10, 3), times = trojka)
-```
-
-------------------------------------------------------------------------
-
-V určité chvíli je ovšem dobré **přemýšlet i o čitelnosti samotného kódu**.
-
-Který z následujících kódů je čitelnější?
-
-```{r}
-sample(x = rep(x = seq(1, 10, 3), times = 2), size = 4, replace = FALSE)
-```
-
-nebo
-
-```{r}
-opakovani <- rep(x = seq(1, 10, 3), times = 2)
-
-sample(x = opakovani, size = 4, replace = FALSE)
-```
-
 ## Datové struktury v R
 
 ### Vektor
 
 > **série za sebou jdoucích hodnot totožného datového typu**
 
--   vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
+- vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
 
--   jednodimenzionální (důležité hlavně při vyhledávání)
+- jednodimenzionální (důležité hlavně při vyhledávání)
 
--   při použití více datových typů dochází k nucené konverzi do jednotného typu
+- při použití více datových typů dochází k nucené konverzi do jednotného typu
 
 ```{r}
 seq(1, 10, 2)
@@ -284,23 +81,23 @@ seq(1, 10, 2)
 
 #### Jakými jinými způsoby můžeme vektory vytvořit?
 
--   symbol `:` vytvoří sérii čísel v daných mezích
+- symbol `:` vytvoří sérii čísel v daných mezích
 
-    -   rozestup vždy po jedné
+  - rozestup vždy po jedné
 
 ```{r}
 -5:3
 0.65:9.18
 ```
 
--   funkce `c` spojí hodnoty jakéhokoliv typu do vektoru
+- funkce `c` spojí hodnoty jakéhokoliv typu do vektoru
 
 ```{r}
 c("jmeno", "prijmeni")
 c(1, 5, 77)
 ```
 
--   **způsobů je mnohem více**, tyto se ale hodí znát
+- **způsobů je mnohem více**, tyto se ale hodí znát
 
 ## Potenciální zádrhely
 
@@ -324,7 +121,7 @@ vektorNA <- c(NA, 6, 9)
 NA označuje chybějící hodnotu, nikterak neurčuje samotný datový typ hodnoty.
 :::
 
-::: fragment
+:::: fragment
 ::: callout-tip
 Ke zjištění datového typu je možné použít funkci `mode`.
 
@@ -332,7 +129,7 @@ Ke zjištění datového typu je možné použít funkci `mode`.
 mode(vektorNA)
 ```
 :::
-:::
+::::
 
 ## Pojmenovávání hodnot
 
@@ -372,6 +169,8 @@ names(vektorBezJmen)
 **Přiřazování neslouží pouze k vytváření proměnných, může na nich provádět i změny**. Nemusí se jednat pouze o celé proměnné (které jsou pouze pojmenováním určité hodnoty či jejich skupiny) ale i specifické hodnoty uvnitř nich či hodnoty je popisující.
 :::
 
+------------------------------------------------------------------------
+
 ### Samostatné cvičení
 
 ```{r}
@@ -396,7 +195,7 @@ countdown::countdown(minutes = 5,
     id <- c(JMENO = "jan", PRIJMENI = "novak")
     ```
 
-3.  Opravte následující kód tak, aby dával požadovaný výsledek.
+3.  Opravte následující kód tak, aby dával požadovaný výsledek; vektor s dvěmi hodnotami octavia se štítkem škoda.
 
     ```{webr-r}
     rep(škoda = "octavia", 2)
@@ -404,24 +203,28 @@ countdown::countdown(minutes = 5,
 
 ------------------------------------------------------------------------
 
+#### Řešení úlohy 1)
+
 Vypište alespoň tři rozdílné způsoby, jak získat následující vektor: 1 2 3 1 2 3 9 8 7 2
 
-```{webr}
+```{webr-r}
 
 ```
 
 ------------------------------------------------------------------------
 
+#### Řešení úlohy 2)
+
 Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
 
-```{webr}
+```{webr-r}
 
 ```
 
 ::: fragment
 Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžeme použít?
 
-```{webr}
+```{webr-r}
 
 ```
 :::
@@ -433,6 +236,8 @@ Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžem
 :::
 
 ------------------------------------------------------------------------
+
+#### Řešení úlohy 3)
 
 Opravte následující kód tak, aby dával požadovaný výsledek.
 
@@ -458,10 +263,10 @@ rep(c(škoda = "octavia"), 2)
 
 > **objekt složený z vektorů stejného datového typu a délky v několika dimenzích**
 
--   jakým způsobem si představit dimenze?
-    -   Jedna dimenze: řada hodnot
-    -   Dvě dimenze: hodnoty v sloupcích a řádcích
-    -   Tři dimenze: dvě tabulky se sloupci a řádky naskládané za sebe
+- jakým způsobem si představit dimenze?
+  - Jedna dimenze: řada hodnot
+  - Dvě dimenze: hodnoty v sloupcích a řádcích
+  - Tři dimenze: dvě tabulky se sloupci a řádky naskládané za sebe
 
 ------------------------------------------------------------------------
 
@@ -479,7 +284,7 @@ rep(c(škoda = "octavia"), 2)
 
 ------------------------------------------------------------------------
 
--   use case
+- use case
 
 ```{webr-r}
 #| context: output
@@ -495,7 +300,7 @@ den = paste0("den_", 1:7),
 temps
 ```
 
--   nejvíce nás ale bude zajímat **datové pole o dvou dimenzích - matice**
+- nejvíce nás ale bude zajímat **datové pole o dvou dimenzích - matice**
 
 ------------------------------------------------------------------------
 
@@ -503,16 +308,16 @@ temps
 
 > **dvojrozměrné pole**
 
--   dvojrozměrný objekt znamená, že už se nejedná o objekt co má pouze jednu linii hodnot jako vektor, ale že **má řádky a sloupce**
+- dvojrozměrný objekt znamená, že už se nejedná o objekt co má pouze jednu linii hodnot jako vektor, ale že **má řádky a sloupce**
 
-    ```{webr-r}
-    #| context: output
-    matrix(1:6, nrow=3, ncol=2) 
-    ```
+  ```{webr-r}
+  #| context: output
+  matrix(1:6, nrow=3, ncol=2) 
+  ```
 
-    -   číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci Indexace
+  - číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci Indexace
 
--   při pokusu o vytvoření matice z více datových typů dojde stejně jako u vektoru k nucené konverzi na charakter
+- při pokusu o vytvoření matice z více datových typů dojde stejně jako u vektoru k nucené konverzi na charakter
 
 ```{webr-r}
 #| context: output
@@ -525,18 +330,30 @@ cbind(1:3, 4:6, c("jmeno", "prijmeni", "ID"))
 
 Matici lze vytvořit pomocí mnoha funkcí. Pokud ji chceme vytvořit celou od začátku, můžeme použít funkcí `matrix()`.
 
-```{webr}
-matrix(1:8, nrow = 2, ncol = 4) 
+```{webr-r}
+matrix(data = 1:8, nrow = 2, ncol = 4) 
 ```
 
 Jaký bude výsledek této funkce? Co znamenají jednotlivé argumenty?
 
+- `data`: hodnoty, které budou matici tvořit
+
+- `nrow`: počet řádků
+
+- `ncol`: počet sloupců
+
+- ...a další
+
 ::: fragment
 Jaký bude výsledek následující funkce?
 
-```{webr}
-matrix(1:2, nrow = 2, ncol = 4) 
+```{webr-r}
+matrix(1:3, nrow = 2, ncol = 4) 
 ```
+:::
+
+::: fragment
+Při menším množství hodnot než je potřeba pro počet sloupců a řádků funkce `matrix` začne hodnoty opakovat (násobit). Pokud ale není celý násobek možný, dojde k erroru, stejně tak jako pokud je více hodnot v `data` než je potřeba.
 :::
 
 ------------------------------------------------------------------------
@@ -555,10 +372,10 @@ cbind(1:3, 5:7)
 rbind(1:3, 5:7)
 ```
 
--   Vytvoření matice po řádcích lze i u funkce `matrix()`. Jak bychom toto provedli?
+- Vytvoření matice po řádcích lze i u funkce `matrix()`. Jak bychom toto provedli?
 
 ::: fragment
--   Argument `byrow` je automaticky nastaven na hodnotu `FALSE`. Pro seřazení po řádcích (by row) je potřeba v matici zahrnout `byrow = TRUE`.
+- Argument `byrow` je automaticky nastaven na hodnotu `FALSE`. Pro seřazení po řádcích (by row) je potřeba v matici zahrnout `byrow = TRUE`.
 
 ```{r}
 matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE) 
@@ -573,7 +390,7 @@ Vytvoř následující matici:
 
 ```{webr-r}
 #| context: output
-matrix(seq(6, 34, length.out = 6), 2, 3)
+matrix(seq(2, 19, by = 3), 2, 3)
 ```
 
 ```{webr-r}
@@ -588,9 +405,13 @@ HG6 <- c("Helga", "Gdovinová", "ID_006")
 TM7 <- c("Tomáš", "Marný")
 ```
 
-::: fragment
-Nezapomeňte na existenci NA!
+:::: fragment
+::: callout-caution
+## Nezapomeňte na existenci NA!
+
+Matice potřebuje, aby všechny řádky (a sloupce) měly totožný počet hodnot. Funkce `rbind` a `cbind` tak automaticky **začne hodnoty v jednotlivých částech opakovat** tak dlouho, dokud jich nebude dostatečný počet na to, aby bylo možné fukci provést.
 :::
+::::
 
 ------------------------------------------------------------------------
 
@@ -661,7 +482,7 @@ matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20),
 3.  Připoj k matici další sloupec tvořený vektorem s takovým počtem hodnot jako je počet řádků
 
     ```{r}
-    hotovaMatice <- cbind(hotovaMatice, c(rep(2, 2))); hotovaMatice
+    hotovaMatice <- cbind(hotovaMatice, c(2, 2)); hotovaMatice
     ```
 :::
 
@@ -669,7 +490,7 @@ matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20),
 4.  Pojmenuj sloupce a řádky
 
     ```{r}
-    colnames(hotovaMatice) <- 1:ncol(hotovaMatice) #fce ncol da zpe pocet sloupcu, stejne jako nrow radku
+    colnames(hotovaMatice) <- 1:ncol(hotovaMatice) #fce ncol da zpet pocet sloupcu, stejne jako nrow radku
     rownames(hotovaMatice) <- c("czech", "slovak")
     hotovaMatice
     ```
@@ -695,7 +516,7 @@ matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20),
 :::
 
 ::: fragment
-3.  Je potřeba, aby počet sloupců byl přesně takový, jako je počet hodnot ve vektorech, jinak by se nám nerozdělily do pravidelně opakujících řádků.
+3.  Je potřeba, aby počet sloupců byl přesně takový, jako je počet hodnot ve vektorech, jinak by se nám nerozdělily do pravidelně se opakujících řádků.
 
     ```{r}
     matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20), byrow = TRUE)
@@ -720,9 +541,10 @@ Do parametru `dimnames` se vloží list, který bude obsahovat názvy pro každo
 
 > **objekt složený z jiných objektů které mohou být rozličné délky a datového typu**
 
--   use case
-    -   třeba ty dimnames (musí se vložit jeden objekt co může mít více data typů)
-    -   Dvě dimenze: hodnoty v sloupcích a řádcích
+- use case
+  - třeba `dimnames` (musí se vložit jeden objekt co může mít více data typů)
+  - Dvě dimenze: hodnoty v řádcích a sloupcích
+- ukázka:
 
 ```{webr-r}
 #| context: output
@@ -739,16 +561,16 @@ Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi",
 
 > **typ listu, který obsahuje pouze objekty totožné délky**
 
--   s vektorem nejčastější typ datové struktury v R, se kterým budete pracovat
+- s vektorem nejčastější typ datové struktury v R, se kterým budete pracovat
 
--   tldr; tabulka
+- tldr; tabulka
 
--   ukázka
+- ukázka
 
-    ```{webr-r}
-    #| context: output
-    data.frame(cbind(1:4, c("MFF", "FHS", NA , "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
-    ```
+  ```{webr-r}
+  #| context: output
+  data.frame(cbind(1:4, c("MFF", "FHS", NA , "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
+  ```
 
 #### Tvorba data frame
 
@@ -785,50 +607,59 @@ data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
 
 #### Pojmenovávání sloupců a řádků
 
--   řádky:
+- **řádky:**
 
-    -   pomocí argumentu `row.names,`vždy potřeba definovat název pro každý řádek!
+  - pomocí argumentu `row.names,`vždy potřeba definovat název pro každý řádek!
 
-        ```{r}
-        data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
-                   PSČ = c(73912, 36251, 25303),
-                   okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
-                   row.names = c("id_01", "id_02"))
-        ```
+```{webr-r}
+data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+            PSČ = c(73912, 36251, 25303),
+            okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
+            row.names = c("id_01", "id_02"))
+```
 
--   sloupce:
+- **sloupce:**
 
-    -   pojmenování jednotlivých datových struktur, ze kterých se má data frame skládat, pomocí štítku (název = hodnota)
-
-    -   použití již dříve vytvořených objektů
+  - pojmenování jednotlivých datových struktur, ze kterých se má data frame skládat, pomocí štítku (název = hodnota)
 
     ```{r}
-    obec <- c("Čeladná", "Jáchymov", "Chýně")
-    PSČ <- c(73912, 36251, 25303)
-    okres <- c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ")
-    data.frame(obec, PSČ, okres)
+    data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+               PSČ = c(73912, 36251, 25303),
+               okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
     ```
 
-    -   pozdější doplnění pomocí funkce `colnames`
+  - použití již dříve vytvořených objektů
 
-        ```{r}
-        lokace <- data.frame(c("Čeladná", "Jáchymov", "Chýně"),
-                   c(73912, 36251, 25303),
-                   c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
-        colnames(lokace) <- c("obec", "PSČ", "okres")
-        lokace
-        ```
+  ```{r}
+  obec <- c("Čeladná", "Jáchymov", "Chýně")
+  PSČ <- c(73912, 36251, 25303)
+  okres <- c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ")
+  data.frame(obec, PSČ, okres)
+  ```
 
--   oboje najednou:
+  - pozdější doplnění pomocí funkce `colnames`
 
-    -   použitím funkce `dimnames` lze najednou nastavit názvy pro obě dimenze
+    ```{r}
+    lokace <- data.frame(c("Čeladná", "Jáchymov", "Chýně"),
+               c(73912, 36251, 25303),
+               c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
+    colnames(lokace) <- c("obec", "PSČ", "okres")
+    lokace
+    ```
 
-        ```{r}
-        dimnames(lokace) <- list(c("001/kl", "002/oi", "003/us"), c("mesto", "psc", "kraj"))
-        lokace
-        ```
+- **oboje najednou:**
 
-        -   Proč zde používáme list? Pokud nevíte, podívejte se do nápovědy :\]
+  - použitím funkce `dimnames` lze najednou nastavit názvy pro obě dimenze
+
+    ```{r}
+    dimnames(lokace) <- list(c("001/kl", "002/oi", "003/us"),
+                             c("mesto", "psc", "kraj"))
+    lokace
+    ```
+
+    - Proč zde používáme list? Pokud si nepamatujete, podívejte se do nápovědy :\]
+
+------------------------------------------------------------------------
 
 #### Jiné způsoby tvorby data frame
 
@@ -842,6 +673,7 @@ cbind(c("Čeladná", "Jáchymov", "Chýně"),
 
 **Jaký typ objektu je výsledek?** Jedná se o data frame?
 
+:::: fragment
 ```{webr-r}
 class(cbind(c("Čeladná", "Jáchymov", "Chýně"),
       c(73912, 36251, 25303),
@@ -851,36 +683,52 @@ class(cbind(c("Čeladná", "Jáchymov", "Chýně"),
 ::: callout-tip
 ## class vs mode
 
-Funkce `mode` nám zjistí, o jaký datový typ se jedná. Fuknce `class`nám nejenomže řekne více informací, ale hlavně nám řekne, jak se vůči danému objektu R bude chovat.
+Funkce `mode` nám zjistí, o jaký datový typ se jedná. Fuknce `class`nám nejenomže zjistí více informací, ale hlavně nám řekne, jak se vůči danému objektu R bude chovat.
+:::
+::::
+
+Funkce `cbind` a `rbind` **vytvoří data frame pouze v případě, že alespoň jeden z objektů svazovaných dohromady je již data frame**, jinak vytvoří matici.
+
+Pro vytvoření data frame pomocí spojení objektů jako sloupců či řádků je třeba využít přímo funkce `cbind.data.frame` a `rbind.data.frame`.
+
+------------------------------------------------------------------------
+
+### Procvičení
+
+Vytvořte objekt, který v sobě bude obsahovat informace o probíhajícím výzkumu. Bude obsahovat jeho název, jména a identifikační číslo dvou výzkumníků a soupis toho, zda se jim podařilo v pěti experimentech octomilky úspěšně rozmnožit.
+
+::: fragment
+```{webr-r}
+
+```
 :::
 
-Funkce `cbind` a `rbind` vytvoří data frame pouze v případě, že
+------------------------------------------------------------------------
 
-všechno jako text, co to znamená?
+ggg
 
-funkce class
-
-rozdíl class a mode
-
-cbind vytvoří data frame pouze pokud jeden ze svazovaných objektů je taktéž dataframe
-
-Místo toho `cbind.data.frame` cc
-
-### Pojmenovávání sloupců a řádků
+------------------------------------------------------------------------
 
 ### Samostatné cvičení
 
-1.  gg
+1.  Vytvořte následující data frame:
 
-    Vytvořte následující data frame:
+```{r}
+#| echo: false
+countdown::countdown(minutes = 10,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
 
-    ```{webr-r}
-    #| context: output
-    vek <- c(27,35,30,47,42);vek
-    sex <- c("female","male","male","female","female"); sex
-    strana <-c("sin","sin","dx","dx","dx"); strana
-    id <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020"); id
-    VZOREK <- data.frame(vek, strana, sex, row.names = id); VZOREK
-    ```
+```{webr-r}
+#| context: output
+vek <- c(27,35,30,47,42)
+sex <- c("female","male","male","female","female")
+strana <-c("sin","sin","dx","dx","dx")
+id <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
+VZOREK <- data.frame(vek, strana, sex, row.names = id); VZOREK
+```
 
-2.  gg
+2.  Doplňte k data frame z první úlohy sloupec `clearSample`, který v sobě bude obsahovat náhodně vybrané hodnoty `TRUE` a `FALSE`. Výběr hodnot proveďte pomocí funkce.

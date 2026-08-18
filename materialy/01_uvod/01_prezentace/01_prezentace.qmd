@@ -21,61 +21,62 @@ execute:
 ## Program
 
 ::: incremental
--   organizační a administrativní informace ke kurzu
--   krátké seznamovací okénko
--   seznámení se s prostředí IDE RStudio
--   datové typy v R
--   ukládání dat do proměnných
--   operátory
--   etiketa psaní kódu
--   working directory
--   RProjekty, .RData
+- organizační a administrativní informace ke kurzu
+- krátké seznamovací okénko
+- seznámení se s prostředí IDE RStudio
+- datové typy v R
+- ukládání dat do proměnných
+- operátory
+- etiketa psaní kódu
+- working directory
+- RProjekty, .RData
+- funkce v R a jejich syntax
 :::
 
 ## O kurzu
 
--   kurz s cílem poskytnout účastníkům **solidní základy práce s R** za účelem následné práce s vědeckými daty
+- kurz s cílem poskytnout účastníkům **solidní základy práce s R** za účelem následné práce s vědeckými daty
 
--   **zakončení mikrocerfikátem**: oficiální [certifikát uznávaný napříč EU](https://cczv.cuni.cz/CCZV-521.html) s jasně definovanými dovednostmi
+- **zakončení mikrocerfikátem**: oficiální [certifikát uznávaný napříč EU](https://cczv.cuni.cz/CCZV-521.html) s jasně definovanými dovednostmi
 
--   pokračování: do budoucna jsou plánována **jednorázová školení na specifická pokročilá témata** o která bude zájem
+- pokračování: do budoucna jsou plánována **jednorázová školení na specifická pokročilá témata** o která bude zájem
 
 ## O vyučujícím
 
 #### Mgr. Lucie Hošková
 
--   manažer repozitáře pro výzkumná data na UK
+- manažer repozitáře pro výzkumná data na UK
 
--   výuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS
+- výuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS
 
--   datová práce všeho druhu
+- datová práce všeho druhu
 
-    -   datová analýza pro Akademii Věd
+  - datová analýza pro Akademii Věd
 
-    -   konzultace pro dizertační, diplomové a bakalářské práce
+  - konzultace pro dizertační, diplomové a bakalářské práce
 
-    -   KPZ (kolega poslední záchrany)
+  - KPZ (kolega poslední záchrany)
 
--   popularizačně naučné přednášky nejen o datové analýze
+- popularizačně naučné přednášky nejen o datové analýze
 
 ## Organizace kurzu
 
--   **10 lekcí po třech hodinách**
-    -   bloky 3 x cca 50 minut
-    -   výuka jednou za dva týdny, přes Vánoce pauza
--   **3 tématické okruhy**
-    -   zpracovávání dat
-    -   vizualizace dat
-    -   analýza dat
+- **10 lekcí po třech hodinách**
+  - bloky 3 x cca 50 minut
+  - výuka jednou za dva týdny, přes Vánoce pauza
+- **3 tématické okruhy**
+  - zpracovávání dat
+  - vizualizace dat
+  - analýza dat
 
 ## Hodnocení kurzu
 
 1.  **průběžné domácí úkoly**
 2.  **miniprojekt přes Vánoce**
 3.  **80% docházka**
-    -   v případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale **prosím choďte pokud můžete**
-    -   v případě absence či online výuky domácí práce navíc
-    -   je to vše o domluvě :\]
+    - v případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale **prosím choďte pokud můžete**
+    - v případě absence či online výuky domácí práce navíc
+    - je to vše o domluvě :\]
 
 ## Průběh hodin
 
@@ -83,11 +84,11 @@ execute:
 
 2.  výklad nové látky
 
-    -   kombinace prezentace, code-along a samostatné práce
+    - kombinace prezentace, code-along a samostatné práce
 
 3.  cvičení z probrané látky
 
-    -   kombinace nové látky a znalostí z předchozích hodin
+    - kombinace nové látky a znalostí z předchozích hodin
 
 4.  řešení "chuťovek" z minulých hodin a z dotazů
 
@@ -119,17 +120,17 @@ Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky
 
 **Open source** programovací jazyk určený ke statistické analýze a datové vizualizaci.
 
--   v současnosti jeden ze **standardů pro datovou analýzu ve vědecké sféře**
+- v současnosti jeden ze **standardů pro datovou analýzu ve vědecké sféře**
 
--   aktivně využívaný, spravovaný a uržovaný **globální vědeckou komunitou**
+- aktivně využívaný, spravovaný a uržovaný **globální vědeckou komunitou**
 
-    -   dlouhá historie: spuštěn v roce 1993
+  - dlouhá historie: spuštěn v roce 1993
 
--   nepřeberné množství specializovaných rozšíření
+- nepřeberné množství specializovaných rozšíření
 
 ## R vs RStudio
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 R
 
@@ -141,11 +142,11 @@ RStudio
 
 ![](images/clipboard-596025863.png)
 
--   IDE - vývojářské prostředí
+- IDE - vývojářské prostředí
 
--   usnadňuje práci s R
+- usnadňuje práci s R
 :::
-:::
+:::::
 
 ## RStudio
 
@@ -173,48 +174,48 @@ RStudio
 
 ## Datové typy v R
 
-::: columns
+:::::: columns
 ::: {.column width="33%"}
 ### Numeric
 
--   integer
+- integer
 
-    -   5, 0, 123
+  - 5, 0, 123
 
--   double
+- double
 
-    -   1.87, 0.3679
+  - 1.87, 0.3679
 
-    -   Inf
+  - Inf
 
-    -   -Inf
+  - -Inf
 :::
 
 ::: {.column width="33%"}
 ### Character
 
--   "Hello world!"
--   "žluťoučký"
--   "532"
--   'kolo'
+- "Hello world!"
+- "žluťoučký"
+- "532"
+- 'kolo'
 :::
 
 ::: {.column width="33%"}
 ### Logical
 
--   taktéž popisovány jako boolean
+- taktéž popisovány jako boolean
 
--   TRUE
+- TRUE
 
--   FALSE
+- FALSE
 :::
-:::
+::::::
 
 ------------------------------------------------------------------------
 
 ### Další typy se kterými se můžete setkat
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 NA
 
@@ -244,11 +245,11 @@ NaN
 0 / 0
 ```
 :::
-:::
+:::::
 
--   Přestože s komplexním číslem můžeme provádět aritmetické operace, R jej nebere jako numeric hodnotu!
+- Přestože s komplexním číslem můžeme provádět aritmetické operace, R jej nebere jako numeric hodnotu!
 
--   NaN je naopak bráno jako numeric hodnota
+- NaN je naopak bráno jako numeric hodnota
 
 ## Ukládání proměnných
 
@@ -273,9 +274,9 @@ Hodnota se uloží pomocí následujícího postupu:
 
 **název proměnné \<- hodnota**
 
--   R čte zpravidla zleva do prava, proto je možné i hodnota -\> proměnná
+- R čte zpravidla zleva do prava, proto je možné i hodnota -\> proměnná
 
-    -   silně nedoporučuji, je to nepřehledné
+  - silně nedoporučuji, je to nepřehledné
 
 ```{r}
 123456789123456789123456789123456789 -> cisloNaruby
@@ -305,33 +306,33 @@ promennaSpatne + 5
 
 Funkce `rm()` umožňuje mazat uložené proměnné z globálního prostředí.
 
--   `rm()` - smaže VŠE
+- `rm()` - smaže VŠE
 
--   `rm(název proměnné)` - smaže specifickou proměnnou
+- `rm(název proměnné)` - smaže specifickou proměnnou
 
 ------------------------------------------------------------------------
 
 ### Zakázané způsoby pojmenovávání proměnných
 
--   mezera mezi slovy
+- mezera mezi slovy
 
-    ``` r
-    pet aut <- 5
-    ```
+  ``` r
+  pet aut <- 5
+  ```
 
--   začínat symbolem
+- začínat symbolem
 
-    ``` r
-    <6>4aut <- 5
-    ```
+  ``` r
+  <6>4aut <- 5
+  ```
 
--   začínat číslicí
+- začínat číslicí
 
-    ``` r
-    5aut <- 5
-    ```
+  ``` r
+  5aut <- 5
+  ```
 
-    **Pozor na diakritiku!**
+  **Pozor na diakritiku!**
 
 ## Procvičení
 
@@ -521,7 +522,7 @@ countdown::countdown(minutes = 15,
 identical("data", "Data")
 ```
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 Používejte co chcete ale buďte konzistentní.
 
@@ -533,17 +534,17 @@ Jaké jsou zvysklosti ve vašem oboru/laboratoři?
 ::: {.column width="50%"}
 **Možné styly zápisu:**
 
--   camelCase
+- camelCase
 
--   PascalCase
+- PascalCase
 
--   snake_case
+- snake_case
 
--   kebab-dash
+- kebab-dash
 
--   a jiné
+- a jiné
 :::
-:::
+:::::
 
 ------------------------------------------------------------------------
 
@@ -685,6 +686,224 @@ load("vozidla.RData")
 ```
 
 Můžete svým kolegům tak například poslat již vyčištěná a připravená data, bez toho aby si sami museli nahrávat původní tabulku a provádět na ní veškeré kontroly.
+
+## Funkce v R
+
+Nedílnou součástí kódu v R jsou takzvané funkce. Jedná se o **příkazy, které provedou specifickou akci za vámi definovaných podmínek**.
+
+`název funkce(název argumentu = parametry argumentu)`
+
+Pomocí funkce `seq` vygeneruj sekvenci s rozestupem po 3 od 10 do 20.
+
+```{r}
+seq(from = 10, to = 20, by = 3)
+```
+
+::: fragment
+Co bude výsledkem následujícího kódu?
+
+```{webr}
+seq(from = 2, to = 10, length.out = 5)
+```
+:::
+
+------------------------------------------------------------------------
+
+### Lze psát příkazy i bez definování argumentů?
+
+```{r}
+rep("ID", 5)
+```
+
+::: fragment
+Ano; bez definování názvu argumentu se pracuje s jeho pořadím.
+:::
+
+::: fragment
+Je pořadí argumentů důležité? Ovlivní výsledek?
+
+```{webr}
+rep(x = "vzorek", times = 10)
+```
+
+```{webr}
+rep(times = 10, x = "vzorek")
+```
+:::
+
+:::: fragment
+::: callout-caution
+## Pozor!
+
+Na pořadí argumentu nezáleží, dokud jasně **definujeme k jakému argumentu parametr patří**.
+:::
+::::
+
+::: fragment
+Jaký bude výsledek těchto kódů? Jsou totožné?
+
+```{webr}
+seq(10, 6)
+seq(to = 10, from = 6)
+```
+:::
+
+------------------------------------------------------------------------
+
+### Rozdíl mezi `=` a `<-`
+
+Možná jste se setkali s tím, že někdo zapisuje proměnné pomocí operátoru =. Funguje to?
+
+```{r}
+x = 6
+x + 1
+```
+
+Proč se proto místo toho používá `<-` ?
+
+```{r}
+rep(osobaID <- 5, 3)
+osobaID + 4
+```
+
+:::: fragment
+::: callout-tip
+## R umožňuje provádět akce uvnitř "jiných akcí"
+
+V tomto případě určujeme argument na první pozici, a zároveň jeho hodnotu ukládáme do proměnné `osobaID`.
+:::
+::::
+
+------------------------------------------------------------------------
+
+Co bude výsledkem následujícího kódu?
+
+```{webr}
+rep(osobaID_2 = 5, 3)
+osobaID_2 + 4
+```
+
+::: fragment
+Na jaké problémy zde narazíme?
+:::
+
+::: incremental
+- `osobaID` není argument funce `rep`
+
+- operátor `=` ve funkci neznamená přiřazení, ale určení argumentu
+
+  - samotný argument `osobaID_2` ve funkci `rep` neexistuje a proto nevznikne platný výsledek
+
+- nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
+:::
+
+------------------------------------------------------------------------
+
+### Samostatné cvičení
+
+1.  Múžeme zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, opravte.
+
+    ```{webr-r}
+    seq(1, 10, 3)
+    ```
+
+2.  Bez spuštění kódu určete, jaký bude výsledek této funkce. Používejte nápovědu, zkuste si jednotlivé části rozepsat.
+
+    ```{webr-r}
+    length(rep(seq(2, 10, 2), 3))
+    ```
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+------------------------------------------------------------------------
+
+#### Řešení úlohy 1)
+
+Múžeme zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, opravte.
+
+```{webr-r}
+seq(1, 10, 3)
+```
+
+:::: fragment
+Ne, jelikož argument na třetí pozici v této funkci není `length.out`, který určuje délku sekvence, ale `by`, který určuje periodu.
+
+::: callout-important
+## Čtěte dokumentaci pozorně!
+
+R dokumentace je psana mnoha lidmi a nemusí být vždy konzistentní.
+:::
+::::
+
+::: fragment
+Správná podoba kódu by tedy byla
+
+```{r}
+seq(from = 1, to = 10, length.out = 3)
+```
+:::
+
+------------------------------------------------------------------------
+
+#### Řešení úlohy 2)
+
+Bez spuštění následujícího kódu určete, jaký bude výsledek této funkce. Používejte nápovědu, zkuste si jednotlivé části rozepsat.
+
+```{webr-r}
+length(rep(seq(2, 10, 2), 3))
+```
+
+::: fragment
+Funkce `length` zjišťuje, jaká je "délka", jaký je počet hodnot. Potřebujeme proto spočítat, kolik hodnot nám vznikne jako výsledek funkce `rep`.
+:::
+
+::: fragment
+Funkce `rep` nám zde třikrát zopakuje výsledek daný funkcí `seq`.
+:::
+
+::: fragment
+Funkce `seq(2, 10, 2)` by zde mohla být zapsána na základě pořádí argumentů i jako `seq(from = 2, to = 10, by = 2)`. Výsledkem je tak sekvence `2  4  6  8 10`, která má pět čísel.
+:::
+
+::: fragment
+Třikrát se tedy zopakuje sekvence pěti čísel, což znamená že **výsledek je patnáct**.
+:::
+
+## Vnořování funkcí
+
+Jak bylo vidět v přechozích částech, R umožňuje používat funkce uvnitř dalších funkcí.
+
+Pro R je hlavně důležité, aby **hodnoty v jednotlivých argumentech splňovaly jejich podmínky, nikoliv v jaké podobě tyto hodnoty do funkce vstupují**.
+
+```{r}
+trojka <- 3
+rep(x = seq(1, 10, 3), times = trojka)
+```
+
+------------------------------------------------------------------------
+
+V určité chvíli je ovšem dobré **přemýšlet i o čitelnosti samotného kódu**.
+
+Který z následujících kódů je čitelnější?
+
+```{r}
+sample(x = rep(x = seq(1, 10, 3), times = 2), size = 4, replace = FALSE)
+```
+
+nebo
+
+```{r}
+opakovani <- rep(x = seq(1, 10, 3), times = 2)
+
+sample(x = opakovani, size = 4, replace = FALSE)
+```
 
 ## Domácí práce
 
