@@ -36,11 +36,13 @@ execute:
 ## Kontrola domácí práce
 
 ::: incremental
-1.  vytvoření RProjektu
+1.  Mají všichni stažený balíček `tidyverse`?
 
-2.  nový R skript
+2.  vytvoření RProjektu
 
-3.  nahrání uložených dat
+3.  nový R skript
+
+4.  nahrání uložených dat
 
     ```{r}
     load("promenne.RData")
@@ -48,13 +50,13 @@ execute:
 
     Jde nahrát RData soubor i jiným způsobem? Jaké jsou nevýhody tohoto přístupu?
 
-4.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
+5.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
 
     ```{r}
     (rozpocet%/%plat)/pocetMesicu
     ```
 
-5.  A nešlo by to jinak?
+6.  A nešlo by to jinak?
 
     ```{r}
     identical((rozpocet%/%plat)/pocetMesicu, (rozpocet/plat)%/%pocetMesicu)
@@ -99,7 +101,7 @@ c(1, 5, 77)
 
 - **způsobů je mnohem více**, tyto se ale hodí znát
 
-## Potenciální zádrhely
+### Potenciální zádrhely
 
 Co se stane po projetí následujícího kódu?
 
@@ -131,7 +133,7 @@ mode(vektorNA)
 :::
 ::::
 
-## Pojmenovávání hodnot
+### Pojmenovávání hodnot
 
 Jednotlivé hodnoty ve vektoru (ale i zbylých datových strukturách) je možné si pojmenovat.
 
@@ -154,7 +156,7 @@ c(škoda = "octavia", škoda = "felicia", volkswagen = "beetle")
 
 ------------------------------------------------------------------------
 
-### Co když si chci zpětně vektor pojmenovat?
+#### Co když si chci zpětně vektor pojmenovat?
 
 ```{r}
 vektorBezJmen <- c("Škoda", "Hyundai", "Vespa"); vektorBezJmen
@@ -267,6 +269,7 @@ rep(c(škoda = "octavia"), 2)
   - Jedna dimenze: řada hodnot
   - Dvě dimenze: hodnoty v sloupcích a řádcích
   - Tři dimenze: dvě tabulky se sloupci a řádky naskládané za sebe
+- k vytvoření se používá primárně funkce `array`
 
 ------------------------------------------------------------------------
 
@@ -405,7 +408,7 @@ TM7 <- c("Tomáš", "Marný")
 ::: callout-caution
 ## Nezapomeňte na existenci NA!
 
-Matice potřebuje, aby všechny řádky (a sloupce) měly totožný počet hodnot. Funkce `rbind` a `cbind` tak automaticky **začne hodnoty v jednotlivých částech opakovat** tak dlouho, dokud jich nebude dostatečný počet na to, aby bylo možné fukci provést.
+Matice potřebuje, aby všechny řádky (a sloupce) měly totožný počet hodnot. Funkce `rbind` a `cbind` tak **začne hodnoty v jednotlivých částech opakovat** tak dlouho, dokud jich nebude dostatečný počet na to, aby bylo možné fukci provést.
 :::
 ::::
 
@@ -538,18 +541,22 @@ Do parametru `dimnames` se vloží list, který bude obsahovat názvy pro každo
 > **objekt složený z jiných objektů které mohou být rozličné délky a datového typu**
 
 - use case
-  - třeba `dimnames` (musí se vložit jeden objekt co může mít více data typů)
+  - třeba argument/funkce `dimnames` (musí se vložit jeden objekt co může mít více data typů)
   - Dvě dimenze: hodnoty v řádcích a sloupcích
+- vytvoří se pomocí funkce `list`
 - ukázka:
 
 ```{webr-r}
-#| context: output
-Doctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","Peter Davison","Colin Baker","Sylvester McCoy","Paul McGann", "John Hurt","Christopher Eccleston"),
-               year=c(55,46,50,40,29,40,44,36,73,41), 
-               episodes=c("134","119","128","172","69","31","42","1","2","13")); Doctor
-Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi", "Jodie Whittaker"), year = c(Doctor$year,34,27,55,36),
-               episodes = c(Doctor$episodes,"47","44","39","10")); Doctor
+oldDoctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","Peter Davison","Colin Baker","Sylvester McCoy","Paul McGann", "John Hurt","Christopher Eccleston"),
+               year = c(55,46,50,40,29,40,44,36,73,41), 
+               episodes = c("134","119","128","172","69","31","42","1","2","13")); oldDoctor
 ```
+
+------------------------------------------------------------------------
+
+#### Procvičení
+
+1.  Vytvořte objekt, který v sobě bude obsahovat informace o probíhajícím výzkumu. Bude obsahovat jeho název, jména a identifikační číslo dvou výzkumníků a soupis toho, zda se jim podařilo v pěti experimentech octomilky úspěšně rozmnožit.
 
 ------------------------------------------------------------------------
 
@@ -607,12 +614,21 @@ data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
 
   - pomocí argumentu `row.names,`vždy potřeba definovat název pro každý řádek!
 
-```{webr-r}
-data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
-            PSČ = c(73912, 36251, 25303),
-            okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
-            row.names = c("id_01", "id_02"))
-```
+    ```{r}
+    data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+               PSČ = c(73912, 36251, 25303),
+               okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
+               row.names = c("id_01", "id_02", "id_03"))
+    ```
+
+  - pozdější doplnění pomocí funkce `rownames`
+
+    ```{r}
+    lokace <- data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+               PSČ = c(73912, 36251, 25303),
+               okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
+    rownames(lokace) <- c("id_01", "id_02", "id_03")
+    ```
 
 - **sloupce:**
 
@@ -626,12 +642,13 @@ data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
 
   - použití již dříve vytvořených objektů
 
-  ```{r}
-  obec <- c("Čeladná", "Jáchymov", "Chýně")
-  PSČ <- c(73912, 36251, 25303)
-  okres <- c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ")
-  data.frame(obec, PSČ, okres)
-  ```
+    ```{r}
+    obec <- c("Čeladná", "Jáchymov", "Chýně")
+    PSČ <- c(73912, 36251, 25303)
+    okres <- c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ")
+
+    data.frame(obec, PSČ, okres)
+    ```
 
   - pozdější doplnění pomocí funkce `colnames`
 
@@ -691,15 +708,13 @@ Pro vytvoření data frame pomocí spojení objektů jako sloupců či řádků 
 
 ### Procvičení
 
-1.  Vytvořte objekt, který v sobě bude obsahovat informace o probíhajícím výzkumu. Bude obsahovat jeho název, jména a identifikační číslo dvou výzkumníků a soupis toho, zda se jim podařilo v pěti experimentech octomilky úspěšně rozmnožit.
-
-2.  Spojte následující vektory po sloupcích do data frame. Následně k němu doplňte jména řádků, které budou libovolný text.
+1.  Spojte následující vektory po sloupcích do data frame. Následně k němu doplňte jména řádků, které budou libovolný text.
 
 ```{r}
-stainsLiveCells = c(TRUE, TRUE, FALSE)
-stainingType = c("NucSpot® Live 488", "Thiazole Green (SYBR® Green I)", "RedDot™2 Far-Red Nuclear Stain", "NucSpot® 750/780")
-colorMinNm = c(352, 498, 650, 750)
-colorMaxNm = c(461, 552, 675, 780)
+stainsLiveCells <- c(TRUE, TRUE, FALSE)
+stainingType <- c("NucSpot® Live 488", "Thiazole Green (SYBR® Green I)", "RedDot™2 Far-Red Nuclear Stain", "NucSpot® 750/780")
+colorMinNm <- c(352, 498, 650, 750)
+colorMaxNm <- c(461, 552, 675, 780)
 ```
 
 ------------------------------------------------------------------------
@@ -723,10 +738,10 @@ vek <- c(27,35,30,47,42)
 sex <- c("female","male","male","female","female")
 strana <-c("sin","sin","dx","dx","dx")
 id <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
-VZOREK <- data.frame(vek, strana, sex, row.names = id); VZOREK
+vzorek <- data.frame(vek, strana, sex, row.names = id); vzorek
 ```
 
-2.  Doplňte k data frame z první úlohy sloupec `clearSample`, který v sobě bude obsahovat náhodně vybrané hodnoty `TRUE` a `FALSE`. Výběr hodnot proveďte pomocí funkce.
+2.  Doplňte k data frame z první úlohy sloupec `clearSample`, který v sobě bude obsahovat náhodně vybrané hodnoty `TRUE` či `FALSE`. Výběr hodnot proveďte pomocí funkce.
 
 3.  Z následujících vektorů (bez jejich upravování) vytvořte data frame a pojmenujte první sloupec jako `znamky` a třetí jako `predmety`.
 
@@ -734,4 +749,167 @@ VZOREK <- data.frame(vek, strana, sex, row.names = id); VZOREK
 sample(1:5, 6, replace = TRUE)
 jmenaZaku <- c("LK", "SD", "AE", "IR")
 rep(c("ČJ", "biologie", "španělština"), 2)
+```
+
+------------------------------------------------------------------------
+
+#### Řešení úlohy 1)
+
+1.  Vypište jednotlivé sloupce jako vektory.
+
+    ```{r}
+    vek <- c(27,35,30,47,42)
+    sex <- c("female","male","male","female","female")
+    strana <- c("sin","sin","dx","dx","dx")
+    ```
+
+::: fragment
+2.  Volitelné; vytvořte si vektor pro jména řádků.
+
+    ```{r}
+    id <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
+    ```
+:::
+
+:::: fragment
+3.  Pomocí funkce `data.frame` spojte sloupce dohromady a popište řádky.
+
+    ```{r}
+    vzorek <- data.frame(vek, strana, sex, row.names = id); vzorek
+    #row.names samozrejme mohou byt i primo hodnoty
+    ```
+
+::: callout-tip
+## Pojmenování výsledného data frame
+
+Data frame si nemusíte pojmenovávat, ale vzhledem k úloze 2) se to hodí.
+:::
+::::
+
+------------------------------------------------------------------------
+
+#### Řešení úlohy 2)
+
+1.  K data frame potřebujeme připojit nový sloupec. Jeden ze způsobů jak to provést (další se naučíme později) je vytvoření nového pojmenovaného vektoru s jeho připojení ke stávajícímu data frame.\
+    Vytvořme si proto vektor, který bude obsahovat náhodný výběr boolean hodnot.
+
+    ```{r}
+    clearSample <- sample(c(TRUE, FALSE), size = length(strana), replace = TRUE)
+    #potrebujeme tolik hodnot jako je jich v teremkoliv jinem sloupci
+    #proto pouzijeme length(nazev nami ulozeneho vektoru)
+      #ano, jde to pocitat i rucne, ale co kfyz toho budete mit opravdu hodne?
+    ```
+
+::::: fragment
+2.  Spojíme dohromady data frame z první úlohy a nový vektor. Pro snadnou práci doporučuji si data frame pojmenovat (viz předchozí úloha).
+
+    ```{r}
+    vzorek <- cbind.data.frame(vzorek, clearSample); vzorek
+    #rovnou si i výsledek znovu uložíme
+    ```
+
+:::: callout-caution
+## Opakované spuštění ukládání kódu s novými údaji
+
+Co se stane, pokud výše zmíněný kód projedeme několikrát? A proč?
+
+::: fragment
+Při opakovaném spuštění kódu, kde se přidávají/ubírají části objektu anásledně se výsledek ukládá pod totožným názvem, bude docházet k tomu, že se změny provedou vždy na výsledku předchozí iterace. **Opakovaným spouštěním kódu a jeho ukládáním v této úloze by tak docházelo k opakovanému přidávání sloupce `clearSample` ad nauseum.**
+:::
+::::
+:::::
+
+------------------------------------------------------------------------
+
+#### Řešení úlohy 3)
+
+1.  Jednoduchým způsobem, jak si vytvořit dataframe s přiřazováním názvů, je použít funkci `data.frame`. Vytvořme si proto data frame z dodaných vektorů a dle zadání je pojmenujme tak, aby nám z toho vznikly správné názvy sloupců.
+
+:::: callout-note
+## Proč nepojmenováváme vektor, který v sobě obsahuje jména žáků?
+
+::: fragment
+Protože tím, že jsme si vektor přiřadili k určitému názvu, tak už v sobě obsahuje informace o jménu, které R použije jako název sloupce.
+:::
+::::
+
+```{webr-r}
+jmenaZaku <- c("LK", "SD", "AE", "IR")
+
+data.frame(znamky = sample(1:5, 6, replace = TRUE),
+           jmenaZaku,
+           predmety = rep(c("ČJ", "biologie", "španělština"), 2))
+```
+
+::: fragment
+2.  Kód nám hodí error, jelikož se pokoušíme do data frame, který musí mít vždy stejnou délku sloupců či řádků, vložit vektor, který je kratší jak ostatní. Potřebujeme si tedy zjistit, o který se jedná.
+
+```{r}
+length(sample(1:5, 6, replace = TRUE))
+length(jmenaZaku)
+length(rep(c("ČJ", "biologie", "španělština"), 2))
+```
+
+Vidíme, že vektor `jmenaZaku` je o dvě hodnoty kratší jak ostatní. **Abychom mohli data frame i tak stvořit, je potřeba, abychom upravili délku sloupce, který obsahuje vektor `jmenaZaku` na stejný počet hodnot jako ostatní.**
+:::
+
+:::: fragment
+3.  Pokud potřebujeme přidat chybějící hodnoty, jednoduše použijeme `NA`. Zadání nám ovšem neumožňuje upravovat vlastní vektor `jmenaZaku`. Jak jinak můžeme `NA` hodnoty v data frame doplnit?
+
+::: fragment
+Nic nám nezakazuje **použít vektor uvnitř dalšího vektoru**.
+
+```{r}
+data.frame(znamky = sample(1:5, 6, replace = TRUE),
+           jmenaZaku = c(jmenaZaku, NA, NA),
+           predmety = rep(c("ČJ", "biologie", "španělština"), 2))
+```
+:::
+::::
+
+------------------------------------------------------------------------
+
+### Tibble
+
+> **data frame ale ✧･ﾟ: *✧･ﾟ:vylepšené:･ﾟ✧*:･ﾟ✧**
+
+- stejná funkce jako data frame, ale v některých oblastech vylepšená
+
+  - ukazuje například rovnou rozměry a data typy jednotlivých sloupců
+
+  - snadněji zvládá objemnější datasety
+
+- ukázka:
+
+  ```{webr-r}
+  #| context: output
+  tibble::tibble(
+    id = 1:4,
+    jmeno = c("Ivo", "Oto", "Anna", "Bára"),
+    vek = c(25, 29,30, 35),
+    role = c("Engineer", "Data Scientist", "Developer", "HR"),
+    plat = c(45000,60000, 80000, 100000)
+  )
+  ```
+
+- je to v balíčku tibble, který je součástí metabalíčku tidyverse, máte ho nainstalovaný?
+
+- tidyverse::tibble()
+
+- co to znamená to ::
+
+------------------------------------------------------------------------
+
+vybíraůi jsme si pomocí volání uložených vektorů ale co když to nemáme uložené ale jen pojmenované? jak to vybereme potom?
+
+přidávání hodnot - praktická ukázka použití \$
+
+```{r}
+Doctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","Peter Davison","Colin Baker","Sylvester McCoy","Paul McGann", "John Hurt","Christopher Eccleston"),
+               year = c(55,46,50,40,29,40,44,36,73,41), 
+               episodes = c("134","119","128","172","69","31","42","1","2","13")); Doctor
+
+#pridame nove hodnoty - musime prepsat a pridat
+Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi", "Jodie Whittaker"), year = c(Doctor$year,34,27,55,36),
+               episodes = c(Doctor$episodes,"47","44","39","10")); Doctor
 ```
