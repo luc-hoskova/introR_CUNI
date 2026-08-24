@@ -7,7 +7,6 @@ title: "Sylabus"
 -   orientace v IDE [RStudio](https://posit.co/download/rstudio-desktop)
 -   projekty a organizace skriptů
 -   nápověda
--   balíčky
 -   operátory
 -   ukládání do proměnných
 -   datové typy v R
@@ -17,7 +16,8 @@ title: "Sylabus"
 
 -   datové struktury v R
 -   indexace
--   úvod do balíčku [`dplyr`](https://dplyr.tidyverse.org/)
+-   práce s balíčky
+-   úvod do [`dplyr`](https://dplyr.tidyverse.org/)
 
 ## 3. Transformace dat (13.10.2026)
 
