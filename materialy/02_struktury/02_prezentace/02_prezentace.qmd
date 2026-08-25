@@ -899,13 +899,25 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
 
 S balíčky jsme se krátce seznámili již v první lekci, zde si je ale probereme podrobněji.
 
-#### Co je to balíček?
+#### Co je to balíček (library)?
+
+-   nezávisle vytvořená sada funkcí, objektů a dat, které slouží k vyřešení určitého problému a které je možné si stáhnout a používat
+
+-   proč si ručně vytvářet celou novou funkci, která by nám třídila data dle námi daných kategoií, když to již někdo vytvořil jako funkci `group_by` v balíčku `dplyr`?
 
 -   
 
 aa
 
 Jak ho získám?
+
+1.  funkce `install`
+
+2.  výběrem skrz rozhraní
+
+    ![](images/clipboard-1909886774.png)
+
+    Zkouška stažení balíčku intallr kvůli funkci updateR která updatuje na novou verzi R
 
 ------------------------------------------------------------------------
 
