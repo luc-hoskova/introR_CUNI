@@ -8,7 +8,6 @@ format:
     self-contained: true
     theme: default
     scrollable: true
-    footer: "[Zpracovávání výzkumných dat pomocí jazyka R](https://luc-hoskova.github.io/introR_CUNI/) | [Lucie Hošková](https://orcid.org/0009-0001-9695-2342)"
 engine: knitr
 filters:
   - webr
@@ -18,10 +17,53 @@ execute:
   cache: true
 ---
 
-## Quarto
+## Program
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+::: incremental
+-   opakování z minulé hodiny
+-   kontrola domácího úkolu
+-   datové struktury v R
+-   indexace
+:::
 
-```{r}
-1 + 1
-```
+## Kontrola domácí práce
+
+::: incremental
+1.  Mají všichni stažený balíček `tidyverse`?
+
+2.  vytvoření RProjektu
+
+3.  nový R skript
+
+4.  nahrání uložených dat
+
+    ```{r}
+    load("promenne.RData")
+    ```
+
+    Jde nahrát RData soubor i jiným způsobem? Jaké jsou nevýhody tohoto přístupu?
+
+5.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
+
+    ```{r}
+    (rozpocet%/%plat)/pocetMesicu
+    ```
+
+6.  A nešlo by to jinak?
+
+    ```{r}
+    identical((rozpocet%/%plat)/pocetMesicu, (rozpocet/plat)%/%pocetMesicu)
+    ```
+:::
+
+## Načítání dat do R
+
+Abychom mohli data v R používat, musíme je nejdřív
+
+### Vektor
+
+> **série za sebou jdoucích hodnot totožného datového typu**
+
+-   vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
+
+-   jednodimenzionální (důležité hlavně při vyhledávání)
