@@ -899,25 +899,39 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
 
 S balíčky jsme se krátce seznámili již v první lekci, zde si je ale probereme podrobněji.
 
-#### Co je to balíček (library)?
+#### Co je to balíček (package)?
 
--   nezávisle vytvořená sada funkcí, objektů a dat, které slouží k vyřešení určitého problému a které je možné si stáhnout a používat
+-   **nezávisle vytvořená sada funkcí, objektů a dat**, které slouží k vyřešení určitého problému a které je možné si stáhnout a používat
 
--   proč si ručně vytvářet celou novou funkci, která by nám třídila data dle námi daných kategoií, když to již někdo vytvořil jako funkci `group_by` v balíčku `dplyr`?
+    -   proč si ručně vytvářet celou novou funkci, která by nám třídila data dle námi daných kategoií, když to již někdo vytvořil jako funkci `group_by` v balíčku `dlyr`?
 
--   
+#### Jak ho získám?
 
-aa
-
-Jak ho získám?
-
-1.  funkce `install`
+1.  funkce `install.packages("název balíčku")`
 
 2.  výběrem skrz rozhraní
 
-    ![](images/clipboard-1909886774.png)
+![](images/clipboard-1909886774.png)
 
-    Zkouška stažení balíčku intallr kvůli funkci updateR která updatuje na novou verzi R
+------------------------------------------------------------------------
+
+### Spuštění balíčku
+
+Po instalaci/stažení se nám balíček uloží v počítači, Před tím, než ho budeme používat, tak ho musíme do R nahrát; říci mu, že v tuto chvíli má hledat spuštěné funkce nejenom v baseR, ale i v dalších místech na našem počítači.
+
+::: callout-important
+## Proč se balíčky nenahrávají automaticky?
+
+Každý nahraný a otevřený balíček zabírá místo - pokud bychom automaticky nahrávali veškeré stažené balíčky, **R by se nám velmi výrazně zpomalilo**.
+:::
+
+**Jak si balíček nahrajeme do R?**
+
+1.  pomocí funkce `library`
+
+2.  výběrem skrze rozhraní
+
+    ![](images/clipboard-3713960113.png)
 
 ------------------------------------------------------------------------
 
