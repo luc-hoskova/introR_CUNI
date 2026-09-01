@@ -23,25 +23,18 @@ execute:
 -   opakování z minulé hodiny
 -   kontrola domácího úkolu
 -   datové struktury v R
-    -   vektor
-    -   pole
-    -   matice
-    -   list
-    -   data frame
-    -   tibble
+-   balíčky
 -   indexace
 :::
 
 ## Kontrola domácí práce
 
 ::: incremental
-1.  Mají všichni stažený balíček `tidyverse`?
+1.  vytvoření RProjektu
 
-2.  vytvoření RProjektu
+2.  nový R skript
 
-3.  nový R skript
-
-4.  nahrání uložených dat
+3.  nahrání uložených dat
 
     ```{r}
     load("promenne.RData")
@@ -49,13 +42,13 @@ execute:
 
     Jde nahrát RData soubor i jiným způsobem? Jaké jsou nevýhody tohoto přístupu?
 
-5.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
+4.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
 
     ```{r}
     (rozpocet%/%plat)/pocetMesicu
     ```
 
-6.  A nešlo by to jinak?
+5.  A nešlo by to jinak?
 
     ```{r}
     identical((rozpocet%/%plat)/pocetMesicu, (rozpocet/plat)%/%pocetMesicu)
@@ -115,7 +108,7 @@ Datový typ vektoru bude **automaticky převeden na charakterový**, jelikož ve
 Jaký bude datový typ následujícího vektoru?
 
 ```{r}
-vektorNA <- c(NA, 6, 9)
+vektorNA <- c(NA, 6, 9); vektorNA
 ```
 
 ::: fragment
@@ -218,15 +211,17 @@ Vypište alespoň tři rozdílné způsoby, jak získat následující vektor: 1
 
 Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
 
-```{webr-r}
-
+```{r}
+names(id) <- c("jmenO", "prijmeni")
+id
 ```
 
 ::: fragment
 Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžeme použít?
 
-```{webr-r}
-
+```{r}
+names(id) <- tolower(names(id))
+id
 ```
 :::
 
@@ -664,8 +659,8 @@ data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
     -   použitím funkce `dimnames` lze najednou nastavit názvy pro obě dimenze
 
         ```{r}
-        dimnames(lokace) <- list(c("001/kl", "002/oi", "003/us"),
-                                 c("mesto", "psc", "kraj"))
+        dimnames(lokace) <- list(c("id_01", "id_02", "id_03"),
+                                 c("obec", "psc", "okres"))
         lokace
         ```
 
@@ -935,7 +930,158 @@ Každý nahraný a otevřený balíček zabírá místo - pokud bychom automatic
 
 ------------------------------------------------------------------------
 
-vybíraůi jsme si pomocí volání uložených vektorů ale co když to nemáme uložené ale jen pojmenované? jak to vybereme potom?
+### Konflikty v balíčcích
+
+Je možné, že **dva či více balíčků budou obsahovat funkci s totožným názvem**. Jak potom R pozná, z kterého balíčku má danou funkci použít?
+
+::: callout-important
+## Nejnověji nahraný balíček má prioritu
+
+Při nahrávání balíčků má nejnověji nahraný balíček vždy prioritu nad dříve nahranými balíčky. Pokud si ráno nahrajete balíček 1 s funkcí `x` a odpoledne balíček 2, taktéž s funkcí `x` a funkci začnete používat, bude použita funkce `x` z balíčku 2.
+:::
+
+#### Co když si nechci nahrát celý balíček/chci použít verze funkce ze specifického balíčku?
+
+**R umožňuje nahrávat funkce ze specifických balíčků tak, aby "nepřepsaly" již používané funkce**. A to pomocí symbolu `::`.
+
+`název balíčku::funkce`
+
+```{r}
+tabulka <- tibble::tibble(
+  id = 1:4,
+  jmeno = c("Ivo", "Oto", "Anna", "Bára"),
+  vek = c(25, 29,30, 35),
+  role = c("Engineer", "Data Scientist", "Developer", "HR"),
+  plat = c(45000,60000, 80000, 100000)
+)
+
+dplyr::filter(tabulka, plat < 70000)
+```
+
+Pomocí funkce `tibble`ze stejnojmenného balíčku a funkce `filter` z balíčku dplyr jsme si vytvořili tibble tabulku a z ní vyfiltrovali všechny řádky, kdy plat byl vyšší jak 70 000. Jak toto filtrování funguje, a jde vybírat hodnoty pouze pomocí balíčků?
+
+## Indexace / výběr specifických dat
+
+**Výběr specifických dat je jedna ze základních funkcí R**; není pro to nutně třeba potřeba používat balíčky. Balíčky nám celá proces ovšem značně usnadní.
+
+### Vyhledávání pomocí \[ \]
+
+> `objekt ve kterém se vyhledává[pozice či charakteristiky vyhledávané hodnoty ve všech dimenzích]`
+
+-   objekt o jedné dimenzi: `objekt[informace pro výběr hodnoty]`
+
+-   objekt o dvou dimenzích: `objekt[řádek, sloupec]`
+
+-   objekt o třech dimenzích: `objekt[řádek, sloupec, matice]`
+
+-   ...
+
+------------------------------------------------------------------------
+
+#### Vektory
+
+Jak víme, vektory mají pouze jednu dimenzi. Proto k definování pozice hodnot(y) stačí pouze jeden údaj.
+
+```{r}
+vektor <- c(a = 558, b = 67846, c = 8797)
+
+vektor[3] #treti pozice ve vektoru
+vektor["c"] #hodnota pojmenovaná jako c
+```
+
+Proč se u jména hodnoty používají uvozovky?
+
+::: fragment
+Bez použití uvozovek bychom R říkali, ať vektor indexuje pomocí informací uložených v objektu `c`. I to je ovšem možné; **objekty samotné v sobě mohou obsahovat informace v potřebném formátu**.
+
+```{r}
+cislo <- 2
+pismeno <- "a"
+vektor[cislo]
+vektor[pismeno]
+```
+:::
+
+**Je možné vybírat i více hodnot najednou**. Jakým způsobem byste vybrali první a třetí hodnotu z objektu `vektor`?
+
+::: fragment
+```{r}
+vektor[c(1, 3)] #porad do vektoru vkladame pouze jeden "objekt"
+#nepouzivame carku!
+```
+
+Na základě tohoto principu lze hodnoty vybírat pomocí různých způsobů:
+
+```{r}
+vektor[1:2] #prvni az druha hodnota
+vektor[-1] #vsechny hodnoty krome prvni
+```
+:::
+
+##### Lze vybírat i pomocí charakteristik jednotlivých hodnot?
+
+Nyní dokážeme vybrat hodnoty podle čísla jejich pozice. Co když chceme ale vybrat hodnoty podle jejich charakteristik?
+
+```{r}
+identical(vektor["a"], vektor[vektor < 600])
+#proc jsou tyto hodnoty identicke?
+```
+
+`vektor[vektor < 600]` = vyber z objektu vektor ty hodnoty, které splňují podmínku, že jsou menší než 600
+
+```{r}
+vektor < 600 #pouze a je TRUE
+#vektor[vektor < 600]) je proto defakto vektor["a"]
+```
+
+Proč nemůžeme jednoduše napsat `vektor[< 600]`?
+
+::: fragment
+Při `< 600` **chybí levá stran**a; co je menší než 600?
+
+::: callout-important
+## Pro výběr charakteristikami se používají čistě logické hodnoty!
+
+Výběr podle charakteristik defacto znamená, že se R předá vektor s hodnotami TRUE/FALSE o tom, zda má být hodnota na dané pozici do výběru zařazena.\`
+
+```{r}
+vektor[vektor < 600]
+vektor[c(TRUE, FALSE, FALSE)]
+```
+
+```{r}
+vektor
+x1 <- 550:560; x1
+
+vektor[x1 < 555]
+```
+:::
+
+K výběru lze samozřejmě použít i ostatní operátory.
+
+ff
+:::
+
+Procvičení
+
+```{r}
+vektor[1:2] #prvni az druha hodnota
+vektor[-1] #vsechny hodnoty krome prvni
+```
+
+Samostatné cvičení
+
+Vyber z vektoru 50:60 každou pátou hodnotu
+
+Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi
+
+df\["název sloupce"\] nejde to s řádky i když jsou pojmenovány - dataframe je defakto list vektorů stejné délky takže to počítá s tím že voláš jednotlivé ty vektory
+
+proč toto nejde u matice? protože matice je defakto opravdový 2d objekt - má v sobě prostě směs něčeho, není to slepené dohromady z rlzných věcí
+
+ukázka s vytvořením pojmenované matice a pak výběru podle sloupce, poté s as.data.frame, ukázka že \[\] defakto vytvoří subset, co když chceme ale čistě hodnoty? napojení na \$
+
+\$ slouží specificky pro listy (a tím pádem i data frames)
 
 přidávání hodnot - praktická ukázka použití \$
 
@@ -948,3 +1094,18 @@ Doctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","To
 Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi", "Jodie Whittaker"), year = c(Doctor$year,34,27,55,36),
                episodes = c(Doctor$episodes,"47","44","39","10")); Doctor
 ```
+
+Výběr pomocí specifických hodnot
+
+```{r}
+x3 <- 1:20;x3
+x3[x3<13 & x3>5]
+```
+
+## Příprava na další hodinu
+
+Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počítejte s tím, že balíček se bude stahovat a instalovat klidně i **několik desítek minut**.
+
+## Domácí úkol
+
+Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi

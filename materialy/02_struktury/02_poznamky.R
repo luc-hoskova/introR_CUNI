@@ -61,9 +61,39 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
            jmenaZaku = c(jmenaZaku, NA, NA),
            predmety = rep(c("ČJ", "biologie", "španělština"), 2))
 
+#BALÍČKY
+#zkouška nahrání balíčku dplyr
+
 #INDEXACE
+#výběr sloupce s mezerou
 #můžeme si polohu vybrat a pak ji upravit, tím pádem i přidat
 #pamatujete na přepisování?
 #Přidávání a odebírání hodnot podle pozice
 #y <- 1:5
 #y[6] <- 7; y
+
+#PROCVICOVANI INDEXACE VEKTORY
+#1
+x <- c(15, 87, 23, 91, 42, 68, 54, 78, 54, 45, 10, 98, 54, 98)
+length(x)
+x[11:14]
+#nebo
+x[(length(x)-3):length(x)]
+
+#2
+vektor2 <- c(age = NA, ageRestriction = NA, group = "voters", region = "Vitkovice")
+vektor2[-2]
+#co ale s jmenem?
+#proc nejde vektor2[-"ageRestriction"]
+vektor2[names(vektor2) != "ageRestriction"] #vyber vsech jmen krome ageRestriction
+
+#SAMOSTATNE CVIČENÍ INDEXACE VEKTORY
+#1)
+hodnoty <- seq(15.2, 45.7, 0.56)
+hodnoty[seq(1, length(hodnoty), by = 5)]
+
+#2)
+cisla <- 1878:2324
+cisla[cisla %% 3 == 0]
+#nebo
+(1878:2324)[1878:2324 %% 3 == 0]

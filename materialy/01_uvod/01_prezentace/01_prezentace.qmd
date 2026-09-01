@@ -21,62 +21,62 @@ execute:
 ## Program
 
 ::: incremental
-- organizační a administrativní informace ke kurzu
-- krátké seznamovací okénko
-- seznámení se s prostředí IDE RStudio
-- datové typy v R
-- ukládání dat do proměnných
-- operátory
-- etiketa psaní kódu
-- working directory
-- RProjekty, .RData
-- funkce v R a jejich syntax
+-   organizační a administrativní informace ke kurzu
+-   krátké seznamovací okénko
+-   seznámení se s prostředí IDE RStudio
+-   datové typy v R
+-   ukládání dat do proměnných
+-   operátory
+-   etiketa psaní kódu
+-   working directory
+-   RProjekty, .RData
+-   funkce v R a jejich syntax
 :::
 
 ## O kurzu
 
-- kurz s cílem poskytnout účastníkům **solidní základy práce s R** za účelem následné práce s vědeckými daty
+-   kurz s cílem poskytnout účastníkům **solidní základy práce s R** za účelem následné práce s vědeckými daty
 
-- **zakončení mikrocerfikátem**: oficiální [certifikát uznávaný napříč EU](https://cczv.cuni.cz/CCZV-521.html) s jasně definovanými dovednostmi
+-   **zakončení mikrocerfikátem**: oficiální [certifikát uznávaný napříč EU](https://cczv.cuni.cz/CCZV-521.html) s jasně definovanými dovednostmi
 
-- pokračování: do budoucna jsou plánována **jednorázová školení na specifická pokročilá témata** o která bude zájem
+-   pokračování: do budoucna jsou plánována **jednorázová školení na specifická pokročilá témata** o která bude zájem
 
 ## O vyučujícím
 
 #### Mgr. Lucie Hošková
 
-- manažer repozitáře pro výzkumná data na UK
+-   manažer repozitáře pro výzkumná data na UK
 
-- výuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS
+-   výuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS
 
-- datová práce všeho druhu
+-   datová práce všeho druhu
 
-  - datová analýza pro Akademii Věd
+    -   datová analýza pro Akademii Věd
 
-  - konzultace pro dizertační, diplomové a bakalářské práce
+    -   konzultace pro dizertační, diplomové a bakalářské práce
 
-  - KPZ (kolega poslední záchrany)
+    -   KPZ (kolega poslední záchrany)
 
-- popularizačně naučné přednášky nejen o datové analýze
+-   popularizačně naučné přednášky nejen o datové analýze
 
 ## Organizace kurzu
 
-- **10 lekcí po třech hodinách**
-  - bloky 3 x cca 50 minut
-  - výuka jednou za dva týdny, přes Vánoce pauza
-- **3 tématické okruhy**
-  - zpracovávání dat
-  - vizualizace dat
-  - analýza dat
+-   **10 lekcí po třech hodinách**
+    -   bloky 3 x cca 50 minut
+    -   výuka jednou za dva týdny, přes Vánoce pauza
+-   **3 tématické okruhy**
+    -   zpracovávání dat
+    -   vizualizace dat
+    -   analýza dat
 
 ## Hodnocení kurzu
 
 1.  **průběžné domácí úkoly**
 2.  **miniprojekt přes Vánoce**
 3.  **80% docházka**
-    - v případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale **prosím choďte pokud můžete**
-    - v případě absence či online výuky domácí práce navíc
-    - je to vše o domluvě :\]
+    -   v případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale **prosím choďte pokud můžete**
+    -   v případě absence či online výuky domácí práce navíc
+    -   je to vše o domluvě :\]
 
 ## Průběh hodin
 
@@ -84,11 +84,11 @@ execute:
 
 2.  výklad nové látky
 
-    - kombinace prezentace, code-along a samostatné práce
+    -   kombinace prezentace, code-along a samostatné práce
 
 3.  cvičení z probrané látky
 
-    - kombinace nové látky a znalostí z předchozích hodin
+    -   kombinace nové látky a znalostí z předchozích hodin
 
 4.  řešení "chuťovek" z minulých hodin a z dotazů
 
@@ -120,17 +120,17 @@ Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky
 
 **Open source** programovací jazyk určený ke statistické analýze a datové vizualizaci.
 
-- v současnosti jeden ze **standardů pro datovou analýzu ve vědecké sféře**
+-   v současnosti jeden ze **standardů pro datovou analýzu ve vědecké sféře**
 
-- aktivně využívaný, spravovaný a uržovaný **globální vědeckou komunitou**
+-   aktivně využívaný, spravovaný a uržovaný **globální vědeckou komunitou**
 
-  - dlouhá historie: spuštěn v roce 1993
+    -   dlouhá historie: spuštěn v roce 1993
 
-- nepřeberné množství specializovaných rozšíření
+-   nepřeberné množství specializovaných rozšíření
 
 ## R vs RStudio
 
-::::: columns
+::: columns
 ::: {.column width="50%"}
 R
 
@@ -142,11 +142,11 @@ RStudio
 
 ![](images/clipboard-596025863.png)
 
-- IDE - vývojářské prostředí
+-   IDE - vývojářské prostředí
 
-- usnadňuje práci s R
+-   usnadňuje práci s R
 :::
-:::::
+:::
 
 ## RStudio
 
@@ -174,48 +174,48 @@ RStudio
 
 ## Datové typy v R
 
-:::::: columns
+::: columns
 ::: {.column width="33%"}
 ### Numeric
 
-- integer
+-   integer
 
-  - 5, 0, 123
+    -   5, 0, 123
 
-- double
+-   double
 
-  - 1.87, 0.3679
+    -   1.87, 0.3679
 
-  - Inf
+    -   Inf
 
-  - -Inf
+    -   -Inf
 :::
 
 ::: {.column width="33%"}
 ### Character
 
-- "Hello world!"
-- "žluťoučký"
-- "532"
-- 'kolo'
+-   "Hello world!"
+-   "žluťoučký"
+-   "532"
+-   'kolo'
 :::
 
 ::: {.column width="33%"}
 ### Logical
 
-- taktéž popisovány jako boolean
+-   taktéž popisovány jako boolean
 
-- TRUE
+-   TRUE
 
-- FALSE
+-   FALSE
 :::
-::::::
+:::
 
 ------------------------------------------------------------------------
 
 ### Další typy se kterými se můžete setkat
 
-::::: columns
+::: columns
 ::: {.column width="50%"}
 NA
 
@@ -245,11 +245,11 @@ NaN
 0 / 0
 ```
 :::
-:::::
+:::
 
-- Přestože s komplexním číslem můžeme provádět aritmetické operace, R jej nebere jako numeric hodnotu!
+-   Přestože s komplexním číslem můžeme provádět aritmetické operace, R jej nebere jako numeric hodnotu!
 
-- NaN je naopak bráno jako numeric hodnota
+-   NaN je naopak bráno jako numeric hodnota
 
 ## Ukládání proměnných
 
@@ -274,9 +274,9 @@ Hodnota se uloží pomocí následujícího postupu:
 
 **název proměnné \<- hodnota**
 
-- R čte zpravidla zleva do prava, proto je možné i hodnota -\> proměnná
+-   R čte zpravidla zleva do prava, proto je možné i hodnota -\> proměnná
 
-  - silně nedoporučuji, je to nepřehledné
+    -   silně nedoporučuji, je to nepřehledné
 
 ```{r}
 123456789123456789123456789123456789 -> cisloNaruby
@@ -306,33 +306,33 @@ promennaSpatne + 5
 
 Funkce `rm()` umožňuje mazat uložené proměnné z globálního prostředí.
 
-- `rm()` - smaže VŠE
+-   `rm()` - smaže VŠE
 
-- `rm(název proměnné)` - smaže specifickou proměnnou
+-   `rm(název proměnné)` - smaže specifickou proměnnou
 
 ------------------------------------------------------------------------
 
 ### Zakázané způsoby pojmenovávání proměnných
 
-- mezera mezi slovy
+-   mezera mezi slovy
 
-  ``` r
-  pet aut <- 5
-  ```
+    ``` r
+    pet aut <- 5
+    ```
 
-- začínat symbolem
+-   začínat symbolem
 
-  ``` r
-  <6>4aut <- 5
-  ```
+    ``` r
+    <6>4aut <- 5
+    ```
 
-- začínat číslicí
+-   začínat číslicí
 
-  ``` r
-  5aut <- 5
-  ```
+    ``` r
+    5aut <- 5
+    ```
 
-  **Pozor na diakritiku!**
+    **Pozor na diakritiku!**
 
 ## Procvičení
 
@@ -522,7 +522,7 @@ countdown::countdown(minutes = 15,
 identical("data", "Data")
 ```
 
-::::: columns
+::: columns
 ::: {.column width="50%"}
 Používejte co chcete ale buďte konzistentní.
 
@@ -534,17 +534,17 @@ Jaké jsou zvysklosti ve vašem oboru/laboratoři?
 ::: {.column width="50%"}
 **Možné styly zápisu:**
 
-- camelCase
+-   camelCase
 
-- PascalCase
+-   PascalCase
 
-- snake_case
+-   snake_case
 
-- kebab-dash
+-   kebab-dash
 
-- a jiné
+-   a jiné
 :::
-:::::
+:::
 
 ------------------------------------------------------------------------
 
@@ -731,13 +731,13 @@ rep(times = 10, x = "vzorek")
 ```
 :::
 
-:::: fragment
+::: fragment
 ::: callout-caution
 ## Pozor!
 
 Na pořadí argumentu nezáleží, dokud jasně **definujeme k jakému argumentu parametr patří**.
 :::
-::::
+:::
 
 ::: fragment
 Jaký bude výsledek těchto kódů? Jsou totožné?
@@ -766,13 +766,13 @@ rep(osobaID <- 5, 3)
 osobaID + 4
 ```
 
-:::: fragment
+::: fragment
 ::: callout-tip
 ## R umožňuje provádět akce uvnitř "jiných akcí"
 
 V tomto případě určujeme argument na první pozici, a zároveň jeho hodnotu ukládáme do proměnné `osobaID`.
 :::
-::::
+:::
 
 ------------------------------------------------------------------------
 
@@ -788,13 +788,13 @@ Na jaké problémy zde narazíme?
 :::
 
 ::: incremental
-- `osobaID_2` není argument funce `rep`
+-   `osobaID_2` není argument funce `rep`
 
-- operátor `=` ve funkci neznamená přiřazení, ale určení argumentu
+-   operátor `=` ve funkci neznamená přiřazení, ale určení argumentu
 
-  - samotný argument `osobaID_2` ve funkci `rep` neexistuje a proto nevznikne platný výsledek
+    -   samotný argument `osobaID_2` ve funkci `rep` neexistuje a proto nevznikne platný výsledek
 
-- nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
+-   nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
 :::
 
 ------------------------------------------------------------------------
@@ -832,7 +832,7 @@ Múžeme zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího 
 seq(1, 10, 3)
 ```
 
-:::: fragment
+::: fragment
 Ne, jelikož argument na třetí pozici v této funkci není `length.out`, který určuje délku sekvence, ale `by`, který určuje periodu.
 
 ::: callout-important
@@ -840,7 +840,7 @@ Ne, jelikož argument na třetí pozici v této funkci není `length.out`, kter�
 
 R dokumentace je psana mnoha lidmi a nemusí být vždy konzistentní.
 :::
-::::
+:::
 
 ::: fragment
 Správná podoba kódu by tedy byla
@@ -918,7 +918,3 @@ sample(x = opakovani, size = 4, replace = FALSE)
     rozpocet = jaký finanční rozpočet máte na dobu pocetMesicu k dispozici
 
 4.  RProjekt s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
-
-## Příprava na další hodinu
-
-Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počítejte s tím, že balíček se bude stahovat a instalovat klidně i **několik desítek minut**.
