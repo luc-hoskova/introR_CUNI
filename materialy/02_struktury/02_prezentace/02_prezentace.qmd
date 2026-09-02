@@ -20,13 +20,13 @@ execute:
 ## Program
 
 ::: incremental
--   opakování z minulé hodiny
--   kontrola domácího úkolu
--   datové struktury v R
--   balíčky
--   indexace
-    -   base R
-    -   balíček `dplyr`
+- opakování z minulé hodiny
+- kontrola domácího úkolu
+- datové struktury v R
+- balíčky
+- indexace
+  - base R
+  - balíček `dplyr`
 :::
 
 ## Kontrola domácí práce
@@ -63,11 +63,11 @@ execute:
 
 > **série za sebou jdoucích hodnot totožného datového typu**
 
--   vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
+- vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
 
--   jednodimenzionální (důležité hlavně při vyhledávání)
+- jednodimenzionální (důležité hlavně při vyhledávání)
 
--   při použití více datových typů dochází k nucené konverzi do jednotného typu
+- při použití více datových typů dochází k nucené konverzi do jednotného typu
 
 ```{r}
 seq(1, 10, 2)
@@ -77,23 +77,23 @@ seq(1, 10, 2)
 
 #### Jakými jinými způsoby můžeme vektory vytvořit?
 
--   symbol `:` vytvoří sérii čísel v daných mezích
+- symbol `:` vytvoří sérii čísel v daných mezích
 
-    -   rozestup vždy po jedné
+  - rozestup vždy po jedné
 
 ```{r}
 -5:3
 0.65:9.18
 ```
 
--   funkce `c` spojí hodnoty jakéhokoliv typu do vektoru
+- funkce `c` spojí hodnoty jakéhokoliv typu do vektoru
 
 ```{r}
 c("jmeno", "prijmeni")
 c(1, 5, 77)
 ```
 
--   **způsobů je mnohem více**, tyto se ale hodí znát
+- **způsobů je mnohem více**, tyto se ale hodí znát
 
 ### Potenciální zádrhely
 
@@ -117,7 +117,7 @@ vektorNA <- c(NA, 6, 9); vektorNA
 NA označuje chybějící hodnotu, nikterak neurčuje samotný datový typ hodnoty.
 :::
 
-::: fragment
+:::: fragment
 ::: callout-tip
 Ke zjištění datového typu je možné použít funkci `mode`.
 
@@ -125,7 +125,7 @@ Ke zjištění datového typu je možné použít funkci `mode`.
 mode(vektorNA)
 ```
 :::
-:::
+::::
 
 ### Pojmenovávání hodnot
 
@@ -211,10 +211,11 @@ Vypište alespoň tři rozdílné způsoby, jak získat následující vektor: 1
 
 #### Řešení úlohy 2)
 
-Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
+::::: fragment
+1.  Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
 
 ```{r}
-names(id) <- c("jmenO", "prijmeni")
+names(id) <- c("jmeno", "prijmeni")
 id
 ```
 
@@ -232,6 +233,7 @@ id
 
 ![](images/1612457411219-396187299.png)
 :::
+:::::
 
 ------------------------------------------------------------------------
 
@@ -263,11 +265,11 @@ rep(c(škoda = "octavia"), 2)
 
 > **objekt složený z vektorů stejného datového typu a délky v několika dimenzích**
 
--   jakým způsobem si představit dimenze?
-    -   Jedna dimenze: řada hodnot
-    -   Dvě dimenze: hodnoty v sloupcích a řádcích
-    -   Tři dimenze: dvě tabulky se sloupci a řádky naskládané za sebe
--   k vytvoření se používá primárně funkce `array`
+- jakým způsobem si představit dimenze?
+  - Jedna dimenze: řada hodnot
+  - Dvě dimenze: hodnoty v sloupcích a řádcích
+  - Tři dimenze: dvě tabulky se sloupci a řádky naskládané za sebe
+- k vytvoření se používá primárně funkce `array`
 
 ------------------------------------------------------------------------
 
@@ -285,7 +287,7 @@ rep(c(škoda = "octavia"), 2)
 
 ------------------------------------------------------------------------
 
--   use case
+- use case
 
 ```{webr-r}
 #| context: output
@@ -301,7 +303,7 @@ den = paste0("den_", 1:7),
 temps
 ```
 
--   nejvíce nás ale bude zajímat **datové pole o dvou dimenzích - matice**
+- nejvíce nás ale bude zajímat **datové pole o dvou dimenzích - matice**
 
 ------------------------------------------------------------------------
 
@@ -309,16 +311,16 @@ temps
 
 > **dvojrozměrné pole**
 
--   dvojrozměrný objekt znamená, že už se nejedná o objekt co má pouze jednu linii hodnot jako vektor, ale že **má řádky a sloupce**
+- dvojrozměrný objekt znamená, že už se nejedná o objekt co má pouze jednu linii hodnot jako vektor, ale že **má řádky a sloupce**
 
-    ```{webr-r}
-    #| context: output
-    matrix(1:6, nrow=3, ncol=2) 
-    ```
+  ```{webr-r}
+  #| context: output
+  matrix(1:6, nrow=3, ncol=2) 
+  ```
 
-    -   číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci Indexace
+  - číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci Indexace
 
--   při pokusu o vytvoření matice z více datových typů dojde stejně jako u vektoru k nucené konverzi na charakter
+- při pokusu o vytvoření matice z více datových typů dojde stejně jako u vektoru k nucené konverzi na charakter
 
 ```{webr-r}
 #| context: output
@@ -337,13 +339,13 @@ matrix(data = 1:8, nrow = 2, ncol = 4)
 
 Jaký bude výsledek této funkce? Co znamenají jednotlivé argumenty?
 
--   `data`: hodnoty, které budou matici tvořit
+- `data`: hodnoty, které budou matici tvořit
 
--   `nrow`: počet řádků
+- `nrow`: počet řádků
 
--   `ncol`: počet sloupců
+- `ncol`: počet sloupců
 
--   ...a další
+- ...a další
 
 ::: fragment
 Jaký bude výsledek následující funkce?
@@ -353,9 +355,15 @@ matrix(1:3, nrow = 2, ncol = 4)
 ```
 :::
 
+::::: fragment
+:::: callout-warning
+## Automatické generování hodnot
+
 ::: fragment
-Při menším množství hodnot než je potřeba pro počet sloupců a řádků funkce `matrix` začne hodnoty opakovat (násobit). Pokud ale není celý násobek možný, dojde k erroru, stejně tak jako pokud je více hodnot v `data` než je potřeba.
+Při menším množství hodnot než je potřeba funkce `matrix` začne hodnoty opakovat. Pokud je více hodnot v `data` než je potřeba, dojde k erroru.
 :::
+::::
+:::::
 
 ------------------------------------------------------------------------
 
@@ -373,10 +381,10 @@ cbind(1:3, 5:7)
 rbind(1:3, 5:7)
 ```
 
--   Vytvoření matice po řádcích lze i u funkce `matrix()`. Jak bychom toto provedli?
+- Funkce `matrix()` taktéž umožňuje tvorbu matice po řádcích. Jak bychom toto provedli?
 
 ::: fragment
--   Argument `byrow` je automaticky nastaven na hodnotu `FALSE`. Pro seřazení po řádcích (by row) je potřeba v matici zahrnout `byrow = TRUE`.
+- Argument `byrow` je automaticky nastaven na hodnotu `FALSE`. Pro seřazení po řádcích (by row) je potřeba v matici zahrnout `byrow = TRUE`.
 
 ```{r}
 matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE) 
@@ -394,6 +402,10 @@ matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE)
 matrix(seq(2, 19, by = 3), 2, 3)
 ```
 
+```{webr-r}
+
+```
+
 2.  Vytvořte matici z následujících vektorů:
 
 ```{webr-r}
@@ -402,13 +414,13 @@ HG6 <- c("Helga", "Gdovinová", "ID_006")
 TM7 <- c("Tomáš", "Marný")
 ```
 
-::: fragment
+:::: fragment
 ::: callout-caution
 ## Nezapomeňte na existenci NA!
 
 Matice potřebuje, aby všechny řádky (a sloupce) měly totožný počet hodnot. Funkce `rbind` a `cbind` tak **začne hodnoty v jednotlivých částech opakovat** tak dlouho, dokud jich nebude dostatečný počet na to, aby bylo možné fukci provést.
 :::
-:::
+::::
 
 ------------------------------------------------------------------------
 
@@ -500,7 +512,7 @@ matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20),
 #### Řešení úlohy 2)
 
 ::: fragment
-1.  Jelikož potřebujeme poskládat numerické vektory 15:20 a 37:42 dohromady šestkrát pod sebou, musí být spojené po řádcích. Kromě `rbind`tuto možnost poskytuje i parametr `byrow = TRUE` ve funkci `matrix`.
+1.  Jelikož potřebujeme poskládat numerické vektory 15:20 a 37:42 dohromady šestkrát pod sebou, musí být spojené po řádcích. Kromě `rbind` tuto možnost poskytuje i parametr `byrow = TRUE` ve funkci `matrix`.
 
     ```{r}
     #matrix(?, byrow =  TRUE)
@@ -542,16 +554,16 @@ Do parametru `dimnames` se vloží list, který bude obsahovat názvy pro každo
 
 > **objekt složený z jiných objektů které mohou být rozličné délky a datového typu**
 
--   use case
-    -   třeba argument/funkce `dimnames` (musí se vložit jeden objekt co může mít více data typů)
-    -   Dvě dimenze: hodnoty v řádcích a sloupcích
--   vytvoří se pomocí funkce `list`
--   ukázka:
+- use case
+  - třeba argument/funkce `dimnames` (musí se vložit jeden objekt co může mít více data typů)
+  - Dvě dimenze: hodnoty v řádcích a sloupcích
+- vytvoří se pomocí funkce `list`
+- ukázka:
 
-```{webr-r}
-oldDoctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","Peter Davison","Colin Baker","Sylvester McCoy","Paul McGann", "John Hurt","Christopher Eccleston"),
+```{r}
+list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","Peter Davison","Colin Baker","Sylvester McCoy","Paul McGann", "John Hurt","Christopher Eccleston"),
                year = c(55,46,50,40,29,40,44,36,73,41), 
-               episodes = c("134","119","128","172","69","31","42","1","2","13")); oldDoctor
+               episodes = c("134","119","128","172","69","31","42","1","2","13"))
 ```
 
 ------------------------------------------------------------------------
@@ -560,22 +572,26 @@ oldDoctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee",
 
 1.  Vytvořte objekt, který v sobě bude obsahovat informace o probíhajícím výzkumu. Bude obsahovat jeho název, jména a identifikační číslo dvou výzkumníků a soupis toho, zda se jim podařilo v pěti experimentech octomilky úspěšně rozmnožit.
 
+```{webr-r}
+
+```
+
 ------------------------------------------------------------------------
 
 ### Data frame
 
 > **typ listu, který obsahuje pouze objekty totožné délky**
 
--   s vektorem nejčastější typ datové struktury v R, se kterým budete pracovat
+- s vektorem nejčastější typ datové struktury v R, se kterým budete pracovat
 
--   tldr; tabulka
+- tldr; tabulka
 
--   ukázka
+- ukázka
 
-    ```{webr-r}
-    #| context: output
-    data.frame(cbind(1:4, c("MFF", "FHS", NA , "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
-    ```
+  ```{webr-r}
+  #| context: output
+  data.frame(cbind(1:4, c("MFF", "FHS", NA , "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
+  ```
 
 #### Tvorba data frame
 
@@ -612,67 +628,67 @@ data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
 
 #### Pojmenovávání sloupců a řádků
 
--   **řádky:**
+- **řádky:**
 
-    -   pomocí argumentu `row.names,`vždy potřeba definovat název pro každý řádek!
+  - pomocí argumentu `row.names,`vždy potřeba definovat název pro každý řádek!
 
-        ```{r}
-        data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
-                   PSČ = c(73912, 36251, 25303),
-                   okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
-                   row.names = c("id_01", "id_02", "id_03"))
-        ```
+    ```{r}
+    data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+               PSČ = c(73912, 36251, 25303),
+               okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"),
+               row.names = c("id_01", "id_02", "id_03"))
+    ```
 
-    -   pozdější doplnění pomocí funkce `rownames`
+  - pozdější doplnění pomocí funkce `rownames`
 
-        ```{r}
-        lokace <- data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
-                   PSČ = c(73912, 36251, 25303),
-                   okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
-        rownames(lokace) <- c("id_01", "id_02", "id_03")
-        ```
+    ```{r}
+    lokace <- data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+               PSČ = c(73912, 36251, 25303),
+               okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
+    rownames(lokace) <- c("id_01", "id_02", "id_03")
+    ```
 
--   **sloupce:**
+- **sloupce:**
 
-    -   pojmenování jednotlivých datových struktur, ze kterých se má data frame skládat, pomocí štítku (název = hodnota)
+  - pojmenování jednotlivých datových struktur, ze kterých se má data frame skládat, pomocí štítku (název = hodnota)
 
-        ```{r}
-        data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
-                   PSČ = c(73912, 36251, 25303),
-                   okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
-        ```
+    ```{r}
+    data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
+               PSČ = c(73912, 36251, 25303),
+               okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
+    ```
 
-    -   použití již dříve vytvořených objektů
+  - použití již dříve vytvořených objektů
 
-        ```{r}
-        obec <- c("Čeladná", "Jáchymov", "Chýně")
-        PSČ <- c(73912, 36251, 25303)
-        okres <- c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ")
+    ```{r}
+    obec <- c("Čeladná", "Jáchymov", "Chýně")
+    PSČ <- c(73912, 36251, 25303)
+    okres <- c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ")
 
-        data.frame(obec, PSČ, okres)
-        ```
+    data.frame(obec, PSČ, okres)
+    ```
 
-    -   pozdější doplnění pomocí funkce `colnames`
+  - pozdější doplnění pomocí funkce `colnames`
 
-        ```{r}
-        lokace <- data.frame(c("Čeladná", "Jáchymov", "Chýně"),
-                   c(73912, 36251, 25303),
-                   c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
-        colnames(lokace) <- c("obec", "PSČ", "okres")
-        lokace
-        ```
+    ```{r}
+    lokace <- data.frame(c("Čeladná", "Jáchymov", "Chýně"),
+               c(73912, 36251, 25303),
+               c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
+    colnames(lokace) <- c("obec", "PSČ", "okres")
+    lokace
+    ```
 
--   **oboje najednou:**
+- **oboje najednou:**
 
-    -   použitím funkce `dimnames` lze najednou nastavit názvy pro obě dimenze
+  - použitím funkce `dimnames` lze najednou nastavit názvy pro obě dimenze
 
-        ```{r}
-        dimnames(lokace) <- list(c("id_01", "id_02", "id_03"),
-                                 c("obec", "psc", "okres"))
-        lokace
-        ```
+    ```{r}
+    dimnames(lokace) <- list(c("id_01", "id_02", "id_03"),
+                             c("obec", "psc", "okres"))
+    lokace
+    ```
 
-        -   Proč zde používáme list? Pokud si nepamatujete, podívejte se do nápovědy :\]
+    - Proč zde používáme list? Pokud si nepamatujete, podívejte se do nápovědy :\]
 
 ------------------------------------------------------------------------
 
@@ -688,7 +704,7 @@ cbind(c("Čeladná", "Jáchymov", "Chýně"),
 
 **Jaký typ objektu je výsledek?** Jedná se o data frame?
 
-::: fragment
+:::: fragment
 ```{webr-r}
 class(cbind(c("Čeladná", "Jáchymov", "Chýně"),
       c(73912, 36251, 25303),
@@ -698,9 +714,9 @@ class(cbind(c("Čeladná", "Jáchymov", "Chýně"),
 ::: callout-tip
 ## class vs mode
 
-Funkce `mode` nám zjistí, o jaký datový typ se jedná. Fuknce `class`nám nejenomže zjistí více informací, ale hlavně nám řekne, jak se vůči danému objektu R bude chovat.
+Funkce `mode` nám zjistí, o jaký datový typ se jedná. Fuknce `class` nám nejenomže zjistí více informací, ale hlavně nám řekne, jak se vůči danému objektu R bude chovat.
 :::
-:::
+::::
 
 Funkce `cbind` a `rbind` **vytvoří data frame pouze v případě, že alespoň jeden z objektů svazovaných dohromady je již data frame**, jinak vytvoří matici.
 
@@ -712,7 +728,7 @@ Pro vytvoření data frame pomocí spojení objektů jako sloupců či řádků 
 
 1.  Spojte následující vektory po sloupcích do data frame. Následně k němu doplňte jména řádků, které budou libovolný text.
 
-```{r}
+```{webr-r}
 stainsLiveCells <- c(TRUE, TRUE, FALSE)
 stainingType <- c("NucSpot® Live 488", "Thiazole Green (SYBR® Green I)", "RedDot™2 Far-Red Nuclear Stain", "NucSpot® 750/780")
 colorMinNm <- c(352, 498, 650, 750)
@@ -749,7 +765,7 @@ vzorek <- data.frame(vek, strana, sex, row.names = id); vzorek
 
 ```{r}
 sample(1:5, 6, replace = TRUE)
-jmenaZaku <- c("LK", "SD", "AE", "IR")
+jmenaZaku <- c("LK", "SD", "AE", "IR"); jmenaZaku
 rep(c("ČJ", "biologie", "španělština"), 2)
 ```
 
@@ -775,12 +791,11 @@ rep(c("ČJ", "biologie", "španělština"), 2)
     ```
 :::
 
-::: fragment
+:::: fragment
 3.  Pomocí funkce `data.frame` spojte sloupce dohromady a popište řádky.
 
     ```{r}
     vzorek <- data.frame(vek, strana, sex, row.names = id); vzorek
-    #row.names samozrejme mohou byt i primo hodnoty
     ```
 
 ::: callout-tip
@@ -788,7 +803,7 @@ rep(c("ČJ", "biologie", "španělština"), 2)
 
 Data frame si nemusíte pojmenovávat, ale vzhledem k úloze 2) se to hodí.
 :::
-:::
+::::
 
 ------------------------------------------------------------------------
 
@@ -799,14 +814,16 @@ Data frame si nemusíte pojmenovávat, ale vzhledem k úloze 2) se to hodí.
     Vytvořme si proto vektor, který bude obsahovat náhodný výběr boolean hodnot.
 
     ```{r}
-    clearSample <- sample(c(TRUE, FALSE), size = length(strana), replace = TRUE)
+    clearSample <- sample(c(TRUE, FALSE),
+                   size = length(strana), replace = TRUE)
     #potrebujeme tolik hodnot jako je jich v teremkoliv jinem sloupci
     #proto pouzijeme length(nazev nami ulozeneho vektoru)
-      #ano, jde to pocitat i rucne, ale co kfyz toho budete mit opravdu hodne?
+      #ano, jde to pocitat i rucne
+        #ale co kdyz toho budete mit opravdu hodne?
     ```
 :::
 
-::: fragment
+::::: fragment
 2.  Spojíme dohromady data frame z první úlohy a nový vektor. Pro snadnou práci doporučuji si data frame pojmenovat (viz předchozí úloha).
 
     ```{r}
@@ -814,7 +831,7 @@ Data frame si nemusíte pojmenovávat, ale vzhledem k úloze 2) se to hodí.
     #rovnou si i výsledek znovu uložíme
     ```
 
-::: callout-caution
+:::: callout-caution
 ## Opakované spuštění ukládání kódu s novými údaji
 
 Co se stane, pokud výše zmíněný kód projedeme několikrát? A proč?
@@ -822,23 +839,23 @@ Co se stane, pokud výše zmíněný kód projedeme několikrát? A proč?
 ::: fragment
 Při opakovaném spuštění kódu, kde se přidávají/ubírají části objektu anásledně se výsledek ukládá pod totožným názvem, bude docházet k tomu, že se změny provedou vždy na výsledku předchozí iterace. **Opakovaným spouštěním kódu a jeho ukládáním v této úloze by tak docházelo k opakovanému přidávání sloupce `clearSample` ad nauseum.**
 :::
-:::
-:::
+::::
+:::::
 
 ------------------------------------------------------------------------
 
 #### Řešení úlohy 3)
 
-::: fragment
+::::: fragment
 1.  Jednoduchým způsobem, jak si vytvořit dataframe s přiřazováním názvů, je použít funkci `data.frame`. Vytvořme si proto data frame z dodaných vektorů a dle zadání je pojmenujme tak, aby nám z toho vznikly správné názvy sloupců.
 
-::: callout-note
+:::: callout-note
 ## Proč nepojmenováváme vektor, který v sobě obsahuje jména žáků?
 
 ::: fragment
 Protože tím, že jsme si vektor přiřadili k určitému názvu, tak už v sobě obsahuje informace o jménu, které R použije jako název sloupce.
 :::
-:::
+::::
 
 ```{webr-r}
 jmenaZaku <- c("LK", "SD", "AE", "IR")
@@ -847,7 +864,7 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
            jmenaZaku,
            predmety = rep(c("ČJ", "biologie", "španělština"), 2))
 ```
-:::
+:::::
 
 ::: fragment
 2.  Kód nám hodí error, jelikož se pokoušíme do data frame, který musí mít vždy stejnou délku sloupců či řádků, vložit vektor, který je kratší jak ostatní. Potřebujeme si tedy zjistit, o který se jedná.
@@ -861,7 +878,7 @@ length(rep(c("ČJ", "biologie", "španělština"), 2))
 Vidíme, že vektor `jmenaZaku` je o dvě hodnoty kratší jak ostatní. **Abychom mohli data frame i tak stvořit, je potřeba, abychom upravili délku sloupce, který obsahuje vektor `jmenaZaku` na stejný počet hodnot jako ostatní.**
 :::
 
-::: fragment
+:::: fragment
 3.  Pokud potřebujeme přidat chybějící hodnoty, jednoduše použijeme `NA`. Zadání nám ovšem neumožňuje upravovat vlastní vektor `jmenaZaku`. Jak jinak můžeme `NA` hodnoty v data frame doplnit?
 
 ::: fragment
@@ -873,7 +890,7 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
            predmety = rep(c("ČJ", "biologie", "španělština"), 2))
 ```
 :::
-:::
+::::
 
 ------------------------------------------------------------------------
 
@@ -881,28 +898,27 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
 
 > **data frame ale ✧･ﾟ: *✧･ﾟ:vylepšené:･ﾟ✧*:･ﾟ✧**
 
--   stejná funkce jako data frame, ale v některých oblastech vylepšená
+- stejná funkce jako data frame, ale v některých oblastech vylepšená
 
-    -   ukazuje například rovnou rozměry a data typy jednotlivých sloupců
+  - ukazuje například rovnou rozměry a data typy jednotlivých sloupců
 
-    -   snadněji zvládá objemnější datasety
+  - snadněji zvládá objemnější datasety
 
--   ukázka:
+- ukázka:
 
-    ```{webr-r}
-    #| context: output
-    tibble::tibble(
-      id = 1:4,
-      jmeno = c("Ivo", "Oto", "Anna", "Bára"),
-      vek = c(25, 29,30, 35),
-      role = c("Engineer", "Data Scientist", "Developer", "HR"),
-      plat = c(45000,60000, 80000, 100000)
-    )
-    ```
+  ```{r}
+  tibble::tibble(
+    id = 1:4,
+    jmeno = c("Ivo", "Oto", "Anna", "Bára"),
+    vek = c(25, 29,30, 35),
+    role = c("Engineer", "Data Scientist", "Developer", "HR"),
+    plat = c(45000,60000, 80000, 100000)
+  )
+  ```
 
--   Funkce `tibble` není součástí základního R, ale je v balíčku `tibble`, který je následně součástí metabalíčku `tidyverse`.
+- Funkce `tibble` není součástí základního R, ale je v balíčku `tibble`, který je následně součástí metabalíčku `tidyverse`.
 
-    ------------------------------------------------------------------------
+  ------------------------------------------------------------------------
 
 ## Balíčky v R
 
@@ -910,9 +926,9 @@ S balíčky jsme se krátce seznámili již v první lekci, zde si je ale prober
 
 #### Co je to balíček (package)?
 
--   **nezávisle vytvořená sada funkcí, objektů a dat**, které slouží k vyřešení určitého problému a které je možné si stáhnout a používat
+- **nezávisle vytvořená sada funkcí, objektů a dat**, které slouží k vyřešení určitého problému a které je možné si stáhnout a používat
 
-    -   proč si ručně vytvářet celou novou funkci, která by nám třídila data dle námi daných kategoií, když to již někdo vytvořil jako funkci `group_by` v balíčku `dlyr`?
+  - proč si ručně vytvářet celou novou funkci, která by nám třídila data dle námi daných kategoií, když to již někdo vytvořil jako funkci `group_by` v balíčku `dlyr`?
 
 #### Jak ho získám?
 
@@ -920,13 +936,13 @@ S balíčky jsme se krátce seznámili již v první lekci, zde si je ale prober
 
 2.  výběrem skrz rozhraní
 
-![](images/clipboard-1909886774.png)
+    ![](images/install_packages.png)
 
 ------------------------------------------------------------------------
 
 ### Spuštění balíčku
 
-Po instalaci/stažení se nám balíček uloží v počítači, Před tím, než ho budeme používat, tak ho musíme do R nahrát; říci mu, že v tuto chvíli má hledat spuštěné funkce nejenom v baseR, ale i v dalších místech na našem počítači.
+Po instalaci/stažení se nám balíček uloží v počítači, **Před tím, než ho budeme používat, tak ho musíme do R nahrát**; říci mu, že v tuto chvíli má hledat spuštěné funkce nejenom v base R , ale i v dalších místech na našem počítači.
 
 ::: callout-important
 ## Proč se balíčky nenahrávají automaticky?
@@ -936,11 +952,13 @@ Každý nahraný a otevřený balíček zabírá místo - pokud bychom automatic
 
 **Jak si balíček nahrajeme do R?**
 
-1.  pomocí funkce `library`
+1.  pomocí funkce `library(název balíčku)`[^1]
 
 2.  výběrem skrze rozhraní
 
     ![](images/clipboard-3713960113.png)
+
+[^1]: Dokázal by mi někdo říct, proč při instalaci používáme uvozovky u názvu balíčku, ale ve funkci `library` ne? :\]
 
 ------------------------------------------------------------------------
 
@@ -951,7 +969,7 @@ Je možné, že **dva či více balíčků budou obsahovat funkci s totožným n
 ::: callout-important
 ## Nejnověji nahraný balíček má prioritu
 
-Při nahrávání balíčků má nejnověji nahraný balíček vždy prioritu nad dříve nahranými balíčky. Pokud si ráno nahrajete balíček 1 s funkcí `x` a odpoledne balíček 2, taktéž s funkcí `x` a funkci začnete používat, bude použita funkce `x` z balíčku 2.
+Při nahrávání balíčků má **nejnověji nahraný balíček vždy prioritu nad dříve nahranými balíčky**. Pokud si ráno nahrajete balíček 1 s funkcí `x` a odpoledne balíček 2, taktéž s funkcí `x` a funkci začnete používat, bude použita funkce `x` z balíčku 2.
 :::
 
 #### Co když si nechci nahrát celý balíček/chci použít verze funkce ze specifického balíčku?
@@ -972,23 +990,23 @@ tabulka <- tibble::tibble(
 dplyr::filter(tabulka, plat < 70000)
 ```
 
-Pomocí funkce `tibble`ze stejnojmenného balíčku a funkce `filter` z balíčku dplyr jsme si vytvořili tibble tabulku a z ní vyfiltrovali všechny řádky, kdy plat byl vyšší jak 70 000. Jak toto filtrování funguje, a jde vybírat hodnoty pouze pomocí balíčků?
+Pomocí funkce `tibble` ze stejnojmenného balíčku a funkce `filter` z balíčku dplyr jsme si vytvořili tibble tabulku a z ní vyfiltrovali všechny řádky, kdy plat byl vyšší jak 70 000. Jak toto filtrování funguje, a jde vybírat hodnoty pouze pomocí balíčků?
 
 ## Indexace / výběr specifických dat
 
 **Výběr specifických dat je jedna ze základních funkcí R**; není pro to nutně třeba potřeba používat balíčky. Balíčky nám celá proces ovšem značně usnadní.
 
-### Vyhledávání pomocí \[ \]
+### Vyhledávání pomocí \[ \] {#vyhledávání-pomocí}
 
 > `objekt ve kterém se vyhledává[pozice či charakteristiky vyhledávané hodnoty ve všech dimenzích]`
 
--   objekt o jedné dimenzi: `objekt[informace pro výběr hodnoty]`
+- objekt o jedné dimenzi: `objekt[informace pro výběr hodnoty]`
 
--   objekt o dvou dimenzích: `objekt[řádek, sloupec]`
+- objekt o dvou dimenzích: `objekt[řádek, sloupec]`
 
--   objekt o třech dimenzích: `objekt[řádek, sloupec, matice]`
+- objekt o třech dimenzích: `objekt[řádek, sloupec, matice]`
 
--   ...
+- ...
 
 ------------------------------------------------------------------------
 
@@ -1016,7 +1034,13 @@ vektor[pismeno]
 ```
 :::
 
+------------------------------------------------------------------------
+
 **Je možné vybírat i více hodnot najednou**. Jakým způsobem byste vybrali první a třetí hodnotu z objektu `vektor`?
+
+```{webr-r}
+
+```
 
 ::: fragment
 ```{r}
@@ -1032,12 +1056,14 @@ vektor[-1] #vsechny hodnoty krome prvni (pozor: lze jen s cisly!)
 ```
 :::
 
+------------------------------------------------------------------------
+
 ##### Lze vybírat i pomocí charakteristik jednotlivých hodnot?
 
 Nyní dokážeme vybrat hodnoty podle čísla jejich pozice. Co když chceme ale vybrat hodnoty podle jejich charakteristik?
 
 ```{r}
-identical(vektor["a"], vektor[vektor < 600])
+identical(vektor[1], vektor[vektor < 600])
 #proc jsou tyto hodnoty identicke?
 ```
 
@@ -1050,7 +1076,7 @@ vektor < 600 #pouze a je TRUE
 
 Proč nemůžeme jednoduše napsat `vektor[< 600]`?
 
-::: fragment
+:::: fragment
 Při `< 600` **chybí levá stran**a; co je menší než 600?
 
 ::: callout-important
@@ -1067,12 +1093,15 @@ vektor[c(TRUE, FALSE, FALSE)]
 K výběru **lze samozřejmě použít i ostatní operátory**.
 
 ```{r}
-vektor[vektor == 8797]
 #vyber ty hodnoty ktere jsou presne 8797
-vektor[vektor > 600 & vektor < 50000]
+vektor[vektor == 8797]
+
 #vyber hodnoty ktere jsou vetsi nez 600 a zaroven mensi nez 50 000
+vektor[vektor > 600 & vektor < 50000]
 ```
-:::
+::::
+
+------------------------------------------------------------------------
 
 ### Procvičení
 
@@ -1088,6 +1117,8 @@ vektor[vektor > 600 & vektor < 50000]
 c(gender = NA, ageGroup = NA, activeVoters = NA,
   country = "CZ", region = "Ostravsko", city = "Havířov")
 ```
+
+------------------------------------------------------------------------
 
 ### Samostatné cvičení
 
@@ -1106,9 +1137,13 @@ countdown::countdown(minutes = 10,
     seq(15.2, 45.7, 0.56)
     ```
 
-2.  Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi
+2.  Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi. Kolik jich je?
+
+------------------------------------------------------------------------
 
 #### Řešení úlohy 1)
+
+Vyber z následujícího vektoru každou pátou hodnotu.
 
 ::: fragment
 1.  Pojmenujte si vektor pro snažší manipulaci.
@@ -1134,17 +1169,242 @@ countdown::countdown(minutes = 10,
     ```
 :::
 
-#### Řešení úlohy 1)
+------------------------------------------------------------------------
 
-Používání výběru k přiřazovýní
+#### Řešení úlohy 2)
+
+Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi. Kolik jich je?
+
+::: fragment
+1.  Pro jednodušší zacházení s čísly si je uložíme jako proměnnou.
+
+    ```{r}
+    cisla <- 1878:2324
+    ```
+:::
+
+::: fragment
+2.  Co znamená, že je číslo dělitelné třemi?
+
+    Po dělení třemi po něm nezůstane žádný zbytek. Jak toto v R zjistíme?
+
+    ```{r}
+    cisla %% 3
+    ```
+:::
+
+::: fragment
+3.  Chceme vybrat pouze ta čísla, která jsou dělitelná třemi = nemají žádný zbytek = zbytek je 0. Jak to provedeme?
+
+    ```{r}
+    cisla %% 3 == 0
+    ```
+:::
+
+::: fragment
+4.  Máme v tuto chvíli sekvenci TRUE/FALSE hodnot, které popisují vlastnosti jednotivých hodnot ve vektoru `cisla`. Jak ji využijeme k indexaci?
+
+    ```{r}
+    cisla[cisla %% 3 == 0]
+    ```
+:::
+
+::: fragment
+5.  Vybrali jsme v tuto chvíli všechny čísla z 1878 až 2324, která jsou dlitelná třemi. Jak zjistíme, kolik jich je?
+
+    ```{r}
+    length(cisla[cisla %% 3 == 0]) #149
+    ```
+:::
+
+::: fragment
+Výpočet samozřejmě můžeme provést i bez vytváření proměnných.
 
 ```{r}
-x3 <- 1:20; x3
-x3[21]
-x3[21] <- 55; x3
+length((1878:2324)[1878:2324 %% 3 == 0])
+#pozor! pri tomto postupu je treba dat sekvenci do zavorky
+  #r nemilosrdne dela vyber hned z nejblizsi hodnoty
+  #u hranate zavorky
+```
+:::
+
+------------------------------------------------------------------------
+
+Vybírání specifických hodnot nemusíme ale používat pouze k jejich vyhledávání. **Můžeme pomocí tohoto principu i přiřazovat a přepisovat jednotlivé hodnoty**.
+
+```{webr-r}
+x1 <- 1:20; x1
+x1[1] <- 500; x1
+x1[21] #jaka je hodnota na pozici 21?
 ```
 
-Co se stane když přidám až na pozici 31?
+Pokud chceme, aby 21. hodnota `x1` byla 55, jak ji můžeme přidat?
+
+```{webr-r}
+x1 <- c(x1, 55); x1
+```
+
+Co když ale chceme, aby číslo 55 bylo na pozici 42?
+
+```{webr-r}
+x1[42] <- 55; x1
+```
+
+------------------------------------------------------------------------
+
+#### Matice
+
+Matice narozdíl od vektoru mají již dvě dimenze; řádky a sloupce. Pro výběr nám tak už nestačí pouze jedno číslo.
+
+Jak obě dimenze do výběru zapíšu? Vzpomeňte si na přehled ve [Vyhledávání pomocí \[ \]](#vyhledávání-pomocí)
+
+```{r}
+matice <- matrix(10:33, nrow = 4); matice
+
+matice[1,3] #prvni radek treti sloupec
+matice[2,5] #druhy radek, paty sloupec
+matice[ ,1] #vsechny hodnoty v prvnim sloupci
+matice[2, ] #vsechny hodnoty v druhem radku
+matice[1:3,5:6] #prvni az treti radek a paty az sesty sloupec
+```
+
+------------------------------------------------------------------------
+
+Můžeme používat i jména sloupců a řádků?
+
+```{r}
+dim(matice) #4 radky 6 sloupcu
+dimnames(matice) <- list(LETTERS[1:4], letters[1:6])
+#LETTERS a letters jsou v baseR ulozene objekty
+matice
+
+matice["A", "c"] #radek A, sloupec c
+matice["B", 3] #radek B, treti sloupec
+matice[,c("a", "c", "d")] #vsechny radky a sloupce a, c, d
+```
+
+**Při výběru hodnot z matice používáme totožné principy jako při výběru z vektorů; jen se musí pro výběr definovat více dimenzí.**
+
+------------------------------------------------------------------------
+
+#### Výběr podle specifických hodnot
+
+Stejným způsobem, jako můžeme vybírat specifické hodnoty u vektoru, totéž můžeme provést i u matice.
+
+```{r}
+#vyber vsechny hodnoty z radku, ktere maji v druhem sloupci vetsi hodnotu nez 15
+matice[matice[,2] > 15,]
+```
+
+Z kódu je zřejmé, že budeme vybírat všechny sloupce. Ale co znamená `matice[,2] > 15` v řádcích?
+
+```{r}
+matice[,2] #vyber hodnoty vsech radku, druhy sloupec
+matice[,2] > 15 #ktere z techto radku maji hodnotu vyssi jak 15?
+```
+
+Pomocí tohoto kódu si vybereme pouze ty řádky, které splňují stanovenou podmínku.
+
+```{r}
+matice[matice[,2] > 15,]
+matice[c("C", "D"),] #totozny vysledek
+```
+
+::: fragment
+Proč nemůžeme jednoduše použít následující kód?
+
+```{webr-r}
+#| context: setup
+matice <- matrix(10:33, nrow = 4)
+dimnames(matice) <- list(LETTERS[1:4], letters[1:6])
+```
+
+```{webr-r}
+matice["B" > 15, ]
+```
+:::
+
+Huh, proč se nám vybrala celá matice?
+
+::: fragment
+```{r}
+"B" > 15 #porovnavame zda je text vetsi nez pismeno
+```
+:::
+
+::: fragment
+1.  Dojde k nucené konverzi do charakteru, aka
+
+    ```{r}
+    "B" > "15"
+    ```
+
+    Proč ale?
+:::
+
+::: fragment
+2.  Jednotlivá písmena jsou v R uložena podle abecedy; B je tedy tak na druhé pozici.
+
+    ```{r}
+    "2" > "15"
+    ```
+
+Jak to že je ale 2 \> 15?
+:::
+
+::: fragment
+3.  Neporovnáváme čísla, ale písmena - R hodnotí text "15" na základě prvního symbolu. A `2 > 1 = TRUE`
+:::
+
+::: fragment
+4.  Vznikne nám proto defakto následující pokyn:
+
+    ```{r}
+    matice[TRUE, ]
+    ```
+
+    Pro to, aby výběr matice fungoval, tak je potřeba, aby se definovaly všechny řádky. Zde jsme ale dodali pouze jednu hodnotu. Víme ale, že R si v některých případech dokáže hodnoty samo doplnit - viz [Automatické generování hodnot]
+:::
+
+5.  Ve výsledku jsme R zadali následující kód:
+
+    ```{r}
+    matice[c(TRUE, TRUE, TRUE, TRUE), ] #aka vyber vsechny radky
+    ```
+
+::: fragment
+**Proč vám toto celé říkám?**
+
+- Nemůžete počítat s tím, že když něco "pokazíte", nutně vám vyskočí error.
+
+- R má spoustu funkcí a pokynů, i já někdy narazím na mě zcela nové věci
+
+- **Kontrolujte si jednotlivé pokyny, které skládáte dohromady!!**
+:::
+
+------------------------------------------------------------------------
+
+### Procvičení
+
+#### Data frame
+
+Data frame a matice mají stejný počet dimenzí; **data frame tak můžeme indexovat stejným způsobem jako matici.**
+
+```{r}
+vek <- c(27,35,30,47,42)
+sex <- c("female","male","male","female","female")
+strana <-c("sin","sin","dx","dx","dx")
+ID <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
+vzorek <- data.frame(vek, strana, sex, row.names = ID); vzorek
+
+vzorek[1, 3]
+vzorek["SC_020", 1]
+vzorek[,2]
+```
+
+------------------------------------------------------------------------
+
+**Co když ale chceme vybírat podle specifických hodnot**? Například, vyber všechny řádky, které mají ve sloupci `side` hodnotu `sin`?
 
 df\["název sloupce"\] nejde to s řádky i když jsou pojmenovány - dataframe je defakto list vektorů stejné délky takže to počítá s tím že voláš jednotlivé ty vektory
 
@@ -1153,6 +1413,14 @@ proč toto nejde u matice? protože matice je defakto opravdový 2d objekt - má
 ukázka s vytvořením pojmenované matice a pak výběru podle sloupce, poté s as.data.frame, ukázka že \[\] defakto vytvoří subset, co když chceme ale čistě hodnoty? napojení na \$
 
 \$ slouží specificky pro listy (a tím pádem i data frames)
+
+indexování pomocí \[\] vrátí strukturu, \$ hodnoty
+
+při indexu jenom jednoho sloupce jinak než podle jména se to automaticky mění na vektor, pokud se to chce nechat jako struktura tak potřeba přidat drop = FALSE
+
+```{r}
+vzorek[,2, drop=FALSE]
+```
 
 přidávání hodnot - praktická ukázka použití \$
 
@@ -1173,3 +1441,5 @@ Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počí
 ## Domácí úkol
 
 Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi
+
+zkouška

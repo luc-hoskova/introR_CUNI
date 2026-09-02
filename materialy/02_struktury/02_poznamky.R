@@ -62,7 +62,7 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
            predmety = rep(c("ČJ", "biologie", "španělština"), 2))
 
 #BALÍČKY
-#zkouška nahrání balíčku dplyr
+#zkouška nahrání balíčku dplyr a tibble
 
 #INDEXACE
 #výběr sloupce s mezerou
@@ -95,6 +95,6 @@ hodnoty[seq(0, length(hodnoty), by = 5)]
 
 #2)
 cisla <- 1878:2324
-cisla[cisla %% 3 == 0]
+length(cisla[cisla %% 3 == 0])
 #nebo
-(1878:2324)[1878:2324 %% 3 == 0]
+length((1878:2324)[1878:2324 %% 3 == 0])

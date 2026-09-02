@@ -3,6 +3,7 @@
 ####################################
 #1. lekce
 length() #zjisti delku x
+identical() #je x, y, z... totozne?
 sample() #provede nahodny vyber z x
 seq() #vytvori sekvenci dle dannych parametru
 rep() #zopakuje x
@@ -14,6 +15,7 @@ cbind() #spoji objektx po sloupcich
 class() #jak se R vuci objektu chova
 colnames() #nazvy sloupcu x
 data.frame() #vytvori data frame
+dim() #jake jsou dimenze x
 dimnames() #nazvy/stitky jednotlivych dimenzi objektu
 install.packages("název balíčku") #instaluje balicek
 library() #nahrání balíčku do R
