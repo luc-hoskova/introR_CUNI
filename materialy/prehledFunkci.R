@@ -15,13 +15,15 @@ class() #jak se R vuci objektu chova
 colnames() #nazvy sloupcu x
 data.frame() #vytvori data frame
 dimnames() #nazvy/stitky jednotlivych dimenzi objektu
+install.packages("název balíčku") #instaluje balicek
+library() #nahrání balíčku do R
 list() #vytvori list/seznam
 matrix() #vytvori matici
 mode() #jaky je datovy typ x
 names() #jake jsou jmena/stitky x
 rbind() #spoji objektx po radcich
 rownames() #nazvy radku x
-tibble::tibble() #vytvoří tibble
+tibble::tibble() #vytvori tibble
 tolower() #zmeni hodnoty textu na lower case
 
 #3. lekce

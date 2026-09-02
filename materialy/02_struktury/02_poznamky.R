@@ -81,16 +81,17 @@ x[11:14]
 x[(length(x)-3):length(x)]
 
 #2
-vektor2 <- c(age = NA, ageRestriction = NA, group = "voters", region = "Vitkovice")
+vektor2 <- c(gender = NA, ageGroup = NA, activeVoters = NA,
+             country = "CZ", region = "Ostravsko", city = "Havířov")
 vektor2[-2]
 #co ale s jmenem?
-#proc nejde vektor2[-"ageRestriction"]
-vektor2[names(vektor2) != "ageRestriction"] #vyber vsech jmen krome ageRestriction
+#proc nejde vektor2[-"ageGroup"]
+vektor2[names(vektor2) != "ageRestriction"] #vyber vsech jmen krome ageGroup
 
 #SAMOSTATNE CVIČENÍ INDEXACE VEKTORY
 #1)
 hodnoty <- seq(15.2, 45.7, 0.56)
-hodnoty[seq(1, length(hodnoty), by = 5)]
+hodnoty[seq(0, length(hodnoty), by = 5)]
 
 #2)
 cisla <- 1878:2324

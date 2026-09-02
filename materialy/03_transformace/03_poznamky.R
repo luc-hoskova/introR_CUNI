@@ -1,3 +1,4 @@
+#as.numeric a tak funkce
 #grep funkce
 #https://www.statology.org/r-grep-match-replace/
 #slouží k vyhledávání vzorů ve vektorech a jejich nahrazení
@@ -14,5 +15,11 @@
 #přidávání textu k číslům aka jak to udělat abych měl najendou 50 ID jako texty s "id_01", "id_02" a tak dál
 #paste0()
 
+#group by a ungroup
 
+#funkce which vybere cidla radku podle podminky
+df <- data.frame(
+  name = c("Anna", "Bob", "Carl", "Dan"),
+  age = c(18, 25, 17, 30))
+which(df$age >= 18)
 

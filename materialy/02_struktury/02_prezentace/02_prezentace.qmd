@@ -25,6 +25,8 @@ execute:
 -   datové struktury v R
 -   balíčky
 -   indexace
+    -   base R
+    -   balíček `dplyr`
 :::
 
 ## Kontrola domácí práce
@@ -235,11 +237,13 @@ id
 
 #### Řešení úlohy 3)
 
-Opravte následující kód tak, aby dával požadovaný výsledek.
+::: fragment
+1.  Opravte následující kód tak, aby dával požadovaný výsledek.
 
 ```{r}
 rep(škoda = "octavia", 2)
 ```
+:::
 
 ::: fragment
 Nesmíte zapomenout, že symbol = uvnitř funkcí značí argument. Má funkce `rep` argument škoda?
@@ -456,12 +460,14 @@ matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20),
 
 #### Řešení úlohy 1)
 
+::: fragment
 1.  Vytvořte sekvenci lichých čísel (každé číslo objedno od 1 dále) v počtu deseti hodnot.
 
     ```{r}
     seq(by = 2, length.out = 10)
     #nebo taky samozrejme c(1, 3, 5, 7, 9, 11, 13, 15, 17, 19), ale....
     ```
+:::
 
 ::: fragment
 2.  Použij sekvenci jako hodnoty do matice, rozděl je do pěti sloupců a dvou řádků.
@@ -493,11 +499,13 @@ matrix(rep(c(15:20, 37:42), 3), ncol = length(15:20),
 
 #### Řešení úlohy 2)
 
+::: fragment
 1.  Jelikož potřebujeme poskládat numerické vektory 15:20 a 37:42 dohromady šestkrát pod sebou, musí být spojené po řádcích. Kromě `rbind`tuto možnost poskytuje i parametr `byrow = TRUE` ve funkci `matrix`.
 
     ```{r}
     #matrix(?, byrow =  TRUE)
     ```
+:::
 
 ::: fragment
 2.  Potřebujeme proto vyvořit sekvenci hodnot, které dáme R k dispozici pro vytvoření matice. To znamená, že musíme sestavit sekvenci šestkrát za sebou alternativně opakujících se vektorů 15:20 a 37:42.\
@@ -749,6 +757,7 @@ rep(c("ČJ", "biologie", "španělština"), 2)
 
 #### Řešení úlohy 1)
 
+::: fragment
 1.  Vypište jednotlivé sloupce jako vektory.
 
     ```{r}
@@ -756,6 +765,7 @@ rep(c("ČJ", "biologie", "španělština"), 2)
     sex <- c("female","male","male","female","female")
     strana <- c("sin","sin","dx","dx","dx")
     ```
+:::
 
 ::: fragment
 2.  Volitelné; vytvořte si vektor pro jména řádků.
@@ -784,6 +794,7 @@ Data frame si nemusíte pojmenovávat, ale vzhledem k úloze 2) se to hodí.
 
 #### Řešení úlohy 2)
 
+::: fragment
 1.  K data frame potřebujeme připojit nový sloupec. Jeden ze způsobů jak to provést (další se naučíme později) je vytvoření nového pojmenovaného vektoru s jeho připojení ke stávajícímu data frame.\
     Vytvořme si proto vektor, který bude obsahovat náhodný výběr boolean hodnot.
 
@@ -793,6 +804,7 @@ Data frame si nemusíte pojmenovávat, ale vzhledem k úloze 2) se to hodí.
     #proto pouzijeme length(nazev nami ulozeneho vektoru)
       #ano, jde to pocitat i rucne, ale co kfyz toho budete mit opravdu hodne?
     ```
+:::
 
 ::: fragment
 2.  Spojíme dohromady data frame z první úlohy a nový vektor. Pro snadnou práci doporučuji si data frame pojmenovat (viz předchozí úloha).
@@ -817,6 +829,7 @@ Při opakovaném spuštění kódu, kde se přidávají/ubírají části objekt
 
 #### Řešení úlohy 3)
 
+::: fragment
 1.  Jednoduchým způsobem, jak si vytvořit dataframe s přiřazováním názvů, je použít funkci `data.frame`. Vytvořme si proto data frame z dodaných vektorů a dle zadání je pojmenujme tak, aby nám z toho vznikly správné názvy sloupců.
 
 ::: callout-note
@@ -834,6 +847,7 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
            jmenaZaku,
            predmety = rep(c("ČJ", "biologie", "španělština"), 2))
 ```
+:::
 
 ::: fragment
 2.  Kód nám hodí error, jelikož se pokoušíme do data frame, který musí mít vždy stejnou délku sloupců či řádků, vložit vektor, který je kratší jak ostatní. Potřebujeme si tedy zjistit, o který se jedná.
@@ -1014,7 +1028,7 @@ Na základě tohoto principu lze hodnoty vybírat pomocí různých způsobů:
 
 ```{r}
 vektor[1:2] #prvni az druha hodnota
-vektor[-1] #vsechny hodnoty krome prvni
+vektor[-1] #vsechny hodnoty krome prvni (pozor: lze jen s cisly!)
 ```
 :::
 
@@ -1042,38 +1056,95 @@ Při `< 600` **chybí levá stran**a; co je menší než 600?
 ::: callout-important
 ## Pro výběr charakteristikami se používají čistě logické hodnoty!
 
-Výběr podle charakteristik defacto znamená, že se R předá vektor s hodnotami TRUE/FALSE o tom, zda má být hodnota na dané pozici do výběru zařazena.\`
+Výběr podle charakteristik defacto znamená, že se **R předá vektor s hodnotami TRUE/FALSE** o tom, zda má být hodnota na dané pozici do výběru zařazena.
 
 ```{r}
 vektor[vektor < 600]
 vektor[c(TRUE, FALSE, FALSE)]
 ```
+:::
+
+K výběru **lze samozřejmě použít i ostatní operátory**.
 
 ```{r}
-vektor
-x1 <- 550:560; x1
-
-vektor[x1 < 555]
+vektor[vektor == 8797]
+#vyber ty hodnoty ktere jsou presne 8797
+vektor[vektor > 600 & vektor < 50000]
+#vyber hodnoty ktere jsou vetsi nez 600 a zaroven mensi nez 50 000
 ```
 :::
 
-K výběru lze samozřejmě použít i ostatní operátory.
+### Procvičení
 
-ff
-:::
+1.  Vyber z následujícího vektoru poslední čtyři hodnoty
 
-Procvičení
+    ```{webr-r}
+    x <- c(15, 87, 23, 91, 42, 68, 54, 78, 54, 45, 10, 98, 54, 98)
+    ```
 
-```{r}
-vektor[1:2] #prvni az druha hodnota
-vektor[-1] #vsechny hodnoty krome prvni
+2.  Vyber všechny hodnoty z vektoru krom té se jménem `ageGroup`. Nevypisuj, použij k výběru funkce či operátory.
+
+```{webr-r}
+c(gender = NA, ageGroup = NA, activeVoters = NA,
+  country = "CZ", region = "Ostravsko", city = "Havířov")
 ```
 
-Samostatné cvičení
+### Samostatné cvičení
 
-Vyber z vektoru 50:60 každou pátou hodnotu
+```{r}
+#| echo: false
+countdown::countdown(minutes = 10,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
 
-Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi
+1.  Vyber z následujícího vektoru každou pátou hodnotu
+
+    ```{r}
+    seq(15.2, 45.7, 0.56)
+    ```
+
+2.  Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi
+
+#### Řešení úlohy 1)
+
+::: fragment
+1.  Pojmenujte si vektor pro snažší manipulaci.
+
+    ```{r}
+    hodnoty <- seq(15.2, 45.7, 0.56); hodnoty
+    ```
+:::
+
+::: fragment
+2.  Vytvořte sekvenci, která v sobě bude obsahovat čísla v intervalu pěti od 0 do posledního čísla vektoru = každé páté číslo.
+
+    ```{r}
+    seq(0, length(hodnoty), by = 5)
+    ```
+:::
+
+::: fragment
+3.  Použijte výslednou sekvenci čísel k indexaci.
+
+    ```{r}
+    hodnoty[seq(0, length(hodnoty), by = 5)]
+    ```
+:::
+
+#### Řešení úlohy 1)
+
+Používání výběru k přiřazovýní
+
+```{r}
+x3 <- 1:20; x3
+x3[21]
+x3[21] <- 55; x3
+```
+
+Co se stane když přidám až na pozici 31?
 
 df\["název sloupce"\] nejde to s řádky i když jsou pojmenovány - dataframe je defakto list vektorů stejné délky takže to počítá s tím že voláš jednotlivé ty vektory
 
@@ -1093,13 +1164,6 @@ Doctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","To
 #pridame nove hodnoty - musime prepsat a pridat
 Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi", "Jodie Whittaker"), year = c(Doctor$year,34,27,55,36),
                episodes = c(Doctor$episodes,"47","44","39","10")); Doctor
-```
-
-Výběr pomocí specifických hodnot
-
-```{r}
-x3 <- 1:20;x3
-x3[x3<13 & x3>5]
 ```
 
 ## Příprava na další hodinu
