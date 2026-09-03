@@ -1080,11 +1080,12 @@ Proč nemůžeme jednoduše napsat `vektor[< 600]`?
 Při `< 600` **chybí levá stran**a; co je menší než 600?
 
 ::: callout-important
-## Pro výběr charakteristikami se používají čistě logické hodnoty!
+## Pro výběru se používají čistě logické hodnoty!
 
-Výběr podle charakteristik defacto znamená, že se **R předá vektor s hodnotami TRUE/FALSE** o tom, zda má být hodnota na dané pozici do výběru zařazena.
+Výběr defacto znamená, že se **R předá vektor s hodnotami TRUE/FALSE** o tom, zda má být hodnota na dané pozici do výběru zařazena.
 
 ```{r}
+vektor < 600 #TRUE, FLASE, FALSE
 vektor[vektor < 600]
 vektor[c(TRUE, FALSE, FALSE)]
 ```
@@ -1292,7 +1293,8 @@ matice[,c("a", "c", "d")] #vsechny radky a sloupce a, c, d
 Stejným způsobem, jako můžeme vybírat specifické hodnoty u vektoru, totéž můžeme provést i u matice.
 
 ```{r}
-#vyber vsechny hodnoty z radku, ktere maji v druhem sloupci vetsi hodnotu nez 15
+matice #zobrazeni pro prehled
+#vyber vsechny radky, ktere maji v druhem sloupci vetsi hodnotu nez 15
 matice[matice[,2] > 15,]
 ```
 
@@ -1310,6 +1312,19 @@ matice[matice[,2] > 15,]
 matice[c("C", "D"),] #totozny vysledek
 ```
 
+::: callout-important
+## Třeba jasně definovat podmínky pro všechny sloupce a řádky
+
+Přemýšlejte nad tím takto: musí R vždy říct, jestli tam má každý sloupec či řádek zařadit; zda má být součástí výběru (TRUE)
+
+**Ukázka**
+
+```{r}
+matice[c("C", "D"),]
+matice[c(FALSE, FALSE, TRUE, TRUE),]
+```
+:::
+
 ::: fragment
 Proč nemůžeme jednoduše použít následující kód?
 
@@ -1324,7 +1339,9 @@ matice["B" > 15, ]
 ```
 :::
 
+::: fragment
 Huh, proč se nám vybrala celá matice?
+:::
 
 ::: fragment
 ```{r}
@@ -1366,18 +1383,20 @@ Jak to že je ale 2 \> 15?
     Pro to, aby výběr matice fungoval, tak je potřeba, aby se definovaly všechny řádky. Zde jsme ale dodali pouze jednu hodnotu. Víme ale, že R si v některých případech dokáže hodnoty samo doplnit - viz [Automatické generování hodnot]
 :::
 
+::: fragment
 5.  Ve výsledku jsme R zadali následující kód:
 
     ```{r}
     matice[c(TRUE, TRUE, TRUE, TRUE), ] #aka vyber vsechny radky
     ```
+:::
 
 ::: fragment
 **Proč vám toto celé říkám?**
 
 - Nemůžete počítat s tím, že když něco "pokazíte", nutně vám vyskočí error.
 
-- R má spoustu funkcí a pokynů, i já někdy narazím na mě zcela nové věci
+- R má spoustu funkcí a pokynů, i já někdy narazím na mně zcela nové věci
 
 - **Kontrolujte si jednotlivé pokyny, které skládáte dohromady!!**
 :::
@@ -1385,6 +1404,32 @@ Jak to že je ale 2 \> 15?
 ------------------------------------------------------------------------
 
 ### Procvičení
+
+1.  Vyber z matice všechny hodnoty vyšší jak 30.
+
+    ```{webr-r}
+
+    ```
+
+2.  Vyber z prvního řádku ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.
+
+    ```{webr-r}
+
+    ```
+
+3.  Vyber ty řádky, které mají ve sloupci `c` hodnotu přesně 20.
+
+    ```{webr-r}
+
+    ```
+
+4.  Vyber každý druhý sloupec, ale pouze ty řádky které začínají na liché hodnoty.
+
+    ```{webr-r}
+
+    ```
+
+------------------------------------------------------------------------
 
 #### Data frame
 
@@ -1397,16 +1442,96 @@ strana <-c("sin","sin","dx","dx","dx")
 ID <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
 vzorek <- data.frame(vek, strana, sex, row.names = ID); vzorek
 
-vzorek[1, 3]
-vzorek["SC_020", 1]
-vzorek[,2]
+vzorek[1, 3] #prvni radek treti sloupec
+vzorek["SC_020", 1] #radek jmenem SC_020 prvni sloupec
+vzorek[vzorek[,2] == "sin",] #radky ktere maji v druhem sloupci hodnotu "sin" a vsechny sloupce
 ```
+
+::: callout-important
+## Indexování jmény sloupců
+
+Data frame má narozdíl od matice ovšem jednu velkou výhodu; můžeme indexovat přímo pomocí jmen sloupců. Co to znamená?
+
+```{r}
+vzorek[strana == "sin",] #vsechny sloupce ale pouze ty radky, co maji ve sloupci strana hodnotu "sin"
+vzorek[vzorek[,"strana"] == "sin",]
+```
+:::
+
+Proč tomu tak je? *Nápověda: jaká je definice data frame a matice?*
+
+::: fragment
+Zatímco matice jsou "pouze" vektory spojené dohromady, **data frame je objekt složený z jiných objektů**.
+
+```{r}
+str(matice) #jaka je struktura matice "matice"
+str(vzorek) #jaka je struktura data frame "vzorek"
+```
+:::
+
+::: fragment
+Znamená to proto, že můžeme rovnou **vybrat i celé sloupce (aka objekty)**.
+
+```{r}
+vzorek["strana"] #vyber z data frame vzorek sloupec, ktery se jmenuje strana
+```
+
+Proč nelze jednoduše použít následující kód?
+
+```{webr-r}
+vzorek[strana]
+```
+:::
+
+::: fragment
+Objekt `strana` v sobě uchovává údaje o hodnotách `sin, sin, dx, dx, dx`. Říkáme proto R, ať nám vyhledá objekty s takovýmito názvy - ale žádné takové v data frame `vzorek` nejsou.
+:::
+
+::: fragment
+#### Proč při vyhledávání ale používáme název sloupce bez uvozovek?
+:::
+
+::: fragment
+```{r}
+#vyber radky, co pro sloupec strana splnuji
+#"sin" = TRUE, osatni =  FALSE
+vzorek[strana == "sin",] 
+vzorek[c(TRUE, TRUE, FALSE, FALSE, FALSE),]
+
+identical(vzorek[strana == "sin",],
+          vzorek[c(TRUE, TRUE, FALSE, FALSE, FALSE),])
+```
+:::
+
+::: fragment
+#### Můžu si takto zavolat i řádky?
+:::
+
+::: fragment
+R automaticky usuzuje že data frame je poskládaný tak, že jednotlivá měření/vzorky/pozorování jsou zapsaná v řádcích, nikoliv ve sloupcích - jedná se o takzvaný **long formát dat**. To znamená, že usuzuje, že jednotlivé vektory, ze kterých se data frame skládá, budou sloupce.
+
+```{webr-r}
+vzorek["SC_001"] #v data frame neexistuje neco jako objekt SC_001
+```
+:::
 
 ------------------------------------------------------------------------
 
-**Co když ale chceme vybírat podle specifických hodnot**? Například, vyber všechny řádky, které mají ve sloupci `side` hodnotu `sin`?
+### Procvičení
 
-df\["název sloupce"\] nejde to s řádky i když jsou pojmenovány - dataframe je defakto list vektorů stejné délky takže to počítá s tím že voláš jednotlivé ty vektory
+d
+
+------------------------------------------------------------------------
+
+Ustruktury symbol \$ co to znamená
+
+```{r}
+vzorek[,"strana"] #vyber sloupec, ktery je pojmenovany strana
+vzorek$strana #vyber objekt ktery tvori vzorek a co se jmenuje strana
+identical(vzorek[,"strana"], vzorek$strana)
+```
+
+**Co když ale chceme vybírat podle specifických hodnot**? Například, vyber všechny řádky, které mají ve sloupci `side` hodnotu `sin`?
 
 proč toto nejde u matice? protože matice je defakto opravdový 2d objekt - má v sobě prostě směs něčeho, není to slepené dohromady z rlzných věcí
 
