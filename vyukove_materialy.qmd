@@ -10,9 +10,10 @@ Materiály budou zveřejněny vždy před lekcí (v případě výukových mater
 
 - kde [stáhnout R](https://cloud.r-project.org/)
 - kde [stáhnout RStudio (Desktop)](https://cloud.r-project.org/)
-- tahák klávesových zkratek symbolů potřebných pro práci s R
+- [tahák](https://luc-hoskova.github.io/introR_CUNI/materialy/tahak_klavesy.pdf) klávesových zkratek symbolů potřebných pro práci s R
 
 ## 1. Úvodní hodina (15.09.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/01_prezentace/01_prezentace.html#/title-slide)
-- Příprava: stažené, nainstalované a funkční programy [R](https://cloud.r-project.org/) a [RStudio](https://cloud.r-project.org/)
+- Příprava
+  - stažené, nainstalované a funkční programy [R](https://cloud.r-project.org/) a [RStudio](https://cloud.r-project.org/)
