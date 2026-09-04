@@ -2,6 +2,17 @@
 title: "Výukové materiály"
 ---
 
-V této sekci naleznou účastníci výukové materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.
+V této sekci naleznou účastníci výukové a podpůrné materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.
 
 Materiály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení).
+
+## Základní materiály
+
+- kde [stáhnout R](https://cloud.r-project.org/)
+- kde [stáhnout RStudio (Desktop)](https://cloud.r-project.org/)
+- tahák klávesových zkratek symbolů potřebných pro práci s R
+
+## 1. Úvodní hodina (15.09.2026)
+
+- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/01_prezentace/01_prezentace.html#/title-slide)
+- Příprava: stažené, nainstalované a funkční programy [R](https://cloud.r-project.org/) a [RStudio](https://cloud.r-project.org/)

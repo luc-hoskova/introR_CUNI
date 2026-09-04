@@ -116,7 +116,7 @@
     "href": "vyukove_materialy.html",
     "title": "Výukové materiály",
     "section": "",
-    "text": "V této sekci naleznou účastníci výukové materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.\nMateriály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení)."
+    "text": "V této sekci naleznou účastníci výukové a podpůrné materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.\nMateriály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení)."
   },
   {
     "objectID": "index.html#o-kurzu",
@@ -138,5 +138,19 @@
     "title": "Zpracovávání výzkumných dat pomocí jazyka R",
     "section": "Náplň lekcí",
     "text": "Náplň lekcí\nKurz je koncipován jako série deseti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce:\n\núvod do R a příprava dat pro následující analýzu\nvizualizace dat,\nstatistická analýza.\n\nPřehled náplně jednotlivých lekcí se nachází v sylabu kurzu."
+  },
+  {
+    "objectID": "vyukove_materialy.html#základní-materiály",
+    "href": "vyukove_materialy.html#základní-materiály",
+    "title": "Výukové materiály",
+    "section": "Základní materiály",
+    "text": "Základní materiály\n\nkde stáhnout R\nkde stáhnout RStudio (Desktop)\ntahák klávesových zkratek symbolů potřebných pro práci s R"
+  },
+  {
+    "objectID": "vyukove_materialy.html#úvodní-hodina-15.09.2026",
+    "href": "vyukove_materialy.html#úvodní-hodina-15.09.2026",
+    "title": "Výukové materiály",
+    "section": "1. Úvodní hodina (15.09.2026)",
+    "text": "1. Úvodní hodina (15.09.2026)\n\nPrezentace\nPříprava: stažené, nainstalované a funkční programy R a RStudio"
   }
 ]
