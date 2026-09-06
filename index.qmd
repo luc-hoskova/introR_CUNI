@@ -9,7 +9,7 @@ Schopnost používat počítačový software či skriptovací jazyky pro potřeb
 ::: callout-warning
 ## Kapacity naplněny
 
-**Kapacity na tento běh kurzu jsou již naplněny, přihlášení do dalšího běhu kurzu se znovu spustí během příštího semestru.**
+**Kapacity na tento běh kurzu jsou již naplněny, přihlášení do dalšího běhu kurzu se znovu spustí během konce roku 2026.**
 
 **Pokud chcete být o spuštění informováni, kontaktujte mě na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz "e-mailová adresa").**
 :::

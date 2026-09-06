@@ -17,7 +17,6 @@ title: "Sylabus"
 -   datové struktury v R
 -   indexace
 -   práce s balíčky
--   úvod do [`dplyr`](https://dplyr.tidyverse.org/)
 
 ## 3. Transformace dat (13.10.2026)
 

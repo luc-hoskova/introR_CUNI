@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Zpracovávání výzkumných dat pomocí jazyka R",
     "section": "",
-    "text": "Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio.\n\n\n\n\n\n\nWarningKapacity naplněny\n\n\n\nKapacity na tento běh kurzu jsou již naplněny, přihlášení do dalšího běhu kurzu se znovu spustí během příštího semestru.\nPokud chcete být o spuštění informováni, kontaktujte mě na lucie.hoskova@ruk.cuni.cz.\n\n\n\n\n\n\n\n\nNoteodkaz na registraci\n\n\n\nNa kurz se přihlašuje skrz portál Centra pro celoživotní vzdělávání UK dostupném zde. Podrobný návod provádějící postupem registrace naleznete na Návod na přihlášení."
+    "text": "Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio.\n\n\n\n\n\n\nWarningKapacity naplněny\n\n\n\nKapacity na tento běh kurzu jsou již naplněny, přihlášení do dalšího běhu kurzu se znovu spustí během konce roku 2026.\nPokud chcete být o spuštění informováni, kontaktujte mě na lucie.hoskova@ruk.cuni.cz.\n\n\n\n\n\n\n\n\nNoteodkaz na registraci\n\n\n\nNa kurz se přihlašuje skrz portál Centra pro celoživotní vzdělávání UK dostupném zde. Podrobný návod provádějící postupem registrace naleznete na Návod na přihlášení."
   },
   {
     "objectID": "index.html#komu-je-kurz-určen",
@@ -53,7 +53,7 @@
     "href": "sylabus.html#struktury-a-indexace-29.09.2026",
     "title": "Sylabus",
     "section": "2. Struktury a indexace (29.09.2026)",
-    "text": "2. Struktury a indexace (29.09.2026)\n\ndatové struktury v R\nindexace\npráce s balíčky\núvod do dplyr"
+    "text": "2. Struktury a indexace (29.09.2026)\n\ndatové struktury v R\nindexace\npráce s balíčky"
   },
   {
     "objectID": "sylabus.html#transformace-dat-13.10.2026",
@@ -123,7 +123,7 @@
     "href": "index.html#o-kurzu",
     "title": "Zpracovávání výzkumných dat pomocí jazyka R",
     "section": "",
-    "text": "Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio.\n\n\n\n\n\n\nWarningKapacity naplněny\n\n\n\nKapacity na tento běh kurzu jsou již naplněny, přihlášení do dalšího běhu kurzu se znovu spustí během příštího semestru.\nPokud chcete být o spuštění informováni, kontaktujte mě na lucie.hoskova@ruk.cuni.cz.\n\n\n\n\n\n\n\n\nNoteodkaz na registraci\n\n\n\nNa kurz se přihlašuje skrz portál Centra pro celoživotní vzdělávání UK dostupném zde. Podrobný návod provádějící postupem registrace naleznete na Návod na přihlášení."
+    "text": "Schopnost používat počítačový software či skriptovací jazyky pro potřebu analýzy dat patří v současné době k nutnému repertoáru znalostí vědeckých a akademických pracovníků. V rámci tohoto kurzu se naučíte zpracovávat svá výzkumná data pomocí open source jazyka R v prostředí programu RStudio.\n\n\n\n\n\n\nWarningKapacity naplněny\n\n\n\nKapacity na tento běh kurzu jsou již naplněny, přihlášení do dalšího běhu kurzu se znovu spustí během konce roku 2026.\nPokud chcete být o spuštění informováni, kontaktujte mě na lucie.hoskova@ruk.cuni.cz.\n\n\n\n\n\n\n\n\nNoteodkaz na registraci\n\n\n\nNa kurz se přihlašuje skrz portál Centra pro celoživotní vzdělávání UK dostupném zde. Podrobný návod provádějící postupem registrace naleznete na Návod na přihlášení."
   },
   {
     "objectID": "index.html#cíl-kurzu",

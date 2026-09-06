@@ -142,10 +142,16 @@ names(jmena) #jake pojmenovani ma danna promenna?
 Při pojmenovávání připojujeme specifické hodnotě či sérii hodnot určitý štítek. Nejenomže popisuje vlastnost hodnot(y), kterou pojmenovává, ale zárověň ho lze použít i k vyhledávání (indexování) jednotlivých hodnot. Více o indexování si řekneme v následující sekci.
 :::
 
-**Pojmenování není to samé co přiřazování**; nevytváříme nové objekty, pouze hodnotám přidáváme novou charakteristiku. Ukázkou toho je, že je možné jedno pojmenování používat víckrát (i když to opravdu není dobrý nápad).
+**Pojmenování není to samé co přiřazování**; nevytváříme nové objekty, pouze hodnotám přidáváme novou charakteristiku.
 
-```{r}
+```{webr-r}
+vespa <- "primavera"
+yamaha <- "kodiak 450"
+suzuki <- "birdie"
+c(vespa, yamaha, suzuki)
+
 c(škoda = "octavia", škoda = "felicia", volkswagen = "beetle")
+škoda
 ```
 
 ------------------------------------------------------------------------
@@ -1398,26 +1404,26 @@ Jak to že je ale 2 \> 15?
 
 - R má spoustu funkcí a pokynů, i já někdy narazím na mně zcela nové věci
 
-- **Kontrolujte si jednotlivé pokyny, které skládáte dohromady!!**
+- **Kontrolujte si jednotlivé pokyny, které skládáte dohromady!**
 :::
 
 ------------------------------------------------------------------------
 
 ### Procvičení
 
-1.  Vyber z matice všechny hodnoty vyšší jak 30.
+1.  Vyber z proměnné `matice` všechny hodnoty vyšší jak 30.
 
     ```{webr-r}
 
     ```
 
-2.  Vyber z prvního řádku ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.
+2.  Vyber z prvního řádku `matice`ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.
 
     ```{webr-r}
 
     ```
 
-3.  Vyber ty řádky, které mají ve sloupci `c` hodnotu přesně 20.
+3.  Vyber ty řádky `matice`, které mají ve sloupci `c` hodnotu přesně 20.
 
     ```{webr-r}
 
@@ -1453,7 +1459,8 @@ vzorek[vzorek[,2] == "sin",] #radky ktere maji v druhem sloupci hodnotu "sin" a 
 Data frame má narozdíl od matice ovšem jednu velkou výhodu; můžeme indexovat přímo pomocí jmen sloupců. Co to znamená?
 
 ```{r}
-vzorek[strana == "sin",] #vsechny sloupce ale pouze ty radky, co maji ve sloupci strana hodnotu "sin"
+#vyber vsechny sloupce ale pouze ty radky co maji ve sloupci, ktery se jmenuje strana, hodnotu "sin"
+vzorek[vzorek$strana == "sin",]
 vzorek[vzorek[,"strana"] == "sin",]
 ```
 :::
@@ -1467,41 +1474,23 @@ Zatímco matice jsou "pouze" vektory spojené dohromady, **data frame je objekt 
 str(matice) #jaka je struktura matice "matice"
 str(vzorek) #jaka je struktura data frame "vzorek"
 ```
-:::
 
-::: fragment
 Znamená to proto, že můžeme rovnou **vybrat i celé sloupce (aka objekty)**.
 
 ```{r}
 vzorek["strana"] #vyber z data frame vzorek sloupec, ktery se jmenuje strana
 ```
-
-Proč nelze jednoduše použít následující kód?
-
-```{webr-r}
-vzorek[strana]
-```
 :::
 
-::: fragment
-Objekt `strana` v sobě uchovává údaje o hodnotách `sin, sin, dx, dx, dx`. Říkáme proto R, ať nám vyhledá objekty s takovýmito názvy - ale žádné takové v data frame `vzorek` nejsou.
-:::
+------------------------------------------------------------------------
 
-::: fragment
-#### Proč při vyhledávání ale používáme název sloupce bez uvozovek?
-:::
+### Indexování s \$
 
-::: fragment
-```{r}
-#vyber radky, co pro sloupec strana splnuji
-#"sin" = TRUE, osatni =  FALSE
-vzorek[strana == "sin",] 
-vzorek[c(TRUE, TRUE, FALSE, FALSE, FALSE),]
+Mohli jste si všimnout, že při vytváření indexování specificky pojmenovaného sloupce za daných podmínek se použil symbol \$. Co znamená?
 
-identical(vzorek[strana == "sin",],
-          vzorek[c(TRUE, TRUE, FALSE, FALSE, FALSE),])
-```
-:::
+\$ vybere hodnoty z určité komponenty - jde to používat pouze u listu a data frame - opět matice není složena z více pojmenovaných vektorů je to jen oštétkování
+
+až na konec
 
 ::: fragment
 #### Můžu si takto zavolat i řádky?
@@ -1519,7 +1508,13 @@ vzorek["SC_001"] #v data frame neexistuje neco jako objekt SC_001
 
 ### Procvičení
 
-d
+::: callout-important
+## Zkušební datasety v R
+
+V R a nahraném balíčku `dplyr` je nainstalováno několik datasetů určených k zkoušení si funkcí a celkovému hraní si. Datasety `cars`, `iris`, `storms` a `billboard`, které budeme v následujícím procvičení používat, jsou právě jedněmi z nich. Pro jejich používání není potřeba je jakkoliv nahrávat či ukládat jako proměnné.
+:::
+
+1.  
 
 ------------------------------------------------------------------------
 
@@ -1558,6 +1553,12 @@ Doctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","To
 Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi", "Jodie Whittaker"), year = c(Doctor$year,34,27,55,36),
                episodes = c(Doctor$episodes,"47","44","39","10")); Doctor
 ```
+
+## Samostatné cvičení
+
+nahrání souboru s daty a indexace na nich, důležité jeatli se njdříve podévali na str než to začali indexovat protože indexace podle názvů u matice bude blbnout s podmínkami
+
+------------------------------------------------------------------------
 
 ## Příprava na další hodinu
 
