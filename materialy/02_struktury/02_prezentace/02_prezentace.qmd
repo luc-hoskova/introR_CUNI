@@ -319,12 +319,14 @@ temps
 
 - dvojrozměrný objekt znamená, že už se nejedná o objekt co má pouze jednu linii hodnot jako vektor, ale že **má řádky a sloupce**
 
-  ```{webr-r}
-  #| context: output
-  matrix(1:6, nrow=3, ncol=2) 
-  ```
+  - defacto vektor ale poskládaný do řádků a sloupců místo toho aby byl natáhnutý
 
-  - číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci Indexace
+    ```{webr-r}
+    #| context: output
+    matrix(1:6, nrow=3, ncol=2) 
+    ```
+
+    - číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci indexování [Matice]
 
 - při pokusu o vytvoření matice z více datových typů dojde stejně jako u vektoru k nucené konverzi na charakter
 
@@ -1110,6 +1112,28 @@ vektor[vektor > 600 & vektor < 50000]
 
 ------------------------------------------------------------------------
 
+Vybírání specifických hodnot nemusíme ale používat pouze k jejich vyhledávání. **Můžeme pomocí tohoto principu i přiřazovat a přepisovat jednotlivé hodnoty**.
+
+```{webr-r}
+x1 <- 1:20; x1
+length(x1) #kolik hodnot je ulozeno v x1?
+```
+
+Pokud chceme, aby 2. hodnota `x1` byla 55, jak ji můžeme přidat?
+
+```{webr-r}
+x1[2] <- 55; x1
+```
+
+Co když ale chceme, aby číslo 55 bylo na pozici 42?
+
+```{webr-r}
+x1[42] #v x1 v tuto chvili zadna hodnota na pozici 42 neni
+x1[42] <- 55; x1
+```
+
+------------------------------------------------------------------------
+
 ### Procvičení
 
 1.  Vyber z následujícího vektoru poslední čtyři hodnoty
@@ -1234,28 +1258,6 @@ length((1878:2324)[1878:2324 %% 3 == 0])
   #u hranate zavorky
 ```
 :::
-
-------------------------------------------------------------------------
-
-Vybírání specifických hodnot nemusíme ale používat pouze k jejich vyhledávání. **Můžeme pomocí tohoto principu i přiřazovat a přepisovat jednotlivé hodnoty**.
-
-```{webr-r}
-x1 <- 1:20; x1
-x1[1] <- 500; x1
-x1[21] #jaka je hodnota na pozici 21?
-```
-
-Pokud chceme, aby 21. hodnota `x1` byla 55, jak ji můžeme přidat?
-
-```{webr-r}
-x1 <- c(x1, 55); x1
-```
-
-Co když ale chceme, aby číslo 55 bylo na pozici 42?
-
-```{webr-r}
-x1[42] <- 55; x1
-```
 
 ------------------------------------------------------------------------
 
@@ -1454,39 +1456,48 @@ vzorek[vzorek[,2] == "sin",] #radky ktere maji v druhem sloupci hodnotu "sin" a 
 ```
 
 ::: callout-important
-## Indexování jmény sloupců
+## Výběr hodnot specifického sloupce
 
 Data frame má narozdíl od matice ovšem jednu velkou výhodu; můžeme indexovat přímo pomocí jmen sloupců. Co to znamená?
 
 ```{r}
-#vyber vsechny sloupce ale pouze ty radky co maji ve sloupci, ktery se jmenuje strana, hodnotu "sin"
-vzorek[vzorek$strana == "sin",]
-vzorek[vzorek[,"strana"] == "sin",]
+#vyber vsechny hodnoty ve sloupci strana
+vzorek$strana
 ```
 :::
 
-Proč tomu tak je? *Nápověda: jaká je definice data frame a matice?*
+Při vytváření indexování specificky pojmenovaného sloupce se používá symbol \$. Co znamená?
+
+> **symbol `$` provede výběr hodnot ze specifické komponenty datové struktury**
+
+Proč tento symbol nelze použít i u matice? *Nápověda: jaká je definice data frame a matice?*
 
 ::: fragment
-Zatímco matice jsou "pouze" vektory spojené dohromady, **data frame je objekt složený z jiných objektů**.
+Zatímco matice je defakto jeden dlouhý vektor poskládaný ve dvou dimenzích, **data frame je objekt složený z jiných objektů**.
 
+```{webr-r}
+matice
+matice$a
+```
+
+::: fragment
 ```{r}
 str(matice) #jaka je struktura matice "matice"
 str(vzorek) #jaka je struktura data frame "vzorek"
 ```
-
-Znamená to proto, že můžeme rovnou **vybrat i celé sloupce (aka objekty)**.
-
-```{r}
-vzorek["strana"] #vyber z data frame vzorek sloupec, ktery se jmenuje strana
-```
+:::
 :::
 
 ------------------------------------------------------------------------
 
 ### Indexování s \$
 
-Mohli jste si všimnout, že při vytváření indexování specificky pojmenovaného sloupce za daných podmínek se použil symbol \$. Co znamená?
+```{r}
+#vyber hodnoty z casti data frame vzorek, ktera se jmenuje strana
+vzorek$strana
+```
+
+#### K čemu by něco takového mohlo být užitečné?
 
 \$ vybere hodnoty z určité komponenty - jde to používat pouze u listu a data frame - opět matice není složena z více pojmenovaných vektorů je to jen oštétkování
 
