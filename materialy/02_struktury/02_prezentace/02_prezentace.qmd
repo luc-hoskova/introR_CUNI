@@ -1461,23 +1461,26 @@ vzorek[vzorek[,2] == "sin",] #radky ktere maji v druhem sloupci hodnotu "sin" a 
 Data frame má narozdíl od matice ovšem jednu velkou výhodu; můžeme indexovat přímo pomocí jmen sloupců. Co to znamená?
 
 ```{r}
-#vyber vsechny hodnoty ve sloupci strana
+#vyber sloupec strana
+vzorek["strana"]
+#vyber vsechny hodnoty ve sloupci strana 
 vzorek$strana
 ```
 :::
 
-Při vytváření indexování specificky pojmenovaného sloupce se používá symbol \$. Co znamená?
+Při vytváření indexování specificky pojmenovaného sloupce se někdy používá symbol \$.
 
 > **symbol `$` provede výběr hodnot ze specifické komponenty datové struktury**
 
 Proč tento symbol nelze použít i u matice? *Nápověda: jaká je definice data frame a matice?*
 
-::: fragment
+:::: fragment
 Zatímco matice je defakto jeden dlouhý vektor poskládaný ve dvou dimenzích, **data frame je objekt složený z jiných objektů**.
 
 ```{webr-r}
 matice
 matice$a
+
 ```
 
 ::: fragment
@@ -1486,34 +1489,63 @@ str(matice) #jaka je struktura matice "matice"
 str(vzorek) #jaka je struktura data frame "vzorek"
 ```
 :::
-:::
+::::
 
 ------------------------------------------------------------------------
 
-### Indexování s \$
+#### Rozdíl mezi \$ a \["název sloupce"\]
+
+Jak bylo vidět, při vybírání specifického sloupce můžeme využívat dva způsoby - \$ a \[ \]. Jaký je mezi nimi ale rozdíl?
+
+- **\$**
 
 ```{r}
-#vyber hodnoty z casti data frame vzorek, ktera se jmenuje strana
-vzorek$strana
+vzorek$vek #vyber hodnoty ze sloupce vek
+mean(vzorek$vek) #jaka je aritmeticky prumerna hodnota vek?
 ```
 
-#### K čemu by něco takového mohlo být užitečné?
+- **\[ \]**
 
-\$ vybere hodnoty z určité komponenty - jde to používat pouze u listu a data frame - opět matice není složena z více pojmenovaných vektorů je to jen oštétkování
-
-až na konec
+```{webr-r}
+mean(vzorek["vek"])
+```
 
 ::: fragment
-#### Můžu si takto zavolat i řádky?
+Proč nám není umožněno tuto funkci spusti? *Nápověda: jaká je datová chrakteristika tohoto výběru?*
 :::
 
 ::: fragment
+```{r}
+class(vzorek$vek)
+class(vzorek["vek"])
+```
+
+Můžeme počítat aritmetický průměr z číselných hodnot; rozhodně neuděláme průměr z "data frame".
+:::
+
+##### Kdy použijeme výběr pomocí \$?
+
+Kdykoliv, kdy potřebujeme pracovat s čistými hodnotami, nikoliv celou datovou strukturou. Příkladem může být buď přepisování, nebo třeba i doplňování dalších hodnot.
+
+```{r}
+Doctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","Peter Davison","Colin Baker","Sylvester McCoy","Paul McGann", "John Hurt","Christopher Eccleston"),
+               year = c(55,46,50,40,29,40,44,36,73,41), 
+               episodes = c("134","119","128","172","69","31","42","1","2","13")); Doctor
+
+#pridame nove hodnoty - musime prepsat a pridat
+Doctor <- list(name = c(Doctor$name,"David Tennat","Matt Smith","Peter Capaldi", "Jodie Whittaker"), year = c(Doctor$year,34,27,55,36),
+               episodes = c(Doctor$episodes,"47","44","39","10")); Doctor
+```
+
+------------------------------------------------------------------------
+#### Můžu si takto zavolat i řádky?
+
 R automaticky usuzuje že data frame je poskládaný tak, že jednotlivá měření/vzorky/pozorování jsou zapsaná v řádcích, nikoliv ve sloupcích - jedná se o takzvaný **long formát dat**. To znamená, že usuzuje, že jednotlivé vektory, ze kterých se data frame skládá, budou sloupce.
 
 ```{webr-r}
 vzorek["SC_001"] #v data frame neexistuje neco jako objekt SC_001
 ```
-:::
+
 
 ------------------------------------------------------------------------
 
