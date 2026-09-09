@@ -21,10 +21,14 @@ install.packages("název balíčku") #instaluje balicek
 library() #nahrání balíčku do R
 list() #vytvori list/seznam
 matrix() #vytvori matici
+mean() #aritmeticky prumer
 mode() #jaky je datovy typ x
 names() #jake jsou jmena/stitky x
+ncol() #kolik sloupcu ma x
+nrow() #kolik radku ma
 rbind() #spoji objektx po radcich
 rownames() #nazvy radku x
+str() #jaka je struktura x
 tibble::tibble() #vytvori tibble
 tolower() #zmeni hodnoty textu na lower case
 

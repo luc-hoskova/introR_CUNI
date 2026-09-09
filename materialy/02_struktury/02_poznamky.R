@@ -98,3 +98,19 @@ cisla <- 1878:2324
 length(cisla[cisla %% 3 == 0])
 #nebo
 length((1878:2324)[1878:2324 %% 3 == 0])
+
+#PROCVICOVSNI INDEXACE MATICE
+#1
+matice[matice > 30]
+
+#2
+matice[1, matice[1, ] > 25 | matice[1, ] < 15]
+
+#3
+matice[matice[,"c"] == 20,]
+
+#4
+dim(matice)
+matice[matice[,1] %% 2 == 1,seq(0, 6, by = 2)]
+#co kdyz to chceme udelat v jednom radku
+matice[matice[,1] %% 2 == 1,seq(0,ncol(matice), by = 2)]
