@@ -28,8 +28,6 @@ execute:
 - datové struktury v R
 - balíčky
 - indexace
-  - base R
-  - balíček `dplyr`
 :::
 
 ## Kontrola domácí práce
@@ -66,7 +64,7 @@ execute:
 
 > **série za sebou jdoucích hodnot totožného datového typu**
 
-- vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
+- vektor o jedné hodnotě je někdy nazýván *skalár*
 
 - jednodimenzionální (důležité hlavně při vyhledávání)
 
@@ -459,7 +457,7 @@ matice
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 15,
+countdown::countdown(minutes = 10,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -754,7 +752,7 @@ colorMaxNm <- c(461, 552, 675, 780)
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 15,
+countdown::countdown(minutes = 10,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -1005,7 +1003,7 @@ Pomocí funkce `tibble` ze stejnojmenného balíčku a funkce `filter` z balíč
 
 ## Indexace / výběr specifických dat
 
-**Výběr specifických dat je jedna ze základních funkcí R**; není pro to nutně třeba potřeba používat balíčky. Balíčky nám celá proces ovšem značně usnadní.
+**Výběr specifických dat je jedna ze základních funkcí R**; není pro to nutně třeba potřeba používat balíčky. Balíčky nám celý proces ovšem značně usnadní.
 
 ### Vyhledávání pomocí \[ \] {#vyhledávání-pomocí}
 
@@ -1244,7 +1242,7 @@ Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi. Kolik ji
 :::
 
 ::: fragment
-5.  Vybrali jsme v tuto chvíli všechny čísla z 1878 až 2324, která jsou dlitelná třemi. Jak zjistíme, kolik jich je?
+5.  Vybrali jsme v tuto chvíli všechny čísla z 1878 až 2324, které jsou dělitelné třemi. Jak zjistíme, kolik jich je?
 
     ```{r}
     length(cisla[cisla %% 3 == 0]) #149
@@ -1422,7 +1420,7 @@ Jak to že je ale 2 \> 15?
 
     ```
 
-2.  Vyber z prvního řádku `matice`ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.
+2.  Vyber z prvního řádku `matice` ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.
 
     ```{webr-r}
 
@@ -1516,7 +1514,7 @@ mean(vzorek["vek"])
 ```
 
 ::: fragment
-Proč nám není umožněno tuto funkci spusti? *Nápověda: jaká je datová chrakteristika tohoto výběru?*
+Proč nám není umožněno tuto funkci spustit? *Nápověda: jaká je datová chrakteristika tohoto výběru?*
 :::
 
 ::: fragment
@@ -1595,7 +1593,7 @@ V R a nahraném balíčku `dplyr` je nainstalováno několik datasetů určenýc
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 20,
+countdown::countdown(minutes = 15,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -1618,8 +1616,7 @@ countdown::countdown(minutes = 20,
 
 #### Řešení úlohy 1)
 
-Vyberte motorky, které měli počet bodů z obou hodnocení dohromady sice menší než 50, ale i tak dostaly rating lepší než 3.
-Vypište jejich názvy.
+Vyberte motorky, které měli počet bodů z obou hodnocení dohromady sice menší než 50, ale i tak dostaly rating lepší než 3. Vypište jejich názvy.
 
 ::: fragment
 1.  Podíváme se na strukturu datového objektu `bikes` a necháme si vyjet prvních několik řádků. Vidíme, že se jedná o data frame, takže k vyhledávání můžeme používat přímo názvy sloupců.
@@ -1753,13 +1750,11 @@ Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počí
 
 ## Domácí úkol
 
-1.  Vyberte z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi.
+1.  Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor "Tea" "is" "better" "than" "coffee".
 
-2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti.
-Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
+2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
 
-3.  Z datasetu `dplyr::starwars` vyberte všechny charaktery, u kterých máme hodnoty ve všech sloupcích (žádné NA), které pochází z Tatooine a nejsou to Droidi.
-Nápověda: k výběru budete muset použít funkci. Vyhledejte si na internetu (nikoliv AI) alespoň dvě funkce, které můžete využít k vyyřešení tohoto příkladu. Váš výsledek by měl vypadat následovně:
+3.  Z datasetu `dplyr::starwars` vyberte všechny charaktery, u kterých máme hodnoty ve všech sloupcích (žádné NA), které pochází z Tatooine a nejsou to Droidi. Nápověda: k výběru budete muset použít funkci. Vyhledejte si na internetu (nikoliv AI) alespoň dvě funkce, které můžete využít k vyyřešení tohoto příkladu. Váš výsledek by měl vypadat následovně:
 
 ```{webr-r}
 #| context: output

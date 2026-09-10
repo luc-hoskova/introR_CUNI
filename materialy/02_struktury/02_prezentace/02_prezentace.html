@@ -3731,11 +3731,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li class="fragment">kontrola domácího úkolu</li>
 <li class="fragment">datové struktury v R</li>
 <li class="fragment">balíčky</li>
-<li class="fragment">indexace
-<ul>
-<li class="fragment">base R</li>
-<li class="fragment">balíček <code>dplyr</code></li>
-</ul></li>
+<li class="fragment">indexace</li>
 </ul>
 </section>
 <section id="kontrola-domácí-práce" class="slide level2 scrollable">
@@ -3771,7 +3767,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p><strong>série za sebou jdoucích hodnot totožného datového typu</strong></p>
 </blockquote>
 <ul>
-<li><p>vektor o jedné hodnotě je někdy nazýván <em>atomický vektor</em> či <em>skalár</em></p></li>
+<li><p>vektor o jedné hodnotě je někdy nazýván <em>skalár</em></p></li>
 <li><p>jednodimenzionální (důležité hlavně při vyhledávání)</p></li>
 <li><p>při použití více datových typů dochází k nucené konverzi do jednotného typu</p></li>
 </ul>
@@ -4218,7 +4214,7 @@ pocetProbandu      2      4      6</code></pre>
 <h3 id="samostatné-cvičení-1">Samostatné cvičení</h3>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_8be7feb4" minutes="15" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_25969ab6" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <ol type="1">
@@ -4576,7 +4572,7 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_7f3ca6d2" minutes="15" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_32fe5b2e" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <div id="qwebr-insertion-location-20"></div>
@@ -4889,7 +4885,7 @@ SC_020  42     dx female       FALSE</code></pre>
 </section>
 <section id="indexace-výběr-specifických-dat" class="slide level2">
 <h2>Indexace / výběr specifických dat</h2>
-<p><strong>Výběr specifických dat je jedna ze základních funkcí R</strong>; není pro to nutně třeba potřeba používat balíčky. Balíčky nám celá proces ovšem značně usnadní.</p>
+<p><strong>Výběr specifických dat je jedna ze základních funkcí R</strong>; není pro to nutně třeba potřeba používat balíčky. Balíčky nám celý proces ovšem značně usnadní.</p>
 <h3 id="vyhledávání-pomocí">Vyhledávání pomocí [ ]</h3>
 <blockquote>
 <p><code>objekt ve kterém se vyhledává[pozice či charakteristiky vyhledávané hodnoty ve všech dimenzích]</code></p>
@@ -5232,7 +5228,7 @@ SC_020  42     dx female       FALSE</code></pre>
 </div>
 <div class="fragment">
 <ol start="5" type="1">
-<li><p>Vybrali jsme v tuto chvíli všechny čísla z 1878 až 2324, která jsou dlitelná třemi. Jak zjistíme, kolik jich je?</p>
+<li><p>Vybrali jsme v tuto chvíli všechny čísla z 1878 až 2324, které jsou dělitelné třemi. Jak zjistíme, kolik jich je?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href></a><span class="fu">length</span>(cisla[cisla <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>]) <span class="co">#149</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -5501,7 +5497,7 @@ D 13 17 21 25 29 33</code></pre>
 <li><p>Vyber z proměnné <code>matice</code> všechny hodnoty vyšší jak 30.</p>
 <div id="qwebr-insertion-location-30"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript></li>
-<li><p>Vyber z prvního řádku <code>matice</code>ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.</p>
+<li><p>Vyber z prvního řádku <code>matice</code> ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.</p>
 <div id="qwebr-insertion-location-31"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript></li>
 <li><p>Vyber ty řádky <code>matice</code>, které mají ve sloupci <code>c</code> hodnotu přesně 20.</p>
@@ -5630,7 +5626,7 @@ SC_020     dx</code></pre>
 <div id="qwebr-insertion-location-35"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="fragment">
-<p>Proč nám není umožněno tuto funkci spusti? <em>Nápověda: jaká je datová chrakteristika tohoto výběru?</em></p>
+<p>Proč nám není umožněno tuto funkci spustit? <em>Nápověda: jaká je datová chrakteristika tohoto výběru?</em></p>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -5736,7 +5732,7 @@ $episodes
 <h2>Samostatné cvičení</h2>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_def4f535" minutes="20" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e0197814" minutes="15" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <p><strong>Nahrajte si data uložená v souboru <code>bikes.RData</code>.</strong> Ten obsahuje přehled testování motorek, kdy každý stroj dostal určitý počet bodů za hodnocení rychlosti (<code>speed</code>), pohodlnosti na vzdálenost (<code>dist</code>) a pak ještě celkové hodnocení od nezávislého odbnorníka (<code>rating</code>), kdy 1 je nejlepší, 5 je nejhorší.</p>
@@ -5945,7 +5941,7 @@ itemID139       89   272   825</code></pre>
 <section id="domácí-úkol" class="slide level2 scrollable">
 <h2>Domácí úkol</h2>
 <ol type="1">
-<li><p>Vyberte z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi.</p></li>
+<li><p>Vytvořte vektor, který v sobě bude mít větu “Tea is better than coffee”. Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor “Tea” “is” “better” “than” “coffee”.</p></li>
 <li><p>Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.</p></li>
 <li><p>Z datasetu <code>dplyr::starwars</code> vyberte všechny charaktery, u kterých máme hodnoty ve všech sloupcích (žádné NA), které pochází z Tatooine a nejsou to Droidi. Nápověda: k výběru budete muset použít funkci. Vyhledejte si na internetu (nikoliv AI) alespoň dvě funkce, které můžete využít k vyyřešení tohoto příkladu. Váš výsledek by měl vypadat následovně:</p></li>
 </ol>
