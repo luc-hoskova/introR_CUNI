@@ -1750,7 +1750,7 @@ Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počí
 
 ## Domácí úkol
 
-1.  Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor "Tea" "is" "better" "than" "coffee".
+1.  Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor, co bude obsahovat hodnoty "Tea" "is" "better" "than" "coffee".
 
 2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
 
