@@ -1,7 +1,7 @@
 ---
 title: "Výukové materiály"
 include-in-header:
-  - password.js
+  - password-header.html
 ---
 
 V této sekci naleznou účastníci výukové a podpůrné materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.
