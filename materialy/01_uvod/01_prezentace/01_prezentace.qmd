@@ -274,38 +274,9 @@ mnozstviZkumavek + mnozstviKadinek
 ## Název se nerovná charakter hodnotě
 
 Uložené proměnné jsou vždy vypsané v globálním prostředí.
+
+![](images/clipboard-2478750768.png)
 :::
-
-![](images/clipboard-358450353.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
-**Jaké proměnné mám uložené v globálním prostředí?**
-
-Seznam proměnných, které jsou v R uložené a se kterými můžete pracovat, naleznete v poli Environment v pravém horním rohu.
-
-Můžete také ale využít funkce `objects()`. Ta do konzole vypíše seznam všech uložených hodnot.
-
-Totožný výsledek získáte i pomocí funkce `ls().`
-
-------------------------------------------------------------------------
-
-**Je možné přepsat hodnoty?**
-
-Ano, pokud uděláte chybu v zápise či potřebujete změnit specifickou proměnnou či její část, není třeba ji mazat - stačí ji přepsat.
-
-```{webr}
-promennaSpatne <- "4"
-promennaSpatne + 5
-```
-
-**Co když chci hodnotu ale i tak smazat?**
-
-Funkce `rm()` umožňuje mazat uložené proměnné z globálního prostředí.
-
-- `rm()` - smaže VŠE
-
-- `rm(název proměnné)` - smaže specifickou proměnnou
 
 ------------------------------------------------------------------------
 
@@ -330,6 +301,37 @@ Funkce `rm()` umožňuje mazat uložené proměnné z globálního prostředí.
   ```
 
   **Pozor na diakritiku!**
+
+------------------------------------------------------------------------
+
+**Jaké proměnné mám uložené v globálním prostředí?**
+
+**Seznam proměnných**, které jsou v R uložené a se kterými můžete pracovat, **naleznete v poli Environment** v pravém horním rohu.
+
+Můžete také ale využít funkce `objects()`. Ta do konzole vypíše názvy všech uložených hodnot.
+
+Totožný výsledek získáte i pomocí funkce `ls().`
+
+------------------------------------------------------------------------
+
+**Je možné přepsat hodnoty?**
+
+Ano, pokud uděláte chybu v zápise či potřebujete změnit specifickou proměnnou či její část, není třeba ji mazat - stačí ji přepsat.
+
+```{webr}
+promennaSpatne <- "4"
+promennaSpatne + 5
+```
+
+**Co když chci hodnotu ale i tak smazat?**
+
+Funkce `rm()` umožňuje mazat uložené proměnné z globálního prostředí.
+
+- `rm()` - smaže VŠE
+
+- `rm(název proměnné)` - smaže specifickou proměnnou
+
+------------------------------------------------------------------------
 
 ## Procvičení
 
@@ -737,6 +739,12 @@ File \> New Project
 
 RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř tohoto adresáře budou svázané dohromady, budou se vám **automaticky znovu nahrávat uložené proměnné** bez nutnosti opakovaného spouštění kódu, a hlavně k nim vždy bude **relativní, nikoliv absolutní cesta** = celý projekt si můžete přesouvat mezi složkami či počítači bez potřeby nastavování working directory.
 
+::: callout-important
+## RProjekty mají implicitně nastavený adresář
+
+Tím, že si vytvoříte RProjekt, tak si vytváříte novou složku/nastavujete složku, do které se vám budou ukládat veškeré vznikající skripty a RData soubory. **Nemusíte tak již adresář nastavovat pomocí `setwd()`!**
+:::
+
 ## Nahrávání uložených proměnných
 
 V základním nastavení RProjekty **automaticky ukládají a následně nahrávají uložené proměnné zpět do globálního prostředí**. Není proto potřeba při každém otevření projektu v RStudiu celý skript projíždět znovu a všechno znovu nahrávat. Je ovšem možné si uložit vybranné proměnné i ručně.
@@ -755,7 +763,6 @@ load("vozidla.RData")
 ```
 
 Můžete svým kolegům tak například poslat již vyčištěná a připravená data, bez toho aby si sami museli nahrávat původní tabulku a provádět na ní veškeré kontroly.
-
 
 ## Domácí práce
 
