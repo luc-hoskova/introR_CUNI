@@ -1,34 +1,22 @@
-#kniha jazyk r a tvorba grafů
+#2
+##faktory
+#ukládá se to jako číslo tzn když se dá as.numeric() tak je to zobrazí tak jak je to srovnané (asi podle abecedy)
 
-#1 hodina
-#help.search("sample")
-#?mean
 
-#2 hodina
-#indexovat jde dalsim cislovym vektorem, charaktery a logical
-  #vektor[dan]
-    #tabulka jsou slozene sloupce proto muzeme podle jmena brat jen sloupce
-  #vektor[c(TRUE, FALSE, TRUE)]
-#x[3] <- 10
-#co se stane kdyz si rekneme o vetsi cislo nez je length vektoru? NA
-  #nahrazení třetí pozice v x číslem 10
-
+#3 hodina
 #přidání sloupců a řádků
 #dataframe vs tibble
 # $, [] a [[]]
   #$ a [[]] dají hodnoty, [] podvýběr
 
 
-#3 hodina
+#4 hodina
 #nahravani dat nejenom z hlavni slozky
 #Use of the relative path. Accesses data in the Data folder
 #read.csv('./Data/Dataset.csv')
 # Goes up a folder first, then into the Data folder
 #read.csv('../Data/Dataset.csv')
 #dir()
-#rm()
-#faktory
-  #ukládá se to jako číslo tzn když se dá as.numeric() tak je to zobrazí tak jak je to srovnané (asi podle abecedy)
 #library(waldo)
   #compare(s2, s3)
   #if identical() == FALSE, what are the differences?

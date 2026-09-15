@@ -328,7 +328,7 @@ temps
     matrix(1:6, nrow=3, ncol=2) 
     ```
 
-    - číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci indexování [Matice]
+    - číslo v hranatých závorkách značí pozici hodnoty v dané dimenzi, více si k tomu ale řekneme v sekci indexování \[Matice\]
 
 - při pokusu o vytvoření matice z více datových typů dojde stejně jako u vektoru k nucené konverzi na charakter
 
@@ -753,7 +753,7 @@ colorMaxNm <- c(461, 552, 675, 780)
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 10,
+countdown::countdown(minutes = 15,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,

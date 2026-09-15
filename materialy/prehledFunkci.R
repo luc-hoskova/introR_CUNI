@@ -1,7 +1,7 @@
 ####################################
 #PREHLED FUNKCI Z JEDNOTLIVYCH HODIN
 ####################################
-#1. lekce
+#2. lekce
 length() #zjisti delku x
 identical() #je x, y, z... totozne?
 sample() #provede nahodny vyber z x
