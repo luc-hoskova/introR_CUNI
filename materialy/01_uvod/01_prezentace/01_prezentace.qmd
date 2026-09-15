@@ -172,6 +172,24 @@ RStudio
 
 **Help:** nápověda
 
+------------------------------------------------------------------------
+
+### Jak spustit kód?
+
+- **Konzole**: stisknutím Enter
+
+- **Skript**:
+
+  - jeden řádek: kliknu si do řádku a poté Ctrl + Enter (u Mac Option + Enter)
+
+  - více řádků: myší si vyberu všechny řádky co chci spouštět a poté Ctrl + Enter (u Mac Option + Enter)
+
+  - alternativa: je možné místo Ctrů + Enter spustit kód ve skriptu příkazem **`Run`**
+
+    ![](images/clipboard-425036311.png)
+
+------------------------------------------------------------------------
+
 ## Datové typy v R
 
 :::::: columns
@@ -736,7 +754,7 @@ Toho můžete docílit pomocí vytvoření **RProjektu**.
 ::: callout-note
 ## Postup k vytvoření projektu
 
-File \> New Project
+File \> New Project \> buď existující složka a nebo vytvoření nové
 :::
 
 RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř tohoto adresáře budou svázané dohromady, budou se vám **automaticky znovu nahrávat uložené proměnné** bez nutnosti opakovaného spouštění kódu, a hlavně k nim vždy bude **relativní, nikoliv absolutní cesta** = celý projekt si můžete přesouvat mezi složkami či počítači bez potřeby nastavování working directory.
