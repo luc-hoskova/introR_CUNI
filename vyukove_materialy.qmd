@@ -11,7 +11,7 @@ Materiály budou zveřejněny vždy před lekcí (v případě výukových mater
 ## Základní materiály
 
 - kde [stáhnout R](https://cloud.r-project.org/)
-- kde [stáhnout RStudio (Desktop)](https://cloud.r-project.org/)
+- kde [stáhnout RStudio (Desktop)](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
 - [tahák](https://luc-hoskova.github.io/introR_CUNI/materialy/tahak_klavesy.pdf) klávesových zkratek symbolů potřebných pro práci s R
 
 ## 1. Úvodní hodina (15.09.2026)

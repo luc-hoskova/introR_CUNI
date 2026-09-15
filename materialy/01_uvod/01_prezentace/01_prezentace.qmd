@@ -21,62 +21,62 @@ execute:
 ## Program
 
 ::: incremental
--   organizační a administrativní informace ke kurzu
--   krátké seznamovací okénko
--   seznámení se s prostředí IDE RStudio
--   datové typy v R
--   ukládání dat do proměnných
--   operátory
--   etiketa psaní kódu
--   working directory
--   RProjekty, .RData
--   funkce v R a jejich syntax
+- organizační a administrativní informace ke kurzu
+- krátké seznamovací okénko
+- seznámení se s prostředí IDE RStudio
+- datové typy v R
+- ukládání dat do proměnných
+- operátory
+- etiketa psaní kódu
+- working directory
+- RProjekty, .RData
+- funkce v R a jejich syntax
 :::
 
 ## O kurzu
 
--   kurz s cílem poskytnout účastníkům **solidní základy práce s R** za účelem následné práce s vědeckými daty
+- kurz s cílem poskytnout účastníkům **solidní základy práce s R** za účelem následné práce s vědeckými daty
 
--   **zakončení mikrocerfikátem**: oficiální [certifikát uznávaný napříč EU](https://cczv.cuni.cz/CCZV-521.html) s jasně definovanými dovednostmi
+- **zakončení mikrocerfikátem**: oficiální [certifikát uznávaný napříč EU](https://cczv.cuni.cz/CCZV-521.html) s jasně definovanými dovednostmi
 
--   pokračování: do budoucna jsou plánována **jednorázová školení na specifická pokročilá témata** o která bude zájem
+- pokračování: do budoucna jsou plánována **jednorázová školení na specifická pokročilá témata** o která bude zájem
 
 ## O vyučujícím
 
 #### Mgr. Lucie Hošková
 
--   manažer repozitáře pro výzkumná data na UK
+- manažer repozitáře pro výzkumná data na UK
 
--   výuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS
+- výuka R v rámci programu Charleston, Letní školy pro data stewardy, a akcí pod záštitou CpOS
 
--   datová práce všeho druhu
+- datová práce všeho druhu
 
-    -   datová analýza pro Akademii Věd
+  - datová analýza pro Akademii Věd
 
-    -   konzultace pro dizertační, diplomové a bakalářské práce
+  - konzultace pro dizertační, diplomové a bakalářské práce
 
-    -   KPZ (kolega poslední záchrany)
+  - KPZ (kolega poslední záchrany)
 
--   popularizačně naučné přednášky nejen o datové analýze
+- popularizačně naučné přednášky nejen o datové analýze
 
 ## Organizace kurzu
 
--   **10 lekcí po třech hodinách**
-    -   bloky 3 x cca 50 minut
-    -   výuka jednou za dva týdny, přes Vánoce pauza
--   **3 tématické okruhy**
-    -   zpracovávání dat
-    -   vizualizace dat
-    -   analýza dat
+- **10 lekcí po třech hodinách**
+  - bloky 3 x cca 50 minut
+  - výuka jednou za dva týdny, přes Vánoce pauza
+- **3 tématické okruhy**
+  - zpracovávání dat
+  - vizualizace dat
+  - analýza dat
 
 ## Hodnocení kurzu
 
 1.  **průběžné domácí úkoly**
 2.  **miniprojekt přes Vánoce**
 3.  **80% docházka**
-    -   v případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale **prosím choďte pokud můžete**
-    -   v případě absence či online výuky domácí práce navíc
-    -   je to vše o domluvě :\]
+    - v případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale **prosím choďte pokud můžete**
+    - v případě absence či online výuky domácí práce navíc
+    - je to vše o domluvě :\]
 
 ## Průběh hodin
 
@@ -84,11 +84,11 @@ execute:
 
 2.  výklad nové látky
 
-    -   kombinace prezentace, code-along a samostatné práce
+    - kombinace prezentace, code-along a samostatné práce
 
 3.  cvičení z probrané látky
 
-    -   kombinace nové látky a znalostí z předchozích hodin
+    - kombinace nové látky a znalostí z předchozích hodin
 
 4.  řešení "chuťovek" z minulých hodin a z dotazů
 
@@ -120,17 +120,17 @@ Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky
 
 **Open source** programovací jazyk určený ke statistické analýze a datové vizualizaci.
 
--   v současnosti jeden ze **standardů pro datovou analýzu ve vědecké sféře**
+- v současnosti jeden ze **standardů pro datovou analýzu ve vědecké sféře**
 
--   aktivně využívaný, spravovaný a uržovaný **globální vědeckou komunitou**
+- aktivně využívaný, spravovaný a uržovaný **globální vědeckou komunitou**
 
-    -   dlouhá historie: spuštěn v roce 1993
+  - dlouhá historie: spuštěn v roce 1993
 
--   nepřeberné množství specializovaných rozšíření
+- nepřeberné množství specializovaných rozšíření
 
 ## R vs RStudio
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 R
 
@@ -142,11 +142,11 @@ RStudio
 
 ![](images/clipboard-596025863.png)
 
--   IDE - vývojářské prostředí
+- IDE - vývojářské prostředí
 
--   usnadňuje práci s R
+- usnadňuje práci s R
 :::
-:::
+:::::
 
 ## RStudio
 
@@ -174,48 +174,48 @@ RStudio
 
 ## Datové typy v R
 
-::: columns
+:::::: columns
 ::: {.column width="33%"}
 ### Numeric
 
--   integer
+- integer
 
-    -   5, 0, 123
+  - 5, 0, 123
 
--   double
+- double
 
-    -   1.87, 0.3679
+  - 1.87, 0.3679
 
-    -   Inf
+  - Inf
 
-    -   -Inf
+  - -Inf
 :::
 
 ::: {.column width="33%"}
 ### Character
 
--   "Hello world!"
--   "žluťoučký"
--   "532"
--   'kolo'
+- "Hello world!"
+- "žluťoučký"
+- "532"
+- 'kolo'
 :::
 
 ::: {.column width="33%"}
 ### Logical
 
--   taktéž popisovány jako boolean
+- taktéž popisovány jako boolean
 
--   TRUE
+- TRUE
 
--   FALSE
+- FALSE
 :::
-:::
+::::::
 
 ------------------------------------------------------------------------
 
 ### Další typy se kterými se můžete setkat
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 NA
 
@@ -245,17 +245,23 @@ NaN
 0 / 0
 ```
 :::
-:::
+:::::
 
--   Přestože s komplexním číslem můžeme provádět aritmetické operace, R jej nebere jako numeric hodnotu!
+- Přestože s komplexním číslem můžeme provádět aritmetické operace, R jej nebere jako numeric hodnotu!
 
--   NaN je naopak bráno jako numeric hodnota
+- NaN je naopak bráno jako numeric hodnota
 
 ## Ukládání proměnných
 
 R umožňuje uložit si informace pomocí proměnných.
 
 Místo toho, abyste poté museli informaci znovu definovat, tak si můžete zavolat proměnnou.
+
+Hodnota se uloží pomocí následujícího postupu:
+
+**název proměnné \<- hodnota**
+
+Názvy proměnných jsou vždy bez uvozovek - nejedná se o text, ale o jméno specifického objektu.
 
 ```{r}
 mnozstviZkumavek <- 85554343
@@ -264,28 +270,19 @@ mnozstviKadinek <- 981100009
 mnozstviZkumavek + mnozstviKadinek
 ```
 
+::: callout-caution
+## Název se nerovná charakter hodnotě
+
 Uložené proměnné jsou vždy vypsané v globálním prostředí.
+:::
 
 ![](images/clipboard-358450353.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-Hodnota se uloží pomocí následujícího postupu:
-
-**název proměnné \<- hodnota**
-
--   R čte zpravidla zleva do prava, proto je možné i hodnota -\> proměnná
-
-    -   silně nedoporučuji, je to nepřehledné
-
-```{r}
-123456789123456789123456789123456789 -> cisloNaruby
-cisloPoradne <- 123456789123456789123456789123456789 
-```
-
 **Jaké proměnné mám uložené v globálním prostředí?**
 
-Seznam proměnných, které jsou v R uložené a se kterými můžete pracovat, naleznete buď v poli Environment v pravém horním rohu.
+Seznam proměnných, které jsou v R uložené a se kterými můžete pracovat, naleznete v poli Environment v pravém horním rohu.
 
 Můžete také ale využít funkce `objects()`. Ta do konzole vypíše seznam všech uložených hodnot.
 
@@ -306,43 +303,43 @@ promennaSpatne + 5
 
 Funkce `rm()` umožňuje mazat uložené proměnné z globálního prostředí.
 
--   `rm()` - smaže VŠE
+- `rm()` - smaže VŠE
 
--   `rm(název proměnné)` - smaže specifickou proměnnou
+- `rm(název proměnné)` - smaže specifickou proměnnou
 
 ------------------------------------------------------------------------
 
 ### Zakázané způsoby pojmenovávání proměnných
 
--   mezera mezi slovy
+- mezera mezi slovy
 
-    ``` r
-    pet aut <- 5
-    ```
+  ``` r
+  pet aut <- 5
+  ```
 
--   začínat symbolem
+- začínat symbolem
 
-    ``` r
-    <6>4aut <- 5
-    ```
+  ``` r
+  <6>4aut <- 5
+  ```
 
--   začínat číslicí
+- začínat číslicí
 
-    ``` r
-    5aut <- 5
-    ```
+  ``` r
+  5aut <- 5
+  ```
 
-    **Pozor na diakritiku!**
+  **Pozor na diakritiku!**
 
 ## Procvičení
 
-Ulož do proměnné x číslo, do y text a do z boolean.
+Ulož do proměnné x číslo, do y text a do z boolean a následně je zobraz.
 
 ```{webr}
 #| exercise: ex_1
-x ______
-y ______
-z ______
+x
+y
+z
 
 x
 y; z #strednik oddeluje prikazy
@@ -362,7 +359,6 @@ Jaký bude výsledek následujícího kódu?
 ```{webr}
 #| exercise: ex_3
 text <- ahoj!
-
 text
 ```
 
@@ -463,9 +459,17 @@ x <- 3
 !(x == 4)
 ```
 
+::: callout-important
+## Hierarchie operátorů
+
+Stejně jako násobení má přednost před sčítáním, tak i logické operátory mají svoji hierarchii.
+
+**Operátor ! má vždy přednost před &, který má zase přednost před \| .**
+:::
+
 ------------------------------------------------------------------------
 
-![](images/transform-logical.png){fig-align="center"}
+![](images/transform-logical.png){fig-align="center" width="1045"}
 
 ## Procvičení
 
@@ -482,7 +486,7 @@ Jaký bude výsledek tohoto výpočtu?
 6 ^ 2 - 3 * 5
 ```
 
-Na dopravní hřiště mohou pouze děti ve věku 15+, mladší pouze s povolením rodičů. Může toto dítě na hřiště?
+Na dopravní hřiště mohou pouze děti ve věku 15 a více, mladší pouze s povolením rodičů. Může toto dítě na hřiště?
 
 ```{webr}
 #| exercise: ex_3
@@ -494,25 +498,99 @@ povoleni <- FALSE
 
 ## Samostatné cvičení
 
-1.  Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory 65+ či děti a studenty až do 26 let včetně.\
+1.  Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory od 65 let, pro děti a studenty až do 26 let včetně.\
     Ověř, zda má Franta na tuto slevu nárok.
 
-2.  Studentstvo může získat stipendium za následujících podmínek: mají průměr známek menší než 1.8 a zároveň absolvovali alespoň 80 % docházky, nebo reprezentují školu na soutěžích.\
+2.  Studentstvo může získat stipendium za následujících dvou situací: mají průměr známek menší než 1.8 a zároveň absolvovali alespoň 80 % docházky, a nebo pokud mají potřebný průměr a reprezentují školu na soutěžích.\
     Saša má průměr 1.7, zameškáno 3 hodin z 10 a pravidelně vyhrává biologickou olympiádu.\
     Zjisti, zda má Saša právo na stipendium.
 
 3.  Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní hodnocení na lepším stupni než 5 a v posledním testu získali jiný počet než nula bodů. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy pokud vypracovali seminární práci navíc a v písemce měli alespoň 50 bodů.\
-    Julie má dosavadní hodnocení sice na 5, aní písemka se jí nepovedla a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
+    Julie má dosavadní hodnocení sice na 5, ani písemka se jí nepovedla a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
     Dostane Julie zápočet?
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 15,
+countdown::countdown(minutes = 10,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
                      top = "0")
 ```
+
+------------------------------------------------------------------------
+
+### Řešení úlohy 1)
+
+Má Franta nárok na slevu?
+
+::: fragment
+```{r}
+53 <= 26 | 53 >= 65
+```
+:::
+
+::: fragment
+Franta nemá nárok na slevu.
+:::
+
+------------------------------------------------------------------------
+
+### Řešení úlohy 2)
+
+Má Saša nárok na stipendium?
+
+::: fragment
+Nejdříve si jednotlivé hodnoty uložíme.
+
+```{r}
+prumer <- 1.7
+dochazka <- 70
+reprezentace <- TRUE
+```
+:::
+
+::: fragment
+Následně si je porovnáme s hodnotami podmínek.
+
+```{r}
+prumer < 1.8 & dochazka > 80 | prumer < 1.8 & reprezentace == TRUE
+```
+:::
+
+::: fragment
+Saša má právo na stupendium.
+:::
+
+------------------------------------------------------------------------
+
+### Řešení úlohy 3)
+
+Dostane Julie zápočet?
+
+::: fragment
+Stejně jako u minulého cvičení, i zde si uložíme hodnoty do proměnných.
+
+```{r}
+znamka <- 5
+pocetBodu <- 17
+semestralka <- TRUE
+```
+:::
+
+::: fragment
+Hodnoty si dosadíme do výpočtu. Pozor na formulaci zadání!
+
+```{r}
+znamka < 5 & pocetBodu != 0 | semestralka == TRUE & pocetBodu >= 50
+```
+:::
+
+::: fragment
+Julie zápočet nedostane.
+:::
+
+------------------------------------------------------------------------
 
 ## Etiketa psaní kódu
 
@@ -522,7 +600,7 @@ countdown::countdown(minutes = 15,
 identical("data", "Data")
 ```
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 Používejte co chcete ale buďte konzistentní.
 
@@ -534,17 +612,17 @@ Jaké jsou zvysklosti ve vašem oboru/laboratoři?
 ::: {.column width="50%"}
 **Možné styly zápisu:**
 
--   camelCase
+- camelCase
 
--   PascalCase
+- PascalCase
 
--   snake_case
+- snake_case
 
--   kebab-dash
+- kebab-dash
 
--   a jiné
+- a jiné
 :::
-:::
+:::::
 
 ------------------------------------------------------------------------
 
@@ -645,26 +723,17 @@ Relativní cesta odkazuje na **soubor uvnitř specifického pracovního adresá�
 
 Doporučuji absolutní cestu když už používat, tak pouze při nastavování `setwd()`. Sice lze teoreticky nahrávat soubory a provádět jiné akce uvnitř pracovního adresáře i pomocí absolutní cesty, ale **jakmile by se například složka ve které se pracuje kamkoliv posunula, tak by absolutní cesta přestala fungovat.**
 
-## Samotné cvičení
-
-```{r}
-#| echo: false
-countdown::countdown(minutes = 5,
-                     seconds = 0,
-                     start_immediately = FALSE,
-                     warn_when = 120,
-                     top = "0")
-```
-
-1.  Vytvořte si složku s jménem **pokusnaSlozka** na náhodném místě ve svém počítači. Zkuste si sami pomocí funkce `setwd()`a absolutní cesty ručně nastavit pracovní adresář do této lokace.
-
-2.  Vytvořte si v pokusnaSlozka sérii podsložek, třeba až do třetí či páté úrovně (složka x ve složce y co je ve složce z...) a do finální z nich si nahrajte několik náhodných souborů. **Vypište jejich seznam pomocí funkce `list.files()`.**
-
 ## RProjekty
 
 Co kdybychom chtěli, aby se nám všechny naše skripty a jejich výsledky automaticky ukládaly do a tahaly rovnou z **jednoho specifického adresáře** bez potřeby ho při každém otevření RStudia nastavovat, a který bychom navíc mohli jednoduše vzít a přesunout či ho někomu zazipovaný poslat?
 
 Toho můžete docílit pomocí vytvoření **RProjektu**.
+
+::: callout-note
+## Postup k vytvoření projektu
+
+File \> New Project
+:::
 
 RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř tohoto adresáře budou svázané dohromady, budou se vám **automaticky znovu nahrávat uložené proměnné** bez nutnosti opakovaného spouštění kódu, a hlavně k nim vždy bude **relativní, nikoliv absolutní cesta** = celý projekt si můžete přesouvat mezi složkami či počítači bez potřeby nastavování working directory.
 
@@ -731,13 +800,13 @@ rep(times = 10, x = "vzorek")
 ```
 :::
 
-::: fragment
+:::: fragment
 ::: callout-caution
 ## Pozor!
 
 Na pořadí argumentu nezáleží, dokud jasně **definujeme k jakému argumentu parametr patří**.
 :::
-:::
+::::
 
 ::: fragment
 Jaký bude výsledek těchto kódů? Jsou totožné?
@@ -762,17 +831,18 @@ x + 1
 Proč se proto místo toho používá `<-` ?
 
 ```{r}
+#definuj prvni argument a rovnou ho uloz jako promennou
 rep(osobaID <- 5, 3)
 osobaID + 4
 ```
 
-::: fragment
+:::: fragment
 ::: callout-tip
 ## R umožňuje provádět akce uvnitř "jiných akcí"
 
 V tomto případě určujeme argument na první pozici, a zároveň jeho hodnotu ukládáme do proměnné `osobaID`.
 :::
-:::
+::::
 
 ------------------------------------------------------------------------
 
@@ -788,13 +858,13 @@ Na jaké problémy zde narazíme?
 :::
 
 ::: incremental
--   `osobaID_2` není argument funce `rep`
+- `osobaID_2` není argument funce `rep`
 
--   operátor `=` ve funkci neznamená přiřazení, ale určení argumentu
+  - operátor `=` ve funkci neznamená přiřazení, ale určení argumentu
 
-    -   samotný argument `osobaID_2` ve funkci `rep` neexistuje a proto nevznikne platný výsledek
+    - samotný argument `osobaID_2` ve funkci `rep` neexistuje a proto nevznikne platný výsledek
 
--   nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
+- nedošlo k zapsání do globálního prostředí a tuto neexistující proměnnou proto nelze používat
 :::
 
 ------------------------------------------------------------------------
@@ -826,13 +896,13 @@ countdown::countdown(minutes = 5,
 
 #### Řešení úlohy 1)
 
-Múžeme zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, opravte.
+Můžeme zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, opravte.
 
 ```{webr-r}
 seq(1, 10, 3)
 ```
 
-::: fragment
+:::: fragment
 Ne, jelikož argument na třetí pozici v této funkci není `length.out`, který určuje délku sekvence, ale `by`, který určuje periodu.
 
 ::: callout-important
@@ -840,7 +910,7 @@ Ne, jelikož argument na třetí pozici v této funkci není `length.out`, kter�
 
 R dokumentace je psana mnoha lidmi a nemusí být vždy konzistentní.
 :::
-:::
+::::
 
 ::: fragment
 Správná podoba kódu by tedy byla
