@@ -12,8 +12,7 @@
 #x[3] <- 10
 #co se stane kdyz si rekneme o vetsi cislo nez je length vektoru? NA
   #nahrazení třetí pozice v x číslem 10
-#´pouzivani apostrofu u nazvu s mezerou´
-#sort() a order()
+
 #přidání sloupců a řádků
 #dataframe vs tibble
 # $, [] a [[]]

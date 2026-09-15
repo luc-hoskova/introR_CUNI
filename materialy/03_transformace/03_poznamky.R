@@ -1,3 +1,29 @@
+
+#DOMACI UKOL
+#1
+#2
+#3
+starwars$name[
+  !is.na(starwars$name) &
+    starwars$homeworld == "Tatooine" &
+    starwars$species != "Droid"]
+#nebo
+as.vector(
+  na.omit(starwars$name[
+    starwars$homeworld == "Tatooine" &
+      starwars$species != "Droid"
+  ])
+)
+#nebo
+swJmena <- na.omit(starwars)
+swJmena$name[swJmena$homeworld == "Tatooine" &
+               swJmena$species != "Droid"]
+
+
+#´pouzivani apostrofu u nazvu s mezerou´
+  #rename funkce?
+#sort() a order()
+#merge()
 #as.numeric a tak funkce
 #grep funkce
 #https://www.statology.org/r-grep-match-replace/
