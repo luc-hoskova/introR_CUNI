@@ -302,6 +302,8 @@ Uložené proměnné jsou vždy vypsané v globálním prostředí.
 
   **Pozor na diakritiku!**
 
+  ![](images/clipboard-902657775.png)
+
 ------------------------------------------------------------------------
 
 **Jaké proměnné mám uložené v globálním prostředí?**
