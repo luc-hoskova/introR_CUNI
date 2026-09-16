@@ -1,5 +1,7 @@
 ---
 title: "Výukové materiály"
+include-in-header:
+  - password-header.html
 ---
 
 V této sekci naleznou účastníci výukové a podpůrné materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.
@@ -17,3 +19,4 @@ Materiály budou zveřejněny vždy před lekcí (v případě výukových mater
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/01_prezentace/01_prezentace.html#/title-slide)
 - Příprava
   - stažené, nainstalované a funkční programy [R](https://cloud.r-project.org/) a [RStudio](https://cloud.r-project.org/)
+- Materiály k vypracování domácího úkolu: [promenne.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/promenne.RData)

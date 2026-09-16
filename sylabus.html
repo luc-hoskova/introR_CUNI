@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e130389ccf8248c03a75670d0231ebcc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-261f789220898115d1f0b2d66d52cc9d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f91f919386e51a4f327d432d624072e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-faa6a4e2aabe4245d88ebe29e1d6b5f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -129,15 +132,16 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#úvodní-hodina-15.09.2026" id="toc-úvodní-hodina-15.09.2026" class="nav-link active" data-scroll-target="#úvodní-hodina-15.09.2026">1. Úvodní hodina (15.09.2026)</a></li>
-  <li><a href="#struktury-a-indexace-29.09.2026" id="toc-struktury-a-indexace-29.09.2026" class="nav-link" data-scroll-target="#struktury-a-indexace-29.09.2026">2. Struktury a indexace (29.09.2026)</a></li>
-  <li><a href="#transformace-dat-13.10.2026" id="toc-transformace-dat-13.10.2026" class="nav-link" data-scroll-target="#transformace-dat-13.10.2026">3. Transformace dat (13.10.2026)</a></li>
-  <li><a href="#funkce-27.10.2026" id="toc-funkce-27.10.2026" class="nav-link" data-scroll-target="#funkce-27.10.2026">4. Funkce (27.10.2026)</a></li>
-  <li><a href="#základy-vizualizace-dat-a-práce-s-grafy-v-r-10.11.2026" id="toc-základy-vizualizace-dat-a-práce-s-grafy-v-r-10.11.2026" class="nav-link" data-scroll-target="#základy-vizualizace-dat-a-práce-s-grafy-v-r-10.11.2026">5. Základy vizualizace dat a práce s grafy v R&nbsp;(10.11.2026)</a></li>
-  <li><a href="#pokročilá-vizualizace-dat-24.11.2026" id="toc-pokročilá-vizualizace-dat-24.11.2026" class="nav-link" data-scroll-target="#pokročilá-vizualizace-dat-24.11.2026">6. Pokročilá vizualizace dat (24.11.2026)</a></li>
-  <li><a href="#mapy-3d-a-interaktivní-grafy-08.12.2026" id="toc-mapy-3d-a-interaktivní-grafy-08.12.2026" class="nav-link" data-scroll-target="#mapy-3d-a-interaktivní-grafy-08.12.2026">7. Mapy, 3D a interaktivní grafy (08.12.2026)</a></li>
-  <li><a href="#typy-dat-a-deskriptivní-statistika-05.01.2027" id="toc-typy-dat-a-deskriptivní-statistika-05.01.2027" class="nav-link" data-scroll-target="#typy-dat-a-deskriptivní-statistika-05.01.2027">8. Typy dat a deskriptivní statistika (05.01.2027)</a></li>
-  <li><a href="#úvod-do-inferenční-statistiky-19.01.2027" id="toc-úvod-do-inferenční-statistiky-19.01.2027" class="nav-link" data-scroll-target="#úvod-do-inferenční-statistiky-19.01.2027">9. Úvod do inferenční statistiky (19.01.2027)</a></li>
-  <li><a href="#analýza-kategoriálních-dat-korelace-a-regrese-02.02.2027" id="toc-analýza-kategoriálních-dat-korelace-a-regrese-02.02.2027" class="nav-link" data-scroll-target="#analýza-kategoriálních-dat-korelace-a-regrese-02.02.2027">10. Analýza kategoriálních dat, korelace a regrese (02.02.2027)</a></li>
+  <li><a href="#datové-struktury-29.09.2026" id="toc-datové-struktury-29.09.2026" class="nav-link" data-scroll-target="#datové-struktury-29.09.2026">2. Datové struktury (29.09.2026)</a></li>
+  <li><a href="#indexace-13.10.2026" id="toc-indexace-13.10.2026" class="nav-link" data-scroll-target="#indexace-13.10.2026">3. Indexace (13.10.2026)</a></li>
+  <li><a href="#transformace-dat-27.10.2026" id="toc-transformace-dat-27.10.2026" class="nav-link" data-scroll-target="#transformace-dat-27.10.2026">4. Transformace dat (27.10.2026)</a></li>
+  <li><a href="#funkce-10.11.2026" id="toc-funkce-10.11.2026" class="nav-link" data-scroll-target="#funkce-10.11.2026">5. Funkce (10.11.2026)</a></li>
+  <li><a href="#základy-vizualizace-dat-a-práce-s-grafy-v-r-24.11.2026" id="toc-základy-vizualizace-dat-a-práce-s-grafy-v-r-24.11.2026" class="nav-link" data-scroll-target="#základy-vizualizace-dat-a-práce-s-grafy-v-r-24.11.2026">6. Základy vizualizace dat a práce s grafy v R (24.11.2026)</a></li>
+  <li><a href="#pokročilá-vizualizace-dat-08.12.2026" id="toc-pokročilá-vizualizace-dat-08.12.2026" class="nav-link" data-scroll-target="#pokročilá-vizualizace-dat-08.12.2026">7. Pokročilá vizualizace dat (08.12.2026)</a></li>
+  <li><a href="#mapy-3d-a-interaktivní-grafy-05.01.2026" id="toc-mapy-3d-a-interaktivní-grafy-05.01.2026" class="nav-link" data-scroll-target="#mapy-3d-a-interaktivní-grafy-05.01.2026">8. Mapy, 3D a interaktivní grafy (05.01.2026)</a></li>
+  <li><a href="#typy-dat-a-deskriptivní-statistika-19.01.2027" id="toc-typy-dat-a-deskriptivní-statistika-19.01.2027" class="nav-link" data-scroll-target="#typy-dat-a-deskriptivní-statistika-19.01.2027">9. Typy dat a deskriptivní statistika (19.01.2027)</a></li>
+  <li><a href="#úvod-do-inferenční-statistiky-02.02.2027" id="toc-úvod-do-inferenční-statistiky-02.02.2027" class="nav-link" data-scroll-target="#úvod-do-inferenční-statistiky-02.02.2027">10. Úvod do inferenční statistiky (02.02.2027)</a></li>
+  <li><a href="#analýza-kategoriálních-dat-korelace-a-regrese-16.02.2027" id="toc-analýza-kategoriálních-dat-korelace-a-regrese-16.02.2027" class="nav-link" data-scroll-target="#analýza-kategoriálních-dat-korelace-a-regrese-16.02.2027">11. Analýza kategoriálních dat, korelace a regrese (16.02.2027)</a></li>
   </ul>
 </nav>
     </div>
@@ -172,31 +176,38 @@ ul.task-list li input[type="checkbox"] {
 <li>operátory</li>
 <li>ukládání do proměnných</li>
 <li>datové typy v R</li>
-<li>stručný úvod do funkcí</li>
 </ul>
 </section>
-<section id="struktury-a-indexace-29.09.2026" class="level2">
-<h2 class="anchored" data-anchor-id="struktury-a-indexace-29.09.2026">2. Struktury a indexace (29.09.2026)</h2>
+<section id="datové-struktury-29.09.2026" class="level2">
+<h2 class="anchored" data-anchor-id="datové-struktury-29.09.2026">2. Datové struktury (29.09.2026)</h2>
 <ul>
+<li>úvod do funkcí</li>
 <li>datové struktury v R</li>
-<li>indexace</li>
+<li>faktory</li>
 <li>práce s balíčky</li>
 </ul>
 </section>
-<section id="transformace-dat-13.10.2026" class="level2">
-<h2 class="anchored" data-anchor-id="transformace-dat-13.10.2026">3. Transformace dat (13.10.2026)</h2>
+<section id="indexace-13.10.2026" class="level2">
+<h2 class="anchored" data-anchor-id="indexace-13.10.2026">3. Indexace (13.10.2026)</h2>
+<ul>
+<li>indexace pomocí base R</li>
+<li>indexace pomocí <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a></li>
+<li>hodnoty vs struktury</li>
+<li>pipes</li>
+</ul>
+</section>
+<section id="transformace-dat-27.10.2026" class="level2">
+<h2 class="anchored" data-anchor-id="transformace-dat-27.10.2026">4. Transformace dat (27.10.2026)</h2>
 <ul>
 <li>načítání dat do R</li>
 <li>kontrola dat</li>
-<li>pipes</li>
 <li>balíček <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a></li>
 <li>tidy data</li>
-<li>faktory</li>
 <li>čas a datum</li>
 </ul>
 </section>
-<section id="funkce-27.10.2026" class="level2">
-<h2 class="anchored" data-anchor-id="funkce-27.10.2026">4. Funkce (27.10.2026)</h2>
+<section id="funkce-10.11.2026" class="level2">
+<h2 class="anchored" data-anchor-id="funkce-10.11.2026">5. Funkce (10.11.2026)</h2>
 <ul>
 <li>syntax funkce</li>
 <li>tvorba vlastní funkce</li>
@@ -205,8 +216,8 @@ ul.task-list li input[type="checkbox"] {
 <li>vektorizace vs.&nbsp;itinerární přístup</li>
 </ul>
 </section>
-<section id="základy-vizualizace-dat-a-práce-s-grafy-v-r-10.11.2026" class="level2">
-<h2 class="anchored" data-anchor-id="základy-vizualizace-dat-a-práce-s-grafy-v-r-10.11.2026">5. Základy vizualizace dat a práce s grafy v R&nbsp;(10.11.2026)</h2>
+<section id="základy-vizualizace-dat-a-práce-s-grafy-v-r-24.11.2026" class="level2">
+<h2 class="anchored" data-anchor-id="základy-vizualizace-dat-a-práce-s-grafy-v-r-24.11.2026">6. Základy vizualizace dat a práce s grafy v R (24.11.2026)</h2>
 <ul>
 <li>přemýšlení nad účelem tvorby grafu</li>
 <li>bodové, čárové a sloupcové grafy</li>
@@ -214,8 +225,8 @@ ul.task-list li input[type="checkbox"] {
 <li>úvod do vizualizace pomocí balíčku <a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a></li>
 </ul>
 </section>
-<section id="pokročilá-vizualizace-dat-24.11.2026" class="level2">
-<h2 class="anchored" data-anchor-id="pokročilá-vizualizace-dat-24.11.2026">6. Pokročilá vizualizace dat (24.11.2026)</h2>
+<section id="pokročilá-vizualizace-dat-08.12.2026" class="level2">
+<h2 class="anchored" data-anchor-id="pokročilá-vizualizace-dat-08.12.2026">7. Pokročilá vizualizace dat (08.12.2026)</h2>
 <ul>
 <li>boxploty</li>
 <li>histogramy</li>
@@ -225,8 +236,8 @@ ul.task-list li input[type="checkbox"] {
 <li>časové řady</li>
 </ul>
 </section>
-<section id="mapy-3d-a-interaktivní-grafy-08.12.2026" class="level2">
-<h2 class="anchored" data-anchor-id="mapy-3d-a-interaktivní-grafy-08.12.2026">7. Mapy, 3D a interaktivní grafy (08.12.2026)</h2>
+<section id="mapy-3d-a-interaktivní-grafy-05.01.2026" class="level2">
+<h2 class="anchored" data-anchor-id="mapy-3d-a-interaktivní-grafy-05.01.2026">8. Mapy, 3D a interaktivní grafy (05.01.2026)</h2>
 <ul>
 <li>prostorová data v R</li>
 <li>bodové mapy</li>
@@ -235,8 +246,8 @@ ul.task-list li input[type="checkbox"] {
 <li>interaktivní grafy</li>
 </ul>
 </section>
-<section id="typy-dat-a-deskriptivní-statistika-05.01.2027" class="level2">
-<h2 class="anchored" data-anchor-id="typy-dat-a-deskriptivní-statistika-05.01.2027">8. Typy dat a deskriptivní statistika (05.01.2027)</h2>
+<section id="typy-dat-a-deskriptivní-statistika-19.01.2027" class="level2">
+<h2 class="anchored" data-anchor-id="typy-dat-a-deskriptivní-statistika-19.01.2027">9. Typy dat a deskriptivní statistika (19.01.2027)</h2>
 <ul>
 <li>kvalitativní vs kvantitivní data</li>
 <li>nominální, ordinální, intervalová, poměrová, diskrétní a spojitá data</li>
@@ -245,8 +256,8 @@ ul.task-list li input[type="checkbox"] {
 <li>míry variability</li>
 </ul>
 </section>
-<section id="úvod-do-inferenční-statistiky-19.01.2027" class="level2">
-<h2 class="anchored" data-anchor-id="úvod-do-inferenční-statistiky-19.01.2027">9. Úvod do inferenční statistiky (19.01.2027)</h2>
+<section id="úvod-do-inferenční-statistiky-02.02.2027" class="level2">
+<h2 class="anchored" data-anchor-id="úvod-do-inferenční-statistiky-02.02.2027">10. Úvod do inferenční statistiky (02.02.2027)</h2>
 <ul>
 <li>populace, výběr</li>
 <li>určování normality dat</li>
@@ -254,8 +265,8 @@ ul.task-list li input[type="checkbox"] {
 <li>t-testy</li>
 </ul>
 </section>
-<section id="analýza-kategoriálních-dat-korelace-a-regrese-02.02.2027" class="level2">
-<h2 class="anchored" data-anchor-id="analýza-kategoriálních-dat-korelace-a-regrese-02.02.2027">10. Analýza kategoriálních dat, korelace a regrese (02.02.2027)</h2>
+<section id="analýza-kategoriálních-dat-korelace-a-regrese-16.02.2027" class="level2">
+<h2 class="anchored" data-anchor-id="analýza-kategoriálních-dat-korelace-a-regrese-16.02.2027">11. Analýza kategoriálních dat, korelace a regrese (16.02.2027)</h2>
 <ul>
 <li>kontingenční tabulka</li>
 <li>neparametrické testy</li>

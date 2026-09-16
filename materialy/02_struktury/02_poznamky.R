@@ -1,3 +1,6 @@
+#ukol
+#load skrz rstudio kliknutím, není to vidět ve skriptu kdybychom to někomu posílali
+#bude treba si jeste jednou projit nastavovani working directory a projekty setwd
 #SAMOSTATNE CVICENI VEKTORY
 #1
 c(1,2,3,1,2,3,9,8,7,2)
