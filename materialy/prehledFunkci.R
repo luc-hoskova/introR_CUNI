@@ -1,9 +1,15 @@
 ####################################
 #PREHLED FUNKCI Z JEDNOTLIVYCH HODIN
 ####################################
+#1. lekce
+getwd() #jake je nastavene working directory
+identical() #je x, y, z... totozne?
+load() #nahraj RData soubor do R
+save() #uloz hodnoty jako
+setwd() #nastav cestu do working directory
+
 #2. lekce
 length() #zjisti delku x
-identical() #je x, y, z... totozne?
 sample() #provede nahodny vyber z x
 seq() #vytvori sekvenci dle dannych parametru
 rep() #zopakuje x
