@@ -187,7 +187,7 @@ Na jaké problémy zde narazíme?
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 5,
+countdown::countdown(minutes = 10,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -397,7 +397,7 @@ names(vektorBezJmen)
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 5,
+countdown::countdown(minutes = 10,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -484,6 +484,18 @@ Nic ovšem nebrání tomu opakovat vektor s již jednou pojmenovanou hodnotou:
 rep(c(škoda = "octavia"), 2)
 ```
 :::
+
+------------------------------------------------------------------------
+
+### Faktor
+
+> **způsob uchovávání kategoriálních dat**
+
+- s vektorem nejčastější typ datové struktury v R, se kterým budete pracovat
+
+- tldr; tabulka
+
+as.typ dat()
 
 ------------------------------------------------------------------------
 
@@ -816,9 +828,11 @@ list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","
 
 - ukázka
 
-  ```{webr-r}
-  #| context: output
+```{webr-r}
+#| context: output
   data.frame(cbind(1:4, c("MFF", "FHS", NA , "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
+```
+  
   ```
 
 #### Tvorba data frame
@@ -1038,7 +1052,7 @@ Data frame si nemusíte pojmenovávat, ale vzhledem k úloze 2) se to hodí.
 #### Řešení úlohy 2)
 
 ::: fragment
-1.  K data frame potřebujeme připojit nový sloupec. Jeden ze způsobů jak to provést (další se naučíme později) je vytvoření nového pojmenovaného vektoru s jeho připojení ke stávajícímu data frame.\
+1.  K data frame potřebujeme připojit nový sloupec. Jeden ze způsobů jak to provést (další se naučíme později) je vytvoření nového pojmenovaného vektoru s jeho připojení ke stávajícímu data frame.
     Vytvořme si proto vektor, který bude obsahovat náhodný výběr boolean hodnot.
 
     ```{r}
@@ -1134,7 +1148,7 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
 
 - ukázka:
 
-  ```{r}
+```{r}
   tibble::tibble(
     id = 1:4,
     jmeno = c("Ivo", "Oto", "Anna", "Bára"),
@@ -1142,11 +1156,11 @@ data.frame(znamky = sample(1:5, 6, replace = TRUE),
     role = c("Engineer", "Data Scientist", "Developer", "HR"),
     plat = c(45000,60000, 80000, 100000)
   )
-  ```
+```
 
 - Funkce `tibble` není součástí základního R, ale je v balíčku `tibble`, který je následně součástí metabalíčku `tidyverse`.
 
-  ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ## Balíčky v R
 
@@ -1224,11 +1238,10 @@ Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počí
 
 ## Domácí úkol
 
-1.  Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor, co bude obsahovat hodnoty "Tea" "is" "better" "than" "coffee".
-Nezapomeňte, StackOverflow a jiné stránky jsou vaši nejlepší kamarádi ;)
+1.  Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor, co bude obsahovat hodnoty "Tea" "is" "better" "than" "coffee". Nezapomeňte, StackOverflow a jiné stránky jsou vaši nejlepší kamarádi ;)
 
 2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
 
-3.  
+3.  kolik faktorů je 
 
 Skript zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)

@@ -10,8 +10,6 @@ c(rep(1:3, 2), seq(9, 7), 2)
 #names(kolo) <- c("jmeno", "prijmeni)
 #fce: names(kolo) <- tolower(names(kolo))
 
-#as.typ dat()
-
 #PROCVICENI MATICE
 #1
 matrix(seq(2, 19, by = 3), 2, 3)
