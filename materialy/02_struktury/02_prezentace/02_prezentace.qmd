@@ -51,11 +51,8 @@ execute:
     (rozpocet%/%plat)/pocetMesicu
     ```
 
-5.  A nešlo by to jinak?
+5.  A nešlo by to i jinak?
 
-    ```{r}
-    identical((rozpocet%/%plat)/pocetMesicu, (rozpocet/plat)%/%pocetMesicu)
-    ```
 :::
 
 ## Funkce v R
@@ -173,7 +170,7 @@ Na jaké problémy zde narazíme?
 
 ### Samostatné cvičení
 
-1.  Múžeme zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, opravte.
+1.  Můžeme zapsat sekvenci od 1 do 10 s počtem hodnot 3 pomocí následujícího kódu? Pokud ne, opravte.
 
     ```{webr-r}
     seq(1, 10, 3)
@@ -233,7 +230,7 @@ length(rep(seq(2, 10, 2), 3))
 ```
 
 ::: fragment
-Funkce `length` zjišťuje, jaká je "délka", jaký je počet hodnot. Potřebujeme proto spočítat, kolik hodnot nám vznikne jako výsledek funkce `rep`.
+Funkce `length` zjišťuje, jaká je "délka" objektu, jaký má počet hodnot. Potřebujeme proto spočítat, kolik hodnot nám vznikne jako výsledek funkce `rep`.
 :::
 
 ::: fragment
@@ -315,6 +312,8 @@ c(1, 5, 77)
 
 - **způsobů je mnohem více**, tyto se ale hodí znát
 
+------------------------------------------------------------------------
+
 ### Potenciální zádrhely
 
 Co se stane po projetí následujícího kódu?
@@ -347,6 +346,8 @@ mode(vektorNA)
 :::
 ::::
 
+------------------------------------------------------------------------
+
 ### Pojmenovávání hodnot
 
 Jednotlivé hodnoty ve vektoru (ale i zbylých datových strukturách) je možné si pojmenovat.
@@ -359,18 +360,22 @@ names(jmena) #jake pojmenovani ma danna promenna?
 ::: callout-note
 ## Co znamená pojmenováná?
 
-Při pojmenovávání připojujeme specifické hodnotě či sérii hodnot určitý štítek. Nejenomže popisuje vlastnost hodnot(y), kterou pojmenovává, ale zárověň ho lze použít i k vyhledávání (indexování) jednotlivých hodnot. Více o indexování si řekneme v následující sekci.
+Při pojmenovávání připojujeme specifické hodnotě či sérii hodnot určitý štítek. Nejenomže popisuje vlastnost hodnot(y), kterou pojmenovává, ale zárověň ho lze použít i k vyhledávání (indexování) jednotlivých hodnot. Více o indexování si řekneme v následující hodině.
 :::
 
 **Pojmenování není to samé co přiřazování**; nevytváříme nové objekty, pouze hodnotám přidáváme novou charakteristiku.
 
 ```{webr-r}
+#vytvorme vektor s charakterovymi hodnotami
 vespa <- "primavera"
 yamaha <- "kodiak 450"
 suzuki <- "birdie"
 c(vespa, yamaha, suzuki)
 
+#vytvorme vektor s POJMENOVANYMI charakterovymi hodnotami
 c(škoda = "octavia", škoda = "felicia", volkswagen = "beetle")
+
+#pokusme se zavolat objekt škoda
 škoda
 ```
 
@@ -437,13 +442,14 @@ Vypište alespoň tři rozdílné způsoby, jak získat následující vektor: 1
 
 #### Řešení úlohy 2)
 
-::::: fragment
-1.  Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
+Vytvořte kód který upraví následující vektor tak, aby jména jednotlivých hodnot byla napsaná malými písmeny. Existuje pro toto i specifická funkce?
 
+::: fragment
 ```{r}
 names(id) <- c("jmeno", "prijmeni")
 id
 ```
+:::
 
 ::: fragment
 Existuje funkce v base R `tolower()`. Co způsobí a jakým způsobem ji můžeme použít?
@@ -459,19 +465,16 @@ id
 
 ![](images/1612457411219-396187299.png)
 :::
-:::::
 
 ------------------------------------------------------------------------
 
 #### Řešení úlohy 3)
 
-::: fragment
-1.  Opravte následující kód tak, aby dával požadovaný výsledek.
+Opravte následující kód tak, aby dával požadovaný výsledek.
 
 ```{r}
 rep(škoda = "octavia", 2)
 ```
-:::
 
 ::: fragment
 Nesmíte zapomenout, že symbol = uvnitř funkcí značí argument. Má funkce `rep` argument škoda?
@@ -491,11 +494,43 @@ rep(c(škoda = "octavia"), 2)
 
 > **způsob uchovávání kategoriálních dat**
 
-- s vektorem nejčastější typ datové struktury v R, se kterým budete pracovat
+- používají se hlavně během analýz a vizualizací, lze je ale využít i při kontrole správnosti dat
 
-- tldr; tabulka
+- ukázka:
+```{r}
+ukazkaFaktory <- as.factor(c("west", "north", "west", "south", "east", "north",
+                             "south", "east", "north")); ukazkaFaktory
+```
 
-as.typ dat()
+- přestože vypadají jako charakterová data, ve skutečně se jedná o integery
+```{r}
+str(ukazkaFaktory)
+```
+
+------------------------------------------------------------------------
+
+#### Jakým způsobem vzniká vektor?
+
+```{r}
+abc <- as.factor(c("a", "b", "a", "c")); abc
+```
+
+R vytvoří kategorii z každé varianty a následně je seřadí v přehledu od nejnižší po největší.
+
+```{r}
+str(abc)
+```
+
+:::: callout-note
+## Funkce as.x() dokáže měnit více data typů/struktur
+
+Funkce `as.x()` dokážou měnit defacto všechny data typy/struktury:
+```{r}
+as.character(1:4)
+as.numeric("3")
+as.logical("FALSE")
+```
+::::
 
 ------------------------------------------------------------------------
 
@@ -1242,6 +1277,14 @@ Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počí
 
 2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
 
-3.  kolik faktorů je 
+3. Kolik odlišných hodnot je v následujícím vektoru?
+
+```{r}
+c(3, 2, 7, 45, 2, 6, 11, 7,
+  90, 76, 4, 3, 46, 45, 7,
+  89, 6, 45, 1, 55, 12, 90,
+  2, 67, 2, 8, 7, 4, 34, 6)
+```
+
 
 Skript zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)

@@ -1,0 +1,11 @@
+# načtení dat
+
+load("promenne.RData")
+
+celkove_naklady_na_jednoho_zamestnance <- plat * pocetMesicu
+celkove_naklady_na_jednoho_zamestnance
+
+#počet zaměstměstnanců beze zbytku
+pocet_zamestnancu_bez_zbytku <- rozpocet %/%celkove_naklady_na_jednoho_zamestnance
+
+pocet_zamestnancu_bez_zbytku

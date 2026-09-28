@@ -9,6 +9,11 @@ save() #uloz hodnoty jako
 setwd() #nastav cestu do working directory
 
 #2. lekce
+as.character() #zmen hodnoty na character
+as.factor() #zmen hodnoty na faktory
+as.logical() #zmen hodnoty na boolean
+as.numeric() #zmen hodnoty na ciselne
+as.vector() #zmen strukturu na vektor
 array() #vytvori datove pole
 c() #shrn hodnoty do vektoru
 cbind() #spoji objektx po sloupcich
@@ -28,31 +33,6 @@ rep() #zopakuje x
 rownames() #nazvy radku x
 sample() #provede nahodny vyber z x
 seq() #vytvori sekvenci dle dannych parametru
+str() #jaka je struktura x
 tibble::tibble() #vytvori tibble
 tolower() #zmeni hodnoty textu na lower case
-
-#3. lekce
-dim() #jake jsou dimenze x
-dimnames() #nazvy/stitky jednotlivych dimenzi objektu
-mean() #aritmeticky prumer
-ncol() #kolik sloupcu ma x
-nrow() #kolik radku ma
-str() #jaka je struktura x
-
-
-
-
-
-#4. lekce
-
-#5. lekce
-
-#6. lekce
-
-#7. lekce
-
-#8. lekce
-
-#9. lekce
-
-#10. lekce
