@@ -178,7 +178,8 @@ Na jaké problémy zde narazíme?
 
 2.  Bez spuštění kódu určete, jaký bude výsledek této funkce. Používejte nápovědu, zkuste si jednotlivé části rozepsat.
 
-    ```{webr-r}
+    ```{r}
+    #| output: false
     length(rep(seq(2, 10, 2), 3))
     ```
 
