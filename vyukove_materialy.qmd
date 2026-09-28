@@ -13,6 +13,7 @@ Materiály budou zveřejněny vždy před lekcí (v případě výukových mater
 - kde [stáhnout R](https://cloud.r-project.org/)
 - kde [stáhnout RStudio (Desktop)](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
 - [tahák](https://luc-hoskova.github.io/introR_CUNI/materialy/tahak_klavesy.pdf) klávesových zkratek symbolů potřebných pro práci s R
+- [přehled funkcí](https://luc-hoskova.github.io/introR_CUNI/materialy/prehledFunkci.R) použitých během kurzu
 
 ## 1. Úvodní hodina (15.09.2026)
 
@@ -20,3 +21,7 @@ Materiály budou zveřejněny vždy před lekcí (v případě výukových mater
 - Příprava
   - stažené, nainstalované a funkční programy [R](https://cloud.r-project.org/) a [RStudio](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
 - Materiály k vypracování domácího úkolu: [promenne.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/promenne.RData)
+
+## 2. Datové struktury (29.09.2026)
+
+- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_prezentace/02_prezentace.html#/title-slide)

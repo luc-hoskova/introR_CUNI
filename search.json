@@ -144,7 +144,7 @@
     "href": "vyukove_materialy.html#základní-materiály",
     "title": "Výukové materiály",
     "section": "Základní materiály",
-    "text": "Základní materiály\n\nkde stáhnout R\nkde stáhnout RStudio (Desktop)\ntahák klávesových zkratek symbolů potřebných pro práci s R"
+    "text": "Základní materiály\n\nkde stáhnout R\nkde stáhnout RStudio (Desktop)\ntahák klávesových zkratek symbolů potřebných pro práci s R\npřehled funkcí použitých během kurzu"
   },
   {
     "objectID": "vyukove_materialy.html#úvodní-hodina-15.09.2026",
@@ -222,5 +222,12 @@
     "title": "Sylabus",
     "section": "11. Analýza kategoriálních dat, korelace a regrese (16.02.2027)",
     "text": "11. Analýza kategoriálních dat, korelace a regrese (16.02.2027)\n\nkontingenční tabulka\nneparametrické testy\nchí-kvadrát\nPearson/Spearman korelace\nregrese"
+  },
+  {
+    "objectID": "vyukove_materialy.html#datové-struktury-29.09.2026",
+    "href": "vyukove_materialy.html#datové-struktury-29.09.2026",
+    "title": "Výukové materiály",
+    "section": "2. Datové struktury (29.09.2026)",
+    "text": "2. Datové struktury (29.09.2026)\n\nPrezentace"
   }
 ]
