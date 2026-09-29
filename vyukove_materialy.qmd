@@ -25,3 +25,4 @@ Materiály budou zveřejněny vždy před lekcí (v případě výukových mater
 ## 2. Datové struktury (29.09.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_prezentace/02_prezentace.html#/title-slide)
+  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_poznamky.R) průběžných a samostatných cvičení
