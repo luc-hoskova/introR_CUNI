@@ -450,7 +450,7 @@ Jak to že je ale 2 \> 15?
     matice[TRUE, ]
     ```
 
-    Pro to, aby výběr matice fungoval, tak je potřeba, aby se definovaly všechny řádky. Zde jsme ale dodali pouze jednu hodnotu. Víme ale, že R si v některých případech dokáže hodnoty samo doplnit - viz [Automatické generování hodnot]
+    Pro to, aby výběr matice fungoval, tak je potřeba, aby se definovaly všechny řádky. Zde jsme ale dodali pouze jednu hodnotu. Víme ale, že R si v některých případech dokáže hodnoty samo doplnit - viz \[Automatické generování hodnot\]
 :::
 
 ::: fragment
@@ -804,7 +804,6 @@ Vyberte ty položky, které byly zlevněny o více než 85 procent.
 :::
 
 ------------------------------------------------------------------------
-
 
 ## Nahrávání dat
 
