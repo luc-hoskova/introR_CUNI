@@ -62,13 +62,6 @@ execute:
 1.  
 :::
 
-
-------------------------------------------------------------------------
-
-vvv
-
-------------------------------------------------------------------------
-
 ## Indexace / výběr specifických dat
 
 **Výběr specifických dat je jedna ze základních funkcí R**; není pro to nutně třeba potřeba používat balíčky. Balíčky nám celý proces ovšem značně usnadní.
@@ -457,7 +450,7 @@ Jak to že je ale 2 \> 15?
     matice[TRUE, ]
     ```
 
-    Pro to, aby výběr matice fungoval, tak je potřeba, aby se definovaly všechny řádky. Zde jsme ale dodali pouze jednu hodnotu. Víme ale, že R si v některých případech dokáže hodnoty samo doplnit - viz [Automatické generování hodnot]
+    Pro to, aby výběr matice fungoval, tak je potřeba, aby se definovaly všechny řádky. Zde jsme ale dodali pouze jednu hodnotu. Víme ale, že R si v některých případech dokáže hodnoty samo doplnit - viz \[Automatické generování hodnot\]
 :::
 
 ::: fragment
@@ -812,6 +805,87 @@ Vyberte ty položky, které byly zlevněny o více než 85 procent.
 
 ------------------------------------------------------------------------
 
+## Nahrávání dat
+
+### base R
+
+#### header
+
+#### sep
+
+#### dec
+
+```{r}
+dataTxt <- read.delim(file = "intro_data.txt",
+                       header = TRUE,
+                       sep = "",
+                       dec = ".",
+                       na.strings = "NA")
+```
+
+```{r}
+dataTxt2 <- read.delim(file = "intro_data.txt")
+```
+
+```{r}
+identical(dataTxt, dataTxt2)
+```
+
+Proč?
+
+Podívejme se do nápovědy pro tuto funkci.
+
+> **série za sebou jdoucích hodnot totožného datového typu**
+
+- vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
+
+- jednodimenzionální (důležité hlavně při vyhledávání)
+
+- při použití více datových typů dochází k nucené konverzi do jednotného typu
+
+```{r}
+seq(1, 10, 2)
+```
+
+------------------------------------------------------------------------
+
+### Balíček `readr`
+
+- je v tidyverse
+
+  - rozestup vždy po jedné
+
+```{r}
+-5:3
+0.65:9.18
+```
+
+- funkce `c` spojí hodnoty jakéhokoliv typu do vektoru
+
+------------------------------------------------------------------------
+
+### Balíček `readxl` - ach ty Excely...
+
+- je v tidyverse
+
+ff
+
+![](images/Nový%20projekt.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Samostatné cvičení
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+------------------------------------------------------------------------
 
 ## Příprava na další hodinu
 
