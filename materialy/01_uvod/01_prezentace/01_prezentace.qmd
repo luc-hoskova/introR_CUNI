@@ -673,11 +673,21 @@ pataTrida <- c(171, 158, 162, 144)
 mean(c(ctvrtaTrida, pataTrida)) #prumerna vyska obou trid v cm
 ```
 
+------------------------------------------------------------------------
+
+Máme skript, pomocí kterého můžeme pracovat s daty, a který je dostatečně popsaný abychom ho mohli zaslat kolegům/sami pochopili, když se na něj podíváme později. **Skripty v R se ukládají jako soubor s koncovkou .R.**
+
+Co když bychom si do R ale chtěli nahrát specifický dataset, který máme uložený v nějaké složce[^1]? Když si otevřeme nějaký skript, tak R vždy automaticky otevře a používá nejzákladnější složku v počítači (ve Windows `Dokumenty`).
+
+[^1]: optimálně ne ve Stažené soubory ;)
+
+![](images/clipboard-3376177032.png){fig-align="center"}
+
 ## Working directory
 
 Pokud chcete v skriptu načíst datasety a pak s nimi pracovat, **je potřeba mít určené, z jaké složky má R datasety tahat - v jakém prostředí se R pohybuje**.
 
-Nastavení je možné buď skrz Session \> Set working directory a nebo skrz `setwd()` funkci.
+Nastavení je možné buď skrz `Session > Set working directory` a nebo skrz `setwd()` funkci.
 
 ::: callout-caution
 Pozor, při použití `setwd()` funkce je **třeba nadefinovat přesně cestu v počítači (absolutní cestu)** jak se má R ke složce dostat!
@@ -690,44 +700,6 @@ getwd() #ukazka abolutni cesty
 ```
 
 Nastavení pracovního adresáře ovlivňuje i další funkcionality R. Například, **při ukládání skriptů se automaticky vybere** jako možnost uložení právě složka pracovního adresáře.
-
-------------------------------------------------------------------------
-
-### S jakými soubory mohu pracovat?
-
-Seznam souborů které má v nastaveném adresáři R dosupné naleznete bud' v okně **Files**, nebo pomocí funkce `list.files()`.
-
-```{r}
-list.files()
-```
-
-Jak vidíte, soubor nám vypíše dostupné soubory a složky v nastaveném pracovním adresáři. Co když se ale v něm chci podívat co je uvnitř specifické složky? K tomu je **potřeba ve funkci definovat nejenom název složky, ale i to, kde se tato složka nachází**.
-
-```{r}
-list.files("./images")
-```
-
-::: callout-tip
-## Co znamená tečka v ./images?
-
-`./`v kódu určuje, že se složka images nachází přímo v námi určeném pracovním adresáři.
-
-Jedná se o takzvanou **relativní cestu** - k tomu si řekneme něco víc v sekci [Absolutní vs. relativní cesta].
-:::
-
-------------------------------------------------------------------------
-
-#### Proč zapisujeme cestu ke složce jako textový řetězec, nikoliv jako čisté jméno? Třeba `list.files(./images)`?
-
-::: fragment
-Co znamená text, kolem kterého nejsou uvozovky?
-:::
-
-::: fragment
-**Text, kolem kterého nejsou uvozovky značí proměnnou** (a nebo funkci či její argument, ale k tomu příště).
-
-**R potřebuje znát popis specifické cesty k dané složce**. A jelikož popisek je ve své podstatě textový řetezec, musíme ho mít v uvozovkách - tak se v R označuje text.
-:::
 
 ------------------------------------------------------------------------
 
@@ -754,7 +726,7 @@ Toho můžete docílit pomocí vytvoření **RProjektu**.
 ::: callout-note
 ## Postup k vytvoření projektu
 
-File \> New Project \> buď existující složka a nebo vytvoření nové
+`File > New Project > bud' existující složka a nebo vytvoření nové`
 :::
 
 RProjekt vytvoří "izolované" prostředí, kdy všechny vaše soubory uvnitř tohoto adresáře budou svázané dohromady, budou se vám **automaticky znovu nahrávat uložené proměnné** bez nutnosti opakovaného spouštění kódu, a hlavně k nim vždy bude **relativní, nikoliv absolutní cesta** = celý projekt si můžete přesouvat mezi složkami či počítači bez potřeby nastavování working directory.
@@ -767,7 +739,7 @@ Tím, že si vytvoříte RProjekt, tak si vytváříte novou složku/nastavujete
 
 ## Nahrávání uložených proměnných
 
-V základním nastavení RProjekty **automaticky ukládají a následně nahrávají uložené proměnné zpět do globálního prostředí**. Není proto potřeba při každém otevření projektu v RStudiu celý skript projíždět znovu a všechno znovu nahrávat. Je ovšem možné si uložit vybranné proměnné i ručně.
+V základním nastavení RProjekty **umožňují ukládání a následné nahrávání proměnných, které jsme si vytvořili, zpět do globálního prostředí**. Není proto potřeba při každém otevření projektu v RStudiu celý skript projíždět znovu a všechno znovu nahrávat. Je ovšem možné si uložit vybranné proměnné i ručně.
 
 ```{r}
 typVozidla <- "automobil"

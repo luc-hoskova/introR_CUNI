@@ -1,0 +1,5 @@
+1) Vytvořte jednu proměnnou, která v sobě bude obsahovat rok založení Karlovy univerzity, a druhou proměnnou, která bude obsahovat současný rok. Použijte tyto proměnné k výpočtu toho, jak dlouho univerzita existuje.
+
+2) Opravte následující skript tak, aby byl funkční.
+
+3) Napište kód kterým si ověříte, jestli osoba A, které je 75 let, je starší než osoba B, která se narodila v roce 1938.

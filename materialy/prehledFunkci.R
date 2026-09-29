@@ -1,49 +1,38 @@
 ####################################
 #PREHLED FUNKCI Z JEDNOTLIVYCH HODIN
 ####################################
-#2. lekce
-length() #zjisti delku x
+#1. lekce
+getwd() #jake je nastavene working directory
 identical() #je x, y, z... totozne?
-sample() #provede nahodny vyber z x
-seq() #vytvori sekvenci dle dannych parametru
-rep() #zopakuje x
+load() #nahraj RData soubor do R
+save() #uloz hodnoty jako
+setwd() #nastav cestu do working directory
 
 #2. lekce
+as.character() #zmen hodnoty na character
+as.factor() #zmen hodnoty na faktory
+as.logical() #zmen hodnoty na boolean
+as.numeric() #zmen hodnoty na ciselne
+as.vector() #zmen strukturu na vektor
 array() #vytvori datove pole
 c() #shrn hodnoty do vektoru
 cbind() #spoji objektx po sloupcich
+cbind.data.frame() #spoji objektx po sloupcich do dataframe
 class() #jak se R vuci objektu chova
 colnames() #nazvy sloupcu x
 data.frame() #vytvori data frame
-dim() #jake jsou dimenze x
-dimnames() #nazvy/stitky jednotlivych dimenzi objektu
 install.packages("název balíčku") #instaluje balicek
+length() #zjisti delku x
 library() #nahrání balíčku do R
 list() #vytvori list/seznam
 matrix() #vytvori matici
-mean() #aritmeticky prumer
 mode() #jaky je datovy typ x
 names() #jake jsou jmena/stitky x
-ncol() #kolik sloupcu ma x
-nrow() #kolik radku ma
-rbind() #spoji objektx po radcich
+rbind() #spoji objekty po radcich
+rep() #zopakuje x
 rownames() #nazvy radku x
+sample() #provede nahodny vyber z x
+seq() #vytvori sekvenci dle dannych parametru
 str() #jaka je struktura x
 tibble::tibble() #vytvori tibble
 tolower() #zmeni hodnoty textu na lower case
-
-#3. lekce
-
-#4. lekce
-
-#5. lekce
-
-#6. lekce
-
-#7. lekce
-
-#8. lekce
-
-#9. lekce
-
-#10. lekce

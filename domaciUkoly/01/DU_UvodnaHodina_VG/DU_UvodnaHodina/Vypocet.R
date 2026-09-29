@@ -1,0 +1,1 @@
+rozpocet %/% (plat * pocetMesicu)
