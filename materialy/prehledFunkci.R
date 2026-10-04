@@ -25,9 +25,13 @@ install.packages("název balíčku") #instaluje balicek
 length() #zjisti delku x
 library() #nahrání balíčku do R
 list() #vytvori list/seznam
+lsf.str("package:jmenoBalicku") #vypis vsechny funkce v balicku a ukaz jejich strukturu
 matrix() #vytvori matici
 mode() #jaky je datovy typ x
 names() #jake jsou jmena/stitky x
+ncol() #pocet sloupcu
+nrow() #pocet radku
+paste0() #spoj bez mezery dva a vice charakterovych hodnot dohromady
 rbind() #spoji objekty po radcich
 rep() #zopakuje x
 rownames() #nazvy radku x
