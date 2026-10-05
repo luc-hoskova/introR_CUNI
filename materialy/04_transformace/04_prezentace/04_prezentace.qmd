@@ -44,16 +44,30 @@ execute:
 
 ### Úloha 1
 
-::: incremental
-1.  vytvoření RProjektu
+Vyber z následujícího vektoru každou pátou hodnotu.
 
-2.  nový R skript
+::: fragment
+1.  Pojmenujte si vektor pro snažší manipulaci.
 
-3.  nahrání uložených dat
+    ```{r}
+    hodnoty <- seq(15.2, 45.7, 0.56); hodnoty
+    ```
+:::
 
-4.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
+::: fragment
+2.  Vytvořte sekvenci, která v sobě bude obsahovat čísla v intervalu pěti od 0 do posledního čísla vektoru = každé páté číslo.
 
-5.  A nešlo by to jinak?
+    ```{r}
+    seq(0, length(hodnoty), by = 5)
+    ```
+:::
+
+::: fragment
+3.  Použijte výslednou sekvenci čísel k indexaci.
+
+    ```{r}
+    hodnoty[seq(0, length(hodnoty), by = 5)]
+    ```
 :::
 
 ------------------------------------------------------------------------

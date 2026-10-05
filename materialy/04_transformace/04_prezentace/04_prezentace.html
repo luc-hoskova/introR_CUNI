@@ -1947,13 +1947,44 @@ if (!window.customElements.get('countdown-timer')) {
 <section id="kontrola-domácí-práce" class="slide level2 scrollable">
 <h2>Kontrola domácí práce</h2>
 <h3 id="úloha-1">Úloha 1</h3>
+<p>Vyber z následujícího vektoru každou pátou hodnotu.</p>
+<div class="fragment">
 <ol type="1">
-<li class="fragment"><p>vytvoření RProjektu</p></li>
-<li class="fragment"><p>nový R skript</p></li>
-<li class="fragment"><p>nahrání uložených dat</p></li>
-<li class="fragment"><p>výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců</p></li>
-<li class="fragment"><p>A nešlo by to jinak?</p></li>
+<li><p>Pojmenujte si vektor pro snažší manipulaci.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href></a>hodnoty <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">15.2</span>, <span class="fl">45.7</span>, <span class="fl">0.56</span>); hodnoty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 15.20 15.76 16.32 16.88 17.44 18.00 18.56 19.12 19.68 20.24 20.80 21.36
+[13] 21.92 22.48 23.04 23.60 24.16 24.72 25.28 25.84 26.40 26.96 27.52 28.08
+[25] 28.64 29.20 29.76 30.32 30.88 31.44 32.00 32.56 33.12 33.68 34.24 34.80
+[37] 35.36 35.92 36.48 37.04 37.60 38.16 38.72 39.28 39.84 40.40 40.96 41.52
+[49] 42.08 42.64 43.20 43.76 44.32 44.88 45.44</code></pre>
+</div>
+</div></li>
 </ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><p>Vytvořte sekvenci, která v sobě bude obsahovat čísla v intervalu pěti od 0 do posledního čísla vektoru = každé páté číslo.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href></a><span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(hodnoty), <span class="at">by =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0  5 10 15 20 25 30 35 40 45 50 55</code></pre>
+</div>
+</div></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li><p>Použijte výslednou sekvenci čísel k indexaci.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href></a>hodnoty[<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(hodnoty), <span class="at">by =</span> <span class="dv">5</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 17.44 20.24 23.04 25.84 28.64 31.44 34.24 37.04 39.84 42.64 45.44</code></pre>
+</div>
+</div></li>
+</ol>
+</div>
 </section>
 <section id="nahrávání-dat" class="slide level2">
 <h2>Nahrávání dat</h2>
@@ -1962,17 +1993,17 @@ if (!window.customElements.get('countdown-timer')) {
 <h4 id="sep">sep</h4>
 <h4 id="dec">dec</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href></a>dataTxt <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">&quot;intro_data.txt&quot;</span>,</span>
-<span id="cb1-2"><a href></a>                       <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-3"><a href></a>                       <span class="at">sep =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb1-4"><a href></a>                       <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
-<span id="cb1-5"><a href></a>                       <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href></a>dataTxt <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">&quot;intro_data.txt&quot;</span>,</span>
+<span id="cb7-2"><a href></a>                       <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-3"><a href></a>                       <span class="at">sep =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb7-4"><a href></a>                       <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb7-5"><a href></a>                       <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href></a>dataTxt2 <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">&quot;intro_data.txt&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href></a>dataTxt2 <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">&quot;intro_data.txt&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href></a><span class="fu">identical</span>(dataTxt, dataTxt2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href></a><span class="fu">identical</span>(dataTxt, dataTxt2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -1988,7 +2019,7 @@ if (!window.customElements.get('countdown-timer')) {
 <li><p>při použití více datových typů dochází k nucené konverzi do jednotného typu</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 5 7 9</code></pre>
 </div>
@@ -2004,11 +2035,11 @@ if (!window.customElements.get('countdown-timer')) {
 </ul></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href></a><span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href></a><span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -5 -4 -3 -2 -1  0  1  2  3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href></a><span class="fl">0.65</span><span class="sc">:</span><span class="fl">9.18</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href></a><span class="fl">0.65</span><span class="sc">:</span><span class="fl">9.18</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.65 1.65 2.65 3.65 4.65 5.65 6.65 7.65 8.65</code></pre>
 </div>
@@ -2031,7 +2062,7 @@ if (!window.customElements.get('countdown-timer')) {
 <h3 id="samostatné-cvičení">Samostatné cvičení</h3>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_67e03196" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a32c7cb9" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 </section>

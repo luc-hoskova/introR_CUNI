@@ -27,12 +27,10 @@ execute:
 ::: incremental
 - opakování z minulé hodiny
 - kontrola domácího úkolu
-- nahrávání dat
+- indexace pomocí \[\]
+- indexace pomocí \$
 - pipes
-- chybějící hodnoty
-- faktory
-- změna datatypů/struktur
-- balíček `dplyr`
+- indexace pomocí balíčku `dplyr`
 - chybějící hodnoty
 :::
 
@@ -85,7 +83,7 @@ execute:
 Jak víme, vektory mají pouze jednu dimenzi. Proto k definování pozice hodnot(y) stačí pouze jeden údaj.
 
 ```{r}
-vektor <- c(a = 558, b = 67846, c = 8797)
+vektor <- c(a = 558, b = 67846, c = 8797); vektor
 
 vektor[3] #treti pozice ve vektoru
 vektor["c"] #hodnota pojmenovaná jako c
@@ -99,6 +97,7 @@ Bez použití uvozovek bychom R říkali, ať vektor indexuje pomocí informací
 ```{r}
 cislo <- 2
 pismeno <- "a"
+vektor
 vektor[cislo]
 vektor[pismeno]
 ```
@@ -108,21 +107,27 @@ vektor[pismeno]
 
 **Je možné vybírat i více hodnot najednou**. Jakým způsobem byste vybrali první a třetí hodnotu z objektu `vektor`?
 
-```{webr-r}
-
-```
-
 ::: fragment
 ```{r}
 vektor[c(1, 3)] #porad do vektoru vkladame pouze jeden "objekt"
-#nepouzivame carku!
+```
+
+**Pro výběr více hodnot nepoužíváme čárku!**
+
+```{webr-r}
+#| context: setup
+vektor <- c(a = 558, b = 67846, c = 8797)
+```
+
+```{webr-r}
+vektor[1, 3] #nezapomente na pocet dimenzi!
 ```
 
 Na základě tohoto principu lze hodnoty vybírat pomocí různých způsobů:
 
 ```{r}
 vektor[1:2] #prvni az druha hodnota
-vektor[-1] #vsechny hodnoty krome prvni (pozor: lze jen s cisly!)
+vektor[-1] #vsechny hodnoty krome prvni (pozor: lze jen s cislem poradi!)
 ```
 :::
 
@@ -131,11 +136,6 @@ vektor[-1] #vsechny hodnoty krome prvni (pozor: lze jen s cisly!)
 ##### Lze vybírat i pomocí charakteristik jednotlivých hodnot?
 
 Nyní dokážeme vybrat hodnoty podle čísla jejich pozice. Co když chceme ale vybrat hodnoty podle jejich charakteristik?
-
-```{r}
-identical(vektor[1], vektor[vektor < 600])
-#proc jsou tyto hodnoty identicke?
-```
 
 `vektor[vektor < 600]` = vyber z objektu vektor ty hodnoty, které splňují podmínku, že jsou menší než 600
 
@@ -150,12 +150,12 @@ Proč nemůžeme jednoduše napsat `vektor[< 600]`?
 Při `< 600` **chybí levá stran**a; co je menší než 600?
 
 ::: callout-important
-## Pro výběru se používají čistě logické hodnoty!
+## Pro výběr se používají čistě logické hodnoty!
 
 Výběr defacto znamená, že se **R předá vektor s hodnotami TRUE/FALSE** o tom, zda má být hodnota na dané pozici do výběru zařazena.
 
 ```{r}
-vektor < 600 #TRUE, FLASE, FALSE
+vektor < 600 #TRUE, FALSE, FALSE
 vektor[vektor < 600]
 vektor[c(TRUE, FALSE, FALSE)]
 ```
@@ -164,8 +164,8 @@ vektor[c(TRUE, FALSE, FALSE)]
 K výběru **lze samozřejmě použít i ostatní operátory**.
 
 ```{r}
-#vyber ty hodnoty ktere jsou presne 8797
-vektor[vektor == 8797]
+#vyber ty hodnoty ktere jsou presne 67846
+vektor[vektor == 67846]
 
 #vyber hodnoty ktere jsou vetsi nez 600 a zaroven mensi nez 50 000
 vektor[vektor > 600 & vektor < 50000]
@@ -176,20 +176,20 @@ vektor[vektor > 600 & vektor < 50000]
 
 Vybírání specifických hodnot nemusíme ale používat pouze k jejich vyhledávání. **Můžeme pomocí tohoto principu i přiřazovat a přepisovat jednotlivé hodnoty**.
 
-```{webr-r}
+```{r}
 x1 <- 1:20; x1
 length(x1) #kolik hodnot je ulozeno v x1?
 ```
 
 Pokud chceme, aby 2. hodnota `x1` byla 55, jak ji můžeme přidat?
 
-```{webr-r}
+```{r}
 x1[2] <- 55; x1
 ```
 
 Co když ale chceme, aby číslo 55 bylo na pozici 42?
 
-```{webr-r}
+```{r}
 x1[42] #v x1 v tuto chvili zadna hodnota na pozici 42 neni
 x1[42] <- 55; x1
 ```
@@ -224,47 +224,19 @@ countdown::countdown(minutes = 10,
                      top = "0")
 ```
 
-1.  Vyber z následujícího vektoru každou pátou hodnotu
+Vyberte z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi. Kolik jich je?
 
-    ```{r}
-    seq(15.2, 45.7, 0.56)
-    ```
+::: callout-tip
+## Nápověda
 
-2.  Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi. Kolik jich je?
+Zapřemýšlejte se nad tím, co to znamená, že je číslo dělitelné třemi. Je možné si tuto charakteristiku ověřit nějakým operátorem?
 
-------------------------------------------------------------------------
-
-#### Řešení úlohy 1)
-
-Vyber z následujícího vektoru každou pátou hodnotu.
-
-::: fragment
-1.  Pojmenujte si vektor pro snažší manipulaci.
-
-    ```{r}
-    hodnoty <- seq(15.2, 45.7, 0.56); hodnoty
-    ```
-:::
-
-::: fragment
-2.  Vytvořte sekvenci, která v sobě bude obsahovat čísla v intervalu pěti od 0 do posledního čísla vektoru = každé páté číslo.
-
-    ```{r}
-    seq(0, length(hodnoty), by = 5)
-    ```
-:::
-
-::: fragment
-3.  Použijte výslednou sekvenci čísel k indexaci.
-
-    ```{r}
-    hodnoty[seq(0, length(hodnoty), by = 5)]
-    ```
+Nezapomeňte, že indexace podle podmínek defacto není nic jiného než výběr hodnot pomocí TRUE a FALSE.
 :::
 
 ------------------------------------------------------------------------
 
-#### Řešení úlohy 2)
+#### Řešení
 
 Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi. Kolik jich je?
 
@@ -287,7 +259,7 @@ Vyber z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi. Kolik ji
 :::
 
 ::: fragment
-3.  Chceme vybrat pouze ta čísla, která jsou dělitelná třemi = nemají žádný zbytek = zbytek je 0. Jak to provedeme?
+3.  Chceme vybrat pouze ta čísla, která jsou dělitelná třemi -\> nemají žádný zbytek -\> zbytek je 0. Jak to provedeme?
 
     ```{r}
     cisla %% 3 == 0
@@ -316,8 +288,7 @@ Výpočet samozřejmě můžeme provést i bez vytváření proměnných.
 ```{r}
 length((1878:2324)[1878:2324 %% 3 == 0])
 #pozor! pri tomto postupu je treba dat sekvenci do zavorky
-  #r nemilosrdne dela vyber hned z nejblizsi hodnoty
-  #u hranate zavorky
+  #r nemilosrdne dela vyber hned z nejblizsi hodnoty u hranate zavorky
 ```
 :::
 
@@ -493,12 +464,6 @@ Jak to že je ale 2 \> 15?
 
     ```
 
-4.  Vyber každý druhý sloupec, ale pouze ty řádky které začínají na liché hodnoty.
-
-    ```{webr-r}
-
-    ```
-
 ------------------------------------------------------------------------
 
 #### Data frame
@@ -514,43 +479,61 @@ vzorek <- data.frame(vek, strana, sex, row.names = ID); vzorek
 
 vzorek[1, 3] #prvni radek treti sloupec
 vzorek["SC_020", 1] #radek jmenem SC_020 prvni sloupec
-vzorek[vzorek[,2] == "sin",] #radky ktere maji v druhem sloupci hodnotu "sin" a vsechny sloupce
+#radky ktere maji v druhem sloupci hodnotu "sin" a vsechny sloupce
+vzorek[vzorek[,2] == "sin",]
 ```
 
 ------------------------------------------------------------------------
 
-::: callout-important
 ## Výběr hodnot specifického sloupce
 
-Data frame má narozdíl od matice ovšem jednu velkou výhodu; můžeme indexovat přímo pomocí jmen sloupců. Co to znamená?
+Data frame má narozdíl od matice ovšem jednu velkou výhodu; **můžeme indexovat přímo pomocí jmen sloupců**. Co to znamená?
 
 ```{r}
 #vyber sloupec strana
 vzorek["strana"]
+```
+
+::: callout-note
+## Výběr celého sloupce znamená i výběr všech řádků
+
+Proč zde nemusíme použít čárku? Výběr celého sloupce implikuje vybrání jedné hodnoty z každého sloupce.
+:::
+
+------------------------------------------------------------------------
+
+Při vytváření indexování specificky pojmenovaného sloupce se někdy používá symbol \$
+
+```{r}
 #vyber vsechny hodnoty ve sloupci strana 
 vzorek$strana
 ```
-:::
-
-Při vytváření indexování specificky pojmenovaného sloupce se někdy používá symbol \$.
 
 > **symbol `$` provede výběr hodnot ze specifické komponenty datové struktury**
 
-Proč tento symbol nelze použít i u matice? *Nápověda: jaká je definice data frame a matice?*
+Proč tento postup nelze použít i u matice? *Nápověda: jaká je definice data frame a matice?*
 
 :::: fragment
 Zatímco matice je defakto jeden dlouhý vektor poskládaný ve dvou dimenzích, **data frame je objekt složený z jiných objektů**.
 
 ```{webr-r}
 matice
+matice["a"]
 matice$a
 
 ```
 
 ::: fragment
+Jaká je struktura matice?
+
 ```{r}
-str(matice) #jaka je struktura matice "matice"
-str(vzorek) #jaka je struktura data frame "vzorek"
+str(matice)
+```
+
+Jaká je struktura data frame?
+
+```{r}
+str(vzorek)
 ```
 :::
 ::::
@@ -587,6 +570,14 @@ class(vzorek["vek"])
 Můžeme počítat aritmetický průměr z číselných hodnot; rozhodně neuděláme průměr z "data frame".
 :::
 
+::: callout-important
+## \$ vrací hodnoty, \[ \] tvoří subset
+
+Indexace pomocí `$` nám vrátí vektor, který obsahuje hodnoty výběru.
+
+`[ ]` vytvoří subset objektu; indexací data frame se nám vrátí menší data frame.
+:::
+
 ------------------------------------------------------------------------
 
 ##### Kdy použijeme výběr pomocí \$?
@@ -611,8 +602,27 @@ doctor <- list(name = c(doctor$name,"David Tennat","Matt Smith","Peter Capaldi",
 R automaticky usuzuje že data frame je poskládaný tak, že jednotlivá měření/vzorky/pozorování jsou zapsaná v řádcích, nikoliv ve sloupcích - jedná se o takzvaný **long formát dat**. To znamená, že usuzuje, že jednotlivé vektory, ze kterých se data frame skládá, budou sloupce.
 
 ```{webr-r}
+#| context: setup
+vek <- c(27,35,30,47,42)
+sex <- c("female","male","male","female","female")
+strana <-c("sin","sin","dx","dx","dx")
+ID <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
+vzorek <- data.frame(vek, strana, sex, row.names = ID); vzorek
+```
+
+```{webr-r}
 vzorek["SC_001"] #v data frame neexistuje neco jako objekt SC_001
 ```
+
+------------------------------------------------------------------------
+
+Past vedle pasti
+
+proč jde použít \[číslo sloupce\[ u matice - je to defakto jeden dlouhý vektor
+
+\[\[\]\] dělá to samé co \$
+
+u listů jde vybíta pouze \[\[\]\]
 
 ------------------------------------------------------------------------
 
@@ -893,11 +903,13 @@ Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počí
 
 ## Domácí úkol
 
-1.  Vyberte z čísel 1878 až 2324 pouze ty, které jsou dělitelné třemi.
+1.  Vyber z následujícího vektoru každou pátou hodnotu
 
-2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
+```{r}
+seq(15.2, 45.7, 0.56)
+```
 
-3.  Z datasetu `dplyr::starwars` vyberte všechny charaktery, u kterých máme hodnoty ve všech sloupcích (žádné NA), které pochází z Tatooine a nejsou to Droidi. Nápověda: k výběru budete muset použít funkci. Vyhledejte si na internetu (nikoliv AI) alespoň dvě funkce, které můžete využít k vyyřešení tohoto příkladu. Váš výsledek by měl vypadat následovně:
+2.  Z datasetu `dplyr::starwars` vyberte všechny charaktery, u kterých máme hodnoty ve všech sloupcích (žádné NA), které pochází z Tatooine a nejsou to Droidi. Nápověda: k výběru budete muset použít funkci. Vyhledejte si na internetu (nikoliv AI) alespoň dvě funkce, které můžete využít k vyyřešení tohoto příkladu. Váš výsledek by měl vypadat následovně:
 
 ```{webr-r}
 #| context: output
