@@ -312,7 +312,7 @@ matice[1:3,5:6] #prvni az treti radek a paty az sesty sloupec
 
 ------------------------------------------------------------------------
 
-Můžeme používat i jména sloupců a řádků?
+**Můžeme k výběru používat i jména sloupců a řádků?**
 
 ```{r}
 dim(matice) #4 radky 6 sloupcu
@@ -446,19 +446,13 @@ Jak to že je ale 2 \> 15?
 
 ### Procvičení
 
-1.  Vyber z proměnné `matice` všechny hodnoty vyšší jak 30.
+1.  Vyber z prvního řádku `matice` ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.
 
     ```{webr-r}
 
     ```
 
-2.  Vyber z prvního řádku `matice` ty sloupce, které mají hodnoty větší jak 25 nebo menší jak 15.
-
-    ```{webr-r}
-
-    ```
-
-3.  Vyber ty řádky `matice`, které mají ve sloupci `c` hodnotu přesně 20.
+2.  Vyber ty řádky `matice`, které mají ve sloupci `c` hodnotu přesně 20.
 
     ```{webr-r}
 
@@ -477,8 +471,8 @@ strana <-c("sin","sin","dx","dx","dx")
 ID <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
 vzorek <- data.frame(vek, strana, sex, row.names = ID); vzorek
 
-vzorek[1, 3] #prvni radek treti sloupec
-vzorek["SC_020", 1] #radek jmenem SC_020 prvni sloupec
+vzorek[1, 3] #prvni radek, treti sloupec
+vzorek["SC_020", 1] #radek jmenem SC_020, prvni sloupec
 #radky ktere maji v druhem sloupci hodnotu "sin" a vsechny sloupce
 vzorek[vzorek[,2] == "sin",]
 ```
@@ -497,7 +491,7 @@ vzorek["strana"]
 ::: callout-note
 ## Výběr celého sloupce znamená i výběr všech řádků
 
-Proč zde nemusíme použít čárku? Výběr celého sloupce implikuje vybrání jedné hodnoty z každého sloupce.
+Proč zde nemusíme použít čárku? Výběr celého sloupce implikuje vybrání jedné hodnoty z každého řádku.
 :::
 
 ------------------------------------------------------------------------
@@ -511,17 +505,18 @@ vzorek$strana
 
 > **symbol `$` provede výběr hodnot ze specifické komponenty datové struktury**
 
-Proč tento postup nelze použít i u matice? *Nápověda: jaká je definice data frame a matice?*
+Lze tyto postupy použít i u matice?
+
+```{webr-r}
+matice #zobrazeni pro prehled
+matice["a"]
+matice$a
+```
+
+*Nápověda: jaká je definice data frame a matice?*
 
 :::: fragment
 Zatímco matice je defakto jeden dlouhý vektor poskládaný ve dvou dimenzích, **data frame je objekt složený z jiných objektů**.
-
-```{webr-r}
-matice
-matice["a"]
-matice$a
-
-```
 
 ::: fragment
 Jaká je struktura matice?
@@ -614,15 +609,31 @@ vzorek <- data.frame(vek, strana, sex, row.names = ID); vzorek
 vzorek["SC_001"] #v data frame neexistuje neco jako objekt SC_001
 ```
 
+Více o long formátu a proč je dobré ho používat si řekneme během příští lekce při probírání konceptu "tidy data".
+
 ------------------------------------------------------------------------
 
-Past vedle pasti
+## Past vedle pasti
 
-proč jde použít \[číslo sloupce\[ u matice - je to defakto jeden dlouhý vektor
+Na vše samozřejmě existují vyjímky.
+
+proč jde použít \[číslo sloupce\[ u matice - je to atomický vektor, bude si to brát po sloupcích
 
 \[\[\]\] dělá to samé co \$
 
 u listů jde vybíta pouze \[\[\]\]
+
+------------------------------------------------------------------------
+
+| Způsob indexace     | Výsledek   |
+|---------------------|------------|
+| `df[,1]`            | vektor     |
+| `df[,1,drop=FALSE]` | data frame |
+| `df["col"]`         | data frame |
+| `df[["col"]]`       | vektor     |
+| `df$col`            | vektor     |
+
+: Přehled výsledků indexace data frame
 
 ------------------------------------------------------------------------
 

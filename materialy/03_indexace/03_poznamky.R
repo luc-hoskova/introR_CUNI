@@ -1,4 +1,6 @@
 #03. lekce
+#UKOL
+
 #PROCVICOVANI INDEXACE VEKTORY
 #1
 x <- c(15, 87, 23, 91, 42, 68, 54, 78, 54, 45, 10, 98, 54, 98)
@@ -17,9 +19,6 @@ vektor2[names(vektor2) != "ageRestriction"] #vyber vsech jmen krome ageGroup
 
 #PROCVICOVSNI INDEXACE MATICE
 #1
-matice[matice > 30]
-
-#2
 matice[1, matice[1, ] > 25 | matice[1, ] < 15]
 
 #3
