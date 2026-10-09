@@ -25,11 +25,10 @@ execute:
 ::: incremental
 - opakování z minulé hodiny
 - kontrola domácího úkolu
-- indexace pomocí \[\]
-- indexace pomocí \$
-- pipes
+- indexace pomocí `[ ]`
+- indexace pomocí `$`
 - indexace pomocí balíčku `dplyr`
-- chybějící hodnoty
+- pipes
 :::
 
 ------------------------------------------------------------------------
@@ -865,7 +864,7 @@ c(5, NA, 22, NA, NA) #vytvor sloupec, ktery ma v sobe tolik hodnot co df radku
 ::: callout-tip
 ## Zkušební datasety v R
 
-V R a nahraném balíčku `dplyr` je nainstalováno několik datasetů určených k zkoušení si funkcí a celkovému hraní si. Datasety `iris` a `storms`, které budeme v následujícím procvičení používat, jsou právě jedněmi z nich. Pro jejich používání není potřeba je jakkoliv nahrávat či ukládat jako proměnné.
+V R a nahraném balíčku `dplyr` je nainstalováno několik datasetů určených k zkoušení si funkcí a celkovému hraní si. Datasety `iris` a `storms`, které budeme v následujícím procvičení používat, jsou právě jedněmi z nich. Pro jejich používání není potřeba je jakkoliv nahrávat či ukládat jako proměnné. Co je ale potřeba je mít balíček načtený ;)
 :::
 
 1.  Jak průměrně rychlé byly větry (`wind`) v roce, kdy jste se narodili (`year`)? Použijte dataset `dplyr::storms`.
@@ -918,6 +917,7 @@ Vyberte motorky, které měli počet bodů z obou hodnocení dohromady sice men�
     #| label: setup
     #| include: false
     load("bikes.RData")
+    library(dplyr)
     ```
 
     ```{r}
@@ -1017,11 +1017,11 @@ lst["osoba"] #vyber objekt "osoba"
 str(lst["osoba"])
 lst[["osoba"]] #vyber obsah objektu "osoba"
 str(lst[["osoba"]])
-lst$osoba
+lst$osoba #vyber obsah objektu jmenem "osoba"
 str(lst$osoba)
 ```
 
-A co když nechceme vybrat pouze ten list, ale přímo hodnoty v něm?
+**A co když nechceme vybrat pouze ten list, ale přímo hodnoty v něm?**
 
 ```{r}
 lst$osoba$jmeno
@@ -1054,7 +1054,23 @@ lst$x #vyber objekt s nazvem x
 
 ------------------------------------------------------------------------
 
-přepis a přidávání hodnot
+## Procvičení
+
+1.  Přidejte paní Anně Novákové další povolání.
+
+    ```{webr-r}
+    #| context: setup
+    lst <- list(osoba = list(jmeno = "Anna",
+    prijmeni = "Novotná"),
+      povolani = "uklizecka",
+      vek = 67)
+    ```
+
+    ```{webr-r}
+
+    ```
+
+2.  Přidejte informace o jejích dvou dětech; každé ve vlastním listu se jménem a příjmením, dohromady pak ve společném listu "deti".
 
 ```{webr-r}
 
@@ -1062,7 +1078,79 @@ přepis a přidávání hodnot
 
 ------------------------------------------------------------------------
 
+## Indexace pomocí funkcí balíčku `dplyr`
+
+V tuto chvíli **víme, na jakém principu funguje indexace v R**, a s jakými symboly a způsoby provedení se můžete běžně setkat. Některé z těchto procesů indexace jsou ale dost krkolomné, nebo vyžadují od uživatele repetitivní psaní kódu.
+
+Co kdyby existovalo něco... *jednoduššího*?
+
+![](images/clipboard-4182817353.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### funkce `dplyr::select`
+
+> Vyber sloupce z data frame
+>
+> `select(název data frame, název sloupce)`
+
+```{r}
+select(bikes, speed)
+```
+
+To nevypadá tak impresivně, že? Vždyť to si mohu napsat i jako `bikes$speed`...
+
+Co když ale máte sloupců na výběr podstatně více?
+
+```{r}
+str(storms) #tibble "storms" ma 13 sloupcu
+select(storms, lat, long, year, last_col())
+select(storms, 1:4, starts_with(c("w", "h")))
+```
+
+------------------------------------------------------------------------
+
+### funkce `dplyr::filter`
+
+> Vyber řádky na základě podmínky
+>
+> `filter(název data frame, podmínky hodnot ve sloupcích)`
+
+```{r}
+filter(storms, wind > 10,
+       wind < 60,
+       name %in% c("Jeanne", "Georges"),
+       year == 1980,
+       status != "disturbance")
+```
+
+------------------------------------------------------------------------
+
+A co kdybychom to **spojili dohromady**?
+
+```{r}
+filtrovanaData <- filter(storms,
+                         year %in% 1990:2000,
+                         wind > 50,
+                         !is.na(category),
+                         month == 6); filtrovanaData
+
+select(filtrovanaData, name, year, wind)
+```
+
+------------------------------------------------------------------------
+
+## Pipes
+
+dd
+
+------------------------------------------------------------------------
+
 ## Příprava na další hodinu
+
+Stáhněte si data, které budou přiloženy u lekce ve výukových materiálech. Nezapomeňte si je uložit do dedikované složky, žádné "najdu to ve stažených souborech"!
+
+V příští lekci budeme pracovat s nahráváním dat a s projekty, proto je opravdu potřeba v tom mít pořádek.
 
 ## Domácí úkol
 
@@ -1070,14 +1158,6 @@ přepis a přidávání hodnot
 
 ```{r}
 seq(15.2, 45.7, 0.56)
-```
-
-2.  Z datasetu `dplyr::starwars` vyberte všechny charaktery, u kterých máme hodnoty ve všech sloupcích (žádné NA), které pochází z Tatooine a nejsou to Droidi. Nápověda: k výběru budete muset použít funkci. Vyhledejte si na internetu (nikoliv AI) alespoň dvě funkce, které můžete využít k vyyřešení tohoto příkladu. Váš výsledek by měl vypadat následovně:
-
-```{webr-r}
-#| context: output
-starwars <- na.omit(dplyr::starwars)
-starwars$name[starwars$homeworld == "Tatooine" & starwars$species != "Droid"]
 ```
 
 Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
