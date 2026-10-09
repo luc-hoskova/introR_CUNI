@@ -1,6 +1,4 @@
 #03. lekce
-#UKOL
-
 #PROCVICOVANI INDEXACE VEKTORY
 #1
 x <- c(15, 87, 23, 91, 42, 68, 54, 78, 54, 45, 10, 98, 54, 98)
@@ -21,9 +19,41 @@ vektor2[names(vektor2) != "ageRestriction"] #vyber vsech jmen krome ageGroup
 #1
 matice[1, matice[1, ] > 25 | matice[1, ] < 15]
 
-#3
+#2
 matice[matice[,"c"] == 20,]
 
+#PROCVICOVSNI INDEXACE DATA FRAME
+#1
+vzorek[,1] #vektor
+vzorek[[1]] #vektor
+vzorek[1] #df
+vzorek[,1, drop = FALSE] #df
+
+#2
+vzorek[c(1, nrow(vzorek)), ]
+
+#PROCVICOVANI $
+#1
+library(dplyr)
+str(storms)
+storms$wind[storms$year == 1998]
+mean(storms$wind[storms$year == 1998])
+
+#2
+iris[iris$Sepal.Length < 5, ]
+iris[iris$Sepal.Width > 3.5 & iris$Species == "setosa", ]
+iris[iris$Sepal.Length < 5 |
+       (iris$Sepal.Width > 3.5 & iris$Species == "setosa"), ]
+
+#3
+vyber <- iris[iris$Sepal.Length < 5 |
+                (iris$Sepal.Width > 3.5 & iris$Species == "setosa"), ]
+
+vyber$Petal.Length
+vyber$Petal.Length[vyber$Species == "setosa"]
+mean(vyber$Petal.Length[vyber$Species == "setosa"])
+
+#SAMOSTATNE PROCVICOVANI
 
 #´pouzivani apostrofu u nazvu s mezerou´
   #rename funkce?

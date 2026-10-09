@@ -78,6 +78,16 @@ execute:
     - v případě absence či online výuky domácí práce navíc
     - je to vše o domluvě :\]
 
+## Úkoly? To vážně?
+
+Ano.
+
+::: incremental
+- kontrola pro mě, jestli jste pochopili látku
+- R se nenaučíte jen poslechem, je potřeba ho aktivně používat
+- během tří hodin jednou za dva týdny není možné stihnout všechno; takto budete mít možnost řízeného samostudia
+:::
+
 ## Průběh hodin
 
 1.  úvodní opakování z předchozí hodiny

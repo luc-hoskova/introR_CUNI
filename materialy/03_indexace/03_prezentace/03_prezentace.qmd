@@ -14,8 +14,6 @@ filters:
 webr:
   packages:
     - "dplyr"
-    - "readxl"
-    - "readr"
 execute:
   echo: true
   warning: false
@@ -41,15 +39,36 @@ execute:
 ### Úloha 1
 
 ::: incremental
-1.  vytvoření RProjektu
+1.  Vytvoříme vektor o jedné hodnotě `"Tea is better than coffee"`.
 
-2.  nový R skript
+    ```{r}
+    coldHardTruth <- c("Tea is better than coffee"); coldHardTruth
+    length(coldHardTruth) #delka 1
+    ```
 
-3.  nahrání uložených dat
+2.  Rozdělíme ho tak, že každé slovo bude vlastní hodnota.
 
-4.  výpočet toho, kolik zaměstnanců s daným platem jde nabrat na specifikovanou dobu měsíců
+    ```{r}
+    rozdeleneHodnoty <- strsplit(coldHardTruth, " "); rozdeleneHodnoty
+    ```
 
-5.  A nešlo by to jinak?
+3.  Zkontrolujeme, zda je výsledek vektor.
+
+    ```{r}
+    str(rozdeleneHodnoty)
+    ```
+
+4.  Jedná se o list; je potřeba ho změnit na vektor.
+
+    ```{r}
+    rozdeleneHodnoty <- unlist(rozdeleneHodnoty)
+    ```
+
+5.  Zontrolujeme, zda se jedná o vektor s počtem hodnot \> 1.
+
+    ```{r}
+    str(rozdeleneHodnoty)
+    ```
 :::
 
 ------------------------------------------------------------------------
@@ -57,8 +76,68 @@ execute:
 ### Úloha 2
 
 ::: incremental
-1.  
+1.  Vytvoříme list podle zadání.
+
+    ```{r}
+    film <- list(jmeno = "The Adventures of Priscilla, Queen of the Desert",
+                 rezie = "Stephan Elliott",
+                 rok = 1994,
+                 obsazeni = c("Hugo Weaving", "Guy Pearce", "Terence Stamp"),
+                 oceneni = c("Academy Awards", "BAFTA"),
+                 producenti = "Michael Hamlyn and Al Clark"); film
+    ```
+
+2.  Připojíme hodnotu `"Zaphod Beeblebrox"`.
+
+    ```{r}
+    film <- within(film,
+           obsazeni <- c(obsazeni, "Zaphod Beeblebrox")); film
+    ```
+
+    To je ale nějak komplikované, nešlo by to vyřešit jednodušeji?
+
+3.  Zkusme si připojit hodnotu `"Ford Prefect"` způsobem, který vám byl doporučován v materiálech, co jste na webu našli.
+
+    ```{r}
+    film$obsazeni <- c(film$obsazeni, "Ford Prefect")
+    film
+    ```
+
+Připojení jde provést pomocí práce s výběrem hodnot - takzvanou indexací. A přesně na to se tuto hodinu podíváme :).
 :::
+
+------------------------------------------------------------------------
+
+### Úloha 3
+
+::: incremental
+1.  Vytvořme si vektor obsahující hodnoty, které chceme analyzovat.
+
+    ```{r}
+    seznam <- c(3, 2, 7, 45, 2, 6, 11, 7,
+      90, 76, 4, 3, 46, 45, 7,
+      89, 6, 45, 1, 55, 12, 90,
+      2, 67, 2, 8, 7, 4, 34, 6); seznam
+    ```
+
+2.  Ke zjištění, kolik odlišných/unikátních hodnot je v daném vektoru, můžeme dojít několika cestami. Jako první si ukážeme využití faktorizace.
+
+    ```{r}
+    seznam2 <- as.factor(seznam) #prevedeme na faktory
+    str(seznam2) #jaka je nyni struktura?
+    levels(seznam2) #jake mame kategorie
+    length(levels(seznam2)) #...a kolik jich je?
+    ```
+
+3.  Můžeme k tomu ale použít i specifickou funkci `unique.`
+
+    ```{r}
+    unique(seznam) #vyber pouze unikatni hodnoty
+    length(unique(seznam)) #kolik jich je?
+    ```
+:::
+
+------------------------------------------------------------------------
 
 ## Indexace / výběr specifických dat
 
@@ -325,7 +404,9 @@ matice["B", 3] #radek B, treti sloupec
 matice[,c("a", "c", "d")] #vsechny radky a sloupce a, c, d
 ```
 
-**Při výběru hodnot z matice používáme totožné principy jako při výběru z vektorů; jen se musí pro výběr definovat více dimenzí.**
+**Při výběru hodnot z matice používáme totožné principy jako při výběru z vektorů; jen se musí pro výběr definovat více dimenzí.**[^1]
+
+[^1]: Při výběru pouze pomocí jedné numerické hodnoty se matice bude chovat jako vektor stočený cikcak. Vyzkoušejte si to ;)
 
 ------------------------------------------------------------------------
 
@@ -469,12 +550,12 @@ vek <- c(27,35,30,47,42)
 sex <- c("female","male","male","female","female")
 strana <-c("sin","sin","dx","dx","dx")
 ID <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
-vzorek <- data.frame(vek, strana, sex, row.names = ID); vzorek
+df <- data.frame(vek, strana, sex, row.names = ID); df
 
-vzorek[1, 3] #prvni radek, treti sloupec
-vzorek["SC_020", 1] #radek jmenem SC_020, prvni sloupec
+df[1, 3] #prvni radek, treti sloupec
+df["SC_020", 1] #radek jmenem SC_020, prvni sloupec
 #radky ktere maji v druhem sloupci hodnotu "sin" a vsechny sloupce
-vzorek[vzorek[,2] == "sin",]
+df[df[,2] == "sin",]
 ```
 
 ------------------------------------------------------------------------
@@ -485,110 +566,14 @@ Data frame má narozdíl od matice ovšem jednu velkou výhodu; **můžeme index
 
 ```{r}
 #vyber sloupec strana
-vzorek["strana"]
+df["strana"]
 ```
 
 ::: callout-note
 ## Výběr celého sloupce znamená i výběr všech řádků
 
-Proč zde nemusíme použít čárku? Výběr celého sloupce implikuje vybrání jedné hodnoty z každého řádku.
+Proč zde nemusíme použít čárku? R defacto říkáme "vyber celý objekt jménem strana, včetně jeho struktury a pojmenování". A celý sloupec `strana` obsahuje hodnoty pro každý řádek.
 :::
-
-------------------------------------------------------------------------
-
-Při vytváření indexování specificky pojmenovaného sloupce se někdy používá symbol \$
-
-```{r}
-#vyber vsechny hodnoty ve sloupci strana 
-vzorek$strana
-```
-
-> **symbol `$` provede výběr hodnot ze specifické komponenty datové struktury**
-
-Lze tyto postupy použít i u matice?
-
-```{webr-r}
-matice #zobrazeni pro prehled
-matice["a"]
-matice$a
-```
-
-*Nápověda: jaká je definice data frame a matice?*
-
-:::: fragment
-Zatímco matice je defakto jeden dlouhý vektor poskládaný ve dvou dimenzích, **data frame je objekt složený z jiných objektů**.
-
-::: fragment
-Jaká je struktura matice?
-
-```{r}
-str(matice)
-```
-
-Jaká je struktura data frame?
-
-```{r}
-str(vzorek)
-```
-:::
-::::
-
-------------------------------------------------------------------------
-
-#### Rozdíl mezi \$ a \["název sloupce"\]
-
-Jak bylo vidět, při vybírání specifického sloupce můžeme využívat dva způsoby - \$ a \[ \]. Jaký je mezi nimi ale rozdíl?
-
-- **\$**
-
-```{r}
-vzorek$vek #vyber hodnoty ze sloupce vek
-mean(vzorek$vek) #jaka je aritmeticky prumerna hodnota vek?
-```
-
-- **\[ \]**
-
-```{webr-r}
-mean(vzorek["vek"])
-```
-
-::: fragment
-Proč nám není umožněno tuto funkci spustit? *Nápověda: jaká je datová chrakteristika tohoto výběru?*
-:::
-
-::: fragment
-```{r}
-class(vzorek$vek)
-class(vzorek["vek"])
-```
-
-Můžeme počítat aritmetický průměr z číselných hodnot; rozhodně neuděláme průměr z "data frame".
-:::
-
-::: callout-important
-## \$ vrací hodnoty, \[ \] tvoří subset
-
-Indexace pomocí `$` nám vrátí vektor, který obsahuje hodnoty výběru.
-
-`[ ]` vytvoří subset objektu; indexací data frame se nám vrátí menší data frame.
-:::
-
-------------------------------------------------------------------------
-
-##### Kdy použijeme výběr pomocí \$?
-
-Kdykoliv, kdy potřebujeme **pracovat s čistými hodnotami, nikoliv celou datovou strukturou**. Příkladem může být buď přepisování, nebo třeba i doplňování dalších hodnot.
-
-```{r}
-doctor <- list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","Peter Davison","Colin Baker","Sylvester McCoy","Paul McGann", "John Hurt","Christopher Eccleston"),
-               year = c(55,46,50,40,29,40,44,36,73,41), 
-               episodes = c("134","119","128","172","69","31","42","1","2","13")); doctor
-
-#pridame nove hodnoty - musime prepsat a pridat
-doctor <- list(name = c(doctor$name,"David Tennat","Matt Smith","Peter Capaldi", "Jodie Whittaker"),
-               year = c(doctor$year,34,27,55,36),
-               episodes = c(doctor$episodes,"47","44","39","10")); doctor
-```
 
 ------------------------------------------------------------------------
 
@@ -602,11 +587,11 @@ vek <- c(27,35,30,47,42)
 sex <- c("female","male","male","female","female")
 strana <-c("sin","sin","dx","dx","dx")
 ID <- c("SC_001", "SC_007", "SC_013", "SC_014", "SC_020")
-vzorek <- data.frame(vek, strana, sex, row.names = ID); vzorek
+df <- data.frame(vek, strana, sex, row.names = ID); df
 ```
 
 ```{webr-r}
-vzorek["SC_001"] #v data frame neexistuje neco jako objekt SC_001
+df["SC_001"] #v data frame neexistuje neco jako objekt SC_001
 ```
 
 Více o long formátu a proč je dobré ho používat si řekneme během příští lekce při probírání konceptu "tidy data".
@@ -615,25 +600,263 @@ Více o long formátu a proč je dobré ho používat si řekneme během příš
 
 ## Past vedle pasti
 
-Na vše samozřejmě existují vyjímky.
+Možná si myslíte, že v tuto chvíli znáte veškeré základní způsoby indexace v `base R`. **Na vše samozřejmě existují "vyjímky"**.
 
-proč jde použít \[číslo sloupce\[ u matice - je to atomický vektor, bude si to brát po sloupcích
+```{r}
+df["strana"]
+df[2]
+identical(df["strana"], df[2])
+```
 
-\[\[\]\] dělá to samé co \$
-
-u listů jde vybíta pouze \[\[\]\]
+**Při výběru pouze jedné hodnoty u data frame R automaticky usoudí, že se jedá o výběr sloupce na této pozici.**
 
 ------------------------------------------------------------------------
 
-| Způsob indexace     | Výsledek   |
-|---------------------|------------|
-| `df[,1]`            | vektor     |
-| `df[,1,drop=FALSE]` | data frame |
-| `df["col"]`         | data frame |
-| `df[["col"]]`       | vektor     |
-| `df$col`            | vektor     |
+```{r}
+df[2] #vyber druhy sloupec podle poradi
+df["strana"] #vyber druhy sloupec podle jmena
+df[ ,2] #vyber druhy sloupec, vsechny radky
+df[ ,1:2] #vyber prvni a druhy sloupec, vsechny radky
+```
 
-: Přehled výsledků indexace data frame
+**Proč nám výsledky vycházejí někdy jako vektor a jindy jako data frame?**
+
+------------------------------------------------------------------------
+
+Jak bylo zmíněno v sekci [Výběr celého sloupce znamená i výběr všech řádků], **výběrem sloupce vybíráme objekt, který tvoří data frame - nikoliv pouze hodnoty**. R proto vrátí část data frame, včetně struktur, popisků a všeho - vrátí se nám proto **data frame o jednom sloupci**.
+
+```{r}
+df["vek"]
+df[2]
+```
+
+------------------------------------------------------------------------
+
+Když ovšem provedeme výběr definicí `df[ ,"strana"]`, tak dochází k jinému pokynu. R totiž říkáme následující:
+
+**Vyber hodnoty v druhém sloupci, a to pro všechny řádky.**
+
+A co je výsledkem řady hodnot? Vektor.
+
+```{r}
+df[ ,"vek"]
+df[ ,2]
+```
+
+Je ovšem možné **přinutit R, aby si zachovalo původní data frame strukturu**.
+
+```{r}
+df[ ,"vek", drop = FALSE]
+df[ ,2, drop = FALSE]
+```
+
+Argument `drop = FALSE` nám totiž nuceně udrží i výběr takovéhoto typu jako data frame.
+
+::: callout-important
+## Nezapomeňte, že indexace je defacto typ funkce!
+
+Provádíme akci na základě určitých parametrů, která provede změny na datech.
+
+Podívejte se v nápovědě na funkci `extract` ;).
+:::
+
+```{r}
+df[ ,2, drop = TRUE]
+df[ ,2, drop = FALSE]
+df[ ,2] #argument implicitne urceny jako TRUE
+```
+
+------------------------------------------------------------------------
+
+Proč nám p**ři výběru hodnot z více sloupců a libovolného počtu řádku ovšem opět vznikne data frame**?
+
+```{r}
+df[2,c("vek", "strana")]
+df[ ,c("vek", "strana")]
+```
+
+*Nápověda: výsledek nám může vrátit hodnoty různého datového typu*
+
+::: fragment
+Nelze vrátit vektor, který obsahuje hodnoty v jiné podobě než jednodimenzionálně poskládané za sebou. Stejně tak matice nemůže obsahovat více data typů.
+
+Jediným možným řešením je proto **strukturovat data jako data frame**.
+:::
+
+------------------------------------------------------------------------
+
+**Co znamená `[[x]]`?**
+
+Někdy se můžete setkat s tím, že údaj, pomocí kterého se indexuje, je zapsaný v dvojtých hranatých závorkách. Co to znamená?
+
+```{r}
+df[["strana"]] #vyber mi prevek s jmenem "strana"
+df[[2]] #vyber mi druhy prvek
+```
+
+**Dvojité hranaté závorky nám říkají; vyber mi prvek `x` a vše, co se v něm nachází.**
+
+Jednotlivé prvky data frame jsou vektory, proto nám indexace vrátí vektor hodnot.
+
+------------------------------------------------------------------------
+
+## Seznam způsobů indexace data frame a jejich výsledků
+
+| Způsob indexace           | Výsledek   |
+|---------------------------|------------|
+| `df[,"col"]`              | vektor     |
+| `df[,"col",drop = FALSE]` | data frame |
+| `df["col"]`               | data frame |
+| `df[["col"]]`             | vektor     |
+| `df$col`                  | vektor     |
+
+------------------------------------------------------------------------
+
+### Procvičení
+
+1.  Vyber první sloupec v data frame `df` jako vektor i data frame.
+
+    ```{webr-r}
+
+    ```
+
+2.  Vyber první a poslední řádek data frame `df.`
+
+    ```{webr-r}
+
+    ```
+
+------------------------------------------------------------------------
+
+### Vyhledávání pomocí \$
+
+Při vytváření indexování specificky pojmenovaného sloupce se někdy používá symbol \$.
+
+```{r}
+#vyber hodnoty sloupce strana
+df[,"strana"]
+df$strana
+```
+
+> **symbol `$` provede výběr hodnot ze specifické komponenty datové struktury podle jejího názvu**
+>
+> > `list ve kterém se hledá$název objektu, který ho tvoří`
+
+------------------------------------------------------------------------
+
+Jen tak ze zvědavosti, lze tento typ indexace použít i u matice?
+
+```{webr-r}
+matice #zobrazeni pro prehled
+matice$a
+```
+
+*Nápověda: jaká je definice data frame a matice?*
+
+:::: fragment
+Zatímco matice jsou defacto pouze hodnoty jednoho data typu poskládané do řádků a sloupců, které mohou být pojmenované, **data frame je objekt složený z jiných objektů**.
+
+::: fragment
+Jaká je struktura matice?
+
+```{r}
+str(matice)
+```
+
+Jaká je struktura data frame?
+
+```{r}
+str(df)
+```
+:::
+::::
+
+------------------------------------------------------------------------
+
+#### Kdy použijeme výběr pomocí \$?
+
+Kdykoliv, kdy potřebujeme **pracovat s čistými hodnotami, nikoliv celou datovou strukturou**.
+
+Příkladem může být jak čistá indexace, ale i přepisování, nebo třeba i doplňování dalších hodnot.
+
+Několik z možností si probereme v následující části.
+
+------------------------------------------------------------------------
+
+**Indexace**
+
+```{r}
+#vyber radky, ktere maji ve sloupci "vek" hodnotu > 30
+df[df$vek > 30, ]
+```
+
+Jak to funguje? Totožně jako u jakékoliv jiné indexace; výběrem `TRUE` a `FALSE` hodnot.
+
+```{r}
+df$vek #vektor hodnot
+df$vek > 30 #jsou hodnoty vetsi nez 30
+df[df$vek > 30, ] #vyber radky dle tohoto vektoru
+df[c(FALSE, TRUE, FALSE, TRUE, TRUE), ] #dukaz vyberu
+```
+
+::: callout-tip
+## Zjištění pořadí řádku
+
+Co když bychom chtěli ale znát pořadí (číslo) řádku?
+
+Funkce `which` zjistí, pro které pozice řádků v logickém vektoru či array platí, že jsou pravdivé.
+
+```{r}
+df$vek > 30
+which(df$vek > 30)
+```
+:::
+
+------------------------------------------------------------------------
+
+Další možnost je například **přepis hodnot**.
+
+```{r}
+#ve sloupci "strana" prepis hodnoty nasledovne:
+  #hodnoty "sin" prepis jako "leva"
+  #nasledne hodnoty "dx" prepis jako "prava"
+df$strana[df$strana == "sin"] <- "leva"
+df
+```
+
+Co se v tomto kódu provede?
+
+```{r}
+df$strana #vektor hodnot
+df$strana == "dx" #plati na hodnoty tato podminka?
+df$strana[df$strana == "dx"] #vyber ty hodnoty, pro ktere je podminka TRUE
+df$strana[df$strana == "dx"] <- "prava" #prepis tyto hodnoty uvnitr data frame "df"
+df
+```
+
+------------------------------------------------------------------------
+
+Nakonec si vyzkoušíme i **přiřazování dalších hodnot**.
+
+```{r}
+#k hodnotam ze sloupce "vek" pridej cisla od 1 do 10
+c(df$vek, 1:10)
+```
+
+Přiřazováním ale můžeme i **vytvářet celé další sloupce**.
+
+```{r}
+dim(df)
+df$skore <- c(5, NA, 22, NA, NA)
+df
+```
+
+Co jsme zde provedli?
+
+```{r}
+dim(df) #kolik radku a sloupcu ma df
+c(5, NA, 22, NA, NA) #vytvor sloupec, ktery ma v sobe tolik hodnot co df radku
+```
 
 ------------------------------------------------------------------------
 
@@ -645,19 +868,13 @@ u listů jde vybíta pouze \[\[\]\]
 V R a nahraném balíčku `dplyr` je nainstalováno několik datasetů určených k zkoušení si funkcí a celkovému hraní si. Datasety `iris` a `storms`, které budeme v následujícím procvičení používat, jsou právě jedněmi z nich. Pro jejich používání není potřeba je jakkoliv nahrávat či ukládat jako proměnné.
 :::
 
-1.  Jak průměrně silné byly větry (`wind`) v roce, kdy jste se narodili (`year`)? Použijte dataset `dplyr::storms`.
+1.  Jak průměrně rychlé byly větry (`wind`) v roce, kdy jste se narodili (`year`)? Použijte dataset `dplyr::storms`.
 
 ```{webr-r}
 
 ```
 
-2.  Vyber všechny bouře, které v roce vašeho narození měly hodnoty větru větší či menší než směrodatná odchylka. Kolik jich bylo?
-
-```{webr-r}
-
-```
-
-3.  Vyber z satasetu `iris` všechny měření, kdy délka kalichu květiny (`Sepal.Lenght`) je větší než 5, nebo jejich šířka (`Sepal.Width`) je větší než 3.5 a zároveň se jedná o druh (`Species`) setosa.
+2.  Vyber z datasetu `iris` všechny měření, kdy délka kalichu květiny (`Sepal.Length`) je menší než 5, nebo jejich šířka (`Sepal.Width`) je větší než 3.5 a zároveň se jedná o druh (`Species`) setosa.
 
 ```{webr-r}
 
@@ -682,17 +899,11 @@ countdown::countdown(minutes = 15,
                      top = "0")
 ```
 
-**Nahrajte si data uložená v souboru `bikes.RData`.** Ten obsahuje přehled testování motorek, kdy každý stroj dostal určitý počet bodů za hodnocení rychlosti (`speed`), pohodlnosti na vzdálenost (`dist`) a pak ještě celkové hodnocení od nezávislého odbnorníka (`rating`), kdy 1 je nejlepší, 5 je nejhorší.
+**Nahrajte si data uložená v souboru `bikes.RData`.** Ten obsahuje přehled testování motorek, kdy každý stroj dostal určitý počet bodů za hodnocení rychlosti (`speed`), pohodlnosti na vzdálenost (`dist`) a pak ještě celkové hodnocení od nezávislého odborníka (`rating`), kdy 1 je nejlepší, 5 je nejhorší.
 
-1.  Vyberte motorky, které měli počet bodů z obou hodnocení dohromady sice menší než 50, ale i tak dostaly rating lepší než 3. Vypište jejich názvy.
+1.  Vyberte motorky, které měly každá dohromady počet bodů z hodnocení `speed` a `dist` sice celkem menší než 50, ale i tak dostaly `rating` lepší než 3. Vypište jejich názvy.
 
-2.  Přepiš hodnoty ve sloupci `distance` v tomto výběru tak, že pokud je hodnota menší jak 20, bude nahrazena slovy "pod dvacet", pokud bude větší nebo rovno 20, bude nahrazena slovy "dvacet +".
-
-**Nahrajte si data uložená v souboru `inventory.RData`.** Ten obsahuje data prodejnosti jednotlivých položek v obchodě během měsíční akce, specificky jaká byla jejich původní cena v Kč (`price`), o kolik byl výrobek zlevněn (`discount`) a kolik kusů se během akce prodalo (`sales`).
-
-3.  Spočítejte, kterých položek bylo během akce prodáno za více než 100.000 Kč.
-
-4.  Vyberte ty položky, které byly zlevněny o více než 85 procent.
+2.  Přepiš hodnoty ve sloupci `dist` v tomto výběru tak, že pokud je hodnota menší jak 20, bude nahrazena slovy "pod dvacet", pokud bude větší nebo rovno 20, bude nahrazena slovy "dvacet +".
 
 ------------------------------------------------------------------------
 
@@ -707,7 +918,6 @@ Vyberte motorky, které měli počet bodů z obou hodnocení dohromady sice men�
     #| label: setup
     #| include: false
     load("bikes.RData")
-    load("inventory.Rdata")
     ```
 
     ```{r}
@@ -763,7 +973,7 @@ Přepiš hodnoty ve sloupci `dist` v tomto výběru tak, že pokud je hodnota me
 :::
 
 ::: fragment
-3.  Hodnoty se nuceně převedly na charaktery; není možné mít v jednom vektoru numeric a character hodnoty. Proto nemůžeme použít operátory \> nebo \<, ale použijeme místo toho operátory != aka "není přesně".
+3.  Hodnoty se nuceně převedly na charaktery; není možné mít v jednom vektoru numeric a character hodnoty. Proto dále nemůžeme použít operátory \> nebo \<, ale použijeme místo toho operátory != aka "není přesně".
 
     ```{r}
     divneHodnoceni$dist[divneHodnoceni$dist != "pod dvacet"] <- "dvacet +"
@@ -773,144 +983,86 @@ Přepiš hodnoty ve sloupci `dist` v tomto výběru tak, že pokud je hodnota me
 
 ------------------------------------------------------------------------
 
-#### Řešení úlohy 3)
+### List
 
-Spočítejte, které položky byly během akce prodány za více než 100.000 Kč.
-
-::: fragment
-1.  Podíváme se na strukturu datového objektu `inventory` a necháme si vyjet prvních několik řádků. Vidíme, že objekt je matice - musíme se proto při výběru sloupců řídit podle podmínek pro matici.
-
-    ```{r}
-    str(bikes)
-    head(bikes)
-    ```
-:::
-
-::: fragment
-2.  Zjistíme si ceny jednotlivých položek během akce. Provedeme to tak, že vynásobíme hodnoty ve sloupci pro původní cenu `price` s hodnotami ve slevovém sloupci `discount`. Nezapomeňte, že pro výpočet si musíte informaci o slevě převést do správných hodnot. Pro snadnější následující práci si výsledek pojmenujme.
-
-    ```{r}
-    discountedPrice <- inventory[,"price"] * (inventory[,"discount"]/100)
-    ```
-:::
-
-::: fragment
-3.  Spočítáme si zisk u každé položky, a to tak, že vynásobíme cenu během akce (`discontedPrice`) s hodnotami ze sloupce `sales`. Pro snadnější následující práci si výsledek pojmenujme.
-
-    ```{r}
-    revenue <- discountedPrice * inventory[,"sales"]
-    ```
-:::
-
-::: fragment
-4.  Vypíšeme si všechny položky, které vydělaly více jak 100.000 Kč.
-
-    ```{r}
-       revenue[revenue > 100000]
-    ```
-:::
-
-------------------------------------------------------------------------
-
-#### Řešení úlohy 4)
-
-Vyberte ty položky, které byly zlevněny o více než 85 procent.
-
-::: fragment
-1.  Vybereme všechny sloupce z matice a pouze ty řádky, které mají ve sloupci `discount` hodnoty \>= 85.
-
-    ```{r}
-    inventory[inventory[,"discount"] >= 85,]
-    ```
-:::
-
-------------------------------------------------------------------------
-
-## Nahrávání dat
-
-### base R
-
-#### header
-
-#### sep
-
-#### dec
+Principy, které jsme se naučili na data frame, nyní můžeme použít k indexování listu.
 
 ```{r}
-dataTxt <- read.delim(file = "intro_data.txt",
-                       header = TRUE,
-                       sep = "",
-                       dec = ".",
-                       na.strings = "NA")
-```
+lst <- list(osoba = list(jmeno = "Anna",
+                         prijmeni = "Novotná"),
+            povolani = "uklizecka",
+            vek = 67); lst
 
-```{r}
-dataTxt2 <- read.delim(file = "intro_data.txt")
-```
-
-```{r}
-identical(dataTxt, dataTxt2)
-```
-
-Proč?
-
-Podívejme se do nápovědy pro tuto funkci.
-
-> **série za sebou jdoucích hodnot totožného datového typu**
-
-- vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
-
-- jednodimenzionální (důležité hlavně při vyhledávání)
-
-- při použití více datových typů dochází k nucené konverzi do jednotného typu
-
-```{r}
-seq(1, 10, 2)
+str(lst) #list, co ma v sobe tri dalsi objekty (jeden je take list)
 ```
 
 ------------------------------------------------------------------------
 
-### Balíček `readr`
-
-- je v tidyverse
-
-  - rozestup vždy po jedné
+**Jakým způsobem si můžeme z listu vybrat jednotlivé jeho části?**
 
 ```{r}
--5:3
-0.65:9.18
+lst["vek"] #vyber objekt "vek"
+lst[["vek"]] #vyber co se nachazi v objektu "vek"
+lst$vek #vyber hodnoty z objektu "vek"
+lst[2] #vyber druhy objekt
+lst[2:3] #vyber druhy az treti objekt
 ```
 
-- funkce `c` spojí hodnoty jakéhokoliv typu do vektoru
-
 ------------------------------------------------------------------------
 
-### Balíček `readxl` - ach ty Excely...
-
-- je v tidyverse
-
-ff
-
-![](images/Nový%20projekt.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Samostatné cvičení
+Co když ale nevybíráme jednoduchou část listu, jako třeba vektor? **Co když se jedá o další list?**
 
 ```{r}
-#| echo: false
-countdown::countdown(minutes = 5,
-                     seconds = 0,
-                     start_immediately = FALSE,
-                     warn_when = 120,
-                     top = "0")
+lst["osoba"] #vyber objekt "osoba"
+str(lst["osoba"])
+lst[["osoba"]] #vyber obsah objektu "osoba"
+str(lst[["osoba"]])
+lst$osoba
+str(lst$osoba)
+```
+
+A co když nechceme vybrat pouze ten list, ale přímo hodnoty v něm?
+
+```{r}
+lst$osoba$jmeno
+lst[["osoba"]][["prijmeni"]]
+```
+
+------------------------------------------------------------------------
+
+**Rozdíl mezi `[[]]` a `$`**
+
+Možná si říkáte, proč vůbec potřebujeme tyto dva druhy indexace. Nedělá to přeci jen to samé?
+
+```{r}
+identical(lst[["osoba"]], lst$osoba)
+```
+
+::: callout-important
+## Důležité je se dívat na to, jakým způsobem vkládáme do indexace.
+
+- indexace `$` vždy volá specifický název
+
+- indexace `[[]]` volá to, co se jmenuje stejně jako hodnota uvnitř závorek
+
+```{r}
+x <- "osoba"
+lst[[x]] #vyber objekty co se jmenuji stejne jako obsah hodnoty x
+lst$x #vyber objekt s nazvem x
+```
+:::
+
+------------------------------------------------------------------------
+
+přepis a přidávání hodnot
+
+```{webr-r}
+
 ```
 
 ------------------------------------------------------------------------
 
 ## Příprava na další hodinu
-
-Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počítejte s tím, že balíček se bude stahovat a instalovat klidně i **několik desítek minut** - záleží na vašem počítači.
 
 ## Domácí úkol
 
