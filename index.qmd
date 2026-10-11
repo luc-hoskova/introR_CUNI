@@ -26,7 +26,7 @@ Cílem kurzu je vybavit účastníky praktickými dovednostmi pro efektivní pr�
 
 ## Náplň lekcí
 
-Kurz je koncipován jako série deseti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce:
+Kurz je koncipován jako série jedenácti obsahově na sebe navazujících přednášek. Obsah je rozdělen na tři sekce:
 
 -   **úvod do R a příprava dat pro následující analýzu**
 -   **vizualizace dat,**
