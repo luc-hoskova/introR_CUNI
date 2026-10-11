@@ -511,7 +511,7 @@ Jak to že je ale 2 \> 15?
     matice[TRUE, ]
     ```
 
-    Pro to, aby výběr matice fungoval, tak je potřeba, aby se definovaly všechny řádky. Zde jsme ale dodali pouze jednu hodnotu. Víme ale, že R si v některých případech dokáže hodnoty samo doplnit - viz \[Automatické generování hodnot\]
+    Pro to, aby výběr matice fungoval, tak je potřeba, aby se definovaly všechny řádky. Zde jsme ale dodali pouze jednu hodnotu. Víme ale, že R si v některých případech dokáže hodnoty samo doplnit, viz [sekce Tvorba matice v druhé lekci.](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_prezentace/02_prezentace.html#/27)
 :::
 
 ::: fragment
@@ -567,7 +567,7 @@ countdown::countdown(minutes = 5,
 V R je nainstalováno několik datasetů určených k zkoušení si funkcí a celkovému hraní si. Datasety `HairEyeColor`, který budeme v následujícím procvičení používat, je právě jeden z nich. Pro jeho používání není potřeba je jakkoliv nahrávat či ukládat jako proměnné. Stačí si pouze zavolat jeho jméno.
 :::
 
-1.  Kolik studentek, které se účastnily měření, má blond vlasy a zelené oči? Použijte dataset `HairEyeColor`.
+Kolik studentek, které se účastnily měření, má blond vlasy a zelené oči? Použijte dataset `HairEyeColor`.
 
 ::: callout-tip
 ## Vybírání dimenzí
@@ -724,12 +724,12 @@ Podívejte se v nápovědě na funkci `extract` ;).
 ```{r}
 df[ ,2, drop = TRUE]
 df[ ,2, drop = FALSE]
-df[ ,2] #argument implicitne urceny jako TRUE
+df[ ,2] #argument defaultne urceny jako TRUE
 ```
 
 ------------------------------------------------------------------------
 
-Proč nám p**ři výběru hodnot z více sloupců a libovolného počtu řádku ovšem opět vznikne data frame**?
+Proč nám **při výběru hodnot z více sloupců a libovolného počtu řádku ovšem opět vznikne data frame**?
 
 ```{r}
 df[2,c("vek", "strana")]
@@ -801,7 +801,7 @@ df$strana
 
 > **symbol `$` provede výběr hodnot ze specifické komponenty datové struktury podle jejího názvu**
 >
-> > `list ve kterém se hledá$název objektu, který ho tvoří`
+> > `list/data frame ve kterém se hledá$název objektu, který ho tvoří`
 
 ------------------------------------------------------------------------
 
@@ -908,16 +908,18 @@ Přiřazováním ale můžeme i **vytvářet celé další sloupce**.
 
 ```{r}
 dim(df)
-df$skore <- c(5, NA, 22, NA, NA)
+df$score <- 1:nrow(df)
 df
+dim(df)
 ```
 
 Co jsme zde provedli?
 
-```{r}
-dim(df) #kolik radku a sloupcu ma df
-c(5, NA, 22, NA, NA) #vytvor sloupec, ktery ma v sobe tolik hodnot co df radku
-```
+- `dim(df)`: kolik dimenzí má df
+
+- `1:nrow(df)`: vektor, který má v sobě tolik hodnot co `df` řádků
+
+- `df$score <- 1:nrow(df)`: ulož vektor jako hodnoty ve sloupci `score`
 
 ------------------------------------------------------------------------
 
@@ -1064,8 +1066,11 @@ str(lst) #list, co ma v sobe tri dalsi objekty (jeden je take list)
 
 ```{r}
 lst["vek"] #vyber objekt "vek"
+str(lst["vek"]) #vraci list
 lst[["vek"]] #vyber co se nachazi v objektu "vek"
+str(lst[["vek"]]) #vraci vektor
 lst$vek #vyber hodnoty z objektu "vek"
+str(lst$vek) #vraci vektor
 lst[2] #vyber druhy objekt
 lst[2:3] #vyber druhy az treti objekt
 ```
@@ -1222,13 +1227,7 @@ head(vyberFiltrIris)
 
 1.  První přístup v sobě nese riziko, že takto psané "funkce ve funkci ve funkci..." **řetězce budou nepřehledné a že uživatel snadno zapomene na jednu ze závorek**.
 
-2.  Konstatním ukládáním v druhém případě se nejenom zbytečně zabírá čas a paměť R, ale hlavně pokud dojde ke změně v uložených hodnotách (například, že hledáme `Petal.Length` místo `Petal.Width`), tak **bez opakovaného nahrání následujících částí kódu co definují následně uložené proměnné by se změny nepropsaly do zbytku kódu**.
-
-    ```{webr-r}
-    delka <- iris$Sepal.Length + iris$Petal.Width
-    prumer <- mean(delka)
-    round(prumer, digits = 2) #zaokrouhli
-    ```
+2.  Konstatním ukládáním v druhém případě se nejenom zbytečně zabírá čas a paměť R, ale hlavně pokud dojde ke změně v uložených hodnotách (například, že hledáme `Petal.Length` místo `Petal.Width`), tak **bez opakovaného nahrání následujících řádků kódu co definují následně uložené proměnné by se změny nepropsaly do zbytku kódu**.
 
 Jak tento problém vyřešit?
 
@@ -1265,7 +1264,7 @@ iris %>%
   select(Sepal.Length) %>%
   unlist() %>% #preved na vektor
   mean() %>%
-  round(digits = 3, x = .)
+  round(digits = 3, x = .) #ukazka, bezne je x prvni argument
 ```
 
 ::: callout-important
@@ -1315,7 +1314,7 @@ c(2:546, 467, 87) %>% mean()
 
 ## Procvičení
 
-Zjistěte, jaká byla nejmenší váha kuřete krmeného sójovámi boby, jejichž data naleznete v datasetu `chickwts`.
+Zjistěte, jaká byla nejmenší váha kuřete krmeného sójovými boby, jejichž data naleznete v datasetu `chickwts`.
 
 ```{webr-r}
 

@@ -1,0 +1,9 @@
+3 lekce
+
+- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/03_prezentace.html#/title-slide)
+  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_poznamky.R) průběžných a samostatných cvičení
+- Příprava
+  - stažený a jasně uložený soubor [bikes.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/bikes.RData)
+- Cvičení navíc
+  - [zadání](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_cviceninavic.R)
+  - [řešení](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_cviceninavic-reseni.R)

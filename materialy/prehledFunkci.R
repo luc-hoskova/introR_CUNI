@@ -22,6 +22,7 @@ class() #jak se R vuci objektu chova
 colnames() #nazvy sloupcu x
 data.frame() #vytvori data frame
 dimnames() #pojmenovani jednotlivych dimenzi objektu
+head() #zobraz mi prvnich 6 hodnot objektu
 install.packages("název balíčku") #instaluje balicek
 length() #zjisti delku x
 levels() #kategorie faktoru
@@ -59,4 +60,5 @@ dplyr::select() #vyber sloupec
 strsplit() #rozdel charakterovy vektor
 unique() #vrat vektor/data frame/array bez duplikovanych hodnot
 unlist() #zmen objekt na vektor osahujici vse hodnoty v x
+which() #ktery radek splnuje podminky
 within() #uprav nebo pridej prvky listu ci sloupce data frame
