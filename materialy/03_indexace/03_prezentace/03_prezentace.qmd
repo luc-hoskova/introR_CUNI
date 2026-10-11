@@ -24,12 +24,21 @@ execute:
 
 ::: incremental
 - opakování z minulé hodiny
+- pár organizačních informací
 - kontrola domácího úkolu
 - indexace pomocí `[ ]`
 - indexace pomocí `$`
 - indexace pomocí balíčku `dplyr`
 - pipes
 :::
+
+------------------------------------------------------------------------
+
+## Novinky
+
+1.  U každé hodiny budou nyní **cvičení na doma navíc**. Bude se jednat o směs již probrané látky a problémů na zapřemýšlení. Jsou nepovinné - budete k nim mít i řešení, ale klidně mi je můžete poslat pro kontrolu / zpětnou vazbu.
+
+2.  V horním menu stránek kurzu nyní naleznete odkaz na **rezervační stránku konzultací**. Pokud něco budete potřebovat probrat, ať již obsah kurzu či pomoc s R, můžete mi bud´ napsat a nebo si zde přímo rezervovat termín. Součástí jsou i všeobecné R konzultace, pokud víte, že by je vaši kolegové využili, klidně odkaz předejte.
 
 ------------------------------------------------------------------------
 
@@ -126,6 +135,7 @@ Připojení jde provést pomocí práce s výběrem hodnot - takzvanou indexací
     str(seznam2) #jaka je nyni struktura?
     levels(seznam2) #jake mame kategorie
     length(levels(seznam2)) #...a kolik jich je?
+    nlevels(seznam2) #a co kdyz si to chceme napsat dedikovanou funkci?
     ```
 
 3.  Můžeme k tomu ale použít i specifickou funkci `unique.`
@@ -282,7 +292,7 @@ x1[42] <- 55; x1
     x <- c(15, 87, 23, 91, 42, 68, 54, 78, 54, 45, 10, 98, 54, 98)
     ```
 
-2.  Vyber všechny hodnoty z vektoru krom té se jménem `ageGroup`. Nevypisuj, použij k výběru funkce či operátory.
+2.  Vyber všechny hodnoty z vektoru krom té se jménem `ageGroup`. Nevypisuj ručně nový vektor, použij k výběru funkce či operátory.
 
 ```{webr-r}
 c(gender = NA, ageGroup = NA, activeVoters = NA,
@@ -436,7 +446,7 @@ matice[c("C", "D"),] #totozny vysledek
 ::: callout-important
 ## Třeba jasně definovat podmínky pro všechny sloupce a řádky
 
-Přemýšlejte nad tím takto: musí R vždy říct, jestli tam má každý sloupec či řádek zařadit; zda má být součástí výběru (TRUE)
+Přemýšlejte nad tím takto: musí R vždy říct, jestli tam má každý sloupec či řádek zařadit; zda má být součástí výběru (TRUE).
 
 **Ukázka**
 
@@ -537,6 +547,58 @@ Jak to že je ale 2 \> 15?
     ```{webr-r}
 
     ```
+
+------------------------------------------------------------------------
+
+## Samostatné cvičení
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+::: callout-note
+## Zkušební datasety v R
+
+V R je nainstalováno několik datasetů určených k zkoušení si funkcí a celkovému hraní si. Datasety `HairEyeColor`, který budeme v následujícím procvičení používat, je právě jeden z nich. Pro jeho používání není potřeba je jakkoliv nahrávat či ukládat jako proměnné. Stačí si pouze zavolat jeho jméno.
+:::
+
+1.  Kolik studentek, které se účastnily měření, má blond vlasy a zelené oči? Použijte dataset `HairEyeColor`.
+
+::: callout-tip
+## Vybírání dimenzí
+
+Pokud si nejste jisti jak postupovat, podívejte se znovu na poslední téma co jsme probírali a především na základ v [Vyhledávání pomocí \[ \]](#vyhledávání-pomocí) ;)
+:::
+
+------------------------------------------------------------------------
+
+#### Řešení
+
+Kolik studentek, které se účastnily měření, má blond vlasy a zelené oči?
+
+::: fragment
+1.  Nejdříve se podíváme na to, co je dataset `HairEyeColor` zač; jakou má strukturu? Jak vypadá?.
+
+    ```{r}
+    str(HairEyeColor) #jaka je struktura
+    head(HairEyeColor) #zobraz mi prvnich 6 radku
+    dim(HairEyeColor) #jake jsou dimenze objektu
+    is.array(HairEyeColor) #nejedna se o array?
+    ```
+:::
+
+::: fragment
+2.  Jedná se o array, takže je potřeba definovat výběr ve všech dimenzích.
+
+    ```{r}
+    HairEyeColor["Blond", "Green", "Female"]
+    ```
+:::
 
 ------------------------------------------------------------------------
 
@@ -862,9 +924,9 @@ c(5, NA, 22, NA, NA) #vytvor sloupec, ktery ma v sobe tolik hodnot co df radku
 ### Procvičení
 
 ::: callout-tip
-## Zkušební datasety v R
+## Zkušební datasety v balíčku `dplyr`
 
-V R a nahraném balíčku `dplyr` je nainstalováno několik datasetů určených k zkoušení si funkcí a celkovému hraní si. Datasety `iris` a `storms`, které budeme v následujícím procvičení používat, jsou právě jedněmi z nich. Pro jejich používání není potřeba je jakkoliv nahrávat či ukládat jako proměnné. Co je ale potřeba je mít balíček načtený ;)
+V balíčku `dplyr` je nainstalováno několik datasetů určených k zkoušení si funkcí a celkovému hraní si, obdobně jako v baseR. Dataset `storms`, který budeme v následujícím procvičení používat, je právě jedním z nich. **Pro jejich používání je potřeba mít balíček načtený.** Dataset `iris` je součástí baseR.
 :::
 
 1.  Jak průměrně rychlé byly větry (`wind`) v roce, kdy jste se narodili (`year`)? Použijte dataset `dplyr::storms`.
@@ -902,7 +964,7 @@ countdown::countdown(minutes = 15,
 
 1.  Vyberte motorky, které měly každá dohromady počet bodů z hodnocení `speed` a `dist` sice celkem menší než 50, ale i tak dostaly `rating` lepší než 3. Vypište jejich názvy.
 
-2.  Přepiš hodnoty ve sloupci `dist` v tomto výběru tak, že pokud je hodnota menší jak 20, bude nahrazena slovy "pod dvacet", pokud bude větší nebo rovno 20, bude nahrazena slovy "dvacet +".
+**Bonus:** Přepiš hodnoty ve sloupci `dist` v tomto výběru tak, že pokud je hodnota menší jak 20, bude nahrazena slovy "pod dvacet", pokud bude větší nebo rovno 20, bude nahrazena slovy "dvacet +".
 
 ------------------------------------------------------------------------
 
@@ -952,7 +1014,7 @@ Vyberte motorky, které měli počet bodů z obou hodnocení dohromady sice men�
 
 ------------------------------------------------------------------------
 
-#### Řešení úlohy 2)
+#### Řešení bonusové úlohy
 
 Přepiš hodnoty ve sloupci `dist` v tomto výběru tak, že pokud je hodnota menší jak 20, bude nahrazena slovy "pod dvacet", pokud bude větší nebo rovno 20, bude nahrazena slovy "dvacet +".
 
@@ -1010,7 +1072,7 @@ lst[2:3] #vyber druhy az treti objekt
 
 ------------------------------------------------------------------------
 
-Co když ale nevybíráme jednoduchou část listu, jako třeba vektor? **Co když se jedá o další list?**
+Co když ale nevybíráme jednoduchou část listu, jako třeba vektor? **Co když se jedná o další list?**
 
 ```{r}
 lst["osoba"] #vyber objekt "osoba"
@@ -1132,7 +1194,7 @@ A co kdybychom to **spojili dohromady**?
 filtrovanaData <- filter(storms,
                          year %in% 1990:2000,
                          wind > 50,
-                         !is.na(category),
+                         !is.na(category), #neni NA
                          month == 6); filtrovanaData
 
 select(filtrovanaData, name, year, wind)
@@ -1140,15 +1202,152 @@ select(filtrovanaData, name, year, wind)
 
 ------------------------------------------------------------------------
 
+Jak jsme si ukázali například v předchozí sekci, **v R se často kód "vrství"; výsledek jedné funkce se používá jako data pro další výpočet v jiné funkci**.
+
+To lze provést bud´ tak, že se celý výpočet rovnou použije v následující funkci, či se uloží jako proměnná, která se následně použije.
+
+**Ukázka:**
+
+```{r}
+#1
+head(select(filter(iris, Species == "setosa"), Petal.Width))
+
+#2
+filtrIris <- filter(iris, Species == "setosa")
+vyberFiltrIris <- select(filtrIris, Petal.Width)
+head(vyberFiltrIris)
+```
+
+------------------------------------------------------------------------
+
+1.  První přístup v sobě nese riziko, že takto psané "funkce ve funkci ve funkci..." **řetězce budou nepřehledné a že uživatel snadno zapomene na jednu ze závorek**.
+
+2.  Konstatním ukládáním v druhém případě se nejenom zbytečně zabírá čas a paměť R, ale hlavně pokud dojde ke změně v uložených hodnotách (například, že hledáme `Petal.Length` místo `Petal.Width`), tak **bez opakovaného nahrání následujících částí kódu co definují následně uložené proměnné by se změny nepropsaly do zbytku kódu**.
+
+    ```{webr-r}
+    delka <- iris$Sepal.Length + iris$Petal.Width
+    prumer <- mean(delka)
+    round(prumer, digits = 2) #zaokrouhli
+    ```
+
+Jak tento problém vyřešit?
+
+------------------------------------------------------------------------
+
+![](images/clipboard-2416185210.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
 ## Pipes
 
-dd
+**Nástroj, který transportuje data z jedné funkce do druhé jako první argument.**
+
+```{r}
+filter(iris, Petal.Width > 2) %>%
+  select(Petal.Length, Petal.Width) %>%
+  head()
+```
+
+**`data %>% funkce(`**`data přivedená skrz pipe, nemusíme je vypisovat,` **`druhý a další argumenty = definované námi)`**
+
+```{r}
+head(cars)
+cars %>% head()
+```
+
+------------------------------------------------------------------------
+
+Co když chci využít **data v jiném než v prvním argumentu**?
+
+```{r}
+iris %>%
+  filter(Petal.Length > 0.8, Petal.Width < 1) %>%
+  select(Sepal.Length) %>%
+  unlist() %>% #preved na vektor
+  mean() %>%
+  round(digits = 3, x = .)
+```
+
+::: callout-important
+## Specifikování argumentu kam má pipe vyústit
+
+Tečka u pipe `%>%` z**načí místo, kam se mají data vložit**; v některých případech totiž první argument nebývají samotná data.
+:::
+
+A co **běžná indexace**? Jak určíme že se mají data vybírat, když se nejedná o argumenty?
+
+```{r}
+#tecka znaci misto vyusteni pipe
+cars %>% .[,2] 
+cars %>% .$speed
+cars %>% .["speed"]
+cars %>% .[["dist"]]
+```
+
+------------------------------------------------------------------------
+
+### Rozdíl mezi `%>%` a `|>`
+
+`%>%`
+
+- déle používaná, větší šance že na ni narazíte
+- pro její používání je potřeba mít načtený balíček `dplyr`
+- jako placeholder umístění dat používá tečku .
+- funguje s i bez závorkami za názvem funkce
+
+```{r}
+c(1:20, 15) %>% mean()
+c(9:100, 1:15) %>% mean
+```
+
+`|>`
+
+- od roku 2021 součástí baseR
+- není potřeba mít spuštěný balíček navíc
+- jako placeholder umístění dat používá podtržítko \_
+- vždy je potřeba za název funkce umístit kulaté závorky
+
+```{r}
+c(2:546, 467, 87) %>% mean()
+```
+
+------------------------------------------------------------------------
+
+## Procvičení
+
+Zjistěte, jaká byla nejmenší váha kuřete krmeného sójovámi boby, jejichž data naleznete v datasetu `chickwts`.
+
+```{webr-r}
+
+```
+
+Jaká byla největší hloubka epicentra zemětřesení z datasetu `quakes`, které bylo větší než medián magnitudy všech naměřených zemětřesení?
+
+```{webr-r}
+
+```
+
+------------------------------------------------------------------------
+
+### Pipes a dobrá praxe
+
+::: incremental
+- používejte v jednom scriptu pokud možno jeden typ pipe
+
+- pipe má smysl od tří a výše funkcí
+
+- pokud používáte `%>%` dejte si pozor na záměnu tečky a čárky
+
+- jakmile máte deset a více pipes, tak už by bylo přeci jen dobré si to rozdělit
+
+- pipes jsou lineární; pokud pracujete s více jak jedním výstupem, buď to budete mít krkolomné nebo vám kód vůbec nebude fungovat
+:::
 
 ------------------------------------------------------------------------
 
 ## Příprava na další hodinu
 
-Stáhněte si data, které budou přiloženy u lekce ve výukových materiálech. Nezapomeňte si je uložit do dedikované složky, žádné "najdu to ve stažených souborech"!
+Stáhněte si data, které budou přiloženy u lekce ve výukových materiálech. **Nezapomeňte si je uložit do dedikované složky, žádné "najdu to ve stažených souborech"!**
 
 V příští lekci budeme pracovat s nahráváním dat a s projekty, proto je opravdu potřeba v tom mít pořádek.
 
@@ -1156,8 +1355,14 @@ V příští lekci budeme pracovat s nahráváním dat a s projekty, proto je op
 
 1.  Vyber z následujícího vektoru každou pátou hodnotu
 
-```{r}
-seq(15.2, 45.7, 0.56)
-```
+    ```{r}
+    seq(15.2, 45.7, 0.56)
+    ```
+
+2.  Z datasetu v baseR `airquality`, který obsahuje informace o měření kvality vzduchu v NYC, vyber hodnoty ze sloupce `Temp` z prvního týdne v květnu.
+
+3.  K datasetu `airquality` přidejte nový sloupec s názvem `Weather` který bude obsahovat informaci (text `hot`), zda hodnoty ve sloupci `Temp` jsou vyšší než 70. Pokud není vyšší jako 70, bude obsahovat text `cold`.
+
+**Bonus:** Pokuste se zjistit, jak si v nápovědě můžete najít seznam nahraných datasetů v R (`iris`, `cars`, `dplyr::starwars` a jiné)
 
 Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)

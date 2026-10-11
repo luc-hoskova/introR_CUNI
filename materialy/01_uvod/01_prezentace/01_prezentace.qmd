@@ -114,6 +114,12 @@ Doporučuji **mít prezentaci během hodiny otevřenou** pro nahlížení a kop�
 
 Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky vám umožní vytisknout si snímky prezentace v PDF.
 
+## Cvičení a konzultace
+
+1.  U každé hodiny budou **cvičení na doma navíc**. Bude se jednat o směs již probrané látky a problémů na zapřemýšlení. Jsou nepovinné - budete k nim mít i řešení, ale klidně mi je můžete poslat pro kontrolu / zpětnou vazbu.
+
+2.  V horním menu stránek kurzu naleznete odkaz na **rezervační stránku konzultací**. Pokud něco budete potřebovat probrat, ať již obsah kurzu či pomoc s R, můžete mi bud´ napsat a nebo si zde přímo rezervovat termín. Součástí jsou i všeobecné R konzultace, pokud víte, že by je vaši kolegové využili, klidně odkaz předejte.
+
 # Představovací kolečko
 
 1.  jméno

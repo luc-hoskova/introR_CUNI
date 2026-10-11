@@ -1,4 +1,7 @@
 #03. lekce
+#############################
+#PROCVICOVANI
+#############################
 #PROCVICOVANI INDEXACE VEKTORY
 #1
 x <- c(15, 87, 23, 91, 42, 68, 54, 78, 54, 45, 10, 98, 54, 98)
@@ -53,34 +56,46 @@ vyber$Petal.Length
 vyber$Petal.Length[vyber$Species == "setosa"]
 mean(vyber$Petal.Length[vyber$Species == "setosa"])
 
-#SAMOSTATNE PROCVICOVANI
+#PROCVICOVANI LIST
+#1
+lst$povolani <- c(lst$povolani, "pruvodci")
 
-#´pouzivani apostrofu u nazvu s mezerou´
-  #rename funkce?
-#sort() a order()
-#merge()
-#as.numeric a tak funkce
-#grep funkce
-#https://www.statology.org/r-grep-match-replace/
-#slouží k vyhledávání vzorů ve vektorech a jejich nahrazení
-#práce s vektorem jako s textem v 2 cvičení LP
+#2
+lst$deti$dite1 <- list(
+  jmeno = "Petr",
+  prijmeni = "Novotný")
 
-#janitor package
+lst$deti$dite2 <- list(
+  jmeno = "Jana",
+  prijmeni = "Novotná")
 
-#data.frame stringsAsFactors
+#PROCVICOVANI PIPES
+#1
+str(chickwts)
+levels(chickwts$feed)
+filter(chickwts, feed == "soybean")%>% select(weight) %>% min()
 
-#!is.na
+#2
+str(quakes)
+quakes %>% filter(mag > median(mag)) %>% filter(depth == max(depth)) %>% select(depth)
 
-#problém při vyhledávání pokud totožné názvy sloupců, potřeba kontroly a nebo u velkých datasetů alespoň prohnat check.names
+############################
+#SAMOSTATNE CVICENI
+############################
+#VEKTORY
+#1
+cisla <- 1878:2324
+cisla[cisla %% 3 == 0]
+length(cisla[cisla %% 3 == 0])
 
-#přidávání textu k číslům aka jak to udělat abych měl najendou 50 ID jako texty s "id_01", "id_02" a tak dál
-#paste0()
+#MATICE
+#1
+HairEyeColor["Blond", "Green", "Female"]
 
-#group by a ungroup
+#DATA FRAME
+#1
+load("bikes.RData")
+divneHodnoceni <- bikes[bikes$speed + bikes$dist < 50 & bikes$rating < 3,]
 
-#funkce which vybere cidla radku podle podminky
-df <- data.frame(
-  name = c("Anna", "Bob", "Carl", "Dan"),
-  age = c(18, 25, 17, 30))
-which(df$age >= 18)
-
+#2
+rownames(divneHodnoceni)

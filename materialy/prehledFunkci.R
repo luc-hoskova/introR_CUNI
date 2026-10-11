@@ -21,8 +21,10 @@ cbind.data.frame() #spoji objektx po sloupcich do dataframe
 class() #jak se R vuci objektu chova
 colnames() #nazvy sloupcu x
 data.frame() #vytvori data frame
+dimnames() #pojmenovani jednotlivych dimenzi objektu
 install.packages("název balíčku") #instaluje balicek
 length() #zjisti delku x
+levels() #kategorie faktoru
 library() #nahrání balíčku do R
 list() #vytvori list/seznam
 lsf.str("package:jmenoBalicku") #vypis vsechny funkce v balicku a ukaz jejich strukturu
@@ -40,3 +42,21 @@ seq() #vytvori sekvenci dle dannych parametru
 str() #jaka je struktura x
 tibble::tibble() #vytvori tibble
 tolower() #zmeni hodnoty textu na lower case
+toupper() #zmeni hodnoty textu na upper case
+
+#3. lekce
+dim() #dimenze objektu
+dplyr::filter() #vyfiltruj hodnoty dle podminek
+is.array() #je objekt array
+is.na() #je hodnota NA?
+max() #maximum
+mean() #aritmeticky prumer
+median() #median
+min() #minimum
+nlevels() #pocet levels u faktoru
+round() #zaokrouhli
+dplyr::select() #vyber sloupec
+strsplit() #rozdel charakterovy vektor
+unique() #vrat vektor/data frame/array bez duplikovanych hodnot
+unlist() #zmen objekt na vektor osahujici vse hodnoty v x
+within() #uprav nebo pridej prvky listu ci sloupce data frame

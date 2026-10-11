@@ -4266,6 +4266,13 @@ Levels: a b c</code></pre>
 <pre><code> Factor w/ 3 levels &quot;a&quot;,&quot;b&quot;,&quot;c&quot;: 1 2 1 3</code></pre>
 </div>
 </div>
+<p>Jednotlivé kategorie je taktéž možné zobrazit pomocí funkce <code>levels</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href></a><span class="fu">levels</span>(abc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+</div>
+</div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -4277,15 +4284,15 @@ Levels: a b c</code></pre>
 <div class="callout-content">
 <p>Funkce <code>as.x()</code> dokážou měnit defacto všechny data typy/struktury:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href></a><span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href></a><span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot;</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href></a><span class="fu">as.numeric</span>(<span class="st">&quot;3&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href></a><span class="fu">as.numeric</span>(<span class="st">&quot;3&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href></a><span class="fu">as.logical</span>(<span class="st">&quot;FALSE&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href></a><span class="fu">as.logical</span>(<span class="st">&quot;FALSE&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -4404,7 +4411,7 @@ Levels: a b c</code></pre>
 <h5 id="co-když-ale-chceme-vytvořit-matici-z-již-existujících-vektorů-stejného-typu-a-délky">Co když ale chceme vytvořit matici z již existujících vektorů stejného typu a délky?</h5>
 <p><code>cbind()</code> = spoj vektory po sloupcích (columns)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href></a><span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href></a><span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    5
@@ -4414,7 +4421,7 @@ Levels: a b c</code></pre>
 </div>
 <p><code>rbind()</code> = spoj vektory po řádcích (rows)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href></a><span class="fu">rbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href></a><span class="fu">rbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    2    3
@@ -4429,7 +4436,7 @@ Levels: a b c</code></pre>
 <li>Argument <code>byrow</code> je automaticky nastaven na hodnotu <code>FALSE</code>. Pro seřazení po řádcích (by row) je potřeba v matici zahrnout <code>byrow = TRUE</code>.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    2
@@ -4475,26 +4482,26 @@ Levels: a b c</code></pre>
 <h4 id="pojmenování-sloupců-a-řádků">Pojmenování sloupců a řádků</h4>
 <p>Jak je vidět z předchozího cvičení, stejně jako u vektoru <strong>můžeme pojmenovat každou z jednotlivých součástí</strong>, totéž můžeme provést i u matic.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href></a>matice <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>); matice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href></a>matice <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>); matice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    3    5
 [2,]    2    4    6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href></a><span class="fu">rownames</span>(matice) <span class="co">#jaka jsou jmena radku</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href></a><span class="fu">rownames</span>(matice) <span class="co">#jaka jsou jmena radku</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href></a><span class="fu">colnames</span>(matice) <span class="co">#jaka jsou jmena sloupcu</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href></a><span class="fu">colnames</span>(matice) <span class="co">#jaka jsou jmena sloupcu</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
 </div>
 <p>Pokud chceme přiřadit jména ke sloupcům či řádkům, musíme tak provést přiřazením vektoru o totožné délce.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href></a><span class="fu">rownames</span>(matice) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pocetMereni&quot;</span>, <span class="st">&quot;pocetProbandu&quot;</span>)</span>
-<span id="cb82-2"><a href></a><span class="fu">colnames</span>(matice) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pokus1&quot;</span>, <span class="st">&quot;pokus2&quot;</span>, <span class="st">&quot;pokus3&quot;</span>)</span>
-<span id="cb82-3"><a href></a>matice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href></a><span class="fu">rownames</span>(matice) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pocetMereni&quot;</span>, <span class="st">&quot;pocetProbandu&quot;</span>)</span>
+<span id="cb84-2"><a href></a><span class="fu">colnames</span>(matice) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pokus1&quot;</span>, <span class="st">&quot;pokus2&quot;</span>, <span class="st">&quot;pokus3&quot;</span>)</span>
+<span id="cb84-3"><a href></a>matice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              pokus1 pokus2 pokus3
 pocetMereni        1      3      5
@@ -4507,7 +4514,7 @@ pocetProbandu      2      4      6</code></pre>
 <h3 id="samostatné-cvičení-2">Samostatné cvičení</h3>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_c3194bfc" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_b261ac6b" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <ol type="1">
@@ -4526,11 +4533,11 @@ Sloupce pojmenujte pomocí numerických a řádky pomocí charakterových hodnot
 <ol type="1">
 <li><p>Vytvořte sekvenci lichých čísel (každé číslo objedno od 1 dále) v počtu deseti hodnot.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href></a><span class="fu">seq</span>(<span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href></a><span class="fu">seq</span>(<span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  3  5  7  9 11 13 15 17 19</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href></a><span class="co">#nebo taky samozrejme c(1, 3, 5, 7, 9, 11, 13, 15, 17, 19), ale....</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href></a><span class="co">#nebo taky samozrejme c(1, 3, 5, 7, 9, 11, 13, 15, 17, 19), ale....</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
 </div>
@@ -4538,7 +4545,7 @@ Sloupce pojmenujte pomocí numerických a řádky pomocí charakterových hodnot
 <ol start="2" type="1">
 <li><p>Použij sekvenci jako hodnoty do matice, rozděl je do pěti sloupců a dvou řádků.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href></a>hotovaMatice <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">seq</span>(<span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> <span class="dv">10</span>), <span class="at">ncol =</span> <span class="dv">5</span>); hotovaMatice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href></a>hotovaMatice <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">seq</span>(<span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> <span class="dv">10</span>), <span class="at">ncol =</span> <span class="dv">5</span>); hotovaMatice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5]
 [1,]    1    5    9   13   17
@@ -4551,7 +4558,7 @@ Sloupce pojmenujte pomocí numerických a řádky pomocí charakterových hodnot
 <ol start="3" type="1">
 <li><p>Připoj k matici další sloupec tvořený vektorem s takovým počtem hodnot jako je počet řádků</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href></a>hotovaMatice <span class="ot">&lt;-</span> <span class="fu">cbind</span>(hotovaMatice, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)); hotovaMatice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href></a>hotovaMatice <span class="ot">&lt;-</span> <span class="fu">cbind</span>(hotovaMatice, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)); hotovaMatice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]    1    5    9   13   17    2
@@ -4564,9 +4571,9 @@ Sloupce pojmenujte pomocí numerických a řádky pomocí charakterových hodnot
 <ol start="4" type="1">
 <li><p>Pojmenuj sloupce a řádky</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href></a><span class="fu">colnames</span>(hotovaMatice) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(hotovaMatice) <span class="co">#fce ncol da zpet pocet sloupcu, stejne jako nrow radku</span></span>
-<span id="cb91-2"><a href></a><span class="fu">rownames</span>(hotovaMatice) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;czech&quot;</span>, <span class="st">&quot;slovak&quot;</span>)</span>
-<span id="cb91-3"><a href></a>hotovaMatice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href></a><span class="fu">colnames</span>(hotovaMatice) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(hotovaMatice) <span class="co">#fce ncol da zpet pocet sloupcu, stejne jako nrow radku</span></span>
+<span id="cb93-2"><a href></a><span class="fu">rownames</span>(hotovaMatice) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;czech&quot;</span>, <span class="st">&quot;slovak&quot;</span>)</span>
+<span id="cb93-3"><a href></a>hotovaMatice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 2  3  4  5 6
 czech  1 5  9 13 17 2
@@ -4583,7 +4590,7 @@ slovak 3 7 11 15 19 2</code></pre>
 <ol type="1">
 <li><p>Jelikož potřebujeme poskládat numerické vektory 15:20 a 37:42 dohromady šestkrát pod sebou, musí být spojené po řádcích. Kromě <code>rbind</code> tuto možnost poskytuje i parametr <code>byrow = TRUE</code> ve funkci <code>matrix</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href></a><span class="co">#matrix(?, byrow =  TRUE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href></a><span class="co">#matrix(?, byrow =  TRUE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
 </div>
@@ -4592,7 +4599,7 @@ slovak 3 7 11 15 19 2</code></pre>
 <li><p>Potřebujeme proto vyvořit sekvenci hodnot, které dáme R k dispozici pro vytvoření matice. To znamená, že musíme sestavit sekvenci šestkrát za sebou alternativně opakujících se vektorů 15:20 a 37:42.<br>
 Toho dosáhneme pomocí funkce <code>rep</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">37</span><span class="sc">:</span><span class="dv">42</span>), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">37</span><span class="sc">:</span><span class="dv">42</span>), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 15 16 17 18 19 20 37 38 39 40 41 42 15 16 17 18 19 20 37 38 39 40 41 42 15
 [26] 16 17 18 19 20 37 38 39 40 41 42</code></pre>
@@ -4604,7 +4611,7 @@ Toho dosáhneme pomocí funkce <code>rep</code>.</p>
 <ol start="3" type="1">
 <li><p>Je potřeba, aby počet sloupců byl přesně takový, jako je počet hodnot ve vektorech, jinak by se nám nerozdělily do pravidelně se opakujících řádků.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href></a><span class="fu">matrix</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">37</span><span class="sc">:</span><span class="dv">42</span>), <span class="dv">3</span>), <span class="at">ncol =</span> <span class="fu">length</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">20</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href></a><span class="fu">matrix</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">37</span><span class="sc">:</span><span class="dv">42</span>), <span class="dv">3</span>), <span class="at">ncol =</span> <span class="fu">length</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">20</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]   15   16   17   18   19   20
@@ -4622,9 +4629,9 @@ Toho dosáhneme pomocí funkce <code>rep</code>.</p>
 
 <p>Možná vás napadlo, zda by nešlo určit popisky sloupců a řádků už přímo v zadání matice. Je to možné, a to pomocí atributu <code>dimnames</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">3</span>,</span>
-<span id="cb98-2"><a href></a>       <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;cesko&quot;</span>, <span class="st">&quot;slovensko&quot;</span>), <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>),</span>
-<span id="cb98-3"><a href></a>       <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb100-2"><a href></a>       <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;cesko&quot;</span>, <span class="st">&quot;slovensko&quot;</span>), <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>),</span>
+<span id="cb100-3"><a href></a>       <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          10 11 12
 cesko      1  2  3
@@ -4637,7 +4644,7 @@ slovensko  4  5  6</code></pre>
 
 <h3 id="seznam-list">Seznam (list)</h3>
 <blockquote>
-<p><strong>objekt složený z jiných objektů které mohou být rozličné délky a datového typu</strong></p>
+<p><strong>jednodimenzionální objekt složený z jiných objektů, které mohou být rozličné délky a datového typu</strong></p>
 </blockquote>
 <ul>
 <li>use case
@@ -4649,9 +4656,9 @@ slovensko  4  5  6</code></pre>
 <li>ukázka:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href></a><span class="fu">list</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;William Hartnell&quot;</span>,<span class="st">&quot;Patrick Troughton&quot;</span>,<span class="st">&quot;Jon Pertwee&quot;</span>,<span class="st">&quot;Tom Baker&quot;</span>,<span class="st">&quot;Peter Davison&quot;</span>,<span class="st">&quot;Colin Baker&quot;</span>,<span class="st">&quot;Sylvester McCoy&quot;</span>,<span class="st">&quot;Paul McGann&quot;</span>, <span class="st">&quot;John Hurt&quot;</span>,<span class="st">&quot;Christopher Eccleston&quot;</span>),</span>
-<span id="cb100-2"><a href></a>               <span class="at">year =</span> <span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">46</span>,<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">29</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">36</span>,<span class="dv">73</span>,<span class="dv">41</span>), </span>
-<span id="cb100-3"><a href></a>               <span class="at">episodes =</span> <span class="fu">c</span>(<span class="st">&quot;134&quot;</span>,<span class="st">&quot;119&quot;</span>,<span class="st">&quot;128&quot;</span>,<span class="st">&quot;172&quot;</span>,<span class="st">&quot;69&quot;</span>,<span class="st">&quot;31&quot;</span>,<span class="st">&quot;42&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;13&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href></a><span class="fu">list</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;William Hartnell&quot;</span>,<span class="st">&quot;Patrick Troughton&quot;</span>,<span class="st">&quot;Jon Pertwee&quot;</span>,<span class="st">&quot;Tom Baker&quot;</span>,<span class="st">&quot;Peter Davison&quot;</span>,<span class="st">&quot;Colin Baker&quot;</span>,<span class="st">&quot;Sylvester McCoy&quot;</span>,<span class="st">&quot;Paul McGann&quot;</span>, <span class="st">&quot;John Hurt&quot;</span>,<span class="st">&quot;Christopher Eccleston&quot;</span>),</span>
+<span id="cb102-2"><a href></a>               <span class="at">year =</span> <span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">46</span>,<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">29</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">36</span>,<span class="dv">73</span>,<span class="dv">41</span>), </span>
+<span id="cb102-3"><a href></a>               <span class="at">episodes =</span> <span class="fu">c</span>(<span class="st">&quot;134&quot;</span>,<span class="st">&quot;119&quot;</span>,<span class="st">&quot;128&quot;</span>,<span class="st">&quot;172&quot;</span>,<span class="st">&quot;69&quot;</span>,<span class="st">&quot;31&quot;</span>,<span class="st">&quot;42&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;13&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$name
  [1] &quot;William Hartnell&quot;      &quot;Patrick Troughton&quot;     &quot;Jon Pertwee&quot;          
@@ -4692,10 +4699,10 @@ $episodes
 <h4 id="tvorba-data-frame">Tvorba data frame</h4>
 <p>Nejjednoduší působ, jak vytvořit data frame je skrz stejnojmou funkci <code>data.frame</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href></a><span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
-<span id="cb102-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
-<span id="cb102-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>),</span>
-<span id="cb102-4"><a href></a>           <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href></a><span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
+<span id="cb104-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
+<span id="cb104-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>),</span>
+<span id="cb104-4"><a href></a>           <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          obec   PSČ         okres
 id_01  Čeladná 73912 Frýdek-Mýstek
@@ -4709,10 +4716,10 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 <div class="fragment">
 <p>Nezapomeňte na existenci NA!</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href></a><span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
-<span id="cb104-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="cn">NA</span>),</span>
-<span id="cb104-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>),</span>
-<span id="cb104-4"><a href></a>           <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href></a><span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
+<span id="cb106-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="cn">NA</span>),</span>
+<span id="cb106-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>),</span>
+<span id="cb106-4"><a href></a>           <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          obec   PSČ         okres
 id_01  Čeladná 73912 Frýdek-Mýstek
@@ -4730,10 +4737,10 @@ id_03    Chýně    NA   Praha-západ</code></pre>
 <ul>
 <li><p>pomocí argumentu <code>row.names,</code>vždy potřeba definovat název pro každý řádek!</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href></a><span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
-<span id="cb106-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
-<span id="cb106-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>),</span>
-<span id="cb106-4"><a href></a>           <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href></a><span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
+<span id="cb108-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
+<span id="cb108-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>),</span>
+<span id="cb108-4"><a href></a>           <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          obec   PSČ         okres
 id_01  Čeladná 73912 Frýdek-Mýstek
@@ -4743,19 +4750,19 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 </div></li>
 <li><p>pozdější doplnění pomocí funkce <code>rownames</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href></a>lokace <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
-<span id="cb108-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
-<span id="cb108-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>))</span>
-<span id="cb108-4"><a href></a><span class="fu">rownames</span>(lokace) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href></a>lokace <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
+<span id="cb110-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
+<span id="cb110-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>))</span>
+<span id="cb110-4"><a href></a><span class="fu">rownames</span>(lokace) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul></li>
 <li><p><strong>sloupce:</strong></p>
 <ul>
 <li><p>pojmenování jednotlivých datových struktur, ze kterých se má data frame skládat, pomocí štítku (název = hodnota)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href></a><span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
-<span id="cb109-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
-<span id="cb109-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href></a><span class="fu">data.frame</span>(<span class="at">obec =</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
+<span id="cb111-2"><a href></a>           PSČ <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
+<span id="cb111-3"><a href></a>           <span class="at">okres =</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      obec   PSČ         okres
 1  Čeladná 73912 Frýdek-Mýstek
@@ -4765,11 +4772,11 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 </div></li>
 <li><p>použití již dříve vytvořených objektů</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href></a>obec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>)</span>
-<span id="cb111-2"><a href></a>PSČ <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>)</span>
-<span id="cb111-3"><a href></a>okres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>)</span>
-<span id="cb111-4"><a href></a></span>
-<span id="cb111-5"><a href></a><span class="fu">data.frame</span>(obec, PSČ, okres)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href></a>obec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>)</span>
+<span id="cb113-2"><a href></a>PSČ <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>)</span>
+<span id="cb113-3"><a href></a>okres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>)</span>
+<span id="cb113-4"><a href></a></span>
+<span id="cb113-5"><a href></a><span class="fu">data.frame</span>(obec, PSČ, okres)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      obec   PSČ         okres
 1  Čeladná 73912 Frýdek-Mýstek
@@ -4779,11 +4786,11 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 </div></li>
 <li><p>pozdější doplnění pomocí funkce <code>colnames</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href></a>lokace <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
-<span id="cb113-2"><a href></a>           <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
-<span id="cb113-3"><a href></a>           <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>))</span>
-<span id="cb113-4"><a href></a><span class="fu">colnames</span>(lokace) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;obec&quot;</span>, <span class="st">&quot;PSČ&quot;</span>, <span class="st">&quot;okres&quot;</span>)</span>
-<span id="cb113-5"><a href></a>lokace</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href></a>lokace <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
+<span id="cb115-2"><a href></a>           <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
+<span id="cb115-3"><a href></a>           <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>))</span>
+<span id="cb115-4"><a href></a><span class="fu">colnames</span>(lokace) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;obec&quot;</span>, <span class="st">&quot;PSČ&quot;</span>, <span class="st">&quot;okres&quot;</span>)</span>
+<span id="cb115-5"><a href></a>lokace</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      obec   PSČ         okres
 1  Čeladná 73912 Frýdek-Mýstek
@@ -4796,9 +4803,9 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 <ul>
 <li><p>použitím funkce <code>dimnames</code> lze najednou nastavit názvy pro obě dimenze</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href></a><span class="fu">dimnames</span>(lokace) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>),</span>
-<span id="cb115-2"><a href></a>                         <span class="fu">c</span>(<span class="st">&quot;obec&quot;</span>, <span class="st">&quot;psc&quot;</span>, <span class="st">&quot;okres&quot;</span>))</span>
-<span id="cb115-3"><a href></a>lokace</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href></a><span class="fu">dimnames</span>(lokace) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;id_01&quot;</span>, <span class="st">&quot;id_02&quot;</span>, <span class="st">&quot;id_03&quot;</span>),</span>
+<span id="cb117-2"><a href></a>                         <span class="fu">c</span>(<span class="st">&quot;obec&quot;</span>, <span class="st">&quot;psc&quot;</span>, <span class="st">&quot;okres&quot;</span>))</span>
+<span id="cb117-3"><a href></a>lokace</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          obec   psc         okres
 id_01  Čeladná 73912 Frýdek-Mýstek
@@ -4817,9 +4824,9 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 <h4 id="jiné-způsoby-tvorby-data-frame">Jiné způsoby tvorby data frame</h4>
 <p>Nešlo by ale přeci k vytvoření data frame jednoduše použít <code>cbind</code> nebo <code>rbind</code>? Pojďme si to vyzkoušet.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href></a><span class="fu">cbind</span>(<span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
-<span id="cb117-2"><a href></a>      <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
-<span id="cb117-3"><a href></a>      <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href></a><span class="fu">cbind</span>(<span class="fu">c</span>(<span class="st">&quot;Čeladná&quot;</span>, <span class="st">&quot;Jáchymov&quot;</span>, <span class="st">&quot;Chýně&quot;</span>),</span>
+<span id="cb119-2"><a href></a>      <span class="fu">c</span>(<span class="dv">73912</span>, <span class="dv">36251</span>, <span class="dv">25303</span>),</span>
+<span id="cb119-3"><a href></a>      <span class="fu">c</span>(<span class="st">&quot;Frýdek-Mýstek&quot;</span>, <span class="st">&quot;Karlovy Vary&quot;</span>, <span class="st">&quot;Praha-západ&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]       [,2]    [,3]           
 [1,] &quot;Čeladná&quot;  &quot;73912&quot; &quot;Frýdek-Mýstek&quot;
@@ -4865,7 +4872,7 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_1863556f" minutes="15" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_ecbce4b9" minutes="15" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <div id="qwebr-insertion-location-28"></div>
@@ -4875,15 +4882,15 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 <li><p>Z následujících vektorů (bez jejich upravování) vytvořte data frame a pojmenujte první sloupec jako <code>znamky</code> a třetí jako <code>predmety</code>.</p></li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 3 5 3 5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href></a>jmenaZaku <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LK&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;AE&quot;</span>, <span class="st">&quot;IR&quot;</span>); jmenaZaku</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href></a>jmenaZaku <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LK&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;AE&quot;</span>, <span class="st">&quot;IR&quot;</span>); jmenaZaku</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;LK&quot; &quot;SD&quot; &quot;AE&quot; &quot;IR&quot;</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ČJ&quot;</span>, <span class="st">&quot;biologie&quot;</span>, <span class="st">&quot;španělština&quot;</span>), <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ČJ&quot;</span>, <span class="st">&quot;biologie&quot;</span>, <span class="st">&quot;španělština&quot;</span>), <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;ČJ&quot;          &quot;biologie&quot;    &quot;španělština&quot; &quot;ČJ&quot;          &quot;biologie&quot;   
 [6] &quot;španělština&quot;</code></pre>
@@ -4897,9 +4904,9 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 <ol type="1">
 <li><p>Vypište jednotlivé sloupce jako vektory.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href></a>vek <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>,<span class="dv">35</span>,<span class="dv">30</span>,<span class="dv">47</span>,<span class="dv">42</span>)</span>
-<span id="cb125-2"><a href></a>sex <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</span>
-<span id="cb125-3"><a href></a>strana <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sin&quot;</span>,<span class="st">&quot;sin&quot;</span>,<span class="st">&quot;dx&quot;</span>,<span class="st">&quot;dx&quot;</span>,<span class="st">&quot;dx&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href></a>vek <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>,<span class="dv">35</span>,<span class="dv">30</span>,<span class="dv">47</span>,<span class="dv">42</span>)</span>
+<span id="cb127-2"><a href></a>sex <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</span>
+<span id="cb127-3"><a href></a>strana <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sin&quot;</span>,<span class="st">&quot;sin&quot;</span>,<span class="st">&quot;dx&quot;</span>,<span class="st">&quot;dx&quot;</span>,<span class="st">&quot;dx&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
 </div>
@@ -4907,7 +4914,7 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 <ol start="2" type="1">
 <li><p>Volitelné; vytvořte si vektor pro jména řádků.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SC_001&quot;</span>, <span class="st">&quot;SC_007&quot;</span>, <span class="st">&quot;SC_013&quot;</span>, <span class="st">&quot;SC_014&quot;</span>, <span class="st">&quot;SC_020&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SC_001&quot;</span>, <span class="st">&quot;SC_007&quot;</span>, <span class="st">&quot;SC_013&quot;</span>, <span class="st">&quot;SC_014&quot;</span>, <span class="st">&quot;SC_020&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
 </div>
@@ -4915,7 +4922,7 @@ id_03    Chýně 25303   Praha-západ</code></pre>
 <ol start="3" type="1">
 <li><p>Pomocí funkce <code>data.frame</code> spojte sloupce dohromady a popište řádky.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href></a>vzorek <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vek, strana, sex, <span class="at">row.names =</span> id); vzorek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href></a>vzorek <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vek, strana, sex, <span class="at">row.names =</span> id); vzorek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       vek strana    sex
 SC_001  27    sin female
@@ -4948,12 +4955,12 @@ SC_020  42     dx female</code></pre>
 <ol type="1">
 <li><p>K data frame potřebujeme připojit nový sloupec. Jeden ze způsobů jak to provést (další se naučíme později) je vytvoření nového pojmenovaného vektoru s jeho připojení ke stávajícímu data frame. Vytvořme si proto vektor, který bude obsahovat náhodný výběr boolean hodnot.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href></a>clearSample <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
-<span id="cb129-2"><a href></a>               <span class="at">size =</span> <span class="fu">length</span>(strana), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb129-3"><a href></a><span class="co">#potrebujeme tolik hodnot jako je jich v teremkoliv jinem sloupci</span></span>
-<span id="cb129-4"><a href></a><span class="co">#proto pouzijeme length(nazev nami ulozeneho vektoru)</span></span>
-<span id="cb129-5"><a href></a>  <span class="co">#ano, jde to pocitat i rucne</span></span>
-<span id="cb129-6"><a href></a>    <span class="co">#ale co kdyz toho budete mit opravdu hodne?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href></a>clearSample <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb131-2"><a href></a>               <span class="at">size =</span> <span class="fu">length</span>(strana), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb131-3"><a href></a><span class="co">#potrebujeme tolik hodnot jako je jich v teremkoliv jinem sloupci</span></span>
+<span id="cb131-4"><a href></a><span class="co">#proto pouzijeme length(nazev nami ulozeneho vektoru)</span></span>
+<span id="cb131-5"><a href></a>  <span class="co">#ano, jde to pocitat i rucne</span></span>
+<span id="cb131-6"><a href></a>    <span class="co">#ale co kdyz toho budete mit opravdu hodne?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
 </div>
@@ -4961,7 +4968,7 @@ SC_020  42     dx female</code></pre>
 <ol start="2" type="1">
 <li><p>Spojíme dohromady data frame z první úlohy a nový vektor. Pro snadnou práci doporučuji si data frame pojmenovat (viz předchozí úloha).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href></a>vzorek <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(vzorek, clearSample); vzorek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href></a>vzorek <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(vzorek, clearSample); vzorek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       vek strana    sex clearSample
 SC_001  27    sin female        TRUE
@@ -4970,7 +4977,7 @@ SC_013  30     dx   male        TRUE
 SC_014  47     dx female        TRUE
 SC_020  42     dx female       FALSE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href></a><span class="co">#rovnou si i výsledek znovu uložíme</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href></a><span class="co">#rovnou si i výsledek znovu uložíme</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
 <div class="callout callout-caution callout-titled callout-style-default">
@@ -5021,15 +5028,15 @@ SC_020  42     dx female       FALSE</code></pre>
 <li>Kód nám hodí error, jelikož se pokoušíme do data frame, který musí mít vždy stejnou délku sloupců či řádků, vložit vektor, který je kratší jak ostatní. Potřebujeme si tedy zjistit, o který se jedná.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href></a><span class="fu">length</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href></a><span class="fu">length</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href></a><span class="fu">length</span>(jmenaZaku)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href></a><span class="fu">length</span>(jmenaZaku)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href></a><span class="fu">length</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ČJ&quot;</span>, <span class="st">&quot;biologie&quot;</span>, <span class="st">&quot;španělština&quot;</span>), <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href></a><span class="fu">length</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ČJ&quot;</span>, <span class="st">&quot;biologie&quot;</span>, <span class="st">&quot;španělština&quot;</span>), <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
@@ -5043,9 +5050,9 @@ SC_020  42     dx female       FALSE</code></pre>
 <div class="fragment">
 <p>Nic nám nezakazuje <strong>použít vektor uvnitř dalšího vektoru</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href></a><span class="fu">data.frame</span>(<span class="at">znamky =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb139-2"><a href></a>           <span class="at">jmenaZaku =</span> <span class="fu">c</span>(jmenaZaku, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb139-3"><a href></a>           <span class="at">predmety =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ČJ&quot;</span>, <span class="st">&quot;biologie&quot;</span>, <span class="st">&quot;španělština&quot;</span>), <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href></a><span class="fu">data.frame</span>(<span class="at">znamky =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb141-2"><a href></a>           <span class="at">jmenaZaku =</span> <span class="fu">c</span>(jmenaZaku, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb141-3"><a href></a>           <span class="at">predmety =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ČJ&quot;</span>, <span class="st">&quot;biologie&quot;</span>, <span class="st">&quot;španělština&quot;</span>), <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  znamky jmenaZaku    predmety
 1      5        LK          ČJ
@@ -5074,13 +5081,13 @@ SC_020  42     dx female       FALSE</code></pre>
 <li><p>ukázka:</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb141-2"><a href></a>    <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb141-3"><a href></a>    <span class="at">jmeno =</span> <span class="fu">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Oto&quot;</span>, <span class="st">&quot;Anna&quot;</span>, <span class="st">&quot;Bára&quot;</span>),</span>
-<span id="cb141-4"><a href></a>    <span class="at">vek =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">29</span>,<span class="dv">30</span>, <span class="dv">35</span>),</span>
-<span id="cb141-5"><a href></a>    <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Data Scientist&quot;</span>, <span class="st">&quot;Developer&quot;</span>, <span class="st">&quot;HR&quot;</span>),</span>
-<span id="cb141-6"><a href></a>    <span class="at">plat =</span> <span class="fu">c</span>(<span class="dv">45000</span>,<span class="dv">60000</span>, <span class="dv">80000</span>, <span class="dv">100000</span>)</span>
-<span id="cb141-7"><a href></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb143-2"><a href></a>    <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb143-3"><a href></a>    <span class="at">jmeno =</span> <span class="fu">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Oto&quot;</span>, <span class="st">&quot;Anna&quot;</span>, <span class="st">&quot;Bára&quot;</span>),</span>
+<span id="cb143-4"><a href></a>    <span class="at">vek =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">29</span>,<span class="dv">30</span>, <span class="dv">35</span>),</span>
+<span id="cb143-5"><a href></a>    <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Data Scientist&quot;</span>, <span class="st">&quot;Developer&quot;</span>, <span class="st">&quot;HR&quot;</span>),</span>
+<span id="cb143-6"><a href></a>    <span class="at">plat =</span> <span class="fu">c</span>(<span class="dv">45000</span>,<span class="dv">60000</span>, <span class="dv">80000</span>, <span class="dv">100000</span>)</span>
+<span id="cb143-7"><a href></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
      id jmeno   vek role             plat
@@ -5157,13 +5164,13 @@ SC_020  42     dx female       FALSE</code></pre>
 <p><strong>R umožňuje nahrávat funkce ze specifických balíčků tak, aby “nepřepsaly” již používané funkce</strong>. A to pomocí symbolu <code>::</code>.</p>
 <p><code>název balíčku::funkce</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href></a>tabulka <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb143-2"><a href></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb143-3"><a href></a>  <span class="at">jmeno =</span> <span class="fu">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Oto&quot;</span>, <span class="st">&quot;Anna&quot;</span>, <span class="st">&quot;Bára&quot;</span>),</span>
-<span id="cb143-4"><a href></a>  <span class="at">vek =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">29</span>,<span class="dv">30</span>, <span class="dv">35</span>),</span>
-<span id="cb143-5"><a href></a>  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Data Scientist&quot;</span>, <span class="st">&quot;Developer&quot;</span>, <span class="st">&quot;HR&quot;</span>),</span>
-<span id="cb143-6"><a href></a>  <span class="at">plat =</span> <span class="fu">c</span>(<span class="dv">45000</span>,<span class="dv">60000</span>, <span class="dv">80000</span>, <span class="dv">100000</span>)</span>
-<span id="cb143-7"><a href></a>); tabulka</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href></a>tabulka <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb145-2"><a href></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb145-3"><a href></a>  <span class="at">jmeno =</span> <span class="fu">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Oto&quot;</span>, <span class="st">&quot;Anna&quot;</span>, <span class="st">&quot;Bára&quot;</span>),</span>
+<span id="cb145-4"><a href></a>  <span class="at">vek =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">29</span>,<span class="dv">30</span>, <span class="dv">35</span>),</span>
+<span id="cb145-5"><a href></a>  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Data Scientist&quot;</span>, <span class="st">&quot;Developer&quot;</span>, <span class="st">&quot;HR&quot;</span>),</span>
+<span id="cb145-6"><a href></a>  <span class="at">plat =</span> <span class="fu">c</span>(<span class="dv">45000</span>,<span class="dv">60000</span>, <span class="dv">80000</span>, <span class="dv">100000</span>)</span>
+<span id="cb145-7"><a href></a>); tabulka</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
      id jmeno   vek role             plat
@@ -5184,14 +5191,14 @@ SC_020  42     dx female       FALSE</code></pre>
 <h2>Domácí úkol</h2>
 <ol type="1">
 <li><p>Vytvořte vektor, který v sobě bude mít větu “Tea is better than coffee”. Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor, co bude obsahovat hodnoty “Tea” “is” “better” “than” “coffee”. Nezapomeňte, StackOverflow a jiné stránky jsou vaši nejlepší kamarádi ;)</p></li>
-<li><p>Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.</p></li>
+<li><p>Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe. Pokuste se připojení provést pomocí (nové) funkce, ale pokud naleznete jiný a jednodušší způsob jak toto provést, který jsme si ještě neukazovali, zkuste použít ten :).</p></li>
 <li><p>Kolik odlišných hodnot je v následujícím vektoru?</p></li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href></a><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">45</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">7</span>,</span>
-<span id="cb145-2"><a href></a>  <span class="dv">90</span>, <span class="dv">76</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">46</span>, <span class="dv">45</span>, <span class="dv">7</span>,</span>
-<span id="cb145-3"><a href></a>  <span class="dv">89</span>, <span class="dv">6</span>, <span class="dv">45</span>, <span class="dv">1</span>, <span class="dv">55</span>, <span class="dv">12</span>, <span class="dv">90</span>,</span>
-<span id="cb145-4"><a href></a>  <span class="dv">2</span>, <span class="dv">67</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">34</span>, <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href></a><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">45</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">7</span>,</span>
+<span id="cb147-2"><a href></a>  <span class="dv">90</span>, <span class="dv">76</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">46</span>, <span class="dv">45</span>, <span class="dv">7</span>,</span>
+<span id="cb147-3"><a href></a>  <span class="dv">89</span>, <span class="dv">6</span>, <span class="dv">45</span>, <span class="dv">1</span>, <span class="dv">55</span>, <span class="dv">12</span>, <span class="dv">90</span>,</span>
+<span id="cb147-4"><a href></a>  <span class="dv">2</span>, <span class="dv">67</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">34</span>, <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  3  2  7 45  2  6 11  7 90 76  4  3 46 45  7 89  6 45  1 55 12 90  2 67  2
 [26]  8  7  4 34  6</code></pre>

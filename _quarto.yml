@@ -20,6 +20,10 @@ website:
         icon: envelope-at
         text: Kontakt
         aria-label: ikona dopisní obálky s email symbolem zavináče
+      - href: https://bookings.cloud.microsoft/book/KonzultaceR@cunicz.onmicrosoft.com/?ismsaljsauthenabled
+        icon: people
+        text: Konzultace R
+        aria-label: ikona dvou osob
   page-footer: 
     left: 
       - href: https://www.quarto.org/

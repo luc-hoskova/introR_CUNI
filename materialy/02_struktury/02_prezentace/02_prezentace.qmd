@@ -52,7 +52,6 @@ execute:
     ```
 
 5.  A nešlo by to i jinak?
-
 :::
 
 ## Funkce v R
@@ -498,12 +497,14 @@ rep(c(škoda = "octavia"), 2)
 - používají se hlavně během analýz a vizualizací, lze je ale využít i při kontrole správnosti dat
 
 - ukázka:
+
 ```{r}
 ukazkaFaktory <- as.factor(c("west", "north", "west", "south", "east", "north",
                              "south", "east", "north")); ukazkaFaktory
 ```
 
 - přestože vypadají jako charakterová data, ve skutečně se jedná o integery
+
 ```{r}
 str(ukazkaFaktory)
 ```
@@ -522,16 +523,23 @@ R vytvoří kategorii z každé varianty a následně je seřadí v přehledu od
 str(abc)
 ```
 
-:::: callout-note
+Jednotlivé kategorie je taktéž možné zobrazit pomocí funkce `levels`.
+
+```{r}
+levels(abc)
+```
+
+::: callout-note
 ## Funkce as.x() dokáže měnit více data typů/struktur
 
 Funkce `as.x()` dokážou měnit defacto všechny data typy/struktury:
+
 ```{r}
 as.character(1:4)
 as.numeric("3")
 as.logical("FALSE")
 ```
-::::
+:::
 
 ------------------------------------------------------------------------
 
@@ -828,7 +836,7 @@ Do parametru `dimnames` se vloží list, který bude obsahovat názvy pro každo
 
 ### Seznam (list)
 
-> **objekt složený z jiných objektů které mohou být rozličné délky a datového typu**
+> **jednodimenzionální objekt složený z jiných objektů, které mohou být rozličné délky a datového typu**
 
 - use case
   - třeba argument/funkce `dimnames` (musí se vložit jeden objekt co může mít více data typů)
@@ -1086,8 +1094,7 @@ Data frame si nemusíte pojmenovávat, ale vzhledem k úloze 2) se to hodí.
 #### Řešení úlohy 2)
 
 ::: fragment
-1.  K data frame potřebujeme připojit nový sloupec. Jeden ze způsobů jak to provést (další se naučíme později) je vytvoření nového pojmenovaného vektoru s jeho připojení ke stávajícímu data frame.
-    Vytvořme si proto vektor, který bude obsahovat náhodný výběr boolean hodnot.
+1.  K data frame potřebujeme připojit nový sloupec. Jeden ze způsobů jak to provést (další se naučíme později) je vytvoření nového pojmenovaného vektoru s jeho připojení ke stávajícímu data frame. Vytvořme si proto vektor, který bude obsahovat náhodný výběr boolean hodnot.
 
     ```{r}
     clearSample <- sample(c(TRUE, FALSE),
@@ -1275,8 +1282,9 @@ Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počí
 1.  Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor, co bude obsahovat hodnoty "Tea" "is" "better" "than" "coffee". Nezapomeňte, StackOverflow a jiné stránky jsou vaši nejlepší kamarádi ;)
 
 2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
+Pokuste se připojení provést pomocí (nové) funkce, ale pokud naleznete jiný a jednodušší způsob jak toto provést, který jsme si ještě neukazovali, zkuste použít ten :).
 
-3. Kolik odlišných hodnot je v následujícím vektoru?
+3.  Kolik odlišných hodnot je v následujícím vektoru?
 
 ```{r}
 c(3, 2, 7, 45, 2, 6, 11, 7,
@@ -1284,6 +1292,5 @@ c(3, 2, 7, 45, 2, 6, 11, 7,
   89, 6, 45, 1, 55, 12, 90,
   2, 67, 2, 8, 7, 4, 34, 6)
 ```
-
 
 Skript zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
