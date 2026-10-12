@@ -46,6 +46,8 @@ execute:
 
 ### Úloha 1
 
+Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor, co bude obsahovat hodnoty "Tea" "is" "better" "than" "coffee".
+
 ::: incremental
 1.  Vytvoříme vektor o jedné hodnotě `"Tea is better than coffee"`.
 
@@ -83,6 +85,8 @@ execute:
 
 ### Úloha 2
 
+Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
+
 ::: incremental
 1.  Vytvoříme list podle zadání.
 
@@ -117,6 +121,15 @@ Připojení jde provést pomocí práce s výběrem hodnot - takzvanou indexací
 ------------------------------------------------------------------------
 
 ### Úloha 3
+
+Kolik odlišných hodnot je v následujícím vektoru?
+
+```{r}
+c(3, 2, 7, 45, 2, 6, 11, 7,
+  90, 76, 4, 3, 46, 45, 7,
+  89, 6, 45, 1, 55, 12, 90,
+  2, 67, 2, 8, 7, 4, 34, 6)
+```
 
 ::: incremental
 1.  Vytvořme si vektor obsahující hodnoty, které chceme analyzovat.
@@ -669,7 +682,7 @@ df[2]
 identical(df["strana"], df[2])
 ```
 
-**Při výběru pouze jedné hodnoty u data frame R automaticky usoudí, že se jedá o výběr sloupce na této pozici.**
+**Při výběru pouze jedné hodnoty u data frame R automaticky usoudí, že se jedná o výběr sloupce na této pozici.**
 
 ------------------------------------------------------------------------
 

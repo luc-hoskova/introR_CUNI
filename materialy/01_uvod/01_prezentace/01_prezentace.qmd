@@ -87,6 +87,7 @@ Ano.
 - R se nenaučíte jen poslechem, je potřeba ho aktivně používat
 - během tří hodin jednou za dva týdny není možné stihnout všechno; takto budete mít možnost řízeného samostudia
 - k dispozici budete mít i nepovinné cvičení navíc
+- k úkolům vám vždy budu posílat zpětnou vazbu/opravu - nemusíte mi opravené úkoly znovu posílat, projdeme si to spolu na hodině
 :::
 
 ## Průběh hodin

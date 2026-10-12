@@ -545,7 +545,9 @@ as.logical("FALSE")
 
 ### Pole (array)
 
-> **objekt složený z vektorů stejného datového typu a délky v několika dimenzích**
+> **objekt složený z vektorů stejného datového typu a délky v několika dimenzích**[^1]
+
+[^1]: Pro objekty v R platí, že pokud objekt obsahuje pouze jeden typ hodnot, tak je taktéž nazýván jako atomický vektor
 
 - jakým způsobem si představit dimenze?
   - Jedna dimenze: řada hodnot
@@ -836,7 +838,9 @@ Do parametru `dimnames` se vloží list, který bude obsahovat názvy pro každo
 
 ### Seznam (list)
 
-> **jednodimenzionální objekt složený z jiných objektů, které mohou být rozličné délky a datového typu**
+> **jednodimenzionální objekt složený z jiných objektů, které mohou být rozličné délky a datového typu**[^2]
+
+[^2]: někdy můžete narazit na pojem rekurzivní vektor: aneb objekt, který může mít více data typů a obsahovat další objekty
 
 - use case
   - třeba argument/funkce `dimnames` (musí se vložit jeden objekt co může mít více data typů)
@@ -868,7 +872,7 @@ list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","
 
 - s vektorem nejčastější typ datové struktury v R, se kterým budete pracovat
 
-- tldr; tabulka
+- tldr; tabulka - má dvě dimenze!
 
 - ukázka
 
@@ -1235,13 +1239,13 @@ Každý nahraný a otevřený balíček zabírá místo - pokud bychom automatic
 
 **Jak si balíček nahrajeme do R?**
 
-1.  pomocí funkce `library(název balíčku)`[^1]
+1.  pomocí funkce `library(název balíčku)`[^3]
 
 2.  výběrem skrze rozhraní
 
     ![](images/clipboard-3713960113.png)
 
-[^1]: Dokázal by mi někdo říct, proč při instalaci používáme uvozovky u názvu balíčku, ale ve funkci `library` ne? :\]
+[^3]: Dokázal by mi někdo říct, proč při instalaci používáme uvozovky u názvu balíčku, ale ve funkci `library` ne? :\]
 
 ------------------------------------------------------------------------
 
@@ -1281,8 +1285,7 @@ Nainstalujte si balíček [`tidyverse`](https://tidyverse.org/packages/). Počí
 
 1.  Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Pokuste se přijít na to, jakým způsobem byste mohli z tohoto vektoru vytvořit druhý vektor, co bude obsahovat hodnoty "Tea" "is" "better" "than" "coffee". Nezapomeňte, StackOverflow a jiné stránky jsou vaši nejlepší kamarádi ;)
 
-2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
-Pokuste se připojení provést pomocí (nové) funkce, ale pokud naleznete jiný a jednodušší způsob jak toto provést, který jsme si ještě neukazovali, zkuste použít ten :).
+2.  Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe. Pokuste se připojení provést pomocí (nové) funkce, ale pokud naleznete jiný a jednodušší způsob jak toto provést, který jsme si ještě neukazovali, zkuste použít ten :).
 
 3.  Kolik odlišných hodnot je v následujícím vektoru?
 
