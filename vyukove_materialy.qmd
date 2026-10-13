@@ -30,9 +30,6 @@ Materiály budou zveřejněny vždy před lekcí (v případě výukových mater
 ## 3. Indexace (13.10.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/03_prezentace.html#/title-slide)
-- Příprava
-  - stažený a jasně uložený soubor [bikes.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/bikes.RData)
-- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/03_prezentace.html#/title-slide)
   - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_poznamky.R) průběžných a samostatných cvičení
 - Příprava
   - stažený a jasně uložený soubor [bikes.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/bikes.RData)
