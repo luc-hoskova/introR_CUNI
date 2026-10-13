@@ -27,13 +27,13 @@ matice[matice[,"c"] == 20,]
 
 #PROCVICOVSNI INDEXACE DATA FRAME
 #1
-vzorek[,1] #vektor
-vzorek[[1]] #vektor
-vzorek[1] #df
-vzorek[,1, drop = FALSE] #df
+df[,1] #vektor
+df[[1]] #vektor
+df[1] #df
+df[,1, drop = FALSE] #df
 
 #2
-vzorek[c(1, nrow(vzorek)), ]
+df[c(1, nrow(df)), ]
 
 #PROCVICOVANI $
 #1
