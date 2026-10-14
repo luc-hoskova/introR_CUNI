@@ -1,5 +1,5 @@
 ---
-title: "Struktury a indexace"
+title: "Struktury dat v R"
 subtitle: "Zpracovávání výzkumných dat pomocí jazyka R"
 title-slide-attributes:
   data-background-color: rgb(233, 84, 32)
@@ -117,6 +117,8 @@ seq(to = 10, from = 6)
 
 ------------------------------------------------------------------------
 
+### ***Na doma***
+
 ### Rozdíl mezi `=` a `<-`
 
 Možná jste se setkali s tím, že někdo zapisuje proměnné pomocí operátoru =. Funguje to?
@@ -184,7 +186,7 @@ Na jaké problémy zde narazíme?
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 10,
+countdown::countdown(minutes = 5,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -881,6 +883,8 @@ list(name = c("William Hartnell","Patrick Troughton","Jon Pertwee","Tom Baker","
   data.frame(cbind(1:4, c("MFF", "FHS", NA , "PřF"), c(FALSE, FALSE, TRUE, TRUE)))
 ```
 
+------------------------------------------------------------------------
+
 #### Tvorba data frame
 
 Nejjednoduší působ, jak vytvořit data frame je skrz stejnojmou funkci `data.frame`.
@@ -902,7 +906,7 @@ data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
 ```
 
 ::: fragment
-Nezapomeňte na existenci NA!
+**Nezapomeňte na existenci NA!**
 
 ```{r}
 data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
@@ -935,6 +939,8 @@ data.frame(obec = c("Čeladná", "Jáchymov", "Chýně"),
                okres = c("Frýdek-Mýstek", "Karlovy Vary", "Praha-západ"))
     rownames(lokace) <- c("id_01", "id_02", "id_03")
     ```
+
+------------------------------------------------------------------------
 
 - **sloupce:**
 
@@ -1031,7 +1037,7 @@ colorMaxNm <- c(461, 552, 675, 780)
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 15,
+countdown::countdown(minutes = 10,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
