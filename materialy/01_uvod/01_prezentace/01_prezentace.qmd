@@ -22,7 +22,6 @@ execute:
 
 ::: incremental
 - organizační a administrativní informace ke kurzu
-- krátké seznamovací okénko
 - seznámení se s prostředí IDE RStudio
 - datové typy v R
 - ukládání dat do proměnných
@@ -75,7 +74,7 @@ execute:
 2.  **miniprojekt přes Vánoce**
 3.  **80% docházka**
     - v případě nemoci/neschopnosti se účastnit prezenčně možnost připojení online, ale **prosím choďte pokud můžete**
-    - v případě absence či online výuky domácí práce navíc
+    - v případě absence či online výuky povinné odevzdání cvičení navíc pro danou hodinu
     - je to vše o domluvě :\]
 
 ## Úkoly? To vážně?
@@ -86,7 +85,6 @@ Ano.
 - kontrola pro mě, jestli jste pochopili látku
 - R se nenaučíte jen poslechem, je potřeba ho aktivně používat
 - během tří hodin jednou za dva týdny není možné stihnout všechno; takto budete mít možnost řízeného samostudia
-- k dispozici budete mít i nepovinné cvičení navíc
 - k úkolům vám vždy budu posílat zpětnou vazbu/opravu - nemusíte mi opravené úkoly znovu posílat, projdeme si to spolu na hodině
 :::
 
@@ -108,7 +106,7 @@ Ano.
 
 ## Práce s materiály
 
-Před každou hodinou (maximálně pondělí ráno daného týdne) bude **do výukových materiálů nahrána prezentace k dané lekci, stejně tak veškerá potřebná data.**
+Před každou hodinou (maximálně pondělí ráno daného týdne) bude **do výukových materiálů nahrána prezentace k dané lekci, stejně tak veškerá potřebná data co je třeba si stáhnout.**
 
 Pokud bude potřeba abyste si pro práci v hodině nějaká data stáhli, učiňte tak prosím a **uložte si je do dedikované složky** na vašem počítači.
 
@@ -121,18 +119,6 @@ Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky
 1.  U každé hodiny budou **cvičení na doma navíc**. Bude se jednat o směs již probrané látky a problémů na zapřemýšlení. Jsou nepovinné - budete k nim mít i řešení, ale klidně mi je můžete poslat pro kontrolu / zpětnou vazbu.
 
 2.  V horním menu stránek kurzu naleznete odkaz na **rezervační stránku konzultací**. Pokud něco budete potřebovat probrat, ať již obsah kurzu či pomoc s R, můžete mi bud´ napsat a nebo si zde přímo rezervovat termín. Součástí jsou i všeobecné R konzultace, pokud víte, že by je vaši kolegové využili, klidně odkaz předejte.
-
-# Představovací kolečko
-
-1.  jméno
-
-2.  obor
-
-3.  zkušenosti s programováním (potažmo R)
-
-4.  zkušenosti se statistikou
-
-5.  co se chcete naučit
 
 ## Programovací jazyk R
 
@@ -534,18 +520,18 @@ vek <- 13
 povoleni <- FALSE
 ```
 
+Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory od 65 let, pro děti a studenty až do 26 let včetně.\
+Ověř, zda má Franta na tuto slevu nárok.
+
+```{webr-r}
+
+```
+
 ------------------------------------------------------------------------
 
 ## Samostatné cvičení
 
-1.  Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory od 65 let, pro děti a studenty až do 26 let včetně.\
-    Ověř, zda má Franta na tuto slevu nárok.
-
-2.  Studentstvo může získat stipendium za následujících dvou situací: mají průměr známek menší než 1.8 a zároveň absolvovali alespoň 80 % docházky, a nebo pokud mají potřebný průměr a reprezentují školu na soutěžích.\
-    Saša má průměr 1.7, zameškáno 3 hodin z 10 a pravidelně vyhrává biologickou olympiádu.\
-    Zjisti, zda má Saša právo na stipendium.
-
-3.  Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní hodnocení na lepším stupni než 5 a v posledním testu získali jiný počet než nula bodů. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy pokud vypracovali seminární práci navíc a v písemce měli alespoň 50 bodů.\
+Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní hodnocení na lepším stupni než 5 a v posledním testu získali jiný počet než nula bodů. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy pokud vypracovali seminární práci navíc a v písemce měli alespoň 50 bodů.\
     Julie má dosavadní hodnocení sice na 5, ani písemka se jí nepovedla a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
     Dostane Julie zápočet?
 
@@ -560,56 +546,12 @@ countdown::countdown(minutes = 10,
 
 ------------------------------------------------------------------------
 
-### Řešení úlohy 1)
-
-Má Franta nárok na slevu?
-
-::: fragment
-```{r}
-53 <= 26 | 53 >= 65
-```
-:::
-
-::: fragment
-Franta nemá nárok na slevu.
-:::
-
-------------------------------------------------------------------------
-
-### Řešení úlohy 2)
-
-Má Saša nárok na stipendium?
-
-::: fragment
-Nejdříve si jednotlivé hodnoty uložíme.
-
-```{r}
-prumer <- 1.7
-dochazka <- 70
-reprezentace <- TRUE
-```
-:::
-
-::: fragment
-Následně si je porovnáme s hodnotami podmínek.
-
-```{r}
-prumer < 1.8 & dochazka > 80 | prumer < 1.8 & reprezentace == TRUE
-```
-:::
-
-::: fragment
-Saša má právo na stupendium.
-:::
-
-------------------------------------------------------------------------
-
-### Řešení úlohy 3)
+### Řešení
 
 Dostane Julie zápočet?
 
 ::: fragment
-Stejně jako u minulého cvičení, i zde si uložíme hodnoty do proměnných.
+Pro jednodušší práci s nimi si uložíme hodnoty do proměnných.
 
 ```{r}
 znamka <- 5
@@ -776,14 +718,14 @@ Můžete svým kolegům tak například poslat již vyčištěná a připravená
 
 ## Domácí práce
 
-1.  Vytvořte RProjekt
-
-2.  Nahrajte do globálního prostředí proměnné z `promenne.RData`
-
-3.  Zjistěte, kolik zaměstnanců lze z rozpočtu platit po uvedenou dobu měsíců
+1.  Vytvořte RProjekt. Nahrajte do globálního prostředí proměnné z `promenne.RData`. Pomocí nich zjistěte, kolik zaměstnanců lze z rozpočtu platit po uvedenou dobu měsíců
 
     plat = jaký je plat jednoho zaměstnance za jeden měsíc\
     pocetMesicu = kolik měsíců je potřeba všechny zaměstnance platit\
     rozpocet = jaký finanční rozpočet máte na dobu pocetMesicu k dispozici
 
-4.  RProjekt s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+2.  Studentstvo může získat stipendium za následujících dvou situací: mají průměr známek menší než 1.8 a zároveň absolvovali alespoň 80 % docházky, a nebo pokud mají potřebný průměr a reprezentují školu na soutěžích.\
+    Saša má průměr 1.7, zameškáno 3 hodin z 10 a pravidelně vyhrává biologickou olympiádu.\
+    Zjisti, zda má Saša právo na stipendium.
+
+3.  Zazipovanou složku RProjektu se skriptem a RData souborem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)

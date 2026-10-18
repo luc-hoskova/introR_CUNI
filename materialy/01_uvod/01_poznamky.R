@@ -23,17 +23,15 @@ vek <- 13
 povoleni <- FALSE
 vek >= 15 | povoleni == TRUE
 
-#SAMOSTATNE CVICENI OPERATORY
-#1
+#4
+franta <- 53
+studenti <- 26
+seniori <- 65
+
+franta <= studenti | franta >= seniori
+
 53 <= 26 | 53 >= 65
-
-#2
-prumer <- 1.7
-dochazka <- 70
-reprezentace <- TRUE
-prumer < 1.8 & dochazka > 80 | prumer < 1.8 & reprezentace == TRUE
-
-#3
+#SAMOSTATNE CVICENI OPERATORY
 znamka <- 5
 pocetBodu <- 17
 semestralka <- TRUE
