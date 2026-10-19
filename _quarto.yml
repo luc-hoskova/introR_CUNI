@@ -10,7 +10,13 @@ website:
       - href: sylabus.qmd
         icon: calendar-event
         aria-label: ikona kalendáře
+      - href: sylabus_ls.qmd
+        icon: calendar-event
+        aria-label: ikona kalendáře
       - href: vyukove_materialy.qmd
+        icon: book
+        aria-label: ikona učebnice
+      - href: vyukove_materialy_ls.qmd
         icon: book
         aria-label: ikona učebnice
     right:

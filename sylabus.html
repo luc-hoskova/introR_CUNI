@@ -2,20 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sylabus – Zpracovávání výzkumných dat v R</title>
+<title>Sylabus ZS/2026 – Zpracovávání výzkumných dat v R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e130389ccf8248c03a75670d0231ebcc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-261f789220898115d1f0b2d66d52cc9d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f91f919386e51a4f327d432d624072e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-faa6a4e2aabe4245d88ebe29e1d6b5f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,12 +97,22 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link active" href="./sylabus.html" aria-current="page"> <i class="bi bi-calendar-event" role="img" aria-label="ikona kalendáře">
 </i> 
-<span class="menu-text">Sylabus</span></a>
+<span class="menu-text">Sylabus ZS/2026</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./sylabus_ls.html"> <i class="bi bi-calendar-event" role="img" aria-label="ikona kalendáře">
+</i> 
+<span class="menu-text">Sylabus LS/2027</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./vyukove_materialy.html"> <i class="bi bi-book" role="img" aria-label="ikona učebnice">
 </i> 
-<span class="menu-text">Výukové materiály</span></a>
+<span class="menu-text">Výukové materiály ZS/2026</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./vyukove_materialy_ls.html"> <i class="bi bi-book" role="img" aria-label="ikona učebnice">
+</i> 
+<span class="menu-text">Výukové materiály LS/2027</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -152,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sylabus</h1>
+<h1 class="title">Sylabus ZS/2026</h1>
 </div>
 
 
@@ -195,7 +208,6 @@ ul.task-list li input[type="checkbox"] {
 <li>indexace pomocí base R</li>
 <li>indexace pomocí <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a></li>
 <li>hodnoty vs struktury</li>
-<li>pipes</li>
 </ul>
 </section>
 <section id="transformace-dat-27.10.2026" class="level2">
@@ -203,9 +215,9 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>načítání dat do R</li>
 <li>kontrola dat</li>
+<li>pipes</li>
 <li>balíček <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a></li>
 <li>tidy data</li>
-<li>čas a datum</li>
 </ul>
 </section>
 <section id="funkce-10.11.2026" class="level2">
@@ -216,6 +228,7 @@ ul.task-list li input[type="checkbox"] {
 <li>cykly</li>
 <li>funkce apply() a celá <em>apply</em> rodina funkcí</li>
 <li>vektorizace vs.&nbsp;itinerární přístup</li>
+<li>čas a datum</li>
 </ul>
 </section>
 <section id="základy-vizualizace-dat-a-práce-s-grafy-v-r-24.11.2026" class="level2">

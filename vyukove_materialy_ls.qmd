@@ -1,0 +1,13 @@
+---
+title: "Výukové materiály LS/2027"
+---
+
+V této sekci naleznou účastníci výukové a podpůrné materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.
+
+Materiály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení).
+
+## Základní materiály
+
+- kde [stáhnout R](https://cloud.r-project.org/)
+- kde [stáhnout RStudio (Desktop)](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
+- [tahák](https://luc-hoskova.github.io/introR_CUNI/materialy/tahak_klavesy.pdf) klávesových zkratek symbolů potřebných pro práci s R

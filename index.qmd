@@ -52,7 +52,13 @@ V případě nemoci či jiné neočekávané situace, která by způsobila dlouh
 
 ## Místo a čas výuky
 
-Výuka bude probíhat **každé druhé úterý** v měsící v průběhu podzimního semestru (**půlka** **září až začátek února**). Termíny jednotlivých lekcí jsou vypsány v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus.html).
+### Letní semestr 2027
+Výuka bude probíhat **každou druhou středu** v měsící v průběhu letního semestru (**konec ledna až půlka června**). Termíny jednotlivých lekcí jsou vypsány v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus_ls.html).
+
+Čas výuky je **09:00-12:00** (včetně přestávek).
+
+### Zimní semestr 2026
+Výuka bude probíhat **každé druhé úterý** v měsící v průběhu podzimního semestru (**půlka září až začátek února**). Termíny jednotlivých lekcí jsou vypsány v [sylabu](https://luc-hoskova.github.io/introR_CUNI/sylabus.html).
 
 Čas výuky je **09:00-12:00** (včetně přestávek).
 

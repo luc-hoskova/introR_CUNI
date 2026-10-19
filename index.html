@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e130389ccf8248c03a75670d0231ebcc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-261f789220898115d1f0b2d66d52cc9d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f91f919386e51a4f327d432d624072e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-faa6a4e2aabe4245d88ebe29e1d6b5f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,12 +97,22 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./sylabus.html"> <i class="bi bi-calendar-event" role="img" aria-label="ikona kalendáře">
 </i> 
-<span class="menu-text">Sylabus</span></a>
+<span class="menu-text">Sylabus ZS/2026</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./sylabus_ls.html"> <i class="bi bi-calendar-event" role="img" aria-label="ikona kalendáře">
+</i> 
+<span class="menu-text">Sylabus LS/2027</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./vyukove_materialy.html"> <i class="bi bi-book" role="img" aria-label="ikona učebnice">
 </i> 
-<span class="menu-text">Výukové materiály</span></a>
+<span class="menu-text">Výukové materiály ZS/2026</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./vyukove_materialy_ls.html"> <i class="bi bi-book" role="img" aria-label="ikona učebnice">
+</i> 
+<span class="menu-text">Výukové materiály LS/2027</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -138,7 +151,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#náplň-lekcí" id="toc-náplň-lekcí" class="nav-link" data-scroll-target="#náplň-lekcí">Náplň lekcí</a></li>
   <li><a href="#komu-je-kurz-určen" id="toc-komu-je-kurz-určen" class="nav-link" data-scroll-target="#komu-je-kurz-určen">Komu je kurz určen?</a></li>
   <li><a href="#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu" id="toc-podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu" class="nav-link" data-scroll-target="#podmínky-pro-úspěšné-dokončení-kurzu-a-získání-mikrocertifikátu">Podmínky pro úspěšné dokončení kurzu a získání mikrocertifikátu</a></li>
-  <li><a href="#místo-a-čas-výuky" id="toc-místo-a-čas-výuky" class="nav-link" data-scroll-target="#místo-a-čas-výuky">Místo a čas výuky</a></li>
+  <li><a href="#místo-a-čas-výuky" id="toc-místo-a-čas-výuky" class="nav-link" data-scroll-target="#místo-a-čas-výuky">Místo a čas výuky</a>
+  <ul class="collapse">
+  <li><a href="#letní-semestr-2027" id="toc-letní-semestr-2027" class="nav-link" data-scroll-target="#letní-semestr-2027">Letní semestr 2027</a></li>
+  <li><a href="#zimní-semestr-2026" id="toc-zimní-semestr-2026" class="nav-link" data-scroll-target="#zimní-semestr-2026">Zimní semestr 2026</a></li>
+  </ul></li>
   <li><a href="#návod-na-přihlášení" id="toc-návod-na-přihlášení" class="nav-link" data-scroll-target="#návod-na-přihlášení">Návod na přihlášení</a></li>
   </ul>
 </nav>
@@ -227,7 +244,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="místo-a-čas-výuky" class="level2">
 <h2 class="anchored" data-anchor-id="místo-a-čas-výuky">Místo a čas výuky</h2>
-<p>Výuka bude probíhat <strong>každé druhé úterý</strong> v měsící v průběhu podzimního semestru (<strong>půlka</strong> <strong>září až začátek února</strong>). Termíny jednotlivých lekcí jsou vypsány v <a href="https://luc-hoskova.github.io/introR_CUNI/sylabus.html">sylabu</a>.</p>
+<section id="letní-semestr-2027" class="level3">
+<h3 class="anchored" data-anchor-id="letní-semestr-2027">Letní semestr 2027</h3>
+<p>Výuka bude probíhat <strong>každou druhou středu</strong> v měsící v průběhu letního semestru (<strong>konec ledna až půlka června</strong>). Termíny jednotlivých lekcí jsou vypsány v <a href="https://luc-hoskova.github.io/introR_CUNI/sylabus_ls.html">sylabu</a>.</p>
+<p>Čas výuky je <strong>09:00-12:00</strong> (včetně přestávek).</p>
+</section>
+<section id="zimní-semestr-2026" class="level3">
+<h3 class="anchored" data-anchor-id="zimní-semestr-2026">Zimní semestr 2026</h3>
+<p>Výuka bude probíhat <strong>každé druhé úterý</strong> v měsící v průběhu podzimního semestru (<strong>půlka září až začátek února</strong>). Termíny jednotlivých lekcí jsou vypsány v <a href="https://luc-hoskova.github.io/introR_CUNI/sylabus.html">sylabu</a>.</p>
 <p>Čas výuky je <strong>09:00-12:00</strong> (včetně přestávek).</p>
 <p>Výuka je <strong>pouze v prezenční formě</strong> a odehrává se v prostorách <strong>Ústřední Knihovny UK</strong>.</p>
 <div class="callout callout-style-default callout-note callout-empty-content callout-titled">
@@ -250,6 +274,7 @@ José Martího 407<br>
 Praha</p>
 </blockquote>
 <p>Učebna má k dispozici náhradní notebooky v případě potřeby výjimečného zapůjčení během lekce.</p>
+</section>
 </section>
 <section id="návod-na-přihlášení" class="level2">
 <h2 class="anchored" data-anchor-id="návod-na-přihlášení">Návod na přihlášení</h2>
