@@ -1,0 +1,89 @@
+---
+title: "Sylabus LS/2027"
+---
+
+## 1. Úvodní hodina (20.01.2027)
+
+-   orientace v IDE [RStudio](https://posit.co/download/rstudio-desktop)
+-   projekty a organizace skriptů
+-   nápověda
+-   operátory
+-   ukládání do proměnných
+-   datové typy v R
+
+## 2. Datové struktury (03.02.2027)
+
+-   úvod do funkcí
+-   datové struktury v R
+-   faktory
+-   práce s balíčky
+
+## 3. Indexace (17.02.2027)
+
+-   indexace pomocí base R
+-   indexace pomocí [`dplyr`](https://dplyr.tidyverse.org/)
+-   hodnoty vs struktury
+
+## 4. Transformace dat (03.03.2027)
+
+-   načítání dat do R
+-   pipes
+-   kontrola dat
+-   balíček [`dplyr`](https://dplyr.tidyverse.org/)
+-   tidy data
+
+## 5. Funkce (17.03.2027)
+
+-   syntax funkce
+-   tvorba vlastní funkce
+-   cykly
+-   funkce apply() a celá *apply* rodina funkcí
+-   vektorizace vs. itinerární přístup
+-   čas a datum
+
+## 6. Základy vizualizace dat a práce s grafy v R (31.03.2027)
+
+-   přemýšlení nad účelem tvorby grafu
+-   bodové, čárové a sloupcové grafy
+-   základní vizualizace v R
+-   úvod do vizualizace pomocí balíčku [`ggplot2`](https://ggplot2.tidyverse.org/)
+
+## 7. Pokročilá vizualizace dat (14.04.2027)
+
+-   boxploty
+-   histogramy
+-   denseploty
+-   heat mapy
+-   violin grafy
+-   časové řady
+
+## 8. Mapy, 3D a interaktivní grafy (28.04.2027)
+
+-   prostorová data v R
+-   bodové mapy
+-   chloropleth mapy
+-   3D grafy
+-   interaktivní grafy
+
+## 9. Typy dat a deskriptivní statistika (12.05.2027)
+
+-   kvalitativní vs kvantitivní data
+-   nominální, ordinální, intervalová, poměrová, diskrétní a spojitá data
+-   základy popisné statistiky
+-   průměr, medián, mode
+-   míry variability
+
+## 10. Úvod do inferenční statistiky (26.05.2027)
+
+-   populace, výběr
+-   určování normality dat
+-   parametrické testy
+-   t-testy
+
+## 11. Analýza kategoriálních dat, korelace a regrese (19.06.2027)
+
+-   kontingenční tabulka
+-   neparametrické testy
+-   chí-kvadrát
+-   Pearson/Spearman korelace
+-   regrese

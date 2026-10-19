@@ -236,5 +236,89 @@
     "title": "Výukové materiály",
     "section": "3. Indexace (13.10.2026)",
     "text": "3. Indexace (13.10.2026)\n\nPrezentace\n\nkód průběžných a samostatných cvičení\n\nPříprava\n\nstažený a jasně uložený soubor bikes.RData\n\nCvičení navíc\n\nzadání\nřešení"
+  },
+  {
+    "objectID": "sylabus_ls.html",
+    "href": "sylabus_ls.html",
+    "title": "Sylabus LS/2027",
+    "section": "",
+    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\noperátory\nukládání do proměnných\ndatové typy v R"
+  },
+  {
+    "objectID": "sylabus_ls.html#úvodní-hodina-20.01.2027",
+    "href": "sylabus_ls.html#úvodní-hodina-20.01.2027",
+    "title": "Sylabus LS/2027",
+    "section": "",
+    "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\noperátory\nukládání do proměnných\ndatové typy v R"
+  },
+  {
+    "objectID": "sylabus_ls.html#datové-struktury-03.02.2027",
+    "href": "sylabus_ls.html#datové-struktury-03.02.2027",
+    "title": "Sylabus LS/2027",
+    "section": "2. Datové struktury (03.02.2027)",
+    "text": "2. Datové struktury (03.02.2027)\n\núvod do funkcí\ndatové struktury v R\nfaktory\npráce s balíčky"
+  },
+  {
+    "objectID": "sylabus_ls.html#indexace-17.02.2027",
+    "href": "sylabus_ls.html#indexace-17.02.2027",
+    "title": "Sylabus LS/2027",
+    "section": "3. Indexace (17.02.2027)",
+    "text": "3. Indexace (17.02.2027)\n\nindexace pomocí base R\nindexace pomocí dplyr\nhodnoty vs struktury"
+  },
+  {
+    "objectID": "sylabus_ls.html#transformace-dat-03.03.2027",
+    "href": "sylabus_ls.html#transformace-dat-03.03.2027",
+    "title": "Sylabus LS/2027",
+    "section": "4. Transformace dat (03.03.2027)",
+    "text": "4. Transformace dat (03.03.2027)\n\nnačítání dat do R\npipes\nkontrola dat\nbalíček dplyr\ntidy data"
+  },
+  {
+    "objectID": "sylabus_ls.html#funkce-17.03.2027",
+    "href": "sylabus_ls.html#funkce-17.03.2027",
+    "title": "Sylabus LS/2027",
+    "section": "5. Funkce (17.03.2027)",
+    "text": "5. Funkce (17.03.2027)\n\nsyntax funkce\ntvorba vlastní funkce\ncykly\nfunkce apply() a celá apply rodina funkcí\nvektorizace vs. itinerární přístup\nčas a datum"
+  },
+  {
+    "objectID": "sylabus_ls.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-31.03.2027",
+    "href": "sylabus_ls.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-31.03.2027",
+    "title": "Sylabus LS/2027",
+    "section": "6. Základy vizualizace dat a práce s grafy v R (31.03.2027)",
+    "text": "6. Základy vizualizace dat a práce s grafy v R (31.03.2027)\n\npřemýšlení nad účelem tvorby grafu\nbodové, čárové a sloupcové grafy\nzákladní vizualizace v R\núvod do vizualizace pomocí balíčku ggplot2"
+  },
+  {
+    "objectID": "sylabus_ls.html#pokročilá-vizualizace-dat-14.04.2027",
+    "href": "sylabus_ls.html#pokročilá-vizualizace-dat-14.04.2027",
+    "title": "Sylabus LS/2027",
+    "section": "7. Pokročilá vizualizace dat (14.04.2027)",
+    "text": "7. Pokročilá vizualizace dat (14.04.2027)\n\nboxploty\nhistogramy\ndenseploty\nheat mapy\nviolin grafy\nčasové řady"
+  },
+  {
+    "objectID": "sylabus_ls.html#mapy-3d-a-interaktivní-grafy-28.04.2027",
+    "href": "sylabus_ls.html#mapy-3d-a-interaktivní-grafy-28.04.2027",
+    "title": "Sylabus LS/2027",
+    "section": "8. Mapy, 3D a interaktivní grafy (28.04.2027)",
+    "text": "8. Mapy, 3D a interaktivní grafy (28.04.2027)\n\nprostorová data v R\nbodové mapy\nchloropleth mapy\n3D grafy\ninteraktivní grafy"
+  },
+  {
+    "objectID": "sylabus_ls.html#typy-dat-a-deskriptivní-statistika-12.05.2027",
+    "href": "sylabus_ls.html#typy-dat-a-deskriptivní-statistika-12.05.2027",
+    "title": "Sylabus LS/2027",
+    "section": "9. Typy dat a deskriptivní statistika (12.05.2027)",
+    "text": "9. Typy dat a deskriptivní statistika (12.05.2027)\n\nkvalitativní vs kvantitivní data\nnominální, ordinální, intervalová, poměrová, diskrétní a spojitá data\nzáklady popisné statistiky\nprůměr, medián, mode\nmíry variability"
+  },
+  {
+    "objectID": "sylabus_ls.html#úvod-do-inferenční-statistiky-26.05.2027",
+    "href": "sylabus_ls.html#úvod-do-inferenční-statistiky-26.05.2027",
+    "title": "Sylabus LS/2027",
+    "section": "10. Úvod do inferenční statistiky (26.05.2027)",
+    "text": "10. Úvod do inferenční statistiky (26.05.2027)\n\npopulace, výběr\nurčování normality dat\nparametrické testy\nt-testy"
+  },
+  {
+    "objectID": "sylabus_ls.html#analýza-kategoriálních-dat-korelace-a-regrese-19.06.2027",
+    "href": "sylabus_ls.html#analýza-kategoriálních-dat-korelace-a-regrese-19.06.2027",
+    "title": "Sylabus LS/2027",
+    "section": "11. Analýza kategoriálních dat, korelace a regrese (19.06.2027)",
+    "text": "11. Analýza kategoriálních dat, korelace a regrese (19.06.2027)\n\nkontingenční tabulka\nneparametrické testy\nchí-kvadrát\nPearson/Spearman korelace\nregrese"
   }
 ]
