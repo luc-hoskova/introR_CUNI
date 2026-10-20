@@ -80,7 +80,7 @@ title: "Sylabus LS/2027"
 -   parametrické testy
 -   t-testy
 
-## 11. Analýza kategoriálních dat, korelace a regrese (19.06.2027)
+## 11. Analýza kategoriálních dat, korelace a regrese (09.06.2027)
 
 -   kontingenční tabulka
 -   neparametrické testy

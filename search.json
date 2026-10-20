@@ -334,5 +334,12 @@
     "title": "Výukové materiály LS/2027",
     "section": "Základní materiály",
     "text": "Základní materiály\n\nkde stáhnout R\nkde stáhnout RStudio (Desktop)\ntahák klávesových zkratek symbolů potřebných pro práci s R"
+  },
+  {
+    "objectID": "sylabus_ls.html#analýza-kategoriálních-dat-korelace-a-regrese-09.06.2027",
+    "href": "sylabus_ls.html#analýza-kategoriálních-dat-korelace-a-regrese-09.06.2027",
+    "title": "Sylabus LS/2027",
+    "section": "11. Analýza kategoriálních dat, korelace a regrese (09.06.2027)",
+    "text": "11. Analýza kategoriálních dat, korelace a regrese (09.06.2027)\n\nkontingenční tabulka\nneparametrické testy\nchí-kvadrát\nPearson/Spearman korelace\nregrese"
   }
 ]
