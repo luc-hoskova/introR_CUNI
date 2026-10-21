@@ -69,16 +69,6 @@ lst$deti$dite2 <- list(
   jmeno = "Jana",
   prijmeni = "Novotná")
 
-#PROCVICOVANI PIPES
-#1
-str(chickwts)
-levels(chickwts$feed)
-filter(chickwts, feed == "soybean")%>% select(weight) %>% min()
-
-#2
-str(quakes)
-quakes %>% filter(mag > median(mag)) %>% filter(depth == max(depth)) %>% select(depth)
-
 ############################
 #SAMOSTATNE CVICENI
 ############################

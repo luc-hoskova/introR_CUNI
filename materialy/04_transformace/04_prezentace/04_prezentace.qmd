@@ -22,30 +22,27 @@ execute:
   cache: true
 ---
 
-```{r}
-#| context: setup
-library(dplyr)
-```
-
 ## Program
 
 ::: incremental
 - opakování z minulé hodiny
 - kontrola domácího úkolu
-- nahrávání dat
 - pipes
-- chybějící hodnoty
-- faktory
-- změna datatypů/struktur
-- balíček `dplyr`
-  - filtrování
-  - balíček `dplyr`
-- chybějící hodnoty
+- nahrávání dat
+- transformace dat
+  - úprava jmen sloupců
+  - chybějící hodnoty
 :::
 
 ------------------------------------------------------------------------
 
 ## Kontrola domácí práce
+
+```{webr-r}
+#| context: setup
+library(dplyr)
+library(readr)
+```
 
 ### Úloha 1
 
@@ -77,85 +74,78 @@ Vyber z následujícího vektoru každou pátou hodnotu.
 
 ------------------------------------------------------------------------
 
-## Nahrávání dat
+### Úloha 2
 
-### base R
+Z datasetu (co je nahraný v R) jménem `airquality`, který obsahuje informace o měření kvality vzduchu v NYC, vyber hodnoty ze sloupce `Temp` z prvního týdne v květnu.
 
-#### header
+::: fragment
+1.  Zobrazme si prvních několik řádků a podívejme se na strukturu.
 
-#### sep
+    ```{r}
+    str(airquality)
+    head(airquality)
+    ```
+:::
 
-#### dec
+::: fragment
+2.  Vyfiltrujeme hodnoty, které byly naměřeny první týden v květnu.
 
-```{r}
-dataTxt <- read.delim(file = "intro_data.txt",
-                       header = TRUE,
-                       sep = "",
-                       dec = ".",
-                       na.strings = "NA")
-```
+    ```{r}
+    kveten <- filter(airquality, Month == 5, Day %in% 1:7); kveten
+    ```
+:::
 
-```{r}
-dataTxt2 <- read.delim(file = "intro_data.txt")
-```
+::: fragment
+3.  Vyberme si z nich sloupec `Temp`.
 
-```{r}
-identical(dataTxt, dataTxt2)
-```
+    ```{r}
+    select(kveten, Temp)
+    ```
+:::
 
-Proč?
+::: fragment
+3.  A vyjmeme z nej pouze hodnoty.
 
-Podívejme se do nápovědy pro tuto funkci.
-
-> **série za sebou jdoucích hodnot totožného datového typu**
-
-- vektor o jedné hodnotě je někdy nazýván *atomický vektor* či *skalár*
-
-- jednodimenzionální (důležité hlavně při vyhledávání)
-
-- při použití více datových typů dochází k nucené konverzi do jednotného typu
-
-```{r}
-seq(1, 10, 2)
-```
+    ```{r}
+    unlist(select(kveten, Temp))
+    ```
+:::
 
 ------------------------------------------------------------------------
 
-### Balíček `readr`
+### Úloha 3
 
-- je v tidyverse
+K datasetu `airquality` přidejte nový sloupec s názvem `Weather` který bude obsahovat informaci (text `hot`), zda hodnoty ve sloupci `Temp` jsou vyšší než 70. Pokud není vyšší jako 70, bude obsahovat text `cold`.
 
-  - rozestup vždy po jedné
+::: fragment
+1.  Pomocí symbolu `$` vytvoříme nový sloupec `Weather`, a přiřadíme do něj hodnotu `hot` v případě, že pro daný řádek je hodnota ves loupci `Temp`nižší jak 70.
 
-```{r}
--5:3
-0.65:9.18
-```
+    ```{r}
+    airquality$Weather[airquality$Temp > 70] <- "hot"
+    airquality
+    ```
+:::
 
-- funkce `c` spojí hodnoty jakéhokoliv typu do vektoru
+::: fragment
+2.  Totéž provedeme s hodnotou `cold`, pro kterou platí podmínka `Temp` \<= 70.
+
+    ```{r}
+    airquality$Weather[airquality$Temp <= 70] <- "cold"
+    airquality
+    ```
+:::
 
 ------------------------------------------------------------------------
 
-### Balíček `readxl` - ach ty Excely...
+## Bonus
 
-- je v tidyverse
+Pokuste se zjistit, jak si v nápovědě můžete najít seznam nahraných datasetů v R (`iris`, `cars`, `dplyr::starwars` a jiné)
 
-ff
+::: fragment
+Pro vyhledání můžete použít následující funkci:
 
-![](images/Nový%20projekt.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Samostatné cvičení
-
-```{r}
-#| echo: false
-countdown::countdown(minutes = 5,
-                     seconds = 0,
-                     start_immediately = FALSE,
-                     warn_when = 120,
-                     top = "0")
-```
+`library(help = "datasets")`
+:::
 
 ------------------------------------------------------------------------
 
@@ -186,6 +176,7 @@ Jak tento problém vyřešit?
 ------------------------------------------------------------------------
 
 ![](images/clipboard-2416185210.png){fig-align="center"}
+
 
 ------------------------------------------------------------------------
 
@@ -293,6 +284,266 @@ Jaká byla největší hloubka epicentra zemětřesení z datasetu `quakes`, kte
 
 - pipes jsou lineární; pokud pracujete s více jak jedním výstupem, buď to budete mít krkolomné nebo vám kód vůbec nebude fungovat
 :::
+
+------------------------------------------------------------------------
+
+## Nahrávání dat
+
+Nahrávání dat je jedna z klíčových znalostí, které je potřeba při práci v R znát.
+
+Stejně jako u indexace, tak i zde existují jak základní příkazy v `baseR`, tak i funkce ve secializovaných balíčcích (k tomu ale později).
+
+::: callout-warning
+## Nastavení working directory
+
+Před nahráváním dat se ujistěte, že máte nastavenou cestu do adresáře, ze kterého R může čerpat soubory.
+
+**Pokud máte vytvořený R projekt, který se nachází ve stejné složce jako soubory, tato starost vám odpadá.**
+:::
+
+------------------------------------------------------------------------
+
+### funkce `read.table`
+
+**Základní funkce k načítání tabulkových dat do R.**
+
+Má v sobě několik podtypů pro specifické formáty:
+
+- `read.table` = hodnoty oddělené mezerou
+- `read.csv` = hodnoty oddělené čárkou
+- `read.delim` = hodnoty oddělené tabulátorem
+
+**Co to znamená, že jsou hodnoty oddělené?**
+
+------------------------------------------------------------------------
+
+#### Jak má R se souborem pracovat?
+
+Všechny funkce, které nahrávají data do R, v sobě obsahují argumenty, pomocí kterých určujeme, jakým způsobem mají bát data načtena.
+
+- `file`: jaký je název souboru? (`"nazev.zkratkaFormatu"`)
+- `header`: je první řádek hlavička? (`TRUE / FALSE`)
+- `sep`: co odděluje jednotlivé hodnoty? (`" "` `","` `"\t"` `";"`...)
+- `dec`: jak určujeme desetinou hodnotu? (`"."` `","` `";"`...)
+- a mnoho jiných...
+
+Když můžeme určit separátor, proč existují specifické funkce?
+
+------------------------------------------------------------------------
+
+Nahrání zkušebního souboru s určením argumentů:
+
+```{r}
+dataTxt <- read.delim(file = "intro_data.txt",
+                       header = TRUE,
+                       sep = "", #co je separator
+                       dec = ".", #co je desetinna carka
+                       na.strings = "NA") #co jsou chybejici hodnoty
+```
+
+Nahrání zkušebního souboru bez určení argumentů:
+
+```{r}
+dataTxt2 <- read.delim(file = "intro_data.txt")
+```
+
+Jsou tyto dva soubory identické?
+
+```{r}
+identical(dataTxt, dataTxt2)
+```
+
+::: callout-important
+## Nezapomeňte na defaultní nastavení arguentů funkce!
+
+Spousta funkcí má u argumentů nastavené nějaké defaultní (nejčastěji používané) hodnoty.
+
+Je proto zbytečné arguemnty vypisovat znovu, pokud se nijak neliší od defaultního nastavení.
+:::
+
+Řešení otázky "proč existují specifické funkce?"
+
+**Protože jsme lenoši.**
+
+------------------------------------------------------------------------
+
+#### argument `file`
+
+- vždy musí být v uvozovkách a obsahovat přesný název souboru, včetně jeho formátové koncovky
+
+- je potřeba, aby obsahoval **přesný popis cesty** k tomuto souboru
+
+  - Co když máme v projektu dedikovanou **podsložku** na data?
+
+```{r}
+dataUvnitrPodslozkyvProjektu <- read.delim("data/skrytadata.txt")
+```
+
+- Co když si potřebujeme vytáhnout **soubor mimo projekt**, a nebo nemáme projekt ani nastavený working directory?
+
+```{r}
+dataBezUrcenehoWD <- read.delim("C:/Users/Lucie Hošková/Desktop/introR_CUNI/materialy/04_transformace/04_prezentace/data/skrytadata.txt")
+```
+
+::: callout-note
+## Absolutní a relativní cesta
+
+Nepamatujete si, jak přesně se používají relativní / absolutní cesty a projekty? Podívejte se znovu do první lekce, sekce [Working depository](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/01_prezentace/01_prezentace.html#/working-directory) a [RProjekty](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/01_prezentace/01_prezentace.html#/rprojekty).
+:::
+
+------------------------------------------------------------------------
+
+#### argument `sep`
+
+Separátor je symbol či série symbolů, které **určují ohraničení jednotlivých sloupců**.
+
+Jaké máme různé druhy separátorů?
+
+- `""`: white space, aka mezera/mezery
+- `""`: coma, čárka - CSV je Coma Separated Values
+- `"\t"`: tabulátor
+- `";"`: semicolon, středník
+
+Toto jsou nejčastější typy separátorů, **můžete se ovšem setkat i s jinými individualizovanými separátory**.
+
+Detailněji si tato individualizovaná nastavení ukážeme v následující sekci.
+
+------------------------------------------------------------------------
+
+#### argument `dec`
+
+Pomocí tohoto argumentu si definujeme symboly, které **určují desetinou čárku**.
+
+Je možné používat jako desetinnou čárku libovolný symbol?
+
+![](images/clipboard-998483249.png){fig-align="center"}
+
+```{r}
+decZkouska <- read.delim("decZkouska.txt", dec = "X")
+head(decZkouska)
+```
+
+------------------------------------------------------------------------
+
+### Balíček `readr`
+
+- je součástí metabalíčku `tidyverse`
+
+- umožňuje načtení souboru klikáním v RStudiu **bez psaní kódu**
+
+  - pozor, nefunguje na `.txt` data!
+
+**Postup:**
+
+![](images/clipboard-1022965191.png){fig-align="center"}
+
+![](images/clipboard-1424679390.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Dobrá praxe práce s balíčky, které umožňují importování
+
+**Vždy si kód zkopírujte do skriptu a manuálně ho projeďte.**
+
+- import provedete spuštění k=odu na pozadí a ve skriptu po něm nezůstane ani stopa, při příštím spuštění samotného skriptu by vám tak nedošlo k načtení dat
+
+**Nezapomeňte si spustit jednotlivé balíčky pomocí fce `library`.**
+
+- není třeba nahrávat celý `tidyverse`, stačí jednoduchý název specifického balíčku
+
+------------------------------------------------------------------------
+
+### Balíček `readxl` - ach ty Excely...
+
+- je součástí metabalíčku `tidyverse`
+
+![](images/Nový%20projekt.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+Postup je při nahrávání velmi podobný balíčku `readr`, má ovšem **pár důležitých detailů**.
+
+![](images/clipboard-3245853477.png)
+
+- `Sheet`: z jakého listu chceme vybírat?
+
+- `NA`: narozdíl od `baseR` a `readr` tento balíček neumí automaticky rozpoznávat NA hodnoty
+
+- `Open Data Viewer`: v RStudiu automaticky otevře náhled
+
+------------------------------------------------------------------------
+
+### Samostatné cvičení
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 10,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Přeměňte si sloupec `vzdelani` na faktory[^1] a vypořítejte průměrnou výšku ze sloupce `vyska`.
+
+[^1]: Podívejte se do nápovědy; neexistuje na to přímo argument?
+
+------------------------------------------------------------------------
+
+#### Řešení
+
+Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Přeměňte si sloupec `vzdelani` na faktory a vypořítejte průměrnou výšku ze sloupce `vyska`.
+
+::: fragment
+1.  Načteme si soubor pomocí funkce `read.delim` a podíváme se na strukturu.
+
+    ```{r}
+    data <- read.delim("samostatneCviceniData.txt")
+    str(data)
+    ```
+:::
+
+::: fragment
+2.  Je vidět, že soubor má jiný typ separátoru, než jsme očekávali. Musíme podle toho proto upravit argumenty funkce.
+
+    ```{r}
+    data <- read.delim("samostatneCviceniData.txt",
+                       dec = "-")
+    str(data)
+    ```
+    
+    Nebo můžeme použít funkci, která má přímo určenu desetinnou čárku.
+    
+    ```{r}
+    data2 <- read.delim2("samostatneCviceniData.txt")
+    str(data2)
+    ```
+
+
+:::
+
+::: fragment
+3.  Změňme charakterové stringy (sloupec `vzdelani`) na faktory.
+
+    ```{r}
+    data <- read.delim("samostatneCviceniData.txt",
+                       dec = ";",
+                       stringsAsFactors = TRUE)
+    str(data)
+    ```
+:::
+
+::: fragment
+4.  Spočítejme si průměrnou výšku.
+
+    ```{r}
+    mean(data$vyska)
+    ```
+:::
+
+------------------------------------------------------------------------
+
+## transformace dat
 
 ------------------------------------------------------------------------
 
