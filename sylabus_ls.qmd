@@ -51,7 +51,6 @@ title: "Sylabus LS/2027"
 ## 7. Pokročilá vizualizace dat (14.04.2027)
 
 -   boxploty
--   histogramy
 -   denseploty
 -   heat mapy
 -   violin grafy

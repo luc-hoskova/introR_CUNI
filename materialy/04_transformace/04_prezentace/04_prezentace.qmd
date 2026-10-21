@@ -22,6 +22,11 @@ execute:
   cache: true
 ---
 
+```{r}
+#| context: setup
+library(dplyr)
+```
+
 ## Program
 
 ::: incremental
@@ -71,7 +76,6 @@ Vyber z následujícího vektoru každou pátou hodnotu.
 :::
 
 ------------------------------------------------------------------------
-
 
 ## Nahrávání dat
 
@@ -153,6 +157,142 @@ countdown::countdown(minutes = 5,
                      top = "0")
 ```
 
+------------------------------------------------------------------------
+
+Jak jsme si ukázali v předchozí lekci, **v R se často kód "vrství"; výsledek jedné funkce se používá jako data pro další výpočet v jiné funkci**.
+
+To lze provést bud´ tak, že se celý výpočet rovnou použije v následující funkci, či se uloží jako proměnná, která se následně použije.
+
+**Ukázka:**
+
+```{r}
+#1
+head(select(filter(iris, Species == "setosa"), Petal.Width))
+
+#2
+filtrIris <- filter(iris, Species == "setosa")
+vyberFiltrIris <- select(filtrIris, Petal.Width)
+head(vyberFiltrIris)
+```
+
+------------------------------------------------------------------------
+
+1.  První přístup v sobě nese riziko, že takto psané "funkce ve funkci ve funkci..." **řetězce budou nepřehledné a že uživatel snadno zapomene na jednu ze závorek**.
+
+2.  Konstatním ukládáním v druhém případě se nejenom zbytečně zabírá čas a paměť R, ale hlavně pokud dojde ke změně v uložených hodnotách (například, že hledáme `Petal.Length` místo `Petal.Width`), tak **bez opakovaného nahrání následujících řádků kódu co definují následně uložené proměnné by se změny nepropsaly do zbytku kódu**.
+
+Jak tento problém vyřešit?
+
+------------------------------------------------------------------------
+
+![](images/clipboard-2416185210.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Pipes
+
+**Nástroj, který transportuje data z jedné funkce do druhé jako první argument.**
+
+```{r}
+filter(iris, Petal.Width > 2) %>%
+  select(Petal.Length, Petal.Width) %>%
+  head()
+```
+
+**`data %>% funkce(`**`data přivedená skrz pipe, nemusíme je vypisovat,` **`druhý a další argumenty = definované námi)`**
+
+```{r}
+head(cars)
+cars %>% head()
+```
+
+------------------------------------------------------------------------
+
+Co když chci využít **data v jiném než v prvním argumentu**?
+
+```{r}
+iris %>%
+  filter(Petal.Length > 0.8, Petal.Width < 1) %>%
+  select(Sepal.Length) %>%
+  unlist() %>% #preved na vektor
+  mean() %>%
+  round(digits = 3, x = .) #ukazka, bezne je x prvni argument
+```
+
+::: callout-important
+## Specifikování argumentu kam má pipe vyústit
+
+Tečka u pipe `%>%` z**načí místo, kam se mají data vložit**; v některých případech totiž první argument nebývají samotná data.
+:::
+
+A co **běžná indexace**? Jak určíme že se mají data vybírat, když se nejedná o argumenty?
+
+```{r}
+#tecka znaci misto vyusteni pipe
+cars %>% .[,2] 
+cars %>% .$speed
+cars %>% .["speed"]
+cars %>% .[["dist"]]
+```
+
+------------------------------------------------------------------------
+
+### Rozdíl mezi `%>%` a `|>`
+
+`%>%`
+
+- déle používaná, větší šance že na ni narazíte
+- pro její používání je potřeba mít načtený balíček `dplyr`
+- jako placeholder umístění dat používá tečku .
+- funguje s i bez závorkami za názvem funkce
+
+```{r}
+c(1:20, 15) %>% mean()
+c(9:100, 1:15) %>% mean
+```
+
+`|>`
+
+- od roku 2021 součástí baseR
+- není potřeba mít spuštěný balíček navíc
+- jako placeholder umístění dat používá podtržítko \_
+- vždy je potřeba za název funkce umístit kulaté závorky
+
+```{r}
+c(2:546, 467, 87) %>% mean()
+```
+
+------------------------------------------------------------------------
+
+## Procvičení
+
+Zjistěte, jaká byla nejmenší váha kuřete krmeného sójovými boby, jejichž data naleznete v datasetu `chickwts`.
+
+```{webr-r}
+
+```
+
+Jaká byla největší hloubka epicentra zemětřesení z datasetu `quakes`, které bylo větší než medián magnitudy všech naměřených zemětřesení?
+
+```{webr-r}
+
+```
+
+------------------------------------------------------------------------
+
+### Pipes a dobrá praxe
+
+::: incremental
+- používejte v jednom scriptu pokud možno jeden typ pipe
+
+- pipe má smysl od tří a výše funkcí
+
+- pokud používáte `%>%` dejte si pozor na záměnu tečky a čárky
+
+- jakmile máte deset a více pipes, tak už by bylo přeci jen dobré si to rozdělit
+
+- pipes jsou lineární; pokud pracujete s více jak jedním výstupem, buď to budete mít krkolomné nebo vám kód vůbec nebude fungovat
+:::
 
 ------------------------------------------------------------------------
 

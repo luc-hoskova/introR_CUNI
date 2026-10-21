@@ -51,7 +51,6 @@ title: "Sylabus ZS/2026"
 ## 7. Pokročilá vizualizace dat (08.12.2026)
 
 -   boxploty
--   histogramy
 -   denseploty
 -   heat mapy
 -   violin grafy
