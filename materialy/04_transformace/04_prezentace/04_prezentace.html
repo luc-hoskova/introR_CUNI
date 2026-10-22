@@ -4623,7 +4623,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 id="dobrá-praxe-práce-s-balíčky-které-umožňují-importování">Dobrá praxe práce s balíčky, které umožňují importování</h3>
 <p><strong>Vždy si kód zkopírujte do skriptu a manuálně ho projeďte.</strong></p>
 <ul>
-<li>import provedete spuštění k=odu na pozadí a ve skriptu po něm nezůstane ani stopa, při příštím spuštění samotného skriptu by vám tak nedošlo k načtení dat</li>
+<li>import provedete spuštění kódu na pozadí a ve skriptu po něm nezůstane ani stopa, při příštím spuštění samotného skriptu by vám tak nedošlo k načtení dat</li>
 </ul>
 <p><strong>Nezapomeňte si spustit jednotlivé balíčky pomocí fce <code>library</code>.</strong></p>
 <ul>
@@ -4738,7 +4738,27 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </section>
 <section id="transformace-dat" class="slide level2">
-<h2>transformace dat</h2>
+<h2>Transformace dat</h2>
+</section>
+<section id="chybějící-hodnoty" class="title-slide slide level1 center">
+<h1>chybějící hodnoty</h1>
+
+</section>
+
+<section id="názvy-s-mezerami-a-celkovo-sjednocení-názvů-pomocí-balíčku-janitor" class="title-slide slide level1 center">
+<h1>názvy s mezerami a celkovo sjednocení názvů pomocí balíčku janitor</h1>
+
+</section>
+
+<section id="srovnání-podle-velikosti-sort-a-order" class="title-slide slide level1 center">
+<h1>srovnání podle velikosti sort a order</h1>
+
+</section>
+
+<section>
+<section id="mutate" class="title-slide slide level1 center">
+<h1>mutate</h1>
+<p>#paste pro přidávání věcí do textu</p>
 </section>
 <section id="domácí-úkol" class="slide level2 scrollable">
 <h2>Domácí úkol</h2>
@@ -4748,8 +4768,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li><p>dd</p></li>
 </ol>
 <p>Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na <a href="mailto:lucie.hoskova@ruk.cuni.cz">lucie.hoskova@ruk.cuni.cz</a></p>
-
 </section>
+<section id="tipy-navíc" class="slide level2">
+<h2>Tipy navíc</h2>
+<p><strong>V balíčku <code>readr</code> se nachátí taktéž funkce `read_csv``.</strong></p>
+<p>Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než <code>read.csv</code> v základním R.</p>
+
+</section></section>
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

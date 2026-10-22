@@ -120,6 +120,8 @@ Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky
 
 2.  V horním menu stránek kurzu naleznete odkaz na **rezervační stránku konzultací**. Pokud něco budete potřebovat probrat, ať již obsah kurzu či pomoc s R, můžete mi bud´ napsat a nebo si zde přímo rezervovat termín. Součástí jsou i všeobecné R konzultace, pokud víte, že by je vaši kolegové využili, klidně odkaz předejte.
 
+3.  V případě zájmu a dostatečné účasti je možné se domluvit na nepravidelných večerních code-along online sezení.
+
 ## Programovací jazyk R
 
 **Open source** programovací jazyk určený ke statistické analýze a datové vizualizaci.

@@ -177,7 +177,6 @@ Jak tento problém vyřešit?
 
 ![](images/clipboard-2416185210.png){fig-align="center"}
 
-
 ------------------------------------------------------------------------
 
 ## Pipes
@@ -445,7 +444,7 @@ head(decZkouska)
 
 **Vždy si kód zkopírujte do skriptu a manuálně ho projeďte.**
 
-- import provedete spuštění k=odu na pozadí a ve skriptu po něm nezůstane ani stopa, při příštím spuštění samotného skriptu by vám tak nedošlo k načtení dat
+- import provedete spuštění kódu na pozadí a ve skriptu po něm nezůstane ani stopa, při příštím spuštění samotného skriptu by vám tak nedošlo k načtení dat
 
 **Nezapomeňte si spustit jednotlivé balíčky pomocí fce `library`.**
 
@@ -511,15 +510,13 @@ Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Př
                        dec = "-")
     str(data)
     ```
-    
+
     Nebo můžeme použít funkci, která má přímo určenu desetinnou čárku.
-    
+
     ```{r}
     data2 <- read.delim2("samostatneCviceniData.txt")
     str(data2)
     ```
-
-
 :::
 
 ::: fragment
@@ -543,7 +540,17 @@ Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Př
 
 ------------------------------------------------------------------------
 
-## transformace dat
+## Transformace dat
+
+# chybějící hodnoty
+
+# názvy s mezerami a celkovo sjednocení názvů pomocí balíčku janitor
+
+# srovnání podle velikosti sort a order
+
+# mutate
+
+#paste pro přidávání věcí do textu
 
 ------------------------------------------------------------------------
 
@@ -556,3 +563,11 @@ Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Př
 3.  dd
 
 Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+
+------------------------------------------------------------------------
+
+## Tipy navíc
+
+**V balíčku `readr` se nachátí taktéž funkce \`read_csv\`\`.**
+
+Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než `read.csv` v základním R.
