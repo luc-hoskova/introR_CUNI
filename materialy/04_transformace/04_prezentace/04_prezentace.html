@@ -3738,7 +3738,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ul>
 <li class="fragment">úprava jmen sloupců</li>
 <li class="fragment">chybějící hodnoty</li>
-<li class="fragment">mutace jednotlivých hodnot</li>
+<li class="fragment">mutace a řazení podle jednotlivých hodnot</li>
+<li class="fragment">vytváření sloupců</li>
 </ul></li>
 </ul>
 </section>
@@ -4656,7 +4657,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Samostatné cvičení</h2>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_65be061a" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_98efccdc" minutes="8" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <p>Načtěte si soubor <code>samostatneCviceniData.txt</code> a uložte si ho jako <code>data</code>. Přeměňte si sloupec <code>vzdelani</code> na faktory<sup>1</sup> a vypočítejte průměrnou výšku ze sloupce <code>vyska</code>.</p>
@@ -4761,19 +4762,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code>  gender vek pocet.deti misto.bydliste rodinny.stav misto.bydliste.1
 1      F  19          0         Turnov          N/A       Veselská 5
 2      M  85          4        Všenory   manželství        Malá 56/7
-3      X  54          2        Karviná   parnerství    U hangáru 898
+3      X  54          2        Karviná  partnerství    U hangáru 898
 4      M N/A          3           Zlín     svobodní                 
 5      M  22          0           Most     svobodní                 
 6      F  18          1          Louny          N/A              N/A</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&#39;data.frame&#39;:   12 obs. of  6 variables:
+<pre><code>&#39;data.frame&#39;:   15 obs. of  6 variables:
  $ gender          : chr  &quot;F&quot; &quot;M&quot; &quot;X&quot; &quot;M&quot; ...
  $ vek             : chr  &quot;19&quot; &quot;85&quot; &quot;54&quot; &quot;N/A&quot; ...
  $ pocet.deti      : chr  &quot;0&quot; &quot;4&quot; &quot;2&quot; &quot;3&quot; ...
  $ misto.bydliste  : chr  &quot;Turnov&quot; &quot;Všenory&quot; &quot;Karviná&quot; &quot;Zlín&quot; ...
- $ rodinny.stav    : chr  &quot;N/A&quot; &quot;manželství&quot; &quot;parnerství&quot; &quot;svobodní&quot; ...
+ $ rodinny.stav    : chr  &quot;N/A&quot; &quot;manželství&quot; &quot;partnerství&quot; &quot;svobodní&quot; ...
  $ misto.bydliste.1: chr  &quot;Veselská 5&quot; &quot;Malá 56/7&quot; &quot;U hangáru 898&quot; &quot;&quot; ...</code></pre>
 </div>
 </div>
@@ -4792,7 +4793,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code>  gender vek pocet.deti misto.bydliste rodinny.stav        adresa
 1      F  19          0         Turnov          N/A    Veselská 5
 2      M  85          4        Všenory   manželství     Malá 56/7
-3      X  54          2        Karviná   parnerství U hangáru 898
+3      X  54          2        Karviná  partnerství U hangáru 898
 4      M N/A          3           Zlín     svobodní              
 5      M  22          0           Most     svobodní              
 6      F  18          1          Louny          N/A           N/A</code></pre>
@@ -4821,19 +4822,22 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb72-2"><a href aria-label="2"></a>                    <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;N/A&quot;</span>)) <span class="co">#&quot;&quot; urcuje mezeru/prazdne pole</span></span>
 <span id="cb72-3"><a href aria-label="3"></a>dfNA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav misto.bydliste.1
-1       F  19          0         Turnov         &lt;NA&gt;       Veselská 5
-2       M  85          4        Všenory   manželství        Malá 56/7
-3       X  54          2        Karviná   parnerství    U hangáru 898
-4       M  NA          3           Zlín     svobodní             &lt;NA&gt;
-5       M  22          0           Most     svobodní             &lt;NA&gt;
-6       F  18          1          Louny         &lt;NA&gt;             &lt;NA&gt;
-7       F  23          0          Opava     svobodní             &lt;NA&gt;
-8       F  36          2          Plzeň     svobodná     Destinové 42
-9       X  68          3          Jičín   manželství             &lt;NA&gt;
-10      M  47          1        Trutnov  partnerství        Buková 65
-11   &lt;NA&gt;  NA         NA           &lt;NA&gt;         &lt;NA&gt;             &lt;NA&gt;
-12      X  33          1          Kuřim         &lt;NA&gt;      U topolu 78</code></pre>
+<pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav      misto.bydliste.1
+1       F  19          0         Turnov         &lt;NA&gt;            Veselská 5
+2       M  85          4        Všenory   manželství             Malá 56/7
+3       X  54          2        Karviná  partnerství         U hangáru 898
+4       M  NA          3           Zlín     svobodní                  &lt;NA&gt;
+5       M  22          0           Most     svobodní                  &lt;NA&gt;
+6       F  18          1          Louny         &lt;NA&gt;                  &lt;NA&gt;
+7       F  23          0          Opava     svobodní           Novákové 13
+8       F  36          2          Plzeň     svobodní          Destinové 42
+9       X  68          3          Jičín   manželství                  &lt;NA&gt;
+10      M  47          1        Trutnov  partnerství             Buková 65
+11   &lt;NA&gt;  NA         NA           &lt;NA&gt;         &lt;NA&gt;                  &lt;NA&gt;
+12      X  33          1          Kuřim         &lt;NA&gt;           U topolu 78
+13      M  44          4         Kladno  partnerství           Dolanská 70
+14      F 102          0           &lt;NA&gt;     svobodní Břevnovský klášter 76
+15      F  76          2           Brno   manželství    Mendlovo náměstí 8</code></pre>
 </div>
 </div>
 <p><strong>Nejlepším místem je již určení si hodnot při samotném načítání dat argumentem <code>na.strings</code>.</strong> Někdy se ale může stát, že si toho všimnete pozdě, a už jste na datasetu provedli rozličné změny.</p>
@@ -4843,7 +4847,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Samostatné cvičení</h2>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_336c47af" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e2fc1d34" minutes="3" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <p>Upravte hodnoty uvnitř data frame <code>df</code> tak, aby místo prázdných buněk a charakterové hodnoty <code>N/A</code> byly přímo hodnoty <code>NA</code>.</p>
@@ -4876,12 +4880,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
  [4,]  FALSE  TRUE      FALSE          FALSE        FALSE   TRUE
  [5,]  FALSE FALSE      FALSE          FALSE        FALSE   TRUE
  [6,]  FALSE FALSE      FALSE          FALSE         TRUE   TRUE
- [7,]  FALSE FALSE      FALSE          FALSE        FALSE   TRUE
+ [7,]  FALSE FALSE      FALSE          FALSE        FALSE  FALSE
  [8,]  FALSE FALSE      FALSE          FALSE        FALSE  FALSE
  [9,]  FALSE FALSE      FALSE          FALSE        FALSE   TRUE
 [10,]  FALSE FALSE      FALSE          FALSE        FALSE  FALSE
 [11,]   TRUE  TRUE       TRUE           TRUE         TRUE   TRUE
-[12,]  FALSE FALSE      FALSE          FALSE         TRUE  FALSE</code></pre>
+[12,]  FALSE FALSE      FALSE          FALSE         TRUE  FALSE
+[13,]  FALSE FALSE      FALSE          FALSE        FALSE  FALSE
+[14,]  FALSE FALSE      FALSE           TRUE        FALSE  FALSE
+[15,]  FALSE FALSE      FALSE          FALSE        FALSE  FALSE</code></pre>
 </div>
 </div></li>
 <li class="fragment"><p>Tyto hodnoty si přepíšeme na <code>NA</code></p>
@@ -4889,19 +4896,22 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href aria-label="1"></a>df[df <span class="sc">==</span> <span class="st">&quot;N/A&quot;</span> <span class="sc">|</span> df <span class="sc">==</span> <span class="st">&quot;&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>;</span>
 <span id="cb76-2"><a href aria-label="2"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   gender  vek pocet.deti misto.bydliste rodinny.stav        adresa
-1       F   19          0         Turnov         &lt;NA&gt;    Veselská 5
-2       M   85          4        Všenory   manželství     Malá 56/7
-3       X   54          2        Karviná   parnerství U hangáru 898
-4       M &lt;NA&gt;          3           Zlín     svobodní          &lt;NA&gt;
-5       M   22          0           Most     svobodní          &lt;NA&gt;
-6       F   18          1          Louny         &lt;NA&gt;          &lt;NA&gt;
-7       F   23          0          Opava     svobodní          &lt;NA&gt;
-8       F   36          2          Plzeň     svobodná  Destinové 42
-9       X   68          3          Jičín   manželství          &lt;NA&gt;
-10      M   47          1        Trutnov  partnerství     Buková 65
-11   &lt;NA&gt; &lt;NA&gt;       &lt;NA&gt;           &lt;NA&gt;         &lt;NA&gt;          &lt;NA&gt;
-12      X   33          1          Kuřim         &lt;NA&gt;   U topolu 78</code></pre>
+<pre><code>   gender  vek pocet.deti misto.bydliste rodinny.stav                adresa
+1       F   19          0         Turnov         &lt;NA&gt;            Veselská 5
+2       M   85          4        Všenory   manželství             Malá 56/7
+3       X   54          2        Karviná  partnerství         U hangáru 898
+4       M &lt;NA&gt;          3           Zlín     svobodní                  &lt;NA&gt;
+5       M   22          0           Most     svobodní                  &lt;NA&gt;
+6       F   18          1          Louny         &lt;NA&gt;                  &lt;NA&gt;
+7       F   23          0          Opava     svobodní           Novákové 13
+8       F   36          2          Plzeň     svobodní          Destinové 42
+9       X   68          3          Jičín   manželství                  &lt;NA&gt;
+10      M   47          1        Trutnov  partnerství             Buková 65
+11   &lt;NA&gt; &lt;NA&gt;       &lt;NA&gt;           &lt;NA&gt;         &lt;NA&gt;                  &lt;NA&gt;
+12      X   33          1          Kuřim         &lt;NA&gt;           U topolu 78
+13      M   44          4         Kladno  partnerství           Dolanská 70
+14      F  102          0           &lt;NA&gt;     svobodní Břevnovský klášter 76
+15      F   76          2           Brno   manželství    Mendlovo náměstí 8</code></pre>
 </div>
 </div></li>
 </ol>
@@ -4909,20 +4919,27 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section class="slide level2">
 
 <h3 id="odstranění-na-hodnot">Odstranění <code>NA</code> hodnot</h3>
-<p>Dejme ale, že bychom v datasetu chtěli mít bud´ pouze kompletní řádky, tzn. chceme se zbavit <code>NA</code> hodnot. Jak na to?</p>
+<p>Dejme ale, že bychom v datasetu chtěli mít pouze kompletní řádky, tzn. chceme se zbavit řádků obsahující <code>NA</code> hodnoty. Jak na to?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df)</span>
-<span id="cb78-2"><a href aria-label="2"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href aria-label="1"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4 6</code></pre>
+<pre><code>[1] 15  6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href aria-label="1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df)</span>
+<span id="cb80-2"><a href aria-label="2"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav        adresa
-2       M  85          4        Všenory   manželství     Malá 56/7
-3       X  54          2        Karviná   parnerství U hangáru 898
-8       F  36          2          Plzeň     svobodná  Destinové 42
-10      M  47          1        Trutnov  partnerství     Buková 65</code></pre>
+<pre><code>[1] 7 6</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href aria-label="1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav             adresa
+2       M  85          4        Všenory   manželství          Malá 56/7
+3       X  54          2        Karviná  partnerství      U hangáru 898
+7       F  23          0          Opava     svobodní        Novákové 13
+8       F  36          2          Plzeň     svobodní       Destinové 42
+10      M  47          1        Trutnov  partnerství          Buková 65
+13      M  44          4         Kladno  partnerství        Dolanská 70
+15      F  76          2           Brno   manželství Mendlovo náměstí 8</code></pre>
 </div>
 </div>
 </section>
@@ -4930,9 +4947,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p>Co se stalo? Zmizely všechny řádky, co měli v jakémkoliv sloupci <code>NA</code>. O jaké řádky se ale jednalo?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href aria-label="1"></a><span class="fu">which</span>(<span class="sc">!</span><span class="fu">complete.cases</span>(dfNA))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href aria-label="1"></a><span class="fu">which</span>(<span class="sc">!</span><span class="fu">complete.cases</span>(dfNA))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1  4  5  6  7  9 11 12</code></pre>
+<pre><code>[1]  1  4  5  6  9 11 12 14</code></pre>
 </div>
 </div>
 <p><strong>Samostatná práce:</strong></p>
@@ -4940,7 +4957,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Co dělá funkce <code>complete.cases</code> a proč ji zde používáme?</p>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_ae6aca14" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:10;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a14fe728" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:10;right:0;"></countdown-timer>
 </div>
 </div>
 <ol type="1">
@@ -4953,32 +4970,35 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section class="slide level2">
 
-<p>Máme nyní přejmenované sloupce, odebrané <code>NA</code> hodnoty… znamená to, že s ním nyní můžeme provádět výpočty, či na něj aplikovat jakékoliv další akce?</p>
+<p>Máme nyní přejmenované sloupce, odebrané <code>NA</code> hodnoty… Znamená to, že s ním nyní můžeme provádět výpočty, či na něj aplikovat jakékoliv další akce?</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&#39;data.frame&#39;:   4 obs. of  6 variables:
- $ gender        : chr  &quot;M&quot; &quot;X&quot; &quot;F&quot; &quot;M&quot;
- $ vek           : chr  &quot;85&quot; &quot;54&quot; &quot;36&quot; &quot;47&quot;
- $ pocet.deti    : chr  &quot;4&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot;
- $ misto.bydliste: chr  &quot;Všenory&quot; &quot;Karviná&quot; &quot;Plzeň&quot; &quot;Trutnov&quot;
- $ rodinny.stav  : chr  &quot;manželství&quot; &quot;parnerství&quot; &quot;svobodná&quot; &quot;partnerství&quot;
- $ adresa        : chr  &quot;Malá 56/7&quot; &quot;U hangáru 898&quot; &quot;Destinové 42&quot; &quot;Buková 65&quot;
- - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:8] 1 4 5 6 7 9 11 12
+<pre><code>&#39;data.frame&#39;:   7 obs. of  6 variables:
+ $ gender        : chr  &quot;M&quot; &quot;X&quot; &quot;F&quot; &quot;F&quot; ...
+ $ vek           : chr  &quot;85&quot; &quot;54&quot; &quot;23&quot; &quot;36&quot; ...
+ $ pocet.deti    : chr  &quot;4&quot; &quot;2&quot; &quot;0&quot; &quot;2&quot; ...
+ $ misto.bydliste: chr  &quot;Všenory&quot; &quot;Karviná&quot; &quot;Opava&quot; &quot;Plzeň&quot; ...
+ $ rodinny.stav  : chr  &quot;manželství&quot; &quot;partnerství&quot; &quot;svobodní&quot; &quot;svobodní&quot; ...
+ $ adresa        : chr  &quot;Malá 56/7&quot; &quot;U hangáru 898&quot; &quot;Novákové 13&quot; &quot;Destinové 42&quot; ...
+ - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:8] 1 4 5 6 9 11 12 14
   ..- attr(*, &quot;names&quot;)= chr [1:8] &quot;1&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; ...</code></pre>
 </div>
 </div>
 <p>Jak vidíme, <strong>kvůli špatně zapsaným <code>NA</code> hodnotám se nám většina sloupců překonvertovala do charakterového typu</strong>.</p>
 <p>Když se ale na data frame podíváme, tak je jasné, že některé sloupce můžeme změnit na faktory a jiné budou jasně numeric.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href aria-label="1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href aria-label="1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav        adresa
-2       M  85          4        Všenory   manželství     Malá 56/7
-3       X  54          2        Karviná   parnerství U hangáru 898
-8       F  36          2          Plzeň     svobodná  Destinové 42
-10      M  47          1        Trutnov  partnerství     Buková 65</code></pre>
+<pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav             adresa
+2       M  85          4        Všenory   manželství          Malá 56/7
+3       X  54          2        Karviná  partnerství      U hangáru 898
+7       F  23          0          Opava     svobodní        Novákové 13
+8       F  36          2          Plzeň     svobodní       Destinové 42
+10      M  47          1        Trutnov  partnerství          Buková 65
+13      M  44          4         Kladno  partnerství        Dolanská 70
+15      F  76          2           Brno   manželství Mendlovo náměstí 8</code></pre>
 </div>
 </div>
 </div>
@@ -4989,26 +5009,81 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Při jejím používání defacto potřebujeme pouze následující zápis:</p>
 <p><code>mutate(název dataframe, název sloupce = nová podoba sloupce)</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
-<span id="cb88-2"><a href aria-label="2"></a>  <span class="at">gender =</span> <span class="fu">as.factor</span>(gender),</span>
-<span id="cb88-3"><a href aria-label="3"></a>  <span class="at">vek =</span> <span class="fu">as.numeric</span>(vek),</span>
-<span id="cb88-4"><a href aria-label="4"></a>  <span class="at">pocet.deti =</span> <span class="fu">as.numeric</span>(pocet.deti),</span>
-<span id="cb88-5"><a href aria-label="5"></a>  <span class="at">rodinny.stav =</span> <span class="fu">as.factor</span>(rodinny.stav)</span>
-<span id="cb88-6"><a href aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb90-2"><a href aria-label="2"></a>  <span class="at">gender =</span> <span class="fu">as.factor</span>(gender),</span>
+<span id="cb90-3"><a href aria-label="3"></a>  <span class="at">vek =</span> <span class="fu">as.numeric</span>(vek),</span>
+<span id="cb90-4"><a href aria-label="4"></a>  <span class="at">pocet.deti =</span> <span class="fu">as.numeric</span>(pocet.deti),</span>
+<span id="cb90-5"><a href aria-label="5"></a>  <span class="at">rodinny.stav =</span> <span class="fu">as.factor</span>(rodinny.stav)</span>
+<span id="cb90-6"><a href aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Jaký je nyní výsledek?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&#39;data.frame&#39;:   4 obs. of  6 variables:
- $ gender        : Factor w/ 3 levels &quot;F&quot;,&quot;M&quot;,&quot;X&quot;: 2 3 1 2
- $ vek           : num  85 54 36 47
- $ pocet.deti    : num  4 2 2 1
- $ misto.bydliste: chr  &quot;Všenory&quot; &quot;Karviná&quot; &quot;Plzeň&quot; &quot;Trutnov&quot;
- $ rodinny.stav  : Factor w/ 4 levels &quot;manželství&quot;,&quot;parnerství&quot;,..: 1 2 4 3
- $ adresa        : chr  &quot;Malá 56/7&quot; &quot;U hangáru 898&quot; &quot;Destinové 42&quot; &quot;Buková 65&quot;
- - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:8] 1 4 5 6 7 9 11 12
+<pre><code>&#39;data.frame&#39;:   7 obs. of  6 variables:
+ $ gender        : Factor w/ 3 levels &quot;F&quot;,&quot;M&quot;,&quot;X&quot;: 2 3 1 1 2 2 1
+ $ vek           : num  85 54 23 36 47 44 76
+ $ pocet.deti    : num  4 2 0 2 1 4 2
+ $ misto.bydliste: chr  &quot;Všenory&quot; &quot;Karviná&quot; &quot;Opava&quot; &quot;Plzeň&quot; ...
+ $ rodinny.stav  : Factor w/ 3 levels &quot;manželství&quot;,&quot;partnerství&quot;,..: 1 2 3 3 2 2 1
+ $ adresa        : chr  &quot;Malá 56/7&quot; &quot;U hangáru 898&quot; &quot;Novákové 13&quot; &quot;Destinové 42&quot; ...
+ - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:8] 1 4 5 6 9 11 12 14
   ..- attr(*, &quot;names&quot;)= chr [1:8] &quot;1&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; ...</code></pre>
+</div>
+</div>
+</section>
+<section id="přidávání-sloupců" class="slide level2">
+<h2>Přidávání sloupců</h2>
+<p>Tímto způsobem si ale můžeme sloupce nejenom upravovat, ale i přidávat.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb93-2"><a href aria-label="2"></a>  <span class="at">telefonni.cislo =</span> <span class="cn">NA</span>,</span>
+<span id="cb93-3"><a href aria-label="3"></a>  <span class="at">id =</span> <span class="fu">paste0</span>(<span class="st">&quot;id_&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)))</span>
+<span id="cb93-4"><a href aria-label="4"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav        adresa
+2       M  85          4        Všenory   manželství     Malá 56/7
+3       X  54          2        Karviná  partnerství U hangáru 898
+7       F  23          0          Opava     svobodní   Novákové 13
+8       F  36          2          Plzeň     svobodní  Destinové 42
+10      M  47          1        Trutnov  partnerství     Buková 65
+13      M  44          4         Kladno  partnerství   Dolanská 70
+   telefonni.cislo   id
+2               NA id_1
+3               NA id_2
+7               NA id_3
+8               NA id_4
+10              NA id_5
+13              NA id_6</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="změna-pořadí-sloupců">Změna pořadí sloupců</h3>
+<p>Takto upravený data frame se nám ale nelíbí; co kdybychom chtěli mít sloupec <code>id</code> úplně na začátku, sloupec <code>adresa</code> za místem bydliště a oba tyto sloupce až na konci?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(id, <span class="at">.before =</span> gender)</span>
+<span id="cb95-2"><a href aria-label="2"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(adresa, <span class="at">.after =</span> misto.bydliste)</span>
+<span id="cb95-3"><a href aria-label="3"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(misto.bydliste<span class="sc">:</span>adresa, <span class="at">.after =</span> <span class="fu">last_col</span>())</span>
+<span id="cb95-4"><a href aria-label="4"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     id gender vek pocet.deti rodinny.stav telefonni.cislo misto.bydliste
+2  id_1      M  85          4   manželství              NA        Všenory
+3  id_2      X  54          2  partnerství              NA        Karviná
+7  id_3      F  23          0     svobodní              NA          Opava
+8  id_4      F  36          2     svobodní              NA          Plzeň
+10 id_5      M  47          1  partnerství              NA        Trutnov
+13 id_6      M  44          4  partnerství              NA         Kladno
+15 id_7      F  76          2   manželství              NA           Brno
+               adresa
+2           Malá 56/7
+3       U hangáru 898
+7         Novákové 13
+8        Destinové 42
+10          Buková 65
+13        Dolanská 70
+15 Mendlovo náměstí 8</code></pre>
 </div>
 </div>
 </section>
@@ -5016,47 +5091,278 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Seřazení řádků dle hodnot ve sloupcích</h2>
 <p>Může se stát, že si budete potřebovat srovnat podle hodnot v nějakém sloupci. Jak to provedete?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href aria-label="1"></a>df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(pocet.deti)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href aria-label="1"></a>df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(pocet.deti) <span class="co">#vzestupne</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  gender vek pocet.deti misto.bydliste rodinny.stav        adresa
-1      M  47          1        Trutnov  partnerství     Buková 65
-2      X  54          2        Karviná   parnerství U hangáru 898
-3      F  36          2          Plzeň     svobodná  Destinové 42
-4      M  85          4        Všenory   manželství     Malá 56/7</code></pre>
+<pre><code>    id gender vek pocet.deti rodinny.stav telefonni.cislo misto.bydliste
+1 id_3      F  23          0     svobodní              NA          Opava
+2 id_5      M  47          1  partnerství              NA        Trutnov
+3 id_2      X  54          2  partnerství              NA        Karviná
+4 id_4      F  36          2     svobodní              NA          Plzeň
+5 id_7      F  76          2   manželství              NA           Brno
+6 id_1      M  85          4   manželství              NA        Všenory
+7 id_6      M  44          4  partnerství              NA         Kladno
+              adresa
+1        Novákové 13
+2          Buková 65
+3      U hangáru 898
+4       Destinové 42
+5 Mendlovo náměstí 8
+6          Malá 56/7
+7        Dolanská 70</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href aria-label="1"></a>df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(pocet.deti))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href aria-label="1"></a>df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(pocet.deti)) <span class="co">#sestupne</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  gender vek pocet.deti misto.bydliste rodinny.stav        adresa
-1      M  85          4        Všenory   manželství     Malá 56/7
-2      X  54          2        Karviná   parnerství U hangáru 898
-3      F  36          2          Plzeň     svobodná  Destinové 42
-4      M  47          1        Trutnov  partnerství     Buková 65</code></pre>
+<pre><code>    id gender vek pocet.deti rodinny.stav telefonni.cislo misto.bydliste
+1 id_1      M  85          4   manželství              NA        Všenory
+2 id_6      M  44          4  partnerství              NA         Kladno
+3 id_2      X  54          2  partnerství              NA        Karviná
+4 id_4      F  36          2     svobodní              NA          Plzeň
+5 id_7      F  76          2   manželství              NA           Brno
+6 id_5      M  47          1  partnerství              NA        Trutnov
+7 id_3      F  23          0     svobodní              NA          Opava
+              adresa
+1          Malá 56/7
+2        Dolanská 70
+3      U hangáru 898
+4       Destinové 42
+5 Mendlovo náměstí 8
+6          Buková 65
+7        Novákové 13</code></pre>
 </div>
 </div>
+<p><strong>Co když ale máme ve sloupci více stejných hodnot?</strong> Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?</p>
 </section>
-<section id="co-když-ale-máme-ve-sloupci-více-stejných-hodnot-můžeme-si-určit-další-sloupec-dle-kterého-by-se-mělo-filtrovat" class="slide level2">
-<h2><strong>Co když ale máme ve sloupci více stejných hodnot?</strong> Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?</h2>
-</section>
-<section id="mutace-hodnot-uvnitř-datasetu" class="slide level2">
-<h2>Mutace hodnot uvnitř datasetu</h2>
-<p>Funkce <code>dplyr::mutate</code> nám umožňuje měnit či přidávat jednotlivé sloupce</p>
+<section class="slide level2">
+
+<p>Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat, si můžeme vytvořit opravdu podrobně seřazený data frame.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href aria-label="1"></a><span class="co">#df &lt;- df %&gt;% mutate(počet.dětí = replace(počet.dětí == &quot;N/A&quot;, NA))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(pocet.deti, vek); df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id gender vek pocet.deti rodinny.stav telefonni.cislo misto.bydliste
+1 id_3      F  23          0     svobodní              NA          Opava
+2 id_5      M  47          1  partnerství              NA        Trutnov
+3 id_4      F  36          2     svobodní              NA          Plzeň
+4 id_2      X  54          2  partnerství              NA        Karviná
+5 id_7      F  76          2   manželství              NA           Brno
+6 id_6      M  44          4  partnerství              NA         Kladno
+7 id_1      M  85          4   manželství              NA        Všenory
+              adresa
+1        Novákové 13
+2          Buková 65
+3       Destinové 42
+4      U hangáru 898
+5 Mendlovo náměstí 8
+6        Dolanská 70
+7          Malá 56/7</code></pre>
 </div>
-<p>#paste pro přidávání věcí do textu</p>
+</div>
+</section>
+<section id="samostatné-cvičení-2" class="slide level2 scrollable">
+<h2>Samostatné cvičení</h2>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_493ebde8" minutes="25" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+</div>
+</div>
+<p>Proved na souboru <code>census</code> následující změny:</p>
+<ol type="1">
+<li><p>Přejmenuj sloupce <code>pohlavi_txt</code> na <code>pohlavi</code>, <code>vek_txt</code> na <code>vek</code>, <code>vira_txt</code> na <code>vira</code>, a <code>uzemi_txt</code> na <code>oblast</code>.</p></li>
+<li><p>Vyber pouze hodnoty pohlaví <code>žena</code>, ty kde <code>vira</code> je <code>Jedi</code>, <code>Sith</code> a nebo začíná na <code>pasta</code><sup>1</sup> a nakonec pak pouze ty osoby, které mají věk v rozpětí 0-18 a 65+<sup>2</sup>.</p></li>
+<li><p>Vyber pouze hodnoty pro celý stát, tedy ty, které mají ve sloupci <code>oblast</code> hodnotu <code>Česká republika</code>.</p></li>
+<li><p>Vyber sloupce <code>vek</code>, <code>pohlavi</code>, <code>vira</code> a <code>hodnota</code>.</p></li>
+<li><p>Seřad´ hodnoty od nejvyššího věku po nejnižší.</p></li>
+<li><p>Kolik je nejstarší české Jedi? Zjisti funkcí.</p></li>
+<li><p>Spočítej pro každý kraj průměrný věk pro všechna náboženství.</p></li>
+</ol>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Něco podobného jsme prováděli u funkce <code>select</code>. Existuje nějaká funkce z <code>base</code>, která lze použít?</p></li><li id="fn3"><p>Jako vždy, StackOverflow a podobná uživatelská fóra jsou vašim nejlepším přítelem. Malá nápověda: k manipulaci sloupce <code>vek</code> můžete použít například jednu jednoduchou funkci z balíčku <code>readr</code>. Pokud nebudete vůbec vědět jak dál, řekněte si o nápovědu ;].</p></li></ol></aside></section>
+<section id="řešení-2" class="slide level2 scrollable">
+<h2>Řešení</h2>
+<ol type="1">
+<li class="fragment"><p>Načti data a zkontroluj je.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;census.csv&quot;</span>)</span>
+<span id="cb103-2"><a href aria-label="2"></a><span class="fu">str</span>(census)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&#39;data.frame&#39;:   58890 obs. of  19 variables:
+ $ idhod       : int  989095533 989113507 989113508 989096570 989112602 989112603 989097795 989116863 989116864 989099080 ...
+ $ hodnota     : int  51397 26279 25118 52693 26922 25771 54488 28101 26387 55657 ...
+ $ ukaz_kod    : int  3162 3162 3162 3162 3162 3162 3162 3162 3162 3162 ...
+ $ vira_cis    : int  3078 3078 3078 3078 3078 3078 3078 3078 3078 3078 ...
+ $ vira_kod    : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ vira_cleneni: int  1 1 1 1 1 1 1 1 1 1 ...
+ $ vek_cis     : int  1035 1035 1035 1035 1035 1035 1035 1035 1035 1035 ...
+ $ vek_kod     : int  1000000000 1000000000 1000000000 1000010001 1000010001 1000010001 1000020002 1000020002 1000020002 1000030003 ...
+ $ pohlavi_cis : int  NA 102 102 NA 102 102 NA 102 102 NA ...
+ $ pohlavi_kod : int  NA 1 2 NA 1 2 NA 1 2 NA ...
+ $ uzemi_cis   : int  97 97 97 97 97 97 97 97 97 97 ...
+ $ uzemi_kod   : int  19 19 19 19 19 19 19 19 19 19 ...
+ $ sldb_rok    : int  2021 2021 2021 2021 2021 2021 2021 2021 2021 2021 ...
+ $ sldb_datum  : chr  &quot;2021-03-26&quot; &quot;2021-03-26&quot; &quot;2021-03-26&quot; &quot;2021-03-26&quot; ...
+ $ ukaz_txt    : chr  &quot;Počet obyvatel s obvyklým pobytem&quot; &quot;Počet obyvatel s obvyklým pobytem&quot; &quot;Počet obyvatel s obvyklým pobytem&quot; &quot;Počet obyvatel s obvyklým pobytem&quot; ...
+ $ vira_txt    : chr  &quot;Bez náboženské víry&quot; &quot;Bez náboženské víry&quot; &quot;Bez náboženské víry&quot; &quot;Bez náboženské víry&quot; ...
+ $ vek_txt     : chr  &quot;0 let&quot; &quot;0 let&quot; &quot;0 let&quot; &quot;1 rok&quot; ...
+ $ pohlavi_txt : chr  &quot;&quot; &quot;muž&quot; &quot;žena&quot; &quot;&quot; ...
+ $ uzemi_txt   : chr  &quot;Česká republika&quot; &quot;Česká republika&quot; &quot;Česká republika&quot; &quot;Česká republika&quot; ...</code></pre>
+</div>
+</div></li>
+<li class="fragment"><p>Přejmenuj sloupce</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb105-2"><a href aria-label="2"></a>  <span class="fu">rename</span>(</span>
+<span id="cb105-3"><a href aria-label="3"></a>    <span class="at">vira =</span> vira_txt,</span>
+<span id="cb105-4"><a href aria-label="4"></a>    <span class="at">pohlavi =</span> pohlavi_txt,</span>
+<span id="cb105-5"><a href aria-label="5"></a>    <span class="at">vek =</span> vek_txt,</span>
+<span id="cb105-6"><a href aria-label="6"></a>    <span class="at">oblast =</span> uzemi_txt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li class="fragment"><p>Přetvoř sloupec <code>vek</code> tak, aby obsahoval pouze čísla.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb106-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">vek =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li class="fragment"><p>Vyfiltruj řádky splňující dané podmínky.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb107-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(</span>
+<span id="cb107-3"><a href aria-label="3"></a>vira <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Jedi&quot;</span>, <span class="st">&quot;Sith&quot;</span>) <span class="sc">|</span> <span class="fu">startsWith</span>(vira, <span class="st">&quot;pasta&quot;</span>),</span>
+<span id="cb107-4"><a href aria-label="4"></a>pohlavi <span class="sc">==</span> <span class="st">&quot;žena&quot;</span>,</span>
+<span id="cb107-5"><a href aria-label="5"></a>vek <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">18</span> <span class="sc">|</span> vek <span class="sc">&gt;=</span> <span class="dv">65</span>,</span>
+<span id="cb107-6"><a href aria-label="6"></a>oblast <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li class="fragment"><p>Vyber relevatní sloupce.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb108-2"><a href aria-label="2"></a>  <span class="fu">select</span>(hodnota, pohlavi, vek, vira)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li class="fragment"><p>Uspořádej je dle věku, ke každému náboženství od nejmladšího po nejstaršího věřícího.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb109-2"><a href aria-label="2"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li class="fragment"><p>Zjisti věk nejstarší Jedi v ČR.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href aria-label="1"></a>jedi <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Jedi&quot;</span>,</span>
+<span id="cb110-2"><a href aria-label="2"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb110-3"><a href aria-label="3"></a><span class="fu">max</span>(jedi<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 98</code></pre>
+</div>
+</div></li>
+<li class="fragment"><p>Spočítej pro každý kraj průměrný věk pro všechna náboženství ve výsledném datasetu.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href aria-label="1"></a><span class="fu">levels</span>(<span class="fu">as.factor</span>(census<span class="sc">$</span>vira))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;Jedi&quot;            &quot;pastafariánství&quot; &quot;Sith&quot;           </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href aria-label="1"></a>jedi <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Jedi&quot;</span>,</span>
+<span id="cb114-2"><a href aria-label="2"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb114-3"><a href aria-label="3"></a>sith <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Sith&quot;</span>,</span>
+<span id="cb114-4"><a href aria-label="4"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb114-5"><a href aria-label="5"></a>pasta <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;pastafariánství&quot;</span>,</span>
+<span id="cb114-6"><a href aria-label="6"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb114-7"><a href aria-label="7"></a></span>
+<span id="cb114-8"><a href aria-label="8"></a><span class="fu">mean</span>(jedi<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50.02174</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href aria-label="1"></a><span class="fu">mean</span>(sith<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14.54545</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href aria-label="1"></a><span class="fu">mean</span>(pasta<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32.56667</code></pre>
+</div>
+</div></li>
+</ol>
+</section>
+<section class="slide level2">
+
+<p>A nešlo by to nějak… jednodušeji?</p>
+<div class="fragment">
+<p>Samozřejmě :]</p>
+</div>
+<div class="fragment">
+<p>Vytvoření datasetu na kterém budeme vytvářet výpočty si jde napsat pomocí dlouhé pipe.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href aria-label="1"></a>census2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;census.csv&quot;</span>)</span>
+<span id="cb120-2"><a href aria-label="2"></a><span class="fu">str</span>(census2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&#39;data.frame&#39;:   58890 obs. of  19 variables:
+ $ idhod       : int  989095533 989113507 989113508 989096570 989112602 989112603 989097795 989116863 989116864 989099080 ...
+ $ hodnota     : int  51397 26279 25118 52693 26922 25771 54488 28101 26387 55657 ...
+ $ ukaz_kod    : int  3162 3162 3162 3162 3162 3162 3162 3162 3162 3162 ...
+ $ vira_cis    : int  3078 3078 3078 3078 3078 3078 3078 3078 3078 3078 ...
+ $ vira_kod    : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ vira_cleneni: int  1 1 1 1 1 1 1 1 1 1 ...
+ $ vek_cis     : int  1035 1035 1035 1035 1035 1035 1035 1035 1035 1035 ...
+ $ vek_kod     : int  1000000000 1000000000 1000000000 1000010001 1000010001 1000010001 1000020002 1000020002 1000020002 1000030003 ...
+ $ pohlavi_cis : int  NA 102 102 NA 102 102 NA 102 102 NA ...
+ $ pohlavi_kod : int  NA 1 2 NA 1 2 NA 1 2 NA ...
+ $ uzemi_cis   : int  97 97 97 97 97 97 97 97 97 97 ...
+ $ uzemi_kod   : int  19 19 19 19 19 19 19 19 19 19 ...
+ $ sldb_rok    : int  2021 2021 2021 2021 2021 2021 2021 2021 2021 2021 ...
+ $ sldb_datum  : chr  &quot;2021-03-26&quot; &quot;2021-03-26&quot; &quot;2021-03-26&quot; &quot;2021-03-26&quot; ...
+ $ ukaz_txt    : chr  &quot;Počet obyvatel s obvyklým pobytem&quot; &quot;Počet obyvatel s obvyklým pobytem&quot; &quot;Počet obyvatel s obvyklým pobytem&quot; &quot;Počet obyvatel s obvyklým pobytem&quot; ...
+ $ vira_txt    : chr  &quot;Bez náboženské víry&quot; &quot;Bez náboženské víry&quot; &quot;Bez náboženské víry&quot; &quot;Bez náboženské víry&quot; ...
+ $ vek_txt     : chr  &quot;0 let&quot; &quot;0 let&quot; &quot;0 let&quot; &quot;1 rok&quot; ...
+ $ pohlavi_txt : chr  &quot;&quot; &quot;muž&quot; &quot;žena&quot; &quot;&quot; ...
+ $ uzemi_txt   : chr  &quot;Česká republika&quot; &quot;Česká republika&quot; &quot;Česká republika&quot; &quot;Česká republika&quot; ...</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href aria-label="1"></a>census2 <span class="ot">&lt;-</span> census2 <span class="sc">%&gt;%</span></span>
+<span id="cb122-2"><a href aria-label="2"></a>  <span class="fu">rename</span>(</span>
+<span id="cb122-3"><a href aria-label="3"></a>    <span class="at">vira =</span> vira_txt,</span>
+<span id="cb122-4"><a href aria-label="4"></a>    <span class="at">pohlavi =</span> pohlavi_txt,</span>
+<span id="cb122-5"><a href aria-label="5"></a>    <span class="at">vek =</span> vek_txt,</span>
+<span id="cb122-6"><a href aria-label="6"></a>    <span class="at">oblast =</span> uzemi_txt) <span class="sc">%&gt;%</span></span>
+<span id="cb122-7"><a href aria-label="7"></a>  <span class="fu">mutate</span>(<span class="at">vek =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(vek)) <span class="sc">%&gt;%</span></span>
+<span id="cb122-8"><a href aria-label="8"></a>  <span class="fu">filter</span>(</span>
+<span id="cb122-9"><a href aria-label="9"></a>    vira <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Jedi&quot;</span>, <span class="st">&quot;Sith&quot;</span>) <span class="sc">|</span> <span class="fu">startsWith</span>(vira, <span class="st">&quot;pasta&quot;</span>),</span>
+<span id="cb122-10"><a href aria-label="10"></a>    pohlavi <span class="sc">==</span> <span class="st">&quot;žena&quot;</span>,</span>
+<span id="cb122-11"><a href aria-label="11"></a>    vek <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">18</span> <span class="sc">|</span> vek <span class="sc">&gt;=</span> <span class="dv">65</span>,</span>
+<span id="cb122-12"><a href aria-label="12"></a>    oblast <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>,</span>
+<span id="cb122-13"><a href aria-label="13"></a>    hodnota <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb122-14"><a href aria-label="14"></a>  <span class="fu">select</span>(hodnota, pohlavi, vek, vira) <span class="sc">%&gt;%</span></span>
+<span id="cb122-15"><a href aria-label="15"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<p>Poté už jen provedeme výpočet jednotlivých hodnot.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href aria-label="1"></a>census2 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(vira) <span class="sc">%&gt;%</span></span>
+<span id="cb123-2"><a href aria-label="2"></a>  <span class="fu">summarize</span>(<span class="at">nejstarsiVerici =</span> <span class="fu">max</span>(vek), <span class="at">prumernyVek =</span> <span class="fu">mean</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  vira            nejstarsiVerici prumernyVek
+  &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;
+1 Jedi                         98        50.0
+2 Sith                         68        14.5
+3 pastafariánství              84        32.6</code></pre>
+</div>
+</div>
+<p>S funkcemi <code>group_by</code> a <code>summarize</code> se lépe seznámíme v následující sekci, zde jsou uvedeny jako ukázka zjednodušení postupu.</p>
+</div>
 </section>
 <section id="domácí-úkol" class="slide level2 scrollable">
 <h2>Domácí úkol</h2>
 <ol type="1">
 <li><p>Najděte specifickou funkci v balíčku <code>dplyr</code>, která umožňuji přepisování hodnot na <code>NA</code>.</p></li>
-<li><p>dd</p></li>
-<li><p>dd</p></li>
+<li><p>Načti si dataset <code>typBydleni.csv</code>. Zjisti z něj následující údaje:</p>
+<ol type="1">
+<li><p>Kolik osob ve věku 18-26 včetně v Jihomoravském kraji jsou evidováni jako osoby bez domova, a jakou procentuální část z nich tvoří muži a jakou ženy.</p></li>
+<li><p>Který kraj má nejmenší počet obyvatel žijících v ubytovacích zařízení?</p></li>
+<li><p>Jaký je medián věku osoby bez domova v Praze, a jaký je v celé ČR?</p></li>
+<li><p>Jaký je nejčastější typ ubytování osob pod 18 let v ČR?</p></li>
+<li><p>O kolik více seniorů (65+ let) bez domova žije v Libereckém než v Moravskoslezském kraji či naopak?</p></li>
+</ol></li>
 </ol>
-<p>Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na <a href="mailto:lucie.hoskova@ruk.cuni.cz">lucie.hoskova@ruk.cuni.cz</a></p>
+<p>Zdrojem dat jsou <a href="https://csu.gov.cz/produkty/vysledky-scitani-2021-otevrena-data">oficiální stránky sčítání obyvatel z roku 2021</a>. K této tabulce patří i JSON soubor, který popisuje význam jednotlivých sloupců. Můžete ho využít pro lepší pochopení datasetu, ale ke zpracování domácího úkolu nemusíte vyhledávat žádné další informace.</p>
+
+<img role="img" data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABhkAAABeCAYAAAA+AXX0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAFk7SURBVHhe7d13dBTV28DxL9lUUiAhIQmE3nvvvSNFBRHR114RKyoiqHRBlCZFQbGj/kBFAUEQCR1CE0KAABFCCem9t03eP7bNTjbJ7hKqz+ecPQdmZjczd2fuztzn3vtUKi4uLkYIIYQQQgghhBBCCCGEEMJGDuoFQgghhBBCCCGEEEIIIYQQ1pAggxBCCCGEEEIIIYQQQggh7CJBBiGEEEIIIYQQQgghhBBC2KWS5GQQQgghhBBC2KqgQEt2bgF5eYXkFxRSqC2iqEgeLcTty8GhEo4aB5ydHHFxcaSyqxNOThr1ZkIIIYQQwkYSZBBCCCGEEEJYLSMrj4zMXHLzCtWrhLjjuLo44unhiqe7i3qVEEIIIYSwkgQZhBBCCCGEEOXKys4nJS2b/AKtepUQdzxnJw3eVSrjXtlZvUoIIYS4ZYrz8kh55hn1YiFuikpeXnh/+ql6sUUSZBBCCCGEEEKUKTE5i/TMXPViIe46Xh6u+Pq4qxcLIYQQt0RRejpxzZurFwtxU2iCgqgeEqJebJEkfhZCCCGEEEJYpNUWER2XJgEG8Z+RnplLdFwaWm2RepUQQgghhCiFBBmEEEIIIYQQJWi1RcTEp0vuBfGfk5tXSEx8ugQahBBCCCGsJEEGIYQQQgghRAlxiRmSf0H8Z+UXaIlLzFAvFkIIIYQQFkiQQQghhBBCCGEmMTlLRjCI/7zcvEISk7PUi4UQQgghhIokfhZCCCGEEEIYZWXnSw9uIRT8fT1xr+ysXiyEEELccKUlfq7k4oL3l1+qFwthl+L0dFImTFAvtinxswQZhBBCCCGEEEZRMakyTZIQCs5OGoICq6oXCyGEEDdcaUEGBy8v/M+cUS8Wwi7aqCjiu3ZVL7YpyCDTJQkhhBBCCCEAyMjKu0MCDBfZsmo1y7ddVK9QSGD/T6tZvnorZ3LV64SwXn6BloysPPViIYQQQgihJyMZhBBCCCGEEABEx6XZnYshN/RHZv50GrceE5g2sqZ6NQBZ+77gvT8uUWvoZN7o66VebYPDLHnpR061eITVEzqrVwIQt/Uj3t+UQvPHpvJ6V0/16puggKg9a/nqr1NEp+RS6OiKT0BLRjw9jt7+jvptjrP6nV84rXqnmaZjWPxkO/XSsmnj2LPmOzaeiCU1X4ujqz9N+o3imRFNMZR69J+L+Xh3ouqNSr4MeG0iIwLVy8tSSPKp7Xy7fh8RiVnk44S7bwP6jfk/7m+u+g6s2Ecda8pRR5tymk0/bGTnhUSy8sHZ3ZdGvS19pu1cXRyp4V9FvVgIIYS4oWQkg7gZZCSDEEIIIYQQokIUFGjtDjAAuLZsQe38LK4c3E+EeiUA2Rw8dJqMjOq07ny9Tb7lyNjFV1tuZYChkMj1HzFr7XHS/box6uGxPDa4Ja5JR/nug/n8GmXYrgo16tWjgaVXoBv5GVl4+gaZf3S5Mvh7yUd8dywVny4jeOzh++hfO5fwP79g/vrLGMapuPjWKvk39S/vSllk5FclsLrqo8uRHvIl0z/bxsVKzRg6diyP3deTWnkR/LFiLsuOZiu2tG4frS9HIOMwyz74gj8uQeuBD/DYwyPoWzOX8D9X8u7KY1xv+ubcvEIK7ohRPkIIIYQQN59mxowZM9QLhRBCCCGEEP8tmdn55OQWqBdbzyEAz4S9HPg3Ecem/Wjjo1qfvJPv10eQ2Wggz/aqzfWl0b1GyJYw4qu34t5OJUdNaB2D6D18MF2DXNSrbo7kv1n6ZSi5bZ9k0YQ+NKpdi7qNW9O7bir7Dp7nsrYBQ1tXA7xp1LE9nS28AqJ3E3ylBiOf60c9J/UfKMOFDXy65Qo+Q99m2ugW1K1djxZdO+J2dheHQlOoPrgjtRygcs3mJf5m547t6dy8kOPbw8jv/BBPtvZWf3oZTvHNor+4XH0IM99/gA61a1G3flO6d3bh9M5ThKd6MqB7Xd33buU+Wl+OcOKHT/jjih8j3p3CI+1qKT5zDyfOpVG1X1fq21KOFjg5aXB1MR89IYQQQtxIxXl5ZK1YoV5MJRcXPF56Sb1YCLsUp6eTtXq1ejEOXl64P/userFFMpJBiP+0Ak5s3M7AietoN3EDT/1yhWT1JkIIIXQKk/lt1RbePSY9WcXt4ejaP3lqYzQVlW4g7zpGMRg07daGqqQTeqRkroSkwye4iobmXbviTi4nN61m+apthKsuqaQjv7B81Q/svmZapk25wLafVrN81WqW/xTM+ZTSrsMCog5v4OvV3yi2NT8u3ef/QkiybtvVq3Sf+/2eaPLNttQx+9ur1rEtIkXR074U5yO5CjRq1QaNYrGmcX2CgIz0FMVSC7ShbN6XhEur3vSprF5ZtuhTEaTiR5sOfoqlnvTr2gC0Fwgrc24miAsO5lReAD3711evKlvUBS7lgV/z1vgrl3s2okFVIC2NJP0iq/fR6nK8xvlL+VCtGe3NRl940rheVSCd5Aq4ya2Ia0QIIYQQ4m5kd5ChIDuDmMQ0/Su73IebTcvX0uYl/Wv5OfVqAZz7ZZOpjKYdQUrpJjoQbCr7l4LZpFh1N5+76Tt38dT2PHo/3p8tzwWStDuEl7elqze7ua4cYZjxu9jEoivqDW6SMs6Jm6aMsri96osEls5cZ9yfHotOcemmPIMXcOKXLXR8aS1tXlrHvb/EUgAURJ7gkbd0+9Ju5gEOKk/pMspUWOMcLxvLby3DfklQb1AK8/e9fEC9/uY599sftDPsy1vb+TGm3KZCnfQrzPrgb2aczGDHsctY09f7bv79uB2Z1YvXWW8XnNhLD+NnreflvRlWfec3VxRb/knnn217GbD8XIV0EsgvqIDKu0EPOleD1BOHOWu2IoG9R6PBpSW9OjkCrvhXSuTEyR3sClP+3WRCtu/jxDktVfQDFLSXNjBt+jJ+PniOS8nZJIf9yYIZv6g+H9Be5tfZ7zDj2z2cSc6H/BQuhmzko+nzWaf4Ycq6Gs6Jk8fZtGwas376h+jMFC6dDWf32oXM3KCIbADpIV/wxvRl/Hr4Ksn5+SRHHuLnJXOY/FUoZd4xdX2B1SuW8Lp6atvsbHIAv4CSoy+U4rZv43heAIPuM29ct8bVmGTAl0BVLgVNzQB8yCdHOWuRmvYUv++KxaXtPYy0caokgu5j3oolzButPrZscvLBISAQwxqr99HqcqzJ2FlLWD3rPmqX2DQXNNUJsim3hGUVco0IIYQQQtyFbAwyaIk7eZwJ03+h86QtDJ2+Vf/aRJdXfmHkqjNEWOr+I4S4LV2IzqLI25+H2vkS2LwDTzUq5nREjHozIcp07rdDfB1fDIBD9fp8/mpL6t6UmQScaDtmCN8Oq4IHxVzeuYcHPtvN2CXnOJ0DTgENWPNud7rd4Gm/xR3kylEmBWdRBODgzhMv9eeRQGua7xJYujiEX+OLwa0Kzw6qw3XOuCFuZ4VRzFsbTSYATnQc3ZfFvTxvw+88iJfv88MDyAw/wYPfR113IKRQW6ReZIea9OkcABlhHDqvWBx/lH9iwKVlJzroLzv//l1pQD6njpw2jQzIPsnJa+DSsj1tAUhg05qdxDk25tGZ81gw5VWmzf2YBQ83LvGdZO3fyLZYDc0emcGiKRN4+ZVJLJpzPw1I4O8t/6hGH2SR7ncvHy6YybQ3J7FgwasMqKYl7uBeU/AiYxcrfjxNTrV+TFkwk2mvTGDahx/yTl8f0o/9wFchZbXWW1LI2fXBXNDUoGdPdUO80kX+2hMNjXoyyNaGfkBbVErw1FGDBoiLNg+kKGXt38mxHC+69rc9uFGa9OAt7M9wo0PP9sbPvJ59tL4cdd/hb4ezcGvbgy4VcEAVc40IIYQQQtx9bAgyFHDil20MX3We/Yla3QO6UpGWKyfDGDPVhl6Bd7DtX/1G38n611cX1KtvC3fCPopbq0GjqngkXWPZX1c5dPAAX0dUomOLOurNhChd/AneNzTauvkxa2InWtyUAIOBhhbDB7F+nJ8u0HAqlouF4NGgBb9M6XiT90Xc3lJYveYil4sAnOj1cD/eqGddi9OVzUf1gTQnhj46iGetfF9Fu7h5m+l3/aMTlJyMRlw/LafXH+fXdIBK1OnXnZUDfEo0Zt8ufLr34XP9XDqJIYd578T13YMXFekCxtfLv3t7apHFicOm9M9xh0OJxouufVqaNqzcmS6NNOSF/4Nh17NCQrmAO5176reLCeFIDHi2H0Rfb1Ol7tW1HQ2M/9Nx7fQYc2dP5UVlomf9VD1FsTGYN1t7031YN3wMl7OmDnUCgIw046iQ6OD9XNC60+Ph+zBd9k40HD2Cdi75nNp/2KZkwukhX7LiYBb+A/6P4WUED7L2bGZvmhsd+nfFXb3yhrrI+q0XoGZPBqsL107aSxuY/3skLq3G8GjrivlRtrYc0V5m3aJNXHBuwaPjWlZI0KSirhEhhBBCiLuN1UGG5B07eWqnYqi4g4ba9QLo38qXZp6Kj8lJZv7CvWy15Y77DpSbnU9Kpv6VfXsOm70T9lHcWl6de/HDOF8S9x5l8u/pNHygPyv6uao3E6IU+Rw6lE7NFgH0b1WfRdP6M/KWjBrQ4N+rP5smtmfaQ62Z9nhP1t+00RTiTpEdfolzPv70bxXA408PYXl3K5vuss4wc2s6RYBbsxa827YimqnsU5Cj+F3PLLjuXuvCgtQrbE/1on+rAPr37cg3YwJu2wCDjoYWo1sy1A2ggK1rj3BCvcmt4NOTXo00ZPxzUL8/CRw8EQtVWtLVrPG6Ml3a18UhL5zDYYVAIaFnr4BnK7o01m9yOZo4oE7DRso3WqRxq4qvRzahG75n0byZTHznXSa+8ym7UtVbAjigKed34tK1BKA2jQz7YqBpQYu6wLUrmMIoZdNe2sD8H8OhxUNMvq+s3vcJbN9zgaLA3txfQY3y1tKe2E1ImjPthvU3z6lgr4zDLFu+k4Rq/XjjuQ4VEjCxvhwzOLBqJX8l+TD45afoYmNeCyGEEEIIYRvrggxZ55j2R4pp9IKbHzNmjmLTW31YPH4A//twNBtG++BhWJ8Tx8cboo1vF0LcrjTU7dWT/80exa75w1nU1xcJMQjrOdNlZG8Wj+/D4vGdGHBLAgwmPg0b8UDvZjzQpSb+N7ddRtwBKjdrx8fj+7B4fB/e7GB9U9eVHZc4WgTgzLCBTbjFp7m40arW4/XndefJ4gfr46NefztyrMfTXfUtqOlXWLazvExppXNwqKReZCdD8OAUh04CUQc4FAM1uvdDHSpw79GF5hr9lEnafzh8VkvVtp1pqtrOKhmHWTL1I74OicalSW/uHzGc+0f0oGGFNzA74ugI5OVgzYRJ2kubmLF4J0l+A3jjhc5l1iPak3+yI0ZD4959Kqah3wJff0ufnMDWLafIq9KRgW0r4Ec04zDLZq/ljEMLnnxDORLEOpb20fpyzODAyg/55qwDbR55lbEV2Oug4q4RIYQQQoi7S6Xi4uJyx3zGbP6ToVsMqc1ceOCVkUxrqr5TzGXdoo18cEH/cc6BLPq4NwP093Sblq/lvXD9ps3asrNfNu/9eokTSfnkOzoTVLcub/5fa3rpxyxnnfyH9w5k6N+goeuwnjykzOIVf44562NJ0v+3Yff2tIn8h18N08lXr83M0fUUN59ajmzex49X9f919+f1x5pimBimIPkaP/15hvUnM4nJ1u1TFW8PBvVux5uKhteYQyF8dDyPmMuxhBuKxKsK/eu4QZUavP1wI5Q5xQqSr/HThjB+PJtFYqYWjbsTgdUDeHRcR8YEmfeNO/fLJsbu1D+qVKvPulmdaKLcID+RzRtP831oMlfS88nCEW8vd9q1qc+EexvTyFm3Wfn76M3+b06zX/8M6takOXP7+Rn/DKSw8YeT7NQXv2PN+swYWcvY+6ggO44Nv51kjb6stM7O+Pr6MLhvCyZ0s6GROiKUiTv0Xcuq1GDiECc2/3CatZeySSl0wLuaNw/d34lnW1ueB9mu/SjMYO+WIyzcn0ZMdiGaypVp26MVc3z/pd8PhgSmfsxZ0Z+R+v+pz93Ql82+FaCAiIMnWLw9ilMpBaQVaXTfS6emvDOsrnWNnUkRfPizrqde2ary+Pg2tMP+8jOcHyU+D4B0/vzpOH+l6f7n364d73RRPMIVZvBP8CmWhsRyMaWAtEIHqlR2o37r2rx6T3PaG+ccUCog6vgpFm69yvHEPFLyK5X9nitHGDb/on5Kg8o88VYP6u06zKrwTOJywLOqB70GdOR9VUDkuo7LkgPBtFGeE/MaEvVtWBnlm8gviuuq3DrItTovP9lMP9VDARG7DvH+jgSupBegdXGlXrPGfNg3gwkLFGUxeSRv6OvBcusLtMSdP8PSXyPZb1bu9Xj3webG+kInmq9WRhCm/1+rAX24v1IYC3+OZG98Lhk44V/dj2cf66Kqt8zfZ1W5WpTHvg0hdtffNl2D6vNLUaakX2Thj1eJMmzrXo3nxrSkuVs5x6m8Fkuce2XR7fenu2J010YuuHu4ULt+LV560PR7WC476wID2+rSc7z80gn26v9Xs19/1rSNZeHPkeyMzSHf0RlfXz9eeLIbo8xyHZi/r9f/PcTy7orVNvwOm98fuHP/Yx3po4gZFISf4O3d+osdJ/rc3537A+D41t18d0m/2MLvtWUJLJoWzLdJgEctvpzfnY7qTYCC5Eus/uE0a6/mkJZXiSrVvHnogS4E7fyj7N+P0n7X1eeu/jvOjE3gcIJ+Thlndzo38cSjxDmnu/ZXb7zC9vgc0rKKcC7j3qNc1u6jNUr7LNV9jLkCInYd5YM9+t+dMq5vs3oRP+Z80haX30/w6eFkLueAZ2U3WvZoxZx7a1sOHuQnsnnjSb44kmZ2Ldw3vH3J60d13b39YAD/Gu8vCsDNnQ49WzB9WF38HZV1vOX7XjOllZOFYzZS1G0ODVqx+43mZTTAli4qJpX8guubcslIG8pnk77mVLOneKvaRj7Y4cSI6e9wf4npbQo59sVUPgtvxvOPwLdfR9L1jVk8ZhjxcP5/TPwkhOoPzGVKf2W04DBLXvqRUy0eYfWEzgCc+Optlh8L4MEP32CIccaka6yb9jF/0Y9p+qTAV9bPZtYOGDzlfcYGmT7xwKev89XpZjy94gW6Gz+vJuM+fo2BZoGKWH6d+SF/ak2fWaqMwyyZ+SNnPPsx5b3yGtuzCV7yPj9GteHl+Y9j78Ap3fG5MGr22wxXnuwhq3j2+/O0eWohr6grswvreGvRITxHvsP0ocrnAjtoL7NuzlL+ymjM09NfoLti9ioDm/fR6nIsJHL9fObtyKT5Y1N5XTl1VgVwdtIQFFhVvVgIIYS4YYrS04lr3ly9GAcvL/zPnFEvFsIu2qgo4rt2VS9GExRE9ZAQ9WKLrBjJkMtOY0s14FGdYSUCDACujOrqa/rA/Hj+OmW+hdGl04z89Dz74/LJKoSC3Hwiz57n5el/sihS92Dj3sCV9NOxBIfFEhx2jU93G5t9ADi35zw/hxnWZ+NS05MGjtn6/8cSvDOS3WYzBF3hl78N28dyUuOlb6DSErd3FwOn72PhgWQiM/PJLYKi/HxS4pJZ9/MOBnx4gtP6z0q/mkBwmKLxHiA9Tfe54akoFycf28uw6ftYeDSNmMxCCigmNyufyMgrzJ73O6N+i7V+qoP0c7z2XjBTd8YSnqwrNwoLSUlOI3jnccZM3cpqfdmVv4+++BXqtgkOi2XzzkucU2xK0mXWHDCUVRzJHn7GAEPy6RDGTtnFbEVZFeTmExMVy7drzMuqXAlJpu/rxDlennuIlWczSckt0h1bXAIrV/3JA7+ULCe79qMwlqXztvLytgT9e4rIysxk/7aDjFxvcRx9+QpjWf3hJsasucj+uHzS8otN38u2QwyduotNyu+hNFmp7DGez2W9kkwNoHaWn+H8KPF5AOQRHm76e3uuGhrtTeX31IYrHDcca5GWtMxMjh84w1PT/2DyMdU8aYXJ/PjJH4xcfZ7gqBzdvpX3HjN5/Lrib2YcTSMmS0tRkZa05DT++HkHA5afM86ZzPUcl1VS+XDWwXLK15eGzimmfdgRwR/KQyv8l2+3mvbhYKGrPsCQxabP/mDsz9f013YxuVk5hB8NZdSKq2bHaL0sdqz+g6GfnOGPEuUexphJW1iqry90MvhHcZ7t2BbMyMW696blF1OUn09M1DVmz99mrKMtvc/2cjVwsbP+rsBrMP0ik+cf5TvDPpzOoFbPZjR3o/zjVF6LJc69UuRHs2j274xZc9F0bVBEVmYO4SfP83K514aCnXUB9talClmnDxnPFcPveUzUNWbM/ZOlV9Rbl8a232H3mg5cM5b3RX4ONW8QPbD/X1N5XHagboBuedS/pu9Q/XtdqmuX2aXvzeDWKNBygCHyKGNn6ss8S0uRocw/3caHhqCGBbn/HmHUpB2Wf9e3HWLo9L3sMOyk/js2BhgA8rM4rD7nCjP47bONDP3kDOsi9ftjdu+xiUc2lzwPSmPTPpbHhvsYo8JYls7+nTE/K353rL6+s/jig7+ZtDOBSMPvh+E3/7OIEt9/QeQJHpm6g6k7DfcIpmth5ao/GfiZ+W+O2XV3+goffPCn4v6imNysTPZvO8ToL07x4/JNjDHW8Yr73rklpxe1u8xrB9JVP6S46EKU+e+PDZydLEUw7KRpQedmzuSF/8Hqo0lQv2spSYwdadupGS554az9NZw89ZRKDepTRwORxw+bf2/Z2eQo/w9k5+aDxpOqynZlbQYZ+Yr/26BV+2a4cIUjIYbApo720gGOxkPV5q3KCTCc5dtFNvTmv/AHWyK01Oh7j90BBoDaDevgQhwnTyj3u5BjYRdAU5cWJdopsgnedIhUl5aMGHS9AYY4/l62kr+S/bjn5WcsBhiwdR+tLsdCYoI/Y9GOZPwHj+eVCg4wUNHXiBBCCCHEXcSKIEMq15Ttr7WqWXzIBnCq40Ut4/+0hEcaxhmo5BSQCTi5OlPFWTHktCiLbz/XzyXrXp8h9UzrUiNiFA3h6ew9rxicXDOQ4dUgsGugqSdvUTL7lEGOszGEGB8wXBjQqYbun1eO89y6OFL1c0E5uHvSrVUA7Xw1xsLJvHqO97ekAODk5oy3hzPuyvtLR0e8PZzx9nAy9XK7cpQnv4km3jjHlAPuZu8r4uLfB6xM0JfC6uWh7MrSjxJx86BbqwD6t/Ih0PB5OWks05edNfvYp6M/boZ1SYnsVXxV6SfiTWXt4M2Qzvr+o/EnGL/yMheNDU6VcHU3/zuZV8/x/ErVg7g1MrO4nAMOzs54u5vKHoq5vPMIy5SNVXbux7lNR/k6VpGy3EFDFQ9HnIDMHGubXJRy2frFAZZdNb1Xvf9FWXFMW34Cq9vayuNVWXGNKdhSfnbRsvubA3xpKD8HV1q10uVkaeSuv06Lctn6zQHWGRs2tOz+Zhfzz+ebplpzdDTfv6Jctn6zU9VwraQlM6fY7LsyyAwPZdJ1TAlhmwIycyzsP8Vc3hnCx/oJmdt2CsDXuC6VA8rGz1Px+ilXADT06VgPgPTDR/jwlKKM9HWFqwMU5RSUaECxxrnfdvLW8VzzcleWX2EGX644oGrINzkVnkBmiTpLV0d/v/lfqxsobWFX/V1R12BhLIsWH2VrqmFgn21JgW2Xy9YvQ/jWWB85EFgvgP5NqlDNUN5FuWxdc4wdpXxHpbKlLrCzLlVKjc8q9Vz5cetF684VG3+HqVafwcZpuIs5ekZ5UFHsjjBdd76tatNWsdZWBRfTuKz/d+3Aaqq1AAl89t1FRRnqy97VwVRvWJIVweSVivc5VqZdqwC6BbkYr9Oi1Gje/Z++DJ11v+tm90wOGqp46JYbRnmc27SbWcb6pBJVA33p38qH2sb3FXB6yz+sjjd+Suls3ccy2XYfo6O7vo2/O/r7Rl3Z6pR9fWdzOb7YwrUAmaci+EFZBlkRvLXiHKeN35fuWjCVdzGpp0IZv1l/DqqlJLLX8LcU+weQeeo088MLzOp2o5w4Pt+h+MzrKvNAWhmvi3RCrU0UoOLiUpENqI506NMez7wE4tI0NO7UudQ5+TVte9LZM5+09Hz8OvYwn1JJ05nRA/zg4iZmrQzmzLVkos4Gs+yDTVxQbgc0qF8DB+1ZftZvdzF0K8umfcFB8xiB1TRtRzCsJlz4fQHL/j5PVHIyUWe3snD5HhLcmjF6eH31W0y0l1m36Av2xnvQqn8LCkIPsHuf+euMYcAk6BrYg4+SqmlA3/6lNPRnH2PVe+8ya8NlSrtzAqD1APpXhwsbVvB9aDSJydGc2fwZ35zIx61tP/S5wk3id7MrQkvVzn3oUNpPX9QWZr0zkxWqgIu5DA6sWsL/Igqp3bUHvlGHSxzzkcv6Zzhr99GGckwP+ZK5v15AW6sL/apdY59qu93HrtqUqNuSir1GhBBCCCHuHlYEGdK4rHj+cXO1OJZdp6anWW+eQq2iQVfJwZ1HJ47m6MJR7Fk8im/7uJt2JD2KNce0gCtD23mbliclEGx4IMy6wl7dXBcAtO3SVDflgVnDg5aQMFN/0nOnkjDGSrwCGKZ/ejl3OIbLht30COLTucNYOb4P38y8h0mKIMeF4xe4CNQfPoRd80cxRfn006glu+aPYtfbbdE9auSy7peLps9182PG7NEcmD+KAwuH8X4Tw917AVv/Di/Rm66ErGvsvWZo/HLmgWeHs3J8HxaPH8Sm54MwDthNTyD4ipX72DaIPsavMp29JwyNtVp2h5uiSg71ajLUXbd8x+//cs5wTM7evDZlFIc+GsWBT0awsqvpO8wMD2elzQ+3GtoOH8DBxaPY9dEYDk6sRx3jl5/Nur8i9f+2dz8i+WpPlrHR1aF6Pb5dOIY98x/g6OJePFrdjvlVI07w8SnDY34l6vTppdj/OhhOxaJrkXxzVvE+S2p3YsuKhwg1e41gTjNFs7qDO08836mUBjNry89eMeyOMDVptL1/CGvG63Ky/PJeM1oaVhQlsydU/+/4k3xy3PSemp268NfCB9j10RgOv9eCjoYoV1EW3/92rtTrwKNZG/5arPuuDs5uQy9jdKyYo/vDS2lcqmi67/fQJ7r9Ny/fPDbu1Df4NKqtyEtQzNFTl40NQUfDEk0BA48aPNgWIJ11f8eRaViuqCsOLR7GDOX3b62sM3wUbDrXPZq10ZX7/Ac4OLsV3QzXfU40X+22HKRxqF6L5Yo6601FXVh0NQnDV1yh7Ki/K+YazGLTygN8G68IMPyfDUmB7XKZP4z7DS3vG8bWt/qw+NWhbHuxlilQlR/Lxn+Mm1nJ2rrA3rrUnEP1eny7+EGL50rOhVirzhVbf4fBi+FtTBPB5ETEcNTwnysxhBgvKGVAyj7nY0zNUdW9LUw+c+IsPxrPHcU5uPBBDpmVvUroVXYZK4SqvDl7JN+M78PKKSNZ2dXFuFlO2BV2AHTsya75o/iih7ECBO86fDF/FLvm92QQAAlsPm669qt26srf7w3Q3SvMbE5b475k8Of+UjqBKNm6j2Wx8T4GSl7fTYcO4uDCUexaOJq/xvkZ84AVXbvKLxZ/CJzoNW4Yhw3XwoQgRRA4g5AwU/13YsNp07E6uPPoRN21sGfxKL7taWjpLObcnnDTuWZGcd0tfJCd43xNHTkAqgWxcp7uOjm0sBv3Kk6lC5fiTAGD6ypzDY0DDH+1jI4+5ajsasfvTlkad6Z9FUDTmJ491C3bSo3o3tYLqEa7ziWT+da+71Ve6FyFzLCNLJo7ixmf/klM44F0U8X+/Ie+aLbd3M+3E9V4HPc2AlJjiSqzZd4SP4ZPfpvHW2o4/dunzHh/FjOWbeeSR2sen1R6L30AYk5wPF4LpBG6aR3f/1Ty9ZcyShK/nQ3qBna13FQS0rOIiryK5V9wg5o88MbjdPNOYu/nH/HO+x+xaMslnBoM440nWmIeRyjk2IadRGtq0K9/GUGTtGQSMlKIvGQWGVEJ5/DpHKCAK/t+LXG83/+0jvXHDA+WVu6jDeV46p9wcoD8qwf40cJ232/4xzjVrr0q/BoRQgghhLhLlPb4Wyqfqsb0zvZr0ohJDQ03aE60HduWUcaP1XLkjG5ibq9etemheCjeeUTXDJkeEq3o6ebNkK6GPnzmDQ+m0Q+5HLtkGvmg7NlYZ0hvts4cqnu904GOxs4p7nSoq3hE1BZb6DVWiqx/2WzITUElOg7vzijDnLuOnowZXMP0QB0ZZ2NPVS3RsRnGfXFq0oGfDfs/szdP6aeFKF89hrUwPWKcDDc0hsZw/Kpp39u3q6+f0/ciG8NMT2YN+nXiaeO8zu50e7g1I4zfYR7bQqyaMETBhzHDTHNuuzbswGutTPuXcymB02D/fkQmEGrsCa1hwIgOtDU0tjrXYNIgU9ODtY6GxJBo+I9XbWaNraHY/7Y8quuoDuRz4GSs4T9Wu7J5D9PCDd+0hm5jy+pZbW35VYyE+GTTw61XU5Ybz8GhTGur+34u7r9m6mHoHMibj5rmkXYKbMnHg03z2ZY+tUNlHri3qel9Pk2Ze4+3aXVMAvssvq+i+fKc2ffbmWmdTQFXU2NqDR7oYGoZyAm/xgEAothyyjRXQ9WWtXUjwgqjOaoImDbo3c6srhh1by1jQ7m10kOiTCMmHHx47Sll+TXn2fam/T5x+pLFei2wRSPTPOGOnjzcRdGKk5mLIXVCxbK9/r7+a7CY8xt3Kq6zStTp153FNzTAABTWYZrimlne1/T3nJpWo5nxf8Vobfp9wIa6wM66VCWwRT1TXeroyf3tFPNUW3mu2PM7bDbyJTOJPfpG5vSIFH2+DVVAyk4X4w0tvpWpr5i33eD0+RRT8NA5gNdGm9cTz6lT+OgVtO1kOuaZvRhrPPU1dGygaIEuKrJ4jVpWladeNZ1XP4+taRq95OVPG0XVWWonEIUbs49YfR9zLjTBdH17BDFppI/+eDT492rO/cbjyeaixdOzKkN6mfIouLaoQx/FLWxCiqE3dhQbQ01ToPl2a29+j3pvPVNwPzORnRZj9ubXnU+vILNRv90GdaWbocica2PWhp6YoQ+eXX+ZOyoS0qaVOoymbE5OGlwrtKd2fR6bu4TVS1+ge2m3MAAUkp6RC4Ed6WPhWgNPOjwxjZWL5/Dh7BksXfwxc5+4h2dmLTHmYyi53TQWL17I/Cc6ce/r5vtQe/T7rF5hno8BoPuEJazW52Mw0vjT+/lprFw6j49nT+PjBfP5dMbT9LaYHEMh6D7mrVjC6jJeryunva1+D7NWLGHZ0+oggILPAN5buoTPX+9Z6qgQI882PDPjYz5bMMNYFoveGGxhqiFHOjz3EauXvs1wi9NZ6bV4lGUrlrBgXBmBCDrzuoXjVL7mjVZcANbsow3lqPv+yniVlz+jHK4ujjg5lShAIYQQQghhT5AhJsHOuevLpBziDalp+lZDx4aMUjSOnAu/Qrq6p32DIEYo7rLNGh4M0wAVXuaAYb4DVc9GV88qBPpWwbs4nf07jvL20q0MnfwbfSf/xnP77XtAIyJFMbWTA/Ghh5i4crfptTUZ0+NsNpHRxv9Y5l5PMXWUloM/b6HbmxsZt/QgK48lkFPZg0Bf/XGUMdBETTllUtGFeF1jqLIXqHKqpCupRBjbJJxp21jRWgHgWJvOinl8UlMyLT4AW09DJ+UDdUqm7iHc3v2IyVQ0dnnR3mJeEVukc+KqcoLfVL5VfscrD7FR0VUqJt6QhNQ6BZFHeHlruqI3eivm9ir3cVKhlPKzWyDDWpp6UV7bt5duE3/j/gX7WPRXFFddKhvPweqVdWV7+pqi9b+mD51Uz+I+TX0UDei5XLNm+g7Aq35VRbLWPGKvt0uandrUVZSvojG1Se8gfa4FXfLO3WdL9q4e0lXfqhGdoRiJYeF8tsPxSMWYEMc8tn+vPC93s+qCohunonGrLE4aO0b62MG2+rsirsEcDoaben4T1IQvxgRYTI5coRxdqe5bhcCqLqRGXeTTr3bz5Czd707fyaewLqWStUqpC+ytS8vh5VZOo5sFdv0Om418ySYkLL3ESLzrnSrJGqYghOV6rjROlT0J9K2Cb+Vczh0MZcrK7dyvP+a+v9pbqTnh7VuFQN/KaBOiWfO/fYyft1F/Xu1jbSkz/ZSmQvfRjvuY87HKaTF9aGP6HxDApDmmkX/qJOKWueBh+hkzSUrklLF+Bq5EmN+zfR+lyLOSw2VrImcqjhrr7jmut8wDvU0HaLyXtoOnh3m695siYx9/heVTo21H/NXrlJw98PWpiv5Wo3TOHvj6+OBpw31xuTRuePv44G1HPXcradyqVnxZVLA7YR+5VdeGEEIIcZs7GpHA4wv+pseb62nz0lqbXuM+/IsMu6Yvv3X+a8drCyuCDFWoo2h7KCrQlt7QcE3ZYAYebpae5izR4GhxTzT07lDdNOT8cgxbs66wTzFKwNTTXs+s4UE/DZByLvQSPRuzOPjjFnrOOMDsndcIPpdGTGY+KZn6BIP2yFbOo67lSoQi2WRYLMERWTbOs+7OI8935aEAUyEV5OYQfu4Kn313gHsnraf/wuOcsDWpnXLKJH1jaExYorEXqGmqJDVHPEobxm1gZeNlWcpvrLJ3PxzxtHhctsgjXTlO3ZBYW/EyS7xti6wI3lphmm7LoXp9Ph/fBB/1duUov/xsoaHjw72Z3NjZNNd9fj6Rkdf4dsNhHnvnN7pM38e25FLmIXB1Mr9OS7Ch4UZTyZqK64YrteG9el0GGaMg+ez+J9rsuipZBxlYcT5bIT1X8R0YE8OaXmaJY283NtXfN+AajL7KD6XmB6lYBTGneGHqRsZ9cZ51YbEcj9P97qRkFpb+G2un8usCK849i3VpRbHnd9h85IuuE4Ly/uD6p0qyWbn1nJKWSzt2MHDyLl7beoXgMF3C65TMfH0ScDulX2Hu7N8Zvvwk3x6L5WBUjv680iUytk1F7uN13sc4VLpxwb8sXZ4wg8Srqnu2sDTTiIob7vrKvPxr3Tqe7i4436ze2v/+zfJVS5k6bRMXnFswvLRcBELcYs5OGjzdrX22FUIIIf4b/jx6hWeWBBMamURmru1PsuFXU3h+6c47puH9v3a8trKirc6Phsqhs9eSS51jueByOleN/9NQr6b1j9ulcWoTRE9DQ3hRCnt+uspuw0Oosqe9kXnDw8nwyxxUzIWu7tmYvGM/E/Ybhu07Ub9jYz55UzdUfUU3sxl17aRLHqhLumz55WnNc5xXbaa+fz+bX27O2Hoe5skfKSLp4nmeWlBa8sPSKKdMyifkVBQ7ja1yFgI4trCpscWyAm1pjUs2qID9sIoxsXYpr8rWPvhnsenrMLO5oR97vD0trH27QoWUn5KjD4+8di97JrXjidZVCDTLXllMbuI13p5bejLhsmlwL6+R847hzfDWpkmaE89eYEmoqbVbXQfdUIrEsJZfimT1twXb6m8zFXENFmXx7dfHOG3XOWyDwijmLT1NiD4JrkPVajwxtjvrZw5l68zmdFJvf50qpC64gXWpvb/DZiNfLsez+7QiQXipwbzbQ8HZQzyzPlGf7LoS1RvV5/2XB+imybnPUoJpa2Tx4+chrDUkSnbzYMTQznw/cyhbZ3ZljI0DpSp8H2/IfUzFc3K1UH8oXl43sKf19Zb5xTjT6A8HjRW3+GXwrnKTfpTTY7gQGUdh9XY8PukputykPyuErW7aNSGEEELcIdKz8/ngf7qMZTV83Jn+f51Y/Vo/m17dmwVw5koKLyzbRVbujX4Qvz7/teO1hxVPIBoGtPIxbZgZzf+OWerpmcXPBxJN0044V2ewMRtseZJQ5qczSy7tWJ+RxobwYvYejzE2ODk0qc0oCz3SA/vWMjZEFV24yOIIQ6uDumdjOusPpRj32a1NW9Y91Y6+9XVD9v1cS+mpXJ4gT8U0MA70euheXdJli68hPGf1pOtOBDVrxbtvDWfP4rEc+rA377d0NfUsv3aFtRbnCi5dn56m/BDXzobxu2FaEnUAp5obpr5l2YRGqNPNJRChmO7GrXoVxZQ29gm9pOiG7Kxv4LJ3P3xcTXkwyOSsjeVUkh+NlME3v/p8V+K7VbyeNk6gUwYtp39Rzg/vRK+Hy8rDUDaL5XfdNHjWbcwbLwxl68IHOfrxIBb3q2JMwElOND8d1NUPgVUU1/HVpBLJMguiMhRTWLnTSDE1S5lisxTvc8TLQh1wMygbc9TlW7tHDcW0P9FsNQ5jqMzwnoo6SHU+n79sqW61TeMAxUOwY3Wmf2DhfDS8jMnqbx/W198Vcw06BTTg2wmKZMtJkUxaH1vhownMnIpki/Hy9OT51wbyRp9aNPCtQqCvs3Fe94pisS6wty6tcNfxO1ytKfcb8m4UJfP9BlOC8DIDUjbwcjXUv3nEJatWquu52DSrc98c2Bdt6h0f2IgvX+/EmGa+uimDPKy4NbMkKYLfIw0BJQ2DHh7KByPr0Vo/hZK7jR97Q/bRhvsYs7JNUo+kyeXMkXB+3aN7hVg53Z5Ftb3M6sHaffqWrD8Ur7nKZAsV7HrLXBlQDPRT5Eexg3tlZ7xuxtQw7R9j8Ycf8NGUR8vPcSDELeLl4Yp75RsYYRRCCCHuQEcjEsjIKcDTzYn/vTOY0d3r06lxdZte1bx095unLyfzwrJdZOfdvg3v/7XjtUf5TyyAV6+GDDZ2JtSy/adgfoxRNoYVcGLdTj42PtyCb6eGDCjtWeFaEkcV5VgQeYGtigfEJvXMmzKUuQNMKtGjfUPLvXDdGzLE0PCQn845QwCjWk0eMOvZaD7dhoubs+LztCRnWvll5xZgNitH7Zr0NLY4atnxx7ESUwDk/nuYxz47h4U2ixIu/vaHaQ6vOceNvfxcPQMZ82JTehi3LGPKGfU+GjStzQBDC3FMOucMU/SoAzjutemlCIac3Bdm1ts391g4pumCK9Gxua1p1bI4q5ympDCSn02ZmnGoVY12XMd+NKxGK+PZnsPvOyIVjYhajl6wWDpl6tNCEXyLieSjvaZElgAUZvDbZ9tYZOX0KwWR/zBlt2l+eI+WrZhrdQJaK8sPqO+v7ImVS5SycSY9ifOGXJhKh3fRznAOTtxjTFbuVNmH/mM68ICig+UVfUtcx1a+pus2M5ZvDijmhy5MYvUuRVCymi+9LHbSzCE0QjmvdBa/hSje51GFtvr32XVcVkvn+Fll+cby63FlzglvY/mCetof5fIAhisvDXd/2iiO+9DeMLNevMkRKVYlzlVq0sbP1GCeH8sn66NNSbpBX19v4zXl93E7sbr+rohrsDKPPNGRti26ML+rIufI7iMsMXuP+bSBycnKv6PldJSNZWk2pZ4jVZSXeXo+Nk6dr2JlXWBvXVrhrud32JUR7QxfjJZz1wyBP1Uw7zo0DjR8OVrSMkqeR20aVDGdgylRfHdCWfZRHFckdlcym9bM1UkRBIfkTCtDXHkFmFVrZtP+aPByVwSoC3NIMSWDskqF7KOePfcxbZpXM/2GxMfwq/K8Tv+X+d+dZNbak8xae5rfysttVaY69G5gCmZd2HOc31RT/xUkn+W1j4/c8FFO11vmkQmmmqW2v62TLJbk6+NewUmghbjzuLo44utj7f24EEII8d9xMUaX97B+gBdV3K8/GB92Kem2bnj/rx2vPawKMuBYj8mj/RS9lZOZP2c93WdtZ+LSrQx983eeUDSO4laDaWPLeMBPv8pzU7cwfuVuJq7czsglkab5yh18GN5V1XOqbT2GGf+4nnMAozqX1sNb2fBgUrN1XVPvYgA8CapqerBMPXyM1zaF8+ueMOZ+vJEJRxSRAdXDvKl3IxB5nieW7mbiylCOA1CD8QO9TT3z4iN5avIfPKlPIjh+3u/0XBzJyVOhPPlL+T1m63fwN42MiIngmc/OcDIxjZjEGDZ/GcF+45ZetFUcYNn7aBDEsJbqi8NSAMeLsQP9jedAUfxFnpi5XZcUcekWhnwTY2rc8AriyVK/m9Jks2bJJsYt3c3ElTsYM/UIW43PyhoG9Gmi7ylu5344NuTBNqYjyjx+hIFzdui+jzkbeS7ExtYXwKtXM0YZg0kF7P3fVobM033mxJXbGTnpT2acSuXbFbvZVF4MI/0cExV5GKAShZGnuNeQ8NH42sYXFhutrC0/cKrjpRhpk8HnC0zX4tD3QzloaU7sFoH0MObviGHagiMEX0sjJjGRQ5tOKBojNbRqqO8f3bYpj1Q3XF8F7P3pL8Ys1V0DT84MZuU1U26Vtn2aq65Ng2JOrN/C0AX6a2fOX8w6Z2qE8W1TF0OnUruOy2p5/Lpio2L/97JG2QDboaFqpIgXY7uUrIMadGyoOk4/xnTxUvTiPcfo9/Xn84JNDF5v6uFttUateMaYYLWYy7v30We6/jNX7mDcO7/zxO5Udv20s4zG94qQxBcfGc7bfWxXry6VtfV3RV6DGjo+3IahxhbNbNaYTZvkR9MA029FTugxRhrPyY08ulsxqsUafpVNgSBSWLEshO/3hPPrpt0Mff8MpxSbZuSoRxiUx9q6wM66tMLZ/zsM4NW1RskRC+pg3nUIbFDF2NAbfqlkyM+pcz1FJ4wCtn5pqCd2MGbqAX4t5byr5aOY1zvyPON/DOPXPeGsXLWJwRtMyauhkAxFDMtszv3MKKZ8tJuJK0P4Mwmo5k6g8a4un9++38XKPeH8+lcIj00NYaMi8UBWTvm/efbuoyX23Mc4dWjIvcbrO5s1S7bo76N2MGbOGU4Yh7/4M8zqkbOWuDJqWJDpmsxJYMZMwzW0m4kL/qDn9FB2XbrI8yut6xxir+sr83SiUgy/q+40r18x16y/r+fNy88gxG3G2UmDv69pCkwhhBBCmBRodTfkjtc5TafSycgknl+6k9yCG9lWYZ//2vHaw+qS8eneh8+HKaZFoYisuGRdgkZFMjoHd39mTO1OnzI6Pjk4VKIoK4ODYbEEhyUTY2zIqUSd/m0ZW6KzSBD3tjFPtOXWLIjeZfyNkg0PlRnYWZ1MzpVRw2pjzENYlMuurSeZtfYMay/lmzfuZeZwVRFc6t5OkZCaAi6eiyU4LIko/RKfAT1Y0E4xBUB+Fsf1SQQPRuXpAwuV0Fjz3Fa7PR8P9NQ3+hcTfyqMx6ZvZej0PUz9xxDcqUSdfu14QtErurx9NOjYyd+stxwOvgyx0KDk1bkXn/dzNx5TQXKyLiniuQz9/MGAoyfPPN+FjmV8N6UqzCP8XCzBYYlE6OcqB/Bo1oqpHUz7Y99+aOgztgW9jAVSTGpMou77iMmnyMGOZMKOQUx5vgktjJ9ZRFKU7jODw5K5ok9Y6uBgxSefusZes2zgxeRmGRLBmr8sdKbVsbL8qN2Q0TVNjXrm12IlLO6uexNmPehPVf26zKsXmTh3K0On7+D5rcnGxkiPZq2YbLzw/Hh1YhtTmRflE3FOdw0cTzZ8UZWo2rINiweUuOj1KuHgUERMpP7aiVFcl27+TLpPEcy057is5VAJB4v7r0vM/Xa/klNKeHUNoqPZ3/RkUNeSjee1h7TjMWMwRnE+R2ZTYM95iTuPPN+RocaG22JyE/WfGZZIeIZ+3x0csOcytV4RGYrz1pamcuvq7wq+Bh3r8e5YU6O7+bRJGob2DDT7/VOekziUMaWPJY1a8UID0z5lXr3MgrUnmbU1VvF7qBOXpGxYtJKVdYF9dWlFs/93GFQjX/QsBaTsphgFl3o1seTIInUnDGM9oSt7h1LOjbYjGivKtIDT+88wa+1JPjuZrep4kMs1xaiswE4BmCb+Kib+cizBYQmEZ+nq6Re7uZnuO1Lj+GztSWZtuMxJxXkAkJqSWW4HB3v30SK77mNqMOn5+tQxHFBhtv4+SnFeOzjTd3T7Mu85reHUtAtLlfe4xmsoluDILH3S7Eo4lrw1qlDXVeaF0Rw1dEKo5s8QS6Pp7KDROBBY3UtGNIj/HFcXRwKre6GpwIYEIYQQQphzqFTyeSnsUjLjl+0iJ7+0xq87191+vDbcNWloMXwoO6a0YkSQS4lpihycXWnfox3r5vRllE/ZT2GtR/bno46VzT/D0YX2Q3qybpSFhiSgbacARc9PDT071CmxD2bUDQ+l9Gx0atqVn8bXp7W78ouuhKtvTRY9U8est2mIonupU4cOLO7hhVnuWzPuDHh2BL89WYf2nuqNKuHq68f4F4ayblRA2ccBurIfNYTNL9S38Fng5FmFEeMG8usY888qfx/1lFMmAQ5NajLU4rOkhhZj7uG3cTVpVmI/HKhWvz7Lpw/hVbtyCPjy2hM1CTT7uw4Etm7DD+ObYD7o38798GrC4qkdGOGrUZz4+u/6jcbYkyPUqV5bfpzWmzdbu5csZ0cXmnVsxbo5fRlZMQkRymBL+Xnz7MtdeaKus3kF4FiZAeMGMq2U1jmf7n3ZNrkVA8zKT8fB2Z0eQ7qx6WXV3/JqwvJp3RjftGT5ODi7M+DB/mx7Ub1/Ch5BLH2tscXr86OpvRhqFpuw77isUqcZ6yyUb7X6jfl6SkfLDZru9RliHFEABAYyXJlDwMAxgDem9GR8ffN61cnTh1fe6Mhg9UAja3jVZ/7MgXzcw4dq6mvZQUPtpo0tXyO3Cyvrbyr4GvTq3JX3W5q+hWu7Q5innybLqW13fhgXoDoHKlG1bn0+HV9PMYrGGu6MfXUAM1pb+B0c1o3JiqlbYv6NLdmwXSZb6gI769IKZu/vsI565EspASl7OTZkVCv98V+LYbMif5SBT/c+rH+iJrWViYwdNNTu2Ik1Q0vpAevVnJXvtGGAj3m5O3n68MqEFooAZQ5HziiGQ1RvzaLRfiWva9CNyHlkAJ/2q2oMCINpXxb3UPaST+CAYhOL7N1Hi+y8j6nXiV9ndmBsifvOSrj6BvD+5BF8YvW0gmXR3eNumtjc4m+ck2cVRpT3e1URrqPMCw5Hc0j/75Kj5q6PRuNADf8qNydHgxC3AS8PV2r4V5EAgxBCCHGD1a5u+Xnp+IVEXly+i/xCs25nd7y7/XgrFRcXm3dvs1ZhLvGpeWgBNC74erta0Viukp9NTHoB4IS3b+Wyk11GhDBgyWVdQjznGixd3Is+6m2ui5aMlEwytYBLZQI9rTwa4zGAq1cVvEtpECzIziAxW3eylLWdNZSfpansQfXK5TQAWbmPtsrNSNPP8eyAR1VPPC02epThQDBtfkjQ/8ePOSv6M5ICUhKzybVhX+3ZD+N7bPmuy2Xad7uvCVtUQPmZziUrrkElxTlldRkq6wxr32Nkuj6tOeftPq5y2VK+uaxbtJEPLuiq2CbD7mHd8LJbuo37XaHnj6Juq/DyKEskkyceZms+4FGLL+d3N05tdePcjGvQ9DesORfLZbyWrK+/SqiAugA769KKZefv8I2muP9oMGQw6+8tOSJJx/YyR1nutpyzivrU4nmoWG/LvpTGrn0sg833MZj/7lj9HnvdzL9VCtvKPIsfF2xmfmQxOPjw7oeDLIwKrhhZ2fmkpGWTf5cM6RZCydlJg3eVypLkWQghxG2lKD2duObN1Ytx8PLC/8wZ9eKb5rPNp1i55TQdGvrx1cT+6tVWiUnOZuTMzRSU0rjeuXF1VrzUB2fHWx/4v9uPVxsVRXzXrurFaIKCqB4Sol5sUblBhjYvrVUvuilCVzyk+F8Wvy39kxn6udjd2nUm5Nl6t2zfxPULXfGQxYax9+Q7tUpp5TfyFl6zwrzeKog8zH0LDPlmvHhl1j0sm/bf+G5CVzxk1jArdfaNU1pdIHVpxQldMcLUgOvsy4yZAxjlJXWtuD2ErniIghN76ftFNJlAzX792TLGz3h+mt9PV5yMrDwyMnPJvYsS1Yn/LlcXRzw9XPF0N5+eVwghhLgd3M1BBoD9Z2L5bPMpwi5ZGDYOdG7iz/IXe+Fyi/OE3e3He1OCDLdUUgQf/nyJkIhUIo15H1x46PX7mWrP3Dbi9mKhYWykahNRBim/29LxrbtZdTyV49G5+nm8waFBK3a/0VyVHPpupmXH57/xRqgWHLx45f17eNbSVFGiYkhdcOOln+KJd09zogg8mrUtOTWcELdK+jlennWCvTm6HEFr3u1Ei5s4CqmgQEt2bgF5eYXkFxRSqC2iqOj2fbQQwsGhEo4aB5ydHHFxcaSyqxNON/khXgghhLDF3R5kMLgcn0F8qlmyUj765Tjnr6Xy6n2teWZwM7N1N9vdfrx3f5DhyhGGzb+o7wms49GyPX++2Og/1Fh3F5OGsesj5Xdb2rR8Le+FKxY4uPPMpBG8WkpOgbtSTjQrPj3M1xfzqTGwHxtLybUjKojUBTdF8rG9PPRNNPFF4NG6I9tfaEBl9UZC3FQxLHh/L98nF4ObH3Om9bcq/4wQQgghhLhz/FeCDJY8vTiYY/8mMH5YC14c3lK9+qa624+3IoIMN3+SJ1toKmHsjOWgoXbHDqx/TgIMdw1nZ7w9TK+bM0/8XUTK77bkpDElf3Xy9GH8a0P+WwEGALcavPTm/ez7+F5+lQDDjSd1wU3h06EXa8fXob4j1AzykwCDuA14U9sbHKrW4KOpfSTAIIQQQgghhLhlbu+RDOiTF2aAd7lJ74QQ4vaQm5FGjsv1J1sVQtyG8jOIK/DE/wYl1hXCFunJqVTyqnoLErULIYQQQoibQUYy3Jqe/Wp3+/He/SMZABxdqS4BBiHEHcTVUwIMQty1nCXAIG4fXj4SYBBCCCGEEELcerd/kEEIIYQQQgghhBBCCCGEELclCTIIIYQQQgghhBBCCCGEEMIuEmQQQgghhBBCCCGEEEIIIYRdJMgghBBCCCGEEEIIIYQQQgi7SJBBCCGEEEIIIYQQQgghhBB2kSCDEEIIIYQQQgghhBBCCCHsIkEGIYQQQgghhBBCCCGEEELYRYIMQgghhBBCCCGEEEIIIYSwiwQZhBBCCCGEEEIIIYQQQghhFwkyCCGEEEIIIYQQQgghhLBKjWrudGjoR9Na3upVd6WbcbxNa3nToaEfNaq5q1fdESoVFxcXqxcKIYQQQgghhBBCCCGEuHWK0tOJa95cvRgHLy/8z5xRL76rPL04mGP/JjB+WAteHN5SvVpUIG1UFPFdu6oXowkKonpIiHqxRTKSQQghhBBCCCGEEEIIIUS5wq+mcPpysnoxAGGXkjlyPp5TivVno1I5cj6etKx8s23/jUmzuPx2diEmnSPn482Wnb+mO77jFxLNlhtcjs/gyPl4jpyPJ69Aa1yek6/lyPl44tNyzLa39DfuBDKSQQghhBBCCCGEEEIIIW4zt8tIhrwCLQt+PcGmQ5Hk5Osayuv6ezL7sS60rleNxPRcXv50D+FXU4zvaVvfl+UTevP5n6f5bsc5Xr+/DU8Nampcf9+sLVyKyyB43n1U83I1Lje4HUcyvP3lAbb9c5W/PriXKu7OTP7qILtOXjOur+HjzspX+lCnuic5eYXMW/cPG0IijeurV3FjxqOd6dE8gMjYdO6f/SfNannzv3cGG7cx/I3DS8bg4qQxLr+RZCSDEEIIIYQQQgghhBBCiBvmi61nWLf3X1rVrcYXr/bl3Yc6EJuczcTP9wHw8S/HCb+awgdPdCV0xUPMeqwzJy4msuDX4wxuXwuA/WdijJ8Xm5LNpbgMOjT0sxhguBN8v+Mcu05eY8KIloSueIhVr/QlJ7+QKd/oGuWXbDjJhpBIujUL4ItX+zLn8S6kZuUxYcVuohIzjZ8TfjWFL/8KV3zynUmCDEIIIYQQQgghhBBCCCEs2nLkMgDzn+lO5yb+jO3dkNdHtaFOdU+uJGQaRzD0b1MTgPu61uO7twYyrk8jWtWtRoB3ZY6cjycnrxCAA2diAYwBiDvRuahUAPq20h1z16b+fP5qX94a3RaAjSGR+Hi4sPLlPnRu4s/ILnV5U79u+/Eo4+e4OmlYuuEkkbHpxmV3opsbZMg+zorpc3ntvU/5X0Seem0ZTrJq6lxeW7CDq+pVt6P8TBKS0sgyTbNVpsLsNBKSMrGlRGyizSHZhv0pXT7pSckkZFg7V5qt2wshhBBCCCGEEEIIIW4n15KyqBfghY+Hi3HZw30a8dXE/tT286BT4+oAPDh3G9O+P8zhc3G0qVeNZrW8QRFMOKzPNbA/XDeqYWC7OzfI0L15AAAvrtjNm1/s5+/jUTSuWZX2Df3IyCkgO6+QhjWqmL2neW0fAGKSs4zLxvRqQA0fd6atOazY8s5jXU6Gg9/w9E8R0HQUX03oqF4L6UdZ+MFvnM5xpcXDr/NmN0/1FkAOB1YtYPVpytimNEdZ+OpvnPbpzrQZw6mrXm2jvIQIdmzZxl+hHjyw6El6qdbv/fRdvj6rWmhBi4c/4M1upv+nndnMih8O82+GLioHDjj7NmHc8w/TN0A9h1Y+V/as49ON54jPL9Ivc8SrXmeeeHIo7bzV2yu+h1Ko96cw9jCffb6F0MQCdH9B9/lPPzOc1l6m7cpTmBLOz9/8zs7ITAxHhqMHDXuO5qXRTTC/XGzfXgghhBBCCCGEEEIIYe52ycnQ5qW1NK5ZlZ+nDlGvAn0S47lrj3EuKsXYw79mNXdmP96FDg39CLuUxKMf/824Po2YMrY9Pd5cT+Ogqnw9sb/6o4weX/A3oZFJvHJva54d0ky9+pZQ5mTwr+rGsk1hHDobR9ilJACqujvz5uh29GoZSN/Jv9O9WQCfvdzH+P6zUak8NG8bo7rX54kBTbh/9p88O7Q53ZoG8MySYCY90I6TkYn/0ZwMxgCDI4H9n+S1UoIHhaG/88PpfPz7lr7NDZWfxKnta5nx7nRenP0NvxyLId3YAm7Or0FT2rYs7dWYIHcAT3z9TO8pvLSZDz8/wL9ZztTs0JdHHxzCoCZeFCWG893iHziQrfgDaLmwfjmzfgkn0cmXtn2H8OiDfeldz4PsyAMs+1C9vc7VOF1mdkdXdzw9Sr48nBUbpx/lk8UbOJ5YjHeT7ox5sC9dAp3JjDzAkg++s/j5FqUf5ZMP17A9Mpcq9Toy4sF7GdO3GYFOmfy76zumrjqOKfZmx/ZCCCGEEEIIIYQQQojblquThryC0qdIcXPWMPuxzqybMoRNM4bzUO+GXEvKYu7/jgEYp0w6cCaGk5FJZOYWlDlVUnJGHv/GpAHQNKiqevVt45WRrVgzaSA75t3HhBEtyc4rZPZPR3CoVAmAnHzzxues3AIAKrs4mi3v2MiPsb0asnTjSaKS7syW0+sLMmiv8tMnGzid44B/32eZeX8tzIvIII+sGkOYMXMqs0eXts2NdI2f5i5i0aaTXMlxpXaHRuhmy7Ks6ZDHePX5Ul6PNsItBwjowJCGhnfksPP3EOKKXGnx0KvMfmIQ/Xv15uGX3mByL2/IOcfPG02ZxIkP5utdSRR5teHVma/x6uje9O81iCcnvsFrXTwh5xzbdpuysRtoi4qAynR5eiqfzC35eqGDcUsOr9vM6RwHGoycyLyXhjOs1yBemPIOUyztT6ly2LtG8TkTRzG6VxeGjX6UD969j2bOkHN6H3/rgnV2bC+EEEIIIYQQQgghhLidNapZlcvxGZzVj1IAmPXjUdq8tJZzUal8tvkUfxzW5W2o7efB1Ic6EOhTmdQs0+Twg9vX4kpCJj/vuwDAwLamIENGTgFHzsdz5Hw8v+6/wLgPt5GVW4iPpwvtGih6ed9kc346yoQVu43/j0nR9dqu4u7MmuDzfLfjHAC+Xq68cE8LujULIL+wiKLiYmr7eRB+JYWMHF1gAeCIfroow7RJShNHtaGquzOnL+s6md9p7A8yaOPZtuwbticU4db0Pt4pK3igLULrABTlkJKSY5pCpxS6HAXJ5ec1yM8kObusDQw0VK3VmjEvvsFni6Yw44mW2BsDiw0+QkSRM+2H9kc38xaQfYzDF4vAvTlDzUZpaGgwvCsNgLSIc6Z8EheuEQ34tOlGa+XoAzS06NAID+BqpO6CU7oamwK4UNldvUbtJAdO5YNzc4YOqqr4XjQ0GN2XFg6QdjQEXSyxLGc5dt7S5wBenenRyAGI5d/z9m4vhBBCCCGEEEIIIYS4nb09ph0Ar362hxV/hPH2lwf4df8F6vp70iSoKofPx/PutyHM+ekon20+xZRvQohJzqZ3yxrGzzCMXNgYEkn7Br74VXE1rjt7NYVnP9nJs5/sZNaPR4lLzQHg/Yc74e5aaovzDedX1Y39Z2J577tDvLpyLycjk+jcuDquThrCryazcP0JJn15gM82n2L+z/+wOyyaFnV88PZw4f2HO5JboOWR+X+x4o8wpq85zGebT9G+oR8jOtdR/ykquzgy67Eu6sV3DDuDDBnsXbWKtRdzcfTvxRsvdCxlnv18zv+xitcnzeGtmQuZPHMhk6fPYcK7q1h/wVIy4AxO/m8JE975SLftzI94ZdI8FgYn6XMKKJ1l1fvzeGvqp2zQBYHKEMA9zzzEsGbVMKUnsYM2jF92xYNXGwa1V8yJFZ9CCkCtOrRQbA5A5TrU8QYSYrlkWNbtSb5a+gELHix9WFBJOWTnAfgSVN7bouOIKwJq1qKpep2mBS3rAPnXOF9uFu3aDHjgXh4d17Pk5xg541bZ8G9btxdCCCGEEEIIIYQQQtzOWterxqcv9aFGNXc+//MM2/65Stem/nzxaj8AFj7Xg7G9G3L03wRWbjnNliOXGd29PpPHtjd+Rqu61ejTqgYdGvrxYC/j9DAleLo50a6BL9+9NZD+bcqai+bGe2JgU8b1acSmQ5fYHRZNrxaBzNQHAqY+1JHxw1oQlZjJyi2n+XFXBH1a1WD5hN4AdG7iz4oJvfH1cuXzP8+wJyyaB3o0YPmLuvWuzo50aOhHzWqm3uRdm/rz7JBmdGjod9PyMVQUOxI/t+PC+k+YtysJ/LozZepwGlg8Zq1pO/cgeg0bSP/6ELH3b34PiSKTagx6/TUermt686XfFzEnOIkiNz+69OpGoyqQe+0ftoZEkVkEmCV+Psuqyd9zKC+A+6a+wn26JOZW0ieSphFPLS2Z+Lk0acGrePP3KwQMnsicEb6mFfrycWn7CJ89rQ4zXOOnGZ+yPTmA+6a/wn3VVKvNZLD30yV8fbaIFg+/zZvd3BTr9J+T05h7B3px5dQlLiQU4l2jIZ2H9GNwI8XIgeitTPlwL3E1+vPROwNQ7CkYE1tXpseEd3mm9GhAOSL59r3V7M5sxFMLn6SXxXNAydbthRBCCCGEEEIIIYT477pdEj+Lu9stSPxcxIXflzF/VxJFTnUZ91ppAQZF3gG3Rjwx5UWe6NWIWjUb0X/ci8x+qBFuRUns+N8uYg3bZx/gp11JFDnU5qF3X+eFEV3o36sLwwzbm3860JQX5r7Hso9sDTDYK5Lfg69Q5Nyce+9RN9vreFYtaxKmPLItJFvOuhxK8N5DBP+9maXzlvLt2Xw8WgznWbMAA0A8calAznk2bjrKichEMjJTuXL+KL8sW8z036+apqGq4Y+/A5AYy8USs0kZRkRkk1oy7YOVtFxY/xt708G39yArAga2bi+EEEIIIYQQQgghhBDiTmBbkOHyNhYFJ+gaswuusONvRcO2yqV9oUQDNXqNoJeX+boq3UYwIACKos9wSJ8EuDD0PBeKwKVldwaU2L4l9c0X6WjccDfLaXDjZB3cTUg6VOnYnc4V2EiecGw7a37eyJqNBzgRk43Grx2Pj21nYfqpqjSo44u7bxMeefM9Pl/6AV8tnc6MMU3wdigkJvgHfvjXsG1rurd0hvyz/LZB+R1piQ7+Hl3OZ29qBOmWZaUk63NgGF5l58JIO/g9i/QjWV64r/xhS7ZuL4QQQgghhBBCCCGEEOLOYFuQISeXHLcajBjTFX+HIuJ2/cC3Zy23RuuSFFemXkNLvf59aVKnslkS4KiYRIqA6jWDSk8gfcsksm1nBHlUp1f/euqV1yVo6HPMn/4m86c/z0uDm+GVcoxPZ37CT5fU5VqPkRMnsmza4wys46YvI2dq936cV3p7AxmE7Dmt31ZD57HDaeFWRNyuz3lj3pcs/fx7Ppg1m2kbE9CYDZKIZeMn+nwZxtcXbIxWbmNSeGkzH66NIMetEU+UNZJFz9bthRBCCCGEEEIIIYQQQtw5bAsyOFRj0IvjGd17JO881Ag3Mtj/9ffsTVdvaOBCZVPuCjPubpZTMHtV9VYvuuUKQ7ezIxZcWvfn3jKmZspITVUvUnChsoWEx46Vq+BXzQe/anXoMOJR5j3aHJeiJHb8fogs9calqNu+CT5AXnwsiYaFXh157Z0H6V3Tg/y4i5w49S/RDg0ZN+lZBngDeBNYA8CHLiPu5dEHla9BdLGUOyL9KJ98doA4qjHoxcdKjFApwdbthRBCCCGEEEIIIYQQQtxRbAsyNO5tTNRcpdsDjGvqCjkRfPvpDlNuBTN5ZJfSUp6UanlFuv2JAm6QHHbuPEMOnnTt28ryKIvAarpG/twc9RqgCG0xgCc+lhruVRzbN6EhUBQXwyX1ytJoHHRfZG4umYrFjt5teXLyZFYu+YCvls5kxXuPMjDgKv/GAjXq0lID4Eb9jrr8F6ZXG+qrAyLpR1kybwOn87zo+PhzZgm7LbJ1eyGEEEIIIYQQQgghhBB3HNuCDGY86fXCkwzyc6AoehefrDfPz9CsXgCQTeS/xr71CpGcupgPBNCwsW5J3VrVcQDir0WVmufhlvh3G1suFkFAB4Y0VK/Uq+6NN8DVyxgmLDLKvszlFMAvgLr6RZfWL+DpV9/lg2ALQQltEUUALq4oB4Fc+Pkjnn51Jp+GKhYaZOWSC+DrR5B6nRktFzbsIbzIgVpt2mBpIiuLtFf56ZMNnMxypsVDE5jQ3lO9hTlbtxdCCCGEEEIIIYQQQghxR7qOIAOgqcXDL/SllkMRcbu+YfkRU6O5b4fm1HKA6L1/lJhOKW1fMCHp4FC/AwMNvfvbt6OtM+Sd2s7PZvkItCRtP0a4YolRfibp+eqFFUnL4V2hpOFM+6H9CVCvNqjcgc71HSDrDLtDzff9wuYQLgBVGjWhln5p3QY1cQEiD+/jmir1QtrBMC4CLkG1zQIGDRrXwoV8wvYeJk2xHDLY9fcpMnGgUctSRloAaHOI3P6lPgFzVx4fbGWIQRvPtmXfsD3BmUb3v8Br3coJGNi6vRBCCCGEEEIIIYQQQog7VqXi4uJi9cISDn7D0z9FQNNRfDWho3otaQe/YepPuuS+T737pHHu/UubljB3ewJF7tXp1KMrjapA6sWD7DiWQI6jH8Mnvs4DhpZ3IC14FW/+foUix6o079mF9n4Qd/IQO8+l6kY3+HRn2ozhuhEB2QeYN3UzEdRg9PsvMcKKqYhMjrLw1d84TSOeWvokvdSrDeK3896cXUR7dWLynPtpol6vUHhpM+8vOUAcXjTt3Y2Ofi6mY1WVCyTyx8fLWH+1EEefBvTr2QJ/F0i9GMKu4/FkOtRg9DsvMcIs/0MGez9dwtdn8/EIbEnfnnWpSjoR+w5zJCYb/LozZao6sXIkmz7fx9mUWC7FpZJTCA5VWvL8pIfpbFV+hBwOrFrA6tO54O5Pq3reWJ70KIjBz/ejqc3bCyGEEEIIIYQQQgghLClKTyeueXP1Yhy8vPA/c0a9WAi7aKOiiO/aVb0YTVAQ1UNC1Istur6RDHpVuj3GG728dfkZPtnMBX3v/LojX2HG2Gb4FiRy6K+NrPl5I38cS0Lr25rn3n/FLMAAUKX/s0y5pzZepHJm1zbW/LyNHZEOdHjyHlqX2FMNmhLLKpKW09uPEY0DtXr0LDPAAOBYdzjvPN+dem6ZnN21TX+sCRT4NOPxieqkx76MeOMlHm/lg0PqBbZvNJRNIvk+zXj87fGqAAP66ale4PFWVcmPO8kfP29kzc+7OBSTj0e97rz6mjrAAJDE+VNnCY/LwdGnNr3HvMgnM6wNMAAkczkmV/fPrDjCTp3lhMXXZRLs2l4IIYQQQgghhBBCCCHEncy6kQzXTUtWShrZReDi6YOXs3q9ijaH5NQctA5ueHu7lTEFUD55OONSonH91srLSCY9HzRuVfCpXN7O5ZOelEkeVpYNivKx5T1CCCGEEEIIIYQQQog7hoxkEDdDRYxkuElBBiGEEEIIIYQQQgghhBDWkiCDuBkqIshwQyccEkIIIYQQQgghhBBCCCHE3UuCDEIIIYQQQgghhBBCCCGEsIsEGYQQQgghhBBCCCGEEEIIYRcJMgghhBBCCCGEEEIIIYQQwi4SZBBCCCGEEEIIIYQQQgghhF0kyCCEEEIIIYQQQgghhBBCCLtIkEEIIYQQQgghhBBCCCGEEHaRIIMQQgghhBBCCCGEEEIIIexSqbi4uFi9UAghhBBCCCGEEEIIIcStU5SeTlzz5urFVHJxwW3kSPViIeyiTU8n76+/1IvRBAVRPSREvdgiCTIIIYQQQgghhBBCCCHEbaa0IIMQN4MtQQaZLkkIIYQQQgghhBBCCCGEEHaRIIMQQgghhBBCCCGEEEIIIewiQQYhhBBCCCGEEEIIIYQQQthFggxCCCGEEEIIIYQQQgghhLCLJH4WQgghhBBCCCGEEEKI20xxXh45mzapFwtxU2i8vHAZPFi92CIJMgghhBBCCCGEEEIIIYQQwi4yXZIQQgghhBBCCCGEEEIIIezy/wgSDcwJ3L52AAAAAElFTkSuQmCC" class="quarto-figure quarto-figure-center r-stretch"><p>Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na <a href="mailto:lucie.hoskova@ruk.cuni.cz">lucie.hoskova@ruk.cuni.cz</a></p>
 </section>
 <section id="tipy-navíc" class="slide level2">
 <h2>Tipy navíc</h2>
-<p><strong>V balíčku <code>readr</code> se nachátí taktéž funkce `read_csv``.</strong></p>
+<p>Budou doplněny během dneška.</p>
+<p><strong>V balíčku <code>readr</code> se nachází taktéž funkce <code>read_csv</code>.</strong></p>
 <p>Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než <code>read.csv</code> v základním R.</p>
 
 </section></section>

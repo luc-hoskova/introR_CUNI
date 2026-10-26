@@ -30,7 +30,6 @@ title: "Sylabus ZS/2026"
 -   kontrola dat
 -   pipes
 -   balíček [`dplyr`](https://dplyr.tidyverse.org/)
--   tidy data
 
 ## 5. Funkce (10.11.2026)
 

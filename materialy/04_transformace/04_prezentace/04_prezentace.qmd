@@ -32,7 +32,8 @@ execute:
 - transformace dat
   - úprava jmen sloupců
   - chybějící hodnoty
-  - mutace jednotlivých hodnot
+  - mutace a řazení podle jednotlivých hodnot
+  - vytváření sloupců
 :::
 
 ------------------------------------------------------------------------
@@ -477,7 +478,7 @@ Postup je při nahrávání velmi podobný balíčku `readr`, má ovšem **pár 
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 10,
+countdown::countdown(minutes = 8,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -609,10 +610,10 @@ Jak si tedy můžete tyto hodnoty změnit zpětně?
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 5,
+countdown::countdown(minutes = 3,
                      seconds = 0,
                      start_immediately = FALSE,
-                     warn_when = 120,
+                     warn_when = 60,
                      top = "0")
 ```
 
@@ -649,9 +650,10 @@ Na předchozí lekci jsme si ukázali, jakým způsobem lze vybrat z celého dat
 
 ### Odstranění `NA` hodnot
 
-Dejme ale, že bychom v datasetu chtěli mít bud´ pouze kompletní řádky, tzn. chceme se zbavit `NA` hodnot. Jak na to?
+Dejme ale, že bychom v datasetu chtěli mít pouze kompletní řádky, tzn. chceme se zbavit řádků obsahující `NA` hodnoty. Jak na to?
 
 ```{r}
+dim(df)
 df <- na.omit(df)
 dim(df)
 df
@@ -694,7 +696,7 @@ countdown::countdown(minutes = 5,
 
 ------------------------------------------------------------------------
 
-Máme nyní přejmenované sloupce, odebrané `NA` hodnoty... znamená to, že s ním nyní můžeme provádět výpočty, či na něj aplikovat jakékoliv další akce?
+Máme nyní přejmenované sloupce, odebrané `NA` hodnoty... Znamená to, že s ním nyní můžeme provádět výpočty, či na něj aplikovat jakékoliv další akce?
 
 ::: fragment
 ```{r}
@@ -737,27 +739,208 @@ str(df)
 
 ------------------------------------------------------------------------
 
+## Přidávání sloupců
+
+Tímto způsobem si ale můžeme sloupce nejenom upravovat, ale i přidávat.
+
+```{r}
+df <- df %>% mutate(
+  telefonni.cislo = NA,
+  id = paste0("id_", 1:nrow(df)))
+head(df)
+```
+
+------------------------------------------------------------------------
+
+### Změna pořadí sloupců
+
+Takto upravený data frame se nám ale nelíbí; co kdybychom chtěli mít sloupec `id` úplně na začátku, sloupec `adresa` za místem bydliště a oba tyto sloupce až na konci?
+
+```{r}
+df <- df %>% relocate(id, .before = gender)
+df <- df %>% relocate(adresa, .after = misto.bydliste)
+df <- df %>% relocate(misto.bydliste:adresa, .after = last_col())
+df
+```
+
+------------------------------------------------------------------------
+
 ## Seřazení řádků dle hodnot ve sloupcích
 
 Může se stát, že si budete potřebovat srovnat podle hodnot v nějakém sloupci. Jak to provedete?
 
 ```{r}
-df %>% arrange(pocet.deti)
-df %>% arrange(desc(pocet.deti))
+df %>% arrange(pocet.deti) #vzestupne
+df %>% arrange(desc(pocet.deti)) #sestupne
 ```
 
 **Co když ale máme ve sloupci více stejných hodnot?** Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?
+
 ------------------------------------------------------------------------
 
-## Mutace hodnot uvnitř datasetu
-
-Funkce `dplyr::mutate` nám umožňuje měnit či přidávat jednotlivé sloupce
+Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat, si můžeme vytvořit opravdu podrobně seřazený data frame.
 
 ```{r}
-#df <- df %>% mutate(počet.dětí = replace(počet.dětí == "N/A", NA))
+df <- df %>% arrange(pocet.deti, vek); df
 ```
 
-#paste pro přidávání věcí do textu
+------------------------------------------------------------------------
+
+## Samostatné cvičení
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 25,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+Proved na souboru `census` následující změny:
+
+1.  Přejmenuj sloupce `pohlavi_txt` na `pohlavi`, `vek_txt` na `vek`, `vira_txt` na `vira`, a `uzemi_txt` na `oblast`.
+
+2.  Vyber pouze hodnoty pohlaví `žena`, ty kde `vira` je `Jedi`, `Sith` a nebo začíná na `pasta`[^2] a nakonec pak pouze ty osoby, které mají věk v rozpětí 0-18 a 65+[^3].
+
+3.  Vyber pouze hodnoty pro celý stát, tedy ty, které mají ve sloupci `oblast` hodnotu `Česká republika`.
+
+4.  Vyber sloupce `vek`, `pohlavi`, `vira` a `hodnota`.
+
+5.  Seřad´ hodnoty od nejvyššího věku po nejnižší.
+
+6.  Kolik je nejstarší české Jedi? Zjisti funkcí.
+
+7.  Spočítej pro každý kraj průměrný věk pro všechna náboženství.
+
+[^2]: Něco podobného jsme prováděli u funkce `select`. Existuje nějaká funkce z `base`, která lze použít?
+
+[^3]: Jako vždy, StackOverflow a podobná uživatelská fóra jsou vašim nejlepším přítelem. Malá nápověda: k manipulaci sloupce `vek` můžete použít například jednu jednoduchou funkci z balíčku `readr`. Pokud nebudete vůbec vědět jak dál, řekněte si o nápovědu ;\].
+
+------------------------------------------------------------------------
+
+## Řešení
+
+::: incremental
+1.  Načti data a zkontroluj je.
+
+    ```{r}
+    census <- read.csv("census.csv")
+    str(census)
+    ```
+
+2.  Přejmenuj sloupce
+
+    ```{r}
+    census <- census %>%
+      rename(
+        vira = vira_txt,
+        pohlavi = pohlavi_txt,
+        vek = vek_txt,
+        oblast = uzemi_txt)
+    ```
+
+3.  Přetvoř sloupec `vek` tak, aby obsahoval pouze čísla.
+
+    ```{r}
+    census <- census %>%
+      mutate(vek = readr::parse_number(vek))
+    ```
+
+4.  Vyfiltruj řádky splňující dané podmínky.
+
+    ```{r}
+    census <- census %>%
+      filter(
+    vira %in% c("Jedi", "Sith") | startsWith(vira, "pasta"),
+    pohlavi == "žena",
+    vek %in% 0:18 | vek >= 65,
+    oblast == "Česká republika")
+    ```
+
+5.  Vyber relevatní sloupce.
+
+    ```{r}
+    census <- census %>%
+      select(hodnota, pohlavi, vek, vira)
+    ```
+
+6.  Uspořádej je dle věku, ke každému náboženství od nejmladšího po nejstaršího věřícího.
+
+    ```{r}
+    census <- census %>%
+      arrange(desc(vek))
+    ```
+
+7.  Zjisti věk nejstarší Jedi v ČR.
+
+    ```{r}
+    jedi <- census %>% filter(vira == "Jedi",
+                              hodnota > 0)
+    max(jedi$vek)
+    ```
+
+8.  Spočítej pro každý kraj průměrný věk pro všechna náboženství ve výsledném datasetu.
+
+    ```{r}
+    levels(as.factor(census$vira))
+
+    jedi <- census %>% filter(vira == "Jedi",
+                              hodnota > 0)
+    sith <- census %>% filter(vira == "Sith",
+                              hodnota > 0)
+    pasta <- census %>% filter(vira == "pastafariánství",
+                              hodnota > 0)
+
+    mean(jedi$vek)
+    mean(sith$vek)
+    mean(pasta$vek)
+    ```
+:::
+
+------------------------------------------------------------------------
+
+A nešlo by to nějak... jednodušeji?
+
+::: fragment
+Samozřejmě :\]
+:::
+
+::: fragment
+Vytvoření datasetu na kterém budeme vytvářet výpočty si jde napsat pomocí dlouhé pipe.
+
+```{r}
+census2 <- read.csv("census.csv")
+str(census2)
+
+census2 <- census2 %>%
+  rename(
+    vira = vira_txt,
+    pohlavi = pohlavi_txt,
+    vek = vek_txt,
+    oblast = uzemi_txt) %>%
+  mutate(vek = readr::parse_number(vek)) %>%
+  filter(
+    vira %in% c("Jedi", "Sith") | startsWith(vira, "pasta"),
+    pohlavi == "žena",
+    vek %in% 0:18 | vek >= 65,
+    oblast == "Česká republika",
+    hodnota > 0) %>%
+  select(hodnota, pohlavi, vek, vira) %>%
+  arrange(desc(vek))
+```
+:::
+
+::: fragment
+Poté už jen provedeme výpočet jednotlivých hodnot.
+
+```{r}
+census2 %>% group_by(vira) %>%
+  summarize(nejstarsiVerici = max(vek), prumernyVek = mean(vek))
+```
+
+S funkcemi `group_by` a `summarize` se lépe seznámíme v následující sekci, zde jsou uvedeny jako ukázka zjednodušení postupu.
+:::
 
 ------------------------------------------------------------------------
 
@@ -765,9 +948,21 @@ Funkce `dplyr::mutate` nám umožňuje měnit či přidávat jednotlivé sloupce
 
 1.  Najděte specifickou funkci v balíčku `dplyr`, která umožňuji přepisování hodnot na `NA`.
 
-2.  dd
+2.  Načti si dataset `typBydleni.csv`. Zjisti z něj následující údaje:
 
-3.  dd
+    1.  Kolik osob ve věku 18-26 včetně v Jihomoravském kraji jsou evidováni jako osoby bez domova, a jakou procentuální část z nich tvoří muži a jakou ženy.
+
+    2.  Který kraj má nejmenší počet obyvatel žijících v ubytovacích zařízení?
+
+    3.  Jaký je medián věku osoby bez domova v Praze, a jaký je v celé ČR?
+
+    4.  Jaký je nejčastější typ ubytování osob pod 18 let v ČR?
+
+    5.  O kolik více seniorů (65+ let) bez domova žije v Libereckém než v Moravskoslezském kraji či naopak?
+
+Zdrojem dat jsou [oficiální stránky sčítání obyvatel z roku 2021](https://csu.gov.cz/produkty/vysledky-scitani-2021-otevrena-data). K této tabulce patří i JSON soubor, který popisuje význam jednotlivých sloupců. Můžete ho využít pro lepší pochopení datasetu, ale ke zpracování domácího úkolu nemusíte vyhledávat žádné další informace.
+
+![](images/clipboard-3587705247.png){fig-align="center"}
 
 Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
 
@@ -775,6 +970,8 @@ Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [
 
 ## Tipy navíc
 
-**V balíčku `readr` se nachátí taktéž funkce \`read_csv\`\`.**
+Budou doplněny během dneška.
+
+**V balíčku `readr` se nachází taktéž funkce `read_csv`.**
 
 Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než `read.csv` v základním R.

@@ -30,7 +30,6 @@ title: "Sylabus LS/2027"
 -   pipes
 -   kontrola dat
 -   balíček [`dplyr`](https://dplyr.tidyverse.org/)
--   tidy data
 
 ## 5. Funkce (17.03.2027)
 

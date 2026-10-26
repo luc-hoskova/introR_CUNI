@@ -18,33 +18,94 @@ airquality$Weather[airquality$Temp <= 70] <- "cold"
 #1
 str(chickwts)
 levels(chickwts$feed)
-filter(chickwts, feed == "soybean")%>% select(weight) %>% min()
+filter(feed == "soybean") %>%
+  select(weight) %>%
+  min()
 
 #2
 str(quakes)
-quakes %>% filter(mag > median(mag)) %>% filter(depth == max(depth)) %>% select(depth)
+quakes %>%
+  filter(mag > median(mag)) %>%
+  filter(depth == max(depth)) %>%
+  select(depth)
 
 ############################
 #SAMOSTATNE CVICENI
 ############################
 #NAHRAVANI DAT
-#´pouzivani apostrofu u nazvu s mezerou´
-#rename funkce?
-#sort() a order()
-#merge()
-#grep funkce
-#https://www.statology.org/r-grep-match-replace/
-#slouží k vyhledávání vzorů ve vektorech a jejich nahrazení
-#práce s vektorem jako s textem v 2 cvičení LP
+data <- read.delim("samostatneCviceniData.txt",
+                   dec = ",",
+                   stringsAsFactors = TRUE)
+str(data)
+mean(data$vyska)
 
-#janitor package
+#CHYBEJICI HODNOTY
+df[df == "N/A" | df == ""] <- NA
 
+#TRANSFORMACE DAT
+#1. VERZE
+census <- read.csv("census.csv")
+str(census)
 
-#!is.na
+census <- census %>%
+  rename(
+    vira = vira_txt,
+    pohlavi = pohlavi_txt,
+    vek = vek_txt,
+    oblast = uzemi_txt)
 
-#problém při vyhledávání pokud totožné názvy sloupců, potřeba kontroly a nebo u velkých datasetů alespoň prohnat check.names
+census <- census %>%
+  mutate(vek = readr::parse_number(vek))
 
-#přidávání textu k číslům aka jak to udělat abych měl najendou 50 ID jako texty s "id_01", "id_02" a tak dál
-#paste0()
+census <- census %>%
+  filter(
+    vira %in% c("Jedi", "Sith") | startsWith(vira, "pasta"),
+    pohlavi == "žena",
+    vek %in% 0:18 | vek >= 65,
+    oblast == "Česká republika")
 
-#group by a ungroup
+census <- census %>%
+  select(hodnota, pohlavi, vek, vira)
+
+census <- census %>%
+  arrange(desc(vek))
+
+jedi <- census %>% filter(vira == "Jedi",
+                          hodnota > 0)
+max(jedi$vek)
+
+levels(as.factor(census$vira))
+
+jedi <- census %>% filter(vira == "Jedi",
+                          hodnota > 0)
+sith <- census %>% filter(vira == "Sith",
+                          hodnota > 0)
+pasta <- census %>% filter(vira == "pastafariánství",
+                           hodnota > 0)
+
+mean(jedi$vek)
+mean(sith$vek)
+mean(pasta$vek)
+
+#2. VERZE
+census2 <- read.csv("census.csv")
+str(census2)
+
+census2 <- census2 %>%
+  rename(
+    vira = vira_txt,
+    pohlavi = pohlavi_txt,
+    vek = vek_txt,
+    oblast = uzemi_txt) %>%
+  mutate(vek = readr::parse_number(vek)) %>%
+  filter(
+    vira %in% c("Jedi", "Sith") | startsWith(vira, "pasta"),
+    pohlavi == "žena",
+    vek %in% 0:18 | vek >= 65,
+    oblast == "Česká republika",
+    hodnota > 0) %>%
+  select(hodnota, pohlavi, vek, vira) %>%
+  arrange(desc(vek))
+
+census2 %>% group_by(vira) %>%
+  summarize(nejstarsiVerici = max(vek), prumernyVek = mean(vek))
