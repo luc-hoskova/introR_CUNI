@@ -43,7 +43,7 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
 
 ## 3. Indexace (13.10.2026)
 
-- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/04_prezentace.html#/title-slide)
+- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/03_prezentace.html#/title-slide)
   - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_poznamky.R)
     průběžných a samostatných cvičení
 - Materiály k hodině
@@ -55,7 +55,7 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
 
 ## 4. Načítání a transformace dat (27.10.2026)
 
-- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/03_prezentace.html#/title-slide)
+- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/04_prezentace.html#/title-slide)
 - Materiály k hodině
   - stažené a jasně uložené soubory:
     - [intro_data.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/intro_data.txt)
@@ -65,3 +65,5 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
     - [samostatneCviceniData.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/samostatneCviceniData.txt)
     - [bydliste.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/bydliste.txt)
     - [census.csv](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/census.csv)
+- Materiály pro domácí úkol
+  - [typBydleni.csv](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/typBydleni.csv)

@@ -952,7 +952,7 @@ S funkcemi `group_by` a `summarize` se lépe seznámíme v šesté sekci, zde js
 
 1.  Najděte specifickou funkci v balíčku `dplyr`, která umožňuji přepisování hodnot na `NA`.
 
-2.  Načti si dataset `typBydleni.csv`. Zjisti z něj následující údaje:
+2.  Načti si dataset [`typBydleni.csv`](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/typBydleni.csv). Zjisti z něj následující údaje:
 
     1.  Kolik osob ve věku 18-26 včetně v Jihomoravském kraji jsou evidováni jako osoby bez domova, a jakou procentuální část z nich tvoří muži a jakou ženy.
 
