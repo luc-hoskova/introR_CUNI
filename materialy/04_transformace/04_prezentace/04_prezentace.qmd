@@ -1,5 +1,5 @@
 ---
-title: "Transformace dat"
+title: "Nahrávání a transformace dat"
 subtitle: "Zpracovávání výzkumných dat pomocí jazyka R"
 title-slide-attributes:
   data-background-color: rgb(233, 84, 32)
@@ -32,16 +32,17 @@ execute:
 - transformace dat
   - úprava jmen sloupců
   - chybějící hodnoty
+  - mutace jednotlivých hodnot
 :::
 
 ------------------------------------------------------------------------
 
 ## Kontrola domácí práce
 
-```{webr-r}
+```{r}
 #| context: setup
-library(dplyr)
-library(readr)
+library(tidyverse)
+library(janitor)
 ```
 
 ### Úloha 1
@@ -286,7 +287,7 @@ Jaká byla největší hloubka epicentra zemětřesení z datasetu `quakes`, kte
 
 ------------------------------------------------------------------------
 
-## Nahrávání dat
+# Nahrávání dat
 
 Nahrávání dat je jedna z klíčových znalostí, které je potřeba při práci v R znát.
 
@@ -302,7 +303,7 @@ Před nahráváním dat se ujistěte, že máte nastavenou cestu do adresáře, 
 
 ------------------------------------------------------------------------
 
-### funkce `read.table`
+## funkce `read.table`
 
 **Základní funkce k načítání tabulkových dat do R.**
 
@@ -316,7 +317,7 @@ Má v sobě několik podtypů pro specifické formáty:
 
 ------------------------------------------------------------------------
 
-#### Jak má R se souborem pracovat?
+### Jak má R se souborem pracovat?
 
 Všechny funkce, které nahrávají data do R, v sobě obsahují argumenty, pomocí kterých určujeme, jakým způsobem mají bát data načtena.
 
@@ -357,7 +358,7 @@ identical(dataTxt, dataTxt2)
 
 Spousta funkcí má u argumentů nastavené nějaké defaultní (nejčastěji používané) hodnoty.
 
-Je proto zbytečné arguemnty vypisovat znovu, pokud se nijak neliší od defaultního nastavení.
+Je proto zbytečné argumenty vypisovat znovu, pokud se nijak neliší od defaultního nastavení.
 :::
 
 Řešení otázky "proč existují specifické funkce?"
@@ -366,7 +367,7 @@ Je proto zbytečné arguemnty vypisovat znovu, pokud se nijak neliší od defaul
 
 ------------------------------------------------------------------------
 
-#### argument `file`
+### argument `file`
 
 - vždy musí být v uvozovkách a obsahovat přesný název souboru, včetně jeho formátové koncovky
 
@@ -392,7 +393,7 @@ Nepamatujete si, jak přesně se používají relativní / absolutní cesty a pr
 
 ------------------------------------------------------------------------
 
-#### argument `sep`
+### argument `sep`
 
 Separátor je symbol či série symbolů, které **určují ohraničení jednotlivých sloupců**.
 
@@ -409,7 +410,7 @@ Detailněji si tato individualizovaná nastavení ukážeme v následující sek
 
 ------------------------------------------------------------------------
 
-#### argument `dec`
+### argument `dec`
 
 Pomocí tohoto argumentu si definujeme symboly, které **určují desetinou čárku**.
 
@@ -424,7 +425,7 @@ head(decZkouska)
 
 ------------------------------------------------------------------------
 
-### Balíček `readr`
+## Balíček `readr`
 
 - je součástí metabalíčku `tidyverse`
 
@@ -452,7 +453,7 @@ head(decZkouska)
 
 ------------------------------------------------------------------------
 
-### Balíček `readxl` - ach ty Excely...
+## Balíček `readxl` - ach ty Excely...
 
 - je součástí metabalíčku `tidyverse`
 
@@ -472,7 +473,7 @@ Postup je při nahrávání velmi podobný balíčku `readr`, má ovšem **pár 
 
 ------------------------------------------------------------------------
 
-### Samostatné cvičení
+## Samostatné cvičení
 
 ```{r}
 #| echo: false
@@ -483,15 +484,15 @@ countdown::countdown(minutes = 10,
                      top = "0")
 ```
 
-Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Přeměňte si sloupec `vzdelani` na faktory[^1] a vypořítejte průměrnou výšku ze sloupce `vyska`.
+Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Přeměňte si sloupec `vzdelani` na faktory[^1] a vypočítejte průměrnou výšku ze sloupce `vyska`.
 
 [^1]: Podívejte se do nápovědy; neexistuje na to přímo argument?
 
 ------------------------------------------------------------------------
 
-#### Řešení
+### Řešení
 
-Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Přeměňte si sloupec `vzdelani` na faktory a vypořítejte průměrnou výšku ze sloupce `vyska`.
+Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Přeměňte si sloupec `vzdelani` na faktory a vypočítejte průměrnou výšku ze sloupce `vyska`.
 
 ::: fragment
 1.  Načteme si soubor pomocí funkce `read.delim` a podíváme se na strukturu.
@@ -507,7 +508,7 @@ Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Př
 
     ```{r}
     data <- read.delim("samostatneCviceniData.txt",
-                       dec = "-")
+                       dec = ",")
     str(data)
     ```
 
@@ -524,7 +525,7 @@ Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Př
 
     ```{r}
     data <- read.delim("samostatneCviceniData.txt",
-                       dec = ";",
+                       dec = ",",
                        stringsAsFactors = TRUE)
     str(data)
     ```
@@ -534,21 +535,227 @@ Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Př
 4.  Spočítejme si průměrnou výšku.
 
     ```{r}
-    mean(data$vyska)
+    mean(data$vyska) #175.15
     ```
 :::
 
 ------------------------------------------------------------------------
 
-## Transformace dat
+# Transformace dat
 
-# chybějící hodnoty
+Máme nahrána data, co s nimi ted´?
 
-# názvy s mezerami a celkovo sjednocení názvů pomocí balíčku janitor
+Před tím, než se vrhneme na jakoukoliv analýzu, tak **je třeba si data zkontrolovat a dle potřeby upravit**.
 
-# srovnání podle velikosti sort a order
+![](images/clipboard-505975884.png){fig-align="center"}
 
-# mutate
+------------------------------------------------------------------------
+
+## Podivné názvy sloupců
+
+Někdy se může stát, že máte v R dataset, u které jsou jsou **sloupce s totožnými názvy následované čísly a s tečkami mezi slovy**, i když v původním souboru nic takového není.
+
+![](images/clipboard-3323631833.png){fig-align="center"}
+
+```{r}
+df <- read.delim("bydliste.txt")
+head(df)
+str(df)
+```
+
+Co se to děje?
+
+------------------------------------------------------------------------
+
+R automaticky kontroluje, zda **jsou všechny názvy sloupců "validní"**. Provádí se to pomocí defaultního argumentu fce `read.table` a to `check.names = TRUE`.
+
+To znamená, že nemají mezery a **slova jsou oddělena stejným symbolem**, a v **případě duplikátů jmen sloupců** je k nim přiřazen symbol, který je odliší.
+
+Co když se nám ale dané jméno nelíbí? Jak si ho přejmenovat?
+
+```{r}
+df <- df %>%
+  dplyr::rename(adresa = misto.bydliste.1)
+head(df)
+```
+
+::: callout-tip
+## Přejmenování bez potřeby znát pozici sloupce
+
+Sice už umíme používat fce `dimnames`, `colnames` a jejich příslušné varianty v argumentech funkcí, i tak se ale hodí znát funkci, která nám **změní specifický sloupec bez toho, abychom museli hledat jeho pořadí** či nějak složitě vypisovat veškerá jména sloupců.
+:::
+
+------------------------------------------------------------------------
+
+## Chybějící hodnoty
+
+Při kontrole dat jsme si mohli všimnout, že v souboru jsou podivně zapsané chybějící hodnoty - jak prázdná místa, tak text `N/A`.
+
+**Jak toto vše můžeme převést na jednoduchá `NA`?**
+
+```{r}
+dfNA <- read.delim2("bydliste.txt",
+                    na.strings = c("", "N/A")) #"" urcuje mezeru/prazdne pole
+dfNA
+```
+
+**Nejlepším místem je již určení si hodnot při samotném načítání dat argumentem `na.strings`.** Někdy se ale může stát, že si toho všimnete pozdě, a už jste na datasetu provedli rozličné změny.
+
+Jak si tedy můžete tyto hodnoty změnit zpětně?
+
+------------------------------------------------------------------------
+
+## Samostatné cvičení
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+Upravte hodnoty uvnitř data frame `df` tak, aby místo prázdných buněk a charakterové hodnoty `N/A` byly přímo hodnoty `NA`.
+
+::: callout-tip
+## Nezapomeňte na to, co jsme se již naučili
+
+Na předchozí lekci jsme si ukázali, jakým způsobem lze vybrat z celého data frame specifické hodnoty. Jak bychom to mohli aplikovat zde?
+
+**Přemýšlejte o tom jednoduše - není třeba žádných složitých indexací.**
+:::
+
+------------------------------------------------------------------------
+
+## Řešení
+
+::: incremental
+1.  Pomocí základní indexace si vybereme všechny hodnoty z `df`, pro které platí `df == "N/A" | df == ""`.
+
+    ```{r}
+    df == "N/A" | df == ""
+    ```
+
+2.  Tyto hodnoty si přepíšeme na `NA`
+
+    ```{r}
+    df[df == "N/A" | df == ""] <- NA;
+    df
+    ```
+:::
+
+------------------------------------------------------------------------
+
+### Odstranění `NA` hodnot
+
+Dejme ale, že bychom v datasetu chtěli mít bud´ pouze kompletní řádky, tzn. chceme se zbavit `NA` hodnot. Jak na to?
+
+```{r}
+df <- na.omit(df)
+dim(df)
+df
+```
+
+------------------------------------------------------------------------
+
+Co se stalo? Zmizely všechny řádky, co měli v jakémkoliv sloupci `NA`. O jaké řádky se ale jednalo?
+
+```{r}
+which(!complete.cases(dfNA))
+```
+
+**Samostatná práce:**
+
+Dokážete vysvětlit, co se v tomto kombinací těchto funkcí a aplikaci na dataset stane?
+
+Co dělá funkce `complete.cases` a proč ji zde používáme?
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "10")
+```
+
+::: incremental
+1.  Jak to tedy provedeme?
+
+2.  **Jako první se podíváme do nápovědy** a zjistíme si, co znamená funkce `complete.cases`.
+
+3.  Ta vytvoří vektor, který v sobě bude obsahovat **informace, zda jednotlivé řádky jsou kompletní** - neobsahují žádné chybějící hodnoty.
+
+4.  My ovšem chceme vědět, které řádky chybějící hodnoty obsahují - **provedeme proto negaci**.
+
+5.  A funkce `which` nám pak už pouze řekne, na jaké pozici ve vektoru těchto hodnot se výsledné TRUE (řádek obsahuje `NA` hodnoty) nachází.
+:::
+
+------------------------------------------------------------------------
+
+Máme nyní přejmenované sloupce, odebrané `NA` hodnoty... znamená to, že s ním nyní můžeme provádět výpočty, či na něj aplikovat jakékoliv další akce?
+
+::: fragment
+```{r}
+str(df)
+```
+
+Jak vidíme, **kvůli špatně zapsaným `NA` hodnotám se nám většina sloupců překonvertovala do charakterového typu**.
+
+Když se ale na data frame podíváme, tak je jasné, že některé sloupce můžeme změnit na faktory a jiné budou jasně numeric.
+
+```{r}
+df
+```
+:::
+
+------------------------------------------------------------------------
+
+## Funkce `mutate` aneb úprava a vytváření sloupců
+
+Pomocí funkce `mutate` můžeme upravovat specifické sloupce bez dlouhého přiřazování.
+
+Při jejím používání defacto potřebujeme pouze následující zápis:
+
+`mutate(název dataframe, název sloupce = nová podoba sloupce)`
+
+```{r}
+df <- df %>% mutate(
+  gender = as.factor(gender),
+  vek = as.numeric(vek),
+  pocet.deti = as.numeric(pocet.deti),
+  rodinny.stav = as.factor(rodinny.stav)
+)
+```
+
+Jaký je nyní výsledek?
+
+```{r}
+str(df)
+```
+
+------------------------------------------------------------------------
+
+## Seřazení řádků dle hodnot ve sloupcích
+
+Může se stát, že si budete potřebovat srovnat podle hodnot v nějakém sloupci. Jak to provedete?
+
+```{r}
+df %>% arrange(pocet.deti)
+df %>% arrange(desc(pocet.deti))
+```
+
+**Co když ale máme ve sloupci více stejných hodnot?** Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?
+------------------------------------------------------------------------
+
+## Mutace hodnot uvnitř datasetu
+
+Funkce `dplyr::mutate` nám umožňuje měnit či přidávat jednotlivé sloupce
+
+```{r}
+#df <- df %>% mutate(počet.dětí = replace(počet.dětí == "N/A", NA))
+```
 
 #paste pro přidávání věcí do textu
 
@@ -556,7 +763,7 @@ Načtěte si soubor `samostatneCviceniData.txt` a uložte si ho jako `data`. Př
 
 ## Domácí úkol
 
-1.  tft
+1.  Najděte specifickou funkci v balíčku `dplyr`, která umožňuji přepisování hodnot na `NA`.
 
 2.  dd
 

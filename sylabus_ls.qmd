@@ -24,7 +24,7 @@ title: "Sylabus LS/2027"
 -   indexace pomocí [`dplyr`](https://dplyr.tidyverse.org/)
 -   hodnoty vs struktury
 
-## 4. Transformace dat (03.03.2027)
+## 4. Načítání a transformace dat (03.03.2027)
 
 -   načítání dat do R
 -   pipes

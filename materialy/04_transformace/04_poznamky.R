@@ -5,13 +5,29 @@ hodnoty <- seq(15.2, 45.7, 0.56)
 hodnoty[seq(0, length(hodnoty), by = 5)]
 
 #2)
-filter(airquality, Month == 6, Day %in% 1:7) %>% select(Temp) %>% unlist()
+filter(airquality, Month == 5, Day %in% 1:7) %>% select(Temp) %>% unlist()
 
 #3
 airquality$Weather[airquality$Temp > 70] <- "hot"
 airquality$Weather[airquality$Temp <= 70] <- "cold"
 
+#############################
+#PROCVICOVANI
+#############################
+#PROCVICOVANI PIPES
+#1
+str(chickwts)
+levels(chickwts$feed)
+filter(chickwts, feed == "soybean")%>% select(weight) %>% min()
 
+#2
+str(quakes)
+quakes %>% filter(mag > median(mag)) %>% filter(depth == max(depth)) %>% select(depth)
+
+############################
+#SAMOSTATNE CVICENI
+############################
+#NAHRAVANI DAT
 #´pouzivani apostrofu u nazvu s mezerou´
 #rename funkce?
 #sort() a order()
@@ -23,7 +39,6 @@ airquality$Weather[airquality$Temp <= 70] <- "cold"
 
 #janitor package
 
-#data.frame stringsAsFactors
 
 #!is.na
 

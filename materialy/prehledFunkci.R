@@ -62,3 +62,7 @@ unique() #vrat vektor/data frame/array bez duplikovanych hodnot
 unlist() #zmen objekt na vektor osahujici vse hodnoty v x
 which() #ktery radek splnuje podminky
 within() #uprav nebo pridej prvky listu ci sloupce data frame
+
+#4.lekce
+dplyr::mutate() #zmen hodnoty ve sloupci ci pridej novy sloupec
+dplyr::rename() #prejmenuj nazev hodnoty
