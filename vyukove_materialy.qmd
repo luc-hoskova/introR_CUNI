@@ -2,37 +2,66 @@
 title: "Výukové materiály ZS/2026"
 include-in-header:
   - password-header.html
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-V této sekci naleznou účastníci výukové a podpůrné materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.
+V této sekci naleznou účastníci výukové a podpůrné materiály ke každé
+lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a
+případná doporučení pro samostudium.
 
-Materiály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení).
+Materiály budou zveřejněny vždy před lekcí (v případě výukových
+materiálů) či po jejím průběhu (shrutí a doporučení).
 
 ## Základní materiály
 
 - kde [stáhnout R](https://cloud.r-project.org/)
-- kde [stáhnout RStudio (Desktop)](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
-- [tahák](https://luc-hoskova.github.io/introR_CUNI/materialy/tahak_klavesy.pdf) klávesových zkratek symbolů potřebných pro práci s R
-- [přehled funkcí](https://luc-hoskova.github.io/introR_CUNI/materialy/prehledFunkci.R) použitých během kurzu
+- kde [stáhnout RStudio
+  (Desktop)](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
+- [tahák](https://luc-hoskova.github.io/introR_CUNI/materialy/tahak_klavesy.pdf)
+  klávesových zkratek symbolů potřebných pro práci s R
+- [přehled
+  funkcí](https://luc-hoskova.github.io/introR_CUNI/materialy/prehledFunkci.R)
+  použitých během kurzu
 
 ## 1. Úvodní hodina (15.09.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/01_prezentace/01_prezentace.html#/title-slide)
 - Příprava
-  - stažené, nainstalované a funkční programy [R](https://cloud.r-project.org/) a [RStudio](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
-- Materiály k vypracování domácího úkolu: [promenne.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/promenne.RData)
+  - stažené, nainstalované a funkční programy
+    [R](https://cloud.r-project.org/) a
+    [RStudio](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
+- Materiály k vypracování domácího úkolu:
+  [promenne.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/promenne.RData)
 
 ## 2. Datové struktury (29.09.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_prezentace/02_prezentace.html#/title-slide)
-  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_poznamky.R) průběžných a samostatných cvičení
+  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_poznamky.R)
+    průběžných a samostatných cvičení
 
 ## 3. Indexace (13.10.2026)
 
-- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/03_prezentace.html#/title-slide)
-  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_poznamky.R) průběžných a samostatných cvičení
-- Příprava
-  - stažený a jasně uložený soubor [bikes.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/bikes.RData)
+- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/04_prezentace.html#/title-slide)
+  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_poznamky.R)
+    průběžných a samostatných cvičení
+- Materiály k hodině
+  - stažený a jasně uložený soubor
+    [bikes.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/bikes.RData)
 - Cvičení navíc
   - [zadání](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_cviceninavic.R)
   - [řešení](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_cviceninavic-reseni.R)
+
+## 4. Načítání a transformace dat (27.10.2026)
+
+- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_prezentace/03_prezentace.html#/title-slide)
+- Materiály k hodině
+  - stažené a jasně uložené soubory:
+    - [intro_data.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/intro_data.txt)
+    - [intro_data.csv](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/intro_data.csv)
+    - [intro_data.xlsx](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/intro_data.xlsx)
+    - [decZkouska.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/decZkouska.txt)
+    - [samostatneCviceniData.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/samostatneCviceniData.txt)
+    - [bydliste.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/bydliste.txt)
+    - [census.csv](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/census.csv)

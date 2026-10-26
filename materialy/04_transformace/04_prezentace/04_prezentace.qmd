@@ -320,7 +320,7 @@ Má v sobě několik podtypů pro specifické formáty:
 
 ### Jak má R se souborem pracovat?
 
-Všechny funkce, které nahrávají data do R, v sobě obsahují argumenty, pomocí kterých určujeme, jakým způsobem mají bát data načtena.
+Všechny funkce, které nahrávají data do R, v sobě obsahují argumenty, pomocí kterých určujeme, jakým způsobem mají být data načtena.
 
 - `file`: jaký je název souboru? (`"nazev.zkratkaFormatu"`)
 - `header`: je první řádek hlavička? (`TRUE / FALSE`)
@@ -436,6 +436,8 @@ head(decZkouska)
 
 **Postup:**
 
+Vyzkoušíme si to na datech `intro_data.csv`.
+
 ![](images/clipboard-1022965191.png){fig-align="center"}
 
 ![](images/clipboard-1424679390.png){fig-align="center"}
@@ -463,6 +465,8 @@ head(decZkouska)
 ------------------------------------------------------------------------
 
 Postup je při nahrávání velmi podobný balíčku `readr`, má ovšem **pár důležitých detailů**.
+
+Vyzkoušíme si to na datech `intro_data.xlsx`.
 
 ![](images/clipboard-3245853477.png)
 
@@ -797,7 +801,7 @@ countdown::countdown(minutes = 25,
                      top = "0")
 ```
 
-Proved na souboru `census` následující změny:
+Proved na souboru `census.csv` následující změny:
 
 1.  Přejmenuj sloupce `pohlavi_txt` na `pohlavi`, `vek_txt` na `vek`, `vira_txt` na `vira`, a `uzemi_txt` na `oblast`.
 
@@ -939,7 +943,7 @@ census2 %>% group_by(vira) %>%
   summarize(nejstarsiVerici = max(vek), prumernyVek = mean(vek))
 ```
 
-S funkcemi `group_by` a `summarize` se lépe seznámíme v následující sekci, zde jsou uvedeny jako ukázka zjednodušení postupu.
+S funkcemi `group_by` a `summarize` se lépe seznámíme v šesté sekci, zde jsou uvedeny jako ukázka zjednodušení postupu.
 :::
 
 ------------------------------------------------------------------------
