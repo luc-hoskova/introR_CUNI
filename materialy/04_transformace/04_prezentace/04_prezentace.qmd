@@ -42,8 +42,8 @@ execute:
 
 ```{r}
 #| context: setup
+#| echo: false
 library(tidyverse)
-library(janitor)
 ```
 
 ### Úloha 1
@@ -93,23 +93,24 @@ Z datasetu (co je nahraný v R) jménem `airquality`, který obsahuje informace 
 2.  Vyfiltrujeme hodnoty, které byly naměřeny první týden v květnu.
 
     ```{r}
-    kveten <- filter(airquality, Month == 5, Day %in% 1:7); kveten
+    #vyber z hodnot sloupce
+    airquality$Temp[airquality$Month == 5 & airquality$Day %in% 1:7]
+    airquality$Temp[airquality$Month == 5 & airquality$Day <= 7]
+
+    #vyber z datasetu
+    airquality[airquality$Month == 5 & airquality$Day %in% 1:7, "Temp"]
     ```
 :::
 
 ::: fragment
-3.  Vyberme si z nich sloupec `Temp`.
+3.  Lze použít i funkci `filter`, zde už je ale třeba přemýšlet o tom, jestli nám na takto malém kusu kódu opravdu ušetří práci.
 
     ```{r}
-    select(kveten, Temp)
-    ```
-:::
-
-::: fragment
-3.  A vyjmeme z nej pouze hodnoty.
-
-    ```{r}
-    unlist(select(kveten, Temp))
+    library(dplyr)
+    datumy <- filter(airquality, 
+       Day %in% 1:7,
+       Month == 5)
+    unlist(select(datumy, Temp))
     ```
 :::
 
@@ -120,19 +121,19 @@ Z datasetu (co je nahraný v R) jménem `airquality`, který obsahuje informace 
 K datasetu `airquality` přidejte nový sloupec s názvem `Weather` který bude obsahovat informaci (text `hot`), zda hodnoty ve sloupci `Temp` jsou vyšší než 70. Pokud není vyšší jako 70, bude obsahovat text `cold`.
 
 ::: fragment
-1.  Pomocí symbolu `$` vytvoříme nový sloupec `Weather`, a přiřadíme do něj hodnotu `hot` v případě, že pro daný řádek je hodnota ves loupci `Temp`nižší jak 70.
+1.  Pomocí symbolu `$` vytvoříme nový sloupec `Weather`, a přiřadíme do něj hodnotu cold.
 
     ```{r}
-    airquality$Weather[airquality$Temp > 70] <- "hot"
+    airquality$Weather <- "cold"
     airquality
     ```
 :::
 
 ::: fragment
-2.  Totéž provedeme s hodnotou `cold`, pro kterou platí podmínka `Temp` \<= 70.
+2.  Totéž provedeme s hodnotou `hot`, pro kterou platí podmínka `Temp > 70`.
 
     ```{r}
-    airquality$Weather[airquality$Temp <= 70] <- "cold"
+    airquality$Weather[airquality$Temp > 70] <- "hot"
     airquality
     ```
 :::
@@ -146,7 +147,11 @@ Pokuste se zjistit, jak si v nápovědě můžete najít seznam nahraných datas
 ::: fragment
 Pro vyhledání můžete použít následující funkci:
 
-`library(help = "datasets")`
+```{r}
+data()
+```
+
+Díky této funkci si můžeme rychle zjisti, jaké datasety máme k dispozici v nahraných balíčcích, a **které je proto možné rovnou použít bez jejich opakovaného ukládání do globálního prostředí.**
 :::
 
 ------------------------------------------------------------------------
@@ -614,7 +619,7 @@ Jak si tedy můžete tyto hodnoty změnit zpětně?
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 3,
+countdown::countdown(minutes = 5,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 60,
@@ -634,6 +639,8 @@ Na předchozí lekci jsme si ukázali, jakým způsobem lze vybrat z celého dat
 ------------------------------------------------------------------------
 
 ## Řešení
+
+Upravte hodnoty uvnitř data frame `df` tak, aby místo prázdných buněk a charakterové hodnoty `N/A` byly přímo hodnoty `NA`.
 
 ::: incremental
 1.  Pomocí základní indexace si vybereme všechny hodnoty z `df`, pro které platí `df == "N/A" | df == ""`.
@@ -671,31 +678,18 @@ Co se stalo? Zmizely všechny řádky, co měli v jakémkoliv sloupci `NA`. O ja
 which(!complete.cases(dfNA))
 ```
 
-**Samostatná práce:**
-
-Dokážete vysvětlit, co se v tomto kombinací těchto funkcí a aplikaci na dataset stane?
+**Dokážete vysvětlit, co se v tomto kombinací těchto funkcí a jejich aplikaci na dataset stane?**
 
 Co dělá funkce `complete.cases` a proč ji zde používáme?
 
-```{r}
-#| echo: false
-countdown::countdown(minutes = 5,
-                     seconds = 0,
-                     start_immediately = FALSE,
-                     warn_when = 120,
-                     top = "10")
-```
-
 ::: incremental
-1.  Jak to tedy provedeme?
+1.  **Jako první se podíváme do nápovědy** a zjistíme si, co znamená funkce `complete.cases`.
 
-2.  **Jako první se podíváme do nápovědy** a zjistíme si, co znamená funkce `complete.cases`.
+2.  Ta vytvoří vektor, který v sobě bude obsahovat **informace, zda jednotlivé řádky jsou kompletní** - neobsahují žádné chybějící hodnoty.
 
-3.  Ta vytvoří vektor, který v sobě bude obsahovat **informace, zda jednotlivé řádky jsou kompletní** - neobsahují žádné chybějící hodnoty.
+3.  My ovšem chceme vědět, které řádky chybějící hodnoty obsahují - **provedeme proto negaci pomocí symbolu `!`**.
 
-4.  My ovšem chceme vědět, které řádky chybějící hodnoty obsahují - **provedeme proto negaci**.
-
-5.  A funkce `which` nám pak už pouze řekne, na jaké pozici ve vektoru těchto hodnot se výsledné TRUE (řádek obsahuje `NA` hodnoty) nachází.
+4.  A funkce `which` nám pak už pouze řekne, na jaké pozici ve vektoru těchto hodnot se výsledné `TRUE` (řádek obsahuje `NA` hodnoty) nachází.
 :::
 
 ------------------------------------------------------------------------
@@ -756,40 +750,6 @@ head(df)
 
 ------------------------------------------------------------------------
 
-### Změna pořadí sloupců
-
-Takto upravený data frame se nám ale nelíbí; co kdybychom chtěli mít sloupec `id` úplně na začátku, sloupec `adresa` za místem bydliště a oba tyto sloupce až na konci?
-
-```{r}
-df <- df %>% relocate(id, .before = gender)
-df <- df %>% relocate(adresa, .after = misto.bydliste)
-df <- df %>% relocate(misto.bydliste:adresa, .after = last_col())
-df
-```
-
-------------------------------------------------------------------------
-
-## Seřazení řádků dle hodnot ve sloupcích
-
-Může se stát, že si budete potřebovat srovnat podle hodnot v nějakém sloupci. Jak to provedete?
-
-```{r}
-df %>% arrange(pocet.deti) #vzestupne
-df %>% arrange(desc(pocet.deti)) #sestupne
-```
-
-**Co když ale máme ve sloupci více stejných hodnot?** Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?
-
-------------------------------------------------------------------------
-
-Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat, si můžeme vytvořit opravdu podrobně seřazený data frame.
-
-```{r}
-df <- df %>% arrange(pocet.deti, vek); df
-```
-
-------------------------------------------------------------------------
-
 ## Samostatné cvičení
 
 ```{r}
@@ -811,11 +771,9 @@ Proved na souboru `census.csv` následující změny:
 
 4.  Vyber sloupce `vek`, `pohlavi`, `vira` a `hodnota`.
 
-5.  Seřad´ hodnoty od nejvyššího věku po nejnižší.
+5.  Kolik je nejstarší české Jedi? Zjisti funkcí.
 
-6.  Kolik je nejstarší české Jedi? Zjisti funkcí.
-
-7.  Spočítej pro každý kraj průměrný věk pro všechna náboženství.
+6.  Spočítej pro každý kraj průměrný věk pro všechna náboženství.
 
 [^2]: Něco podobného jsme prováděli u funkce `select`. Existuje nějaká funkce z `base`, která lze použít?
 
@@ -869,14 +827,7 @@ Proved na souboru `census.csv` následující změny:
       select(hodnota, pohlavi, vek, vira)
     ```
 
-6.  Uspořádej je dle věku, ke každému náboženství od nejmladšího po nejstaršího věřícího.
-
-    ```{r}
-    census <- census %>%
-      arrange(desc(vek))
-    ```
-
-7.  Zjisti věk nejstarší Jedi v ČR.
+6.  Zjisti věk nejstarší Jedi v ČR.
 
     ```{r}
     jedi <- census %>% filter(vira == "Jedi",
@@ -884,7 +835,7 @@ Proved na souboru `census.csv` následující změny:
     max(jedi$vek)
     ```
 
-8.  Spočítej pro každý kraj průměrný věk pro všechna náboženství ve výsledném datasetu.
+7.  Spočítej pro každý kraj průměrný věk pro všechna náboženství ve výsledném datasetu.
 
     ```{r}
     levels(as.factor(census$vira))
@@ -930,8 +881,7 @@ census2 <- census2 %>%
     vek %in% 0:18 | vek >= 65,
     oblast == "Česká republika",
     hodnota > 0) %>%
-  select(hodnota, pohlavi, vek, vira) %>%
-  arrange(desc(vek))
+  select(hodnota, pohlavi, vek, vira)
 ```
 :::
 
@@ -974,8 +924,50 @@ Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [
 
 ## Tipy navíc
 
-Budou doplněny během dneška.
+**Budou doplněny během dneška.**
+
+### Změna pořadí sloupců
+
+Co kdybychom chtěli mít sloupce na jiné pozici, než jsou v nahraném datasetu?
+
+Použijeme k tomu funkci `dplyr::relocate`.
+
+```{r}
+dfTipy <- read.delim("intro_data.txt")
+dfTipy <- dfTipy[,1:7] #ukazkovy dataset
+
+dfTipy <- dfTipy %>% relocate(No:No_sub, .before = Sex)
+dfTipy <- dfTipy %>% relocate(Sex, .after = Age)
+dfTipy <- dfTipy %>% relocate(Side, .after = last_col())
+```
+
+------------------------------------------------------------------------
+
+### Seřazení řádků dle hodnot ve sloupcích
+
+Může se stát, že si budete potřebovat srovnat podle hodnot v nějakém sloupci. Jak to provedete?
+
+```{r}
+dfTipy %>% arrange(Age) #vzestupne
+dfTipy %>% arrange(desc(Age)) #sestupne
+```
+
+**Co když ale máme ve sloupci více stejných hodnot?** Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?
+
+------------------------------------------------------------------------
+
+Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat, si můžeme vytvořit opravdu podrobně seřazený data frame.
+
+```{r}
+dfTipy %>% arrange(Age, Length_cl)
+```
+
+------------------------------------------------------------------------
+
+### Načítání velkých souborů
 
 **V balíčku `readr` se nachází taktéž funkce `read_csv`.**
 
 Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než `read.csv` v základním R.
+
+------------------------------------------------------------------------

@@ -5,11 +5,19 @@ hodnoty <- seq(15.2, 45.7, 0.56)
 hodnoty[seq(0, length(hodnoty), by = 5)]
 
 #2)
-filter(airquality, Month == 5, Day %in% 1:7) %>% select(Temp) %>% unlist()
+airquality$Temp[airquality$Month == 5 & airquality$Day %in% 1:7]
+airquality$Temp[airquality$Month == 5 & airquality$Day <= 7]
 
 #3
+#1. verze
+airquality$Weather <- "cold"
 airquality$Weather[airquality$Temp > 70] <- "hot"
-airquality$Weather[airquality$Temp <= 70] <- "cold"
+
+#2. verze
+datumy <- filter(airquality, 
+                 Day %in% 1:7,
+                 Month == 5)
+unlist(select(datumy, Temp))
 
 #############################
 #PROCVICOVANI

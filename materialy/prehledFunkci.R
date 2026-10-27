@@ -64,5 +64,9 @@ which() #ktery radek splnuje podminky
 within() #uprav nebo pridej prvky listu ci sloupce data frame
 
 #4.lekce
+complete.cases() #TRUE/FALSE na zaklade toho, zda radek ma chybejici (NA) hodnoty
+dplyr::last_col() #vyber posledni sloupec
 dplyr::mutate() #zmen hodnoty ve sloupci ci pridej novy sloupec
+na.omit() #odstran radky s NA hodnotami
+dplyr::relocate() #presun sloupec na jine misto
 dplyr::rename() #prejmenuj nazev hodnoty

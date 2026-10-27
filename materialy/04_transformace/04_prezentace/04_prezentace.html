@@ -3745,17 +3745,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="kontrola-domácí-práce" class="slide level2 scrollable">
 <h2>Kontrola domácí práce</h2>
-<div class="cell" data-context="setup">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href aria-label="2"></a><span class="fu">library</span>(janitor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <h3 id="úloha-1">Úloha 1</h3>
 <p>Vyber z následujícího vektoru každou pátou hodnotu.</p>
 <div class="fragment">
 <ol type="1">
 <li><p>Pojmenujte si vektor pro snažší manipulaci.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href aria-label="1"></a>hodnoty <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">15.2</span>, <span class="fl">45.7</span>, <span class="fl">0.56</span>); hodnoty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href aria-label="1"></a>hodnoty <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">15.2</span>, <span class="fl">45.7</span>, <span class="fl">0.56</span>); hodnoty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 15.20 15.76 16.32 16.88 17.44 18.00 18.56 19.12 19.68 20.24 20.80 21.36
 [13] 21.92 22.48 23.04 23.60 24.16 24.72 25.28 25.84 26.40 26.96 27.52 28.08
@@ -3770,7 +3766,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol start="2" type="1">
 <li><p>Vytvořte sekvenci, která v sobě bude obsahovat čísla v intervalu pěti od 0 do posledního čísla vektoru = každé páté číslo.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href aria-label="1"></a><span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(hodnoty), <span class="at">by =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href aria-label="1"></a><span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(hodnoty), <span class="at">by =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  0  5 10 15 20 25 30 35 40 45 50 55</code></pre>
 </div>
@@ -3781,7 +3777,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol start="3" type="1">
 <li><p>Použijte výslednou sekvenci čísel k indexaci.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href aria-label="1"></a>hodnoty[<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(hodnoty), <span class="at">by =</span> <span class="dv">5</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href aria-label="1"></a>hodnoty[<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(hodnoty), <span class="at">by =</span> <span class="dv">5</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 17.44 20.24 23.04 25.84 28.64 31.44 34.24 37.04 39.84 42.64 45.44</code></pre>
 </div>
@@ -3797,7 +3793,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol type="1">
 <li><p>Zobrazme si prvních několik řádků a podívejme se na strukturu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href aria-label="1"></a><span class="fu">str</span>(airquality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href aria-label="1"></a><span class="fu">str</span>(airquality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   153 obs. of  6 variables:
  $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
@@ -3807,7 +3803,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
  $ Month  : int  5 5 5 5 5 5 5 5 5 5 ...
  $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href aria-label="1"></a><span class="fu">head</span>(airquality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href aria-label="1"></a><span class="fu">head</span>(airquality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Ozone Solar.R Wind Temp Month Day
 1    41     190  7.4   67     5   1
@@ -3824,43 +3820,32 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol start="2" type="1">
 <li><p>Vyfiltrujeme hodnoty, které byly naměřeny první týden v květnu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href aria-label="1"></a>kveten <span class="ot">&lt;-</span> <span class="fu">filter</span>(airquality, Month <span class="sc">==</span> <span class="dv">5</span>, Day <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>); kveten</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href aria-label="1"></a><span class="co">#vyber z hodnot sloupce</span></span>
+<span id="cb11-2"><a href aria-label="2"></a>airquality<span class="sc">$</span>Temp[airquality<span class="sc">$</span>Month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;</span> airquality<span class="sc">$</span>Day <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Ozone Solar.R Wind Temp Month Day
-1    41     190  7.4   67     5   1
-2    36     118  8.0   72     5   2
-3    12     149 12.6   74     5   3
-4    18     313 11.5   62     5   4
-5    NA      NA 14.3   56     5   5
-6    28      NA 14.9   66     5   6
-7    23     299  8.6   65     5   7</code></pre>
+<pre><code>[1] 67 72 74 62 56 66 65</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href aria-label="1"></a>airquality<span class="sc">$</span>Temp[airquality<span class="sc">$</span>Month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;</span> airquality<span class="sc">$</span>Day <span class="sc">&lt;=</span> <span class="dv">7</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67 72 74 62 56 66 65</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href aria-label="1"></a><span class="co">#vyber z datasetu</span></span>
+<span id="cb15-2"><a href aria-label="2"></a>airquality[airquality<span class="sc">$</span>Month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;</span> airquality<span class="sc">$</span>Day <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="st">&quot;Temp&quot;</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67 72 74 62 56 66 65</code></pre>
 </div>
 </div></li>
 </ol>
 </div>
 <div class="fragment">
 <ol start="3" type="1">
-<li><p>Vyberme si z nich sloupec <code>Temp</code>.</p>
+<li><p>Lze použít i funkci <code>filter</code>, zde už je ale třeba přemýšlet o tom, jestli nám na takto malém kusu kódu opravdu ušetří práci.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href aria-label="1"></a><span class="fu">select</span>(kveten, Temp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Temp
-1   67
-2   72
-3   74
-4   62
-5   56
-6   66
-7   65</code></pre>
-</div>
-</div></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="3" type="1">
-<li><p>A vyjmeme z nej pouze hodnoty.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href aria-label="1"></a><span class="fu">unlist</span>(<span class="fu">select</span>(kveten, Temp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href aria-label="1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb17-2"><a href aria-label="2"></a>datumy <span class="ot">&lt;-</span> <span class="fu">filter</span>(airquality, </span>
+<span id="cb17-3"><a href aria-label="3"></a>   Day <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>,</span>
+<span id="cb17-4"><a href aria-label="4"></a>   Month <span class="sc">==</span> <span class="dv">5</span>)</span>
+<span id="cb17-5"><a href aria-label="5"></a><span class="fu">unlist</span>(<span class="fu">select</span>(datumy, Temp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Temp1 Temp2 Temp3 Temp4 Temp5 Temp6 Temp7 
    67    72    74    62    56    66    65 </code></pre>
@@ -3875,175 +3860,175 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>K datasetu <code>airquality</code> přidejte nový sloupec s názvem <code>Weather</code> který bude obsahovat informaci (text <code>hot</code>), zda hodnoty ve sloupci <code>Temp</code> jsou vyšší než 70. Pokud není vyšší jako 70, bude obsahovat text <code>cold</code>.</p>
 <div class="fragment">
 <ol type="1">
-<li><p>Pomocí symbolu <code>$</code> vytvoříme nový sloupec <code>Weather</code>, a přiřadíme do něj hodnotu <code>hot</code> v případě, že pro daný řádek je hodnota ves loupci <code>Temp</code>nižší jak 70.</p>
+<li><p>Pomocí symbolu <code>$</code> vytvoříme nový sloupec <code>Weather</code>, a přiřadíme do něj hodnotu cold.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href aria-label="1"></a>airquality<span class="sc">$</span>Weather[airquality<span class="sc">$</span>Temp <span class="sc">&gt;</span> <span class="dv">70</span>] <span class="ot">&lt;-</span> <span class="st">&quot;hot&quot;</span></span>
-<span id="cb18-2"><a href aria-label="2"></a>airquality</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href aria-label="1"></a>airquality<span class="sc">$</span>Weather <span class="ot">&lt;-</span> <span class="st">&quot;cold&quot;</span></span>
+<span id="cb19-2"><a href aria-label="2"></a>airquality</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Ozone Solar.R Wind Temp Month Day Weather
-1      41     190  7.4   67     5   1    &lt;NA&gt;
-2      36     118  8.0   72     5   2     hot
-3      12     149 12.6   74     5   3     hot
-4      18     313 11.5   62     5   4    &lt;NA&gt;
-5      NA      NA 14.3   56     5   5    &lt;NA&gt;
-6      28      NA 14.9   66     5   6    &lt;NA&gt;
-7      23     299  8.6   65     5   7    &lt;NA&gt;
-8      19      99 13.8   59     5   8    &lt;NA&gt;
-9       8      19 20.1   61     5   9    &lt;NA&gt;
-10     NA     194  8.6   69     5  10    &lt;NA&gt;
-11      7      NA  6.9   74     5  11     hot
-12     16     256  9.7   69     5  12    &lt;NA&gt;
-13     11     290  9.2   66     5  13    &lt;NA&gt;
-14     14     274 10.9   68     5  14    &lt;NA&gt;
-15     18      65 13.2   58     5  15    &lt;NA&gt;
-16     14     334 11.5   64     5  16    &lt;NA&gt;
-17     34     307 12.0   66     5  17    &lt;NA&gt;
-18      6      78 18.4   57     5  18    &lt;NA&gt;
-19     30     322 11.5   68     5  19    &lt;NA&gt;
-20     11      44  9.7   62     5  20    &lt;NA&gt;
-21      1       8  9.7   59     5  21    &lt;NA&gt;
-22     11     320 16.6   73     5  22     hot
-23      4      25  9.7   61     5  23    &lt;NA&gt;
-24     32      92 12.0   61     5  24    &lt;NA&gt;
-25     NA      66 16.6   57     5  25    &lt;NA&gt;
-26     NA     266 14.9   58     5  26    &lt;NA&gt;
-27     NA      NA  8.0   57     5  27    &lt;NA&gt;
-28     23      13 12.0   67     5  28    &lt;NA&gt;
-29     45     252 14.9   81     5  29     hot
-30    115     223  5.7   79     5  30     hot
-31     37     279  7.4   76     5  31     hot
-32     NA     286  8.6   78     6   1     hot
-33     NA     287  9.7   74     6   2     hot
-34     NA     242 16.1   67     6   3    &lt;NA&gt;
-35     NA     186  9.2   84     6   4     hot
-36     NA     220  8.6   85     6   5     hot
-37     NA     264 14.3   79     6   6     hot
-38     29     127  9.7   82     6   7     hot
-39     NA     273  6.9   87     6   8     hot
-40     71     291 13.8   90     6   9     hot
-41     39     323 11.5   87     6  10     hot
-42     NA     259 10.9   93     6  11     hot
-43     NA     250  9.2   92     6  12     hot
-44     23     148  8.0   82     6  13     hot
-45     NA     332 13.8   80     6  14     hot
-46     NA     322 11.5   79     6  15     hot
-47     21     191 14.9   77     6  16     hot
-48     37     284 20.7   72     6  17     hot
-49     20      37  9.2   65     6  18    &lt;NA&gt;
-50     12     120 11.5   73     6  19     hot
-51     13     137 10.3   76     6  20     hot
-52     NA     150  6.3   77     6  21     hot
-53     NA      59  1.7   76     6  22     hot
-54     NA      91  4.6   76     6  23     hot
-55     NA     250  6.3   76     6  24     hot
-56     NA     135  8.0   75     6  25     hot
-57     NA     127  8.0   78     6  26     hot
-58     NA      47 10.3   73     6  27     hot
-59     NA      98 11.5   80     6  28     hot
-60     NA      31 14.9   77     6  29     hot
-61     NA     138  8.0   83     6  30     hot
-62    135     269  4.1   84     7   1     hot
-63     49     248  9.2   85     7   2     hot
-64     32     236  9.2   81     7   3     hot
-65     NA     101 10.9   84     7   4     hot
-66     64     175  4.6   83     7   5     hot
-67     40     314 10.9   83     7   6     hot
-68     77     276  5.1   88     7   7     hot
-69     97     267  6.3   92     7   8     hot
-70     97     272  5.7   92     7   9     hot
-71     85     175  7.4   89     7  10     hot
-72     NA     139  8.6   82     7  11     hot
-73     10     264 14.3   73     7  12     hot
-74     27     175 14.9   81     7  13     hot
-75     NA     291 14.9   91     7  14     hot
-76      7      48 14.3   80     7  15     hot
-77     48     260  6.9   81     7  16     hot
-78     35     274 10.3   82     7  17     hot
-79     61     285  6.3   84     7  18     hot
-80     79     187  5.1   87     7  19     hot
-81     63     220 11.5   85     7  20     hot
-82     16       7  6.9   74     7  21     hot
-83     NA     258  9.7   81     7  22     hot
-84     NA     295 11.5   82     7  23     hot
-85     80     294  8.6   86     7  24     hot
-86    108     223  8.0   85     7  25     hot
-87     20      81  8.6   82     7  26     hot
-88     52      82 12.0   86     7  27     hot
-89     82     213  7.4   88     7  28     hot
-90     50     275  7.4   86     7  29     hot
-91     64     253  7.4   83     7  30     hot
-92     59     254  9.2   81     7  31     hot
-93     39      83  6.9   81     8   1     hot
-94      9      24 13.8   81     8   2     hot
-95     16      77  7.4   82     8   3     hot
-96     78      NA  6.9   86     8   4     hot
-97     35      NA  7.4   85     8   5     hot
-98     66      NA  4.6   87     8   6     hot
-99    122     255  4.0   89     8   7     hot
-100    89     229 10.3   90     8   8     hot
-101   110     207  8.0   90     8   9     hot
-102    NA     222  8.6   92     8  10     hot
-103    NA     137 11.5   86     8  11     hot
-104    44     192 11.5   86     8  12     hot
-105    28     273 11.5   82     8  13     hot
-106    65     157  9.7   80     8  14     hot
-107    NA      64 11.5   79     8  15     hot
-108    22      71 10.3   77     8  16     hot
-109    59      51  6.3   79     8  17     hot
-110    23     115  7.4   76     8  18     hot
-111    31     244 10.9   78     8  19     hot
-112    44     190 10.3   78     8  20     hot
-113    21     259 15.5   77     8  21     hot
-114     9      36 14.3   72     8  22     hot
-115    NA     255 12.6   75     8  23     hot
-116    45     212  9.7   79     8  24     hot
-117   168     238  3.4   81     8  25     hot
-118    73     215  8.0   86     8  26     hot
-119    NA     153  5.7   88     8  27     hot
-120    76     203  9.7   97     8  28     hot
-121   118     225  2.3   94     8  29     hot
-122    84     237  6.3   96     8  30     hot
-123    85     188  6.3   94     8  31     hot
-124    96     167  6.9   91     9   1     hot
-125    78     197  5.1   92     9   2     hot
-126    73     183  2.8   93     9   3     hot
-127    91     189  4.6   93     9   4     hot
-128    47      95  7.4   87     9   5     hot
-129    32      92 15.5   84     9   6     hot
-130    20     252 10.9   80     9   7     hot
-131    23     220 10.3   78     9   8     hot
-132    21     230 10.9   75     9   9     hot
-133    24     259  9.7   73     9  10     hot
-134    44     236 14.9   81     9  11     hot
-135    21     259 15.5   76     9  12     hot
-136    28     238  6.3   77     9  13     hot
-137     9      24 10.9   71     9  14     hot
-138    13     112 11.5   71     9  15     hot
-139    46     237  6.9   78     9  16     hot
-140    18     224 13.8   67     9  17    &lt;NA&gt;
-141    13      27 10.3   76     9  18     hot
-142    24     238 10.3   68     9  19    &lt;NA&gt;
-143    16     201  8.0   82     9  20     hot
-144    13     238 12.6   64     9  21    &lt;NA&gt;
-145    23      14  9.2   71     9  22     hot
-146    36     139 10.3   81     9  23     hot
-147     7      49 10.3   69     9  24    &lt;NA&gt;
-148    14      20 16.6   63     9  25    &lt;NA&gt;
-149    30     193  6.9   70     9  26    &lt;NA&gt;
-150    NA     145 13.2   77     9  27     hot
-151    14     191 14.3   75     9  28     hot
-152    18     131  8.0   76     9  29     hot
-153    20     223 11.5   68     9  30    &lt;NA&gt;</code></pre>
+1      41     190  7.4   67     5   1    cold
+2      36     118  8.0   72     5   2    cold
+3      12     149 12.6   74     5   3    cold
+4      18     313 11.5   62     5   4    cold
+5      NA      NA 14.3   56     5   5    cold
+6      28      NA 14.9   66     5   6    cold
+7      23     299  8.6   65     5   7    cold
+8      19      99 13.8   59     5   8    cold
+9       8      19 20.1   61     5   9    cold
+10     NA     194  8.6   69     5  10    cold
+11      7      NA  6.9   74     5  11    cold
+12     16     256  9.7   69     5  12    cold
+13     11     290  9.2   66     5  13    cold
+14     14     274 10.9   68     5  14    cold
+15     18      65 13.2   58     5  15    cold
+16     14     334 11.5   64     5  16    cold
+17     34     307 12.0   66     5  17    cold
+18      6      78 18.4   57     5  18    cold
+19     30     322 11.5   68     5  19    cold
+20     11      44  9.7   62     5  20    cold
+21      1       8  9.7   59     5  21    cold
+22     11     320 16.6   73     5  22    cold
+23      4      25  9.7   61     5  23    cold
+24     32      92 12.0   61     5  24    cold
+25     NA      66 16.6   57     5  25    cold
+26     NA     266 14.9   58     5  26    cold
+27     NA      NA  8.0   57     5  27    cold
+28     23      13 12.0   67     5  28    cold
+29     45     252 14.9   81     5  29    cold
+30    115     223  5.7   79     5  30    cold
+31     37     279  7.4   76     5  31    cold
+32     NA     286  8.6   78     6   1    cold
+33     NA     287  9.7   74     6   2    cold
+34     NA     242 16.1   67     6   3    cold
+35     NA     186  9.2   84     6   4    cold
+36     NA     220  8.6   85     6   5    cold
+37     NA     264 14.3   79     6   6    cold
+38     29     127  9.7   82     6   7    cold
+39     NA     273  6.9   87     6   8    cold
+40     71     291 13.8   90     6   9    cold
+41     39     323 11.5   87     6  10    cold
+42     NA     259 10.9   93     6  11    cold
+43     NA     250  9.2   92     6  12    cold
+44     23     148  8.0   82     6  13    cold
+45     NA     332 13.8   80     6  14    cold
+46     NA     322 11.5   79     6  15    cold
+47     21     191 14.9   77     6  16    cold
+48     37     284 20.7   72     6  17    cold
+49     20      37  9.2   65     6  18    cold
+50     12     120 11.5   73     6  19    cold
+51     13     137 10.3   76     6  20    cold
+52     NA     150  6.3   77     6  21    cold
+53     NA      59  1.7   76     6  22    cold
+54     NA      91  4.6   76     6  23    cold
+55     NA     250  6.3   76     6  24    cold
+56     NA     135  8.0   75     6  25    cold
+57     NA     127  8.0   78     6  26    cold
+58     NA      47 10.3   73     6  27    cold
+59     NA      98 11.5   80     6  28    cold
+60     NA      31 14.9   77     6  29    cold
+61     NA     138  8.0   83     6  30    cold
+62    135     269  4.1   84     7   1    cold
+63     49     248  9.2   85     7   2    cold
+64     32     236  9.2   81     7   3    cold
+65     NA     101 10.9   84     7   4    cold
+66     64     175  4.6   83     7   5    cold
+67     40     314 10.9   83     7   6    cold
+68     77     276  5.1   88     7   7    cold
+69     97     267  6.3   92     7   8    cold
+70     97     272  5.7   92     7   9    cold
+71     85     175  7.4   89     7  10    cold
+72     NA     139  8.6   82     7  11    cold
+73     10     264 14.3   73     7  12    cold
+74     27     175 14.9   81     7  13    cold
+75     NA     291 14.9   91     7  14    cold
+76      7      48 14.3   80     7  15    cold
+77     48     260  6.9   81     7  16    cold
+78     35     274 10.3   82     7  17    cold
+79     61     285  6.3   84     7  18    cold
+80     79     187  5.1   87     7  19    cold
+81     63     220 11.5   85     7  20    cold
+82     16       7  6.9   74     7  21    cold
+83     NA     258  9.7   81     7  22    cold
+84     NA     295 11.5   82     7  23    cold
+85     80     294  8.6   86     7  24    cold
+86    108     223  8.0   85     7  25    cold
+87     20      81  8.6   82     7  26    cold
+88     52      82 12.0   86     7  27    cold
+89     82     213  7.4   88     7  28    cold
+90     50     275  7.4   86     7  29    cold
+91     64     253  7.4   83     7  30    cold
+92     59     254  9.2   81     7  31    cold
+93     39      83  6.9   81     8   1    cold
+94      9      24 13.8   81     8   2    cold
+95     16      77  7.4   82     8   3    cold
+96     78      NA  6.9   86     8   4    cold
+97     35      NA  7.4   85     8   5    cold
+98     66      NA  4.6   87     8   6    cold
+99    122     255  4.0   89     8   7    cold
+100    89     229 10.3   90     8   8    cold
+101   110     207  8.0   90     8   9    cold
+102    NA     222  8.6   92     8  10    cold
+103    NA     137 11.5   86     8  11    cold
+104    44     192 11.5   86     8  12    cold
+105    28     273 11.5   82     8  13    cold
+106    65     157  9.7   80     8  14    cold
+107    NA      64 11.5   79     8  15    cold
+108    22      71 10.3   77     8  16    cold
+109    59      51  6.3   79     8  17    cold
+110    23     115  7.4   76     8  18    cold
+111    31     244 10.9   78     8  19    cold
+112    44     190 10.3   78     8  20    cold
+113    21     259 15.5   77     8  21    cold
+114     9      36 14.3   72     8  22    cold
+115    NA     255 12.6   75     8  23    cold
+116    45     212  9.7   79     8  24    cold
+117   168     238  3.4   81     8  25    cold
+118    73     215  8.0   86     8  26    cold
+119    NA     153  5.7   88     8  27    cold
+120    76     203  9.7   97     8  28    cold
+121   118     225  2.3   94     8  29    cold
+122    84     237  6.3   96     8  30    cold
+123    85     188  6.3   94     8  31    cold
+124    96     167  6.9   91     9   1    cold
+125    78     197  5.1   92     9   2    cold
+126    73     183  2.8   93     9   3    cold
+127    91     189  4.6   93     9   4    cold
+128    47      95  7.4   87     9   5    cold
+129    32      92 15.5   84     9   6    cold
+130    20     252 10.9   80     9   7    cold
+131    23     220 10.3   78     9   8    cold
+132    21     230 10.9   75     9   9    cold
+133    24     259  9.7   73     9  10    cold
+134    44     236 14.9   81     9  11    cold
+135    21     259 15.5   76     9  12    cold
+136    28     238  6.3   77     9  13    cold
+137     9      24 10.9   71     9  14    cold
+138    13     112 11.5   71     9  15    cold
+139    46     237  6.9   78     9  16    cold
+140    18     224 13.8   67     9  17    cold
+141    13      27 10.3   76     9  18    cold
+142    24     238 10.3   68     9  19    cold
+143    16     201  8.0   82     9  20    cold
+144    13     238 12.6   64     9  21    cold
+145    23      14  9.2   71     9  22    cold
+146    36     139 10.3   81     9  23    cold
+147     7      49 10.3   69     9  24    cold
+148    14      20 16.6   63     9  25    cold
+149    30     193  6.9   70     9  26    cold
+150    NA     145 13.2   77     9  27    cold
+151    14     191 14.3   75     9  28    cold
+152    18     131  8.0   76     9  29    cold
+153    20     223 11.5   68     9  30    cold</code></pre>
 </div>
 </div></li>
 </ol>
 </div>
 <div class="fragment">
 <ol start="2" type="1">
-<li><p>Totéž provedeme s hodnotou <code>cold</code>, pro kterou platí podmínka <code>Temp</code> &lt;= 70.</p>
+<li><p>Totéž provedeme s hodnotou <code>hot</code>, pro kterou platí podmínka <code>Temp &gt; 70</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href aria-label="1"></a>airquality<span class="sc">$</span>Weather[airquality<span class="sc">$</span>Temp <span class="sc">&lt;=</span> <span class="dv">70</span>] <span class="ot">&lt;-</span> <span class="st">&quot;cold&quot;</span></span>
-<span id="cb20-2"><a href aria-label="2"></a>airquality</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href aria-label="1"></a>airquality<span class="sc">$</span>Weather[airquality<span class="sc">$</span>Temp <span class="sc">&gt;</span> <span class="dv">70</span>] <span class="ot">&lt;-</span> <span class="st">&quot;hot&quot;</span></span>
+<span id="cb21-2"><a href aria-label="2"></a>airquality</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Ozone Solar.R Wind Temp Month Day Weather
 1      41     190  7.4   67     5   1    cold
@@ -4209,7 +4194,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Pokuste se zjistit, jak si v nápovědě můžete najít seznam nahraných datasetů v R (<code>iris</code>, <code>cars</code>, <code>dplyr::starwars</code> a jiné)</p>
 <div class="fragment">
 <p>Pro vyhledání můžete použít následující funkci:</p>
-<p><code>library(help = &quot;datasets&quot;)</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href aria-label="1"></a><span class="fu">data</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Díky této funkci si můžeme rychle zjisti, jaké datasety máme k dispozici v nahraných balíčcích, a <strong>které je proto možné rovnou použít bez jejich opakovaného ukládání do globálního prostředí.</strong></p>
 </div>
 </section>
 <section class="slide level2">
@@ -4218,8 +4206,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>To lze provést bud´ tak, že se celý výpočet rovnou použije v následující funkci, či se uloží jako proměnná, která se následně použije.</p>
 <p><strong>Ukázka:</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href aria-label="1"></a><span class="co">#1</span></span>
-<span id="cb22-2"><a href aria-label="2"></a><span class="fu">head</span>(<span class="fu">select</span>(<span class="fu">filter</span>(iris, Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>), Petal.Width))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href aria-label="1"></a><span class="co">#1</span></span>
+<span id="cb24-2"><a href aria-label="2"></a><span class="fu">head</span>(<span class="fu">select</span>(<span class="fu">filter</span>(iris, Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>), Petal.Width))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Petal.Width
 1         0.2
@@ -4229,10 +4217,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 5         0.2
 6         0.4</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href aria-label="1"></a><span class="co">#2</span></span>
-<span id="cb24-2"><a href aria-label="2"></a>filtrIris <span class="ot">&lt;-</span> <span class="fu">filter</span>(iris, Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>)</span>
-<span id="cb24-3"><a href aria-label="3"></a>vyberFiltrIris <span class="ot">&lt;-</span> <span class="fu">select</span>(filtrIris, Petal.Width)</span>
-<span id="cb24-4"><a href aria-label="4"></a><span class="fu">head</span>(vyberFiltrIris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href aria-label="1"></a><span class="co">#2</span></span>
+<span id="cb26-2"><a href aria-label="2"></a>filtrIris <span class="ot">&lt;-</span> <span class="fu">filter</span>(iris, Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb26-3"><a href aria-label="3"></a>vyberFiltrIris <span class="ot">&lt;-</span> <span class="fu">select</span>(filtrIris, Petal.Width)</span>
+<span id="cb26-4"><a href aria-label="4"></a><span class="fu">head</span>(vyberFiltrIris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Petal.Width
 1         0.2
@@ -4260,9 +4248,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Pipes</h2>
 <p><strong>Nástroj, který transportuje data z jedné funkce do druhé jako první argument.</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href aria-label="1"></a><span class="fu">filter</span>(iris, Petal.Width <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href aria-label="2"></a>  <span class="fu">select</span>(Petal.Length, Petal.Width) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href aria-label="3"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href aria-label="1"></a><span class="fu">filter</span>(iris, Petal.Width <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href aria-label="2"></a>  <span class="fu">select</span>(Petal.Length, Petal.Width) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href aria-label="3"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Petal.Length Petal.Width
 1          6.0         2.5
@@ -4275,7 +4263,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <p><strong><code>data %&gt;% funkce(</code></strong><code>data přivedená skrz pipe, nemusíme je vypisovat,</code> <strong><code>druhý a další argumenty = definované námi)</code></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href aria-label="1"></a><span class="fu">head</span>(cars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href aria-label="1"></a><span class="fu">head</span>(cars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  speed dist
 1     4    2
@@ -4285,7 +4273,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 5     8   16
 6     9   10</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href aria-label="1"></a>cars <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href aria-label="1"></a>cars <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  speed dist
 1     4    2
@@ -4301,12 +4289,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p>Co když chci využít <strong>data v jiném než v prvním argumentu</strong>?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href aria-label="1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(Petal.Length <span class="sc">&gt;</span> <span class="fl">0.8</span>, Petal.Width <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href aria-label="3"></a>  <span class="fu">select</span>(Sepal.Length) <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a href aria-label="4"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> <span class="co">#preved na vektor</span></span>
-<span id="cb32-5"><a href aria-label="5"></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb32-6"><a href aria-label="6"></a>  <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">x =</span> .) <span class="co">#ukazka, bezne je x prvni argument</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href aria-label="1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(Petal.Length <span class="sc">&gt;</span> <span class="fl">0.8</span>, Petal.Width <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href aria-label="3"></a>  <span class="fu">select</span>(Sepal.Length) <span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a href aria-label="4"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> <span class="co">#preved na vektor</span></span>
+<span id="cb34-5"><a href aria-label="5"></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb34-6"><a href aria-label="6"></a>  <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">x =</span> .) <span class="co">#ukazka, bezne je x prvni argument</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.006</code></pre>
 </div>
@@ -4326,19 +4314,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <p>A co <strong>běžná indexace</strong>? Jak určíme že se mají data vybírat, když se nejedná o argumenty?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href aria-label="1"></a><span class="co">#tecka znaci misto vyusteni pipe</span></span>
-<span id="cb34-2"><a href aria-label="2"></a>cars <span class="sc">%&gt;%</span> .[,<span class="dv">2</span>] </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href aria-label="1"></a><span class="co">#tecka znaci misto vyusteni pipe</span></span>
+<span id="cb36-2"><a href aria-label="2"></a>cars <span class="sc">%&gt;%</span> .[,<span class="dv">2</span>] </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]   2  10   4  22  16  10  18  26  34  17  28  14  20  24  28  26  34  34  46
 [20]  26  36  60  80  20  26  54  32  40  32  40  50  42  56  76  84  36  46  68
 [39]  32  48  52  56  64  66  54  70  92  93 120  85</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href aria-label="1"></a>cars <span class="sc">%&gt;%</span> .<span class="sc">$</span>speed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href aria-label="1"></a>cars <span class="sc">%&gt;%</span> .<span class="sc">$</span>speed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  4  4  7  7  8  9 10 10 10 11 11 12 12 12 12 13 13 13 13 14 14 14 14 15 15
 [26] 15 16 16 17 17 17 18 18 18 18 19 19 19 20 20 20 20 20 22 23 24 24 24 24 25</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href aria-label="1"></a>cars <span class="sc">%&gt;%</span> .[<span class="st">&quot;speed&quot;</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href aria-label="1"></a>cars <span class="sc">%&gt;%</span> .[<span class="st">&quot;speed&quot;</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   speed
 1      4
@@ -4392,7 +4380,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 49    24
 50    25</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href aria-label="1"></a>cars <span class="sc">%&gt;%</span> .[[<span class="st">&quot;dist&quot;</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href aria-label="1"></a>cars <span class="sc">%&gt;%</span> .[[<span class="st">&quot;dist&quot;</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]   2  10   4  22  16  10  18  26  34  17  28  14  20  24  28  26  34  34  46
 [20]  26  36  60  80  20  26  54  32  40  32  40  50  42  56  76  84  36  46  68
@@ -4411,11 +4399,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>funguje s i bez závorkami za názvem funkce</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">15</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">15</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.71429</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>) <span class="sc">%&gt;%</span> mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>) <span class="sc">%&gt;%</span> mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47.98131</code></pre>
 </div>
@@ -4428,7 +4416,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>vždy je potřeba za název funkce umístit kulaté závorky</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">546</span>, <span class="dv">467</span>, <span class="dv">87</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">546</span>, <span class="dv">467</span>, <span class="dv">87</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 274.011</code></pre>
 </div>
@@ -4505,19 +4493,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p>Nahrání zkušebního souboru s určením argumentů:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href aria-label="1"></a>dataTxt <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">&quot;intro_data.txt&quot;</span>,</span>
-<span id="cb48-2"><a href aria-label="2"></a>                       <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb48-3"><a href aria-label="3"></a>                       <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, <span class="co">#co je separator</span></span>
-<span id="cb48-4"><a href aria-label="4"></a>                       <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="co">#co je desetinna carka</span></span>
-<span id="cb48-5"><a href aria-label="5"></a>                       <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>) <span class="co">#co jsou chybejici hodnoty</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href aria-label="1"></a>dataTxt <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">&quot;intro_data.txt&quot;</span>,</span>
+<span id="cb50-2"><a href aria-label="2"></a>                       <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb50-3"><a href aria-label="3"></a>                       <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, <span class="co">#co je separator</span></span>
+<span id="cb50-4"><a href aria-label="4"></a>                       <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="co">#co je desetinna carka</span></span>
+<span id="cb50-5"><a href aria-label="5"></a>                       <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>) <span class="co">#co jsou chybejici hodnoty</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Nahrání zkušebního souboru bez určení argumentů:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href aria-label="1"></a>dataTxt2 <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">&quot;intro_data.txt&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href aria-label="1"></a>dataTxt2 <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">&quot;intro_data.txt&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Jsou tyto dva soubory identické?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href aria-label="1"></a><span class="fu">identical</span>(dataTxt, dataTxt2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href aria-label="1"></a><span class="fu">identical</span>(dataTxt, dataTxt2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -4550,13 +4538,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </ul></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href aria-label="1"></a>dataUvnitrPodslozkyvProjektu <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/skrytadata.txt&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href aria-label="1"></a>dataUvnitrPodslozkyvProjektu <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/skrytadata.txt&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Co když si potřebujeme vytáhnout <strong>soubor mimo projekt</strong>, a nebo nemáme projekt ani nastavený working directory?</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href aria-label="1"></a>dataBezUrcenehoWD <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;C:/Users/Lucie Hošková/Desktop/introR_CUNI/materialy/04_transformace/04_prezentace/data/skrytadata.txt&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href aria-label="1"></a>dataBezUrcenehoWD <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;C:/Users/Lucie Hošková/Desktop/introR_CUNI/materialy/04_transformace/04_prezentace/data/skrytadata.txt&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -4593,8 +4581,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Je možné používat jako desetinnou čárku libovolný symbol?</p>
 
 <img role="img" data-src="data:image/png;base64,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" class="quarto-figure quarto-figure-center r-stretch"><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href aria-label="1"></a>decZkouska <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;decZkouska.txt&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb54-2"><a href aria-label="2"></a><span class="fu">head</span>(decZkouska)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href aria-label="1"></a>decZkouska <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;decZkouska.txt&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb56-2"><a href aria-label="2"></a><span class="fu">head</span>(decZkouska)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  vaha vyska vek
 1 62.8 165.7  32
@@ -4659,7 +4647,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Samostatné cvičení</h2>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_98efccdc" minutes="8" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_94a910c5" minutes="8" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <p>Načtěte si soubor <code>samostatneCviceniData.txt</code> a uložte si ho jako <code>data</code>. Přeměňte si sloupec <code>vzdelani</code> na faktory<sup>1</sup> a vypočítejte průměrnou výšku ze sloupce <code>vyska</code>.</p>
@@ -4672,8 +4660,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol type="1">
 <li><p>Načteme si soubor pomocí funkce <code>read.delim</code> a podíváme se na strukturu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;samostatneCviceniData.txt&quot;</span>)</span>
-<span id="cb56-2"><a href aria-label="2"></a><span class="fu">str</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;samostatneCviceniData.txt&quot;</span>)</span>
+<span id="cb58-2"><a href aria-label="2"></a><span class="fu">str</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   10 obs. of  4 variables:
  $ id      : int  26 981 65 84 563 979 646 634 741 753
@@ -4688,9 +4676,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol start="2" type="1">
 <li><p>Je vidět, že soubor má jiný typ separátoru, než jsme očekávali. Musíme podle toho proto upravit argumenty funkce.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;samostatneCviceniData.txt&quot;</span>,</span>
-<span id="cb58-2"><a href aria-label="2"></a>                   <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb58-3"><a href aria-label="3"></a><span class="fu">str</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;samostatneCviceniData.txt&quot;</span>,</span>
+<span id="cb60-2"><a href aria-label="2"></a>                   <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb60-3"><a href aria-label="3"></a><span class="fu">str</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   10 obs. of  4 variables:
  $ id      : int  26 981 65 84 563 979 646 634 741 753
@@ -4701,8 +4689,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <p>Nebo můžeme použít funkci, která má přímo určenu desetinnou čárku.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href aria-label="1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">read.delim2</span>(<span class="st">&quot;samostatneCviceniData.txt&quot;</span>)</span>
-<span id="cb60-2"><a href aria-label="2"></a><span class="fu">str</span>(data2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href aria-label="1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">read.delim2</span>(<span class="st">&quot;samostatneCviceniData.txt&quot;</span>)</span>
+<span id="cb62-2"><a href aria-label="2"></a><span class="fu">str</span>(data2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   10 obs. of  4 variables:
  $ id      : int  26 981 65 84 563 979 646 634 741 753
@@ -4717,10 +4705,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol start="3" type="1">
 <li><p>Změňme charakterové stringy (sloupec <code>vzdelani</code>) na faktory.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;samostatneCviceniData.txt&quot;</span>,</span>
-<span id="cb62-2"><a href aria-label="2"></a>                   <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>,</span>
-<span id="cb62-3"><a href aria-label="3"></a>                   <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb62-4"><a href aria-label="4"></a><span class="fu">str</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;samostatneCviceniData.txt&quot;</span>,</span>
+<span id="cb64-2"><a href aria-label="2"></a>                   <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb64-3"><a href aria-label="3"></a>                   <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-4"><a href aria-label="4"></a><span class="fu">str</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   10 obs. of  4 variables:
  $ id      : int  26 981 65 84 563 979 646 634 741 753
@@ -4735,7 +4723,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol start="4" type="1">
 <li><p>Spočítejme si průměrnou výšku.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href aria-label="1"></a><span class="fu">mean</span>(data<span class="sc">$</span>vyska) <span class="co">#175.15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href aria-label="1"></a><span class="fu">mean</span>(data<span class="sc">$</span>vyska) <span class="co">#175.15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 175.15</code></pre>
 </div>
@@ -4758,8 +4746,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Někdy se může stát, že máte v R dataset, u které jsou jsou <strong>sloupce s totožnými názvy následované čísly a s tečkami mezi slovy</strong>, i když v původním souboru nic takového není.</p>
 
 <img role="img" data-src="data:image/png;base64,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" class="quarto-figure quarto-figure-center r-stretch"><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;bydliste.txt&quot;</span>)</span>
-<span id="cb66-2"><a href aria-label="2"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;bydliste.txt&quot;</span>)</span>
+<span id="cb68-2"><a href aria-label="2"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  gender vek pocet.deti misto.bydliste rodinny.stav misto.bydliste.1
 1      F  19          0         Turnov          N/A       Veselská 5
@@ -4769,7 +4757,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 5      M  22          0           Most     svobodní                 
 6      F  18          1          Louny          N/A              N/A</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   15 obs. of  6 variables:
  $ gender          : chr  &quot;F&quot; &quot;M&quot; &quot;X&quot; &quot;M&quot; ...
@@ -4788,9 +4776,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>To znamená, že nemají mezery a <strong>slova jsou oddělena stejným symbolem</strong>, a v <strong>případě duplikátů jmen sloupců</strong> je k nim přiřazen symbol, který je odliší.</p>
 <p>Co když se nám ale dané jméno nelíbí? Jak si ho přejmenovat?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb70-2"><a href aria-label="2"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">adresa =</span> misto.bydliste<span class="fl">.1</span>)</span>
-<span id="cb70-3"><a href aria-label="3"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href aria-label="2"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">adresa =</span> misto.bydliste<span class="fl">.1</span>)</span>
+<span id="cb72-3"><a href aria-label="3"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  gender vek pocet.deti misto.bydliste rodinny.stav        adresa
 1      F  19          0         Turnov          N/A    Veselská 5
@@ -4820,9 +4808,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Při kontrole dat jsme si mohli všimnout, že v souboru jsou podivně zapsané chybějící hodnoty - jak prázdná místa, tak text <code>N/A</code>.</p>
 <p><strong>Jak toto vše můžeme převést na jednoduchá <code>NA</code>?</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href aria-label="1"></a>dfNA <span class="ot">&lt;-</span> <span class="fu">read.delim2</span>(<span class="st">&quot;bydliste.txt&quot;</span>,</span>
-<span id="cb72-2"><a href aria-label="2"></a>                    <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;N/A&quot;</span>)) <span class="co">#&quot;&quot; urcuje mezeru/prazdne pole</span></span>
-<span id="cb72-3"><a href aria-label="3"></a>dfNA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href aria-label="1"></a>dfNA <span class="ot">&lt;-</span> <span class="fu">read.delim2</span>(<span class="st">&quot;bydliste.txt&quot;</span>,</span>
+<span id="cb74-2"><a href aria-label="2"></a>                    <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;N/A&quot;</span>)) <span class="co">#&quot;&quot; urcuje mezeru/prazdne pole</span></span>
+<span id="cb74-3"><a href aria-label="3"></a>dfNA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav      misto.bydliste.1
 1       F  19          0         Turnov         &lt;NA&gt;            Veselská 5
@@ -4849,7 +4837,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Samostatné cvičení</h2>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_e2fc1d34" minutes="3" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a629fbdb" minutes="5" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <p>Upravte hodnoty uvnitř data frame <code>df</code> tak, aby místo prázdných buněk a charakterové hodnoty <code>N/A</code> byly přímo hodnoty <code>NA</code>.</p>
@@ -4870,10 +4858,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="řešení-1" class="slide level2 scrollable">
 <h2>Řešení</h2>
+<p>Upravte hodnoty uvnitř data frame <code>df</code> tak, aby místo prázdných buněk a charakterové hodnoty <code>N/A</code> byly přímo hodnoty <code>NA</code>.</p>
 <ol type="1">
 <li class="fragment"><p>Pomocí základní indexace si vybereme všechny hodnoty z <code>df</code>, pro které platí <code>df == &quot;N/A&quot; | df == &quot;&quot;</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href aria-label="1"></a>df <span class="sc">==</span> <span class="st">&quot;N/A&quot;</span> <span class="sc">|</span> df <span class="sc">==</span> <span class="st">&quot;&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href aria-label="1"></a>df <span class="sc">==</span> <span class="st">&quot;N/A&quot;</span> <span class="sc">|</span> df <span class="sc">==</span> <span class="st">&quot;&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      gender   vek pocet.deti misto.bydliste rodinny.stav adresa
  [1,]  FALSE FALSE      FALSE          FALSE         TRUE  FALSE
@@ -4895,8 +4884,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div></li>
 <li class="fragment"><p>Tyto hodnoty si přepíšeme na <code>NA</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href aria-label="1"></a>df[df <span class="sc">==</span> <span class="st">&quot;N/A&quot;</span> <span class="sc">|</span> df <span class="sc">==</span> <span class="st">&quot;&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>;</span>
-<span id="cb76-2"><a href aria-label="2"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href aria-label="1"></a>df[df <span class="sc">==</span> <span class="st">&quot;N/A&quot;</span> <span class="sc">|</span> df <span class="sc">==</span> <span class="st">&quot;&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>;</span>
+<span id="cb78-2"><a href aria-label="2"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   gender  vek pocet.deti misto.bydliste rodinny.stav                adresa
 1       F   19          0         Turnov         &lt;NA&gt;            Veselská 5
@@ -4923,16 +4912,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 id="odstranění-na-hodnot">Odstranění <code>NA</code> hodnot</h3>
 <p>Dejme ale, že bychom v datasetu chtěli mít pouze kompletní řádky, tzn. chceme se zbavit řádků obsahující <code>NA</code> hodnoty. Jak na to?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href aria-label="1"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href aria-label="1"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15  6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df)</span>
-<span id="cb80-2"><a href aria-label="2"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df)</span>
+<span id="cb82-2"><a href aria-label="2"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7 6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href aria-label="1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href aria-label="1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav             adresa
 2       M  85          4        Všenory   manželství          Malá 56/7
@@ -4949,25 +4938,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p>Co se stalo? Zmizely všechny řádky, co měli v jakémkoliv sloupci <code>NA</code>. O jaké řádky se ale jednalo?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href aria-label="1"></a><span class="fu">which</span>(<span class="sc">!</span><span class="fu">complete.cases</span>(dfNA))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href aria-label="1"></a><span class="fu">which</span>(<span class="sc">!</span><span class="fu">complete.cases</span>(dfNA))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  4  5  6  9 11 12 14</code></pre>
 </div>
 </div>
-<p><strong>Samostatná práce:</strong></p>
-<p>Dokážete vysvětlit, co se v tomto kombinací těchto funkcí a aplikaci na dataset stane?</p>
+<p><strong>Dokážete vysvětlit, co se v tomto kombinací těchto funkcí a jejich aplikaci na dataset stane?</strong></p>
 <p>Co dělá funkce <code>complete.cases</code> a proč ji zde používáme?</p>
-<div class="cell">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a14fe728" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:10;right:0;"></countdown-timer>
-</div>
-</div>
 <ol type="1">
-<li class="fragment"><p>Jak to tedy provedeme?</p></li>
 <li class="fragment"><p><strong>Jako první se podíváme do nápovědy</strong> a zjistíme si, co znamená funkce <code>complete.cases</code>.</p></li>
 <li class="fragment"><p>Ta vytvoří vektor, který v sobě bude obsahovat <strong>informace, zda jednotlivé řádky jsou kompletní</strong> - neobsahují žádné chybějící hodnoty.</p></li>
-<li class="fragment"><p>My ovšem chceme vědět, které řádky chybějící hodnoty obsahují - <strong>provedeme proto negaci</strong>.</p></li>
-<li class="fragment"><p>A funkce <code>which</code> nám pak už pouze řekne, na jaké pozici ve vektoru těchto hodnot se výsledné TRUE (řádek obsahuje <code>NA</code> hodnoty) nachází.</p></li>
+<li class="fragment"><p>My ovšem chceme vědět, které řádky chybějící hodnoty obsahují - <strong>provedeme proto negaci pomocí symbolu <code>!</code></strong>.</p></li>
+<li class="fragment"><p>A funkce <code>which</code> nám pak už pouze řekne, na jaké pozici ve vektoru těchto hodnot se výsledné <code>TRUE</code> (řádek obsahuje <code>NA</code> hodnoty) nachází.</p></li>
 </ol>
 </section>
 <section class="slide level2">
@@ -4975,7 +4957,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Máme nyní přejmenované sloupce, odebrané <code>NA</code> hodnoty… Znamená to, že s ním nyní můžeme provádět výpočty, či na něj aplikovat jakékoliv další akce?</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   7 obs. of  6 variables:
  $ gender        : chr  &quot;M&quot; &quot;X&quot; &quot;F&quot; &quot;F&quot; ...
@@ -4991,7 +4973,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Jak vidíme, <strong>kvůli špatně zapsaným <code>NA</code> hodnotám se nám většina sloupců překonvertovala do charakterového typu</strong>.</p>
 <p>Když se ale na data frame podíváme, tak je jasné, že některé sloupce můžeme změnit na faktory a jiné budou jasně numeric.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href aria-label="1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href aria-label="1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav             adresa
 2       M  85          4        Všenory   manželství          Malá 56/7
@@ -5011,16 +4993,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Při jejím používání defacto potřebujeme pouze následující zápis:</p>
 <p><code>mutate(název dataframe, název sloupce = nová podoba sloupce)</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
-<span id="cb90-2"><a href aria-label="2"></a>  <span class="at">gender =</span> <span class="fu">as.factor</span>(gender),</span>
-<span id="cb90-3"><a href aria-label="3"></a>  <span class="at">vek =</span> <span class="fu">as.numeric</span>(vek),</span>
-<span id="cb90-4"><a href aria-label="4"></a>  <span class="at">pocet.deti =</span> <span class="fu">as.numeric</span>(pocet.deti),</span>
-<span id="cb90-5"><a href aria-label="5"></a>  <span class="at">rodinny.stav =</span> <span class="fu">as.factor</span>(rodinny.stav)</span>
-<span id="cb90-6"><a href aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb92-2"><a href aria-label="2"></a>  <span class="at">gender =</span> <span class="fu">as.factor</span>(gender),</span>
+<span id="cb92-3"><a href aria-label="3"></a>  <span class="at">vek =</span> <span class="fu">as.numeric</span>(vek),</span>
+<span id="cb92-4"><a href aria-label="4"></a>  <span class="at">pocet.deti =</span> <span class="fu">as.numeric</span>(pocet.deti),</span>
+<span id="cb92-5"><a href aria-label="5"></a>  <span class="at">rodinny.stav =</span> <span class="fu">as.factor</span>(rodinny.stav)</span>
+<span id="cb92-6"><a href aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Jaký je nyní výsledek?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href aria-label="1"></a><span class="fu">str</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   7 obs. of  6 variables:
  $ gender        : Factor w/ 3 levels &quot;F&quot;,&quot;M&quot;,&quot;X&quot;: 2 3 1 1 2 2 1
@@ -5038,10 +5020,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Přidávání sloupců</h2>
 <p>Tímto způsobem si ale můžeme sloupce nejenom upravovat, ale i přidávat.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
-<span id="cb93-2"><a href aria-label="2"></a>  <span class="at">telefonni.cislo =</span> <span class="cn">NA</span>,</span>
-<span id="cb93-3"><a href aria-label="3"></a>  <span class="at">id =</span> <span class="fu">paste0</span>(<span class="st">&quot;id_&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)))</span>
-<span id="cb93-4"><a href aria-label="4"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb95-2"><a href aria-label="2"></a>  <span class="at">telefonni.cislo =</span> <span class="cn">NA</span>,</span>
+<span id="cb95-3"><a href aria-label="3"></a>  <span class="at">id =</span> <span class="fu">paste0</span>(<span class="st">&quot;id_&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)))</span>
+<span id="cb95-4"><a href aria-label="4"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   gender vek pocet.deti misto.bydliste rodinny.stav        adresa
 2       M  85          4        Všenory   manželství     Malá 56/7
@@ -5060,110 +5042,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<h3 id="změna-pořadí-sloupců">Změna pořadí sloupců</h3>
-<p>Takto upravený data frame se nám ale nelíbí; co kdybychom chtěli mít sloupec <code>id</code> úplně na začátku, sloupec <code>adresa</code> za místem bydliště a oba tyto sloupce až na konci?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(id, <span class="at">.before =</span> gender)</span>
-<span id="cb95-2"><a href aria-label="2"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(adresa, <span class="at">.after =</span> misto.bydliste)</span>
-<span id="cb95-3"><a href aria-label="3"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(misto.bydliste<span class="sc">:</span>adresa, <span class="at">.after =</span> <span class="fu">last_col</span>())</span>
-<span id="cb95-4"><a href aria-label="4"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     id gender vek pocet.deti rodinny.stav telefonni.cislo misto.bydliste
-2  id_1      M  85          4   manželství              NA        Všenory
-3  id_2      X  54          2  partnerství              NA        Karviná
-7  id_3      F  23          0     svobodní              NA          Opava
-8  id_4      F  36          2     svobodní              NA          Plzeň
-10 id_5      M  47          1  partnerství              NA        Trutnov
-13 id_6      M  44          4  partnerství              NA         Kladno
-15 id_7      F  76          2   manželství              NA           Brno
-               adresa
-2           Malá 56/7
-3       U hangáru 898
-7         Novákové 13
-8        Destinové 42
-10          Buková 65
-13        Dolanská 70
-15 Mendlovo náměstí 8</code></pre>
-</div>
-</div>
-</section>
-<section id="seřazení-řádků-dle-hodnot-ve-sloupcích" class="slide level2">
-<h2>Seřazení řádků dle hodnot ve sloupcích</h2>
-<p>Může se stát, že si budete potřebovat srovnat podle hodnot v nějakém sloupci. Jak to provedete?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href aria-label="1"></a>df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(pocet.deti) <span class="co">#vzestupne</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    id gender vek pocet.deti rodinny.stav telefonni.cislo misto.bydliste
-1 id_3      F  23          0     svobodní              NA          Opava
-2 id_5      M  47          1  partnerství              NA        Trutnov
-3 id_2      X  54          2  partnerství              NA        Karviná
-4 id_4      F  36          2     svobodní              NA          Plzeň
-5 id_7      F  76          2   manželství              NA           Brno
-6 id_1      M  85          4   manželství              NA        Všenory
-7 id_6      M  44          4  partnerství              NA         Kladno
-              adresa
-1        Novákové 13
-2          Buková 65
-3      U hangáru 898
-4       Destinové 42
-5 Mendlovo náměstí 8
-6          Malá 56/7
-7        Dolanská 70</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href aria-label="1"></a>df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(pocet.deti)) <span class="co">#sestupne</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    id gender vek pocet.deti rodinny.stav telefonni.cislo misto.bydliste
-1 id_1      M  85          4   manželství              NA        Všenory
-2 id_6      M  44          4  partnerství              NA         Kladno
-3 id_2      X  54          2  partnerství              NA        Karviná
-4 id_4      F  36          2     svobodní              NA          Plzeň
-5 id_7      F  76          2   manželství              NA           Brno
-6 id_5      M  47          1  partnerství              NA        Trutnov
-7 id_3      F  23          0     svobodní              NA          Opava
-              adresa
-1          Malá 56/7
-2        Dolanská 70
-3      U hangáru 898
-4       Destinové 42
-5 Mendlovo náměstí 8
-6          Buková 65
-7        Novákové 13</code></pre>
-</div>
-</div>
-<p><strong>Co když ale máme ve sloupci více stejných hodnot?</strong> Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?</p>
-</section>
-<section class="slide level2">
-
-<p>Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat, si můžeme vytvořit opravdu podrobně seřazený data frame.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(pocet.deti, vek); df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    id gender vek pocet.deti rodinny.stav telefonni.cislo misto.bydliste
-1 id_3      F  23          0     svobodní              NA          Opava
-2 id_5      M  47          1  partnerství              NA        Trutnov
-3 id_4      F  36          2     svobodní              NA          Plzeň
-4 id_2      X  54          2  partnerství              NA        Karviná
-5 id_7      F  76          2   manželství              NA           Brno
-6 id_6      M  44          4  partnerství              NA         Kladno
-7 id_1      M  85          4   manželství              NA        Všenory
-              adresa
-1        Novákové 13
-2          Buková 65
-3       Destinové 42
-4      U hangáru 898
-5 Mendlovo náměstí 8
-6        Dolanská 70
-7          Malá 56/7</code></pre>
-</div>
-</div>
-</section>
 <section id="samostatné-cvičení-2" class="slide level2 scrollable">
 <h2>Samostatné cvičení</h2>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_493ebde8" minutes="25" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a872cc71" minutes="25" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <p>Proved na souboru <code>census.csv</code> následující změny:</p>
@@ -5172,7 +5055,6 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li><p>Vyber pouze hodnoty pohlaví <code>žena</code>, ty kde <code>vira</code> je <code>Jedi</code>, <code>Sith</code> a nebo začíná na <code>pasta</code><sup>1</sup> a nakonec pak pouze ty osoby, které mají věk v rozpětí 0-18 a 65+<sup>2</sup>.</p></li>
 <li><p>Vyber pouze hodnoty pro celý stát, tedy ty, které mají ve sloupci <code>oblast</code> hodnotu <code>Česká republika</code>.</p></li>
 <li><p>Vyber sloupce <code>vek</code>, <code>pohlavi</code>, <code>vira</code> a <code>hodnota</code>.</p></li>
-<li><p>Seřad´ hodnoty od nejvyššího věku po nejnižší.</p></li>
 <li><p>Kolik je nejstarší české Jedi? Zjisti funkcí.</p></li>
 <li><p>Spočítej pro každý kraj průměrný věk pro všechna náboženství.</p></li>
 </ol>
@@ -5182,8 +5064,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol type="1">
 <li class="fragment"><p>Načti data a zkontroluj je.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;census.csv&quot;</span>)</span>
-<span id="cb103-2"><a href aria-label="2"></a><span class="fu">str</span>(census)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;census.csv&quot;</span>)</span>
+<span id="cb97-2"><a href aria-label="2"></a><span class="fu">str</span>(census)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   58890 obs. of  19 variables:
  $ idhod       : int  989095533 989113507 989113508 989096570 989112602 989112603 989097795 989116863 989116864 989099080 ...
@@ -5209,68 +5091,63 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div></li>
 <li class="fragment"><p>Přejmenuj sloupce</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
-<span id="cb105-2"><a href aria-label="2"></a>  <span class="fu">rename</span>(</span>
-<span id="cb105-3"><a href aria-label="3"></a>    <span class="at">vira =</span> vira_txt,</span>
-<span id="cb105-4"><a href aria-label="4"></a>    <span class="at">pohlavi =</span> pohlavi_txt,</span>
-<span id="cb105-5"><a href aria-label="5"></a>    <span class="at">vek =</span> vek_txt,</span>
-<span id="cb105-6"><a href aria-label="6"></a>    <span class="at">oblast =</span> uzemi_txt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb99-2"><a href aria-label="2"></a>  <span class="fu">rename</span>(</span>
+<span id="cb99-3"><a href aria-label="3"></a>    <span class="at">vira =</span> vira_txt,</span>
+<span id="cb99-4"><a href aria-label="4"></a>    <span class="at">pohlavi =</span> pohlavi_txt,</span>
+<span id="cb99-5"><a href aria-label="5"></a>    <span class="at">vek =</span> vek_txt,</span>
+<span id="cb99-6"><a href aria-label="6"></a>    <span class="at">oblast =</span> uzemi_txt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li class="fragment"><p>Přetvoř sloupec <code>vek</code> tak, aby obsahoval pouze čísla.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
-<span id="cb106-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">vek =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">vek =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li class="fragment"><p>Vyfiltruj řádky splňující dané podmínky.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
-<span id="cb107-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(</span>
-<span id="cb107-3"><a href aria-label="3"></a>vira <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Jedi&quot;</span>, <span class="st">&quot;Sith&quot;</span>) <span class="sc">|</span> <span class="fu">startsWith</span>(vira, <span class="st">&quot;pasta&quot;</span>),</span>
-<span id="cb107-4"><a href aria-label="4"></a>pohlavi <span class="sc">==</span> <span class="st">&quot;žena&quot;</span>,</span>
-<span id="cb107-5"><a href aria-label="5"></a>vek <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">18</span> <span class="sc">|</span> vek <span class="sc">&gt;=</span> <span class="dv">65</span>,</span>
-<span id="cb107-6"><a href aria-label="6"></a>oblast <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb101-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(</span>
+<span id="cb101-3"><a href aria-label="3"></a>vira <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Jedi&quot;</span>, <span class="st">&quot;Sith&quot;</span>) <span class="sc">|</span> <span class="fu">startsWith</span>(vira, <span class="st">&quot;pasta&quot;</span>),</span>
+<span id="cb101-4"><a href aria-label="4"></a>pohlavi <span class="sc">==</span> <span class="st">&quot;žena&quot;</span>,</span>
+<span id="cb101-5"><a href aria-label="5"></a>vek <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">18</span> <span class="sc">|</span> vek <span class="sc">&gt;=</span> <span class="dv">65</span>,</span>
+<span id="cb101-6"><a href aria-label="6"></a>oblast <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li class="fragment"><p>Vyber relevatní sloupce.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
-<span id="cb108-2"><a href aria-label="2"></a>  <span class="fu">select</span>(hodnota, pohlavi, vek, vira)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li class="fragment"><p>Uspořádej je dle věku, ke každému náboženství od nejmladšího po nejstaršího věřícího.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
-<span id="cb109-2"><a href aria-label="2"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href aria-label="1"></a>census <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href aria-label="2"></a>  <span class="fu">select</span>(hodnota, pohlavi, vek, vira)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li class="fragment"><p>Zjisti věk nejstarší Jedi v ČR.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href aria-label="1"></a>jedi <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Jedi&quot;</span>,</span>
-<span id="cb110-2"><a href aria-label="2"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb110-3"><a href aria-label="3"></a><span class="fu">max</span>(jedi<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href aria-label="1"></a>jedi <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Jedi&quot;</span>,</span>
+<span id="cb103-2"><a href aria-label="2"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb103-3"><a href aria-label="3"></a><span class="fu">max</span>(jedi<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 98</code></pre>
 </div>
 </div></li>
 <li class="fragment"><p>Spočítej pro každý kraj průměrný věk pro všechna náboženství ve výsledném datasetu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href aria-label="1"></a><span class="fu">levels</span>(<span class="fu">as.factor</span>(census<span class="sc">$</span>vira))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href aria-label="1"></a><span class="fu">levels</span>(<span class="fu">as.factor</span>(census<span class="sc">$</span>vira))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Jedi&quot;            &quot;pastafariánství&quot; &quot;Sith&quot;           </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href aria-label="1"></a>jedi <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Jedi&quot;</span>,</span>
-<span id="cb114-2"><a href aria-label="2"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb114-3"><a href aria-label="3"></a>sith <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Sith&quot;</span>,</span>
-<span id="cb114-4"><a href aria-label="4"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb114-5"><a href aria-label="5"></a>pasta <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;pastafariánství&quot;</span>,</span>
-<span id="cb114-6"><a href aria-label="6"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb114-7"><a href aria-label="7"></a></span>
-<span id="cb114-8"><a href aria-label="8"></a><span class="fu">mean</span>(jedi<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href aria-label="1"></a>jedi <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Jedi&quot;</span>,</span>
+<span id="cb107-2"><a href aria-label="2"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb107-3"><a href aria-label="3"></a>sith <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Sith&quot;</span>,</span>
+<span id="cb107-4"><a href aria-label="4"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb107-5"><a href aria-label="5"></a>pasta <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;pastafariánství&quot;</span>,</span>
+<span id="cb107-6"><a href aria-label="6"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb107-7"><a href aria-label="7"></a></span>
+<span id="cb107-8"><a href aria-label="8"></a><span class="fu">mean</span>(jedi<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 50.02174</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href aria-label="1"></a><span class="fu">mean</span>(sith<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href aria-label="1"></a><span class="fu">mean</span>(sith<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.54545</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href aria-label="1"></a><span class="fu">mean</span>(pasta<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href aria-label="1"></a><span class="fu">mean</span>(pasta<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32.56667</code></pre>
 </div>
@@ -5286,8 +5163,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Vytvoření datasetu na kterém budeme vytvářet výpočty si jde napsat pomocí dlouhé pipe.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href aria-label="1"></a>census2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;census.csv&quot;</span>)</span>
-<span id="cb120-2"><a href aria-label="2"></a><span class="fu">str</span>(census2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href aria-label="1"></a>census2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;census.csv&quot;</span>)</span>
+<span id="cb113-2"><a href aria-label="2"></a><span class="fu">str</span>(census2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   58890 obs. of  19 variables:
  $ idhod       : int  989095533 989113507 989113508 989096570 989112602 989112603 989097795 989116863 989116864 989099080 ...
@@ -5310,28 +5187,27 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
  $ pohlavi_txt : chr  &quot;&quot; &quot;muž&quot; &quot;žena&quot; &quot;&quot; ...
  $ uzemi_txt   : chr  &quot;Česká republika&quot; &quot;Česká republika&quot; &quot;Česká republika&quot; &quot;Česká republika&quot; ...</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href aria-label="1"></a>census2 <span class="ot">&lt;-</span> census2 <span class="sc">%&gt;%</span></span>
-<span id="cb122-2"><a href aria-label="2"></a>  <span class="fu">rename</span>(</span>
-<span id="cb122-3"><a href aria-label="3"></a>    <span class="at">vira =</span> vira_txt,</span>
-<span id="cb122-4"><a href aria-label="4"></a>    <span class="at">pohlavi =</span> pohlavi_txt,</span>
-<span id="cb122-5"><a href aria-label="5"></a>    <span class="at">vek =</span> vek_txt,</span>
-<span id="cb122-6"><a href aria-label="6"></a>    <span class="at">oblast =</span> uzemi_txt) <span class="sc">%&gt;%</span></span>
-<span id="cb122-7"><a href aria-label="7"></a>  <span class="fu">mutate</span>(<span class="at">vek =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(vek)) <span class="sc">%&gt;%</span></span>
-<span id="cb122-8"><a href aria-label="8"></a>  <span class="fu">filter</span>(</span>
-<span id="cb122-9"><a href aria-label="9"></a>    vira <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Jedi&quot;</span>, <span class="st">&quot;Sith&quot;</span>) <span class="sc">|</span> <span class="fu">startsWith</span>(vira, <span class="st">&quot;pasta&quot;</span>),</span>
-<span id="cb122-10"><a href aria-label="10"></a>    pohlavi <span class="sc">==</span> <span class="st">&quot;žena&quot;</span>,</span>
-<span id="cb122-11"><a href aria-label="11"></a>    vek <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">18</span> <span class="sc">|</span> vek <span class="sc">&gt;=</span> <span class="dv">65</span>,</span>
-<span id="cb122-12"><a href aria-label="12"></a>    oblast <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>,</span>
-<span id="cb122-13"><a href aria-label="13"></a>    hodnota <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb122-14"><a href aria-label="14"></a>  <span class="fu">select</span>(hodnota, pohlavi, vek, vira) <span class="sc">%&gt;%</span></span>
-<span id="cb122-15"><a href aria-label="15"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href aria-label="1"></a>census2 <span class="ot">&lt;-</span> census2 <span class="sc">%&gt;%</span></span>
+<span id="cb115-2"><a href aria-label="2"></a>  <span class="fu">rename</span>(</span>
+<span id="cb115-3"><a href aria-label="3"></a>    <span class="at">vira =</span> vira_txt,</span>
+<span id="cb115-4"><a href aria-label="4"></a>    <span class="at">pohlavi =</span> pohlavi_txt,</span>
+<span id="cb115-5"><a href aria-label="5"></a>    <span class="at">vek =</span> vek_txt,</span>
+<span id="cb115-6"><a href aria-label="6"></a>    <span class="at">oblast =</span> uzemi_txt) <span class="sc">%&gt;%</span></span>
+<span id="cb115-7"><a href aria-label="7"></a>  <span class="fu">mutate</span>(<span class="at">vek =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(vek)) <span class="sc">%&gt;%</span></span>
+<span id="cb115-8"><a href aria-label="8"></a>  <span class="fu">filter</span>(</span>
+<span id="cb115-9"><a href aria-label="9"></a>    vira <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Jedi&quot;</span>, <span class="st">&quot;Sith&quot;</span>) <span class="sc">|</span> <span class="fu">startsWith</span>(vira, <span class="st">&quot;pasta&quot;</span>),</span>
+<span id="cb115-10"><a href aria-label="10"></a>    pohlavi <span class="sc">==</span> <span class="st">&quot;žena&quot;</span>,</span>
+<span id="cb115-11"><a href aria-label="11"></a>    vek <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">18</span> <span class="sc">|</span> vek <span class="sc">&gt;=</span> <span class="dv">65</span>,</span>
+<span id="cb115-12"><a href aria-label="12"></a>    oblast <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>,</span>
+<span id="cb115-13"><a href aria-label="13"></a>    hodnota <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb115-14"><a href aria-label="14"></a>  <span class="fu">select</span>(hodnota, pohlavi, vek, vira)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p>Poté už jen provedeme výpočet jednotlivých hodnot.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href aria-label="1"></a>census2 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(vira) <span class="sc">%&gt;%</span></span>
-<span id="cb123-2"><a href aria-label="2"></a>  <span class="fu">summarize</span>(<span class="at">nejstarsiVerici =</span> <span class="fu">max</span>(vek), <span class="at">prumernyVek =</span> <span class="fu">mean</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href aria-label="1"></a>census2 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(vira) <span class="sc">%&gt;%</span></span>
+<span id="cb116-2"><a href aria-label="2"></a>  <span class="fu">summarize</span>(<span class="at">nejstarsiVerici =</span> <span class="fu">max</span>(vek), <span class="at">prumernyVek =</span> <span class="fu">mean</span>(vek))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   vira            nejstarsiVerici prumernyVek
@@ -5363,9 +5239,899 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="tipy-navíc" class="slide level2">
 <h2>Tipy navíc</h2>
-<p>Budou doplněny během dneška.</p>
+<p><strong>Budou doplněny během dneška.</strong></p>
+<h3 id="změna-pořadí-sloupců">Změna pořadí sloupců</h3>
+<p>Co kdybychom chtěli mít sloupce na jiné pozici, než jsou v nahraném datasetu?</p>
+<p>Použijeme k tomu funkci <code>dplyr::relocate</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href aria-label="1"></a>dfTipy <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;intro_data.txt&quot;</span>)</span>
+<span id="cb118-2"><a href aria-label="2"></a>dfTipy <span class="ot">&lt;-</span> dfTipy[,<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>] <span class="co">#ukazkovy dataset</span></span>
+<span id="cb118-3"><a href aria-label="3"></a></span>
+<span id="cb118-4"><a href aria-label="4"></a>dfTipy <span class="ot">&lt;-</span> dfTipy <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(No<span class="sc">:</span>No_sub, <span class="at">.before =</span> Sex)</span>
+<span id="cb118-5"><a href aria-label="5"></a>dfTipy <span class="ot">&lt;-</span> dfTipy <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(Sex, <span class="at">.after =</span> Age)</span>
+<span id="cb118-6"><a href aria-label="6"></a>dfTipy <span class="ot">&lt;-</span> dfTipy <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(Side, <span class="at">.after =</span> <span class="fu">last_col</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="seřazení-řádků-dle-hodnot-ve-sloupcích">Seřazení řádků dle hodnot ve sloupcích</h3>
+<p>Může se stát, že si budete potřebovat srovnat podle hodnot v nějakém sloupci. Jak to provedete?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href aria-label="1"></a>dfTipy <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Age) <span class="co">#vzestupne</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    No D No_sub  Age    Sex Length_cl Side
+1   58 1    176   18 female       134  sin
+2   58 1    176   18 female       132   dx
+3   26 1     66   18   male        NA  sin
+4   17 1     66   18   male       126   dx
+5   28 1    112   19 female       132  sin
+6   50 1    153   19 female       142  sin
+7   29 1    112   19 female       132   dx
+8   50 1    153   19 female       142   dx
+9   48 1    102   19   male       158  sin
+10  76 1    166   19   male       144  sin
+11  37 1    102   19   male       160   dx
+12  63 1    166   19   male        NA   dx
+13  11 0     68   20 female       130  sin
+14   2 0     11   20 female       135   dx
+15  13 0     33   20   male       153  sin
+16  47 1    101   20   male       151  sin
+17  36 1    101   20   male       144   dx
+18  14 0     35   21   male       162  sin
+19  60 0    178   22 female       136   dx
+20  10 0     38   22   male       154   dx
+21  40 1    142   23 female       131  sin
+22  41 1    142   23 female       129   dx
+23  63 1    131   23   male       140  sin
+24  71 1    160   23   male       176  sni
+25  51 1    131   23   male        NA   dx
+26  58 1    160   23   male        NA   dx
+27  53 1    158   24 female       162  sin
+28  59 1    177   24 female       121  sin
+29  53 1    158   24 female       162   dx
+30  59 1    177   24 female       124   dx
+31  22 1    106   25 female       138  sin
+32  42 1    144   25 female       141  sin
+33  23 1    106   25 female       131   dx
+34  43 1    144   25 female       139   dx
+35  41 1    143   26 female       134  sin
+36  44 1    146   26 female       139  sin
+37  42 1    143   26 female       135   dx
+38  45 1    146   26 female       138   dx
+39  27 1     69   26   male        NA  sin
+40  14 0     57   26   male       162   dx
+41  19 1     69   26   male       158   dx
+42  43 1    145   27 female       128  sin
+43  44 1    145   27 female       129   dx
+44  56 1    120   27   male       154  sin
+45  44 1    120   27   male       146   dx
+46  15 1     82   28 female       133  sin
+47  52 1    156   28 female       134  sin
+48   8 0     42   28 female       126   dx
+49  52 1    156   28 female       134   dx
+50  33 0     77   28   male       162  sin
+51  60 1    127   28   male       161  sin
+52   8 0     31   28   male       154   dx
+53  48 1    127   28   male       160   dx
+54   3 0     19   29 female       149   dx
+55  16 0     46   29   male       159  sin
+56  36 1     85   29   male       157  sin
+57  24 1     85   29   male       160   dx
+58  26 1    110   30 female       128  sin
+59  48 1    150   30 female       130  sin
+60  54 1    159   30 female       135  sin
+61  27 1    110   30 female       126   dx
+62  48 1    150   30 female       133   dy
+63  54 1    159   30 female       135   dx
+64  17 0     49   30   male       145  sin
+65  67 1    135   30   male       147  sin
+66  69 1    155   30   male       156  sin
+67  55 1    135   30   male        NA   dy
+68  57 1    155   30   male        NA   dx
+69  16 1     83   31   zena       139  sin
+70  15 0     37   31   male       162  sin
+71  29 1     71   31   male       151  sin
+72  20 1     71   31   male       153   dx
+73  55 1    162   32 female       137  sin
+74  61 1    180   32 female       149  sin
+75  55 1    162   32 female       137   dx
+76  62 1    180   32 female       145   dy
+77  23 0     61   32   male       160  sin
+78  56 1    174   33 female       135   si
+79  56 1    174   33 female       135   dx
+80  25 0     65   33   male        NA  sin
+81  77 1    167   33   male       173  sin
+82  82 1    172   33   male       171  sin
+83  64 1    167   33   male        NA   dx
+84  69 1    172   33   male        NA   dx
+85  73 1    163   34   male       142  sin
+86  79 1    169   34   male       158  sin
+87  26 0     88   34   male       140   dx
+88  60 1    163   34   male        NA   dx
+89  66 1    169   34   male        NA   dx
+90  57 1    175   35 female       162  sin
+91   6 0     27   35 female       133   dx
+92  57 1    175   35 female       160   dx
+93   3 0     10   36 female        NA  sin
+94  23 1    107   36 female       134  sin
+95   1 1     10   36 female       147   dx
+96  24 1    107   36 female       138   dx
+97  19 0     52   36   male       149  sin
+98  13 0     44   36   male       148   dx
+99  27 0     89   36   male       132   dx
+100  6 0     26   38 female        NA  sin
+101 49 1    151   38 female       154  sin
+102 63 1    182   38 female       141  sin
+103 49 1    151   38 female       154   dx
+104 64 1    182   38 female       138   dx
+105 32 1     75   38   male       157  sin
+106 22 1     75   38   male       160   dx
+107 39 1    141   39 female       136  sin
+108 40 1    141   39 female       138   dx
+109 45 1     99   39   male       156  sin
+110 72 1    161   39   male       146  sin
+111 34 1     99   39   male       149   dx
+112 59 1    161   39   male        NA   dx
+113 25 1    109   40 female       149  sin
+114 46 1    148   40 female       130  sin
+115 12 0     51   40 female       133   dx
+116 26 1    109   40 female       143   dx
+117 47 1    148   40 female       126   dx
+118 70 0    157   40   male       152  sin
+119 78 1    168   41   male       148  sin
+120  5 0     17   41   male       166   dx
+121 65 1    168   41   male        NA   dx
+122  4 0     23   42 female       124   dx
+123 12 0     32   42   male       153  sin
+124 65 1    133   42   male       147  sin
+125 53 1    133   42   male        NA   dx
+126 10 0     28   43   male       165  sin
+127 21 0     55   43   male       150  sin
+128 34 0     78   43   male       152  sin
+129 41 0     93   43   male       151  sin
+130 53 1    117   43   male       172  sin
+131 83 1    173   43   male       164  sin
+132 41 1    117   43   male       168   dy
+133 70 1    173   43   male        NA   dx
+134 20 1    104   44 female       127  sin
+135 22 1    104   44 female       132   dx
+136 12 0     73   45 female       142  sin
+137 30 1    123   45 female       135  sin
+138 15 1     73   45 female       143   dx
+139 31 1    123   45 female       131   dx
+140 14 0     81   46 female       134  sni
+141 18 0     96   46 female       155  sin
+142 27 1    111   46 female       136  sin
+143 17 1     81   46 female       135   dx
+144 20 1     96   46 female       155   dx
+145 28 1    111   46 female       128   dx
+146 20 0     54   47   male       151  sin
+147  7 0     25   47   male       141   dx
+148 10 0     64   48 female       141  sin
+149 51 1    154   48 female       129  sin
+150 62 1    181   48 female       141  sin
+151 10 0     45   48 female       138   dx
+152 14 0     56   48 female       151   dx
+153 18 0     84   48 female       130   dx
+154 51 1    154   48 female       129   dx
+155 63 1    181   48 female       137   dx
+156  8 0     18   48   male       153  sin
+157 22 0     58   48   male       154  sin
+158 49 1    103   48   male       156  sni
+159 11 0     40   48   male       141   dx
+160 38 1    103   48   male       149   dx
+161 13 0     79   49 female       149  sin
+162 16 1     79   49 female       144   dx
+163 66 1    134   49   male       140  sin
+164 16 0     63   49   male       140   dx
+165 54 1    134   49   male        NA   dx
+166  9 0     43   50 female       153   dx
+167 28 0     70   50   male        NA  sin
+168 52 0    116   50   male       166  sin
+169 62 1    130   50   male       158  sin
+170 80 1    170   50   male       158  sin
+171 23 0     76   50   male       152   dx
+172 50 1    130   50   male        NA   dx
+173 67 1    170   50   male        NA   dx
+174 37 1     86   51   male       155  sin
+175 51 1    115   51   male       140  sin
+176 25 1     86   51   male       155   dx
+177 40 1    115   51   male       145   dx
+178  8 0     47   52 female       129  sin
+179 29 1    113   52 female       139  sin
+180 30 1    113   52 female       140   dx
+181 61 1    129   52   male       149  sin
+182 68 1    152   52   male       159  sin
+183  4 0     15   52   male       162   dx
+184 49 1    129   52   male        NA   dx
+185 56 1    152   52   male        NA   dx
+186  7 0     39   53 female       132   dx
+187 17 1     87   54 female       145  sin
+188 19 1     87   54 female       146   dx
+189 64 1    132   54   male       154  sin
+190 52 1    132   54   male        NA   dx
+191 19 1     98   55 female       133  sin
+192 21 1     98   55 female       130   dx
+193 58 1    122   55   male       149  sin
+194 46 1    122   55   male       145   dx
+195  5 0     24   56 female       137   dx
+196 11 0     48   56 female       145   dx
+197 37 1    138   56 female       129   dx
+198 30 1     72   56   male       147  sin
+199 46 1    100   56   male       145   si
+200 15 0     59   56   male       155   dx
+201 21 1     72   56   male       145   dx
+202 35 1    100   56   male       140   dx
+203 34 1    136   57 female       148  sin
+204 35 1    136   57 female       148   dx
+205 59 1    125   57   male       145  sin
+206 47 1    125   57   male       143   dx
+207 45 1    147   58 female       140  sin
+208 13 0     53   58 female       137   dx
+209 46 1    147   58 female       133   dx
+210 11 0     30   58   male       161  sin
+211 31 0     74   58   male       137  sin
+212 35 0     80   58   male       153  sin
+213  3 0     13   58   male       154   dx
+214  4 0     14   59 female        NA  sin
+215  5 0     20   59 female        NA  sin
+216 36 1    138   59 female       128  sin
+217 18 0     50   59   male       138  sin
+218 42 1     94   59   male       165  sin
+219 43 1     95   59   male       140  sin
+220 44 1     97   59   male       167  sin
+221 31 1     94   59   male       160   dx
+222 32 1     95   59   male       135   dx
+223 33 1     97   59   male       167   dx
+224 33 1    128   60 female       133  sin
+225 34 1    128   60 female       129   dx
+226 24 0     62   60   male       147  sin
+227 57 1    121   60   male       150  sin
+228 18 0     67   60   male       161   dx
+229 45 1    121   60   male       142   dx
+230 64 1    183   62 female       138  sin
+231 65 1    183   62 female        NA   dx
+232 35 1    137   64 female       136  sin
+233 47 1    149   64 female       150  sin
+234 36 1    137   64 female       133   dx
+235 74 1    164   64   male       172  sin
+236 81 1    171   64    muz       155  sin
+237  6 0     22   64   male       143   dx
+238 61 1    164   64   male        NA   dx
+239 68 1    171   64   male        NA   dx
+240  7 0     36   65 female        NA  sin
+241 32 1    126   65 female       138  sni
+242 33 1    126   65 female       135   dx
+243 55 1    119   65   male       156  sin
+244 43 1    119   65   male       161   dx
+245 75 1    165   66   male       160  sin
+246 62 1    165   66   male        NA   dx
+247 31 1    124   67   zena       142  sin
+248 32 1    124   67 female       144   dx
+249  9 0     21   67    muz       149  sin
+250 40 1     92   68   male       143  sin
+251 50 1    114   68   male       149  sin
+252 12 0     41   68   male       148   dx
+253 30 1     92   68   male       143   dx
+254 39 1    114   68   male       156   dx
+255  9 0     60   69 female       139  sin
+256 21 0    105   70 female       133  sin
+257  7 0     16   70   male       165  sin
+258 54 1    118   71   male       153  sin
+259 42 1    118   71   male       154   dx
+260 38 1    140   72 female       137  sin
+261 39 1    140   72 female       137   dx
+262 39 1     91   72   male       157  sin
+263 29 1     91   72   male       153   dx
+264 24 1    108   73 female       139  sin
+265 37 1    139   73 female       140  sin
+266 25 1    108   73 female       135   dx
+267 38 1    139   73 female       139   dx
+268 60 1    179   76 female       146  sin
+269 61 1    179   76 female       148   dx
+270 38 1     90  old   male       140  sin
+271 28 1     90  old   male       140   dy
+272  1 1      1 &lt;NA&gt; female        NA  sin
+273  2 0      8 &lt;NA&gt; female        NA  sin
+274  1 0      3 &lt;NA&gt;   male       139  sin
+275  2 0      4 &lt;NA&gt;   male       147  sin
+276  3 0      5 &lt;NA&gt;   male       148  sin
+277  4 0      6 &lt;NA&gt;   male       152  sin
+278  5 0      9 &lt;NA&gt;   male       160  sin
+279  6 0     12 &lt;NA&gt;   male       140  sin
+280  1 0      2 &lt;NA&gt;   male       156   dx
+281  2 0      7 &lt;NA&gt;   male       154   dx
+282  9 0     34 &lt;NA&gt;   male       139   dx</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href aria-label="1"></a>dfTipy <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Age)) <span class="co">#sestupne</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    No D No_sub  Age    Sex Length_cl Side
+1   38 1     90  old   male       140  sin
+2   28 1     90  old   male       140   dy
+3   60 1    179   76 female       146  sin
+4   61 1    179   76 female       148   dx
+5   24 1    108   73 female       139  sin
+6   37 1    139   73 female       140  sin
+7   25 1    108   73 female       135   dx
+8   38 1    139   73 female       139   dx
+9   38 1    140   72 female       137  sin
+10  39 1    140   72 female       137   dx
+11  39 1     91   72   male       157  sin
+12  29 1     91   72   male       153   dx
+13  54 1    118   71   male       153  sin
+14  42 1    118   71   male       154   dx
+15  21 0    105   70 female       133  sin
+16   7 0     16   70   male       165  sin
+17   9 0     60   69 female       139  sin
+18  40 1     92   68   male       143  sin
+19  50 1    114   68   male       149  sin
+20  12 0     41   68   male       148   dx
+21  30 1     92   68   male       143   dx
+22  39 1    114   68   male       156   dx
+23  31 1    124   67   zena       142  sin
+24  32 1    124   67 female       144   dx
+25   9 0     21   67    muz       149  sin
+26  75 1    165   66   male       160  sin
+27  62 1    165   66   male        NA   dx
+28   7 0     36   65 female        NA  sin
+29  32 1    126   65 female       138  sni
+30  33 1    126   65 female       135   dx
+31  55 1    119   65   male       156  sin
+32  43 1    119   65   male       161   dx
+33  35 1    137   64 female       136  sin
+34  47 1    149   64 female       150  sin
+35  36 1    137   64 female       133   dx
+36  74 1    164   64   male       172  sin
+37  81 1    171   64    muz       155  sin
+38   6 0     22   64   male       143   dx
+39  61 1    164   64   male        NA   dx
+40  68 1    171   64   male        NA   dx
+41  64 1    183   62 female       138  sin
+42  65 1    183   62 female        NA   dx
+43  33 1    128   60 female       133  sin
+44  34 1    128   60 female       129   dx
+45  24 0     62   60   male       147  sin
+46  57 1    121   60   male       150  sin
+47  18 0     67   60   male       161   dx
+48  45 1    121   60   male       142   dx
+49   4 0     14   59 female        NA  sin
+50   5 0     20   59 female        NA  sin
+51  36 1    138   59 female       128  sin
+52  18 0     50   59   male       138  sin
+53  42 1     94   59   male       165  sin
+54  43 1     95   59   male       140  sin
+55  44 1     97   59   male       167  sin
+56  31 1     94   59   male       160   dx
+57  32 1     95   59   male       135   dx
+58  33 1     97   59   male       167   dx
+59  45 1    147   58 female       140  sin
+60  13 0     53   58 female       137   dx
+61  46 1    147   58 female       133   dx
+62  11 0     30   58   male       161  sin
+63  31 0     74   58   male       137  sin
+64  35 0     80   58   male       153  sin
+65   3 0     13   58   male       154   dx
+66  34 1    136   57 female       148  sin
+67  35 1    136   57 female       148   dx
+68  59 1    125   57   male       145  sin
+69  47 1    125   57   male       143   dx
+70   5 0     24   56 female       137   dx
+71  11 0     48   56 female       145   dx
+72  37 1    138   56 female       129   dx
+73  30 1     72   56   male       147  sin
+74  46 1    100   56   male       145   si
+75  15 0     59   56   male       155   dx
+76  21 1     72   56   male       145   dx
+77  35 1    100   56   male       140   dx
+78  19 1     98   55 female       133  sin
+79  21 1     98   55 female       130   dx
+80  58 1    122   55   male       149  sin
+81  46 1    122   55   male       145   dx
+82  17 1     87   54 female       145  sin
+83  19 1     87   54 female       146   dx
+84  64 1    132   54   male       154  sin
+85  52 1    132   54   male        NA   dx
+86   7 0     39   53 female       132   dx
+87   8 0     47   52 female       129  sin
+88  29 1    113   52 female       139  sin
+89  30 1    113   52 female       140   dx
+90  61 1    129   52   male       149  sin
+91  68 1    152   52   male       159  sin
+92   4 0     15   52   male       162   dx
+93  49 1    129   52   male        NA   dx
+94  56 1    152   52   male        NA   dx
+95  37 1     86   51   male       155  sin
+96  51 1    115   51   male       140  sin
+97  25 1     86   51   male       155   dx
+98  40 1    115   51   male       145   dx
+99   9 0     43   50 female       153   dx
+100 28 0     70   50   male        NA  sin
+101 52 0    116   50   male       166  sin
+102 62 1    130   50   male       158  sin
+103 80 1    170   50   male       158  sin
+104 23 0     76   50   male       152   dx
+105 50 1    130   50   male        NA   dx
+106 67 1    170   50   male        NA   dx
+107 13 0     79   49 female       149  sin
+108 16 1     79   49 female       144   dx
+109 66 1    134   49   male       140  sin
+110 16 0     63   49   male       140   dx
+111 54 1    134   49   male        NA   dx
+112 10 0     64   48 female       141  sin
+113 51 1    154   48 female       129  sin
+114 62 1    181   48 female       141  sin
+115 10 0     45   48 female       138   dx
+116 14 0     56   48 female       151   dx
+117 18 0     84   48 female       130   dx
+118 51 1    154   48 female       129   dx
+119 63 1    181   48 female       137   dx
+120  8 0     18   48   male       153  sin
+121 22 0     58   48   male       154  sin
+122 49 1    103   48   male       156  sni
+123 11 0     40   48   male       141   dx
+124 38 1    103   48   male       149   dx
+125 20 0     54   47   male       151  sin
+126  7 0     25   47   male       141   dx
+127 14 0     81   46 female       134  sni
+128 18 0     96   46 female       155  sin
+129 27 1    111   46 female       136  sin
+130 17 1     81   46 female       135   dx
+131 20 1     96   46 female       155   dx
+132 28 1    111   46 female       128   dx
+133 12 0     73   45 female       142  sin
+134 30 1    123   45 female       135  sin
+135 15 1     73   45 female       143   dx
+136 31 1    123   45 female       131   dx
+137 20 1    104   44 female       127  sin
+138 22 1    104   44 female       132   dx
+139 10 0     28   43   male       165  sin
+140 21 0     55   43   male       150  sin
+141 34 0     78   43   male       152  sin
+142 41 0     93   43   male       151  sin
+143 53 1    117   43   male       172  sin
+144 83 1    173   43   male       164  sin
+145 41 1    117   43   male       168   dy
+146 70 1    173   43   male        NA   dx
+147  4 0     23   42 female       124   dx
+148 12 0     32   42   male       153  sin
+149 65 1    133   42   male       147  sin
+150 53 1    133   42   male        NA   dx
+151 78 1    168   41   male       148  sin
+152  5 0     17   41   male       166   dx
+153 65 1    168   41   male        NA   dx
+154 25 1    109   40 female       149  sin
+155 46 1    148   40 female       130  sin
+156 12 0     51   40 female       133   dx
+157 26 1    109   40 female       143   dx
+158 47 1    148   40 female       126   dx
+159 70 0    157   40   male       152  sin
+160 39 1    141   39 female       136  sin
+161 40 1    141   39 female       138   dx
+162 45 1     99   39   male       156  sin
+163 72 1    161   39   male       146  sin
+164 34 1     99   39   male       149   dx
+165 59 1    161   39   male        NA   dx
+166  6 0     26   38 female        NA  sin
+167 49 1    151   38 female       154  sin
+168 63 1    182   38 female       141  sin
+169 49 1    151   38 female       154   dx
+170 64 1    182   38 female       138   dx
+171 32 1     75   38   male       157  sin
+172 22 1     75   38   male       160   dx
+173  3 0     10   36 female        NA  sin
+174 23 1    107   36 female       134  sin
+175  1 1     10   36 female       147   dx
+176 24 1    107   36 female       138   dx
+177 19 0     52   36   male       149  sin
+178 13 0     44   36   male       148   dx
+179 27 0     89   36   male       132   dx
+180 57 1    175   35 female       162  sin
+181  6 0     27   35 female       133   dx
+182 57 1    175   35 female       160   dx
+183 73 1    163   34   male       142  sin
+184 79 1    169   34   male       158  sin
+185 26 0     88   34   male       140   dx
+186 60 1    163   34   male        NA   dx
+187 66 1    169   34   male        NA   dx
+188 56 1    174   33 female       135   si
+189 56 1    174   33 female       135   dx
+190 25 0     65   33   male        NA  sin
+191 77 1    167   33   male       173  sin
+192 82 1    172   33   male       171  sin
+193 64 1    167   33   male        NA   dx
+194 69 1    172   33   male        NA   dx
+195 55 1    162   32 female       137  sin
+196 61 1    180   32 female       149  sin
+197 55 1    162   32 female       137   dx
+198 62 1    180   32 female       145   dy
+199 23 0     61   32   male       160  sin
+200 16 1     83   31   zena       139  sin
+201 15 0     37   31   male       162  sin
+202 29 1     71   31   male       151  sin
+203 20 1     71   31   male       153   dx
+204 26 1    110   30 female       128  sin
+205 48 1    150   30 female       130  sin
+206 54 1    159   30 female       135  sin
+207 27 1    110   30 female       126   dx
+208 48 1    150   30 female       133   dy
+209 54 1    159   30 female       135   dx
+210 17 0     49   30   male       145  sin
+211 67 1    135   30   male       147  sin
+212 69 1    155   30   male       156  sin
+213 55 1    135   30   male        NA   dy
+214 57 1    155   30   male        NA   dx
+215  3 0     19   29 female       149   dx
+216 16 0     46   29   male       159  sin
+217 36 1     85   29   male       157  sin
+218 24 1     85   29   male       160   dx
+219 15 1     82   28 female       133  sin
+220 52 1    156   28 female       134  sin
+221  8 0     42   28 female       126   dx
+222 52 1    156   28 female       134   dx
+223 33 0     77   28   male       162  sin
+224 60 1    127   28   male       161  sin
+225  8 0     31   28   male       154   dx
+226 48 1    127   28   male       160   dx
+227 43 1    145   27 female       128  sin
+228 44 1    145   27 female       129   dx
+229 56 1    120   27   male       154  sin
+230 44 1    120   27   male       146   dx
+231 41 1    143   26 female       134  sin
+232 44 1    146   26 female       139  sin
+233 42 1    143   26 female       135   dx
+234 45 1    146   26 female       138   dx
+235 27 1     69   26   male        NA  sin
+236 14 0     57   26   male       162   dx
+237 19 1     69   26   male       158   dx
+238 22 1    106   25 female       138  sin
+239 42 1    144   25 female       141  sin
+240 23 1    106   25 female       131   dx
+241 43 1    144   25 female       139   dx
+242 53 1    158   24 female       162  sin
+243 59 1    177   24 female       121  sin
+244 53 1    158   24 female       162   dx
+245 59 1    177   24 female       124   dx
+246 40 1    142   23 female       131  sin
+247 41 1    142   23 female       129   dx
+248 63 1    131   23   male       140  sin
+249 71 1    160   23   male       176  sni
+250 51 1    131   23   male        NA   dx
+251 58 1    160   23   male        NA   dx
+252 60 0    178   22 female       136   dx
+253 10 0     38   22   male       154   dx
+254 14 0     35   21   male       162  sin
+255 11 0     68   20 female       130  sin
+256  2 0     11   20 female       135   dx
+257 13 0     33   20   male       153  sin
+258 47 1    101   20   male       151  sin
+259 36 1    101   20   male       144   dx
+260 28 1    112   19 female       132  sin
+261 50 1    153   19 female       142  sin
+262 29 1    112   19 female       132   dx
+263 50 1    153   19 female       142   dx
+264 48 1    102   19   male       158  sin
+265 76 1    166   19   male       144  sin
+266 37 1    102   19   male       160   dx
+267 63 1    166   19   male        NA   dx
+268 58 1    176   18 female       134  sin
+269 58 1    176   18 female       132   dx
+270 26 1     66   18   male        NA  sin
+271 17 1     66   18   male       126   dx
+272  1 1      1 &lt;NA&gt; female        NA  sin
+273  2 0      8 &lt;NA&gt; female        NA  sin
+274  1 0      3 &lt;NA&gt;   male       139  sin
+275  2 0      4 &lt;NA&gt;   male       147  sin
+276  3 0      5 &lt;NA&gt;   male       148  sin
+277  4 0      6 &lt;NA&gt;   male       152  sin
+278  5 0      9 &lt;NA&gt;   male       160  sin
+279  6 0     12 &lt;NA&gt;   male       140  sin
+280  1 0      2 &lt;NA&gt;   male       156   dx
+281  2 0      7 &lt;NA&gt;   male       154   dx
+282  9 0     34 &lt;NA&gt;   male       139   dx</code></pre>
+</div>
+</div>
+<p><strong>Co když ale máme ve sloupci více stejných hodnot?</strong> Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?</p>
+</section>
+<section class="slide level2">
+
+<p>Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat, si můžeme vytvořit opravdu podrobně seřazený data frame.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href aria-label="1"></a>dfTipy <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Age, Length_cl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    No D No_sub  Age    Sex Length_cl Side
+1   17 1     66   18   male       126   dx
+2   58 1    176   18 female       132   dx
+3   58 1    176   18 female       134  sin
+4   26 1     66   18   male        NA  sin
+5   28 1    112   19 female       132  sin
+6   29 1    112   19 female       132   dx
+7   50 1    153   19 female       142  sin
+8   50 1    153   19 female       142   dx
+9   76 1    166   19   male       144  sin
+10  48 1    102   19   male       158  sin
+11  37 1    102   19   male       160   dx
+12  63 1    166   19   male        NA   dx
+13  11 0     68   20 female       130  sin
+14   2 0     11   20 female       135   dx
+15  36 1    101   20   male       144   dx
+16  47 1    101   20   male       151  sin
+17  13 0     33   20   male       153  sin
+18  14 0     35   21   male       162  sin
+19  60 0    178   22 female       136   dx
+20  10 0     38   22   male       154   dx
+21  41 1    142   23 female       129   dx
+22  40 1    142   23 female       131  sin
+23  63 1    131   23   male       140  sin
+24  71 1    160   23   male       176  sni
+25  51 1    131   23   male        NA   dx
+26  58 1    160   23   male        NA   dx
+27  59 1    177   24 female       121  sin
+28  59 1    177   24 female       124   dx
+29  53 1    158   24 female       162  sin
+30  53 1    158   24 female       162   dx
+31  23 1    106   25 female       131   dx
+32  22 1    106   25 female       138  sin
+33  43 1    144   25 female       139   dx
+34  42 1    144   25 female       141  sin
+35  41 1    143   26 female       134  sin
+36  42 1    143   26 female       135   dx
+37  45 1    146   26 female       138   dx
+38  44 1    146   26 female       139  sin
+39  19 1     69   26   male       158   dx
+40  14 0     57   26   male       162   dx
+41  27 1     69   26   male        NA  sin
+42  43 1    145   27 female       128  sin
+43  44 1    145   27 female       129   dx
+44  44 1    120   27   male       146   dx
+45  56 1    120   27   male       154  sin
+46   8 0     42   28 female       126   dx
+47  15 1     82   28 female       133  sin
+48  52 1    156   28 female       134  sin
+49  52 1    156   28 female       134   dx
+50   8 0     31   28   male       154   dx
+51  48 1    127   28   male       160   dx
+52  60 1    127   28   male       161  sin
+53  33 0     77   28   male       162  sin
+54   3 0     19   29 female       149   dx
+55  36 1     85   29   male       157  sin
+56  16 0     46   29   male       159  sin
+57  24 1     85   29   male       160   dx
+58  27 1    110   30 female       126   dx
+59  26 1    110   30 female       128  sin
+60  48 1    150   30 female       130  sin
+61  48 1    150   30 female       133   dy
+62  54 1    159   30 female       135  sin
+63  54 1    159   30 female       135   dx
+64  17 0     49   30   male       145  sin
+65  67 1    135   30   male       147  sin
+66  69 1    155   30   male       156  sin
+67  55 1    135   30   male        NA   dy
+68  57 1    155   30   male        NA   dx
+69  16 1     83   31   zena       139  sin
+70  29 1     71   31   male       151  sin
+71  20 1     71   31   male       153   dx
+72  15 0     37   31   male       162  sin
+73  55 1    162   32 female       137  sin
+74  55 1    162   32 female       137   dx
+75  62 1    180   32 female       145   dy
+76  61 1    180   32 female       149  sin
+77  23 0     61   32   male       160  sin
+78  56 1    174   33 female       135   si
+79  56 1    174   33 female       135   dx
+80  82 1    172   33   male       171  sin
+81  77 1    167   33   male       173  sin
+82  25 0     65   33   male        NA  sin
+83  64 1    167   33   male        NA   dx
+84  69 1    172   33   male        NA   dx
+85  26 0     88   34   male       140   dx
+86  73 1    163   34   male       142  sin
+87  79 1    169   34   male       158  sin
+88  60 1    163   34   male        NA   dx
+89  66 1    169   34   male        NA   dx
+90   6 0     27   35 female       133   dx
+91  57 1    175   35 female       160   dx
+92  57 1    175   35 female       162  sin
+93  27 0     89   36   male       132   dx
+94  23 1    107   36 female       134  sin
+95  24 1    107   36 female       138   dx
+96   1 1     10   36 female       147   dx
+97  13 0     44   36   male       148   dx
+98  19 0     52   36   male       149  sin
+99   3 0     10   36 female        NA  sin
+100 64 1    182   38 female       138   dx
+101 63 1    182   38 female       141  sin
+102 49 1    151   38 female       154  sin
+103 49 1    151   38 female       154   dx
+104 32 1     75   38   male       157  sin
+105 22 1     75   38   male       160   dx
+106  6 0     26   38 female        NA  sin
+107 39 1    141   39 female       136  sin
+108 40 1    141   39 female       138   dx
+109 72 1    161   39   male       146  sin
+110 34 1     99   39   male       149   dx
+111 45 1     99   39   male       156  sin
+112 59 1    161   39   male        NA   dx
+113 47 1    148   40 female       126   dx
+114 46 1    148   40 female       130  sin
+115 12 0     51   40 female       133   dx
+116 26 1    109   40 female       143   dx
+117 25 1    109   40 female       149  sin
+118 70 0    157   40   male       152  sin
+119 78 1    168   41   male       148  sin
+120  5 0     17   41   male       166   dx
+121 65 1    168   41   male        NA   dx
+122  4 0     23   42 female       124   dx
+123 65 1    133   42   male       147  sin
+124 12 0     32   42   male       153  sin
+125 53 1    133   42   male        NA   dx
+126 21 0     55   43   male       150  sin
+127 41 0     93   43   male       151  sin
+128 34 0     78   43   male       152  sin
+129 83 1    173   43   male       164  sin
+130 10 0     28   43   male       165  sin
+131 41 1    117   43   male       168   dy
+132 53 1    117   43   male       172  sin
+133 70 1    173   43   male        NA   dx
+134 20 1    104   44 female       127  sin
+135 22 1    104   44 female       132   dx
+136 31 1    123   45 female       131   dx
+137 30 1    123   45 female       135  sin
+138 12 0     73   45 female       142  sin
+139 15 1     73   45 female       143   dx
+140 28 1    111   46 female       128   dx
+141 14 0     81   46 female       134  sni
+142 17 1     81   46 female       135   dx
+143 27 1    111   46 female       136  sin
+144 18 0     96   46 female       155  sin
+145 20 1     96   46 female       155   dx
+146  7 0     25   47   male       141   dx
+147 20 0     54   47   male       151  sin
+148 51 1    154   48 female       129  sin
+149 51 1    154   48 female       129   dx
+150 18 0     84   48 female       130   dx
+151 63 1    181   48 female       137   dx
+152 10 0     45   48 female       138   dx
+153 10 0     64   48 female       141  sin
+154 62 1    181   48 female       141  sin
+155 11 0     40   48   male       141   dx
+156 38 1    103   48   male       149   dx
+157 14 0     56   48 female       151   dx
+158  8 0     18   48   male       153  sin
+159 22 0     58   48   male       154  sin
+160 49 1    103   48   male       156  sni
+161 66 1    134   49   male       140  sin
+162 16 0     63   49   male       140   dx
+163 16 1     79   49 female       144   dx
+164 13 0     79   49 female       149  sin
+165 54 1    134   49   male        NA   dx
+166 23 0     76   50   male       152   dx
+167  9 0     43   50 female       153   dx
+168 62 1    130   50   male       158  sin
+169 80 1    170   50   male       158  sin
+170 52 0    116   50   male       166  sin
+171 28 0     70   50   male        NA  sin
+172 50 1    130   50   male        NA   dx
+173 67 1    170   50   male        NA   dx
+174 51 1    115   51   male       140  sin
+175 40 1    115   51   male       145   dx
+176 37 1     86   51   male       155  sin
+177 25 1     86   51   male       155   dx
+178  8 0     47   52 female       129  sin
+179 29 1    113   52 female       139  sin
+180 30 1    113   52 female       140   dx
+181 61 1    129   52   male       149  sin
+182 68 1    152   52   male       159  sin
+183  4 0     15   52   male       162   dx
+184 49 1    129   52   male        NA   dx
+185 56 1    152   52   male        NA   dx
+186  7 0     39   53 female       132   dx
+187 17 1     87   54 female       145  sin
+188 19 1     87   54 female       146   dx
+189 64 1    132   54   male       154  sin
+190 52 1    132   54   male        NA   dx
+191 21 1     98   55 female       130   dx
+192 19 1     98   55 female       133  sin
+193 46 1    122   55   male       145   dx
+194 58 1    122   55   male       149  sin
+195 37 1    138   56 female       129   dx
+196  5 0     24   56 female       137   dx
+197 35 1    100   56   male       140   dx
+198 11 0     48   56 female       145   dx
+199 46 1    100   56   male       145   si
+200 21 1     72   56   male       145   dx
+201 30 1     72   56   male       147  sin
+202 15 0     59   56   male       155   dx
+203 47 1    125   57   male       143   dx
+204 59 1    125   57   male       145  sin
+205 34 1    136   57 female       148  sin
+206 35 1    136   57 female       148   dx
+207 46 1    147   58 female       133   dx
+208 13 0     53   58 female       137   dx
+209 31 0     74   58   male       137  sin
+210 45 1    147   58 female       140  sin
+211 35 0     80   58   male       153  sin
+212  3 0     13   58   male       154   dx
+213 11 0     30   58   male       161  sin
+214 36 1    138   59 female       128  sin
+215 32 1     95   59   male       135   dx
+216 18 0     50   59   male       138  sin
+217 43 1     95   59   male       140  sin
+218 31 1     94   59   male       160   dx
+219 42 1     94   59   male       165  sin
+220 44 1     97   59   male       167  sin
+221 33 1     97   59   male       167   dx
+222  4 0     14   59 female        NA  sin
+223  5 0     20   59 female        NA  sin
+224 34 1    128   60 female       129   dx
+225 33 1    128   60 female       133  sin
+226 45 1    121   60   male       142   dx
+227 24 0     62   60   male       147  sin
+228 57 1    121   60   male       150  sin
+229 18 0     67   60   male       161   dx
+230 64 1    183   62 female       138  sin
+231 65 1    183   62 female        NA   dx
+232 36 1    137   64 female       133   dx
+233 35 1    137   64 female       136  sin
+234  6 0     22   64   male       143   dx
+235 47 1    149   64 female       150  sin
+236 81 1    171   64    muz       155  sin
+237 74 1    164   64   male       172  sin
+238 61 1    164   64   male        NA   dx
+239 68 1    171   64   male        NA   dx
+240 33 1    126   65 female       135   dx
+241 32 1    126   65 female       138  sni
+242 55 1    119   65   male       156  sin
+243 43 1    119   65   male       161   dx
+244  7 0     36   65 female        NA  sin
+245 75 1    165   66   male       160  sin
+246 62 1    165   66   male        NA   dx
+247 31 1    124   67   zena       142  sin
+248 32 1    124   67 female       144   dx
+249  9 0     21   67    muz       149  sin
+250 40 1     92   68   male       143  sin
+251 30 1     92   68   male       143   dx
+252 12 0     41   68   male       148   dx
+253 50 1    114   68   male       149  sin
+254 39 1    114   68   male       156   dx
+255  9 0     60   69 female       139  sin
+256 21 0    105   70 female       133  sin
+257  7 0     16   70   male       165  sin
+258 54 1    118   71   male       153  sin
+259 42 1    118   71   male       154   dx
+260 38 1    140   72 female       137  sin
+261 39 1    140   72 female       137   dx
+262 29 1     91   72   male       153   dx
+263 39 1     91   72   male       157  sin
+264 25 1    108   73 female       135   dx
+265 24 1    108   73 female       139  sin
+266 38 1    139   73 female       139   dx
+267 37 1    139   73 female       140  sin
+268 60 1    179   76 female       146  sin
+269 61 1    179   76 female       148   dx
+270 38 1     90  old   male       140  sin
+271 28 1     90  old   male       140   dy
+272  1 0      3 &lt;NA&gt;   male       139  sin
+273  9 0     34 &lt;NA&gt;   male       139   dx
+274  6 0     12 &lt;NA&gt;   male       140  sin
+275  2 0      4 &lt;NA&gt;   male       147  sin
+276  3 0      5 &lt;NA&gt;   male       148  sin
+277  4 0      6 &lt;NA&gt;   male       152  sin
+278  2 0      7 &lt;NA&gt;   male       154   dx
+279  1 0      2 &lt;NA&gt;   male       156   dx
+280  5 0      9 &lt;NA&gt;   male       160  sin
+281  1 1      1 &lt;NA&gt; female        NA  sin
+282  2 0      8 &lt;NA&gt; female        NA  sin</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="načítání-velkých-souborů">Načítání velkých souborů</h3>
 <p><strong>V balíčku <code>readr</code> se nachází taktéž funkce <code>read_csv</code>.</strong></p>
 <p>Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než <code>read.csv</code> v základním R.</p>
+</section>
+<section class="slide level2">
+
 
 </section></section>
 
