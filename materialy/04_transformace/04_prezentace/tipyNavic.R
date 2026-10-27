@@ -7,6 +7,8 @@
 
 #janitor package
 
+#nahravani data z webu, spss
+
 
 #!is.na
 
