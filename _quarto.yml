@@ -3,7 +3,7 @@ project:
   output-dir: .
   
 website:
-  title: "Zpracovávání výzkumných dat v R"
+  title: "Zpracovávání dat v R"
   navbar:
     pinned: true
     left:
@@ -11,24 +11,20 @@ website:
         icon: calendar-event
         aria-label: ikona kalendáře
       - href: sylabus_ls.qmd
-        icon: calendar-event
-        aria-label: ikona kalendáře
       - href: vyukove_materialy.qmd
         icon: book
         aria-label: ikona učebnice
       - href: vyukove_materialy_ls.qmd
-        icon: book
-        aria-label: ikona učebnice
     right:
       - href: https://forms.office.com/e/c5CYh4LfQS
-        text: Zpětná vazba a podněty
+        text: Zpětná vazba
       - href: mailto:lucie.hoskova@ruk.cuni.cz
-        icon: envelope-at
         text: Kontakt
+        icon: envelope-at
         aria-label: ikona dopisní obálky s email symbolem zavináče
       - href: https://bookings.cloud.microsoft/book/KonzultaceR@cunicz.onmicrosoft.com/?ismsaljsauthenabled
-        icon: people
         text: Konzultace R
+        icon: people
         aria-label: ikona dvou osob
   page-footer: 
     left: 

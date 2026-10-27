@@ -37,14 +37,14 @@
   {
     "objectID": "sylabus.html",
     "href": "sylabus.html",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "",
     "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\noperátory\nukládání do proměnných\ndatové typy v R"
   },
   {
     "objectID": "sylabus.html#úvodní-hodina-15.09.2026",
     "href": "sylabus.html#úvodní-hodina-15.09.2026",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "",
     "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\noperátory\nukládání do proměnných\ndatové typy v R"
   },
@@ -114,7 +114,7 @@
   {
     "objectID": "vyukove_materialy.html",
     "href": "vyukove_materialy.html",
-    "title": "Výukové materiály ZS/2026",
+    "title": "Materiály ZS/26",
     "section": "",
     "text": "V této sekci naleznou účastníci výukové a podpůrné materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.\nMateriály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení)."
   },
@@ -142,28 +142,28 @@
   {
     "objectID": "vyukove_materialy.html#základní-materiály",
     "href": "vyukove_materialy.html#základní-materiály",
-    "title": "Výukové materiály ZS/2026",
+    "title": "Materiály ZS/26",
     "section": "Základní materiály",
     "text": "Základní materiály\n\nkde stáhnout R\nkde stáhnout RStudio (Desktop)\ntahák klávesových zkratek symbolů potřebných pro práci s R\npřehled funkcí použitých během kurzu"
   },
   {
     "objectID": "vyukove_materialy.html#úvodní-hodina-15.09.2026",
     "href": "vyukove_materialy.html#úvodní-hodina-15.09.2026",
-    "title": "Výukové materiály ZS/2026",
+    "title": "Materiály ZS/26",
     "section": "1. Úvodní hodina (15.09.2026)",
     "text": "1. Úvodní hodina (15.09.2026)\n\nPrezentace\nPříprava\n\nstažené, nainstalované a funkční programy R a RStudio\n\nMateriály k vypracování domácího úkolu: promenne.RData"
   },
   {
     "objectID": "sylabus.html#datové-struktury-29.09.2026",
     "href": "sylabus.html#datové-struktury-29.09.2026",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "2. Datové struktury (29.09.2026)",
     "text": "2. Datové struktury (29.09.2026)\n\núvod do funkcí\ndatové struktury v R\nfaktory\npráce s balíčky"
   },
   {
     "objectID": "sylabus.html#indexace-13.10.2026",
     "href": "sylabus.html#indexace-13.10.2026",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "3. Indexace (13.10.2026)",
     "text": "3. Indexace (13.10.2026)\n\nindexace pomocí base R\nindexace pomocí dplyr\nhodnoty vs struktury"
   },
@@ -177,91 +177,91 @@
   {
     "objectID": "sylabus.html#funkce-10.11.2026",
     "href": "sylabus.html#funkce-10.11.2026",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "5. Funkce (10.11.2026)",
     "text": "5. Funkce (10.11.2026)\n\nsyntax funkce\ntvorba vlastní funkce\ncykly\nfunkce apply() a celá apply rodina funkcí\nvektorizace vs. itinerární přístup\nčas a datum"
   },
   {
     "objectID": "sylabus.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-24.11.2026",
     "href": "sylabus.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-24.11.2026",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "6. Základy vizualizace dat a práce s grafy v R (24.11.2026)",
     "text": "6. Základy vizualizace dat a práce s grafy v R (24.11.2026)\n\npřemýšlení nad účelem tvorby grafu\nbodové, čárové a sloupcové grafy\nzákladní vizualizace v R\núvod do vizualizace pomocí balíčku ggplot2"
   },
   {
     "objectID": "sylabus.html#pokročilá-vizualizace-dat-08.12.2026",
     "href": "sylabus.html#pokročilá-vizualizace-dat-08.12.2026",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "7. Pokročilá vizualizace dat (08.12.2026)",
     "text": "7. Pokročilá vizualizace dat (08.12.2026)\n\nboxploty\ndenseploty\nheat mapy\nviolin grafy\nčasové řady"
   },
   {
     "objectID": "sylabus.html#mapy-3d-a-interaktivní-grafy-05.01.2026",
     "href": "sylabus.html#mapy-3d-a-interaktivní-grafy-05.01.2026",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "8. Mapy, 3D a interaktivní grafy (05.01.2026)",
     "text": "8. Mapy, 3D a interaktivní grafy (05.01.2026)\n\nprostorová data v R\nbodové mapy\nchloropleth mapy\n3D grafy\ninteraktivní grafy"
   },
   {
     "objectID": "sylabus.html#typy-dat-a-deskriptivní-statistika-19.01.2027",
     "href": "sylabus.html#typy-dat-a-deskriptivní-statistika-19.01.2027",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "9. Typy dat a deskriptivní statistika (19.01.2027)",
     "text": "9. Typy dat a deskriptivní statistika (19.01.2027)\n\nkvalitativní vs kvantitivní data\nnominální, ordinální, intervalová, poměrová, diskrétní a spojitá data\nzáklady popisné statistiky\nprůměr, medián, mode\nmíry variability"
   },
   {
     "objectID": "sylabus.html#úvod-do-inferenční-statistiky-02.02.2027",
     "href": "sylabus.html#úvod-do-inferenční-statistiky-02.02.2027",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "10. Úvod do inferenční statistiky (02.02.2027)",
     "text": "10. Úvod do inferenční statistiky (02.02.2027)\n\npopulace, výběr\nurčování normality dat\nparametrické testy\nt-testy"
   },
   {
     "objectID": "sylabus.html#analýza-kategoriálních-dat-korelace-a-regrese-16.02.2027",
     "href": "sylabus.html#analýza-kategoriálních-dat-korelace-a-regrese-16.02.2027",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "11. Analýza kategoriálních dat, korelace a regrese (16.02.2027)",
     "text": "11. Analýza kategoriálních dat, korelace a regrese (16.02.2027)\n\nkontingenční tabulka\nneparametrické testy\nchí-kvadrát\nPearson/Spearman korelace\nregrese"
   },
   {
     "objectID": "vyukove_materialy.html#datové-struktury-29.09.2026",
     "href": "vyukove_materialy.html#datové-struktury-29.09.2026",
-    "title": "Výukové materiály ZS/2026",
+    "title": "Materiály ZS/26",
     "section": "2. Datové struktury (29.09.2026)",
     "text": "2. Datové struktury (29.09.2026)\n\nPrezentace\n\nkód průběžných a samostatných cvičení"
   },
   {
     "objectID": "vyukove_materialy.html#indexace-13.10.2026",
     "href": "vyukove_materialy.html#indexace-13.10.2026",
-    "title": "Výukové materiály ZS/2026",
+    "title": "Materiály ZS/26",
     "section": "3. Indexace (13.10.2026)",
     "text": "3. Indexace (13.10.2026)\n\nPrezentace\n\nkód průběžných a samostatných cvičení\n\nMateriály k hodině\n\nstažený a jasně uložený soubor bikes.RData\n\nCvičení navíc\n\nzadání\nřešení"
   },
   {
     "objectID": "sylabus_ls.html",
     "href": "sylabus_ls.html",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "",
     "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\noperátory\nukládání do proměnných\ndatové typy v R"
   },
   {
     "objectID": "sylabus_ls.html#úvodní-hodina-20.01.2027",
     "href": "sylabus_ls.html#úvodní-hodina-20.01.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "",
     "text": "orientace v IDE RStudio\nprojekty a organizace skriptů\nnápověda\noperátory\nukládání do proměnných\ndatové typy v R"
   },
   {
     "objectID": "sylabus_ls.html#datové-struktury-03.02.2027",
     "href": "sylabus_ls.html#datové-struktury-03.02.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "2. Datové struktury (03.02.2027)",
     "text": "2. Datové struktury (03.02.2027)\n\núvod do funkcí\ndatové struktury v R\nfaktory\npráce s balíčky"
   },
   {
     "objectID": "sylabus_ls.html#indexace-17.02.2027",
     "href": "sylabus_ls.html#indexace-17.02.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "3. Indexace (17.02.2027)",
     "text": "3. Indexace (17.02.2027)\n\nindexace pomocí base R\nindexace pomocí dplyr\nhodnoty vs struktury"
   },
@@ -275,42 +275,42 @@
   {
     "objectID": "sylabus_ls.html#funkce-17.03.2027",
     "href": "sylabus_ls.html#funkce-17.03.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "5. Funkce (17.03.2027)",
     "text": "5. Funkce (17.03.2027)\n\nsyntax funkce\ntvorba vlastní funkce\ncykly\nfunkce apply() a celá apply rodina funkcí\nvektorizace vs. itinerární přístup\nčas a datum"
   },
   {
     "objectID": "sylabus_ls.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-31.03.2027",
     "href": "sylabus_ls.html#základy-vizualizace-dat-a-práce-s-grafy-v-r-31.03.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "6. Základy vizualizace dat a práce s grafy v R (31.03.2027)",
     "text": "6. Základy vizualizace dat a práce s grafy v R (31.03.2027)\n\npřemýšlení nad účelem tvorby grafu\nbodové, čárové a sloupcové grafy\nzákladní vizualizace v R\núvod do vizualizace pomocí balíčku ggplot2"
   },
   {
     "objectID": "sylabus_ls.html#pokročilá-vizualizace-dat-14.04.2027",
     "href": "sylabus_ls.html#pokročilá-vizualizace-dat-14.04.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "7. Pokročilá vizualizace dat (14.04.2027)",
     "text": "7. Pokročilá vizualizace dat (14.04.2027)\n\nboxploty\ndenseploty\nheat mapy\nviolin grafy\nčasové řady"
   },
   {
     "objectID": "sylabus_ls.html#mapy-3d-a-interaktivní-grafy-28.04.2027",
     "href": "sylabus_ls.html#mapy-3d-a-interaktivní-grafy-28.04.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "8. Mapy, 3D a interaktivní grafy (28.04.2027)",
     "text": "8. Mapy, 3D a interaktivní grafy (28.04.2027)\n\nprostorová data v R\nbodové mapy\nchloropleth mapy\n3D grafy\ninteraktivní grafy"
   },
   {
     "objectID": "sylabus_ls.html#typy-dat-a-deskriptivní-statistika-12.05.2027",
     "href": "sylabus_ls.html#typy-dat-a-deskriptivní-statistika-12.05.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "9. Typy dat a deskriptivní statistika (12.05.2027)",
     "text": "9. Typy dat a deskriptivní statistika (12.05.2027)\n\nkvalitativní vs kvantitivní data\nnominální, ordinální, intervalová, poměrová, diskrétní a spojitá data\nzáklady popisné statistiky\nprůměr, medián, mode\nmíry variability"
   },
   {
     "objectID": "sylabus_ls.html#úvod-do-inferenční-statistiky-26.05.2027",
     "href": "sylabus_ls.html#úvod-do-inferenční-statistiky-26.05.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "10. Úvod do inferenční statistiky (26.05.2027)",
     "text": "10. Úvod do inferenční statistiky (26.05.2027)\n\npopulace, výběr\nurčování normality dat\nparametrické testy\nt-testy"
   },
@@ -324,42 +324,42 @@
   {
     "objectID": "vyukove_materialy_ls.html",
     "href": "vyukove_materialy_ls.html",
-    "title": "Výukové materiály LS/2027",
+    "title": "Materiály LS/27",
     "section": "",
     "text": "V této sekci naleznou účastníci výukové a podpůrné materiály ke každé lekci - jak soubory potřebné pro práci během hodiny, tak shrnutí lekce a případná doporučení pro samostudium.\nMateriály budou zveřejněny vždy před lekcí (v případě výukových materiálů) či po jejím průběhu (shrutí a doporučení)."
   },
   {
     "objectID": "vyukove_materialy_ls.html#základní-materiály",
     "href": "vyukove_materialy_ls.html#základní-materiály",
-    "title": "Výukové materiály LS/2027",
+    "title": "Materiály LS/27",
     "section": "Základní materiály",
     "text": "Základní materiály\n\nkde stáhnout R\nkde stáhnout RStudio (Desktop)\ntahák klávesových zkratek symbolů potřebných pro práci s R"
   },
   {
     "objectID": "sylabus_ls.html#analýza-kategoriálních-dat-korelace-a-regrese-09.06.2027",
     "href": "sylabus_ls.html#analýza-kategoriálních-dat-korelace-a-regrese-09.06.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "11. Analýza kategoriálních dat, korelace a regrese (09.06.2027)",
     "text": "11. Analýza kategoriálních dat, korelace a regrese (09.06.2027)\n\nkontingenční tabulka\nneparametrické testy\nchí-kvadrát\nPearson/Spearman korelace\nregrese"
   },
   {
     "objectID": "sylabus.html#načítání-a-transformace-dat-27.10.2026",
     "href": "sylabus.html#načítání-a-transformace-dat-27.10.2026",
-    "title": "Sylabus ZS/2026",
+    "title": "Sylabus ZS/26",
     "section": "4. Načítání a transformace dat (27.10.2026)",
     "text": "4. Načítání a transformace dat (27.10.2026)\n\nnačítání dat do R\nkontrola dat\npipes\nbalíček dplyr"
   },
   {
     "objectID": "sylabus_ls.html#načítání-a-transformace-dat-03.03.2027",
     "href": "sylabus_ls.html#načítání-a-transformace-dat-03.03.2027",
-    "title": "Sylabus LS/2027",
+    "title": "Sylabus LS/27",
     "section": "4. Načítání a transformace dat (03.03.2027)",
     "text": "4. Načítání a transformace dat (03.03.2027)\n\nnačítání dat do R\npipes\nkontrola dat\nbalíček dplyr"
   },
   {
     "objectID": "vyukove_materialy.html#načítání-a-transformace-dat-27.10.2026",
     "href": "vyukove_materialy.html#načítání-a-transformace-dat-27.10.2026",
-    "title": "Výukové materiály ZS/2026",
+    "title": "Materiály ZS/26",
     "section": "4. Načítání a transformace dat (27.10.2026)",
     "text": "4. Načítání a transformace dat (27.10.2026)\n\nPrezentace\nMateriály k hodině\n\nstažené a jasně uložené soubory:\n\nintro_data.txt\nintro_data.csv\nintro_data.xlsx\ndecZkouska.txt\nsamostatneCviceniData.txt\nbydliste.txt\ncensus.csv\n\n\nMateriály pro domácí úkol\n\ntypBydleni.csv"
   }

@@ -1,5 +1,5 @@
 ---
-title: "Výukové materiály ZS/2026"
+title: "Materiály ZS/26"
 include-in-header:
   - password-header.html
 editor: 
