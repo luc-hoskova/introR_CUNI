@@ -840,12 +840,9 @@ Proved na souboru `census.csv` následující změny:
     ```{r}
     levels(as.factor(census$vira))
 
-    jedi <- census %>% filter(vira == "Jedi",
-                              hodnota > 0)
-    sith <- census %>% filter(vira == "Sith",
-                              hodnota > 0)
-    pasta <- census %>% filter(vira == "pastafariánství",
-                              hodnota > 0)
+    jedi <- census %>% filter(vira == "Jedi", hodnota > 0)
+    sith <- census %>% filter(vira == "Sith", hodnota > 0)
+    pasta <- census %>% filter(vira == "pastafariánství", hodnota > 0)
 
     mean(jedi$vek)
     mean(sith$vek)

@@ -5132,14 +5132,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Jedi&quot;            &quot;pastafariánství&quot; &quot;Sith&quot;           </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href aria-label="1"></a>jedi <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Jedi&quot;</span>,</span>
-<span id="cb107-2"><a href aria-label="2"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb107-3"><a href aria-label="3"></a>sith <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Sith&quot;</span>,</span>
-<span id="cb107-4"><a href aria-label="4"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb107-5"><a href aria-label="5"></a>pasta <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;pastafariánství&quot;</span>,</span>
-<span id="cb107-6"><a href aria-label="6"></a>                          hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb107-7"><a href aria-label="7"></a></span>
-<span id="cb107-8"><a href aria-label="8"></a><span class="fu">mean</span>(jedi<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href aria-label="1"></a>jedi <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Jedi&quot;</span>, hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb107-2"><a href aria-label="2"></a>sith <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;Sith&quot;</span>, hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb107-3"><a href aria-label="3"></a>pasta <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span> <span class="fu">filter</span>(vira <span class="sc">==</span> <span class="st">&quot;pastafariánství&quot;</span>, hodnota <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb107-4"><a href aria-label="4"></a></span>
+<span id="cb107-5"><a href aria-label="5"></a><span class="fu">mean</span>(jedi<span class="sc">$</span>vek)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 50.02174</code></pre>
 </div>
