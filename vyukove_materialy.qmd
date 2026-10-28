@@ -34,12 +34,18 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
     [RStudio](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
 - Materiály k vypracování domácího úkolu:
   [promenne.RData](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/promenne.RData)
+- Cvičení navíc
+  - [zadání](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/01cviceniNavicZadani.R)
+  - [řešení](https://luc-hoskova.github.io/introR_CUNI/materialy/01_uvod/01cviceniNavicReseni.R)
 
 ## 2. Datové struktury (29.09.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_prezentace/02_prezentace.html#/title-slide)
   - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02_poznamky.R)
     průběžných a samostatných cvičení
+- Cvičení navíc
+  - [zadání](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02cviceniNavicZadani.R)
+  - [řešení](https://luc-hoskova.github.io/introR_CUNI/materialy/02_struktury/02cviceniNavicReseni.R)
 
 ## 3. Indexace (13.10.2026)
 
@@ -56,6 +62,7 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
 ## 4. Načítání a transformace dat (27.10.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/04_prezentace.html#/title-slide)
+  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_poznamky.R)
 - Materiály k hodině
   - stažené a jasně uložené soubory:
     - [intro_data.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/intro_data.txt)
@@ -67,3 +74,10 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
     - [census.csv](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/census.csv)
 - Materiály pro domácí úkol
   - [typBydleni.csv](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/typBydleni.csv)
+- Cvičení navíc
+  - [zadání](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04cviceniNavicZadani.txt)
+  - [řešení](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04cviceniNavicReseni.txt)
+  - [postup](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04cviceniNavicPostup.R)
+  - [data](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/dojizdeniSkola.csv)
+  - [popisky dat](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/dojizdeniSkolaPopis.json)
+  

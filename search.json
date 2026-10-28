@@ -151,7 +151,7 @@
     "href": "vyukove_materialy.html#úvodní-hodina-15.09.2026",
     "title": "Materiály ZS/26",
     "section": "1. Úvodní hodina (15.09.2026)",
-    "text": "1. Úvodní hodina (15.09.2026)\n\nPrezentace\nPříprava\n\nstažené, nainstalované a funkční programy R a RStudio\n\nMateriály k vypracování domácího úkolu: promenne.RData"
+    "text": "1. Úvodní hodina (15.09.2026)\n\nPrezentace\nPříprava\n\nstažené, nainstalované a funkční programy R a RStudio\n\nMateriály k vypracování domácího úkolu: promenne.RData\nCvičení navíc\n\nzadání\nřešení"
   },
   {
     "objectID": "sylabus.html#datové-struktury-29.09.2026",
@@ -228,7 +228,7 @@
     "href": "vyukove_materialy.html#datové-struktury-29.09.2026",
     "title": "Materiály ZS/26",
     "section": "2. Datové struktury (29.09.2026)",
-    "text": "2. Datové struktury (29.09.2026)\n\nPrezentace\n\nkód průběžných a samostatných cvičení"
+    "text": "2. Datové struktury (29.09.2026)\n\nPrezentace\n\nkód průběžných a samostatných cvičení\n\nCvičení navíc\n\nzadání\nřešení"
   },
   {
     "objectID": "vyukove_materialy.html#indexace-13.10.2026",
@@ -361,6 +361,6 @@
     "href": "vyukove_materialy.html#načítání-a-transformace-dat-27.10.2026",
     "title": "Materiály ZS/26",
     "section": "4. Načítání a transformace dat (27.10.2026)",
-    "text": "4. Načítání a transformace dat (27.10.2026)\n\nPrezentace\nMateriály k hodině\n\nstažené a jasně uložené soubory:\n\nintro_data.txt\nintro_data.csv\nintro_data.xlsx\ndecZkouska.txt\nsamostatneCviceniData.txt\nbydliste.txt\ncensus.csv\n\n\nMateriály pro domácí úkol\n\ntypBydleni.csv"
+    "text": "4. Načítání a transformace dat (27.10.2026)\n\nPrezentace\n\nkód\n\nMateriály k hodině\n\nstažené a jasně uložené soubory:\n\nintro_data.txt\nintro_data.csv\nintro_data.xlsx\ndecZkouska.txt\nsamostatneCviceniData.txt\nbydliste.txt\ncensus.csv\n\n\nMateriály pro domácí úkol\n\ntypBydleni.csv\n\nCvičení navíc\n\nzadání\nřešení\npostup\ndata\npopisky dat"
   }
 ]
