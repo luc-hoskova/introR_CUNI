@@ -1,0 +1,149 @@
+﻿{
+  "@context": ["http://www.w3.org/ns/csvw",{"@language": "cs"}],
+  "url": "sldb2021_vyjizdka_skola_cil_pohlavi.csv",
+  "tableSchema": {
+    "columns": [
+	{
+      "name": "idhod",
+      "titles": "idhod",
+      "dc:description":"unikátní identifikátor údaje Veřejné databáze ČSÚ",
+      "required": true,
+      "datatype": "string"
+    }, 
+	{
+      "name": "hodnota",
+      "titles": "hodnota",
+      "dc:description":"zjištěná hodnota v numerickém formátu",
+      "required": true,
+      "datatype": "number"
+    }, 
+	{
+      "name": "ukaz_kod",
+      "titles": "ukaz_kod",
+      "dc:description":"kód ukazatele (statistické proměnné)",
+      "required": true,
+      "datatype": "string"
+    }, 
+	{
+      "name": "aktivita_cis",
+      "titles": "aktivita_cis",
+      "dc:description":"číselník pro ekonomickou aktivitu",
+      "required": true,
+      "datatype": "string"
+    }, 
+	{
+      "name": "aktivita_kod",
+      "titles": "aktivita_kod",
+      "dc:description":"kód položky z číselníku pro ekonomickou aktivitu",
+      "required": true,
+      "datatype": "string"
+    }, 
+	{
+      "name": "bydliste_cis",
+      "titles": "bydliste_cis",
+      "dc:description":"kód číselníku pro bydliště",
+      "required": true,
+      "datatype": "string"
+    }, 
+	{
+      "name": "bydliste_kod",
+      "titles": "bydliste_kod",
+      "dc:description":"kód položky z číselníku pro bydliště",
+      "required": true,
+      "datatype": "string"
+	}, 
+	{
+      "name": "cil_dojizdky_cis",
+      "titles": "cil_dojizdky_cis",
+      "dc:description":"číselník území; pokud není uveden, jedná se o celkový údaj bez rozlišení cíle dojížďky",
+      "required": false,
+      "datatype": "string"
+    }, 
+	{
+      "name": "cil_dojizdky_kod",
+      "titles": "cil_dojizdky_kod",
+      "dc:description":"kód položky z číselníku území; pokud není uveden, jedná se o celkový údaj bez rozlišení cíle dojížďky",
+      "required": false,
+      "datatype": "string"
+    }, 
+	{
+      "name": "pohlavi_cis",
+      "titles": "pohlavi_cis",
+      "dc:description":"číselník pro pohlaví; pokud není uveden, jedná se o celkový údaj bez rozlišení pohlaví",
+      "required": false,
+      "datatype": "string"
+    }, 
+	{
+      "name": "pohlavi_kod",
+      "titles": "pohlavi_kod",
+      "dc:description":"kód položky z číselníku pro pohlaví; pokud není uveden, jedná se o celkový údaj bez rozlišení pohlaví",
+      "required": false,
+      "datatype": "string"
+    }, 
+	{
+      "name": "sldb_rok",
+      "titles": "sldb_rok",
+      "dc:description":"rok sčítání ve formátu YYYY",
+      "required": true,
+      "datatype": "number"
+    }, 
+	{
+      "name": "sldb_datum",
+      "titles": "sldb_datum",
+      "dc:description":"rozhodné datum sčítání ve formátu YYYY-MM-DD",
+      "required": true,
+      "datatype": "date"
+    }, 
+	{
+      "name": "ukaz_txt",
+      "titles": "ukaz_txt",
+      "dc:description":"text ukazatele",
+      "required": true,
+      "datatype": "string"
+    }, 
+	{
+      "name": "aktivita_txt",
+      "titles": "aktivita_txt",
+      "dc:description":"text položky z číselníku pro ekonomickou aktivitu",
+      "required": true,
+      "datatype": "string"
+    }, 
+	{
+      "name": "bydliste_txt",
+      "titles": "bydliste_txt",
+      "dc:description":"text položky z číselníku pro bydliště",
+      "required": true,
+      "datatype": "string"
+    }, 
+	{
+      "name": "bydliste_typ",
+      "titles": "bydliste_typ",
+      "dc:description":"typ území pro bydliště",
+      "required": true,
+      "datatype": "string"
+    },
+	{
+      "name": "cil_dojizdky_txt",
+      "titles": "cil_dojizdky_txt",
+      "dc:description":"text položky z číselníku území; pokud není uveden, jedná se o celkový údaj bez rozlišení cíle dojížďky",
+      "required": false,
+      "datatype": "string"
+    }, 
+	{
+      "name": "cil_dojizdky_typ",
+      "titles": "cil_dojizdky_typ",
+      "dc:description":"typ území pro cíl dojížďky; pokud není uveden, jedná se o celkový údaj bez rozlišení cíle dojížďky",
+      "required": false,
+      "datatype": "string"
+    }, 
+	{
+      "name": "pohlavi_txt",
+      "titles": "pohlavi_txt",
+      "dc:description":"text položky z číselníku pro pohlaví",
+      "required": false,
+      "datatype": "string"
+    } 
+    ],
+    "primaryKey": "idhod"
+  }
+}

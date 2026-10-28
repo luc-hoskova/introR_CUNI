@@ -754,7 +754,7 @@ head(df)
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 25,
+countdown::countdown(minutes = 20,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -919,9 +919,7 @@ Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [
 
 ------------------------------------------------------------------------
 
-## Tipy navíc
-
-**Budou doplněny během dneška.**
+## Tipy navíc pro samostudium
 
 ### Změna pořadí sloupců
 
@@ -951,8 +949,6 @@ dfTipy %>% arrange(desc(Age)) #sestupne
 
 **Co když ale máme ve sloupci více stejných hodnot?** Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?
 
-------------------------------------------------------------------------
-
 Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat, si můžeme vytvořit opravdu podrobně seřazený data frame.
 
 ```{r}
@@ -968,3 +964,56 @@ dfTipy %>% arrange(Age, Length_cl)
 Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než `read.csv` v základním R.
 
 ------------------------------------------------------------------------
+
+### Varianta indexování s pipe
+
+Jedním z míst, kde můžete narazit na potenciální problémy s používání pipe, je indexace.
+
+V sekci [Specifikování argumentu kam má pipe vyústit] jsme si sice již ukázali, že pomocí placeholderu si **můžeme určit místo vyústění pipe i mimo první argument funkce,** ale nejedná se o úplně nepřehlednější řešení.
+
+```{r}
+iris %>%
+  .$Sepal.Width %>%
+  head()
+```
+
+Je možné proto **využít funkce `pull`**.
+
+```{r}
+iris %>%
+  pull(Sepal.Width) %>%
+  head()
+```
+
+------------------------------------------------------------------------
+
+### Vyhledávání pomocí specifického textu
+
+Dejme tomu, že pracujete s datasetem ke kterému nemáte mnoho informací, a **chcete zjistit, zda se v něm nachází hodnota obsahující určitý text.**
+
+Přesně k tomuto je určena funkce `grepl`.
+
+Dejme tomu, že chceme zjisti, kolik bouří v datasetu `storms` má jméno obsahující text `"MAR"`.
+
+```{r}
+storms$name[grepl("MAR", toupper(storms$name))] %>% unique()
+```
+
+Funkce `grepl` zjistí, zda se uvedený text (MAR) nachází v objektu hodnot (hodnoty sloupce `name`).
+
+**Jelikož R je case sensitive, doporučuji vždy vyhledávat pomocí velkých písmen, a převést si na ně i hodnoty, ze kterých se vyhledává.** Pojďme se podívat na to, co by se stalo, kdybychom tak neprovedli.
+
+```{r}
+storms$name[grepl("mar", storms$name)] %>% unique()
+```
+
+Funkce by nám nenašla žádnou z jiných bouří, které tyto písmena obsahují, protože se jedná o jména obsahující písmena "m" "a" "r" v jejich upper case podobě.
+
+```{r}
+#TRUE/FALSE zda hodnota obsahuje "MAR"
+grepl("MAR", toupper(storms$name))
+#vyber hodnoty z name pro ktere je podminka TRUE
+storms$name[grepl("MAR", toupper(storms$name))] 
+storms$name[grepl("MAR", toupper(storms$name))] %>%
+  unique() #kazde jmeno jen jednou
+```

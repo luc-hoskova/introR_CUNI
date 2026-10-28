@@ -108,13 +108,17 @@ Ano.
 
 ## Práce s materiály
 
-Před každou hodinou (maximálně pondělí ráno daného týdne) bude **do výukových materiálů nahrána prezentace k dané lekci, stejně tak veškerá potřebná data co je třeba si stáhnout.**
+- Před každou hodinou (maximálně pondělí dopoledne daného týdne) bude **do výukových materiálů nahrána prezentace k dané lekci, stejně tak veškerá potřebná data co je třeba si stáhnout.**
 
-Pokud bude potřeba abyste si pro práci v hodině nějaká data stáhli, učiňte tak prosím a **uložte si je do dedikované složky** na vašem počítači.
+  - Pokud bude potřeba abyste si pro práci v hodině nějaká data stáhli, učiňte tak prosím a **uložte si je do dedikované složky** na vašem počítači.
 
-Doporučuji **mít prezentaci během hodiny otevřenou** pro nahlížení a kopírování kódu.
+- Doporučuji **mít prezentaci během hodiny otevřenou** pro nahlížení a kopírování kódu.
 
-Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky vám umožní vytisknout si snímky prezentace v PDF.
+  - Pokud si chcete psát ruční poznámky, zmáčknutí "e" a poté tisk obrazovky vám umožní vytisknout si snímky prezentace v PDF.
+
+- Součástí prezentace je taktéž sekce **Tipy navíc pro samostudium**, která je umístěna za zadáním domácího úkolu. Tyto tipy jsou místo, kde budete mít vloženy zajímavé a užitečné funkce a doporučení, které se ovšem již časově nevešly do hodiny a nebyly absolutně nutné k pochopení následujících částí.
+
+  - **Počítám s tím, že si tuto sekci projdete v rámci samostudia; ve cvičeních navíc se od vás bude očekávat jejich znalost.**
 
 ## Cvičení a konzultace
 
@@ -536,8 +540,8 @@ Ověř, zda má Franta na tuto slevu nárok.
 ## Samostatné cvičení
 
 Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní hodnocení na lepším stupni než 5 a v posledním testu získali jiný počet než nula bodů. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy pokud vypracovali seminární práci navíc a v písemce měli alespoň 50 bodů.\
-    Julie má dosavadní hodnocení sice na 5, ani písemka se jí nepovedla a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
-    Dostane Julie zápočet?
+Julie má dosavadní hodnocení sice na 5, ani písemka se jí nepovedla a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
+Dostane Julie zápočet?
 
 ```{r}
 #| echo: false

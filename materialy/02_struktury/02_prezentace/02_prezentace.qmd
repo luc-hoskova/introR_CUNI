@@ -14,6 +14,7 @@ filters:
 webr:
   packages:
     - "dplyr"
+    - "installr"
 execute:
   echo: true
   warning: false
@@ -1303,3 +1304,106 @@ c(3, 2, 7, 45, 2, 6, 11, 7,
 ```
 
 Skript zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+
+------------------------------------------------------------------------
+
+## Tipy navíc pro samostudium
+
+### Aktualizace R a RStudio
+
+Je doporučené pravidelně aktualizovat jak R tak RStudio, abyste vždy pracovali s nejaktuálnějšími verzemi.
+
+#### RStudio
+
+RStudio vyžaduje manuální aktualizaci. Můžete odkiknout popup okno co na vás vyskočí při spuštění, a nebo novou verzi stáhnout skrz `Help < Check for Rstudio Updates`.
+
+![](images/clipboard-3071060878.png){fig-align="center"}
+
+Existuje způsob, jak si tuto činnost alespoň částečně automatizovat.
+
+#### R
+
+**Windows**
+
+```{webr-r}
+#| output: false
+installr::updateR() #umozni i aktualizaci balicku
+#bez preinstalace balicku
+#pozor, balicky je tak treba si vsechny znovu instalovat
+updateR(update_packages = FALSE)
+```
+
+Jak si případně můžete **zjistit, kterou verzi R používáte**?
+
+Aktuálně používaná verze je vždy zobrazena v konzoli.
+
+![](images/clipboard-2484485955.png){fig-align="center"}
+
+Jde si to samozřejmě ale zjistit i pomocí kódu.
+
+```{r}
+R.version.string
+```
+
+::: callout-warning
+## Potřeba přeinstalování balíčků
+
+Po instalaci nové verze R je vždy potřeba přeinstalovat balíčky - **R se totiž instaluje bez nich**. Můžete to provést ručně přímo kopírováním z Program Files, doporučuji vám ale spíše používat funkce.
+:::
+
+------------------------------------------------------------------------
+
+### Aktualizace balíčků
+
+::: callout-important
+## Lze aktualizovat pouze nenahrané balíčky
+
+**Pokud máte některý z balíčků otevřený, nebude jej možné aktualizovat.**
+
+Nejdříve ho bude potřeba "zavřít", a to buď pomocí kódu:
+
+```{webr-r}
+#| output: false
+detach(package:dplyr) #zavreni balicku dplyr
+```
+
+A nebo odkliknutím v RStudio:
+
+![](images/clipboard-908760395.png){fig-align="center"}
+:::
+
+Balíčky můžete aktualizovat i mimo v předchozí sekci zmíněnou funkci `updateR`, a to několika způsoby:
+
+#### Kód
+
+```{webr-r}
+#| output: false
+#pozor, neaktualizuje nactene balicky
+update.packages(ask = FALSE, checkBuilt = TRUE)
+```
+
+#### Ručně v prostředí RStudia
+
+![](images/clipboard-3957915874.png){fig-align="center"}
+
+![](images/clipboard-951267366.png){fig-align="center"}
+
+Tato verze umožňuje taktéž **aktualizaci pouze vybraných balíčků**.
+
+Pokud chcete aktualizovat specifický balíček ručně, stačí ho znovu instalovat pomocí `install,packages`.
+
+------------------------------------------------------------------------
+
+### Změna verze R, ve kterém se pracuje
+
+Některé balíčky po vás budou vyžadovat práci ve starší verzi R, protože s novou nejsou kompatibilní.
+
+**Je možné si nastavit, se kterou verzí R právě pracujete**.
+
+#### V RStudio
+
+`Tools < Global Options... < General < R version`
+
+![](images/clipboard-2426646489.png){fig-align="center"}
+
+Je důležité vědět, že **funkce `updateR` automaticky maže starší verze R pokud neurčíte jinak**, takže si je budete muset stáhnout znovu.

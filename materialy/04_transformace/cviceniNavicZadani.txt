@@ -1,0 +1,7 @@
+Pracujte se souborem dojizdeniSkola.csv. Popis jednotlivých sloupců naleznete v JSON souboru dojizdeniSkolaPopis.
+
+1. Kolik osob dojíždí do Prahy za studiem?
+
+2. Z kolika obcí se takto do Prahy dojíždí?
+
+3. Z jaké obce dojíždí do Prahy nejvíce žen, z jaké mužů, a kolik to je osob?

@@ -1,0 +1,45 @@
+﻿library(dplyr)
+dojizdeniSkola <- read.csv("dojizdeniSkola.csv",
+               stringsAsFactors = TRUE,
+               na.strings = "")
+str(dojizdeniSkola)
+
+ds <- dojizdeniSkola %>%
+  rename(pohlavi = pohlavi_txt,
+         cil = cil_dojizdky_txt,
+         cil_okres = cil_dojizdky_typ,
+         bydliste = bydliste_txt,
+         bydliste_okres = bydliste_typ)
+
+ds %>%
+  filter()
+
+praha <- ds$cil[ds$cil %in% c("Praha",
+                              "Hlavní město Praha",
+                              "Praha-východ",
+                              "Praha-západ")] %>%
+  unique()
+
+str(praha)
+
+
+#najdi vsechny obce, u kterych neni ani jeden muzsky student co dojizdi do prahy
+ds %>%
+  filter(hodnota == 0,
+         dojizdeni == "Hlavní město Praha",
+         pohlavi == "muž") %>%
+  pull(obec) %>%
+  unique()
+
+n <- ds %>%
+  filter(hodnota > 0) %>%
+  pull(obec) %>%
+  unique()
+
+obce[!(obce %in% dojizdi)]
+
+obce_vse_nuly <- unique(
+  ds$obec[!ds$obec %in% ne_nulove_obce]
+)
+
+obce_vse_nuly
