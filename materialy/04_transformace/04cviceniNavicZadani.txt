@@ -1,4 +1,4 @@
-Pracujte se souborem dojizdeniSkola.csv. Popis jednotlivých sloupců naleznete v JSON souboru dojizdeniSkolaPopis.
+Pracujte se souborem dojizdeniSkola.csv. Popis jednotlivých sloupců naleznete v JSON souboru dojizdeniSkolaPopis.json.
 
 1. Kolik osob dojíždí do Prahy za studiem?
 
