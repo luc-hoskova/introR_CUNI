@@ -62,7 +62,7 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
 ## 4. Načítání a transformace dat (27.10.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/04_prezentace.html#/title-slide)
-  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_poznamky.R)
+  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_poznamky.R) průběžných a samostatných cvičení
 - Materiály k hodině
   - stažené a jasně uložené soubory:
     - [intro_data.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/intro_data.txt)

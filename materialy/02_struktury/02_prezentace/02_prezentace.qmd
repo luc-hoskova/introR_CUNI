@@ -1390,7 +1390,7 @@ update.packages(ask = FALSE, checkBuilt = TRUE)
 
 Tato verze umožňuje taktéž **aktualizaci pouze vybraných balíčků**.
 
-Pokud chcete aktualizovat specifický balíček ručně, stačí ho znovu instalovat pomocí `install,packages`.
+Pokud chcete aktualizovat specifický balíček ručně, stačí ho znovu instalovat pomocí `install.packages`.
 
 ------------------------------------------------------------------------
 
