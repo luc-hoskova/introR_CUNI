@@ -913,7 +913,7 @@ S funkcemi `group_by` a `summarize` se lépe seznámíme v šesté sekci, zde js
 
     5.  O kolik více seniorů (65+ let) bez domova žije v Libereckém než v Moravskoslezském kraji či naopak?
 
-Zdrojem dat jsou [oficiální stránky sčítání obyvatel z roku 2021](https://csu.gov.cz/produkty/vysledky-scitani-2021-otevrena-data). K této tabulce patří i JSON soubor, který popisuje význam jednotlivých sloupců. Můžete ho využít pro lepší pochopení datasetu, ale ke zpracování domácího úkolu nemusíte vyhledávat žádné další informace.
+Zdrojem dat jsou [oficiální stránky sčítání obyvatel z roku 2021](https://csu.gov.cz/produkty/vysledky-scitani-2021-otevrena-data). K této tabulce patří i [JSON soubor](https://csu.gov.cz/docs/107508/50deadf9-87c2-a64e-57f7-df5c9e655b0a/sldb2021_bydleni_pohlavi-metadata.json?version=1.0), který popisuje význam jednotlivých sloupců. Můžete ho využít pro lepší pochopení datasetu, ale ke zpracování domácího úkolu nemusíte vyhledávat žádné další informace.
 
 ![](images/clipboard-3587705247.png){fig-align="center"}
 
