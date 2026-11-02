@@ -65,8 +65,17 @@ within() #uprav nebo pridej prvky listu ci sloupce data frame
 
 #4.lekce
 complete.cases() #TRUE/FALSE na zaklade toho, zda radek ma chybejici (NA) hodnoty
+data() #jake datasety jsou dostupne z nactenych balicku
+grepl() #nachazi se dany text v jinem character stringu
+ifelse() #pokud je hodnota x TRUE, zmen na y, pokud FALSE tak na z
 dplyr::last_col() #vyber posledni sloupec
 dplyr::mutate() #zmen hodnoty ve sloupci ci pridej novy sloupec
 na.omit() #odstran radky s NA hodnotami
+readr::parse_number() #vyber cislo z hodnoty
+pull() #funkce varianta symbolu $
+read.table() #vseobecna fce k nacitani talukovych dat
+readxl::read_xlsx() #nacti excelovy xlsx format, je i read_xls varianta
 dplyr::relocate() #presun sloupec na jine misto
 dplyr::rename() #prejmenuj nazev hodnoty
+replace() #nahrad hodnoty za jine
+startsWith() #zacina charakter string s temito znaky?

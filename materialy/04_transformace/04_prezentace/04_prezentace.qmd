@@ -714,7 +714,9 @@ df
 
 ## Funkce `mutate` aneb úprava a vytváření sloupců
 
-Pomocí funkce `mutate` můžeme upravovat specifické sloupce bez dlouhého přiřazování.
+Pomocí funkce `mutate` můžeme upravovat specifické sloupce bez dlouhého přiřazování[^2].
+
+[^2]: V sekci [Změna specifických hodnot uvnitř data frame] si ukážeme, jak je možné pomocí této funkce měnit i jednotlivé hodnoty.
 
 Při jejím používání defacto potřebujeme pouze následující zápis:
 
@@ -754,7 +756,7 @@ head(df)
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 25,
+countdown::countdown(minutes = 20,
                      seconds = 0,
                      start_immediately = FALSE,
                      warn_when = 120,
@@ -765,7 +767,7 @@ Proved na souboru `census.csv` následující změny:
 
 1.  Přejmenuj sloupce `pohlavi_txt` na `pohlavi`, `vek_txt` na `vek`, `vira_txt` na `vira`, a `uzemi_txt` na `oblast`.
 
-2.  Vyber pouze hodnoty pohlaví `žena`, ty kde `vira` je `Jedi`, `Sith` a nebo začíná na `pasta`[^2] a nakonec pak pouze ty osoby, které mají věk v rozpětí 0-18 a 65+[^3].
+2.  Vyber pouze hodnoty pohlaví `žena`, ty kde `vira` je `Jedi`, `Sith` a nebo začíná na `pasta`[^3] a nakonec pak pouze ty osoby, které mají věk v rozpětí 0-18 a 65+[^4].
 
 3.  Vyber pouze hodnoty pro celý stát, tedy ty, které mají ve sloupci `oblast` hodnotu `Česká republika`.
 
@@ -775,9 +777,9 @@ Proved na souboru `census.csv` následující změny:
 
 6.  Spočítej pro každý kraj průměrný věk pro všechna náboženství.
 
-[^2]: Něco podobného jsme prováděli u funkce `select`. Existuje nějaká funkce z `base`, která lze použít?
+[^3]: Něco podobného jsme prováděli u funkce `select`. Existuje nějaká funkce z `base`, která lze použít?
 
-[^3]: Jako vždy, StackOverflow a podobná uživatelská fóra jsou vašim nejlepším přítelem. Malá nápověda: k manipulaci sloupce `vek` můžete použít například jednu jednoduchou funkci z balíčku `readr`. Pokud nebudete vůbec vědět jak dál, řekněte si o nápovědu ;\].
+[^4]: Jako vždy, StackOverflow a podobná uživatelská fóra jsou vašim nejlepším přítelem. Malá nápověda: k manipulaci sloupce `vek` můžete použít například jednu jednoduchou funkci z balíčku `readr`. Pokud nebudete vůbec vědět jak dál, řekněte si o nápovědu ;\].
 
 ------------------------------------------------------------------------
 
@@ -919,9 +921,7 @@ Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [
 
 ------------------------------------------------------------------------
 
-## Tipy navíc
-
-**Budou doplněny během dneška.**
+## Tipy navíc pro samostudium
 
 ### Změna pořadí sloupců
 
@@ -930,12 +930,15 @@ Co kdybychom chtěli mít sloupce na jiné pozici, než jsou v nahraném dataset
 Použijeme k tomu funkci `dplyr::relocate`.
 
 ```{r}
-dfTipy <- read.delim("intro_data.txt")
+dfTipy <- read.delim("intro_data.txt",
+                     na.strings = c("", "NA"))
 dfTipy <- dfTipy[,1:7] #ukazkovy dataset
+str(dfTipy)
 
 dfTipy <- dfTipy %>% relocate(No:No_sub, .before = Sex)
 dfTipy <- dfTipy %>% relocate(Sex, .after = Age)
 dfTipy <- dfTipy %>% relocate(Side, .after = last_col())
+head(dfTipy)
 ```
 
 ------------------------------------------------------------------------
@@ -950,8 +953,6 @@ dfTipy %>% arrange(desc(Age)) #sestupne
 ```
 
 **Co když ale máme ve sloupci více stejných hodnot?** Můžeme si určit další sloupec, dle kterého by se mělo filtrovat?
-
-------------------------------------------------------------------------
 
 Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat, si můžeme vytvořit opravdu podrobně seřazený data frame.
 
@@ -968,3 +969,80 @@ dfTipy %>% arrange(Age, Length_cl)
 Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než `read.csv` v základním R.
 
 ------------------------------------------------------------------------
+
+### Varianta indexování s pipe
+
+Jedním z míst, kde můžete narazit na potenciální problémy s používání pipe, je indexace.
+
+V sekci [Specifikování argumentu kam má pipe vyústit] jsme si sice již ukázali, že pomocí placeholderu si **můžeme určit místo vyústění pipe i mimo první argument funkce,** ale nejedná se o úplně nepřehlednější řešení.
+
+```{r}
+dfTipy %>%
+  .$No_sub %>%
+  head()
+```
+
+Je možné proto **využít funkce `pull`**.
+
+```{r}
+dfTipy %>%
+  pull(No_sub) %>%
+  head()
+```
+
+------------------------------------------------------------------------
+
+### Změna specifických hodnot uvnitř data frame
+
+Může se stát, že potřebujeme změnit specifické hodnoty uvnitř data frame podle určitých podmínek. K tomu můžeme použít kombinaci funkcí `mutate` a `replace`.
+
+```{r}
+head(dfTipy)
+dfTipy <- dfTipy %>% 
+  mutate(Sex = replace(Sex, Sex == "female", "žena"),
+         Age = replace(Age, Age %in% 0:40, "pod 40"))
+head(dfTipy)
+```
+
+Další možností je funkce `ifelse`.
+
+```{r}
+dfTipy <- dfTipy %>%
+  mutate(Side = ifelse(Side == "sin", "leva", "prava"))
+head(dfTipy)
+```
+
+V obou případech **funkce `mutate` nahrazuje stávající obsah daného sloupce novými hodnotami, které jsou výsledky použitých funkcí**.
+
+------------------------------------------------------------------------
+
+### Vyhledávání pomocí specifického textu
+
+Dejme tomu, že pracujete s datasetem ke kterému nemáte mnoho informací, a **chcete zjistit, zda se v něm nachází hodnota obsahující určitý text.**
+
+Přesně k tomuto je určena funkce `grepl`.
+
+Dejme tomu, že chceme zjisti, kolik bouří v datasetu `storms` má jméno obsahující text `"MAR"`.
+
+```{r}
+storms$name[grepl("MAR", toupper(storms$name))] %>% unique()
+```
+
+Funkce `grepl` zjistí, zda se uvedený text (MAR) nachází v objektu hodnot (hodnoty sloupce `name`).
+
+**Jelikož R je case sensitive, doporučuji vždy vyhledávat pomocí velkých písmen, a převést si na ně i hodnoty, ze kterých se vyhledává.** Pojďme se podívat na to, co by se stalo, kdybychom tak neprovedli.
+
+```{r}
+storms$name[grepl("mar", storms$name)] %>% unique()
+```
+
+Funkce by nám nenašla žádnou z jiných bouří, které tyto písmena obsahují, protože se jedná o jména obsahující písmena "m" "a" "r" v jejich upper case podobě.
+
+```{r}
+#TRUE/FALSE zda hodnota obsahuje "MAR"
+grepl("MAR", toupper(storms$name))
+#vyber hodnoty z name pro ktere je podminka TRUE
+storms$name[grepl("MAR", toupper(storms$name))] 
+storms$name[grepl("MAR", toupper(storms$name))] %>%
+  unique() #kazde jmeno jen jednou
+```

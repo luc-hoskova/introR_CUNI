@@ -75,9 +75,6 @@ census <- census %>%
 census <- census %>%
   select(hodnota, pohlavi, vek, vira)
 
-census <- census %>%
-  arrange(desc(vek))
-
 jedi <- census %>% filter(vira == "Jedi",
                           hodnota > 0)
 max(jedi$vek)
@@ -112,8 +109,7 @@ census2 <- census2 %>%
     vek %in% 0:18 | vek >= 65,
     oblast == "Česká republika",
     hodnota > 0) %>%
-  select(hodnota, pohlavi, vek, vira) %>%
-  arrange(desc(vek))
+  select(hodnota, pohlavi, vek, vira)
 
 census2 %>% group_by(vira) %>%
   summarize(nejstarsiVerici = max(vek), prumernyVek = mean(vek))
