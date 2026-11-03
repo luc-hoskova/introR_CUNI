@@ -389,14 +389,20 @@ pocetBoduB_hodnoceni[pocetBoduB < 75] <- "dobrý"
 pocetBoduB_hodnoceni[pocetBoduB < 50] <- "nedostatečný"
 pocetBoduB_hodnoceni[is.na(pocetBoduB)] <- NA
 
-#dodelat C
+pocetBoduC_hodnoceni <- pocetBoduC
+
+pocetBoduC_hodnoceni[] <- "výborný"
+pocetBoduC_hodnoceni[pocetBoduC < 90] <- "velmi dobrý"
+pocetBoduC_hodnoceni[pocetBoduC < 75] <- "dobrý"
+pocetBoduC_hodnoceni[pocetBoduC < 50] <- "nedostatečný"
+pocetBoduC_hodnoceni[is.na(pocetBoduC)] <- NA
 ```
 
 Nebo
 
 ```{r}
 hodnoceni <- function(x) {
-  ifelse(is.na(x), NA,
+  ifelse(is.na(x), "neklasifikováno",
     ifelse(x < 50, "nedostatečný",
       ifelse(x < 75, "dobrý",
         ifelse(x < 90, "velmi dobrý","výborný"))))
@@ -408,7 +414,8 @@ vysledekA <- pocetBoduA %>%
 vysledekB <- pocetBoduB %>%
   mutate(across(everything(), hodnoceni)); vysledekB
 
-#dodelat C
+vysledekC <- pocetBoduC %>%
+  mutate(across(everything(), hodnoceni)); vysledekC
 ```
 
 # if else

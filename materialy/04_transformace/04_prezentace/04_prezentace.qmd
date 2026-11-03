@@ -960,6 +960,12 @@ Přidáváním dalších a dalších sloupců, dle kterých se může srovnávat
 dfTipy %>% arrange(Age, Length_cl)
 ```
 
+::: callout-important
+## Arrange se aplikuje pouze na data frame
+
+Pokud chcete seřadit hodnoty například ve vektoru, použijte k tome funkci `sort` z baseR.
+:::
+
 ------------------------------------------------------------------------
 
 ### Načítání velkých souborů
@@ -967,12 +973,6 @@ dfTipy %>% arrange(Age, Length_cl)
 **V balíčku `readr` se nachází taktéž funkce `read_csv`.**
 
 Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než `read.csv` v základním R.
-
-::: callout-important
-## Arrange se aplikuje pouze na data frame
-
-Pokud chcete seřadit hodnoty například ve vektoru, použijte k tome funkci `sort` z baseR.
-:::
 
 ------------------------------------------------------------------------
 
