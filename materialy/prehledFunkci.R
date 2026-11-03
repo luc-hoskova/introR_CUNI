@@ -46,7 +46,9 @@ tolower() #zmeni hodnoty textu na lower case
 toupper() #zmeni hodnoty textu na upper case
 
 #3. lekce
+any() #nachazi se kdekoliv v objektu urcita hodnota?
 dim() #dimenze objektu
+dplyr::distinct() #vyber jedinecne radky/hodnoty z data frame
 dplyr::filter() #vyfiltruj hodnoty dle podminek
 is.array() #je objekt array
 is.na() #je hodnota NA?

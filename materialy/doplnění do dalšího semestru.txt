@@ -1,0 +1,2 @@
+4. lekce
+- musí obsahovat group_by a teoreticky u summarize

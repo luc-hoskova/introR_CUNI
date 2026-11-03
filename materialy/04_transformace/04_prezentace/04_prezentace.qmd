@@ -968,6 +968,12 @@ dfTipy %>% arrange(Age, Length_cl)
 
 Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než `read.csv` v základním R.
 
+::: callout-important
+## Arrange se aplikuje pouze na data frame
+
+Pokud chcete seřadit hodnoty například ve vektoru, použijte k tome funkci `sort` z baseR.
+:::
+
 ------------------------------------------------------------------------
 
 ### Varianta indexování s pipe
@@ -1004,7 +1010,40 @@ dfTipy <- dfTipy %>%
 head(dfTipy)
 ```
 
-Další možností je funkce `ifelse`.
+::: callout-warning
+## Funkce `replace` nefunguje u faktorů
+
+Problémem při používání této funkce u faktorů je, že faktor můžete nahradit pouze jiným již dostupným faktorem.
+
+```{webr-r}
+#| output: true
+
+levels(iris$Species) #jake faktory mame k dispozici?
+
+#zmena na jiz existujici vektor
+iris %>%
+  mutate(Species = replace(Species, Species == "setosa", "versicolor")) %>%
+  distinct(Species)
+
+#zmena na jinou hodnotu
+iris %>%
+  mutate(Species = replace(Species, Species == "setosa", "beachhead iris"))
+```
+
+Pokud trváme na použití funkce `replace`, tak je potřeba objekt nejdříve převést na charakter.
+
+```{r}
+iris %>%
+  mutate(Species = as.character(Species),
+         Species = replace(Species, Species == "setosa", "beachhead iris"),
+         Species = as.factor(Species)) %>%
+  distinct(Species)
+```
+:::
+
+Další možností je funkce `ifelse`[^5].
+
+[^5]: K funkci `ifelse` a jiným možnostem změn hodnot si řekneme více v příští lekci.
 
 ```{r}
 dfTipy <- dfTipy %>%

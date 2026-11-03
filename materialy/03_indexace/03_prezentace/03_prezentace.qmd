@@ -150,13 +150,15 @@ c(3, 2, 7, 45, 2, 6, 11, 7,
     nlevels(seznam2) #a co kdyz si to chceme napsat dedikovanou funkci?
     ```
 
-3.  Můžeme k tomu ale použít i specifickou funkci `unique.`
+3.  Můžeme k tomu ale použít i specifickou funkci `unique`[^1]`.`
 
     ```{r}
     unique(seznam) #vyber pouze unikatni hodnoty
     length(unique(seznam)) #kolik jich je?
     ```
 :::
+
+[^1]: Pro výběr přímo řádků/hodnot z data frame můžeme také použít funkci popsanou v [Unikátní hodnoty v data frame].
 
 ------------------------------------------------------------------------
 
@@ -425,9 +427,9 @@ matice["B", 3] #radek B, treti sloupec
 matice[,c("a", "c", "d")] #vsechny radky a sloupce a, c, d
 ```
 
-**Při výběru hodnot z matice používáme totožné principy jako při výběru z vektorů; jen se musí pro výběr definovat více dimenzí.**[^1]
+**Při výběru hodnot z matice používáme totožné principy jako při výběru z vektorů; jen se musí pro výběr definovat více dimenzí.**[^2]
 
-[^1]: Při výběru pouze pomocí jedné numerické hodnoty se matice bude chovat jako vektor stočený cikcak. Vyzkoušejte si to ;)
+[^2]: Při výběru pouze pomocí jedné numerické hodnoty se matice bude chovat jako vektor stočený cikcak. Vyzkoušejte si to ;)
 
 ------------------------------------------------------------------------
 
@@ -1240,3 +1242,35 @@ V příští lekci budeme pracovat s nahráváním dat a s projekty, proto je op
 **Bonus:** Pokuste se zjistit, jak si v nápovědě můžete najít seznam nahraných datasetů v R (`iris`, `cars`, `dplyr::starwars` a jiné)
 
 Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+
+## Tipy navíc pro samostudium
+
+### Vyhledání hodnoty v celém datasetu
+
+Co kdybychom chtěli zjisti, zda se určitá hodnota nachází kdekoliv v datasetu?
+
+Toho můžeme dosáhnout pomocí několika funkcí.
+
+```{r}
+any(iris == 1) #je v datasetu iris hodnota 1?
+which(iris == 1, arr.ind = TRUE) #kde se nachazi?
+iris[23,3] #kontrola
+```
+
+------------------------------------------------------------------------
+
+### Unikátní hodnoty v data frame
+
+Funkce `unique` nám sice umí vrátit jedinečné hodnoty, musíme přitom ale pracovat čistě s vektorem.
+
+```{r}
+unique(iris$Species)
+```
+
+Nešlo by to provést tak, aby se nám vrátil zase data frame?
+
+K tomuto můžeme použít funkci `dplyr::distinct()`.
+
+```{r}
+dplyr::distinct(iris, Species)
+```

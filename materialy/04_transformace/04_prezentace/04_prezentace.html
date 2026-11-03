@@ -2167,7 +2167,7 @@ min-height: 500px;
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+  globalThis.qwebrCellDetails = [{"code":"","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"levels(iris$Species) #jake faktory mame k dispozici?\n\n#zmena na jiz existujici vektor\niris %>%\n  mutate(Species = replace(Species, Species == \"setosa\", \"versicolor\")) %>%\n  distinct(Species)\n\n#zmena na jinou hodnotu\niris %>%\n  mutate(Species = replace(Species, Species == \"setosa\", \"beachhead iris\"))","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script>
   <script type="module">
@@ -6143,6 +6143,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 id="načítání-velkých-souborů">Načítání velkých souborů</h3>
 <p><strong>V balíčku <code>readr</code> se nachází taktéž funkce <code>read_csv</code>.</strong></p>
 <p>Tu se hodí používat, pokud nahráváte objemnější datasety; běží 2-3x rychleji než <code>read.csv</code> v základním R.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Arrange se aplikuje pouze na data frame</strong></p>
+</div>
+<div class="callout-content">
+<p>Pokud chcete seřadit hodnoty například ve vektoru, použijte k tome funkci <code>sort</code> z baseR.</p>
+</div>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
@@ -6167,7 +6180,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section class="slide level2 scrollable">
 
 <h3 id="změna-specifických-hodnot-uvnitř-data-frame">Změna specifických hodnot uvnitř data frame</h3>
 <p>Může se stát, že potřebujeme změnit specifické hodnoty uvnitř data frame podle určitých podmínek. K tomu můžeme použít kombinaci funkcí <code>mutate</code> a <code>replace</code>.</p>
@@ -6196,11 +6209,40 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 6  6 0     26 pod 40 žena        NA  sin</code></pre>
 </div>
 </div>
-<p>Další možností je funkce <code>ifelse</code>.</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Funkce <code>replace</code> nefunguje u faktorů</strong></p>
+</div>
+<div class="callout-content">
+<p>Problémem při používání této funkce u faktorů je, že faktor můžete nahradit pouze jiným již dostupným faktorem.</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Pokud trváme na použití funkce <code>replace</code>, tak je potřeba objekt nejdříve převést na charakter.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href aria-label="1"></a>dfTipy <span class="ot">&lt;-</span> dfTipy <span class="sc">%&gt;%</span></span>
-<span id="cb136-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Side =</span> <span class="fu">ifelse</span>(Side <span class="sc">==</span> <span class="st">&quot;sin&quot;</span>, <span class="st">&quot;leva&quot;</span>, <span class="st">&quot;prava&quot;</span>))</span>
-<span id="cb136-3"><a href aria-label="3"></a><span class="fu">head</span>(dfTipy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href aria-label="1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb136-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">as.character</span>(Species),</span>
+<span id="cb136-3"><a href aria-label="3"></a>         <span class="at">Species =</span> <span class="fu">replace</span>(Species, Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;beachhead iris&quot;</span>),</span>
+<span id="cb136-4"><a href aria-label="4"></a>         <span class="at">Species =</span> <span class="fu">as.factor</span>(Species)) <span class="sc">%&gt;%</span></span>
+<span id="cb136-5"><a href aria-label="5"></a>  <span class="fu">distinct</span>(Species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Species
+1 beachhead iris
+2     versicolor
+3      virginica</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Další možností je funkce <code>ifelse</code><sup>1</sup>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href aria-label="1"></a>dfTipy <span class="ot">&lt;-</span> dfTipy <span class="sc">%&gt;%</span></span>
+<span id="cb138-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Side =</span> <span class="fu">ifelse</span>(Side <span class="sc">==</span> <span class="st">&quot;sin&quot;</span>, <span class="st">&quot;leva&quot;</span>, <span class="st">&quot;prava&quot;</span>))</span>
+<span id="cb138-3"><a href aria-label="3"></a><span class="fu">head</span>(dfTipy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  No D No_sub    Age  Sex Length_cl Side
 1  1 1      1   &lt;NA&gt; žena        NA leva
@@ -6212,7 +6254,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <p>V obou případech <strong>funkce <code>mutate</code> nahrazuje stávající obsah daného sloupce novými hodnotami, které jsou výsledky použitých funkcí</strong>.</p>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>K funkci <code>ifelse</code> a jiným možnostem změn hodnot si řekneme více v příští lekci.</p></li></ol></aside></section>
 <section class="slide level2">
 
 <h3 id="vyhledávání-pomocí-specifického-textu">Vyhledávání pomocí specifického textu</h3>
@@ -6220,7 +6262,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Přesně k tomuto je určena funkce <code>grepl</code>.</p>
 <p>Dejme tomu, že chceme zjisti, kolik bouří v datasetu <code>storms</code> má jméno obsahující text <code>&quot;MAR&quot;</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href aria-label="1"></a>storms<span class="sc">$</span>name[<span class="fu">grepl</span>(<span class="st">&quot;MAR&quot;</span>, <span class="fu">toupper</span>(storms<span class="sc">$</span>name))] <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href aria-label="1"></a>storms<span class="sc">$</span>name[<span class="fu">grepl</span>(<span class="st">&quot;MAR&quot;</span>, <span class="fu">toupper</span>(storms<span class="sc">$</span>name))] <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Marco&quot;   &quot;Marilyn&quot; &quot;Maria&quot;   &quot;Omar&quot;    &quot;Martin&quot;  &quot;Margot&quot; </code></pre>
 </div>
@@ -6228,15 +6270,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Funkce <code>grepl</code> zjistí, zda se uvedený text (MAR) nachází v objektu hodnot (hodnoty sloupce <code>name</code>).</p>
 <p><strong>Jelikož R je case sensitive, doporučuji vždy vyhledávat pomocí velkých písmen, a převést si na ně i hodnoty, ze kterých se vyhledává.</strong> Pojďme se podívat na to, co by se stalo, kdybychom tak neprovedli.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href aria-label="1"></a>storms<span class="sc">$</span>name[<span class="fu">grepl</span>(<span class="st">&quot;mar&quot;</span>, storms<span class="sc">$</span>name)] <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href aria-label="1"></a>storms<span class="sc">$</span>name[<span class="fu">grepl</span>(<span class="st">&quot;mar&quot;</span>, storms<span class="sc">$</span>name)] <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Omar&quot;</code></pre>
 </div>
 </div>
 <p>Funkce by nám nenašla žádnou z jiných bouří, které tyto písmena obsahují, protože se jedná o jména obsahující písmena “m” “a” “r” v jejich upper case podobě.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href aria-label="1"></a><span class="co">#TRUE/FALSE zda hodnota obsahuje &quot;MAR&quot;</span></span>
-<span id="cb142-2"><a href aria-label="2"></a><span class="fu">grepl</span>(<span class="st">&quot;MAR&quot;</span>, <span class="fu">toupper</span>(storms<span class="sc">$</span>name))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href aria-label="1"></a><span class="co">#TRUE/FALSE zda hodnota obsahuje &quot;MAR&quot;</span></span>
+<span id="cb144-2"><a href aria-label="2"></a><span class="fu">grepl</span>(<span class="st">&quot;MAR&quot;</span>, <span class="fu">toupper</span>(storms<span class="sc">$</span>name))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
    [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -7971,8 +8013,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 [20761] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 [20773] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href aria-label="1"></a><span class="co">#vyber hodnoty z name pro ktere je podminka TRUE</span></span>
-<span id="cb144-2"><a href aria-label="2"></a>storms<span class="sc">$</span>name[<span class="fu">grepl</span>(<span class="st">&quot;MAR&quot;</span>, <span class="fu">toupper</span>(storms<span class="sc">$</span>name))] </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href aria-label="1"></a><span class="co">#vyber hodnoty z name pro ktere je podminka TRUE</span></span>
+<span id="cb146-2"><a href aria-label="2"></a>storms<span class="sc">$</span>name[<span class="fu">grepl</span>(<span class="st">&quot;MAR&quot;</span>, <span class="fu">toupper</span>(storms<span class="sc">$</span>name))] </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;  
   [8] &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;   &quot;Marco&quot;  
@@ -8042,8 +8084,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 [456] &quot;Margot&quot;  &quot;Margot&quot;  &quot;Margot&quot;  &quot;Margot&quot;  &quot;Margot&quot;  &quot;Margot&quot;  &quot;Margot&quot; 
 [463] &quot;Margot&quot;  &quot;Margot&quot;  &quot;Margot&quot;  &quot;Margot&quot; </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href aria-label="1"></a>storms<span class="sc">$</span>name[<span class="fu">grepl</span>(<span class="st">&quot;MAR&quot;</span>, <span class="fu">toupper</span>(storms<span class="sc">$</span>name))] <span class="sc">%&gt;%</span></span>
-<span id="cb146-2"><a href aria-label="2"></a>  <span class="fu">unique</span>() <span class="co">#kazde jmeno jen jednou</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href aria-label="1"></a>storms<span class="sc">$</span>name[<span class="fu">grepl</span>(<span class="st">&quot;MAR&quot;</span>, <span class="fu">toupper</span>(storms<span class="sc">$</span>name))] <span class="sc">%&gt;%</span></span>
+<span id="cb148-2"><a href aria-label="2"></a>  <span class="fu">unique</span>() <span class="co">#kazde jmeno jen jednou</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Marco&quot;   &quot;Marilyn&quot; &quot;Maria&quot;   &quot;Omar&quot;    &quot;Martin&quot;  &quot;Margot&quot; </code></pre>
 </div>

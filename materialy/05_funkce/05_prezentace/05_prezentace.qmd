@@ -27,13 +27,16 @@ execute:
 ::: incremental
 - opakování z minulé hodiny
 - kontrola domácího úkolu
-- pipes
-- nahrávání dat
-- transformace dat
+- co je to programování v R?
+- `if ... else`
+- funkce `ifelse`
+- cykly
+- rodina `apply` funkcí
   - úprava jmen sloupců
   - chybějící hodnoty
   - mutace a řazení podle jednotlivých hodnot
   - vytváření sloupců
+- tvorba vlastní funkce
 :::
 
 ------------------------------------------------------------------------
@@ -48,7 +51,7 @@ library(tidyverse)
 
 ### Úloha 1
 
-Najděte specifickou funkci v balíčku dplyr, která umožňuji přepisování hodnot na `NA`.
+**Najděte specifickou funkci v balíčku dplyr, která umožňuji přepisování hodnot na `NA`.**
 
 ::: fragment
 Funkce `na_if`.
@@ -66,66 +69,54 @@ dplyr::na_if(x, y)
 
 ### Úloha 2
 
-Načti si dataset [`typBydleni.csv`](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/typBydleni.csv).
+**Načti si dataset [`typBydleni.csv`](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/typBydleni.csv).**
+
+```         
+1.  Kolik osob ve věku 18-26 včetně v Jihomoravském kraji jsou evidováni jako osoby bez domova, a jakou procentuální část z nich tvoří muži a jakou ženy.
+
+2.  Který kraj má nejmenší počet obyvatel žijících v ubytovacích zařízení?
+
+3.  Jaký je medián věku osoby bez domova v Praze, a jaký je v celé ČR?
+
+4.  Jaký je nejčastější typ ubytování osob pod 18 let v ČR?
+
+5.  O kolik více seniorů (65+ let) bez domova žije v Libereckém než v Moravskoslezském kraji či naopak?
+```
 
 ::: fragment
 Načteme a projdeme si dataset.
 
 ```{r}
-typBydleni <- read.csv("C:/Users/hoskovalucie2/introR_CUNI/materialy/04_transformace/04_prezentace/typBydleni.csv",
+library(tidyverse)
+typBydleni <- read.csv("typBydleni.csv",
                        stringsAsFactors = TRUE,
                        na.strings = "")
 str(typBydleni)
 
 levels(typBydleni$bydleni_txt)
-levels(typBydleni$uzemi_txt) #pozor, vidime ze s Prahou to nebude tak jednoduche
+levels(typBydleni$uzemi_txt) #pozor, vidime ze s Prahou to nebude tak jednoduche - budeme si muset zjisit hodnoty podle ciselniku
 ```
 :::
 
 ::: fragment
 Upravme si dataframe tak, abychom s ním mohli pracovat.
-```{r}
-data <- typBydleni %>% rename(pohlavi = pohlavi_txt,
-                              uzemi = uzemi_txt,
-                              vek = vek_txt,
-                              bydleni = bydleni_txt) %>%
-  mutate(vek = parse_number(as.character(vek)))
-```
-:::
-
-::: fragment
-Podívejme se, jakou verzi Prahy bychom měli použít.
 
 ```{r}
-data %>% filter(uzemi_cis == 97) %>%
-  pull(uzemi) %>%
-  unique() #97 zjistuje celou republiku
-
-data %>% filter(uzemi_cis == 99) %>%
-  pull(uzemi) %>%
-  unique() #99 zjistuje casti republiky
-
-data %>% filter(uzemi_cis == 100) %>%
-  pull(uzemi) %>%
-  unique() #100 zjistuje kraje, pracujeme tedy s timto
-```
-:::
-
-::: fragment
-Upravíme si podle toho dataset podle toho, s čím budeme pracovat.
-```{r}
-data <- data %>%
-  filter(uzemi_cis == 100) %>%
-  select(hodnota, pohlavi, uzemi, bydleni, vek)
-
-head(data)
+data <- typBydleni %>%
+  rename(pohlavi = pohlavi_txt,
+         uzemi = uzemi_txt,
+         vek = vek_txt,
+         bydleni = bydleni_txt) %>%
+  mutate(vek = parse_number(as.character(vek))) %>%
+  select(hodnota, pohlavi, uzemi, bydleni, vek, uzemi_cis)
 ```
 :::
 
 ------------------------------------------------------------------------
 
 ### 2.1
-Kolik osob ve věku 18-26 včetně v Jihomoravském kraji jsou evidováni jako osoby bez domova, a jakou procentuální část z nich tvoří muži a jakou ženy.
+
+**Kolik osob ve věku 18-26 včetně v Jihomoravském kraji jsou evidováni jako osoby bez domova, a jakou procentuální část z nich tvoří muži a jakou ženy.**
 
 ::: fragment
 ```{r}
@@ -158,59 +149,174 @@ sum(data2.1 %>%
 ------------------------------------------------------------------------
 
 ### 2.2
-Který kraj má nejmenší počet obyvatel žijících v ubytovacích zařízení?
+
+**Který kraj má nejmenší počet obyvatel žijících v ubytovacích zařízení?**
 
 ::: fragment
+Nejdříve si potřebujeme vybrat všechny hodnoty z `uzemi`, které jsou kraj. Jak na to?
+
+```{r}
+data %>%
+  filter(grepl("kraj", uzemi)) %>%
+  distinct(uzemi)
+```
+
+Máme tady všechny kraje? Nechybí nám nějaký?
+:::
+
+::: fragment
+Ve výběru nám chybí Praha, jelikož ta v názvu nemá kraj. K výběru proto použijeme jinou hodnotu - a to výběrem kódu pro kraj z číselníku.
+
+```{r}
+#jake hodnoty v ciselniku ma specificky kraj?
+data %>% filter(grepl("kraj", uzemi)) %>%
+  pull(uzemi_cis) %>%
+  unique() #100
+```
+
+A ověření, ze kterého zjistíme i kterou Prahu máme použít:
+
+```{r}
+data %>%
+  filter(uzemi_cis == 100) %>%
+  distinct(uzemi)
+```
+:::
+
+::: fragment
+Nyní si tedy můžeme spočítat, který kraj splňuje dané podmínky.
+
+```{r}
+data %>%
+  filter(uzemi_cis == 100,
+         bydleni == "Osoby žijící v ubytovacím zařízení") %>%
+  group_by(uzemi) %>%
+  summarise(pocet = sum(hodnota)) %>%
+  arrange(pocet) %>%
+  head(1)
+```
+:::
+
+::: fragment
+Další možností zjištění kraje s nejnižší hodnotou je použití funkce `dplyr::slice_min`.
+
+```{r}
+data %>%
+  filter(uzemi_cis == 100,
+         bydleni == "Osoby žijící v ubytovacím zařízení") %>%
+  group_by(uzemi) %>%
+  summarise(pocet = sum(hodnota)) %>%
+  slice_min(pocet) #fce vybere radek s nejnizsi hodnotou
+```
 :::
 
 ------------------------------------------------------------------------
 
 ### 2.3
-Jaký je medián věku osoby bez domova v Praze, a jaký je v celé ČR?
+
+**Jaký je medián věku osoby bez domova v Praze, a jaký je v celé ČR?**
 
 ::: fragment
+Pro snadnější manipulaci si vytvoříme dataset pouze s Prahou a lidmi v hledaném typu ubytování.
+
 ```{r}
-
+praha <- data %>% filter(uzemi == "Hlavní město Praha",
+                         bydleni == "Bezdomovci")
 ```
+:::
 
+::: fragment
+Pro správný výpočet mediánu musíme pracovat ne pouze s výpočtem mediánu ze sloupce `vek`, ale s vektorem, který v sobě budou mít každou hodnotu ze sloupce `vek` zopakovanou tolikrát, kolikrát je ve sloupci `hodnota`.
+
+```{r}
+median(rep(praha$vek, praha$hodnota)) #51
+```
+:::
+
+::: fragment
+A nyní si vypočítáme medián pro celou ČR - taktéž můžeme použít možnosti vytvoření si subsetu.
+
+```{r}
+cr <- data %>% filter(uzemi == "Česká republika",
+                bydleni == "Bezdomovci")
+
+median(rep(cr$vek, cr$hodnota)) #50
+```
 :::
 
 ------------------------------------------------------------------------
 
 ### 2.4
-Jaký je nejčastější typ ubytování osob pod 18 let v ČR?
+
+**Jaký je nejčastější typ ubytování osob pod 18 let v ČR?**
 
 ::: fragment
+Zjistíme si, kolik dětí je v každém typu bydlení.
+
 ```{r}
 levels(data$bydleni)
 
 detiBez <- sum(data %>%
       filter(vek < 18,
-             bydleni == "Bezdomovci") %>%
+             bydleni == "Bezdomovci",
+             uzemi == "Česká republika") %>%
       pull(hodnota)); detiBez #74
 
 detiByt <- sum(data %>%
       filter(vek < 18,
-             bydleni == "Byt") %>%
+             bydleni == "Byt",
+             uzemi == "Česká republika") %>%
       pull(hodnota)); detiByt #3900866
 
 detiJine <- sum(data %>%
       filter(vek < 18,
-             bydleni == "Osoby žijící v jiných obydlích") %>%
+             bydleni == "Osoby žijící v jiných obydlích",
+             uzemi == "Česká republika") %>%
       pull(hodnota)); detiJine #55120
 
 detiUbyt <- sum(data %>%
       filter(vek < 18,
-             bydleni == "Osoby žijící v ubytovacím zařízení") %>%
+             bydleni == "Osoby žijící v ubytovacím zařízení",
+             uzemi == "Česká republika") %>%
       pull(hodnota)); detiUbyt #26042
 ```
+:::
 
+::: fragment
+Vidíme, že nejvíc dětí bydlí v bytě, ale kdybychom si to chtěli opravdu potvrdit...
+
+```{r}
+deti <- c(
+  Bezdomovci = detiBez,
+  Byt = detiByt,
+  Jine = detiJine,
+  Ubytovani = detiUbyt)
+
+deti %>%
+  sort(decreasing = TRUE) %>%
+  .[1] #Byt 3900866
+```
+:::
+
+::: fragment
+Samozřejmě to můžeme udělat jednodušeji, a to pomocí `group_by`.
+
+```{r}
+data %>%
+  filter(vek < 18,
+         uzemi == "Česká republika",
+         bydleni != "Obyvatelstvo podle způsobu bydlení celkem (kromě bezdomovců)") %>%
+  group_by(bydleni) %>%
+  summarise(pocet = sum(hodnota)) %>%
+  slice_max(pocet) #Byt 3900866
+```
 :::
 
 ------------------------------------------------------------------------
 
 ### 2.5
-O kolik více seniorů (65+ let) bez domova žije v Libereckém než v Moravskoslezském kraji či naopak?
+
+**O kolik více seniorů (65+ let) bez domova žije v Libereckém než v Moravskoslezském kraji či naopak?**
 
 ::: fragment
 ```{r}
@@ -229,5 +335,195 @@ sM <- sum(data %>%
 #jaky je rozdil v poctu osob bez domova meti libereckym a moravskoslezskym krajem
 sM - sL
 ```
-
 :::
+
+------------------------------------------------------------------------
+
+# Programování v R
+
+Programování v R neznamená pouze vytváření si vlastních funkcí a balíčků, ale i **automatizaci opakujících se činností**.
+
+Dejme tomu, že máme pro každou třídu v ročníku tabulku s počtem bodů:
+
+```{r}
+#| echo: false
+pocetBoduA <- data.frame(Martin = c(20, 55, 46, NA, 30),
+                        Ludmila = c(80, 95, 12, 70, 69),
+                        Jana = c(NA, NA, 5, 12, 3)); pocetBoduA
+
+pocetBoduB <- data.frame(Kvido = c(18, 65, NA, NA, NA),
+                       Saša = c(NA, 55, NA, 23, 79),
+                       Ondra = c(100, 98, 99, 100, 95)); pocetBoduB
+
+pocetBoduC <- data.frame(Ivan = c(42, 67, 69, NA, NA),
+                         Oto = c(68, 83, 92, 88, 79),
+                         Marie = c(NA, NA, 5, 6, 2)); pocetBoduC
+```
+
+Chceme si převést počet bodů na známky podle následujícího klíče:
+
+| počet bodů | známka       |
+|------------|--------------|
+| 100 - 90   | výborný      |
+| 85 - 76    | velmi dobrý  |
+| 75 - 50    | dobrý        |
+| \< 50      | nedostatečné |
+
+Co je jednodušší?
+
+```{r}
+pocetBoduA_hodnoceni <- pocetBoduA
+
+pocetBoduA_hodnoceni[] <- "výborný"
+pocetBoduA_hodnoceni[pocetBoduA < 90] <- "velmi dobrý"
+pocetBoduA_hodnoceni[pocetBoduA < 75] <- "dobrý"
+pocetBoduA_hodnoceni[pocetBoduA < 50] <- "nedostatečný"
+pocetBoduA_hodnoceni[is.na(pocetBoduA)] <- NA
+
+
+pocetBoduB_hodnoceni <- pocetBoduB
+
+pocetBoduB_hodnoceni[] <- "výborný"
+pocetBoduB_hodnoceni[pocetBoduB < 90] <- "velmi dobrý"
+pocetBoduB_hodnoceni[pocetBoduB < 75] <- "dobrý"
+pocetBoduB_hodnoceni[pocetBoduB < 50] <- "nedostatečný"
+pocetBoduB_hodnoceni[is.na(pocetBoduB)] <- NA
+
+#dodelat C
+```
+
+Nebo
+
+```{r}
+hodnoceni <- function(x) {
+  ifelse(is.na(x), NA,
+    ifelse(x < 50, "nedostatečný",
+      ifelse(x < 75, "dobrý",
+        ifelse(x < 90, "velmi dobrý","výborný"))))
+}
+
+vysledekA <- pocetBoduA %>%
+  mutate(across(everything(), hodnoceni)); vysledekA
+
+vysledekB <- pocetBoduB %>%
+  mutate(across(everything(), hodnoceni)); vysledekB
+
+#dodelat C
+```
+
+# if else
+
+FCE RUN_IF
+
+pozor, chceme-li pouzit vektor o delce vetsi nez jedna bude pouzit jen prvni prvek (warning)
+
+```{webr-r}
+x <- c(0,1)
+if (x > 0) {"Kladné číslo"} else
+  if (x < 0) {"Záporné číslo"} else {"Nula"}
+```
+
+ale:
+
+```{r}
+x <- c(-1,0,1,5,-5)
+ifelse(x <= 0,"Podmínka splněna", "Podmínka nesplněna")
+```
+
+# Funkce `ifelse`
+
+Nezapomente, ze prikazy lze vkladat do sebe, priklad: kategorie A mensi jak 0 kategorie B = 0 kategorie C vetsi jak nula
+
+```{r}
+x <- c(-1,0,1,5,-5)
+ifelse(x < 0, "A",ifelse(x > 0, "C", "B"))
+```
+
+nebo
+
+```{r}
+x <- c(-1,0,1,5,-5)
+ifelse(x < 0, "A", ifelse(x == 0, "B", "C"))
+```
+
+vyzkousejte
+
+```{r}
+pokpok <- ifelse(x < 0, "A", ifelse(x == 0, "B", "C")); pokpok
+is(pokpok)
+```
+
+# `for` cyklus
+
+```{r}
+for (i in 1:10) {print(i^2)}
+i
+
+x <- c(-3,-2,-1,0,1,2,3)
+for (i in x) {print(i^2)}
+
+# do for lze vkladat i if ... else cyklus
+x <- data$Age
+for (i in x) {
+  if(i < 12)  print("I") else
+    if(i < 35) print("A") else ("O")
+}
+
+# pozor:
+pok <- for (i in x) {
+  if(i < 12)  print("I") else
+    if(i < 35) print("A") else ("O")
+}
+pok # NULL objekt
+# obdobne:
+pok <- for (i in data$Age) {ifelse(i < 0, "A", ifelse(i == 0, "B", "C"))}
+pok # NULL objekt
+```
+
+# Rodina `apply` funkcí
+
+https://physics.ujep.cz/\~jskvor/UDR/7/#/p%C5%99edstaven%C3%AD-funkc%C3%AD-apply-lapply-sapply-tapply-a-replicate
+
+fce across a everythign z dplyru
+
+# typiy na doma Tvorba vlastních funkcí
+
+https://physics.ujep.cz/\~jskvor/UDR/7/#/definice-vlastn%C3%ADch-funkc%C3%AD
+
+```{r}
+ohodnot <- function(x) {
+
+  if (x < 50) {
+    "nedostatečný"
+  } else if (x < 75) {
+    "dobrý"
+  } else if (x < 90) {
+    "velmi dobrý"
+  } else {
+    "výborný"
+  }
+
+}
+
+sapply(c(20, 65, 80, 95), ohodnot)
+
+#UMI FUNKCE VEKTOROVY PRISTUP?
+```
+
+```{webr-r}
+hodnoceni <- Vectorize(function(x) {
+  if (is.na(x)) {
+    NA
+  } else if (x < 50) {
+    "nedostatečný"
+  } else if (x < 75) {
+    "dobrý"
+  } else if (x < 90) {
+    "velmi dobrý"
+  } else {
+    "výborný"
+  }
+})
+
+vysledek <- hodnoceni(pocetBodu)
+```
