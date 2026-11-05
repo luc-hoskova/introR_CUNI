@@ -20,6 +20,7 @@ execute:
   echo: true
   warning: false
   cache: true
+bibliography: references.bib
 ---
 
 ## Program
@@ -89,12 +90,63 @@ Načteme a projdeme si dataset.
 ```{r}
 library(tidyverse)
 typBydleni <- read.csv("typBydleni.csv",
-                       stringsAsFactors = TRUE,
-                       na.strings = "")
+                       stringsAsFactors = TRUE)
 str(typBydleni)
 
 levels(typBydleni$bydleni_txt)
-levels(typBydleni$uzemi_txt) #pozor, vidime ze s Prahou to nebude tak jednoduche - budeme si muset zjisit hodnoty podle ciselniku
+#pozor, vidime ze s Prahou to nebude tak jednoduche
+  #budeme si muset zjisit hodnoty podle ciselniku
+levels(typBydleni$uzemi_txt) 
+levels(typBydleni$pohlavi_txt) #co je zac ""
+```
+:::
+
+::: fragment
+Podívejme se blíže na sloupec pohlaví, jelikož s ním budeme pracovat. **Co jsou zač řádky s prázdnými hodnotami?**
+
+```{r}
+kontrola <- typBydleni %>%
+  select(hodnota, pohlavi_txt, vek_txt) %>%
+  head(); kontrola
+
+identical(kontrola[1, "hodnota"],
+          sum(kontrola[2:3, "hodnota"]))
+
+identical(kontrola[4, "hodnota"],
+          sum(kontrola[5:6, "hodnota"]))
+```
+
+**Tyto řádky očividně obsahují celkové hodnoty pro obě pohlaví** - to se nám bude hodit!
+:::
+
+::: fragment
+Pořád vám ale říkám, že bychom si to **neměli kontrolovat jen po oku**. Tak si na to rovnou napíšeme funkci ;\].
+
+```{r}
+kontrola_pohlavi <- function(data) {
+  vysledek <- data.frame(
+    radek = integer(),
+    hodnota_celkem = numeric(),
+    soucet_pohlavi = numeric(),
+    shoda = logical()
+  )
+  
+  for (i in 1:(nrow(data) - 2)) {
+    if (data$pohlavi_txt[i] == "") {
+      soucet <- sum(data$hodnota[(i + 1):(i + 2)])
+      vysledek <- rbind(vysledek, data.frame(
+        radek = i,
+        hodnota_celkem = data$hodnota[i],
+        soucet_pohlavi = soucet,
+        shoda = data$hodnota[i] == soucet
+      ))
+    }
+  }
+  return(vysledek)
+}
+
+kontrola_pohlavi(typBydleni) %>%
+  filter(shoda == FALSE)
 ```
 :::
 
@@ -102,13 +154,18 @@ levels(typBydleni$uzemi_txt) #pozor, vidime ze s Prahou to nebude tak jednoduche
 Upravme si dataframe tak, abychom s ním mohli pracovat.
 
 ```{r}
-data <- typBydleni %>%
+#dataset se vsemi moznostmi pohlavi
+dataBydleni <- typBydleni %>%
   rename(pohlavi = pohlavi_txt,
          uzemi = uzemi_txt,
          vek = vek_txt,
          bydleni = bydleni_txt) %>%
   mutate(vek = parse_number(as.character(vek))) %>%
   select(hodnota, pohlavi, uzemi, bydleni, vek, uzemi_cis)
+
+#dataset jenom pro vsechny
+data <- dataBydleni %>%
+  filter(pohlavi == "")
 ```
 :::
 
@@ -120,12 +177,14 @@ data <- typBydleni %>%
 
 ::: fragment
 ```{r}
-data2.1 <- data %>%
+data2.1 <- dataBydleni %>%
   filter(vek %in% 18:26,
          bydleni == "Bezdomovci",
          uzemi == "Jihomoravský kraj")
 
-sum(data2.1$hodnota) #92 jedincu
+celkem2.1 <- sum(data2.1 %>%
+              filter(pohlavi == "") %>%
+              pull(hodnota)) #46 jedincu
 
 muzi2.1 <- sum(data2.1 %>%
               filter(pohlavi == "muž") %>%
@@ -135,14 +194,8 @@ zeny2.1 <- sum(data2.1 %>%
               filter(pohlavi == "žena") %>%
               pull(hodnota)); zeny2.1 #16
 
-muzi2.1 / sum(data2.1$hodnota) * 100 #32.6087 %
-zeny2.1 / sum(data2.1$hodnota) * 100 #17.3913 %
-
-#a jen tak pro zvedavost kolik je NA
-sum(data2.1 %>%
-      filter(is.na(pohlavi)) %>% #proc ne == NA?
-      pull(hodnota)) #46
-
+round(muzi2.1 / celkem2.1 * 100, 2) #65.22 %
+round(zeny2.1 / celkem2.1 * 100, 2) #34.78 %
 ```
 :::
 
@@ -192,8 +245,7 @@ data %>%
          bydleni == "Osoby žijící v ubytovacím zařízení") %>%
   group_by(uzemi) %>%
   summarise(pocet = sum(hodnota)) %>%
-  arrange(pocet) %>%
-  head(1)
+  filter(pocet == min(pocet))
 ```
 :::
 
@@ -260,25 +312,25 @@ detiBez <- sum(data %>%
       filter(vek < 18,
              bydleni == "Bezdomovci",
              uzemi == "Česká republika") %>%
-      pull(hodnota)); detiBez #74
+      pull(hodnota)); detiBez #37
 
 detiByt <- sum(data %>%
       filter(vek < 18,
              bydleni == "Byt",
              uzemi == "Česká republika") %>%
-      pull(hodnota)); detiByt #3900866
+      pull(hodnota)); detiByt #1950433
 
 detiJine <- sum(data %>%
       filter(vek < 18,
              bydleni == "Osoby žijící v jiných obydlích",
              uzemi == "Česká republika") %>%
-      pull(hodnota)); detiJine #55120
+      pull(hodnota)); detiJine #27560
 
 detiUbyt <- sum(data %>%
       filter(vek < 18,
              bydleni == "Osoby žijící v ubytovacím zařízení",
              uzemi == "Česká republika") %>%
-      pull(hodnota)); detiUbyt #26042
+      pull(hodnota)); detiUbyt #13021
 ```
 :::
 
@@ -294,7 +346,7 @@ deti <- c(
 
 deti %>%
   sort(decreasing = TRUE) %>%
-  .[1] #Byt 3900866
+  .[1] #Byt 1950433
 ```
 :::
 
@@ -308,7 +360,7 @@ data %>%
          bydleni != "Obyvatelstvo podle způsobu bydlení celkem (kromě bezdomovců)") %>%
   group_by(bydleni) %>%
   summarise(pocet = sum(hodnota)) %>%
-  slice_max(pocet) #Byt 3900866
+  slice_max(pocet) #Byt 1950433
 ```
 :::
 
@@ -324,13 +376,13 @@ sL <- sum(data %>%
       filter(vek > 64,
              uzemi == "Liberecký kraj",
              bydleni == "Bezdomovci") %>%
-      pull(hodnota)); sL #46
+      pull(hodnota)); sL #23
 
 sM <- sum(data %>%
       filter(vek > 64,
              uzemi == "Moravskoslezský kraj",
              bydleni == "Bezdomovci") %>%
-      pull(hodnota)); sM #154
+      pull(hodnota)); sM #77
 
 #jaky je rozdil v poctu osob bez domova meti libereckym a moravskoslezskym krajem
 sM - sL
@@ -339,14 +391,13 @@ sM - sL
 
 ------------------------------------------------------------------------
 
-# Programování v R
+## Programování v R
 
-Programování v R neznamená pouze vytváření si vlastních funkcí a balíčků, ale i **automatizaci opakujících se činností**.
+Programování v R neznamená pouze vytváření si vlastních funkcí a balíčků, ale i **automatizaci provádění opakujících se činností**.
 
 Dejme tomu, že máme pro každou třídu v ročníku tabulku s počtem bodů:
 
 ```{r}
-#| echo: false
 pocetBoduA <- data.frame(Martin = c(20, 55, 46, NA, 30),
                         Ludmila = c(80, 95, 12, 70, 69),
                         Jana = c(NA, NA, 5, 12, 3)); pocetBoduA
@@ -362,14 +413,17 @@ pocetBoduC <- data.frame(Ivan = c(42, 67, 69, NA, NA),
 
 Chceme si převést počet bodů na známky podle následujícího klíče:
 
-| počet bodů | známka       |
-|------------|--------------|
-| 100 - 90   | výborný      |
-| 85 - 76    | velmi dobrý  |
-| 75 - 50    | dobrý        |
-| \< 50      | nedostatečné |
+| počet bodů | známka          |
+|------------|-----------------|
+| 100 - 90   | výborný         |
+| 85 - 76    | velmi dobrý     |
+| 75 - 50    | dobrý           |
+| \< 50      | nedostatečné    |
+| NA         | neklasifikováno |
 
-Co je jednodušší?
+------------------------------------------------------------------------
+
+**Co je jednodušší? Toto**
 
 ```{r}
 pocetBoduA_hodnoceni <- pocetBoduA
@@ -378,8 +432,8 @@ pocetBoduA_hodnoceni[] <- "výborný"
 pocetBoduA_hodnoceni[pocetBoduA < 90] <- "velmi dobrý"
 pocetBoduA_hodnoceni[pocetBoduA < 75] <- "dobrý"
 pocetBoduA_hodnoceni[pocetBoduA < 50] <- "nedostatečný"
-pocetBoduA_hodnoceni[is.na(pocetBoduA)] <- NA
-
+pocetBoduA_hodnoceni[is.na(pocetBoduA)] <- "neklasifikováno"
+pocetBoduA_hodnoceni
 
 pocetBoduB_hodnoceni <- pocetBoduB
 
@@ -387,7 +441,8 @@ pocetBoduB_hodnoceni[] <- "výborný"
 pocetBoduB_hodnoceni[pocetBoduB < 90] <- "velmi dobrý"
 pocetBoduB_hodnoceni[pocetBoduB < 75] <- "dobrý"
 pocetBoduB_hodnoceni[pocetBoduB < 50] <- "nedostatečný"
-pocetBoduB_hodnoceni[is.na(pocetBoduB)] <- NA
+pocetBoduB_hodnoceni[is.na(pocetBoduB)] <- "neklasifikováno"
+pocetBoduB_hodnoceni
 
 pocetBoduC_hodnoceni <- pocetBoduC
 
@@ -395,17 +450,22 @@ pocetBoduC_hodnoceni[] <- "výborný"
 pocetBoduC_hodnoceni[pocetBoduC < 90] <- "velmi dobrý"
 pocetBoduC_hodnoceni[pocetBoduC < 75] <- "dobrý"
 pocetBoduC_hodnoceni[pocetBoduC < 50] <- "nedostatečný"
-pocetBoduC_hodnoceni[is.na(pocetBoduC)] <- NA
+pocetBoduC_hodnoceni[is.na(pocetBoduC)] <- "neklasifikováno"
+pocetBoduC_hodnoceni
 ```
 
-Nebo
+------------------------------------------------------------------------
+
+**Nebo toto?**
 
 ```{r}
 hodnoceni <- function(x) {
-  ifelse(is.na(x), "neklasifikováno",
-    ifelse(x < 50, "nedostatečný",
-      ifelse(x < 75, "dobrý",
-        ifelse(x < 90, "velmi dobrý","výborný"))))
+  dplyr::case_when(
+    is.na(x) ~ "neklasifikováno",
+    x < 50 ~ "nedostatečný",
+    x < 75 ~ "dobrý",
+    x < 90 ~ "velmi dobrý",
+    TRUE ~ "výborný")
 }
 
 vysledekA <- pocetBoduA %>%
@@ -418,9 +478,180 @@ vysledekC <- pocetBoduC %>%
   mutate(across(everything(), hodnoceni)); vysledekC
 ```
 
-# if else
+------------------------------------------------------------------------
 
-FCE RUN_IF
+**To, co si tady budeme ukazovat je opravdu pouhý úvod a strohý výběr toho, co je dle mého názoru nepojdstatnější znát.**
+
+Budeme se věnovat hlavně tomu, co vám může pomoci urychlit a zjednodušit si analýzu dat.
+
+### Zdroje pro samostrudium
+
+**WICKHAM, Hadley a Garrett GROLEMUND**, 2023. [R for Data Science (2e): Import, Tidy, Transform, Visualize, and Model Data](https://r4ds.hadley.nz/). 2nd Edition. B.m.: O’Reilly Media.
+
+**GROLEMUND, Garrett a Hadley WICKHAM**, 2014. [Hands-On Programming with R: Write Your Own Functions andSimulations](https://rstudio-education.github.io/hopr/). 1st Edition. B.m.: O’Reilly Media.
+
+------------------------------------------------------------------------
+
+## if ... else
+
+> příkaz, který zkontroluje zda `x` splňuje logickou podmínku a na základě výsledku provede předurčenou akci
+
+`if (logická podmínka) {spusť pokud TRUE} else {spusť pokud FALSE}`
+
+```{webr-r}
+x <- 5
+if (x < 3) {"Podmínka splněna"} else {"Podmínka nesplněna"}
+```
+
+**Je možné pracovat i pouze s `if` příkazem, který bere v potaz pouze `TRUE` podmínky.**
+
+```{webr-r}
+x <- 3
+if (x < 3) {"Podmínka splněna"}
+```
+
+------------------------------------------------------------------------
+
+### Schéma `if ... else`
+
+![](images/clipboard-1080107203.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Vrstvení `if ... else`
+
+Je možné do sebe postupně jednotlivé `if ... else` podmínky vrstvit.
+
+**Vrstvení s provádí zpravidla pro `FALSE`.**
+
+```{webr-r}
+y <- 1
+if (y > 0) {"Kladné číslo"} else
+  if (y < 0) {"Záporné číslo"} else {"Nula"}
+```
+
+Vrstevní je samozřejmě **možné provádět mnohokrát opakovaně**.
+
+```{webr-r}
+if (is.integer(iris[1,1]) & iris[1,1] > 0) {"Kladné celé číslo"} else
+  if (is.integer(iris[1,1]) & iris[1,1] < 0) {"Záporné celé číslo"} else
+    if (iris[1,1] == 0) {"Nula"} else
+      if (is.double(iris[1,1]) & iris[1,1] > 0) {"Kladné necelé číslo"} else
+        if (is.double(iris[1,1]) & iris[1,1] < 0) {"Záporné necelé číslo"} else {"Nějaký prevít"}
+```
+
+
+------------------------------------------------------------------------
+
+### Schéma vrstvení `if ... else`
+
+![](images/clipboard-1977441615.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Procvičení
+
+1.  Na dopravní hřiště mohou pouze děti ve věku 15 a více, mladší pouze s povolením rodičů. Může dítě na hřiště?
+
+```{webr-r}
+
+```
+
+2.  Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory od 65 let, pro děti a studenty až do 26 let včetně.\
+Ověř, zda má Franta na tuto slevu nárok.
+
+```{webr-r}
+
+```
+
+------------------------------------------------------------------------
+
+## Samostatné cvičení
+
+Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní hodnocení na lepším stupni než 5 a v posledním testu získali jiný počet než nula bodů. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy pokud vypracovali seminární práci navíc a v posledním testu měli alespoň 50 bodů.\
+Julie má dosavadní hodnocení sice na 5, ani test se jí nepovedl a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
+Dostane Julie zápočet?
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+------------------------------------------------------------------------
+
+### Řešení
+
+Dostane Julie zápočet?
+
+::: fragment
+Pro jednodušší práci s nimi si uložíme hodnoty do proměnných.
+
+```{r}
+znamka <- 5
+pocetBodu <- 17
+semestralka <- TRUE
+```
+:::
+
+::: fragment
+Hodnoty si dosadíme do výpočtu. Pozor na formulaci zadání!
+
+```{r}
+if (znamka < 5 & pocetBodu != 0)
+  {paste("Julie má známku", znamka, "a získala", pocetBodu, "bodů, má proto nárok na vyznamenání.")} else
+  if (semestralka == TRUE & pocetBodu >= 50)
+  {paste("Julie má počet bodů", pocetBodu, "a napsala seminárku, má proto nárok na vyznamenání.")} else
+    {"Julie nemá právo na vyznamenání."}
+```
+:::
+
+::: fragment
+Julie zápočet nedostane.
+:::
+
+------------------------------------------------------------------------
+
+### Potenciální zádrhely
+
+Co se stane, když se pokusíme použít **`NA` hodnotu**?
+
+```{webr-r}
+x <- NA
+
+if (x > 10) {"Podmínka splněna!"}
+```
+
+::: fragment
+Funkce nemá co porovnávat - nelze určit, jestli nic znamená `TRUE` nebo `FALSE`.
+:::
+
+Co se stane, když se do funkce `if ... else` pokusíme vložit **hodnotu o více jak jednom prvku?**
+
+```{webr-r}
+x <- -1:5
+
+if (x > 0) {"Kladné číslo"} else
+  if (x < 0) {"Záporné číslo"} else {"Nula"}
+```
+
+::: fragment
+
+R `if` potřebuje, aby výsledkem podmínky byla jedna logická hodnota `TRUE/FALSE`.
+
+**Při aplikaci na více hodnot najednou tato podmínka není splněna.**
+
+Jak takovou situaci vyřešíme?
+:::
+
+------------------------------------------------------------------------
+
+## funkce `ifelse`
+
+vektorizace
 
 pozor, chceme-li pouzit vektor o delce vetsi nez jedna bude pouzit jen prvni prvek (warning)
 
@@ -437,7 +668,7 @@ x <- c(-1,0,1,5,-5)
 ifelse(x <= 0,"Podmínka splněna", "Podmínka nesplněna")
 ```
 
-# Funkce `ifelse`
+## Funkce `ifelse`
 
 Nezapomente, ze prikazy lze vkladat do sebe, priklad: kategorie A mensi jak 0 kategorie B = 0 kategorie C vetsi jak nula
 
@@ -460,7 +691,11 @@ pokpok <- ifelse(x < 0, "A", ifelse(x == 0, "B", "C")); pokpok
 is(pokpok)
 ```
 
-# `for` cyklus
+## funkce `dplyr::case_when`
+
+sss
+
+## `for` a `while` cyklus
 
 ```{r}
 for (i in 1:10) {print(i^2)}
@@ -487,13 +722,15 @@ pok <- for (i in data$Age) {ifelse(i < 0, "A", ifelse(i == 0, "B", "C"))}
 pok # NULL objekt
 ```
 
-# Rodina `apply` funkcí
+## Rodina `apply` funkcí
 
 https://physics.ujep.cz/\~jskvor/UDR/7/#/p%C5%99edstaven%C3%AD-funkc%C3%AD-apply-lapply-sapply-tapply-a-replicate
 
 fce across a everythign z dplyru
 
-# typiy na doma Tvorba vlastních funkcí
+## typiy na doma
+
+### Tvorba vlastních funkcí
 
 https://physics.ujep.cz/\~jskvor/UDR/7/#/definice-vlastn%C3%ADch-funkc%C3%AD
 
@@ -534,3 +771,7 @@ hodnoceni <- Vectorize(function(x) {
 
 vysledek <- hodnoceni(pocetBodu)
 ```
+
+### Funkce `switch`
+
+### Datum a čas
