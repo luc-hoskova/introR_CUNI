@@ -1041,7 +1041,7 @@ mnozstviBunek
 mnozstviBunek[10]
 ```
 
-opakování věcí které závisí na předchozím výsledku to ifelse nedělá
+opakování věcí které závisí na předchozím výsledku to ifelse nedělá  
 
 ```{r}
 trzby <- c(100, 200, 150, 300, 250)
