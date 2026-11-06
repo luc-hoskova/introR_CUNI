@@ -84,10 +84,10 @@ Vytvořte vektor, který v sobě bude mít větu "Tea is better than coffee". Po
 
 ### Úloha 2
 
-Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti. Jakmile budete mít list vytvořený, připojte do seznamu herců/hereček Zaphoda Beeblebroxe.
+Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho název, kdo jej režiséroval, kdy byl vydán, alespoň tři jména herců a hereček, kteří v něm hráli, na jaké ceny byl nominován a jaké společnosti se angažovaly jako jeho producenti.
 
-::: incremental
-1.  Vytvoříme list podle zadání.
+::: fragment
+Vytvoříme list podle zadání.
 
     ```{r}
     film <- list(jmeno = "The Adventures of Priscilla, Queen of the Desert",
@@ -97,25 +97,6 @@ Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho
                  oceneni = c("Academy Awards", "BAFTA"),
                  producenti = "Michael Hamlyn and Al Clark"); film
     ```
-
-2.  Připojíme hodnotu `"Zaphod Beeblebrox"`.
-
-    ```{r}
-    film <- within(film,
-           obsazeni <- c(obsazeni, "Zaphod Beeblebrox")); film
-    ```
-
-    To je ale nějak komplikované, nešlo by to vyřešit jednodušeji?
-
-3.  Zkusme si připojit hodnotu `"Ford Prefect"` způsobem, který vám byl doporučován v materiálech, co jste na webu našli.
-
-    ```{r}
-    film$obsazeni <- c(film$obsazeni, "Ford Prefect")
-    film
-    ```
-
-Připojení jde provést pomocí práce s výběrem hodnot - takzvanou indexací. A přesně na to se tuto hodinu podíváme :).
-:::
 
 ------------------------------------------------------------------------
 
@@ -159,6 +140,18 @@ c(3, 2, 7, 45, 2, 6, 11, 7,
 :::
 
 [^1]: Pro výběr přímo řádků/hodnot z data frame můžeme také použít funkci popsanou v [Unikátní hodnoty v data frame].
+
+------------------------------------------------------------------------
+
+### Úloha 4
+
+Pomocí jaké funkce bychom mohli spočítat všechny hodnoty v této matici dohromady? Kolik by to bylo?
+
+```{r}
+soucetHodnot <- matrix(25:56, nrow = 4); soucetHodnot
+
+sum(soucetHodnot)
+```
 
 ------------------------------------------------------------------------
 

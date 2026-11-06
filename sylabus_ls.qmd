@@ -33,12 +33,11 @@ title: "Sylabus LS/27"
 
 ## 5. Funkce (17.03.2027)
 
--   syntax funkce
--   tvorba vlastní funkce
+-   ifelse funkce
 -   cykly
--   funkce apply() a celá *apply* rodina funkcí
 -   vektorizace vs. itinerární přístup
--   čas a datum
+-   funkce apply() a celá *apply* rodina funkcí
+-   tvorba vlastní funkce
 
 ## 6. Základy vizualizace dat a práce s grafy v R (31.03.2027)
 

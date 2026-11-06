@@ -33,12 +33,11 @@ title: "Sylabus ZS/26"
 
 ## 5. Funkce (10.11.2026)
 
--   syntax funkce
--   tvorba vlastní funkce
+-   ifelse funkce
 -   cykly
--   funkce apply() a celá *apply* rodina funkcí
 -   vektorizace vs. itinerární přístup
--   čas a datum
+-   funkce apply() a celá *apply* rodina funkcí
+-   tvorba vlastní funkce
 
 ## 6. Základy vizualizace dat a práce s grafy v R (24.11.2026)
 

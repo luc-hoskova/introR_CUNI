@@ -145,6 +145,8 @@ kontrola_pohlavi <- function(data) {
   return(vysledek)
 }
 
+kontrola_pohlavi(typBydleni) 
+
 kontrola_pohlavi(typBydleni) %>%
   filter(shoda == FALSE)
 ```
@@ -465,7 +467,7 @@ hodnoceni <- function(x) {
     x < 50 ~ "nedostatečný",
     x < 75 ~ "dobrý",
     x < 90 ~ "velmi dobrý",
-    TRUE ~ "výborný")
+    .default = "výborný")
 }
 
 vysledekA <- pocetBoduA %>%
@@ -494,9 +496,9 @@ Budeme se věnovat hlavně tomu, co vám může pomoci urychlit a zjednodušit s
 
 ## if ... else
 
-> příkaz, který zkontroluje zda `x` splňuje logickou podmínku a na základě výsledku provede předurčenou akci
+> příkaz, který zkontroluje zda hodnota splňuje logickou podmínku a na základě výsledku provede předurčenou akci
 
-`if (logická podmínka) {spusť pokud TRUE} else {spusť pokud FALSE}`
+`if (logická podmínka) {vyber pokud TRUE} else {vyber pokud FALSE}`
 
 ```{webr-r}
 x <- 5
@@ -532,14 +534,23 @@ if (y > 0) {"Kladné číslo"} else
 
 Vrstevní je samozřejmě **možné provádět mnohokrát opakovaně**.
 
+::: callout-note
+## Postoupnost podmínek
+
+`if ... else`a všechny podobné funkce fungují na podobném principu; **postupují po vrstvách podmínek tak dlouho, dokud nenarazí na `TRUE`, kdy se zastaví**.
+
+Pokud nenarazí na `TRUE` podmínku, pokračují dokud se nedostanou k finální `FALSE` podmínce, pokud je určena.
+:::
+
 ```{webr-r}
+iris[1,1]
+
 if (is.integer(iris[1,1]) & iris[1,1] > 0) {"Kladné celé číslo"} else
   if (is.integer(iris[1,1]) & iris[1,1] < 0) {"Záporné celé číslo"} else
     if (iris[1,1] == 0) {"Nula"} else
       if (is.double(iris[1,1]) & iris[1,1] > 0) {"Kladné necelé číslo"} else
         if (is.double(iris[1,1]) & iris[1,1] < 0) {"Záporné necelé číslo"} else {"Nějaký prevít"}
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -549,7 +560,7 @@ if (is.integer(iris[1,1]) & iris[1,1] > 0) {"Kladné celé číslo"} else
 
 ------------------------------------------------------------------------
 
-### Procvičení
+### Procvičení `if ... else`
 
 1.  Na dopravní hřiště mohou pouze děti ve věku 15 a více, mladší pouze s povolením rodičů. Může dítě na hřiště?
 
@@ -558,7 +569,7 @@ if (is.integer(iris[1,1]) & iris[1,1] > 0) {"Kladné celé číslo"} else
 ```
 
 2.  Frantovi je 53 let. Chce si koupit jízdenku, u které je možnost slevy pro seniory od 65 let, pro děti a studenty až do 26 let včetně.\
-Ověř, zda má Franta na tuto slevu nárok.
+    Ověř, zda má Franta na tuto slevu nárok.
 
 ```{webr-r}
 
@@ -566,7 +577,7 @@ Ověř, zda má Franta na tuto slevu nárok.
 
 ------------------------------------------------------------------------
 
-## Samostatné cvičení
+## Samostatné cvičení `if ... else`
 
 Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní hodnocení na lepším stupni než 5 a v posledním testu získali jiný počet než nula bodů. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy pokud vypracovali seminární práci navíc a v posledním testu měli alespoň 50 bodů.\
 Julie má dosavadní hodnocení sice na 5, ani test se jí nepovedl a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
@@ -638,89 +649,346 @@ if (x > 0) {"Kladné číslo"} else
   if (x < 0) {"Záporné číslo"} else {"Nula"}
 ```
 
-::: fragment
+:::: fragment
+::: callout-warning
+## Nelze aplikovat na vektory
 
-R `if` potřebuje, aby výsledkem podmínky byla jedna logická hodnota `TRUE/FALSE`.
+R if potřebuje, aby výsledkem podmínky byla jedna logická hodnota TRUE/FALSE.
 
 **Při aplikaci na více hodnot najednou tato podmínka není splněna.**
+:::
 
 Jak takovou situaci vyřešíme?
+::::
+
+------------------------------------------------------------------------
+
+## Funkce `ifelse`
+
+> funkce umožňující aplikaci if ... else funkce pro všechny jednotlivé hodnoty v objektu
+
+`ifelse(podmínka, vyber pokud TRUE, vyber pokud FALSE)`
+
+```{r}
+x <- -1:5
+ifelse(x > 0,"Kladné číslo", "Záporné")
+```
+
+**I tuto funkci můžeme vrstvit.**
+
+```{r}
+x <- -1:5
+ifelse(x > 0,"Kladné číslo", ifelse(x < 0, "Záporné", "Nula"))
+```
+
+------------------------------------------------------------------------
+
+### Funkce ve funkci
+
+::: callout-tip
+## Výsledkem nemusí být pouze text
+
+Nezapomeňte, že výsledkem nemusí být pouze pokyn "zobraz text", ale **`ifelse` (stejně jako `if ... else`) mohou v reakci na podmínku spustit jakékoliv funkce**.
+:::
+
+**Ukázka**
+
+Zkontroluj, jestli je hodnota v `Sepal.Lenght` \> 5. Pokud ano, zaokrouhli ji nahoru. Pokud ne, zaokrouhli dolu.
+
+```{r}
+iris %>%
+  mutate(
+    SL_zaokrouhlena = ifelse(
+      Sepal.Length > 5,
+      ceiling(Sepal.Length),
+      floor(Sepal.Length))) %>%
+  head()
+```
+
+------------------------------------------------------------------------
+
+### Potenciální zádrhely
+
+Funkce `ifelse` nám sice vyřeší problém aplikace na více než jednu hodnotu, ale... **stojí to za to**?
+
+```{r}
+pocetBoduA$Martin
+
+pocetBoduA %>%
+    mutate(Martin = ifelse(
+        is.na(Martin), "neklasifikováno", ifelse(
+          Martin < 50, "nedostatečný", ifelse(
+            Martin < 75, "dobrý", ifelse(
+              Martin < 90, "velmi dobrý", ifelse(
+                Martin <= 100, "výborný"))))))
+```
+
+**Funkce `ifelse` se stává při delším řetězení nepřehlednou.**
+
+------------------------------------------------------------------------
+
+## funkce `dplyr::case_when`
+
+> funkce umožňující přehlednější vrstvení podmínek než `ifelse`
+
+`case_when(podmínka ~ výsledek pokud TRUE)`
+
+```{r}
+pocetBoduA$Martin
+
+pocetBoduA %>%
+    mutate(Martin = case_when(
+        is.na(Martin) ~ "neklasifikováno",
+        Martin < 50 ~ "nedostatečný",
+        Martin < 75 ~ "dobrý",
+        Martin < 90 ~ "velmi dobrý",
+        .default =  "výborný")) #vychozi hodnota pokud ostatni neprojdou
+```
+
+------------------------------------------------------------------------
+
+::: callout-warning
+## Pozor na chybějící hodnoty!
+
+Dejte pozor na to, že pokud funkce narazí na jinak nezapracovanou **`NA` hodnotu, automaticky ji bere jako `.default`**.
+
+```{r}
+pocetBoduA %>%
+    mutate(Martin = case_when(
+        Martin < 50 ~ "nedostatečný",
+        Martin < 75 ~ "dobrý",
+        Martin < 90 ~ "velmi dobrý",
+        .default = "výborný"))
+```
 :::
 
 ------------------------------------------------------------------------
 
-## funkce `ifelse`
+### Procvičení `ifelse`
 
-vektorizace
-
-pozor, chceme-li pouzit vektor o delce vetsi nez jedna bude pouzit jen prvni prvek (warning)
+1.  Pokud je v `iris` sloupec `Sepal.Length` \> 5, přičti 10, jinak odečti 10.
 
 ```{webr-r}
-x <- c(0,1)
-if (x > 0) {"Kladné číslo"} else
-  if (x < 0) {"Záporné číslo"} else {"Nula"}
+
 ```
 
-ale:
+2.  Vytvoř u `iris` sloupec `transformace`, kde budou odmocněné hodnoty `Petal.Length` pokud jsou větší než medián `Petal.Length`, jinak `NA`.
+
+```{webr-r}
+
+```
+
+------------------------------------------------------------------------
+
+### Procvičení `case_when`
+
+1.  Přeměň názvy odrůd (species) v datasetu `iris` na jejich běžná jména.
+
+```{webr-r}
+#setosa = blackhead iris
+#versicolor = harlequin blueflag
+#virginica = virginia blueflag
+```
+
+2.  Vytvoř v datasetu sloupec `status`
+
+```{webr-r}
+# ženy starší než 60 let = "seniorka"
+# muži starší než 60 let = "senior"
+# všichni ostatní = "ostatní"
+
+lide <- data.frame(
+  pohlavi = c("M", "Z", "M", "Z"),
+  vek = c(70, 65, 35, 25)); lide
+```
+
+------------------------------------------------------------------------
+
+### Samostatné cvičení
 
 ```{r}
-x <- c(-1,0,1,5,-5)
-ifelse(x <= 0,"Podmínka splněna", "Podmínka nesplněna")
+#| echo: false
+countdown::countdown(minutes = 10,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
 ```
 
-## Funkce `ifelse`
+Mějme data frame `data`. Vytvořme pro něj nový sloupec `z,` který bude naplněn za následujících podmínek:
 
-Nezapomente, ze prikazy lze vkladat do sebe, priklad: kategorie A mensi jak 0 kategorie B = 0 kategorie C vetsi jak nula
+- pokud je `x` sudé číslo , odmocni `x` a přidej k němu hodnotu `y`
+- pokud je `x` liché číslo, umocni `(x / y)` na druhou
 
 ```{r}
-x <- c(-1,0,1,5,-5)
-ifelse(x < 0, "A",ifelse(x > 0, "C", "B"))
+data <- data.frame(
+  x = c(4, 16, 25, NA, 81, 100),
+  y = c(2, 4, 5, 6, 9, 10)); data
 ```
 
-nebo
+------------------------------------------------------------------------
+
+### Řešení
+
+Mějme data frame `data`. Vytvořme pro něj nový sloupec `z,` který bude naplněn za následujících podmínek:
+
+- pokud je `x` sudé číslo , odmocni `x` a přidej k němu hodnotu `y`
+- pokud je `x` liché číslo, umocni `(x / y)` na druhou
+
+::: fragment
+Vytvoříme si data frame.
 
 ```{r}
-x <- c(-1,0,1,5,-5)
-ifelse(x < 0, "A", ifelse(x == 0, "B", "C"))
+data <- data.frame(
+  x = c(4, 16, 25, NA, 81, 100, 9),
+  y = c(2, 4, 5, 6, 9, 10, 3))
 ```
+:::
 
-vyzkousejte
+::: fragment
+Vytvoříme si sloupec `z`.
 
 ```{r}
-pokpok <- ifelse(x < 0, "A", ifelse(x == 0, "B", "C")); pokpok
-is(pokpok)
+data %>%
+  mutate(z = 1) #1 placeholder pro vysvetleni postupu
+```
+:::
+
+::: fragment
+Zkontrolujme, zda je `x` sudé číslo a pokud ano, odmocněme ho a přičtěme `y`.
+
+```{r}
+data %>%
+  mutate(
+    z = case_when(
+      x %% 2 == 0 ~ sqrt(x) + y))
+```
+:::
+
+::: fragment
+Zkontrolujme, zda je `x` liché číslo a pokud ano, odmocněme ho
+
+```{r}
+data %>%
+  mutate(
+    z = case_when(
+      x %% 2 == 0 ~ sqrt(x) + y,
+      x %% 2 == 1 ~ (x / y)^2))
+```
+:::
+
+::: fragment
+Určeme si co se zbylými hodnotami - nemáme pokyny, proto `NA`.
+
+```{r}
+data %>%
+  mutate(
+    z = case_when(
+      x %% 2 == 0 ~ sqrt(x) + y,
+      x %% 2 == 1 ~ (x / y)^2,
+      .default = NA))
+```
+:::
+
+------------------------------------------------------------------------
+
+## `for` cyklus
+
+> cyklus (loop), který umožňuje opakovaně provést stejný kód
+
+`for (hodnota in vektorHodnot) {proved´ příkaz}`
+
+```{r}
+# kazdou hodnotu v 1:10 nam umocni a zobraz
+for (i in 1:10) {print(i^2)} #print fce vypise obsah
 ```
 
-## funkce `dplyr::case_when`
+------------------------------------------------------------------------
 
-sss
+### Schéma `for` cyklu
 
-## `for` a `while` cyklus
+![](images/clipboard-496891499.png)
+
+------------------------------------------------------------------------
+
+### Proč cykly potřebují `print`?
+
+Samotný cyklus provádí pouze a jednu věc stále dokola - provádí `{příkaz}`.
 
 ```{r}
 for (i in 1:10) {print(i^2)}
-i
 
-x <- c(-3,-2,-1,0,1,2,3)
-for (i in x) {print(i^2)}
-
-# do for lze vkladat i if ... else cyklus
-x <- data$Age
-for (i in x) {
-  if(i < 12)  print("I") else
-    if(i < 35) print("A") else ("O")
-}
-
-# pozor:
-pok <- for (i in x) {
-  if(i < 12)  print("I") else
-    if(i < 35) print("A") else ("O")
-}
-pok # NULL objekt
-# obdobne:
-pok <- for (i in data$Age) {ifelse(i < 0, "A", ifelse(i == 0, "B", "C"))}
-pok # NULL objekt
+for (i in 1:10) {i^2} #proc nic nevidime?
 ```
+
+:::: fragment
+::: callout-note
+## Výpočet neznamená zobrazení
+
+**R po vypočítání automaticky výsledek "zahazuje"**, pokud mu neřekneme ať ho zobrazí.
+
+Jeden ze způsobů, jak si o zobrazení řekneme, je třeba zavoláním jména proměnné a nebo právě použití funkce `print`.
+
+```{r}
+a <- "kolo"
+
+a
+
+print(a)
+```
+
+V cyklu žádné proměnné nevznikají, takže použijeme funkci `print`.
+:::
+::::
+
+------------------------------------------------------------------------
+
+### Co všechno může do `for` cyklu?
+
+::: callout-note
+## `i`je pouhý placeholder pro pojem "hodnota"
+
+Není nutné `i` používat, ale je to standardní.
+
+```{r}
+for (x in c(-8, 9, 11, 45)) {print(x+2)}
+```
+:::
+
+for cykly s funkcemi
+
+### k čemu to je?
+
+```{r}
+balance <- numeric(10)
+balance[1] <- 1000
+
+for (i in 2:10) {
+  balance[i] <- balance[i - 1] * 1.05
+}
+
+balance
+```
+
+opakování věcí které závisí na předchozím výsledku to ifelse nedělá
+
+------------------------------------------------------------------------
+
+### Ukládání výsledku `for` cyklu
+
+------------------------------------------------------------------------
+
+## Itinerace vs vektorizace
+
+dd
+
+| Col1                      | Col2                                           |
+|--------------------------|----------------------------------------------|
+| `ifelse()`, `case_when()` | proveď rozhodnutí pro každou hodnotu v objektu |
+| `for` cyklus              | opakuj ten samý kód                            |
+| `apply()`                 | aplikuj funkci nezávisle na všechny hodnoty    |
+
+------------------------------------------------------------------------
 
 ## Rodina `apply` funkcí
 
@@ -774,4 +1042,35 @@ vysledek <- hodnoceni(pocetBodu)
 
 ### Funkce `switch`
 
+### Co dělá funkce `ifelse` s hodnotami?
+
+`ifelse` mění hodnoty na jejich atomické podoby - atomická podoba faktoru je integer, takže pozor na as.factor
+
+```{r}
+str(iris) #jaka je struktura iris pred upravou
+
+iris <- iris %>%
+  mutate(Species =
+           ifelse(is.character(Species), Species, as.factor(Species)))
+
+str(iris) #a struktura po uprave
+```
+
+lepší
+
+```{r}
+iris <- iris %>%
+  mutate(
+    Species = if (is.character(Species))
+      Species
+    else
+      as.factor(Species))
+```
+
+### funkce replace_when
+
+https://casrai.org/guides/case-when-r
+
 ### Datum a čas
+
+\:::

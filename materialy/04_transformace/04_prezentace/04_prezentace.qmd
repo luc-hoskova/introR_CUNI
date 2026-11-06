@@ -892,7 +892,7 @@ census2 %>% group_by(vira) %>%
   summarize(nejstarsiVerici = max(vek), prumernyVek = mean(vek))
 ```
 
-S funkcemi `group_by` a `summarize` se lépe seznámíme v šesté sekci, zde jsou uvedeny jako ukázka zjednodušení postupu.
+S funkcemi `group_by` a `summarize` se lépe seznámíme v šesté sekci, zde jsou uvedeny jako ukázka zjednodušení postupu které je dobré znát.
 :::
 
 ------------------------------------------------------------------------
