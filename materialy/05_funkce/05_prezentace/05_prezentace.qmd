@@ -579,9 +579,11 @@ if (is.integer(iris[1,1]) & iris[1,1] > 0) {"Kladné celé číslo"} else
 
 ## Samostatné cvičení `if ... else`
 
-Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní hodnocení na lepším stupni než 5 a v posledním testu získali jiný počet než nula bodů. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy pokud vypracovali seminární práci navíc a v posledním testu měli alespoň 50 bodů.\
+Uzavírají se známky na konci semestru. Zápočet dostanou pouze ti, kteří mají dosavadní **hodnocení na lepším stupni než 5** a v posledním testu získali **jiný počet než nula bodů**. Pokud tyto podmínky nesplňují, tak zápočet mohou dostat i tehdy **pokud vypracovali seminární práci navíc a v posledním testu měli alespoň 50 bodů**.\
+
 Julie má dosavadní hodnocení sice na 5, ani test se jí nepovedl a měla pouze 17 bodů. Napsala ale velmi povedenou semestrální práci na téma kyberbezpečnosti ve Vietnamu.\
-Dostane Julie zápočet?
+
+**Dostane Julie zápočet?**
 
 ```{r}
 #| echo: false
@@ -820,6 +822,8 @@ Mějme data frame `data`. Vytvořme pro něj nový sloupec `z,` který bude napl
 - pokud je `x` sudé číslo , odmocni `x` a přidej k němu hodnotu `y`
 - pokud je `x` liché číslo, umocni `(x / y)` na druhou
 
+Nezapomeňte na chybějící hodnoty!
+
 ```{r}
 data <- data.frame(
   x = c(4, 16, 25, NA, 81, 100),
@@ -840,7 +844,7 @@ Vytvoříme si data frame.
 
 ```{r}
 data <- data.frame(
-  x = c(4, 16, 25, NA, 81, 100, 9),
+  x = c(4, 0, 25, NA, 81, 100, 9),
   y = c(2, 4, 5, 6, 9, 10, 3))
 ```
 :::
@@ -855,12 +859,24 @@ data %>%
 :::
 
 ::: fragment
+Zkontrolujme, zda je `x` 0 a pokud ano, mějme `z` jako `NA`.
+
+```{r}
+data %>%
+  mutate(
+    z = case_when(
+      x == 0 ~ NA))
+```
+:::
+
+::: fragment
 Zkontrolujme, zda je `x` sudé číslo a pokud ano, odmocněme ho a přičtěme `y`.
 
 ```{r}
 data %>%
   mutate(
     z = case_when(
+      x == 0 ~ NA,
       x %% 2 == 0 ~ sqrt(x) + y))
 ```
 :::
@@ -872,23 +888,38 @@ Zkontrolujme, zda je `x` liché číslo a pokud ano, odmocněme ho
 data %>%
   mutate(
     z = case_when(
+      x == 0 ~ NA,
       x %% 2 == 0 ~ sqrt(x) + y,
       x %% 2 == 1 ~ (x / y)^2))
 ```
 :::
 
 ::: fragment
-Určeme si co se zbylými hodnotami - nemáme pokyny, proto `NA`.
+Určeme si co se zbylými hodnotami - stejně jako u 0 nemáme pokyny, proto `NA`.
 
 ```{r}
 data %>%
   mutate(
     z = case_when(
+      x == 0 ~ NA,
       x %% 2 == 0 ~ sqrt(x) + y,
       x %% 2 == 1 ~ (x / y)^2,
       .default = NA))
 ```
 :::
+
+::::: fragment
+:::: callout-note
+## Proč dáváme 0 jako první podmínku?
+
+::: fragment
+Protože `0 %% 2 == 0` je `TRUE`, a 0 by tak byla brána jako kladné číslo.
+
+**Nezapomeňte: jakmile hodnta splní jednu podmínku, dlší už se nekontrolují!**
+:::
+
+::::
+:::::
 
 ------------------------------------------------------------------------
 
@@ -911,17 +942,46 @@ for (i in 1:10) {print(i^2)} #print fce vypise obsah
 
 ------------------------------------------------------------------------
 
+### Ukázka
+
+```{webr-r}
+for (i in 1:10) {print(i+6)}
+```
+
+```{webr-r}
+for (i in c(2, 4, 8, 10)) {print(i*3)}
+```
+
+```{webr-r}
+for (i in seq(2, 4, 0.5)) {print(sqrt(i))}
+```
+
+```{webr-r}
+for (i in mtcars$gear) {print(paste(i,"gear"))}
+```
+
+::: callout-note
+## `i` je pouhý placeholder pro pojem "hodnota"
+
+Není nutné `i` používat, ale je to standardní.
+
+```{r}
+for (x in c(-8, 9, 11, 45)) {print(x+2)}
+```
+:::
+
+------------------------------------------------------------------------
+
 ### Proč cykly potřebují `print`?
 
 Samotný cyklus provádí pouze a jednu věc stále dokola - provádí `{příkaz}`.
 
 ```{r}
-for (i in 1:10) {print(i^2)}
+for (i in 1:3) {print(i^2)}
 
-for (i in 1:10) {i^2} #proc nic nevidime?
+for (i in 1:3) {i^2} #proc nic nevidime?
 ```
 
-:::: fragment
 ::: callout-note
 ## Výpočet neznamená zobrazení
 
@@ -931,50 +991,74 @@ Jeden ze způsobů, jak si o zobrazení řekneme, je třeba zavoláním jména p
 
 ```{r}
 a <- "kolo"
-
 a
 
 print(a)
 ```
-
-V cyklu žádné proměnné nevznikají, takže použijeme funkci `print`.
 :::
-::::
 
 ------------------------------------------------------------------------
 
-### Co všechno může do `for` cyklu?
+### Co všechno může vzniknout v `for` cyklu?
 
-::: callout-note
-## `i`je pouhý placeholder pro pojem "hodnota"
-
-Není nutné `i` používat, ale je to standardní.
+Ukázali jsme si, že výsledkem může být zobrazení určitých hodnot. **Ale co kdybychom si je chtěli ukládat?**
 
 ```{r}
-for (x in c(-8, 9, 11, 45)) {print(x+2)}
+x <- c(2, 4, 6, 8)
+vysledek <- NULL; vysledek
+
+for (i in 1:length(x)) {vysledek[i] <- x[i] * 2}
+
+vysledek
 ```
+
+**Co se děje?**
+
+Máme prázdnou proměnou `vysledek`, kam si uložíme tolik hodnot jako je délka `x`, kdy každá hodnota bude korespondovat s hodnotou `x` na totožné pozici * 2.
+
+------------------------------------------------------------------------
+
+### K čemu to ale vůbec je?
+
+Výpočty, které jsme si zatím u `for` cyklu ukázaly, by šly provést i jednoduše pomocí funkcí jako `ifelse`. **Proč tedy vůbec s cykly pracovat?**
+
+::: callout-important
+## Cyklus umožňuje postupně pracovat s daty
+
+Pomocí této funkce je možné nejenom měnit hodnoty, ale **měnit je v závislosti na změně provedené na předchozí hodnotě**.
 :::
 
-for cykly s funkcemi
-
-### k čemu to je?
+Dejme tomu, že máme buněčný vzorek, ve kterém se buňky množí rychlostí 5 % za jednu hodinu. Začínáme s 1000 buňkami, kolik jich budeme mít po deseti hodinách?
 
 ```{r}
-balance <- numeric(10)
-balance[1] <- 1000
+mnozstviBunek <- c(1000, rep(0, 9)); mnozstviBunek
 
-for (i in 2:10) {
-  balance[i] <- balance[i - 1] * 1.05
+for (i in 2:length(mnozstviBunek)) {
+  mnozstviBunek[i] <- mnozstviBunek[i - 1] * 1.05
 }
 
-balance
+mnozstviBunek
+mnozstviBunek[10]
 ```
 
 opakování věcí které závisí na předchozím výsledku to ifelse nedělá
 
-------------------------------------------------------------------------
+```{r}
+trzby <- c(100, 200, 150, 300, 250)
 
-### Ukládání výsledku `for` cyklu
+kumulativni_trzby <- length(trzby)
+
+for (i in 1:length(trzby)) {
+  if (i == 1) {
+    kumulativni_trzby[i] <- trzby[i]
+  } else {
+    kumulativni_trzby[i] <- kumulativni_trzby[i-1] + trzby[i]
+  }
+}
+
+kumulativni_trzby
+# 100 300 450 750 1000
+```
 
 ------------------------------------------------------------------------
 
@@ -1071,6 +1155,21 @@ iris <- iris %>%
 
 https://casrai.org/guides/case-when-r
 
+### vytváření nových objektů přímo ve for cyklu
+
+```{r}
+x <- c(2, 4, 6, 8)
+
+for (i in 1:length(x)) {
+  if (i == 1) {
+    vysledek <- x[i] * 2
+  } else {
+    vysledek <- c(vysledek, x[i] * 2)
+  }
+}
+```
+
+
 ### Datum a čas
 
-\:::
+
