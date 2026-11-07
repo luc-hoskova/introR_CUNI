@@ -3868,24 +3868,21 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb18-3"><a href aria-label="3"></a>    <span class="at">radek =</span> <span class="fu">integer</span>(),</span>
 <span id="cb18-4"><a href aria-label="4"></a>    <span class="at">hodnota_celkem =</span> <span class="fu">numeric</span>(),</span>
 <span id="cb18-5"><a href aria-label="5"></a>    <span class="at">soucet_pohlavi =</span> <span class="fu">numeric</span>(),</span>
-<span id="cb18-6"><a href aria-label="6"></a>    <span class="at">shoda =</span> <span class="fu">logical</span>()</span>
-<span id="cb18-7"><a href aria-label="7"></a>  )</span>
-<span id="cb18-8"><a href aria-label="8"></a>  </span>
-<span id="cb18-9"><a href aria-label="9"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">nrow</span>(data) <span class="sc">-</span> <span class="dv">2</span>)) {</span>
-<span id="cb18-10"><a href aria-label="10"></a>    <span class="cf">if</span> (data<span class="sc">$</span>pohlavi_txt[i] <span class="sc">==</span> <span class="st">&quot;&quot;</span>) {</span>
-<span id="cb18-11"><a href aria-label="11"></a>      soucet <span class="ot">&lt;-</span> <span class="fu">sum</span>(data<span class="sc">$</span>hodnota[(i <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span>(i <span class="sc">+</span> <span class="dv">2</span>)])</span>
-<span id="cb18-12"><a href aria-label="12"></a>      vysledek <span class="ot">&lt;-</span> <span class="fu">rbind</span>(vysledek, <span class="fu">data.frame</span>(</span>
-<span id="cb18-13"><a href aria-label="13"></a>        <span class="at">radek =</span> i,</span>
-<span id="cb18-14"><a href aria-label="14"></a>        <span class="at">hodnota_celkem =</span> data<span class="sc">$</span>hodnota[i],</span>
-<span id="cb18-15"><a href aria-label="15"></a>        <span class="at">soucet_pohlavi =</span> soucet,</span>
-<span id="cb18-16"><a href aria-label="16"></a>        <span class="at">shoda =</span> data<span class="sc">$</span>hodnota[i] <span class="sc">==</span> soucet</span>
-<span id="cb18-17"><a href aria-label="17"></a>      ))</span>
-<span id="cb18-18"><a href aria-label="18"></a>    }</span>
-<span id="cb18-19"><a href aria-label="19"></a>  }</span>
-<span id="cb18-20"><a href aria-label="20"></a>  <span class="fu">return</span>(vysledek)</span>
-<span id="cb18-21"><a href aria-label="21"></a>}</span>
-<span id="cb18-22"><a href aria-label="22"></a></span>
-<span id="cb18-23"><a href aria-label="23"></a><span class="fu">kontrola_pohlavi</span>(typBydleni) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-6"><a href aria-label="6"></a>    <span class="at">shoda =</span> <span class="fu">logical</span>())</span>
+<span id="cb18-7"><a href aria-label="7"></a>  </span>
+<span id="cb18-8"><a href aria-label="8"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">nrow</span>(data) <span class="sc">-</span> <span class="dv">2</span>)) {</span>
+<span id="cb18-9"><a href aria-label="9"></a>    <span class="cf">if</span> (data<span class="sc">$</span>pohlavi_txt[i] <span class="sc">==</span> <span class="st">&quot;&quot;</span>) {</span>
+<span id="cb18-10"><a href aria-label="10"></a>      soucet <span class="ot">&lt;-</span> <span class="fu">sum</span>(data<span class="sc">$</span>hodnota[(i <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span>(i <span class="sc">+</span> <span class="dv">2</span>)])</span>
+<span id="cb18-11"><a href aria-label="11"></a>      vysledek <span class="ot">&lt;-</span> <span class="fu">rbind</span>(vysledek, <span class="fu">data.frame</span>(</span>
+<span id="cb18-12"><a href aria-label="12"></a>        <span class="at">radek =</span> i,</span>
+<span id="cb18-13"><a href aria-label="13"></a>        <span class="at">hodnota_celkem =</span> data<span class="sc">$</span>hodnota[i],</span>
+<span id="cb18-14"><a href aria-label="14"></a>        <span class="at">soucet_pohlavi =</span> soucet,</span>
+<span id="cb18-15"><a href aria-label="15"></a>        <span class="at">shoda =</span> data<span class="sc">$</span>hodnota[i] <span class="sc">==</span> soucet))</span>
+<span id="cb18-16"><a href aria-label="16"></a>    }</span>
+<span id="cb18-17"><a href aria-label="17"></a>  }</span>
+<span id="cb18-18"><a href aria-label="18"></a>  <span class="fu">return</span>(vysledek)}</span>
+<span id="cb18-19"><a href aria-label="19"></a></span>
+<span id="cb18-20"><a href aria-label="20"></a><span class="fu">kontrola_pohlavi</span>(typBydleni) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      radek hodnota_celkem soucet_pohlavi shoda
 1         1         109185         109185  TRUE
@@ -15516,7 +15513,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Upravme si dataframe tak, abychom s ním mohli pracovat.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href aria-label="1"></a><span class="co">#dataset se vsemi moznostmi pohlavi</span></span>
-<span id="cb22-2"><a href aria-label="2"></a>dataBydleni <span class="ot">&lt;-</span> typBydleni <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href aria-label="2"></a>dataVsechnaPohlavi <span class="ot">&lt;-</span> typBydleni <span class="sc">%&gt;%</span></span>
 <span id="cb22-3"><a href aria-label="3"></a>  <span class="fu">rename</span>(<span class="at">pohlavi =</span> pohlavi_txt,</span>
 <span id="cb22-4"><a href aria-label="4"></a>         <span class="at">uzemi =</span> uzemi_txt,</span>
 <span id="cb22-5"><a href aria-label="5"></a>         <span class="at">vek =</span> vek_txt,</span>
@@ -15525,7 +15522,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb22-8"><a href aria-label="8"></a>  <span class="fu">select</span>(hodnota, pohlavi, uzemi, bydleni, vek, uzemi_cis)</span>
 <span id="cb22-9"><a href aria-label="9"></a></span>
 <span id="cb22-10"><a href aria-label="10"></a><span class="co">#dataset jenom pro vsechny</span></span>
-<span id="cb22-11"><a href aria-label="11"></a>data <span class="ot">&lt;-</span> dataBydleni <span class="sc">%&gt;%</span></span>
+<span id="cb22-11"><a href aria-label="11"></a>data <span class="ot">&lt;-</span> dataVsechnaPohlavi <span class="sc">%&gt;%</span></span>
 <span id="cb22-12"><a href aria-label="12"></a>  <span class="fu">filter</span>(pohlavi <span class="sc">==</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -15536,34 +15533,60 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p><strong>Kolik osob ve věku 18-26 včetně v Jihomoravském kraji jsou evidováni jako osoby bez domova, a jakou procentuální část z nich tvoří muži a jakou ženy.</strong></p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href aria-label="1"></a>data2<span class="fl">.1</span> <span class="ot">&lt;-</span> dataBydleni <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href aria-label="1"></a>data2<span class="fl">.1</span> <span class="ot">&lt;-</span> dataVsechnaPohlavi <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(vek <span class="sc">%in%</span> <span class="dv">18</span><span class="sc">:</span><span class="dv">26</span>,</span>
 <span id="cb23-3"><a href aria-label="3"></a>         bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>,</span>
 <span id="cb23-4"><a href aria-label="4"></a>         uzemi <span class="sc">==</span> <span class="st">&quot;Jihomoravský kraj&quot;</span>)</span>
 <span id="cb23-5"><a href aria-label="5"></a></span>
-<span id="cb23-6"><a href aria-label="6"></a>celkem2<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">sum</span>(data2<span class="fl">.1</span> <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href aria-label="6"></a>celkem2<span class="fl">.1</span> <span class="ot">&lt;-</span> data2<span class="fl">.1</span> <span class="sc">%&gt;%</span></span>
 <span id="cb23-7"><a href aria-label="7"></a>              <span class="fu">filter</span>(pohlavi <span class="sc">==</span> <span class="st">&quot;&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-8"><a href aria-label="8"></a>              <span class="fu">pull</span>(hodnota)) <span class="co">#46 jedincu</span></span>
-<span id="cb23-9"><a href aria-label="9"></a></span>
-<span id="cb23-10"><a href aria-label="10"></a>muzi2<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">sum</span>(data2<span class="fl">.1</span> <span class="sc">%&gt;%</span></span>
-<span id="cb23-11"><a href aria-label="11"></a>              <span class="fu">filter</span>(pohlavi <span class="sc">==</span> <span class="st">&quot;muž&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-12"><a href aria-label="12"></a>              <span class="fu">pull</span>(hodnota)); muzi2<span class="fl">.1</span> <span class="co">#30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-8"><a href aria-label="8"></a>              <span class="fu">pull</span>(hodnota) <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href aria-label="9"></a>                <span class="fu">sum</span>(); celkem2<span class="fl">.1</span> <span class="co">#46 jedincu</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 46</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href aria-label="1"></a>muzi2<span class="fl">.1</span> <span class="ot">&lt;-</span> data2<span class="fl">.1</span> <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href aria-label="2"></a>              <span class="fu">filter</span>(pohlavi <span class="sc">==</span> <span class="st">&quot;muž&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href aria-label="3"></a>              <span class="fu">pull</span>(hodnota) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href aria-label="4"></a>                <span class="fu">sum</span>(); muzi2<span class="fl">.1</span> <span class="co">#30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href aria-label="1"></a>zeny2<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">sum</span>(data2<span class="fl">.1</span> <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href aria-label="2"></a>              <span class="fu">filter</span>(pohlavi <span class="sc">==</span> <span class="st">&quot;žena&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href aria-label="3"></a>              <span class="fu">pull</span>(hodnota)); zeny2<span class="fl">.1</span> <span class="co">#16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href aria-label="1"></a>zeny2<span class="fl">.1</span> <span class="ot">&lt;-</span> data2<span class="fl">.1</span> <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href aria-label="2"></a>              <span class="fu">filter</span>(pohlavi <span class="sc">==</span> <span class="st">&quot;žena&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href aria-label="3"></a>              <span class="fu">pull</span>(hodnota) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href aria-label="4"></a>                <span class="fu">sum</span>(); zeny2<span class="fl">.1</span> <span class="co">#16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href aria-label="1"></a><span class="fu">round</span>(muzi2<span class="fl">.1</span> <span class="sc">/</span> celkem2<span class="fl">.1</span> <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>) <span class="co">#65.22 %</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href aria-label="1"></a><span class="fu">round</span>(muzi2<span class="fl">.1</span> <span class="sc">/</span> celkem2<span class="fl">.1</span> <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>) <span class="co">#65.22 %</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 65.22</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href aria-label="1"></a><span class="fu">round</span>(zeny2<span class="fl">.1</span> <span class="sc">/</span> celkem2<span class="fl">.1</span> <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>) <span class="co">#34.78 %</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href aria-label="1"></a><span class="fu">round</span>(zeny2<span class="fl">.1</span> <span class="sc">/</span> celkem2<span class="fl">.1</span> <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>) <span class="co">#34.78 %</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 34.78</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>A nešlo by to snáze? Co když nechceme group_by?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href aria-label="1"></a>dataVsechnaPohlavi <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(pohlavi),</span>
+<span id="cb33-3"><a href aria-label="3"></a>         vek <span class="sc">%in%</span> <span class="dv">18</span><span class="sc">:</span><span class="dv">26</span>,</span>
+<span id="cb33-4"><a href aria-label="4"></a>         bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>,</span>
+<span id="cb33-5"><a href aria-label="5"></a>         uzemi <span class="sc">==</span> <span class="st">&quot;Jihomoravský kraj&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-6"><a href aria-label="6"></a>  <span class="fu">group_by</span>(pohlavi) <span class="sc">%&gt;%</span></span>
+<span id="cb33-7"><a href aria-label="7"></a>  <span class="fu">summarise</span>(<span class="at">pocet =</span> <span class="fu">sum</span>(hodnota)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-8"><a href aria-label="8"></a>  <span class="fu">mutate</span>(<span class="at">procento =</span> <span class="dv">100</span> <span class="sc">*</span> pocet <span class="sc">/</span> <span class="fu">sum</span>(pocet))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  pohlavi pocet procento
+  &lt;fct&gt;   &lt;int&gt;    &lt;dbl&gt;
+1 &quot;&quot;         46     50  
+2 &quot;muž&quot;      30     32.6
+3 &quot;žena&quot;     16     17.4</code></pre>
 </div>
 </div>
 </div>
@@ -15575,9 +15598,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Nejdříve si potřebujeme vybrat všechny hodnoty z <code>uzemi</code>, které jsou kraj. Jak na to?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;kraj&quot;</span>, uzemi)) <span class="sc">%&gt;%</span></span>
-<span id="cb31-3"><a href aria-label="3"></a>  <span class="fu">distinct</span>(uzemi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;kraj&quot;</span>, uzemi)) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href aria-label="3"></a>  <span class="fu">distinct</span>(uzemi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  uzemi
 1      Středočeský kraj
@@ -15599,19 +15622,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Ve výběru nám chybí Praha, jelikož ta v názvu nemá kraj. K výběru proto použijeme jinou hodnotu - a to výběrem kódu pro kraj z číselníku.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href aria-label="1"></a><span class="co">#jake hodnoty v ciselniku ma specificky kraj?</span></span>
-<span id="cb33-2"><a href aria-label="2"></a>data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;kraj&quot;</span>, uzemi)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href aria-label="3"></a>  <span class="fu">pull</span>(uzemi_cis) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href aria-label="4"></a>  <span class="fu">unique</span>() <span class="co">#100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href aria-label="1"></a><span class="co">#jake hodnoty v ciselniku ma specificky kraj?</span></span>
+<span id="cb37-2"><a href aria-label="2"></a>data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;kraj&quot;</span>, uzemi)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href aria-label="3"></a>  <span class="fu">pull</span>(uzemi_cis) <span class="sc">%&gt;%</span></span>
+<span id="cb37-4"><a href aria-label="4"></a>  <span class="fu">unique</span>() <span class="co">#100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 100</code></pre>
 </div>
 </div>
 <p>A ověření, ze kterého zjistíme i kterou Prahu máme použít:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(uzemi_cis <span class="sc">==</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href aria-label="3"></a>  <span class="fu">distinct</span>(uzemi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(uzemi_cis <span class="sc">==</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href aria-label="3"></a>  <span class="fu">distinct</span>(uzemi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  uzemi
 1    Hlavní město Praha
@@ -15634,12 +15657,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Nyní si tedy můžeme spočítat, který kraj splňuje dané podmínky.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(uzemi_cis <span class="sc">==</span> <span class="dv">100</span>,</span>
-<span id="cb37-3"><a href aria-label="3"></a>         bydleni <span class="sc">==</span> <span class="st">&quot;Osoby žijící v ubytovacím zařízení&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href aria-label="4"></a>  <span class="fu">group_by</span>(uzemi) <span class="sc">%&gt;%</span></span>
-<span id="cb37-5"><a href aria-label="5"></a>  <span class="fu">summarise</span>(<span class="at">pocet =</span> <span class="fu">sum</span>(hodnota)) <span class="sc">%&gt;%</span></span>
-<span id="cb37-6"><a href aria-label="6"></a>  <span class="fu">filter</span>(pocet <span class="sc">==</span> <span class="fu">min</span>(pocet))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(uzemi_cis <span class="sc">==</span> <span class="dv">100</span>,</span>
+<span id="cb41-3"><a href aria-label="3"></a>         bydleni <span class="sc">==</span> <span class="st">&quot;Osoby žijící v ubytovacím zařízení&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href aria-label="4"></a>  <span class="fu">group_by</span>(uzemi) <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href aria-label="5"></a>  <span class="fu">summarise</span>(<span class="at">pocet =</span> <span class="fu">sum</span>(hodnota)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-6"><a href aria-label="6"></a>  <span class="fu">filter</span>(pocet <span class="sc">==</span> <span class="fu">min</span>(pocet))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   uzemi            pocet
@@ -15651,17 +15674,17 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Další možností zjištění kraje s nejnižší hodnotou je použití funkce <code>dplyr::slice_min</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(uzemi_cis <span class="sc">==</span> <span class="dv">100</span>,</span>
-<span id="cb39-3"><a href aria-label="3"></a>         bydleni <span class="sc">==</span> <span class="st">&quot;Osoby žijící v ubytovacím zařízení&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb39-4"><a href aria-label="4"></a>  <span class="fu">group_by</span>(uzemi) <span class="sc">%&gt;%</span></span>
-<span id="cb39-5"><a href aria-label="5"></a>  <span class="fu">summarise</span>(<span class="at">pocet =</span> <span class="fu">sum</span>(hodnota)) <span class="sc">%&gt;%</span></span>
-<span id="cb39-6"><a href aria-label="6"></a>  <span class="fu">slice_min</span>(pocet) <span class="co">#fce vybere radek s nejnizsi hodnotou</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(uzemi_cis <span class="sc">==</span> <span class="dv">100</span>,</span>
+<span id="cb43-3"><a href aria-label="3"></a>         bydleni <span class="sc">==</span> <span class="st">&quot;Osoby žijící v ubytovacím zařízení&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href aria-label="4"></a>  <span class="fu">group_by</span>(uzemi) <span class="sc">%&gt;%</span></span>
+<span id="cb43-5"><a href aria-label="5"></a>  <span class="fu">summarise</span>(<span class="at">pocet =</span> <span class="fu">sum</span>(hodnota)) <span class="sc">%&gt;%</span></span>
+<span id="cb43-6"><a href aria-label="6"></a>  <span class="fu">slice_min</span>(pocet) <span class="co">#fce vybere radek s nejnizsi hodnotou</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   uzemi            pocet
   &lt;fct&gt;            &lt;int&gt;
-1 Karlovarský kraj 12538</code></pre>
+1 Karlovarský kraj  6269</code></pre>
 </div>
 </div>
 </div>
@@ -15673,14 +15696,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Pro snadnější manipulaci si vytvoříme dataset pouze s Prahou a lidmi v hledaném typu ubytování.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href aria-label="1"></a>praha <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(uzemi <span class="sc">==</span> <span class="st">&quot;Hlavní město Praha&quot;</span>,</span>
-<span id="cb41-2"><a href aria-label="2"></a>                         bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href aria-label="1"></a>praha <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(uzemi <span class="sc">==</span> <span class="st">&quot;Hlavní město Praha&quot;</span>,</span>
+<span id="cb45-2"><a href aria-label="2"></a>                         bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p>Pro správný výpočet mediánu musíme pracovat ne pouze s výpočtem mediánu ze sloupce <code>vek</code>, ale s vektorem, který v sobě budou mít každou hodnotu ze sloupce <code>vek</code> zopakovanou tolikrát, kolikrát je ve sloupci <code>hodnota</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href aria-label="1"></a><span class="fu">median</span>(<span class="fu">rep</span>(praha<span class="sc">$</span>vek, praha<span class="sc">$</span>hodnota)) <span class="co">#51</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href aria-label="1"></a><span class="fu">median</span>(<span class="fu">rep</span>(praha<span class="sc">$</span>vek, praha<span class="sc">$</span>hodnota)) <span class="co">#51</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 51</code></pre>
 </div>
@@ -15689,10 +15712,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>A nyní si vypočítáme medián pro celou ČR - taktéž můžeme použít možnosti vytvoření si subsetu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href aria-label="1"></a>cr <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>,</span>
-<span id="cb44-2"><a href aria-label="2"></a>                bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>)</span>
-<span id="cb44-3"><a href aria-label="3"></a></span>
-<span id="cb44-4"><a href aria-label="4"></a><span class="fu">median</span>(<span class="fu">rep</span>(cr<span class="sc">$</span>vek, cr<span class="sc">$</span>hodnota)) <span class="co">#50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href aria-label="1"></a>cr <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>,</span>
+<span id="cb48-2"><a href aria-label="2"></a>                bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>)</span>
+<span id="cb48-3"><a href aria-label="3"></a></span>
+<span id="cb48-4"><a href aria-label="4"></a><span class="fu">median</span>(<span class="fu">rep</span>(cr<span class="sc">$</span>vek, cr<span class="sc">$</span>hodnota)) <span class="co">#50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 50</code></pre>
 </div>
@@ -15706,7 +15729,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Zjistíme si, kolik dětí je v každém typu bydlení.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href aria-label="1"></a><span class="fu">levels</span>(data<span class="sc">$</span>bydleni)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href aria-label="1"></a><span class="fu">levels</span>(data<span class="sc">$</span>bydleni)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Bezdomovci&quot;                                                  
 [2] &quot;Byt&quot;                                                         
@@ -15714,35 +15737,35 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 [4] &quot;Osoby žijící v jiných obydlích&quot;                              
 [5] &quot;Osoby žijící v ubytovacím zařízení&quot;                          </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href aria-label="1"></a>detiBez <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
-<span id="cb48-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
-<span id="cb48-3"><a href aria-label="3"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>,</span>
-<span id="cb48-4"><a href aria-label="4"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb48-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); detiBez <span class="co">#37</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href aria-label="1"></a>detiBez <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
+<span id="cb52-3"><a href aria-label="3"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>,</span>
+<span id="cb52-4"><a href aria-label="4"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); detiBez <span class="co">#37</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 37</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href aria-label="1"></a>detiByt <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
-<span id="cb50-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
-<span id="cb50-3"><a href aria-label="3"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Byt&quot;</span>,</span>
-<span id="cb50-4"><a href aria-label="4"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb50-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); detiByt <span class="co">#1950433</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href aria-label="1"></a>detiByt <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
+<span id="cb54-3"><a href aria-label="3"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Byt&quot;</span>,</span>
+<span id="cb54-4"><a href aria-label="4"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); detiByt <span class="co">#1950433</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1950433</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href aria-label="1"></a>detiJine <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
-<span id="cb52-3"><a href aria-label="3"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Osoby žijící v jiných obydlích&quot;</span>,</span>
-<span id="cb52-4"><a href aria-label="4"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); detiJine <span class="co">#27560</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href aria-label="1"></a>detiJine <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
+<span id="cb56-3"><a href aria-label="3"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Osoby žijící v jiných obydlích&quot;</span>,</span>
+<span id="cb56-4"><a href aria-label="4"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); detiJine <span class="co">#27560</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 27560</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href aria-label="1"></a>detiUbyt <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
-<span id="cb54-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
-<span id="cb54-3"><a href aria-label="3"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Osoby žijící v ubytovacím zařízení&quot;</span>,</span>
-<span id="cb54-4"><a href aria-label="4"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb54-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); detiUbyt <span class="co">#13021</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href aria-label="1"></a>detiUbyt <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
+<span id="cb58-3"><a href aria-label="3"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Osoby žijící v ubytovacím zařízení&quot;</span>,</span>
+<span id="cb58-4"><a href aria-label="4"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); detiUbyt <span class="co">#13021</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 13021</code></pre>
 </div>
@@ -15751,15 +15774,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Vidíme, že nejvíc dětí bydlí v bytě, ale kdybychom si to chtěli opravdu potvrdit…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href aria-label="1"></a>deti <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb56-2"><a href aria-label="2"></a>  <span class="at">Bezdomovci =</span> detiBez,</span>
-<span id="cb56-3"><a href aria-label="3"></a>  <span class="at">Byt =</span> detiByt,</span>
-<span id="cb56-4"><a href aria-label="4"></a>  <span class="at">Jine =</span> detiJine,</span>
-<span id="cb56-5"><a href aria-label="5"></a>  <span class="at">Ubytovani =</span> detiUbyt)</span>
-<span id="cb56-6"><a href aria-label="6"></a></span>
-<span id="cb56-7"><a href aria-label="7"></a>deti <span class="sc">%&gt;%</span></span>
-<span id="cb56-8"><a href aria-label="8"></a>  <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-9"><a href aria-label="9"></a>  .[<span class="dv">1</span>] <span class="co">#Byt 1950433</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href aria-label="1"></a>deti <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb60-2"><a href aria-label="2"></a>  <span class="at">Bezdomovci =</span> detiBez,</span>
+<span id="cb60-3"><a href aria-label="3"></a>  <span class="at">Byt =</span> detiByt,</span>
+<span id="cb60-4"><a href aria-label="4"></a>  <span class="at">Jine =</span> detiJine,</span>
+<span id="cb60-5"><a href aria-label="5"></a>  <span class="at">Ubytovani =</span> detiUbyt)</span>
+<span id="cb60-6"><a href aria-label="6"></a></span>
+<span id="cb60-7"><a href aria-label="7"></a>deti <span class="sc">%&gt;%</span></span>
+<span id="cb60-8"><a href aria-label="8"></a>  <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb60-9"><a href aria-label="9"></a>  .[<span class="dv">1</span>] <span class="co">#Byt 1950433</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Byt 
 1950433 </code></pre>
@@ -15769,13 +15792,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="fragment">
 <p>Samozřejmě to můžeme udělat jednodušeji, a to pomocí <code>group_by</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb58-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
-<span id="cb58-3"><a href aria-label="3"></a>         uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>,</span>
-<span id="cb58-4"><a href aria-label="4"></a>         bydleni <span class="sc">!=</span> <span class="st">&quot;Obyvatelstvo podle způsobu bydlení celkem (kromě bezdomovců)&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb58-5"><a href aria-label="5"></a>  <span class="fu">group_by</span>(bydleni) <span class="sc">%&gt;%</span></span>
-<span id="cb58-6"><a href aria-label="6"></a>  <span class="fu">summarise</span>(<span class="at">pocet =</span> <span class="fu">sum</span>(hodnota)) <span class="sc">%&gt;%</span></span>
-<span id="cb58-7"><a href aria-label="7"></a>  <span class="fu">slice_max</span>(pocet) <span class="co">#Byt 1950433</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href aria-label="2"></a>  <span class="fu">filter</span>(vek <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
+<span id="cb62-3"><a href aria-label="3"></a>         uzemi <span class="sc">==</span> <span class="st">&quot;Česká republika&quot;</span>,</span>
+<span id="cb62-4"><a href aria-label="4"></a>         bydleni <span class="sc">!=</span> <span class="st">&quot;Obyvatelstvo podle způsobu bydlení celkem (kromě bezdomovců)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-5"><a href aria-label="5"></a>  <span class="fu">group_by</span>(bydleni) <span class="sc">%&gt;%</span></span>
+<span id="cb62-6"><a href aria-label="6"></a>  <span class="fu">summarise</span>(<span class="at">pocet =</span> <span class="fu">sum</span>(hodnota)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-7"><a href aria-label="7"></a>  <span class="fu">slice_max</span>(pocet) <span class="co">#Byt 1950433</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   bydleni   pocet
@@ -15791,24 +15814,26 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p><strong>O kolik více seniorů (65+ let) bez domova žije v Libereckém než v Moravskoslezském kraji či naopak?</strong></p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href aria-label="1"></a>sL <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
-<span id="cb60-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&gt;</span> <span class="dv">64</span>,</span>
-<span id="cb60-3"><a href aria-label="3"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Liberecký kraj&quot;</span>,</span>
-<span id="cb60-4"><a href aria-label="4"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb60-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); sL <span class="co">#23</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href aria-label="1"></a>sL <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&gt;</span> <span class="dv">64</span>,</span>
+<span id="cb64-3"><a href aria-label="3"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Liberecký kraj&quot;</span>,</span>
+<span id="cb64-4"><a href aria-label="4"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb64-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota) <span class="sc">%&gt;%</span></span>
+<span id="cb64-6"><a href aria-label="6"></a>      <span class="fu">sum</span>(); sL <span class="co">#23</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 23</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href aria-label="1"></a>sM <span class="ot">&lt;-</span> <span class="fu">sum</span>(data <span class="sc">%&gt;%</span></span>
-<span id="cb62-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&gt;</span> <span class="dv">64</span>,</span>
-<span id="cb62-3"><a href aria-label="3"></a>             uzemi <span class="sc">==</span> <span class="st">&quot;Moravskoslezský kraj&quot;</span>,</span>
-<span id="cb62-4"><a href aria-label="4"></a>             bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota)); sM <span class="co">#77</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href aria-label="1"></a>sM <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href aria-label="2"></a>      <span class="fu">filter</span>(vek <span class="sc">&gt;</span> <span class="dv">64</span>,</span>
+<span id="cb66-3"><a href aria-label="3"></a>           uzemi <span class="sc">==</span> <span class="st">&quot;Moravskoslezský kraj&quot;</span>,</span>
+<span id="cb66-4"><a href aria-label="4"></a>           bydleni <span class="sc">==</span> <span class="st">&quot;Bezdomovci&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb66-5"><a href aria-label="5"></a>      <span class="fu">pull</span>(hodnota) <span class="sc">%&gt;%</span></span>
+<span id="cb66-6"><a href aria-label="6"></a>      <span class="fu">sum</span>(); sM <span class="co">#77</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 77</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href aria-label="1"></a><span class="co">#jaky je rozdil v poctu osob bez domova meti libereckym a moravskoslezskym krajem</span></span>
-<span id="cb64-2"><a href aria-label="2"></a>sM <span class="sc">-</span> sL</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href aria-label="1"></a><span class="co">#jaky je rozdil v poctu osob bez domova meti libereckym a moravskoslezskym krajem</span></span>
+<span id="cb68-2"><a href aria-label="2"></a>sM <span class="sc">-</span> sL</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 54</code></pre>
 </div>
@@ -15820,9 +15845,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Programování v R neznamená pouze vytváření si vlastních funkcí a balíčků, ale i <strong>automatizaci provádění opakujících se činností</strong>.</p>
 <p>Dejme tomu, že máme pro každou třídu v ročníku tabulku s počtem bodů:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href aria-label="1"></a>pocetBoduA <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Martin =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">55</span>, <span class="dv">46</span>, <span class="cn">NA</span>, <span class="dv">30</span>),</span>
-<span id="cb66-2"><a href aria-label="2"></a>                        <span class="at">Ludmila =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">95</span>, <span class="dv">12</span>, <span class="dv">70</span>, <span class="dv">69</span>),</span>
-<span id="cb66-3"><a href aria-label="3"></a>                        <span class="at">Jana =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">3</span>)); pocetBoduA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href aria-label="1"></a>pocetBoduA <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Martin =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">55</span>, <span class="dv">46</span>, <span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb70-2"><a href aria-label="2"></a>                        <span class="at">Ludmila =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">95</span>, <span class="dv">12</span>, <span class="dv">70</span>, <span class="dv">69</span>),</span>
+<span id="cb70-3"><a href aria-label="3"></a>                        <span class="at">Jana =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">3</span>)); pocetBoduA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Martin Ludmila Jana
 1     20      80   NA
@@ -15831,9 +15856,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 4     NA      70   12
 5     30      69    3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href aria-label="1"></a>pocetBoduB <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Kvido =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">65</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb68-2"><a href aria-label="2"></a>                       Saša <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">55</span>, <span class="cn">NA</span>, <span class="dv">23</span>, <span class="dv">79</span>),</span>
-<span id="cb68-3"><a href aria-label="3"></a>                       <span class="at">Ondra =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">98</span>, <span class="dv">99</span>, <span class="dv">100</span>, <span class="dv">95</span>)); pocetBoduB</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href aria-label="1"></a>pocetBoduB <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Kvido =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">65</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb72-2"><a href aria-label="2"></a>                       Saša <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">55</span>, <span class="cn">NA</span>, <span class="dv">23</span>, <span class="dv">79</span>),</span>
+<span id="cb72-3"><a href aria-label="3"></a>                       <span class="at">Ondra =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">98</span>, <span class="dv">99</span>, <span class="dv">100</span>, <span class="dv">95</span>)); pocetBoduB</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Kvido Saša Ondra
 1    18   NA   100
@@ -15842,9 +15867,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 4    NA   23   100
 5    NA   79    95</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href aria-label="1"></a>pocetBoduC <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Ivan =</span> <span class="fu">c</span>(<span class="dv">42</span>, <span class="dv">67</span>, <span class="dv">69</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb70-2"><a href aria-label="2"></a>                         <span class="at">Oto =</span> <span class="fu">c</span>(<span class="dv">68</span>, <span class="dv">83</span>, <span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">79</span>),</span>
-<span id="cb70-3"><a href aria-label="3"></a>                         <span class="at">Marie =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>)); pocetBoduC</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href aria-label="1"></a>pocetBoduC <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Ivan =</span> <span class="fu">c</span>(<span class="dv">42</span>, <span class="dv">67</span>, <span class="dv">69</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb74-2"><a href aria-label="2"></a>                         <span class="at">Oto =</span> <span class="fu">c</span>(<span class="dv">68</span>, <span class="dv">83</span>, <span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">79</span>),</span>
+<span id="cb74-3"><a href aria-label="3"></a>                         <span class="at">Marie =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>)); pocetBoduC</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Ivan Oto Marie
 1   42  68    NA
@@ -15890,14 +15915,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p><strong>Co je jednodušší? Toto</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href aria-label="1"></a>pocetBoduA_hodnoceni <span class="ot">&lt;-</span> pocetBoduA</span>
-<span id="cb72-2"><a href aria-label="2"></a></span>
-<span id="cb72-3"><a href aria-label="3"></a>pocetBoduA_hodnoceni[] <span class="ot">&lt;-</span> <span class="st">&quot;výborný&quot;</span></span>
-<span id="cb72-4"><a href aria-label="4"></a>pocetBoduA_hodnoceni[pocetBoduA <span class="sc">&lt;</span> <span class="dv">90</span>] <span class="ot">&lt;-</span> <span class="st">&quot;velmi dobrý&quot;</span></span>
-<span id="cb72-5"><a href aria-label="5"></a>pocetBoduA_hodnoceni[pocetBoduA <span class="sc">&lt;</span> <span class="dv">75</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dobrý&quot;</span></span>
-<span id="cb72-6"><a href aria-label="6"></a>pocetBoduA_hodnoceni[pocetBoduA <span class="sc">&lt;</span> <span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="st">&quot;nedostatečný&quot;</span></span>
-<span id="cb72-7"><a href aria-label="7"></a>pocetBoduA_hodnoceni[<span class="fu">is.na</span>(pocetBoduA)] <span class="ot">&lt;-</span> <span class="st">&quot;neklasifikováno&quot;</span></span>
-<span id="cb72-8"><a href aria-label="8"></a>pocetBoduA_hodnoceni</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href aria-label="1"></a>pocetBoduA_hodnoceni <span class="ot">&lt;-</span> pocetBoduA</span>
+<span id="cb76-2"><a href aria-label="2"></a></span>
+<span id="cb76-3"><a href aria-label="3"></a>pocetBoduA_hodnoceni[] <span class="ot">&lt;-</span> <span class="st">&quot;výborný&quot;</span></span>
+<span id="cb76-4"><a href aria-label="4"></a>pocetBoduA_hodnoceni[pocetBoduA <span class="sc">&lt;</span> <span class="dv">90</span>] <span class="ot">&lt;-</span> <span class="st">&quot;velmi dobrý&quot;</span></span>
+<span id="cb76-5"><a href aria-label="5"></a>pocetBoduA_hodnoceni[pocetBoduA <span class="sc">&lt;</span> <span class="dv">75</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dobrý&quot;</span></span>
+<span id="cb76-6"><a href aria-label="6"></a>pocetBoduA_hodnoceni[pocetBoduA <span class="sc">&lt;</span> <span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="st">&quot;nedostatečný&quot;</span></span>
+<span id="cb76-7"><a href aria-label="7"></a>pocetBoduA_hodnoceni[<span class="fu">is.na</span>(pocetBoduA)] <span class="ot">&lt;-</span> <span class="st">&quot;neklasifikováno&quot;</span></span>
+<span id="cb76-8"><a href aria-label="8"></a>pocetBoduA_hodnoceni</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Martin      Ludmila            Jana
 1    nedostatečný  velmi dobrý neklasifikováno
@@ -15906,14 +15931,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 4 neklasifikováno        dobrý    nedostatečný
 5    nedostatečný        dobrý    nedostatečný</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href aria-label="1"></a>pocetBoduB_hodnoceni <span class="ot">&lt;-</span> pocetBoduB</span>
-<span id="cb74-2"><a href aria-label="2"></a></span>
-<span id="cb74-3"><a href aria-label="3"></a>pocetBoduB_hodnoceni[] <span class="ot">&lt;-</span> <span class="st">&quot;výborný&quot;</span></span>
-<span id="cb74-4"><a href aria-label="4"></a>pocetBoduB_hodnoceni[pocetBoduB <span class="sc">&lt;</span> <span class="dv">90</span>] <span class="ot">&lt;-</span> <span class="st">&quot;velmi dobrý&quot;</span></span>
-<span id="cb74-5"><a href aria-label="5"></a>pocetBoduB_hodnoceni[pocetBoduB <span class="sc">&lt;</span> <span class="dv">75</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dobrý&quot;</span></span>
-<span id="cb74-6"><a href aria-label="6"></a>pocetBoduB_hodnoceni[pocetBoduB <span class="sc">&lt;</span> <span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="st">&quot;nedostatečný&quot;</span></span>
-<span id="cb74-7"><a href aria-label="7"></a>pocetBoduB_hodnoceni[<span class="fu">is.na</span>(pocetBoduB)] <span class="ot">&lt;-</span> <span class="st">&quot;neklasifikováno&quot;</span></span>
-<span id="cb74-8"><a href aria-label="8"></a>pocetBoduB_hodnoceni</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href aria-label="1"></a>pocetBoduB_hodnoceni <span class="ot">&lt;-</span> pocetBoduB</span>
+<span id="cb78-2"><a href aria-label="2"></a></span>
+<span id="cb78-3"><a href aria-label="3"></a>pocetBoduB_hodnoceni[] <span class="ot">&lt;-</span> <span class="st">&quot;výborný&quot;</span></span>
+<span id="cb78-4"><a href aria-label="4"></a>pocetBoduB_hodnoceni[pocetBoduB <span class="sc">&lt;</span> <span class="dv">90</span>] <span class="ot">&lt;-</span> <span class="st">&quot;velmi dobrý&quot;</span></span>
+<span id="cb78-5"><a href aria-label="5"></a>pocetBoduB_hodnoceni[pocetBoduB <span class="sc">&lt;</span> <span class="dv">75</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dobrý&quot;</span></span>
+<span id="cb78-6"><a href aria-label="6"></a>pocetBoduB_hodnoceni[pocetBoduB <span class="sc">&lt;</span> <span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="st">&quot;nedostatečný&quot;</span></span>
+<span id="cb78-7"><a href aria-label="7"></a>pocetBoduB_hodnoceni[<span class="fu">is.na</span>(pocetBoduB)] <span class="ot">&lt;-</span> <span class="st">&quot;neklasifikováno&quot;</span></span>
+<span id="cb78-8"><a href aria-label="8"></a>pocetBoduB_hodnoceni</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Kvido            Saša   Ondra
 1    nedostatečný neklasifikováno výborný
@@ -15922,14 +15947,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 4 neklasifikováno    nedostatečný výborný
 5 neklasifikováno     velmi dobrý výborný</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href aria-label="1"></a>pocetBoduC_hodnoceni <span class="ot">&lt;-</span> pocetBoduC</span>
-<span id="cb76-2"><a href aria-label="2"></a></span>
-<span id="cb76-3"><a href aria-label="3"></a>pocetBoduC_hodnoceni[] <span class="ot">&lt;-</span> <span class="st">&quot;výborný&quot;</span></span>
-<span id="cb76-4"><a href aria-label="4"></a>pocetBoduC_hodnoceni[pocetBoduC <span class="sc">&lt;</span> <span class="dv">90</span>] <span class="ot">&lt;-</span> <span class="st">&quot;velmi dobrý&quot;</span></span>
-<span id="cb76-5"><a href aria-label="5"></a>pocetBoduC_hodnoceni[pocetBoduC <span class="sc">&lt;</span> <span class="dv">75</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dobrý&quot;</span></span>
-<span id="cb76-6"><a href aria-label="6"></a>pocetBoduC_hodnoceni[pocetBoduC <span class="sc">&lt;</span> <span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="st">&quot;nedostatečný&quot;</span></span>
-<span id="cb76-7"><a href aria-label="7"></a>pocetBoduC_hodnoceni[<span class="fu">is.na</span>(pocetBoduC)] <span class="ot">&lt;-</span> <span class="st">&quot;neklasifikováno&quot;</span></span>
-<span id="cb76-8"><a href aria-label="8"></a>pocetBoduC_hodnoceni</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href aria-label="1"></a>pocetBoduC_hodnoceni <span class="ot">&lt;-</span> pocetBoduC</span>
+<span id="cb80-2"><a href aria-label="2"></a></span>
+<span id="cb80-3"><a href aria-label="3"></a>pocetBoduC_hodnoceni[] <span class="ot">&lt;-</span> <span class="st">&quot;výborný&quot;</span></span>
+<span id="cb80-4"><a href aria-label="4"></a>pocetBoduC_hodnoceni[pocetBoduC <span class="sc">&lt;</span> <span class="dv">90</span>] <span class="ot">&lt;-</span> <span class="st">&quot;velmi dobrý&quot;</span></span>
+<span id="cb80-5"><a href aria-label="5"></a>pocetBoduC_hodnoceni[pocetBoduC <span class="sc">&lt;</span> <span class="dv">75</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dobrý&quot;</span></span>
+<span id="cb80-6"><a href aria-label="6"></a>pocetBoduC_hodnoceni[pocetBoduC <span class="sc">&lt;</span> <span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="st">&quot;nedostatečný&quot;</span></span>
+<span id="cb80-7"><a href aria-label="7"></a>pocetBoduC_hodnoceni[<span class="fu">is.na</span>(pocetBoduC)] <span class="ot">&lt;-</span> <span class="st">&quot;neklasifikováno&quot;</span></span>
+<span id="cb80-8"><a href aria-label="8"></a>pocetBoduC_hodnoceni</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Ivan         Oto           Marie
 1    nedostatečný       dobrý neklasifikováno
@@ -15944,17 +15969,17 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p><strong>Nebo toto?</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href aria-label="1"></a>hodnoceni <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb78-2"><a href aria-label="2"></a>  dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
-<span id="cb78-3"><a href aria-label="3"></a>    <span class="fu">is.na</span>(x) <span class="sc">~</span> <span class="st">&quot;neklasifikováno&quot;</span>,</span>
-<span id="cb78-4"><a href aria-label="4"></a>    x <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">&quot;nedostatečný&quot;</span>,</span>
-<span id="cb78-5"><a href aria-label="5"></a>    x <span class="sc">&lt;</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">&quot;dobrý&quot;</span>,</span>
-<span id="cb78-6"><a href aria-label="6"></a>    x <span class="sc">&lt;</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;velmi dobrý&quot;</span>,</span>
-<span id="cb78-7"><a href aria-label="7"></a>    <span class="at">.default =</span> <span class="st">&quot;výborný&quot;</span>)</span>
-<span id="cb78-8"><a href aria-label="8"></a>}</span>
-<span id="cb78-9"><a href aria-label="9"></a></span>
-<span id="cb78-10"><a href aria-label="10"></a>vysledekA <span class="ot">&lt;-</span> pocetBoduA <span class="sc">%&gt;%</span></span>
-<span id="cb78-11"><a href aria-label="11"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), hodnoceni)); vysledekA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href aria-label="1"></a>hodnoceni <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb82-2"><a href aria-label="2"></a>  dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb82-3"><a href aria-label="3"></a>    <span class="fu">is.na</span>(x) <span class="sc">~</span> <span class="st">&quot;neklasifikováno&quot;</span>,</span>
+<span id="cb82-4"><a href aria-label="4"></a>    x <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">&quot;nedostatečný&quot;</span>,</span>
+<span id="cb82-5"><a href aria-label="5"></a>    x <span class="sc">&lt;</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">&quot;dobrý&quot;</span>,</span>
+<span id="cb82-6"><a href aria-label="6"></a>    x <span class="sc">&lt;</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;velmi dobrý&quot;</span>,</span>
+<span id="cb82-7"><a href aria-label="7"></a>    <span class="at">.default =</span> <span class="st">&quot;výborný&quot;</span>)</span>
+<span id="cb82-8"><a href aria-label="8"></a>}</span>
+<span id="cb82-9"><a href aria-label="9"></a></span>
+<span id="cb82-10"><a href aria-label="10"></a>vysledekA <span class="ot">&lt;-</span> pocetBoduA <span class="sc">%&gt;%</span></span>
+<span id="cb82-11"><a href aria-label="11"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), hodnoceni)); vysledekA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Martin      Ludmila            Jana
 1    nedostatečný  velmi dobrý neklasifikováno
@@ -15963,8 +15988,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 4 neklasifikováno        dobrý    nedostatečný
 5    nedostatečný        dobrý    nedostatečný</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href aria-label="1"></a>vysledekB <span class="ot">&lt;-</span> pocetBoduB <span class="sc">%&gt;%</span></span>
-<span id="cb80-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), hodnoceni)); vysledekB</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href aria-label="1"></a>vysledekB <span class="ot">&lt;-</span> pocetBoduB <span class="sc">%&gt;%</span></span>
+<span id="cb84-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), hodnoceni)); vysledekB</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Kvido            Saša   Ondra
 1    nedostatečný neklasifikováno výborný
@@ -15973,8 +15998,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 4 neklasifikováno    nedostatečný výborný
 5 neklasifikováno     velmi dobrý výborný</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href aria-label="1"></a>vysledekC <span class="ot">&lt;-</span> pocetBoduC <span class="sc">%&gt;%</span></span>
-<span id="cb82-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), hodnoceni)); vysledekC</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href aria-label="1"></a>vysledekC <span class="ot">&lt;-</span> pocetBoduC <span class="sc">%&gt;%</span></span>
+<span id="cb86-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), hodnoceni)); vysledekC</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Ivan         Oto           Marie
 1    nedostatečný       dobrý neklasifikováno
@@ -16064,7 +16089,7 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <p><strong>Dostane Julie zápočet?</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_f770f82d" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_bb73a544" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -16075,19 +16100,19 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="fragment">
 <p>Pro jednodušší práci s nimi si uložíme hodnoty do proměnných.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href aria-label="1"></a>znamka <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb84-2"><a href aria-label="2"></a>pocetBodu <span class="ot">&lt;-</span> <span class="dv">17</span></span>
-<span id="cb84-3"><a href aria-label="3"></a>semestralka <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href aria-label="1"></a>znamka <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb88-2"><a href aria-label="2"></a>pocetBodu <span class="ot">&lt;-</span> <span class="dv">17</span></span>
+<span id="cb88-3"><a href aria-label="3"></a>semestralka <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p>Hodnoty si dosadíme do výpočtu. Pozor na formulaci zadání!</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href aria-label="1"></a><span class="cf">if</span> (znamka <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">&amp;</span> pocetBodu <span class="sc">!=</span> <span class="dv">0</span>)</span>
-<span id="cb85-2"><a href aria-label="2"></a>  {<span class="fu">paste</span>(<span class="st">&quot;Julie má známku&quot;</span>, znamka, <span class="st">&quot;a získala&quot;</span>, pocetBodu, <span class="st">&quot;bodů, má proto nárok na vyznamenání.&quot;</span>)} <span class="cf">else</span></span>
-<span id="cb85-3"><a href aria-label="3"></a>  <span class="cf">if</span> (semestralka <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">&amp;</span> pocetBodu <span class="sc">&gt;=</span> <span class="dv">50</span>)</span>
-<span id="cb85-4"><a href aria-label="4"></a>  {<span class="fu">paste</span>(<span class="st">&quot;Julie má počet bodů&quot;</span>, pocetBodu, <span class="st">&quot;a napsala seminárku, má proto nárok na vyznamenání.&quot;</span>)} <span class="cf">else</span></span>
-<span id="cb85-5"><a href aria-label="5"></a>    {<span class="st">&quot;Julie nemá právo na vyznamenání.&quot;</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href aria-label="1"></a><span class="cf">if</span> (znamka <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">&amp;</span> pocetBodu <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb89-2"><a href aria-label="2"></a>  {<span class="fu">paste</span>(<span class="st">&quot;Julie má známku&quot;</span>, znamka, <span class="st">&quot;a získala&quot;</span>, pocetBodu, <span class="st">&quot;bodů, má proto nárok na vyznamenání.&quot;</span>)} <span class="cf">else</span></span>
+<span id="cb89-3"><a href aria-label="3"></a>  <span class="cf">if</span> (semestralka <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">&amp;</span> pocetBodu <span class="sc">&gt;=</span> <span class="dv">50</span>)</span>
+<span id="cb89-4"><a href aria-label="4"></a>  {<span class="fu">paste</span>(<span class="st">&quot;Julie má počet bodů&quot;</span>, pocetBodu, <span class="st">&quot;a napsala seminárku, má proto nárok na vyznamenání.&quot;</span>)} <span class="cf">else</span></span>
+<span id="cb89-5"><a href aria-label="5"></a>    {<span class="st">&quot;Julie nemá právo na vyznamenání.&quot;</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Julie nemá právo na vyznamenání.&quot;</code></pre>
 </div>
@@ -16130,12 +16155,12 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <section id="funkce-ifelse" class="slide level2">
 <h2>Funkce <code>ifelse</code></h2>
 <blockquote>
-<p>funkce umožňující aplikaci if … else funkce pro všechny jednotlivé hodnoty v objektu</p>
+<p>funkce umožňující aplikaci if … else funkce pro všechny jednotlivé hodnoty v prvku</p>
 </blockquote>
 <p><code>ifelse(podmínka, vyber pokud TRUE, vyber pokud FALSE)</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb87-2"><a href aria-label="2"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>,<span class="st">&quot;Kladné číslo&quot;</span>, <span class="st">&quot;Záporné&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb91-2"><a href aria-label="2"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>,<span class="st">&quot;Kladné číslo&quot;</span>, <span class="st">&quot;Záporné&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Záporné&quot;      &quot;Záporné&quot;      &quot;Kladné číslo&quot; &quot;Kladné číslo&quot; &quot;Kladné číslo&quot;
 [6] &quot;Kladné číslo&quot; &quot;Kladné číslo&quot;</code></pre>
@@ -16143,8 +16168,8 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 </div>
 <p><strong>I tuto funkci můžeme vrstvit.</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb89-2"><a href aria-label="2"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>,<span class="st">&quot;Kladné číslo&quot;</span>, <span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">&quot;Záporné&quot;</span>, <span class="st">&quot;Nula&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb93-2"><a href aria-label="2"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>,<span class="st">&quot;Kladné číslo&quot;</span>, <span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">&quot;Záporné&quot;</span>, <span class="st">&quot;Nula&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Záporné&quot;      &quot;Nula&quot;         &quot;Kladné číslo&quot; &quot;Kladné číslo&quot; &quot;Kladné číslo&quot;
 [6] &quot;Kladné číslo&quot; &quot;Kladné číslo&quot;</code></pre>
@@ -16170,13 +16195,13 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <p><strong>Ukázka</strong></p>
 <p>Zkontroluj, jestli je hodnota v <code>Sepal.Lenght</code> &gt; 5. Pokud ano, zaokrouhli ji nahoru. Pokud ne, zaokrouhli dolu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href aria-label="1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb91-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb91-3"><a href aria-label="3"></a>    <span class="at">SL_zaokrouhlena =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb91-4"><a href aria-label="4"></a>      Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>,</span>
-<span id="cb91-5"><a href aria-label="5"></a>      <span class="fu">ceiling</span>(Sepal.Length),</span>
-<span id="cb91-6"><a href aria-label="6"></a>      <span class="fu">floor</span>(Sepal.Length))) <span class="sc">%&gt;%</span></span>
-<span id="cb91-7"><a href aria-label="7"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href aria-label="1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb95-3"><a href aria-label="3"></a>    <span class="at">SL_zaokrouhlena =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb95-4"><a href aria-label="4"></a>      Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>,</span>
+<span id="cb95-5"><a href aria-label="5"></a>      <span class="fu">ceiling</span>(Sepal.Length),</span>
+<span id="cb95-6"><a href aria-label="6"></a>      <span class="fu">floor</span>(Sepal.Length))) <span class="sc">%&gt;%</span></span>
+<span id="cb95-7"><a href aria-label="7"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species SL_zaokrouhlena
 1          5.1         3.5          1.4         0.2  setosa               6
@@ -16193,17 +16218,17 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <h3 id="potenciální-zádrhely-1">Potenciální zádrhely</h3>
 <p>Funkce <code>ifelse</code> nám sice vyřeší problém aplikace na více než jednu hodnotu, ale… <strong>stojí to za to</strong>?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href aria-label="1"></a>pocetBoduA<span class="sc">$</span>Martin</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href aria-label="1"></a>pocetBoduA<span class="sc">$</span>Martin</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20 55 46 NA 30</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href aria-label="1"></a>pocetBoduA <span class="sc">%&gt;%</span></span>
-<span id="cb95-2"><a href aria-label="2"></a>    <span class="fu">mutate</span>(<span class="at">Martin =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb95-3"><a href aria-label="3"></a>        <span class="fu">is.na</span>(Martin), <span class="st">&quot;neklasifikováno&quot;</span>, <span class="fu">ifelse</span>(</span>
-<span id="cb95-4"><a href aria-label="4"></a>          Martin <span class="sc">&lt;</span> <span class="dv">50</span>, <span class="st">&quot;nedostatečný&quot;</span>, <span class="fu">ifelse</span>(</span>
-<span id="cb95-5"><a href aria-label="5"></a>            Martin <span class="sc">&lt;</span> <span class="dv">75</span>, <span class="st">&quot;dobrý&quot;</span>, <span class="fu">ifelse</span>(</span>
-<span id="cb95-6"><a href aria-label="6"></a>              Martin <span class="sc">&lt;</span> <span class="dv">90</span>, <span class="st">&quot;velmi dobrý&quot;</span>, <span class="fu">ifelse</span>(</span>
-<span id="cb95-7"><a href aria-label="7"></a>                Martin <span class="sc">&lt;=</span> <span class="dv">100</span>, <span class="st">&quot;výborný&quot;</span>))))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href aria-label="1"></a>pocetBoduA <span class="sc">%&gt;%</span></span>
+<span id="cb99-2"><a href aria-label="2"></a>    <span class="fu">mutate</span>(<span class="at">Martin =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb99-3"><a href aria-label="3"></a>        <span class="fu">is.na</span>(Martin), <span class="st">&quot;neklasifikováno&quot;</span>, <span class="fu">ifelse</span>(</span>
+<span id="cb99-4"><a href aria-label="4"></a>          Martin <span class="sc">&lt;</span> <span class="dv">50</span>, <span class="st">&quot;nedostatečný&quot;</span>, <span class="fu">ifelse</span>(</span>
+<span id="cb99-5"><a href aria-label="5"></a>            Martin <span class="sc">&lt;</span> <span class="dv">75</span>, <span class="st">&quot;dobrý&quot;</span>, <span class="fu">ifelse</span>(</span>
+<span id="cb99-6"><a href aria-label="6"></a>              Martin <span class="sc">&lt;</span> <span class="dv">90</span>, <span class="st">&quot;velmi dobrý&quot;</span>, <span class="fu">ifelse</span>(</span>
+<span id="cb99-7"><a href aria-label="7"></a>                Martin <span class="sc">&lt;=</span> <span class="dv">100</span>, <span class="st">&quot;výborný&quot;</span>))))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Martin Ludmila Jana
 1    nedostatečný      80   NA
@@ -16222,17 +16247,17 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 </blockquote>
 <p><code>case_when(podmínka ~ výsledek pokud TRUE)</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href aria-label="1"></a>pocetBoduA<span class="sc">$</span>Martin</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href aria-label="1"></a>pocetBoduA<span class="sc">$</span>Martin</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20 55 46 NA 30</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href aria-label="1"></a>pocetBoduA <span class="sc">%&gt;%</span></span>
-<span id="cb99-2"><a href aria-label="2"></a>    <span class="fu">mutate</span>(<span class="at">Martin =</span> <span class="fu">case_when</span>(</span>
-<span id="cb99-3"><a href aria-label="3"></a>        <span class="fu">is.na</span>(Martin) <span class="sc">~</span> <span class="st">&quot;neklasifikováno&quot;</span>,</span>
-<span id="cb99-4"><a href aria-label="4"></a>        Martin <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">&quot;nedostatečný&quot;</span>,</span>
-<span id="cb99-5"><a href aria-label="5"></a>        Martin <span class="sc">&lt;</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">&quot;dobrý&quot;</span>,</span>
-<span id="cb99-6"><a href aria-label="6"></a>        Martin <span class="sc">&lt;</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;velmi dobrý&quot;</span>,</span>
-<span id="cb99-7"><a href aria-label="7"></a>        <span class="at">.default =</span>  <span class="st">&quot;výborný&quot;</span>)) <span class="co">#vychozi hodnota pokud ostatni neprojdou</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href aria-label="1"></a>pocetBoduA <span class="sc">%&gt;%</span></span>
+<span id="cb103-2"><a href aria-label="2"></a>    <span class="fu">mutate</span>(<span class="at">Martin =</span> <span class="fu">case_when</span>(</span>
+<span id="cb103-3"><a href aria-label="3"></a>        <span class="fu">is.na</span>(Martin) <span class="sc">~</span> <span class="st">&quot;neklasifikováno&quot;</span>,</span>
+<span id="cb103-4"><a href aria-label="4"></a>        Martin <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">&quot;nedostatečný&quot;</span>,</span>
+<span id="cb103-5"><a href aria-label="5"></a>        Martin <span class="sc">&lt;</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">&quot;dobrý&quot;</span>,</span>
+<span id="cb103-6"><a href aria-label="6"></a>        Martin <span class="sc">&lt;</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;velmi dobrý&quot;</span>,</span>
+<span id="cb103-7"><a href aria-label="7"></a>        <span class="at">.default =</span>  <span class="st">&quot;výborný&quot;</span>)) <span class="co">#vychozi hodnota pokud ostatni neprojdou</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Martin Ludmila Jana
 1    nedostatečný      80   NA
@@ -16256,12 +16281,12 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="callout-content">
 <p>Dejte pozor na to, že pokud funkce narazí na jinak nezapracovanou <strong><code>NA</code> hodnotu, automaticky ji bere jako <code>.default</code></strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href aria-label="1"></a>pocetBoduA <span class="sc">%&gt;%</span></span>
-<span id="cb101-2"><a href aria-label="2"></a>    <span class="fu">mutate</span>(<span class="at">Martin =</span> <span class="fu">case_when</span>(</span>
-<span id="cb101-3"><a href aria-label="3"></a>        Martin <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">&quot;nedostatečný&quot;</span>,</span>
-<span id="cb101-4"><a href aria-label="4"></a>        Martin <span class="sc">&lt;</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">&quot;dobrý&quot;</span>,</span>
-<span id="cb101-5"><a href aria-label="5"></a>        Martin <span class="sc">&lt;</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;velmi dobrý&quot;</span>,</span>
-<span id="cb101-6"><a href aria-label="6"></a>        <span class="at">.default =</span> <span class="st">&quot;výborný&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href aria-label="1"></a>pocetBoduA <span class="sc">%&gt;%</span></span>
+<span id="cb105-2"><a href aria-label="2"></a>    <span class="fu">mutate</span>(<span class="at">Martin =</span> <span class="fu">case_when</span>(</span>
+<span id="cb105-3"><a href aria-label="3"></a>        Martin <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">&quot;nedostatečný&quot;</span>,</span>
+<span id="cb105-4"><a href aria-label="4"></a>        Martin <span class="sc">&lt;</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">&quot;dobrý&quot;</span>,</span>
+<span id="cb105-5"><a href aria-label="5"></a>        Martin <span class="sc">&lt;</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;velmi dobrý&quot;</span>,</span>
+<span id="cb105-6"><a href aria-label="6"></a>        <span class="at">.default =</span> <span class="st">&quot;výborný&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Martin Ludmila Jana
 1 nedostatečný      80   NA
@@ -16308,7 +16333,7 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <h3 id="samostatné-cvičení">Samostatné cvičení</h3>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_29f558ed" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_d15c8821" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <p>Mějme data frame <code>data</code>. Vytvořme pro něj nový sloupec <code>z,</code> který bude naplněn za následujících podmínek:</p>
@@ -16318,9 +16343,9 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 </ul>
 <p>Nezapomeňte na chybějící hodnoty!</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb103-2"><a href aria-label="2"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="cn">NA</span>, <span class="dv">81</span>, <span class="dv">100</span>),</span>
-<span id="cb103-3"><a href aria-label="3"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">10</span>)); data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb107-2"><a href aria-label="2"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="cn">NA</span>, <span class="dv">81</span>, <span class="dv">100</span>),</span>
+<span id="cb107-3"><a href aria-label="3"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">10</span>)); data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    x  y
 1   4  2
@@ -16343,20 +16368,20 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="fragment">
 <p>Vytvoříme si data frame.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb105-2"><a href aria-label="2"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">25</span>, <span class="cn">NA</span>, <span class="dv">81</span>, <span class="dv">100</span>, <span class="dv">9</span>),</span>
-<span id="cb105-3"><a href aria-label="3"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb109-2"><a href aria-label="2"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">25</span>, <span class="cn">NA</span>, <span class="dv">81</span>, <span class="dv">100</span>, <span class="dv">9</span>),</span>
+<span id="cb109-3"><a href aria-label="3"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p>Vytvoříme si sloupec <code>z</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb106-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="dv">1</span>) <span class="co">#1 placeholder pro vysvetleni postupu</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb110-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="dv">1</span>) <span class="co">#1 placeholder pro vysvetleni postupu</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    x  y z
 1   4  2 1
-2  16  4 1
+2   0  4 1
 3  25  5 1
 4  NA  6 1
 5  81  9 1
@@ -16368,10 +16393,10 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="fragment">
 <p>Zkontrolujme, zda je <code>x</code> 0 a pokud ano, mějme <code>z</code> jako <code>NA</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb108-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb108-3"><a href aria-label="3"></a>    <span class="at">z =</span> <span class="fu">case_when</span>(</span>
-<span id="cb108-4"><a href aria-label="4"></a>      x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">NA</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb112-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb112-3"><a href aria-label="3"></a>    <span class="at">z =</span> <span class="fu">case_when</span>(</span>
+<span id="cb112-4"><a href aria-label="4"></a>      x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">NA</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    x  y  z
 1   4  2 NA
@@ -16387,11 +16412,11 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="fragment">
 <p>Zkontrolujme, zda je <code>x</code> sudé číslo a pokud ano, odmocněme ho a přičtěme <code>y</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb110-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb110-3"><a href aria-label="3"></a>    <span class="at">z =</span> <span class="fu">case_when</span>(</span>
-<span id="cb110-4"><a href aria-label="4"></a>      x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">NA</span>,</span>
-<span id="cb110-5"><a href aria-label="5"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="fu">sqrt</span>(x) <span class="sc">+</span> y))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb114-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb114-3"><a href aria-label="3"></a>    <span class="at">z =</span> <span class="fu">case_when</span>(</span>
+<span id="cb114-4"><a href aria-label="4"></a>      x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">NA</span>,</span>
+<span id="cb114-5"><a href aria-label="5"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="fu">sqrt</span>(x) <span class="sc">+</span> y))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    x  y  z
 1   4  2  4
@@ -16407,12 +16432,12 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="fragment">
 <p>Zkontrolujme, zda je <code>x</code> liché číslo a pokud ano, odmocněme ho</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb112-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb112-3"><a href aria-label="3"></a>    <span class="at">z =</span> <span class="fu">case_when</span>(</span>
-<span id="cb112-4"><a href aria-label="4"></a>      x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">NA</span>,</span>
-<span id="cb112-5"><a href aria-label="5"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="fu">sqrt</span>(x) <span class="sc">+</span> y,</span>
-<span id="cb112-6"><a href aria-label="6"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> (x <span class="sc">/</span> y)<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb116-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb116-3"><a href aria-label="3"></a>    <span class="at">z =</span> <span class="fu">case_when</span>(</span>
+<span id="cb116-4"><a href aria-label="4"></a>      x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">NA</span>,</span>
+<span id="cb116-5"><a href aria-label="5"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="fu">sqrt</span>(x) <span class="sc">+</span> y,</span>
+<span id="cb116-6"><a href aria-label="6"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> (x <span class="sc">/</span> y)<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    x  y  z
 1   4  2  4
@@ -16428,13 +16453,13 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="fragment">
 <p>Určeme si co se zbylými hodnotami - stejně jako u 0 nemáme pokyny, proto <code>NA</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb114-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb114-3"><a href aria-label="3"></a>    <span class="at">z =</span> <span class="fu">case_when</span>(</span>
-<span id="cb114-4"><a href aria-label="4"></a>      x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">NA</span>,</span>
-<span id="cb114-5"><a href aria-label="5"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="fu">sqrt</span>(x) <span class="sc">+</span> y,</span>
-<span id="cb114-6"><a href aria-label="6"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> (x <span class="sc">/</span> y)<span class="sc">^</span><span class="dv">2</span>,</span>
-<span id="cb114-7"><a href aria-label="7"></a>      <span class="at">.default =</span> <span class="cn">NA</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb118-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb118-3"><a href aria-label="3"></a>    <span class="at">z =</span> <span class="fu">case_when</span>(</span>
+<span id="cb118-4"><a href aria-label="4"></a>      x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="cn">NA</span>,</span>
+<span id="cb118-5"><a href aria-label="5"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="fu">sqrt</span>(x) <span class="sc">+</span> y,</span>
+<span id="cb118-6"><a href aria-label="6"></a>      x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> (x <span class="sc">/</span> y)<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb118-7"><a href aria-label="7"></a>      <span class="at">.default =</span> <span class="cn">NA</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    x  y  z
 1   4  2  4
@@ -16473,8 +16498,8 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 </blockquote>
 <p><code>for (hodnota in vektorHodnot) {proved´ příkaz}</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href aria-label="1"></a><span class="co"># kazdou hodnotu v 1:10 nam umocni a zobraz</span></span>
-<span id="cb116-2"><a href aria-label="2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {<span class="fu">print</span>(i<span class="sc">^</span><span class="dv">2</span>)} <span class="co">#print fce vypise obsah</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href aria-label="1"></a><span class="co"># kazdou hodnotu v 1:10 nam umocni a zobraz</span></span>
+<span id="cb120-2"><a href aria-label="2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {<span class="fu">print</span>(i<span class="sc">^</span><span class="dv">2</span>)} <span class="co">#print fce vypise obsah</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 4
@@ -16516,7 +16541,7 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="callout-content">
 <p>Není nutné <code>i</code> používat, ale je to standardní.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href aria-label="1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">45</span>)) {<span class="fu">print</span>(x<span class="sc">+</span><span class="dv">2</span>)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href aria-label="1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">45</span>)) {<span class="fu">print</span>(x<span class="sc">+</span><span class="dv">2</span>)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -6
 [1] 11
@@ -16533,13 +16558,13 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <h3 id="proč-cykly-potřebují-print">Proč cykly potřebují <code>print</code>?</h3>
 <p>Samotný cyklus provádí pouze a jednu věc stále dokola - provádí <code>{příkaz}</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {<span class="fu">print</span>(i<span class="sc">^</span><span class="dv">2</span>)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {<span class="fu">print</span>(i<span class="sc">^</span><span class="dv">2</span>)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 4
 [1] 9</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {i<span class="sc">^</span><span class="dv">2</span>} <span class="co">#proc nic nevidime?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {i<span class="sc">^</span><span class="dv">2</span>} <span class="co">#proc nic nevidime?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -16553,12 +16578,12 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <p><strong>R po vypočítání automaticky výsledek “zahazuje”</strong>, pokud mu neřekneme ať ho zobrazí.</p>
 <p>Jeden ze způsobů, jak si o zobrazení řekneme, je třeba zavoláním jména proměnné a nebo právě použití funkce <code>print</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href aria-label="1"></a>a <span class="ot">&lt;-</span> <span class="st">&quot;kolo&quot;</span></span>
-<span id="cb123-2"><a href aria-label="2"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href aria-label="1"></a>a <span class="ot">&lt;-</span> <span class="st">&quot;kolo&quot;</span></span>
+<span id="cb127-2"><a href aria-label="2"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;kolo&quot;</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href aria-label="1"></a><span class="fu">print</span>(a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href aria-label="1"></a><span class="fu">print</span>(a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;kolo&quot;</code></pre>
 </div>
@@ -16572,14 +16597,14 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <h3 id="co-všechno-může-vzniknout-v-for-cyklu">Co všechno může vzniknout v <code>for</code> cyklu?</h3>
 <p>Ukázali jsme si, že výsledkem může být zobrazení určitých hodnot. <strong>Ale co kdybychom si je chtěli ukládat?</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
-<span id="cb127-2"><a href aria-label="2"></a>vysledek <span class="ot">&lt;-</span> <span class="cn">NULL</span>; vysledek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb131-2"><a href aria-label="2"></a>vysledek <span class="ot">&lt;-</span> <span class="cn">NULL</span>; vysledek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {vysledek[i] <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> <span class="dv">2</span>}</span>
-<span id="cb129-2"><a href aria-label="2"></a></span>
-<span id="cb129-3"><a href aria-label="3"></a>vysledek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {vysledek[i] <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> <span class="dv">2</span>}</span>
+<span id="cb133-2"><a href aria-label="2"></a></span>
+<span id="cb133-3"><a href aria-label="3"></a>vysledek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  4  8 12 16</code></pre>
 </div>
@@ -16587,7 +16612,7 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <p><strong>Co se děje?</strong></p>
 <p>Máme prázdnou proměnou <code>vysledek</code>, kam si uložíme tolik hodnot jako je délka <code>x</code>, kdy každá hodnota bude korespondovat s hodnotou <code>x</code> na totožné pozici * 2.</p>
 </section>
-<section class="slide level2">
+<section class="slide level2 scrollable">
 
 <h3 id="k-čemu-to-ale-vůbec-je">K čemu to ale vůbec je?</h3>
 <p>Výpočty, které jsme si zatím u <code>for</code> cyklu ukázaly, by šly provést i jednoduše pomocí funkcí jako <code>ifelse</code>. <strong>Proč tedy vůbec s cykly pracovat?</strong></p>
@@ -16604,45 +16629,194 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 </div>
 </div>
 </div>
-<p>Dejme tomu, že máme buněčný vzorek, ve kterém se buňky množí rychlostí 5 % za jednu hodinu. Začínáme s 1000 buňkami, kolik jich budeme mít po deseti hodinách?</p>
+<ol type="1">
+<li>Máme buněčný vzorek, ve kterém se buňky množí rychlostí 5 % za jednu hodinu. Začínáme s 1000 buňkami, kolik jich budeme mít po deseti hodinách?</li>
+</ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href aria-label="1"></a>mnozstviBunek <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">9</span>)); mnozstviBunek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href aria-label="1"></a>mnozstviBunek <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">9</span>)); mnozstviBunek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1000    0    0    0    0    0    0    0    0    0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(mnozstviBunek)) {</span>
-<span id="cb133-2"><a href aria-label="2"></a>  mnozstviBunek[i] <span class="ot">&lt;-</span> mnozstviBunek[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">*</span> <span class="fl">1.05</span></span>
-<span id="cb133-3"><a href aria-label="3"></a>}</span>
-<span id="cb133-4"><a href aria-label="4"></a></span>
-<span id="cb133-5"><a href aria-label="5"></a>mnozstviBunek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(mnozstviBunek)) {</span>
+<span id="cb137-2"><a href aria-label="2"></a>  mnozstviBunek[i] <span class="ot">&lt;-</span> mnozstviBunek[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">*</span> <span class="fl">1.05</span></span>
+<span id="cb137-3"><a href aria-label="3"></a>}</span>
+<span id="cb137-4"><a href aria-label="4"></a></span>
+<span id="cb137-5"><a href aria-label="5"></a>mnozstviBunek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1000.000 1050.000 1102.500 1157.625 1215.506 1276.282 1340.096 1407.100
  [9] 1477.455 1551.328</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href aria-label="1"></a>mnozstviBunek[<span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href aria-label="1"></a>mnozstviBunek[<span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1551.328</code></pre>
 </div>
 </div>
-<p>opakování věcí které závisí na předchozím výsledku to ifelse nedělá</p>
+</section>
+<section class="slide level2 scrollable">
+
+<ol start="2" type="1">
+<li>Pomocí modelu SIR namodelujme, jak se bude během 100 dnů epidemie vyvíjet počet nakažených, uzdravených a osob ohrožených nakažením.</li>
+</ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href aria-label="1"></a>trzby <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">150</span>, <span class="dv">300</span>, <span class="dv">250</span>)</span>
-<span id="cb137-2"><a href aria-label="2"></a></span>
-<span id="cb137-3"><a href aria-label="3"></a>kumulativni_trzby <span class="ot">&lt;-</span> <span class="fu">length</span>(trzby)</span>
-<span id="cb137-4"><a href aria-label="4"></a></span>
-<span id="cb137-5"><a href aria-label="5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(trzby)) {</span>
-<span id="cb137-6"><a href aria-label="6"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb137-7"><a href aria-label="7"></a>    kumulativni_trzby[i] <span class="ot">&lt;-</span> trzby[i]</span>
-<span id="cb137-8"><a href aria-label="8"></a>  } <span class="cf">else</span> {</span>
-<span id="cb137-9"><a href aria-label="9"></a>    kumulativni_trzby[i] <span class="ot">&lt;-</span> kumulativni_trzby[i<span class="dv">-1</span>] <span class="sc">+</span> trzby[i]</span>
-<span id="cb137-10"><a href aria-label="10"></a>  }</span>
-<span id="cb137-11"><a href aria-label="11"></a>}</span>
-<span id="cb137-12"><a href aria-label="12"></a></span>
-<span id="cb137-13"><a href aria-label="13"></a>kumulativni_trzby</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  100  300  450  750 1000</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href aria-label="1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co">#velikost populace</span></span>
+<span id="cb141-2"><a href aria-label="2"></a></span>
+<span id="cb141-3"><a href aria-label="3"></a>S <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#Susceptible (ohrozeni)</span></span>
+<span id="cb141-4"><a href aria-label="4"></a>I <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#Infected (nakazeni)</span></span>
+<span id="cb141-5"><a href aria-label="5"></a>R <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#Recovered (uzdraveni)</span></span>
+<span id="cb141-6"><a href aria-label="6"></a></span>
+<span id="cb141-7"><a href aria-label="7"></a><span class="co">#pocatecni hodnoty</span></span>
+<span id="cb141-8"><a href aria-label="8"></a>S[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">990</span></span>
+<span id="cb141-9"><a href aria-label="9"></a>I[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb141-10"><a href aria-label="10"></a>R[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb141-11"><a href aria-label="11"></a></span>
+<span id="cb141-12"><a href aria-label="12"></a>beta <span class="ot">&lt;-</span> <span class="fl">0.3</span> <span class="co">#mira prenosu infekce - jak rychle?</span></span>
+<span id="cb141-13"><a href aria-label="13"></a>gamma <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#mira uzdravovani - jak rychle se I stanou R?</span></span>
+<span id="cb141-14"><a href aria-label="14"></a>dt <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co">#casova jednotka - jeden den</span></span>
+<span id="cb141-15"><a href aria-label="15"></a></span>
+<span id="cb141-16"><a href aria-label="16"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) { <span class="co">#chceme provest simulaci za 100 dnu</span></span>
+<span id="cb141-17"><a href aria-label="17"></a></span>
+<span id="cb141-18"><a href aria-label="18"></a>  nove_nakazy <span class="ot">&lt;-</span> beta <span class="sc">*</span> S[t] <span class="sc">*</span> I[t] <span class="sc">/</span> N <span class="sc">*</span> dt <span class="co">#rovnice nakazlivosti</span></span>
+<span id="cb141-19"><a href aria-label="19"></a>  nova_uzdraveni <span class="ot">&lt;-</span> gamma <span class="sc">*</span> I[t] <span class="sc">*</span> dt <span class="co">#rovnice uzdravovani</span></span>
+<span id="cb141-20"><a href aria-label="20"></a>  <span class="co">#proc musi byt v cyklu? protoze se kazdy den meni</span></span>
+<span id="cb141-21"><a href aria-label="21"></a>  </span>
+<span id="cb141-22"><a href aria-label="22"></a>  <span class="co">#vypocet vyvoje</span></span>
+<span id="cb141-23"><a href aria-label="23"></a>  S[t <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> S[t] <span class="sc">-</span> nove_nakazy</span>
+<span id="cb141-24"><a href aria-label="24"></a>  I[t <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> I[t] <span class="sc">+</span> nove_nakazy <span class="sc">-</span> nova_uzdraveni</span>
+<span id="cb141-25"><a href aria-label="25"></a>  R[t <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> R[t] <span class="sc">+</span> nova_uzdraveni</span>
+<span id="cb141-26"><a href aria-label="26"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href aria-label="1"></a><span class="co"># 100 300 450 750 1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A můžeme se na výsledky rovnou i podívat a zobrazit si je ve grafu.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href aria-label="1"></a>S</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 990.00000 987.03000 983.48558 979.26128 974.23474 968.26496 961.19099
+  [8] 952.83110 942.98296 931.42526 917.92128 902.22523 884.09192 863.29050
+ [15] 839.62240 812.94344 783.18877 750.39867 714.74143 676.52912 636.22118
+ [22] 594.41201 551.80093 509.14626 467.20935 426.69692 388.21139 352.21630
+ [29] 319.02104 288.78399 261.53036 237.17862 215.57005 196.49671 179.72517
+ [36] 165.01485 152.13095 140.85278 130.97836 122.32639 114.73647 108.06813
+ [43] 102.19924  97.02414  92.45177  88.40375  84.81270  81.62066  78.77779
+ [50]  76.24113  73.97364  71.94327  70.12227  68.48654  67.01512  65.68971
+ [57]  64.49432  63.41491  62.43917  61.55624  60.75653  60.03157  59.37383
+ [64]  58.77663  58.23404  57.74073  57.29196  56.88350  56.51154  56.17265
+ [71]  55.86378  55.58214  55.32524  55.09085  54.87691  54.68159  54.50322
+ [78]  54.34030  54.19145  54.05543  53.93112  53.81749  53.71360  53.61860
+ [85]  53.53173  53.45227  53.37960  53.31311  53.25229  53.19664  53.14572
+ [92]  53.09912  53.05647  53.01745  52.98173  52.94903  52.91911  52.89172
+ [99]  52.86664  52.84369  52.82267</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href aria-label="1"></a>I</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]  10.000000  11.970000  14.317425  17.109976  20.425520  24.352743
+  [7]  28.991442  34.452191  40.855108  48.327298  56.998548  66.994748
+ [13]  78.428578  91.387142 105.916523 122.003837 139.558119 158.392412
+ [19] 178.210408 198.601676 219.049453 238.953678 257.669391 274.557114
+ [25] 289.038322 300.646911 309.067754 314.156065 315.935725 314.579195
+ [31] 310.374907 303.689154 294.928812 284.509276 272.829889 260.257220
+ [37] 247.115389 233.682020 220.188247 206.821391 193.729166 181.024590
+ [43] 168.791028 157.087019 145.950687 135.403638 125.454331 116.100934
+ [49] 107.333711  99.136994  91.490790  84.372083  77.755875  71.616013
+ [55]  65.925832  60.658657  55.788186  51.288774  47.135638  43.305008
+ [61]  39.774215  36.521756  33.527318  30.771780  28.237200  25.906790
+ [67]  23.764874  21.796848  19.989127  18.329099  16.805068  15.406199
+ [73]  14.122472  12.944624  11.864100  10.873010   9.964075   9.130590
+ [79]   8.366378   7.665756   7.023494   6.434780   5.895193   5.400669
+ [85]   4.947475   4.532182   4.151640   3.802960   3.483488   3.190791
+ [91]   2.922633   2.676968   2.451914   2.245750   2.056894   1.883898
+ [97]   1.725433   1.580282   1.447329   1.325551   1.214010</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href aria-label="1"></a>R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]   0.000000   1.000000   2.197000   3.628742   5.339740   7.382292
+  [7]   9.817566  12.716711  16.161930  20.247441  25.080170  30.780025
+ [13]  37.479500  45.322358  54.461072  65.052724  77.253108  91.208920
+ [19] 107.048161 124.869202 144.729369 166.634315 190.529683 216.296622
+ [25] 243.752333 272.656165 302.720856 333.627632 365.043238 396.636811
+ [31] 428.094730 459.132221 489.501136 518.994017 547.444945 574.727934
+ [37] 600.753656 625.465195 648.833397 670.852222 691.534361 710.907277
+ [43] 729.009736 745.888839 761.597541 776.192610 789.732974 802.278407
+ [49] 813.888500 824.621871 834.535571 843.684650 852.121858 859.897445
+ [55] 867.059047 873.651630 879.717496 885.296314 890.425192 895.138755
+ [61] 899.469256 903.446678 907.098853 910.451585 913.528763 916.352483
+ [67] 918.943162 921.319650 923.499334 925.498247 927.331157 929.011664
+ [73] 930.552284 931.964531 933.258993 934.445403 935.532704 936.529112
+ [79] 937.442171 938.278809 939.045384 939.747734 940.391212 940.980731
+ [85] 941.520798 942.015545 942.468764 942.883928 943.264224 943.612572
+ [91] 943.931651 944.223915 944.491612 944.736803 944.961378 945.167067
+ [97] 945.355457 945.528000 945.686029 945.830762 945.963317</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href aria-label="1"></a><span class="fu">plot</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, S, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb148-2"><a href aria-label="2"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000</span>),</span>
+<span id="cb148-3"><a href aria-label="3"></a>     <span class="at">xlab =</span> <span class="st">&quot;Den&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Počet lidí&quot;</span>)</span>
+<span id="cb148-4"><a href aria-label="4"></a></span>
+<span id="cb148-5"><a href aria-label="5"></a><span class="fu">lines</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, I, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb148-6"><a href aria-label="6"></a><span class="fu">lines</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, R, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>)</span>
+<span id="cb148-7"><a href aria-label="7"></a></span>
+<span id="cb148-8"><a href aria-label="8"></a><span class="fu">legend</span>(<span class="st">&quot;right&quot;</span>,</span>
+<span id="cb148-9"><a href aria-label="9"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Ohrožení&quot;</span>, <span class="st">&quot;Nakažení&quot;</span>, <span class="st">&quot;Uzdravení&quot;</span>),</span>
+<span id="cb148-10"><a href aria-label="10"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>),</span>
+<span id="cb148-11"><a href aria-label="11"></a>       <span class="at">lty =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img role="img" data-src="data:image/png;base64,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" width="960" class="r-stretch"></section>
+<section id="samostatné-cvičení-for-cyklu" class="slide level2">
+<h2>Samostatné cvičení <code>for</code> cyklu</h2>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_b2bb5a9a" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+</div>
+</div>
+<p>Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v <strong>7:00 ráno, kdy bylo 10 stupňů Celsia</strong>. Víte, že <strong>každou hodinu teplota stoupne o 1,5 stupně</strong>. Jaká teplota bude v <strong>14:00 hodin</strong>?</p>
+</section>
+<section class="slide level2">
+
+<h3 id="řešení-2">Řešení</h3>
+<p>Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v <strong>7:00 ráno, kdy bylo 10 stupňů Celsia</strong>. Víte, že <strong>každou hodinu teplota stoupne o 1,5 stupně</strong>. Jaká teplota bude za dalších <strong>pět hodin</strong>?</p>
+<div class="fragment">
+<p>Vytvoříme si proměnnou která bude obsahovat počáteční hodnotu.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href aria-label="1"></a>sedmRano <span class="ot">&lt;-</span> <span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<p>Vytvoříme cyklus, kde se pětkrát k předchozí hodnotě přičte 1.5.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb150-2"><a href aria-label="2"></a>  sedmRano <span class="ot">&lt;-</span> sedmRano <span class="sc">+</span> <span class="fl">1.5</span></span>
+<span id="cb150-3"><a href aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<p>Výsledky chceme vidět, tak si je zobrazíme.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb151-2"><a href aria-label="2"></a>  sedmRano <span class="ot">&lt;-</span> sedmRano <span class="sc">+</span> <span class="fl">1.5</span></span>
+<span id="cb151-3"><a href aria-label="3"></a>  <span class="fu">print</span>(sedmRano)</span>
+<span id="cb151-4"><a href aria-label="4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19
+[1] 20.5
+[1] 22
+[1] 23.5
+[1] 25</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Můžeme samozřejmě provést i variantu s uložením výsledků.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href aria-label="1"></a>sedmRano <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb153-2"><a href aria-label="2"></a>teplota <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb153-3"><a href aria-label="3"></a></span>
+<span id="cb153-4"><a href aria-label="4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb153-5"><a href aria-label="5"></a>  sedmRano <span class="ot">&lt;-</span> sedmRano <span class="sc">+</span> <span class="fl">1.5</span></span>
+<span id="cb153-6"><a href aria-label="6"></a>  teplota[i] <span class="ot">&lt;-</span> sedmRano}</span>
+<span id="cb153-7"><a href aria-label="7"></a></span>
+<span id="cb153-8"><a href aria-label="8"></a>teplota</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.5 13.0 14.5 16.0 17.5</code></pre>
+</div>
+</div>
 </div>
 </section>
 <section id="itinerace-vs-vektorizace" class="slide level2">
@@ -16662,7 +16836,7 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <tbody>
 <tr class="odd">
 <td><code>ifelse()</code>, <code>case_when()</code></td>
-<td>proveď rozhodnutí pro každou hodnotu v objektu</td>
+<td>proveď rozhodnutí pro každou hodnotu v prvku vektoru</td>
 </tr>
 <tr class="even">
 <td><code>for</code> cyklus</td>
@@ -16677,6 +16851,9 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 </section>
 <section id="rodina-apply-funkcí" class="slide level2">
 <h2>Rodina <code>apply</code> funkcí</h2>
+<blockquote>
+<p>funkce <code>apply</code> umožňují aplikovat stejnou funkci na více prvků zároveň</p>
+</blockquote>
 <p>https://physics.ujep.cz/~jskvor/UDR/7/#/p%C5%99edstaven%C3%AD-funkc%C3%AD-apply-lapply-sapply-tapply-a-replicate</p>
 <p>fce across a everythign z dplyru</p>
 </section>
@@ -16685,25 +16862,25 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <h3 id="tvorba-vlastních-funkcí">Tvorba vlastních funkcí</h3>
 <p>https://physics.ujep.cz/~jskvor/UDR/7/#/definice-vlastn%C3%ADch-funkc%C3%AD</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href aria-label="1"></a>ohodnot <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb140-2"><a href aria-label="2"></a></span>
-<span id="cb140-3"><a href aria-label="3"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
-<span id="cb140-4"><a href aria-label="4"></a>    <span class="st">&quot;nedostatečný&quot;</span></span>
-<span id="cb140-5"><a href aria-label="5"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">75</span>) {</span>
-<span id="cb140-6"><a href aria-label="6"></a>    <span class="st">&quot;dobrý&quot;</span></span>
-<span id="cb140-7"><a href aria-label="7"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">90</span>) {</span>
-<span id="cb140-8"><a href aria-label="8"></a>    <span class="st">&quot;velmi dobrý&quot;</span></span>
-<span id="cb140-9"><a href aria-label="9"></a>  } <span class="cf">else</span> {</span>
-<span id="cb140-10"><a href aria-label="10"></a>    <span class="st">&quot;výborný&quot;</span></span>
-<span id="cb140-11"><a href aria-label="11"></a>  }</span>
-<span id="cb140-12"><a href aria-label="12"></a></span>
-<span id="cb140-13"><a href aria-label="13"></a>}</span>
-<span id="cb140-14"><a href aria-label="14"></a></span>
-<span id="cb140-15"><a href aria-label="15"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">65</span>, <span class="dv">80</span>, <span class="dv">95</span>), ohodnot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href aria-label="1"></a>ohodnot <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb155-2"><a href aria-label="2"></a></span>
+<span id="cb155-3"><a href aria-label="3"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb155-4"><a href aria-label="4"></a>    <span class="st">&quot;nedostatečný&quot;</span></span>
+<span id="cb155-5"><a href aria-label="5"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">75</span>) {</span>
+<span id="cb155-6"><a href aria-label="6"></a>    <span class="st">&quot;dobrý&quot;</span></span>
+<span id="cb155-7"><a href aria-label="7"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">90</span>) {</span>
+<span id="cb155-8"><a href aria-label="8"></a>    <span class="st">&quot;velmi dobrý&quot;</span></span>
+<span id="cb155-9"><a href aria-label="9"></a>  } <span class="cf">else</span> {</span>
+<span id="cb155-10"><a href aria-label="10"></a>    <span class="st">&quot;výborný&quot;</span></span>
+<span id="cb155-11"><a href aria-label="11"></a>  }</span>
+<span id="cb155-12"><a href aria-label="12"></a></span>
+<span id="cb155-13"><a href aria-label="13"></a>}</span>
+<span id="cb155-14"><a href aria-label="14"></a></span>
+<span id="cb155-15"><a href aria-label="15"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">65</span>, <span class="dv">80</span>, <span class="dv">95</span>), ohodnot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;nedostatečný&quot; &quot;dobrý&quot;        &quot;velmi dobrý&quot;  &quot;výborný&quot;     </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href aria-label="1"></a><span class="co">#UMI FUNKCE VEKTOROVY PRISTUP?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href aria-label="1"></a><span class="co">#UMI FUNKCE VEKTOROVY PRISTUP?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -16711,7 +16888,7 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <h3 id="co-dělá-funkce-ifelse-s-hodnotami">Co dělá funkce <code>ifelse</code> s hodnotami?</h3>
 <p><code>ifelse</code> mění hodnoty na jejich atomické podoby - atomická podoba faktoru je integer, takže pozor na as.factor</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href aria-label="1"></a><span class="fu">str</span>(iris) <span class="co">#jaka je struktura iris pred upravou</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href aria-label="1"></a><span class="fu">str</span>(iris) <span class="co">#jaka je struktura iris pred upravou</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   150 obs. of  5 variables:
  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -16720,11 +16897,11 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href aria-label="1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
-<span id="cb145-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Species =</span></span>
-<span id="cb145-3"><a href aria-label="3"></a>           <span class="fu">ifelse</span>(<span class="fu">is.character</span>(Species), Species, <span class="fu">as.factor</span>(Species)))</span>
-<span id="cb145-4"><a href aria-label="4"></a></span>
-<span id="cb145-5"><a href aria-label="5"></a><span class="fu">str</span>(iris) <span class="co">#a struktura po uprave</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href aria-label="1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb160-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Species =</span></span>
+<span id="cb160-3"><a href aria-label="3"></a>           <span class="fu">ifelse</span>(<span class="fu">is.character</span>(Species), Species, <span class="fu">as.factor</span>(Species)))</span>
+<span id="cb160-4"><a href aria-label="4"></a></span>
+<span id="cb160-5"><a href aria-label="5"></a><span class="fu">str</span>(iris) <span class="co">#a struktura po uprave</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   150 obs. of  5 variables:
  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -16736,26 +16913,26 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 </div>
 <p>lepší</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href aria-label="1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
-<span id="cb147-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb147-3"><a href aria-label="3"></a>    <span class="at">Species =</span> <span class="cf">if</span> (<span class="fu">is.character</span>(Species))</span>
-<span id="cb147-4"><a href aria-label="4"></a>      Species</span>
-<span id="cb147-5"><a href aria-label="5"></a>    <span class="cf">else</span></span>
-<span id="cb147-6"><a href aria-label="6"></a>      <span class="fu">as.factor</span>(Species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href aria-label="1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb162-2"><a href aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb162-3"><a href aria-label="3"></a>    <span class="at">Species =</span> <span class="cf">if</span> (<span class="fu">is.character</span>(Species))</span>
+<span id="cb162-4"><a href aria-label="4"></a>      Species</span>
+<span id="cb162-5"><a href aria-label="5"></a>    <span class="cf">else</span></span>
+<span id="cb162-6"><a href aria-label="6"></a>      <span class="fu">as.factor</span>(Species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <h3 id="funkce-replace_when">funkce replace_when</h3>
 <p>https://casrai.org/guides/case-when-r</p>
-<h3 id="vytváření-nových-objektů-přímo-ve-for-cyklu">vytváření nových objektů přímo ve for cyklu</h3>
+<h3 id="vytváření-nových-prvků-přímo-ve-for-cyklu">vytváření nových prvků přímo ve for cyklu</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
-<span id="cb148-2"><a href aria-label="2"></a></span>
-<span id="cb148-3"><a href aria-label="3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {</span>
-<span id="cb148-4"><a href aria-label="4"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb148-5"><a href aria-label="5"></a>    vysledek <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb148-6"><a href aria-label="6"></a>  } <span class="cf">else</span> {</span>
-<span id="cb148-7"><a href aria-label="7"></a>    vysledek <span class="ot">&lt;-</span> <span class="fu">c</span>(vysledek, x[i] <span class="sc">*</span> <span class="dv">2</span>)</span>
-<span id="cb148-8"><a href aria-label="8"></a>  }</span>
-<span id="cb148-9"><a href aria-label="9"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb163-2"><a href aria-label="2"></a></span>
+<span id="cb163-3"><a href aria-label="3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {</span>
+<span id="cb163-4"><a href aria-label="4"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb163-5"><a href aria-label="5"></a>    vysledek1 <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb163-6"><a href aria-label="6"></a>  } <span class="cf">else</span> {</span>
+<span id="cb163-7"><a href aria-label="7"></a>    vysledek1 <span class="ot">&lt;-</span> <span class="fu">c</span>(vysledek1, x[i] <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb163-8"><a href aria-label="8"></a>  }</span>
+<span id="cb163-9"><a href aria-label="9"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <h3 id="datum-a-čas">Datum a čas</h3>
 

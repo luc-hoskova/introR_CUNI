@@ -128,8 +128,7 @@ kontrola_pohlavi <- function(data) {
     radek = integer(),
     hodnota_celkem = numeric(),
     soucet_pohlavi = numeric(),
-    shoda = logical()
-  )
+    shoda = logical())
   
   for (i in 1:(nrow(data) - 2)) {
     if (data$pohlavi_txt[i] == "") {
@@ -138,12 +137,10 @@ kontrola_pohlavi <- function(data) {
         radek = i,
         hodnota_celkem = data$hodnota[i],
         soucet_pohlavi = soucet,
-        shoda = data$hodnota[i] == soucet
-      ))
+        shoda = data$hodnota[i] == soucet))
     }
   }
-  return(vysledek)
-}
+  return(vysledek)}
 
 kontrola_pohlavi(typBydleni) 
 
@@ -157,7 +154,7 @@ Upravme si dataframe tak, abychom s ním mohli pracovat.
 
 ```{r}
 #dataset se vsemi moznostmi pohlavi
-dataBydleni <- typBydleni %>%
+dataVsechnaPohlavi <- typBydleni %>%
   rename(pohlavi = pohlavi_txt,
          uzemi = uzemi_txt,
          vek = vek_txt,
@@ -166,7 +163,7 @@ dataBydleni <- typBydleni %>%
   select(hodnota, pohlavi, uzemi, bydleni, vek, uzemi_cis)
 
 #dataset jenom pro vsechny
-data <- dataBydleni %>%
+data <- dataVsechnaPohlavi %>%
   filter(pohlavi == "")
 ```
 :::
@@ -179,25 +176,42 @@ data <- dataBydleni %>%
 
 ::: fragment
 ```{r}
-data2.1 <- dataBydleni %>%
+data2.1 <- dataVsechnaPohlavi %>%
   filter(vek %in% 18:26,
          bydleni == "Bezdomovci",
          uzemi == "Jihomoravský kraj")
 
-celkem2.1 <- sum(data2.1 %>%
+celkem2.1 <- data2.1 %>%
               filter(pohlavi == "") %>%
-              pull(hodnota)) #46 jedincu
+              pull(hodnota) %>%
+                sum(); celkem2.1 #46 jedincu
 
-muzi2.1 <- sum(data2.1 %>%
+muzi2.1 <- data2.1 %>%
               filter(pohlavi == "muž") %>%
-              pull(hodnota)); muzi2.1 #30
+              pull(hodnota) %>%
+                sum(); muzi2.1 #30
 
-zeny2.1 <- sum(data2.1 %>%
+zeny2.1 <- data2.1 %>%
               filter(pohlavi == "žena") %>%
-              pull(hodnota)); zeny2.1 #16
+              pull(hodnota) %>%
+                sum(); zeny2.1 #16
 
 round(muzi2.1 / celkem2.1 * 100, 2) #65.22 %
 round(zeny2.1 / celkem2.1 * 100, 2) #34.78 %
+```
+:::
+
+::: fragment
+A nešlo by to snáze? Co když nechceme group_by?
+```{r}
+dataVsechnaPohlavi %>%
+  filter(!is.na(pohlavi),
+         vek %in% 18:26,
+         bydleni == "Bezdomovci",
+         uzemi == "Jihomoravský kraj") %>% 
+  group_by(pohlavi) %>%
+  summarise(pocet = sum(hodnota)) %>%
+  mutate(procento = 100 * pocet / sum(pocet))
 ```
 :::
 
@@ -374,17 +388,19 @@ data %>%
 
 ::: fragment
 ```{r}
-sL <- sum(data %>%
+sL <- data %>%
       filter(vek > 64,
              uzemi == "Liberecký kraj",
              bydleni == "Bezdomovci") %>%
-      pull(hodnota)); sL #23
+      pull(hodnota) %>%
+      sum(); sL #23
 
-sM <- sum(data %>%
+sM <- data %>%
       filter(vek > 64,
-             uzemi == "Moravskoslezský kraj",
-             bydleni == "Bezdomovci") %>%
-      pull(hodnota)); sM #77
+           uzemi == "Moravskoslezský kraj",
+           bydleni == "Bezdomovci") %>%
+      pull(hodnota) %>%
+      sum(); sM #77
 
 #jaky je rozdil v poctu osob bez domova meti libereckym a moravskoslezskym krajem
 sM - sL
@@ -667,7 +683,7 @@ Jak takovou situaci vyřešíme?
 
 ## Funkce `ifelse`
 
-> funkce umožňující aplikaci if ... else funkce pro všechny jednotlivé hodnoty v objektu
+> funkce umožňující aplikaci if ... else funkce pro všechny jednotlivé hodnoty v prvku
 
 `ifelse(podmínka, vyber pokud TRUE, vyber pokud FALSE)`
 
@@ -1028,7 +1044,7 @@ Výpočty, které jsme si zatím u `for` cyklu ukázaly, by šly provést i jedn
 Pomocí této funkce je možné nejenom měnit hodnoty, ale **měnit je v závislosti na změně provedené na předchozí hodnotě**.
 :::
 
-Dejme tomu, že máme buněčný vzorek, ve kterém se buňky množí rychlostí 5 % za jednu hodinu. Začínáme s 1000 buňkami, kolik jich budeme mít po deseti hodinách?
+1.  Máme buněčný vzorek, ve kterém se buňky množí rychlostí 5 % za jednu hodinu. Začínáme s 1000 buňkami, kolik jich budeme mít po deseti hodinách?
 
 ```{r}
 mnozstviBunek <- c(1000, rep(0, 9)); mnozstviBunek
@@ -1041,24 +1057,127 @@ mnozstviBunek
 mnozstviBunek[10]
 ```
 
-opakování věcí které závisí na předchozím výsledku to ifelse nedělá  
+------------------------------------------------------------------------
+
+2.  Pomocí modelu SIR namodelujme, jak se bude během 100 dnů epidemie vyvíjet počet nakažených, uzdravených a osob ohrožených nakažením.
 
 ```{r}
-trzby <- c(100, 200, 150, 300, 250)
+N <- 1000 #velikost populace
 
-kumulativni_trzby <- length(trzby)
+S <- NULL #Susceptible (ohrozeni)
+I <- NULL #Infected (nakazeni)
+R <- NULL #Recovered (uzdraveni)
 
-for (i in 1:length(trzby)) {
-  if (i == 1) {
-    kumulativni_trzby[i] <- trzby[i]
-  } else {
-    kumulativni_trzby[i] <- kumulativni_trzby[i-1] + trzby[i]
-  }
+#pocatecni hodnoty
+S[1] <- 990
+I[1] <- 10
+R[1] <- 0
+
+beta <- 0.3 #mira prenosu infekce - jak rychle?
+gamma <- 0.1 #mira uzdravovani - jak rychle se I stanou R?
+dt <- 1 #casova jednotka - jeden den
+
+for (t in 1:100) { #chceme provest simulaci za 100 dnu
+
+  nove_nakazy <- beta * S[t] * I[t] / N * dt #rovnice nakazlivosti
+  nova_uzdraveni <- gamma * I[t] * dt #rovnice uzdravovani
+  #proc musi byt v cyklu? protoze se kazdy den meni
+  
+  #vypocet vyvoje
+  S[t + 1] <- S[t] - nove_nakazy
+  I[t + 1] <- I[t] + nove_nakazy - nova_uzdraveni
+  R[t + 1] <- R[t] + nova_uzdraveni
 }
-
-kumulativni_trzby
-# 100 300 450 750 1000
 ```
+
+A můžeme se na výsledky rovnou i podívat a zobrazit si je ve grafu.
+
+```{r}
+S
+I
+R
+
+plot(0:100, S, type = "l", col = "blue",
+     ylim = c(0, 1000),
+     xlab = "Den", ylab = "Počet lidí")
+
+lines(0:100, I, col = "red")
+lines(0:100, R, col = "green")
+
+legend("right",
+       legend = c("Ohrožení", "Nakažení", "Uzdravení"),
+       col = c("blue", "red", "green"),
+       lty = 1)
+```
+
+
+------------------------------------------------------------------------
+
+## Samostatné cvičení `for` cyklu
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 10,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v **7:00 ráno, kdy bylo 10 stupňů Celsia**. Víte, že **každou hodinu teplota stoupne o 1,5 stupně**. Jaká teplota bude v **14:00 hodin**?
+
+------------------------------------------------------------------------
+
+### Řešení
+
+Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v **7:00 ráno, kdy bylo 10 stupňů Celsia**. Víte, že **každou hodinu teplota stoupne o 1,5 stupně**. Jaká teplota bude za dalších **pět hodin**?
+
+::: fragment
+Vytvoříme si proměnnou která bude obsahovat počáteční hodnotu.
+
+```{r}
+sedmRano <- 10
+```
+:::
+
+::: fragment
+Vytvoříme cyklus, kde se pětkrát k předchozí hodnotě přičte 1.5.
+
+```{r}
+for (i in 1:5) {
+  sedmRano <- sedmRano + 1.5
+}
+```
+
+:::
+
+::: fragment
+Výsledky chceme vidět, tak si je zobrazíme.
+
+```{r}
+for (i in 1:5) {
+  sedmRano <- sedmRano + 1.5
+  print(sedmRano)
+}
+```
+
+:::
+
+::: fragment
+Můžeme samozřejmě provést i variantu s uložením výsledků.
+
+```{r}
+sedmRano <- 10
+teplota <- NULL
+
+for (i in 1:5) {
+  sedmRano <- sedmRano + 1.5
+  teplota[i] <- sedmRano}
+
+teplota
+```
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -1068,13 +1187,15 @@ dd
 
 | Col1                      | Col2                                           |
 |--------------------------|----------------------------------------------|
-| `ifelse()`, `case_when()` | proveď rozhodnutí pro každou hodnotu v objektu |
+| `ifelse()`, `case_when()` | proveď rozhodnutí pro každou hodnotu v prvku vektoru |
 | `for` cyklus              | opakuj ten samý kód                            |
 | `apply()`                 | aplikuj funkci nezávisle na všechny hodnoty    |
 
 ------------------------------------------------------------------------
 
 ## Rodina `apply` funkcí
+
+> funkce `apply` umožňují aplikovat stejnou funkci na více prvků zároveň
 
 https://physics.ujep.cz/\~jskvor/UDR/7/#/p%C5%99edstaven%C3%AD-funkc%C3%AD-apply-lapply-sapply-tapply-a-replicate
 
@@ -1155,16 +1276,16 @@ iris <- iris %>%
 
 https://casrai.org/guides/case-when-r
 
-### vytváření nových objektů přímo ve for cyklu
+### vytváření nových prvků přímo ve for cyklu
 
 ```{r}
 x <- c(2, 4, 6, 8)
 
 for (i in 1:length(x)) {
   if (i == 1) {
-    vysledek <- x[i] * 2
+    vysledek1 <- x[i] * 2
   } else {
-    vysledek <- c(vysledek, x[i] * 2)
+    vysledek1 <- c(vysledek1, x[i] * 2)
   }
 }
 ```
