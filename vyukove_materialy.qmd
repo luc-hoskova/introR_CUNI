@@ -81,3 +81,6 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
   - [data](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/dojizdeniSkola.csv)
   - [popisky dat](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/dojizdeniSkolaPopis.json)
   
+## 5. Funkce (10.11.2026)
+
+- [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/05_funkce/05_prezentace/05_prezentace.html#/title-slide)

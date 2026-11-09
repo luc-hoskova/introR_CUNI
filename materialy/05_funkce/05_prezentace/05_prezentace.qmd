@@ -1374,7 +1374,7 @@ sapply(vzorky, length)
 
 ## Příprava na příští hodinu
 
-1.  Stáhněte si soubor newborns.txt a uložte si ho do jasně pojmenované složky pro šestou hodinu.
+1.  Stáhněte si soubor [newborns.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/06_vizualizace_uvod/06_prezentace/newborns.txt) a uložte si ho do jasně pojmenované složky pro šestou hodinu.
 
 2.  **Do páteční půlnoci** mi pošlete ukázku typického datasetu, pro který potřebujete vytvářet vizualizace - **NEZAPOMEŇTE NA POPISKY SLOUPCŮ!** Není to povinné, ale pomůže mi to s tvorbou průběžných procvičování a obsahu pro vaše samostudium.
 
@@ -1471,3 +1471,7 @@ Pokud se na něčem zaseknete, **ozvěte se**. Narozdíl od domácích úkolů z
 ## NENECHÁVEJTE TO NA POSLEDNÍ CHVÍLI
 
 ![Pokud nestíháte, ozvěte se a nějak se domluvíme.](images/TOTORO.gif){fig-align="center"}
+
+## Tipy navíc pro samostudium
+
+**Budou doplněny během středy/čtvrtka.**
