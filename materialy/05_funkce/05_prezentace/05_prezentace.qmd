@@ -26,17 +26,12 @@ bibliography: references.bib
 ## Program
 
 ::: incremental
-- opakování z minulé hodiny
 - kontrola domácího úkolu
 - co je to programování v R?
 - `if ... else`
 - funkce `ifelse`
 - cykly
 - rodina `apply` funkcí
-  - úprava jmen sloupců
-  - chybějící hodnoty
-  - mutace a řazení podle jednotlivých hodnot
-  - vytváření sloupců
 - tvorba vlastní funkce
 :::
 
@@ -69,8 +64,6 @@ dplyr::na_if(x, y)
 ------------------------------------------------------------------------
 
 ### Úloha 2
-
-**Načti si dataset [`typBydleni.csv`](https://luc-hoskova.github.io/introR_CUNI/materialy/04_transformace/04_prezentace/typBydleni.csv).**
 
 ```         
 1.  Kolik osob ve věku 18-26 včetně v Jihomoravském kraji jsou evidováni jako osoby bez domova, a jakou procentuální část z nich tvoří muži a jakou ženy.
@@ -202,10 +195,11 @@ round(zeny2.1 / celkem2.1 * 100, 2) #34.78 %
 :::
 
 ::: fragment
-A nešlo by to snáze? Co když nechceme group_by?
+A nešlo by to snáze? Co třeba `group_by`?
+
 ```{r}
 dataVsechnaPohlavi %>%
-  filter(!is.na(pohlavi),
+  filter(pohlavi != "",
          vek %in% 18:26,
          bydleni == "Bezdomovci",
          uzemi == "Jihomoravský kraj") %>% 
@@ -553,7 +547,7 @@ Vrstevní je samozřejmě **možné provádět mnohokrát opakovaně**.
 ::: callout-note
 ## Postoupnost podmínek
 
-`if ... else`a všechny podobné funkce fungují na podobném principu; **postupují po vrstvách podmínek tak dlouho, dokud nenarazí na `TRUE`, kdy se zastaví**.
+`if ... else` a všechny podobné funkce fungují na podobném principu; **postupují po vrstvách podmínek tak dlouho, dokud nenarazí na `TRUE`, kdy se zastaví**.
 
 Pokud nenarazí na `TRUE` podmínku, pokračují dokud se nedostanou k finální `FALSE` podmínce, pokud je určena.
 :::
@@ -769,6 +763,7 @@ pocetBoduA %>%
 ## Pozor na chybějící hodnoty!
 
 Dejte pozor na to, že pokud funkce narazí na jinak nezapracovanou **`NA` hodnotu, automaticky ji bere jako `.default`**.
+:::
 
 ```{r}
 pocetBoduA %>%
@@ -778,7 +773,6 @@ pocetBoduA %>%
         Martin < 90 ~ "velmi dobrý",
         .default = "výborný"))
 ```
-:::
 
 ------------------------------------------------------------------------
 
@@ -822,7 +816,7 @@ lide <- data.frame(
 
 ------------------------------------------------------------------------
 
-### Samostatné cvičení
+## Samostatné cvičení
 
 ```{r}
 #| echo: false
@@ -881,7 +875,7 @@ Zkontrolujme, zda je `x` 0 a pokud ano, mějme `z` jako `NA`.
 data %>%
   mutate(
     z = case_when(
-      x == 0 ~ NA))
+      x == 0 ~ NA)) #proc mame vsude NA?
 ```
 :::
 
@@ -931,9 +925,8 @@ data %>%
 ::: fragment
 Protože `0 %% 2 == 0` je `TRUE`, a 0 by tak byla brána jako kladné číslo.
 
-**Nezapomeňte: jakmile hodnta splní jednu podmínku, dlší už se nekontrolují!**
+**Nezapomeňte: jakmile hodnta splní jednu podmínku, další už se nekontrolují!**
 :::
-
 ::::
 :::::
 
@@ -943,7 +936,7 @@ Protože `0 %% 2 == 0` je `TRUE`, a 0 by tak byla brána jako kladné číslo.
 
 > cyklus (loop), který umožňuje opakovaně provést stejný kód
 
-`for (hodnota in vektorHodnot) {proved´ příkaz}`
+`for (hodnota in vektor hodnot) {proved´ příkaz}`
 
 ```{r}
 # kazdou hodnotu v 1:10 nam umocni a zobraz
@@ -1009,7 +1002,7 @@ Jeden ze způsobů, jak si o zobrazení řekneme, je třeba zavoláním jména p
 a <- "kolo"
 a
 
-print(a)
+print("kolo")
 ```
 :::
 
@@ -1030,7 +1023,7 @@ vysledek
 
 **Co se děje?**
 
-Máme prázdnou proměnou `vysledek`, kam si uložíme tolik hodnot jako je délka `x`, kdy každá hodnota bude korespondovat s hodnotou `x` na totožné pozici * 2.
+Máme prázdnou proměnou `vysledek`, kam si uložíme tolik hodnot jako je délka `x`, kdy každá hodnota bude korespondovat s hodnotou `x` na totožné pozici \* 2.
 
 ------------------------------------------------------------------------
 
@@ -1110,6 +1103,23 @@ legend("right",
        lty = 1)
 ```
 
+![](images/clipboard-299012552.png)
+
+------------------------------------------------------------------------
+
+## Procvičení `for` cyklu
+
+1.  Radioaktivní látka má na začátku hmotnost 100 gramů. Každý rok se rozloží 10 % zbývajícího množství. Jaká bude váha po deseti letech?
+
+```{webr-r}
+
+```
+
+2.  Ve vesnici žije 500 obyvatel. Kvůli masivnímu přistěhování se ale počet obyvatel každý rok zvětší o dvojnásobek. Kolik bude v obci bydlet lidí za pět let?
+
+```{webr-r}
+
+```
 
 ------------------------------------------------------------------------
 
@@ -1130,7 +1140,7 @@ Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v **7:00 r�
 
 ### Řešení
 
-Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v **7:00 ráno, kdy bylo 10 stupňů Celsia**. Víte, že **každou hodinu teplota stoupne o 1,5 stupně**. Jaká teplota bude za dalších **pět hodin**?
+Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v **7:00 ráno, kdy bylo 10 stupňů Celsia**. Víte, že **každou hodinu teplota stoupne o 1,5 stupně**. Jaká teplota bude během dalších **pět hodin**?
 
 ::: fragment
 Vytvoříme si proměnnou která bude obsahovat počáteční hodnotu.
@@ -1148,7 +1158,6 @@ for (i in 1:5) {
   sedmRano <- sedmRano + 1.5
 }
 ```
-
 :::
 
 ::: fragment
@@ -1160,7 +1169,6 @@ for (i in 1:5) {
   print(sedmRano)
 }
 ```
-
 :::
 
 ::: fragment
@@ -1176,20 +1184,32 @@ for (i in 1:5) {
 
 teplota
 ```
-
 :::
 
 ------------------------------------------------------------------------
 
-## Itinerace vs vektorizace
+### Aplikace `for` cyklu na jednotlivé prvky proměnné
 
-dd
+Pomocí cyklu můžeme nejenom opakovaně spouštět kód na jednotlivých hodnotách, ale na základě totožného principu i **spouštět kód na jednotlivých částech data frame.**
 
-| Col1                      | Col2                                           |
-|--------------------------|----------------------------------------------|
-| `ifelse()`, `case_when()` | proveď rozhodnutí pro každou hodnotu v prvku vektoru |
-| `for` cyklus              | opakuj ten samý kód                            |
-| `apply()`                 | aplikuj funkci nezávisle na všechny hodnoty    |
+```{r}
+mtcars %>% head()
+
+prumery <- NULL
+
+for (i in 1:length(mtcars)) {
+  prumery[i] <- mean(mtcars[,i])
+}
+
+print(prumery)
+
+```
+
+Není to ale zbytečně komplikované? **Nebylo by to jednodušší, kdybychom mohli rovnou použít jednu funkci...?**
+
+------------------------------------------------------------------------
+
+![](images/clipboard-3402926344.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -1197,100 +1217,257 @@ dd
 
 > funkce `apply` umožňují aplikovat stejnou funkci na více prvků zároveň
 
-https://physics.ujep.cz/\~jskvor/UDR/7/#/p%C5%99edstaven%C3%AD-funkc%C3%AD-apply-lapply-sapply-tapply-a-replicate
+| Funkce | K čemu slouží | Typický vstup |
+|------------------------|------------------------|------------------------|
+| `apply` | Výpočet po řádcích nebo sloupcích | Matice, array, data frame |
+| `lapply` | Použití funkce na každý prvek a vrácení seznamu | Seznam |
+| `sapply` | Podobně jako `lapply`, ale pokusí se zjednodušit výsledek | Vektor či matice, případně array |
+| `vapply` | Podobně jako `sapply`, ale s předem určeným typem výsledku | Seznam, vektor |
+| `tapply` | Výpočet ve skupinách podle kategorií | Vektor a skupiny |
+| `mapply` | Současné procházení více vstupů | Několik vektorů či seznamů |
+| `rapply` | Rekurzivní použití funkce na prvky vnořeného seznamu | Vnořený seznam |
 
-fce across a everythign z dplyru
+------------------------------------------------------------------------
 
-## typiy na doma
+### `apply` funkce
 
-### Tvorba vlastních funkcí
+#### Syntax
 
-https://physics.ujep.cz/\~jskvor/UDR/7/#/definice-vlastn%C3%ADch-funkc%C3%AD
+`apply(data, MARGIN = směr (řádky/sloupce), FUN = funkce co má být aplikována)`
+
+**MARGIN**
+
+- 1 = řádky
+- 2 = sloupce
+
+**FUN**
+
+- vždy se zapisuje bez závorek!
+
+------------------------------------------------------------------------
+
+#### Ukázky použití `apply` funkce
+
+**Průměrné hodnoty všech parametrů v datasetu `mtcars`:**
 
 ```{r}
-ohodnot <- function(x) {
-
-  if (x < 50) {
-    "nedostatečný"
-  } else if (x < 75) {
-    "dobrý"
-  } else if (x < 90) {
-    "velmi dobrý"
-  } else {
-    "výborný"
-  }
-
-}
-
-sapply(c(20, 65, 80, 95), ohodnot)
-
-#UMI FUNKCE VEKTOROVY PRISTUP?
+head(mtcars)
+apply(mtcars, 2, mean)
 ```
+
+**Počet ne/přijatého studentstva**
+
+```{r}
+str(UCBAdmissions)
+head(UCBAdmissions)
+
+apply(UCBAdmissions, 1, sum) 
+```
+
+------------------------------------------------------------------------
+
+### `sapply` funkce
+
+#### Syntax
+
+`sapply(data, FUN = funkce co má být aplikována)`
+
+Funkce `sapply` je defacto totožná s `lapply`, pouze se snaží vrátit co nejjednodušší strukturu.
+
+```{r}
+vzorky <- list(
+  vzorek_A = c(10, 12, 11, 13),
+  vzorek_B = c(8, 9, 7, 10),
+  vzorek_C = c(15, 16, 14, 17)
+)
+
+sapply(vzorky, mean)
+unlist(lapply(vzorky, mean))
+lapply(vzorky, mean)
+sapply(vzorky, mean, simplify = FALSE, USE.NAMES = FALSE)
+```
+
+------------------------------------------------------------------------
+
+### Procvičení `apply`
+
+**Máme teploty naměřené během tří dnů na čtyřech stanicích.**
+
+Jaké byly průměrné hodnoty a maxima pro každou ze stanic a jaké byly průměrné hodnoty pro každý den?
 
 ```{webr-r}
-hodnoceni <- Vectorize(function(x) {
-  if (is.na(x)) {
-    NA
-  } else if (x < 50) {
-    "nedostatečný"
-  } else if (x < 75) {
-    "dobrý"
-  } else if (x < 90) {
-    "velmi dobrý"
-  } else {
-    "výborný"
-  }
-})
-
-vysledek <- hodnoceni(pocetBodu)
+teploty <- matrix(c(
+  10, 12, 14, 16,
+  8, 9, 10, 11,
+  15, 16, 17, 18
+), nrow = 3, byrow = TRUE)
+dimnames(teploty) <- list(1:3, c("Jeseník", "Praděd", "Roztoky", "Sněžka"))
 ```
 
-### Funkce `switch`
+**V laboratoři byly sledovány tři bakteriální kultury. V každé kultuře bylo provedeno několik měření počtu bakterií.**
 
-### Co dělá funkce `ifelse` s hodnotami?
+Jaký je průměrný a nejvyšší počet bakterií v každé kultuře?
 
-`ifelse` mění hodnoty na jejich atomické podoby - atomická podoba faktoru je integer, takže pozor na as.factor
+```{webr-r}
+kultury <- list(
+  kultura_A = c(100, 120, 140, 160),
+  kultura_B = c(200, 250, 300),
+  kultura_C = c(50, 60, 70, 80, 90)
+)
+```
+
+------------------------------------------------------------------------
+
+## Samostatné cvičení `apply`
 
 ```{r}
-str(iris) #jaka je struktura iris pred upravou
-
-iris <- iris %>%
-  mutate(Species =
-           ifelse(is.character(Species), Species, as.factor(Species)))
-
-str(iris) #a struktura po uprave
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
 ```
 
-lepší
+**V laboratoři jsme naměřili koncentraci látky ve čtyřech vzorcích.**
+
+1.  Vypočítejte průměrnou a nejvyší koncentraci každého vzorku.
+
+2.  Zjistěte počet měření v každém vzorku.
 
 ```{r}
-iris <- iris %>%
-  mutate(
-    Species = if (is.character(Species))
-      Species
-    else
-      as.factor(Species))
+vzorky <- list(
+  A = c(10, 12, 14, 15, 18),
+  B = c(8, 9, 11),
+  C = c(15, 17, 16, 20, 11, 13),
+  D = c(20, 22, 21, 24))
 ```
 
-### funkce replace_when
+------------------------------------------------------------------------
 
-https://casrai.org/guides/case-when-r
+### Řešení
 
-### vytváření nových prvků přímo ve for cyklu
+**V laboratoři jsme naměřili koncentraci látky ve čtyřech vzorcích.**
+
+1.  Vypočítejte průměrnou a nejvyší koncentraci každého vzorku.
+
+::: fragment
+```{r}
+#prumerne koncentrace
+sapply(vzorky, mean)
+
+#maximalni koncentrace
+sapply(vzorky, max)
+```
+:::
+
+2.  Zjistěte počet měření v každém vzorku.
+
+::: fragment
+```{r}
+#pocet mereni
+sapply(vzorky, length)
+```
+:::
+
+------------------------------------------------------------------------
+
+## Příprava na příští hodinu
+
+1.  Stáhněte si soubor newborns.txt a uložte si ho do jasně pojmenované složky pro šestou hodinu.
+
+2.  **Do páteční půlnoci** mi pošlete ukázku typického datasetu, pro který potřebujete vytvářet vizualizace - **NEZAPOMEŇTE NA POPISKY SLOUPCŮ!** Není to povinné, ale pomůže mi to s tvorbou průběžných procvičování a obsahu pro vaše samostudium.
+
+------------------------------------------------------------------------
+
+## Domácí úkol
+
+**1. Byla naměřena následující koncentrace látky:**
 
 ```{r}
-x <- c(2, 4, 6, 8)
-
-for (i in 1:length(x)) {
-  if (i == 1) {
-    vysledek1 <- x[i] * 2
-  } else {
-    vysledek1 <- c(vysledek1, x[i] * 2)
-  }
-}
+koncentrace <- c("vzorek1" = "75 mg/l",
+                 "vzorek2" = "101 mg/l",
+                 "vzorek3" = "158 mg/l",
+                 "vzorek4" = "48 mg/l")
 ```
 
+- Pokud je koncentrace vyšší než 100 mg/l, vypište „Vysoká koncentrace“.
+- Pokud je koncentrace mezi 50 a 100 mg/l včetně, vypište „Normální koncentrace“.
+- Jinak vypište „Nízká koncentrace“.
 
-### Datum a čas
+**2. V laboratorní kultuře je na začátku 200 bakterií. Počet bakterií se každou hodinu zvýší o 30 %. Kolik jich bude po osmi hodinách?**
 
+**3. Během pokusu jsme čtyři vzorky vystavily třem látkám a změřili jejich reaktivitu.**
 
+```{r}
+mereni <- matrix(
+  c(12, 15, 18, 20, 25, 30,
+  8,  10, 12, 35, 40, 45),
+  nrow = 4, byrow = TRUE)
+
+rownames(mereni) <- c("Vzorek 1", "Vzorek 2",
+                      "Vzorek 3", "Vzorek 4")
+colnames(mereni) <- c("Latka A", "Latka B", "Latka C")
+```
+
+- Jaká je průměrná reaktivita každého vzorku?
+- Jaké byly nejvyšší hodnoty způsobené reaktivity pro každou látku a která látka způsobila největší reaktivitu?
+
+**4. U pacientů byly naměřeny následující hodnoty glukózy v krvi (mmol/l):**
+
+```{r}
+c(8.5, 3.9, 5.9, 4.0, 4.5, 9.0, 6.3, 5.1, 7.0, 4.8, 7.2, 4.2)
+```
+
+Množství cukru v krvi se dělí dle následující tabulky:
+
+| Stav          | Hodnoty   |
+|---------------|-----------|
+| Norma nalačno | 3.9 - 5.5 |
+| Prediabetes   | 5.6 - 6.9 |
+| Cukrovka      | ≥ 7.0     |
+
+Vytvořte přehlednou tabulku, kdy pro každého pacienta napíšete jejich ID dle pořadí, jejich naměřenou hodnotu a stav podle tabulky.
+
+**Skript** s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+
+## Závěrečný projekt
+
+Dva měsíce jsme si ukazovali, jak se má správně pracovat se skriptem, **co dělat a co nedělat.**
+
+Vyzkoušeli jsme si, jaké to je pracovat s datasetem, který jsme sami nevytvořili, a že **je potřeba nad věcmi přemýšlet**.
+
+Nyní si to dáme dohromady a půjdeme na to z trochu druhé strany. V průbehu týdne vám bude zaslán dataset, zadání a i očekávaný výsledek.
+
+**Vaším úkolem bude napsat skript, který provede zadání a dostane se i ke správným výsledkům - ale bude porušovat snad všechna pravidla, které jsme se naučili.**
+
+**Čím odpornější tím lepší!**
+
+------------------------------------------------------------------------
+
+## Podmínky
+
+### Termín odevzdání:
+
+- Do **27.11. mi pošlete verzi skriptu**, která bude funkční a docházet stejných výsledků jako bylo očekáváno.
+- V případě, že naleznu nějaké významné chyby (skript nelze spustit/výsledky jsou jiné/výsledky jsou stejné ale vyšlo vám to jen náhodou) tak vám skript vrátím k **opravě, která má deadline 4.12.**.
+
+### Podoba:
+
+Musí se stále jednat o **skript, který půjde spustit, a který dosáhne správných výsledků**. Doporučuji nepoužívat diakritiku (i když by vás to mohlo lákat), může se pak stát že se skript nespustí.
+
+### Hodnocení:
+
+Cílem je projet si všechny věci co jsme se naučili a zapřemýšlet o nich tak, že co je optimum? a co je přesným opakem toho jak toho tedy dosáhnout?
+
+**Hodnotit budu snahu (a funkčnost), nikoliv nějakou arbitrální ohyzdnost.**
+
+Autorstvo nejohyzdnějšího skriptu se ale může těšit na odměnu :\].
+
+### Výpomoc:
+
+Pokud se na něčem zaseknete, **ozvěte se**. Narozdíl od domácích úkolů zde opravdu očekávám skript dotáhnutý dokonce, nikoliv pouze to, co jste v tu chvíli věděli jak na to.
+
+## NENECHÁVEJTE TO NA POSLEDNÍ CHVÍLI
+
+![Pokud nestíháte, ozvěte se a nějak se domluvíme.](images/TOTORO.gif){fig-align="center"}

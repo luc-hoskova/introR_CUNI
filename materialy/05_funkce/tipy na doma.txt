@@ -1,0 +1,114 @@
+fce across a everythign z dplyru
+
+## Itinerace vs vektorizace
+
+dd
+
+| Col1 | Col2 |
+|--------------------------|----------------------------------------------|
+| `ifelse()`, `case_when()` | proveď rozhodnutí pro každou hodnotu v prvku vektoru |
+| `for` cyklus | opakuj ten samý kód |
+| `apply()` | aplikuj funkci nezávisle na všechny hodnoty |
+
+------------------------------------------------------------------------
+
+## typiy na doma
+
+### Tvorba vlastních funkcí
+
+https://physics.ujep.cz/\~jskvor/UDR/7/#/definice-vlastn%C3%ADch-funkc%C3%AD
+
+```{r}
+ohodnot <- function(x) {
+
+  if (x < 50) {
+    "nedostatečný"
+  } else if (x < 75) {
+    "dobrý"
+  } else if (x < 90) {
+    "velmi dobrý"
+  } else {
+    "výborný"
+  }
+
+}
+
+sapply(c(20, 65, 80, 95), ohodnot)
+
+#UMI FUNKCE VEKTOROVY PRISTUP?
+```
+
+```{webr-r}
+hodnoceni <- Vectorize(function(x) {
+  if (is.na(x)) {
+    NA
+  } else if (x < 50) {
+    "nedostatečný"
+  } else if (x < 75) {
+    "dobrý"
+  } else if (x < 90) {
+    "velmi dobrý"
+  } else {
+    "výborný"
+  }
+})
+
+vysledek <- hodnoceni(pocetBodu)
+```
+
+```{r}
+#vypocet objemu valce
+polomer <- c(2, 3, 4)
+vyska <- c(10, 12, 15)
+
+mapply(function(r, h) {
+  pi * r^2 * h
+}, polomer, vyska)
+```
+
+### Funkce `switch`
+
+### Co dělá funkce `ifelse` s hodnotami?
+
+`ifelse` mění hodnoty na jejich atomické podoby - atomická podoba faktoru je integer, takže pozor na as.factor
+
+```{r}
+str(iris) #jaka je struktura iris pred upravou
+
+iris <- iris %>%
+  mutate(Species =
+           ifelse(is.character(Species), Species, as.factor(Species)))
+
+str(iris) #a struktura po uprave
+```
+
+lepší
+
+```{r}
+iris <- iris %>%
+  mutate(
+    Species = if (is.character(Species))
+      Species
+    else
+      as.factor(Species))
+```
+
+### funkce replace_when
+
+https://casrai.org/guides/case-when-r
+
+### vytváření nových prvků přímo ve for cyklu
+
+```{r}
+x <- c(2, 4, 6, 8)
+
+for (i in 1:length(x)) {
+  if (i == 1) {
+    vysledek1 <- x[i] * 2
+  } else {
+    vysledek1 <- c(vysledek1, x[i] * 2)
+  }
+}
+```
+
+### Datum a čas

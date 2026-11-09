@@ -1,2 +1,16 @@
+2. lekce
+- do Tipy navíc víc o faktorech, labels a tak
+- přidání unclass() do seznamu funkcí
+- předělat vektory
+
+3. lekce
+- přidat sum do seznamu fcí
+
 4. lekce
 - musí obsahovat group_by a teoreticky u summarize
+	- hodilo by se i count
+- across everything
+- tipy na doma count a sum funkce a co to dela
+
+5. lekce
+- doplnit ifelse, case_when, sqrt(?), print a floor do seznamu fcí

@@ -1,0 +1,172 @@
+---
+title: "Základy vizualizace dat a práce s grafy v R"
+subtitle: "Zpracovávání výzkumných dat pomocí jazyka R"
+title-slide-attributes:
+  data-background-color: rgb(233, 84, 32)
+format:
+  revealjs:
+    self-contained: true
+    theme: default
+    scrollable: true
+engine: knitr
+filters:
+  - webr
+webr:
+  packages:
+    - "dplyr"
+    - "readxl"
+    - "readr"
+execute:
+  echo: true
+  warning: false
+  cache: true
+---
+
+## Program
+
+::: incremental
+- opakování z minulé hodiny
+- kontrola domácího úkolu
+- pipes
+- nahrávání dat
+- transformace dat
+  - úprava jmen sloupců
+  - chybějící hodnoty
+  - mutace a řazení podle jednotlivých hodnot
+  - vytváření sloupců
+:::
+
+------------------------------------------------------------------------
+
+## Kontrola domácí práce
+
+```{r}
+#| context: setup
+#| echo: false
+library(tidyverse)
+```
+
+### Úloha 1
+
+Vyber z následujícího vektoru každou pátou hodnotu.
+
+::: fragment
+1.  Pojmenujte si vektor pro snažší manipulaci.
+
+    ```{r}
+    hodnoty <- seq(15.2, 45.7, 0.56); hodnoty
+    ```
+:::
+
+::: fragment
+2.  Vytvořte sekvenci, která v sobě bude obsahovat čísla v intervalu pěti od 0 do posledního čísla vektoru = každé páté číslo.
+
+    ```{r}
+    seq(0, length(hodnoty), by = 5)
+    ```
+:::
+
+::: fragment
+3.  Použijte výslednou sekvenci čísel k indexaci.
+
+    ```{r}
+    hodnoty[seq(0, length(hodnoty), by = 5)]
+    ```
+:::
+
+------------------------------------------------------------------------
+
+### Úloha 2
+
+Z datasetu (co je nahraný v R) jménem `airquality`, který obsahuje informace o měření kvality vzduchu v NYC, vyber hodnoty ze sloupce `Temp` z prvního týdne v květnu.
+
+::: fragment
+1.  Zobrazme si prvních několik řádků a podívejme se na strukturu.
+
+    ```{r}
+    str(airquality)
+    head(airquality)
+    ```
+:::
+
+::: fragment
+2.  Vyfiltrujeme hodnoty, které byly naměřeny první týden v květnu.
+
+    ```{r}
+    #vyber z hodnot sloupce
+    airquality$Temp[airquality$Month == 5 & airquality$Day %in% 1:7]
+    airquality$Temp[airquality$Month == 5 & airquality$Day <= 7]
+
+    #vyber z datasetu
+    airquality[airquality$Month == 5 & airquality$Day %in% 1:7, "Temp"]
+    ```
+:::
+
+::: fragment
+3.  Lze použít i funkci `filter`, zde už je ale třeba přemýšlet o tom, jestli nám na takto malém kusu kódu opravdu ušetří práci.
+
+    ```{r}
+    library(dplyr)
+    datumy <- filter(airquality, 
+       Day %in% 1:7,
+       Month == 5)
+    unlist(select(datumy, Temp))
+    ```
+:::
+
+------------------------------------------------------------------------
+
+### Úloha 3
+
+K datasetu `airquality` přidejte nový sloupec s názvem `Weather` který bude obsahovat informaci (text `hot`), zda hodnoty ve sloupci `Temp` jsou vyšší než 70. Pokud není vyšší jako 70, bude obsahovat text `cold`.
+
+::: fragment
+1.  Pomocí symbolu `$` vytvoříme nový sloupec `Weather`, a přiřadíme do něj hodnotu cold.
+
+    ```{r}
+    airquality$Weather <- "cold"
+    airquality
+    ```
+:::
+
+::: fragment
+2.  Totéž provedeme s hodnotou `hot`, pro kterou platí podmínka `Temp > 70`.
+
+    ```{r}
+    airquality$Weather[airquality$Temp > 70] <- "hot"
+    airquality
+    ```
+:::
+
+------------------------------------------------------------------------
+
+## Bonus
+
+Pokuste se zjistit, jak si v nápovědě můžete najít seznam nahraných datasetů v R (`iris`, `cars`, `dplyr::starwars` a jiné)
+
+::: fragment
+Pro vyhledání můžete použít následující funkci:
+
+```{r}
+data()
+```
+
+Díky této funkci si můžeme rychle zjisti, jaké datasety máme k dispozici v nahraných balíčcích, a **které je proto možné rovnou použít bez jejich opakovaného ukládání do globálního prostředí.**
+:::
+
+------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------
+
+## Domácí úkol
+
+1.  
+
+Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+
+------------------------------------------------------------------------
+
+## Tipy navíc pro samostudium
+
+### Změna pořadí sloupců
