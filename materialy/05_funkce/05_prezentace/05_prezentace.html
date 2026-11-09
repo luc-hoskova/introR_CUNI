@@ -3736,7 +3736,6 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li class="fragment">funkce <code>ifelse</code></li>
 <li class="fragment">cykly</li>
 <li class="fragment">rodina <code>apply</code> funkcí</li>
-<li class="fragment">tvorba vlastní funkce</li>
 </ul>
 </section>
 <section id="kontrola-domácí-práce" class="slide level2">
@@ -16776,7 +16775,7 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <countdown-timer class="countdown" id="timer_556e724d" minutes="10" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
-<p>Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v <strong>7:00 ráno, kdy bylo 10 stupňů Celsia</strong>. Víte, že <strong>každou hodinu teplota stoupne o 1,5 stupně</strong>. Jaká teplota bude v <strong>14:00 hodin</strong>?</p>
+<p>Provádíte predikci teploty vzduchu. Máme naměřenou teplotu v <strong>7:00 ráno, kdy bylo 10 stupňů Celsia</strong>. Víte, že <strong>každou hodinu teplota stoupne o 1,5 stupně</strong>. Jaká teplota bude v <strong>14:00 hodin</strong>?</p>
 </section>
 <section class="slide level2">
 
@@ -16793,36 +16792,28 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
 <span id="cb150-2"><a href aria-label="2"></a>  sedmRano <span class="ot">&lt;-</span> sedmRano <span class="sc">+</span> <span class="fl">1.5</span></span>
-<span id="cb150-3"><a href aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="fragment">
-<p>Výsledky chceme vidět, tak si je zobrazíme.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href aria-label="1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb151-2"><a href aria-label="2"></a>  sedmRano <span class="ot">&lt;-</span> sedmRano <span class="sc">+</span> <span class="fl">1.5</span></span>
-<span id="cb151-3"><a href aria-label="3"></a>  <span class="fu">print</span>(sedmRano)</span>
-<span id="cb151-4"><a href aria-label="4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb150-3"><a href aria-label="3"></a>  <span class="fu">print</span>(sedmRano) <span class="co">#zobrazime si vysledek</span></span>
+<span id="cb150-4"><a href aria-label="4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 19
-[1] 20.5
-[1] 22
-[1] 23.5
-[1] 25</code></pre>
+<pre><code>[1] 11.5
+[1] 13
+[1] 14.5
+[1] 16
+[1] 17.5</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
 <p>Můžeme samozřejmě provést i variantu s uložením výsledků.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href aria-label="1"></a>sedmRano <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb153-2"><a href aria-label="2"></a>teplota <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb153-3"><a href aria-label="3"></a></span>
-<span id="cb153-4"><a href aria-label="4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb153-5"><a href aria-label="5"></a>  sedmRano <span class="ot">&lt;-</span> sedmRano <span class="sc">+</span> <span class="fl">1.5</span></span>
-<span id="cb153-6"><a href aria-label="6"></a>  teplota[i] <span class="ot">&lt;-</span> sedmRano}</span>
-<span id="cb153-7"><a href aria-label="7"></a></span>
-<span id="cb153-8"><a href aria-label="8"></a>teplota</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href aria-label="1"></a>sedmRano <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb152-2"><a href aria-label="2"></a>teplota <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb152-3"><a href aria-label="3"></a></span>
+<span id="cb152-4"><a href aria-label="4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb152-5"><a href aria-label="5"></a>  sedmRano <span class="ot">&lt;-</span> sedmRano <span class="sc">+</span> <span class="fl">1.5</span></span>
+<span id="cb152-6"><a href aria-label="6"></a>  teplota[i] <span class="ot">&lt;-</span> sedmRano}</span>
+<span id="cb152-7"><a href aria-label="7"></a></span>
+<span id="cb152-8"><a href aria-label="8"></a>teplota</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11.5 13.0 14.5 16.0 17.5</code></pre>
 </div>
@@ -16834,7 +16825,7 @@ Ověř, zda má Franta na tuto slevu nárok.</li>
 <h3 id="aplikace-for-cyklu-na-jednotlivé-prvky-proměnné">Aplikace <code>for</code> cyklu na jednotlivé prvky proměnné</h3>
 <p>Pomocí cyklu můžeme nejenom opakovaně spouštět kód na jednotlivých hodnotách, ale na základě totožného principu i <strong>spouštět kód na jednotlivých částech data frame.</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href aria-label="1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href aria-label="1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -16844,13 +16835,13 @@ Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href aria-label="1"></a>prumery <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb157-2"><a href aria-label="2"></a></span>
-<span id="cb157-3"><a href aria-label="3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(mtcars)) {</span>
-<span id="cb157-4"><a href aria-label="4"></a>  prumery[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(mtcars[,i])</span>
-<span id="cb157-5"><a href aria-label="5"></a>}</span>
-<span id="cb157-6"><a href aria-label="6"></a></span>
-<span id="cb157-7"><a href aria-label="7"></a><span class="fu">print</span>(prumery)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href aria-label="1"></a>prumery <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb156-2"><a href aria-label="2"></a></span>
+<span id="cb156-3"><a href aria-label="3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(mtcars)) {</span>
+<span id="cb156-4"><a href aria-label="4"></a>  prumery[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(mtcars[,i])</span>
+<span id="cb156-5"><a href aria-label="5"></a>}</span>
+<span id="cb156-6"><a href aria-label="6"></a></span>
+<span id="cb156-7"><a href aria-label="7"></a><span class="fu">print</span>(prumery)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  20.090625   6.187500 230.721875 146.687500   3.596563   3.217250
  [7]  17.848750   0.437500   0.406250   3.687500   2.812500</code></pre>
@@ -16939,7 +16930,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 <h4 id="ukázky-použití-apply-funkce">Ukázky použití <code>apply</code> funkce</h4>
 <p><strong>Průměrné hodnoty všech parametrů v datasetu <code>mtcars</code>:</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href aria-label="1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href aria-label="1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -16949,7 +16940,7 @@ Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb161"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href aria-label="1"></a><span class="fu">apply</span>(mtcars, <span class="dv">2</span>, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href aria-label="1"></a><span class="fu">apply</span>(mtcars, <span class="dv">2</span>, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       mpg        cyl       disp         hp       drat         wt       qsec 
  20.090625   6.187500 230.721875 146.687500   3.596563   3.217250  17.848750 
@@ -16959,7 +16950,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 <p><strong>Počet ne/přijatého studentstva</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href aria-label="1"></a><span class="fu">str</span>(UCBAdmissions)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href aria-label="1"></a><span class="fu">str</span>(UCBAdmissions)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> &#39;table&#39; num [1:2, 1:2, 1:6] 512 313 89 19 353 207 17 8 120 205 ...
  - attr(*, &quot;dimnames&quot;)=List of 3
@@ -16967,7 +16958,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
   ..$ Gender: chr [1:2] &quot;Male&quot; &quot;Female&quot;
   ..$ Dept  : chr [1:6] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb165"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href aria-label="1"></a><span class="fu">head</span>(UCBAdmissions)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href aria-label="1"></a><span class="fu">head</span>(UCBAdmissions)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , Dept = A
 
@@ -17011,7 +17002,7 @@ Admit      Male Female
   Admitted   22     24
   Rejected  351    317</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb167"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href aria-label="1"></a><span class="fu">apply</span>(UCBAdmissions, <span class="dv">1</span>, sum) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href aria-label="1"></a><span class="fu">apply</span>(UCBAdmissions, <span class="dv">1</span>, sum) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Admitted Rejected 
     1755     2771 </code></pre>
@@ -17025,23 +17016,23 @@ Admit      Male Female
 <p><code>sapply(data, FUN = funkce co má být aplikována)</code></p>
 <p>Funkce <code>sapply</code> je defacto totožná s <code>lapply</code>, pouze se snaží vrátit co nejjednodušší strukturu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb169"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href aria-label="1"></a>vzorky <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb169-2"><a href aria-label="2"></a>  <span class="at">vzorek_A =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">11</span>, <span class="dv">13</span>),</span>
-<span id="cb169-3"><a href aria-label="3"></a>  <span class="at">vzorek_B =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">10</span>),</span>
-<span id="cb169-4"><a href aria-label="4"></a>  <span class="at">vzorek_C =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">14</span>, <span class="dv">17</span>)</span>
-<span id="cb169-5"><a href aria-label="5"></a>)</span>
-<span id="cb169-6"><a href aria-label="6"></a></span>
-<span id="cb169-7"><a href aria-label="7"></a><span class="fu">sapply</span>(vzorky, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href aria-label="1"></a>vzorky <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb168-2"><a href aria-label="2"></a>  <span class="at">vzorek_A =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">11</span>, <span class="dv">13</span>),</span>
+<span id="cb168-3"><a href aria-label="3"></a>  <span class="at">vzorek_B =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">10</span>),</span>
+<span id="cb168-4"><a href aria-label="4"></a>  <span class="at">vzorek_C =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">14</span>, <span class="dv">17</span>)</span>
+<span id="cb168-5"><a href aria-label="5"></a>)</span>
+<span id="cb168-6"><a href aria-label="6"></a></span>
+<span id="cb168-7"><a href aria-label="7"></a><span class="fu">sapply</span>(vzorky, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>vzorek_A vzorek_B vzorek_C 
     11.5      8.5     15.5 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb171"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href aria-label="1"></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(vzorky, mean))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href aria-label="1"></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(vzorky, mean))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>vzorek_A vzorek_B vzorek_C 
     11.5      8.5     15.5 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb173"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href aria-label="1"></a><span class="fu">lapply</span>(vzorky, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href aria-label="1"></a><span class="fu">lapply</span>(vzorky, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vzorek_A
 [1] 11.5
@@ -17052,7 +17043,7 @@ $vzorek_B
 $vzorek_C
 [1] 15.5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb175"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href aria-label="1"></a><span class="fu">sapply</span>(vzorky, mean, <span class="at">simplify =</span> <span class="cn">FALSE</span>, <span class="at">USE.NAMES =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href aria-label="1"></a><span class="fu">sapply</span>(vzorky, mean, <span class="at">simplify =</span> <span class="cn">FALSE</span>, <span class="at">USE.NAMES =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vzorek_A
 [1] 11.5
@@ -17081,7 +17072,7 @@ $vzorek_C
 <h2>Samostatné cvičení <code>apply</code></h2>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_28fd0f39" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a1207cb0" minutes="5" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;"></countdown-timer>
 </div>
 </div>
 <p><strong>V laboratoři jsme naměřili koncentraci látky ve čtyřech vzorcích.</strong></p>
@@ -17090,11 +17081,11 @@ $vzorek_C
 <li><p>Zjistěte počet měření v každém vzorku.</p></li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb177"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href aria-label="1"></a>vzorky <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb177-2"><a href aria-label="2"></a>  <span class="at">A =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">18</span>),</span>
-<span id="cb177-3"><a href aria-label="3"></a>  <span class="at">B =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">11</span>),</span>
-<span id="cb177-4"><a href aria-label="4"></a>  <span class="at">C =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">20</span>, <span class="dv">11</span>, <span class="dv">13</span>),</span>
-<span id="cb177-5"><a href aria-label="5"></a>  <span class="at">D =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">24</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href aria-label="1"></a>vzorky <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb176-2"><a href aria-label="2"></a>  <span class="at">A =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">18</span>),</span>
+<span id="cb176-3"><a href aria-label="3"></a>  <span class="at">B =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">11</span>),</span>
+<span id="cb176-4"><a href aria-label="4"></a>  <span class="at">C =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">20</span>, <span class="dv">11</span>, <span class="dv">13</span>),</span>
+<span id="cb176-5"><a href aria-label="5"></a>  <span class="at">D =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">24</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2 scrollable">
@@ -17106,14 +17097,14 @@ $vzorek_C
 </ol>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb178"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb178-1"><a href aria-label="1"></a><span class="co">#prumerne koncentrace</span></span>
-<span id="cb178-2"><a href aria-label="2"></a><span class="fu">sapply</span>(vzorky, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb177"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href aria-label="1"></a><span class="co">#prumerne koncentrace</span></span>
+<span id="cb177-2"><a href aria-label="2"></a><span class="fu">sapply</span>(vzorky, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        A         B         C         D 
 13.800000  9.333333 15.333333 21.750000 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb180"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb180-1"><a href aria-label="1"></a><span class="co">#maximalni koncentrace</span></span>
-<span id="cb180-2"><a href aria-label="2"></a><span class="fu">sapply</span>(vzorky, max)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb179"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb179-1"><a href aria-label="1"></a><span class="co">#maximalni koncentrace</span></span>
+<span id="cb179-2"><a href aria-label="2"></a><span class="fu">sapply</span>(vzorky, max)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> A  B  C  D 
 18 11 20 24 </code></pre>
@@ -17125,8 +17116,8 @@ $vzorek_C
 </ol>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb182"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb182-1"><a href aria-label="1"></a><span class="co">#pocet mereni</span></span>
-<span id="cb182-2"><a href aria-label="2"></a><span class="fu">sapply</span>(vzorky, length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb181"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href aria-label="1"></a><span class="co">#pocet mereni</span></span>
+<span id="cb181-2"><a href aria-label="2"></a><span class="fu">sapply</span>(vzorky, length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A B C D 
 5 3 6 4 </code></pre>
@@ -17145,10 +17136,10 @@ $vzorek_C
 <h2>Domácí úkol</h2>
 <p><strong>1. Byla naměřena následující koncentrace látky:</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb184"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb184-1"><a href aria-label="1"></a>koncentrace <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;vzorek1&quot;</span> <span class="ot">=</span> <span class="st">&quot;75 mg/l&quot;</span>,</span>
-<span id="cb184-2"><a href aria-label="2"></a>                 <span class="st">&quot;vzorek2&quot;</span> <span class="ot">=</span> <span class="st">&quot;101 mg/l&quot;</span>,</span>
-<span id="cb184-3"><a href aria-label="3"></a>                 <span class="st">&quot;vzorek3&quot;</span> <span class="ot">=</span> <span class="st">&quot;158 mg/l&quot;</span>,</span>
-<span id="cb184-4"><a href aria-label="4"></a>                 <span class="st">&quot;vzorek4&quot;</span> <span class="ot">=</span> <span class="st">&quot;48 mg/l&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb183"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href aria-label="1"></a>koncentrace <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;vzorek1&quot;</span> <span class="ot">=</span> <span class="st">&quot;75 mg/l&quot;</span>,</span>
+<span id="cb183-2"><a href aria-label="2"></a>                 <span class="st">&quot;vzorek2&quot;</span> <span class="ot">=</span> <span class="st">&quot;101 mg/l&quot;</span>,</span>
+<span id="cb183-3"><a href aria-label="3"></a>                 <span class="st">&quot;vzorek3&quot;</span> <span class="ot">=</span> <span class="st">&quot;158 mg/l&quot;</span>,</span>
+<span id="cb183-4"><a href aria-label="4"></a>                 <span class="st">&quot;vzorek4&quot;</span> <span class="ot">=</span> <span class="st">&quot;48 mg/l&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Pokud je koncentrace vyšší než 100 mg/l, vypište „Vysoká koncentrace“.</li>
@@ -17158,14 +17149,14 @@ $vzorek_C
 <p><strong>2. V laboratorní kultuře je na začátku 200 bakterií. Počet bakterií se každou hodinu zvýší o 30 %. Kolik jich bude po osmi hodinách?</strong></p>
 <p><strong>3. Během pokusu jsme čtyři vzorky vystavily třem látkám a změřili jejich reaktivitu.</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb185"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href aria-label="1"></a>mereni <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb185-2"><a href aria-label="2"></a>  <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>,</span>
-<span id="cb185-3"><a href aria-label="3"></a>  <span class="dv">8</span>,  <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>),</span>
-<span id="cb185-4"><a href aria-label="4"></a>  <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb185-5"><a href aria-label="5"></a></span>
-<span id="cb185-6"><a href aria-label="6"></a><span class="fu">rownames</span>(mereni) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Vzorek 1&quot;</span>, <span class="st">&quot;Vzorek 2&quot;</span>,</span>
-<span id="cb185-7"><a href aria-label="7"></a>                      <span class="st">&quot;Vzorek 3&quot;</span>, <span class="st">&quot;Vzorek 4&quot;</span>)</span>
-<span id="cb185-8"><a href aria-label="8"></a><span class="fu">colnames</span>(mereni) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Latka A&quot;</span>, <span class="st">&quot;Latka B&quot;</span>, <span class="st">&quot;Latka C&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb184"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb184-1"><a href aria-label="1"></a>mereni <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb184-2"><a href aria-label="2"></a>  <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>,</span>
+<span id="cb184-3"><a href aria-label="3"></a>  <span class="dv">8</span>,  <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>),</span>
+<span id="cb184-4"><a href aria-label="4"></a>  <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb184-5"><a href aria-label="5"></a></span>
+<span id="cb184-6"><a href aria-label="6"></a><span class="fu">rownames</span>(mereni) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Vzorek 1&quot;</span>, <span class="st">&quot;Vzorek 2&quot;</span>,</span>
+<span id="cb184-7"><a href aria-label="7"></a>                      <span class="st">&quot;Vzorek 3&quot;</span>, <span class="st">&quot;Vzorek 4&quot;</span>)</span>
+<span id="cb184-8"><a href aria-label="8"></a><span class="fu">colnames</span>(mereni) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Latka A&quot;</span>, <span class="st">&quot;Latka B&quot;</span>, <span class="st">&quot;Latka C&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Jaká je průměrná reaktivita každého vzorku?</li>
@@ -17173,7 +17164,7 @@ $vzorek_C
 </ul>
 <p><strong>4. U pacientů byly naměřeny následující hodnoty glukózy v krvi (mmol/l):</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb186"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb186-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="fl">8.5</span>, <span class="fl">3.9</span>, <span class="fl">5.9</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">9.0</span>, <span class="fl">6.3</span>, <span class="fl">5.1</span>, <span class="fl">7.0</span>, <span class="fl">4.8</span>, <span class="fl">7.2</span>, <span class="fl">4.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb185"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="fl">8.5</span>, <span class="fl">3.9</span>, <span class="fl">5.9</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">9.0</span>, <span class="fl">6.3</span>, <span class="fl">5.1</span>, <span class="fl">7.0</span>, <span class="fl">4.8</span>, <span class="fl">7.2</span>, <span class="fl">4.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 8.5 3.9 5.9 4.0 4.5 9.0 6.3 5.1 7.0 4.8 7.2 4.2</code></pre>
 </div>
