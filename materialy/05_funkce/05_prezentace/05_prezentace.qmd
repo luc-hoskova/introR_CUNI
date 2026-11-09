@@ -32,7 +32,6 @@ bibliography: references.bib
 - funkce `ifelse`
 - cykly
 - rodina `apply` funkcí
-- tvorba vlastní funkce
 :::
 
 ------------------------------------------------------------------------
@@ -1134,7 +1133,7 @@ countdown::countdown(minutes = 10,
                      top = "0")
 ```
 
-Provádíte předpověd´ teploty vzduchu. Máme naměřenou teplotu v **7:00 ráno, kdy bylo 10 stupňů Celsia**. Víte, že **každou hodinu teplota stoupne o 1,5 stupně**. Jaká teplota bude v **14:00 hodin**?
+Provádíte predikci teploty vzduchu. Máme naměřenou teplotu v **7:00 ráno, kdy bylo 10 stupňů Celsia**. Víte, že **každou hodinu teplota stoupne o 1,5 stupně**. Jaká teplota bude v **14:00 hodin**?
 
 ------------------------------------------------------------------------
 
@@ -1156,17 +1155,7 @@ Vytvoříme cyklus, kde se pětkrát k předchozí hodnotě přičte 1.5.
 ```{r}
 for (i in 1:5) {
   sedmRano <- sedmRano + 1.5
-}
-```
-:::
-
-::: fragment
-Výsledky chceme vidět, tak si je zobrazíme.
-
-```{r}
-for (i in 1:5) {
-  sedmRano <- sedmRano + 1.5
-  print(sedmRano)
+  print(sedmRano) #zobrazime si vysledek
 }
 ```
 :::
