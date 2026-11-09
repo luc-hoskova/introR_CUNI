@@ -14,3 +14,4 @@
 
 5. lekce
 - doplnit ifelse, case_when, sqrt(?), print a floor do seznamu fcí
+
