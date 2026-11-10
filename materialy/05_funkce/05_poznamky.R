@@ -77,6 +77,24 @@ for (rok in 1:5) {
   obyvatele <- obyvatele * 2
   print(obyvatele)}
 
+# APPLY
+#1
+# prumer stanice
+apply(teploty, 1, mean)
+# max stanice
+apply(teploty, 1, max)
+# prumer dny
+apply(teploty, 2, mean)
+
+#2
+kultury <- list(
+  kultura_A = c(100, 120, 140, 160),
+  kultura_B = c(200, 250, 300),
+  kultura_C = c(50, 60, 70, 80, 90))
+
+sapply(kultury, mean)
+sapply(kultury, max)
+
 ######################################################
 # SAMOSTATNE CVICENI
 ######################################################
@@ -107,7 +125,7 @@ for (i in 1:5) {
   print(sedmRano)
 }
 
-#v) varianta
+#b) varianta
 sedmRano <- 10
 teplota <- NULL
 for (i in 1:5) {
