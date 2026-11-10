@@ -32,6 +32,7 @@ bibliography: references.bib
 - funkce `ifelse`
 - cykly
 - rodina `apply` funkcí
+- závěrečný projekt
 :::
 
 ------------------------------------------------------------------------
