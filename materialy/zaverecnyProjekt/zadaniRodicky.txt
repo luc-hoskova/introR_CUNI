@@ -1,0 +1,31 @@
+Datová sada obsahuje anonymizované individuální záznamy o rodičkách a průběhu porodu v České republice. Zaměřuje se na základní charakteristiky rodičky (např. věk, parita, vzdělání, prenatální péče), na průběh porodu a jeho způsob (vaginální porod, císařský řez včetně typů), na výskyt komplikací a použité postupy či léky při porodu. 
+
+Zdroj dat
+https://www.nzip.cz/data/2591-rodicky-cesko-otevrena-data
+
+Zadání
+1) Kolik rodiček, u kterých byla diagnostikována porucha vcestné placenty, utrpělo při porodu komplikaci v podobě abrupce placenty,  ztrátu krve více než 500 ml a nakonec jim byla provedena porodní hysterektomie? A v jakých letech byly tyto porody provedeny?
+
+2) Jaký je medián kategorie všech rodiček rodících císařským řezem pro délku hospitalizace?
+
+3) Jaká je nejčastější kombinace rodinného stavu a vzdělání? Např.: nejvíce dětí se narodilo vdovám se základním vzděláním.
+
+4) Jaký je rozdíl v počtu narozených dětí mezi roky s nejvyšším a nejnižším počtem porodů?
+
+Řešení
+1)
+2012 1
+2015 1
+2016 4
+2017 2
+2021 2
+2023 1
+
+2)
+5 dní
+
+3)
+Nejvíce dětí se narodilo vdaným ženám s ukončenou střední školou s maturitou.
+
+4)
+41412

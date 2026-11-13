@@ -1,0 +1,29 @@
+Datová sada obsahuje anonymizované individuální záznamy o novorozencích narozených v České republice. Obsahuje údaje o narození, porodní hmotnosti, gestačním stáří, způsobu porodu, poskytované péči a zdravotním stavu novorozence včetně screeningových testů a parametrů při propuštění. 
+
+Zdroj dat a popis sloupců
+https://www.nzip.cz/data/2515-novorozenci-cesko-otevrena-data
+
+Zadání
+1) Kolik holčiček narozených spontánním vaginálním porodem v gestačním stáří menším či rovno 31+6 týdnu těhotenství, které vážily méně než 1500 g, potřebovalo na sále masáž srdce?
+
+2) Jaká je nejčastější kategorie porodní hmotnosti pro chlapce, kteří po narození vyžadovali léčbu na sále intubací, která pak na oddělení pokračovala léčbou bronchopulmonální dysplázie pomocí steroidů?
+
+3) U kolika novorozenců byla zjištěna vrozená vada pro každou kategorii gestačního věku?
+
+4) Které děti s vrozenou vadou byly častěji propuštěni z nemocnice do dětského domova, chlapci nebo děvčata?
+
+Výsledky
+1)
+40
+
+2)
+Méně než 1500 g
+
+3)
+Méně než 1500 g	2854
+1500–2499 g	10081
+2500–3499 g	21555
+3500 g a více	60255
+
+4)
+Chlapci
