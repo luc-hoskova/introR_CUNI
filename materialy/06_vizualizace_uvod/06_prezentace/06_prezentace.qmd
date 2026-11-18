@@ -48,29 +48,44 @@ library(tidyverse)
 
 ### Úloha 1
 
-Vyber z následujícího vektoru každou pátou hodnotu.
+**Byla naměřena následující koncentrace látky:**
+
+```{r}
+koncentrace <- c("vzorek1" = "75 mg/l",
+                 "vzorek2" = "101 mg/l",
+                 "vzorek3" = "158 mg/l",
+                 "vzorek4" = "48 mg/l")
+```
+
+- Pokud je koncentrace vyšší než 100 mg/l, vypište „Vysoká koncentrace“.
+- Pokud je koncentrace mezi 50 a 100 mg/l včetně, vypište „Normální koncentrace“.
+- Jinak vypište „Nízká koncentrace“.
 
 ::: fragment
-1.  Pojmenujte si vektor pro snažší manipulaci.
+1.  Vytvoříme si vektor s pouze číselními hodnotami.
 
     ```{r}
-    hodnoty <- seq(15.2, 45.7, 0.56); hodnoty
+    hodnoty <- parse_number(koncentrace); hodnoty
     ```
 :::
 
 ::: fragment
-2.  Vytvořte sekvenci, která v sobě bude obsahovat čísla v intervalu pěti od 0 do posledního čísla vektoru = každé páté číslo.
+2.  Přepišme si jednotlivé hodnoty pomocí zadaného klíče.
 
     ```{r}
-    seq(0, length(hodnoty), by = 5)
+    hodnoty <- case_when(
+      hodnoty > 100 ~ "Vysoká koncentrace",
+      hodnoty >= 50 & hodnoty <= 100 ~ "Normální koncentrace",
+      .default = "Nízká koncentrace"); hodnoty
     ```
 :::
 
 ::: fragment
-3.  Použijte výslednou sekvenci čísel k indexaci.
+3.  Můžeme si pro snadnější porozumnění přidat názvy jednotlivých hodnot.
 
     ```{r}
-    hodnoty[seq(0, length(hodnoty), by = 5)]
+    names(hodnoty) <- names(koncentrace)
+    hodnoty
     ```
 :::
 
@@ -78,39 +93,25 @@ Vyber z následujícího vektoru každou pátou hodnotu.
 
 ### Úloha 2
 
-Z datasetu (co je nahraný v R) jménem `airquality`, který obsahuje informace o měření kvality vzduchu v NYC, vyber hodnoty ze sloupce `Temp` z prvního týdne v květnu.
+**V laboratorní kultuře je na začátku 200 bakterií. Počet bakterií se každou hodinu zvýší o 30 %. Kolik jich bude po osmi hodinách?**
 
 ::: fragment
-1.  Zobrazme si prvních několik řádků a podívejme se na strukturu.
+1.  Vytvořme si základní hodnotu.
 
     ```{r}
-    str(airquality)
-    head(airquality)
+    bakterie <- 200
     ```
 :::
 
 ::: fragment
-2.  Vyfiltrujeme hodnoty, které byly naměřeny první týden v květnu.
+2.  Projeďme si množství bakterií v osmi cyklech a zobrazme si výslednou hodnotu.
 
     ```{r}
-    #vyber z hodnot sloupce
-    airquality$Temp[airquality$Month == 5 & airquality$Day %in% 1:7]
-    airquality$Temp[airquality$Month == 5 & airquality$Day <= 7]
-
-    #vyber z datasetu
-    airquality[airquality$Month == 5 & airquality$Day %in% 1:7, "Temp"]
-    ```
-:::
-
-::: fragment
-3.  Lze použít i funkci `filter`, zde už je ale třeba přemýšlet o tom, jestli nám na takto malém kusu kódu opravdu ušetří práci.
-
-    ```{r}
-    library(dplyr)
-    datumy <- filter(airquality, 
-       Day %in% 1:7,
-       Month == 5)
-    unlist(select(datumy, Temp))
+    for (hodina in 1:8) {
+      bakterie <- bakterie * 1.3
+    }
+    
+    bakterie
     ```
 :::
 
@@ -118,43 +119,84 @@ Z datasetu (co je nahraný v R) jménem `airquality`, který obsahuje informace 
 
 ### Úloha 3
 
-K datasetu `airquality` přidejte nový sloupec s názvem `Weather` který bude obsahovat informaci (text `hot`), zda hodnoty ve sloupci `Temp` jsou vyšší než 70. Pokud není vyšší jako 70, bude obsahovat text `cold`.
-
-::: fragment
-1.  Pomocí symbolu `$` vytvoříme nový sloupec `Weather`, a přiřadíme do něj hodnotu cold.
-
-    ```{r}
-    airquality$Weather <- "cold"
-    airquality
-    ```
-:::
-
-::: fragment
-2.  Totéž provedeme s hodnotou `hot`, pro kterou platí podmínka `Temp > 70`.
-
-    ```{r}
-    airquality$Weather[airquality$Temp > 70] <- "hot"
-    airquality
-    ```
-:::
-
-------------------------------------------------------------------------
-
-## Bonus
-
-Pokuste se zjistit, jak si v nápovědě můžete najít seznam nahraných datasetů v R (`iris`, `cars`, `dplyr::starwars` a jiné)
-
-::: fragment
-Pro vyhledání můžete použít následující funkci:
+**Během pokusu jsme čtyři vzorky vystavily třem látkám a změřili jejich reaktivitu.**
 
 ```{r}
-data()
+mereni <- matrix(
+  c(12, 15, 18, 20, 25, 30,
+  8,  10, 12, 35, 40, 45),
+  nrow = 4, byrow = TRUE)
+
+rownames(mereni) <- c("Vzorek 1", "Vzorek 2",
+                      "Vzorek 3", "Vzorek 4")
+colnames(mereni) <- c("Latka A", "Latka B", "Latka C")
 ```
 
-Díky této funkci si můžeme rychle zjisti, jaké datasety máme k dispozici v nahraných balíčcích, a **které je proto možné rovnou použít bez jejich opakovaného ukládání do globálního prostředí.**
+- Jaká je průměrná reaktivita každého vzorku?
+- Jaké byly nejvyšší hodnoty způsobené reaktivity pro každou látku a která látka způsobila největší reaktivitu?
+
+::: fragment
+1.  Spočítáme si průměrnou reaktivitu každého vzorku.
+
+    ```{r}
+    apply(mereni, 1, mean)
+    ```
+:::
+
+::: fragment
+2.  Spočítejme si průměrnou reaktivitu každé látky a z ní vyberme tu nejreaktivnější.
+
+    ```{r}
+    maxima <- apply(mereni, 2, max); maxima
+    max(maxima)
+    which.max(maxima) #pokud chceme zjistit nazev a pozici
+    ```
 :::
 
 ------------------------------------------------------------------------
+
+### Úloha 4
+
+**U pacientů byly naměřeny následující hodnoty glukózy v krvi (mmol/l):**
+
+```{r}
+c(8.5, 3.9, 5.9, 4.0, 4.5, 9.0, 6.3, 5.1, 7.0, 4.8, 7.2, 4.2)
+```
+
+**Množství cukru v krvi se dělí dle následující tabulky:**
+
+| Stav          | Hodnoty   |
+|---------------|-----------|
+| Norma nalačno | 3.9 - 5.5 |
+| Prediabetes   | 5.6 - 6.9 |
+| Cukrovka      | ≥ 7.0     |
+
+**Vytvořte přehlednou tabulku, kdy pro každého pacienta napíšete jejich ID dle pořadí, jejich naměřenou hodnotu a stav podle tabulky.**
+
+::: fragment
+1.  Pro snadnější práci si hodnoty uložíme do pojmenované proměnné.
+
+```{r}
+glukoza <- c(8.5, 3.9, 5.9, 4.0, 4.5, 9.0, 6.3, 5.1, 7.0, 4.8, 7.2, 4.2)
+```
+:::
+
+::: fragment
+2.  Následně si vytvoříme nový data frame `pacienti`, kdy pro tvorbu jednotlivých sloupců použijeme hodnoty z `glukoza` a tabulku kategorizace.
+```{r}
+  pacienti <- data.frame(
+    ID = 1:length(glukoza),
+    Hodnota = glukoza,
+    Stav = case_when(
+      glukoza >= 3.9 & glukoza < 5.6 ~ "Norma nalačno",
+      glukoza >= 5.6 & glukoza < 7 ~ "Prediabetes",
+      glukoza >= 7.0 ~ "Cukrovka",
+      .default = "Mimo stanovené rozmezí"))
+```
+:::
+
+------------------------------------------------------------------------
+
 
 
 ------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 library(tidyverse)
-data <- read.csv("novorozenci.csv", na.strings = c("", "NA"))
+data <- read.csv("Otevrena-data-NR-10-13-novorozenci-cesko.csv", na.strings = c("", "NA"))
 str(data)
 
 data[is.na(data)] <- 0

@@ -1,5 +1,5 @@
 library(tidyverse)
-data <- read.csv("rodicky.csv")
+data <- read.csv("Otevrena-data-NR-12-16-rodicky-cesko.csv")
 str(data)
 data[] <- lapply(data, as.factor)
 str(data)

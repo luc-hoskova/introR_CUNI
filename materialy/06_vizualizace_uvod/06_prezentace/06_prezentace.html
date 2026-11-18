@@ -1082,40 +1082,55 @@ margin-right: 0; }
 <section id="kontrola-domácí-práce" class="slide level2 scrollable">
 <h2>Kontrola domácí práce</h2>
 <h3 id="úloha-1">Úloha 1</h3>
-<p>Vyber z následujícího vektoru každou pátou hodnotu.</p>
+<p><strong>Byla naměřena následující koncentrace látky:</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href aria-label="1"></a>koncentrace <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;vzorek1&quot;</span> <span class="ot">=</span> <span class="st">&quot;75 mg/l&quot;</span>,</span>
+<span id="cb1-2"><a href aria-label="2"></a>                 <span class="st">&quot;vzorek2&quot;</span> <span class="ot">=</span> <span class="st">&quot;101 mg/l&quot;</span>,</span>
+<span id="cb1-3"><a href aria-label="3"></a>                 <span class="st">&quot;vzorek3&quot;</span> <span class="ot">=</span> <span class="st">&quot;158 mg/l&quot;</span>,</span>
+<span id="cb1-4"><a href aria-label="4"></a>                 <span class="st">&quot;vzorek4&quot;</span> <span class="ot">=</span> <span class="st">&quot;48 mg/l&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Pokud je koncentrace vyšší než 100 mg/l, vypište „Vysoká koncentrace“.</li>
+<li>Pokud je koncentrace mezi 50 a 100 mg/l včetně, vypište „Normální koncentrace“.</li>
+<li>Jinak vypište „Nízká koncentrace“.</li>
+</ul>
 <div class="fragment">
 <ol type="1">
-<li><p>Pojmenujte si vektor pro snažší manipulaci.</p>
+<li><p>Vytvoříme si vektor s pouze číselními hodnotami.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href aria-label="1"></a>hodnoty <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">15.2</span>, <span class="fl">45.7</span>, <span class="fl">0.56</span>); hodnoty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href aria-label="1"></a>hodnoty <span class="ot">&lt;-</span> <span class="fu">parse_number</span>(koncentrace); hodnoty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 15.20 15.76 16.32 16.88 17.44 18.00 18.56 19.12 19.68 20.24 20.80 21.36
-[13] 21.92 22.48 23.04 23.60 24.16 24.72 25.28 25.84 26.40 26.96 27.52 28.08
-[25] 28.64 29.20 29.76 30.32 30.88 31.44 32.00 32.56 33.12 33.68 34.24 34.80
-[37] 35.36 35.92 36.48 37.04 37.60 38.16 38.72 39.28 39.84 40.40 40.96 41.52
-[49] 42.08 42.64 43.20 43.76 44.32 44.88 45.44</code></pre>
+<pre><code>[1]  75 101 158  48</code></pre>
 </div>
 </div></li>
 </ol>
 </div>
 <div class="fragment">
 <ol start="2" type="1">
-<li><p>Vytvořte sekvenci, která v sobě bude obsahovat čísla v intervalu pěti od 0 do posledního čísla vektoru = každé páté číslo.</p>
+<li><p>Přepišme si jednotlivé hodnoty pomocí zadaného klíče.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href aria-label="1"></a><span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(hodnoty), <span class="at">by =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href aria-label="1"></a>hodnoty <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-2"><a href aria-label="2"></a>  hodnoty <span class="sc">&gt;</span> <span class="dv">100</span> <span class="sc">~</span> <span class="st">&quot;Vysoká koncentrace&quot;</span>,</span>
+<span id="cb4-3"><a href aria-label="3"></a>  hodnoty <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">&amp;</span> hodnoty <span class="sc">&lt;=</span> <span class="dv">100</span> <span class="sc">~</span> <span class="st">&quot;Normální koncentrace&quot;</span>,</span>
+<span id="cb4-4"><a href aria-label="4"></a>  <span class="at">.default =</span> <span class="st">&quot;Nízká koncentrace&quot;</span>); hodnoty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  0  5 10 15 20 25 30 35 40 45 50 55</code></pre>
+<pre><code>[1] &quot;Normální koncentrace&quot; &quot;Vysoká koncentrace&quot;   &quot;Vysoká koncentrace&quot;  
+[4] &quot;Nízká koncentrace&quot;   </code></pre>
 </div>
 </div></li>
 </ol>
 </div>
 <div class="fragment">
 <ol start="3" type="1">
-<li><p>Použijte výslednou sekvenci čísel k indexaci.</p>
+<li><p>Můžeme si pro snadnější porozumnění přidat názvy jednotlivých hodnot.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href aria-label="1"></a>hodnoty[<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(hodnoty), <span class="at">by =</span> <span class="dv">5</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href aria-label="1"></a><span class="fu">names</span>(hodnoty) <span class="ot">&lt;-</span> <span class="fu">names</span>(koncentrace)</span>
+<span id="cb6-2"><a href aria-label="2"></a>hodnoty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 17.44 20.24 23.04 25.84 28.64 31.44 34.24 37.04 39.84 42.64 45.44</code></pre>
+<pre><code>               vzorek1                vzorek2                vzorek3 
+&quot;Normální koncentrace&quot;   &quot;Vysoká koncentrace&quot;   &quot;Vysoká koncentrace&quot; 
+               vzorek4 
+   &quot;Nízká koncentrace&quot; </code></pre>
 </div>
 </div></li>
 </ol>
@@ -1124,67 +1139,26 @@ margin-right: 0; }
 <section class="slide level2 scrollable">
 
 <h3 id="úloha-2">Úloha 2</h3>
-<p>Z datasetu (co je nahraný v R) jménem <code>airquality</code>, který obsahuje informace o měření kvality vzduchu v NYC, vyber hodnoty ze sloupce <code>Temp</code> z prvního týdne v květnu.</p>
+<p><strong>V laboratorní kultuře je na začátku 200 bakterií. Počet bakterií se každou hodinu zvýší o 30 %. Kolik jich bude po osmi hodinách?</strong></p>
 <div class="fragment">
 <ol type="1">
-<li><p>Zobrazme si prvních několik řádků a podívejme se na strukturu.</p>
+<li><p>Vytvořme si základní hodnotu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href aria-label="1"></a><span class="fu">str</span>(airquality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&#39;data.frame&#39;:   153 obs. of  6 variables:
- $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
- $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
- $ Wind   : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
- $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...
- $ Month  : int  5 5 5 5 5 5 5 5 5 5 ...
- $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href aria-label="1"></a><span class="fu">head</span>(airquality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Ozone Solar.R Wind Temp Month Day
-1    41     190  7.4   67     5   1
-2    36     118  8.0   72     5   2
-3    12     149 12.6   74     5   3
-4    18     313 11.5   62     5   4
-5    NA      NA 14.3   56     5   5
-6    28      NA 14.9   66     5   6</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href aria-label="1"></a>bakterie <span class="ot">&lt;-</span> <span class="dv">200</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
 </div>
 <div class="fragment">
 <ol start="2" type="1">
-<li><p>Vyfiltrujeme hodnoty, které byly naměřeny první týden v květnu.</p>
+<li><p>Projeďme si množství bakterií v osmi cyklech a zobrazme si výslednou hodnotu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href aria-label="1"></a><span class="co">#vyber z hodnot sloupce</span></span>
-<span id="cb11-2"><a href aria-label="2"></a>airquality<span class="sc">$</span>Temp[airquality<span class="sc">$</span>Month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;</span> airquality<span class="sc">$</span>Day <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href aria-label="1"></a><span class="cf">for</span> (hodina <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>) {</span>
+<span id="cb9-2"><a href aria-label="2"></a>  bakterie <span class="ot">&lt;-</span> bakterie <span class="sc">*</span> <span class="fl">1.3</span></span>
+<span id="cb9-3"><a href aria-label="3"></a>}</span>
+<span id="cb9-4"><a href aria-label="4"></a></span>
+<span id="cb9-5"><a href aria-label="5"></a>bakterie</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 67 72 74 62 56 66 65</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href aria-label="1"></a>airquality<span class="sc">$</span>Temp[airquality<span class="sc">$</span>Month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;</span> airquality<span class="sc">$</span>Day <span class="sc">&lt;=</span> <span class="dv">7</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 67 72 74 62 56 66 65</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href aria-label="1"></a><span class="co">#vyber z datasetu</span></span>
-<span id="cb15-2"><a href aria-label="2"></a>airquality[airquality<span class="sc">$</span>Month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;</span> airquality<span class="sc">$</span>Day <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="st">&quot;Temp&quot;</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 67 72 74 62 56 66 65</code></pre>
-</div>
-</div></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="3" type="1">
-<li><p>Lze použít i funkci <code>filter</code>, zde už je ale třeba přemýšlet o tom, jestli nám na takto malém kusu kódu opravdu ušetří práci.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href aria-label="1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb17-2"><a href aria-label="2"></a>datumy <span class="ot">&lt;-</span> <span class="fu">filter</span>(airquality, </span>
-<span id="cb17-3"><a href aria-label="3"></a>   Day <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>,</span>
-<span id="cb17-4"><a href aria-label="4"></a>   Month <span class="sc">==</span> <span class="dv">5</span>)</span>
-<span id="cb17-5"><a href aria-label="5"></a><span class="fu">unlist</span>(<span class="fu">select</span>(datumy, Temp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Temp1 Temp2 Temp3 Temp4 Temp5 Temp6 Temp7 
-   67    72    74    62    56    66    65 </code></pre>
+<pre><code>[1] 1631.461</code></pre>
 </div>
 </div></li>
 </ol>
@@ -1193,347 +1167,111 @@ margin-right: 0; }
 <section class="slide level2 scrollable">
 
 <h3 id="úloha-3">Úloha 3</h3>
-<p>K datasetu <code>airquality</code> přidejte nový sloupec s názvem <code>Weather</code> který bude obsahovat informaci (text <code>hot</code>), zda hodnoty ve sloupci <code>Temp</code> jsou vyšší než 70. Pokud není vyšší jako 70, bude obsahovat text <code>cold</code>.</p>
+<p><strong>Během pokusu jsme čtyři vzorky vystavily třem látkám a změřili jejich reaktivitu.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href aria-label="1"></a>mereni <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb11-2"><a href aria-label="2"></a>  <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>,</span>
+<span id="cb11-3"><a href aria-label="3"></a>  <span class="dv">8</span>,  <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>),</span>
+<span id="cb11-4"><a href aria-label="4"></a>  <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-5"><a href aria-label="5"></a></span>
+<span id="cb11-6"><a href aria-label="6"></a><span class="fu">rownames</span>(mereni) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Vzorek 1&quot;</span>, <span class="st">&quot;Vzorek 2&quot;</span>,</span>
+<span id="cb11-7"><a href aria-label="7"></a>                      <span class="st">&quot;Vzorek 3&quot;</span>, <span class="st">&quot;Vzorek 4&quot;</span>)</span>
+<span id="cb11-8"><a href aria-label="8"></a><span class="fu">colnames</span>(mereni) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Latka A&quot;</span>, <span class="st">&quot;Latka B&quot;</span>, <span class="st">&quot;Latka C&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Jaká je průměrná reaktivita každého vzorku?</li>
+<li>Jaké byly nejvyšší hodnoty způsobené reaktivity pro každou látku a která látka způsobila největší reaktivitu?</li>
+</ul>
 <div class="fragment">
 <ol type="1">
-<li><p>Pomocí symbolu <code>$</code> vytvoříme nový sloupec <code>Weather</code>, a přiřadíme do něj hodnotu cold.</p>
+<li><p>Spočítáme si průměrnou reaktivitu každého vzorku.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href aria-label="1"></a>airquality<span class="sc">$</span>Weather <span class="ot">&lt;-</span> <span class="st">&quot;cold&quot;</span></span>
-<span id="cb19-2"><a href aria-label="2"></a>airquality</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href aria-label="1"></a><span class="fu">apply</span>(mereni, <span class="dv">1</span>, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    Ozone Solar.R Wind Temp Month Day Weather
-1      41     190  7.4   67     5   1    cold
-2      36     118  8.0   72     5   2    cold
-3      12     149 12.6   74     5   3    cold
-4      18     313 11.5   62     5   4    cold
-5      NA      NA 14.3   56     5   5    cold
-6      28      NA 14.9   66     5   6    cold
-7      23     299  8.6   65     5   7    cold
-8      19      99 13.8   59     5   8    cold
-9       8      19 20.1   61     5   9    cold
-10     NA     194  8.6   69     5  10    cold
-11      7      NA  6.9   74     5  11    cold
-12     16     256  9.7   69     5  12    cold
-13     11     290  9.2   66     5  13    cold
-14     14     274 10.9   68     5  14    cold
-15     18      65 13.2   58     5  15    cold
-16     14     334 11.5   64     5  16    cold
-17     34     307 12.0   66     5  17    cold
-18      6      78 18.4   57     5  18    cold
-19     30     322 11.5   68     5  19    cold
-20     11      44  9.7   62     5  20    cold
-21      1       8  9.7   59     5  21    cold
-22     11     320 16.6   73     5  22    cold
-23      4      25  9.7   61     5  23    cold
-24     32      92 12.0   61     5  24    cold
-25     NA      66 16.6   57     5  25    cold
-26     NA     266 14.9   58     5  26    cold
-27     NA      NA  8.0   57     5  27    cold
-28     23      13 12.0   67     5  28    cold
-29     45     252 14.9   81     5  29    cold
-30    115     223  5.7   79     5  30    cold
-31     37     279  7.4   76     5  31    cold
-32     NA     286  8.6   78     6   1    cold
-33     NA     287  9.7   74     6   2    cold
-34     NA     242 16.1   67     6   3    cold
-35     NA     186  9.2   84     6   4    cold
-36     NA     220  8.6   85     6   5    cold
-37     NA     264 14.3   79     6   6    cold
-38     29     127  9.7   82     6   7    cold
-39     NA     273  6.9   87     6   8    cold
-40     71     291 13.8   90     6   9    cold
-41     39     323 11.5   87     6  10    cold
-42     NA     259 10.9   93     6  11    cold
-43     NA     250  9.2   92     6  12    cold
-44     23     148  8.0   82     6  13    cold
-45     NA     332 13.8   80     6  14    cold
-46     NA     322 11.5   79     6  15    cold
-47     21     191 14.9   77     6  16    cold
-48     37     284 20.7   72     6  17    cold
-49     20      37  9.2   65     6  18    cold
-50     12     120 11.5   73     6  19    cold
-51     13     137 10.3   76     6  20    cold
-52     NA     150  6.3   77     6  21    cold
-53     NA      59  1.7   76     6  22    cold
-54     NA      91  4.6   76     6  23    cold
-55     NA     250  6.3   76     6  24    cold
-56     NA     135  8.0   75     6  25    cold
-57     NA     127  8.0   78     6  26    cold
-58     NA      47 10.3   73     6  27    cold
-59     NA      98 11.5   80     6  28    cold
-60     NA      31 14.9   77     6  29    cold
-61     NA     138  8.0   83     6  30    cold
-62    135     269  4.1   84     7   1    cold
-63     49     248  9.2   85     7   2    cold
-64     32     236  9.2   81     7   3    cold
-65     NA     101 10.9   84     7   4    cold
-66     64     175  4.6   83     7   5    cold
-67     40     314 10.9   83     7   6    cold
-68     77     276  5.1   88     7   7    cold
-69     97     267  6.3   92     7   8    cold
-70     97     272  5.7   92     7   9    cold
-71     85     175  7.4   89     7  10    cold
-72     NA     139  8.6   82     7  11    cold
-73     10     264 14.3   73     7  12    cold
-74     27     175 14.9   81     7  13    cold
-75     NA     291 14.9   91     7  14    cold
-76      7      48 14.3   80     7  15    cold
-77     48     260  6.9   81     7  16    cold
-78     35     274 10.3   82     7  17    cold
-79     61     285  6.3   84     7  18    cold
-80     79     187  5.1   87     7  19    cold
-81     63     220 11.5   85     7  20    cold
-82     16       7  6.9   74     7  21    cold
-83     NA     258  9.7   81     7  22    cold
-84     NA     295 11.5   82     7  23    cold
-85     80     294  8.6   86     7  24    cold
-86    108     223  8.0   85     7  25    cold
-87     20      81  8.6   82     7  26    cold
-88     52      82 12.0   86     7  27    cold
-89     82     213  7.4   88     7  28    cold
-90     50     275  7.4   86     7  29    cold
-91     64     253  7.4   83     7  30    cold
-92     59     254  9.2   81     7  31    cold
-93     39      83  6.9   81     8   1    cold
-94      9      24 13.8   81     8   2    cold
-95     16      77  7.4   82     8   3    cold
-96     78      NA  6.9   86     8   4    cold
-97     35      NA  7.4   85     8   5    cold
-98     66      NA  4.6   87     8   6    cold
-99    122     255  4.0   89     8   7    cold
-100    89     229 10.3   90     8   8    cold
-101   110     207  8.0   90     8   9    cold
-102    NA     222  8.6   92     8  10    cold
-103    NA     137 11.5   86     8  11    cold
-104    44     192 11.5   86     8  12    cold
-105    28     273 11.5   82     8  13    cold
-106    65     157  9.7   80     8  14    cold
-107    NA      64 11.5   79     8  15    cold
-108    22      71 10.3   77     8  16    cold
-109    59      51  6.3   79     8  17    cold
-110    23     115  7.4   76     8  18    cold
-111    31     244 10.9   78     8  19    cold
-112    44     190 10.3   78     8  20    cold
-113    21     259 15.5   77     8  21    cold
-114     9      36 14.3   72     8  22    cold
-115    NA     255 12.6   75     8  23    cold
-116    45     212  9.7   79     8  24    cold
-117   168     238  3.4   81     8  25    cold
-118    73     215  8.0   86     8  26    cold
-119    NA     153  5.7   88     8  27    cold
-120    76     203  9.7   97     8  28    cold
-121   118     225  2.3   94     8  29    cold
-122    84     237  6.3   96     8  30    cold
-123    85     188  6.3   94     8  31    cold
-124    96     167  6.9   91     9   1    cold
-125    78     197  5.1   92     9   2    cold
-126    73     183  2.8   93     9   3    cold
-127    91     189  4.6   93     9   4    cold
-128    47      95  7.4   87     9   5    cold
-129    32      92 15.5   84     9   6    cold
-130    20     252 10.9   80     9   7    cold
-131    23     220 10.3   78     9   8    cold
-132    21     230 10.9   75     9   9    cold
-133    24     259  9.7   73     9  10    cold
-134    44     236 14.9   81     9  11    cold
-135    21     259 15.5   76     9  12    cold
-136    28     238  6.3   77     9  13    cold
-137     9      24 10.9   71     9  14    cold
-138    13     112 11.5   71     9  15    cold
-139    46     237  6.9   78     9  16    cold
-140    18     224 13.8   67     9  17    cold
-141    13      27 10.3   76     9  18    cold
-142    24     238 10.3   68     9  19    cold
-143    16     201  8.0   82     9  20    cold
-144    13     238 12.6   64     9  21    cold
-145    23      14  9.2   71     9  22    cold
-146    36     139 10.3   81     9  23    cold
-147     7      49 10.3   69     9  24    cold
-148    14      20 16.6   63     9  25    cold
-149    30     193  6.9   70     9  26    cold
-150    NA     145 13.2   77     9  27    cold
-151    14     191 14.3   75     9  28    cold
-152    18     131  8.0   76     9  29    cold
-153    20     223 11.5   68     9  30    cold</code></pre>
+<pre><code>Vzorek 1 Vzorek 2 Vzorek 3 Vzorek 4 
+      15       25       10       40 </code></pre>
 </div>
 </div></li>
 </ol>
 </div>
 <div class="fragment">
 <ol start="2" type="1">
-<li><p>Totéž provedeme s hodnotou <code>hot</code>, pro kterou platí podmínka <code>Temp &gt; 70</code>.</p>
+<li><p>Spočítejme si průměrnou reaktivitu každé látky a z ní vyberme tu nejreaktivnější.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href aria-label="1"></a>airquality<span class="sc">$</span>Weather[airquality<span class="sc">$</span>Temp <span class="sc">&gt;</span> <span class="dv">70</span>] <span class="ot">&lt;-</span> <span class="st">&quot;hot&quot;</span></span>
-<span id="cb21-2"><a href aria-label="2"></a>airquality</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href aria-label="1"></a>maxima <span class="ot">&lt;-</span> <span class="fu">apply</span>(mereni, <span class="dv">2</span>, max); maxima</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    Ozone Solar.R Wind Temp Month Day Weather
-1      41     190  7.4   67     5   1    cold
-2      36     118  8.0   72     5   2     hot
-3      12     149 12.6   74     5   3     hot
-4      18     313 11.5   62     5   4    cold
-5      NA      NA 14.3   56     5   5    cold
-6      28      NA 14.9   66     5   6    cold
-7      23     299  8.6   65     5   7    cold
-8      19      99 13.8   59     5   8    cold
-9       8      19 20.1   61     5   9    cold
-10     NA     194  8.6   69     5  10    cold
-11      7      NA  6.9   74     5  11     hot
-12     16     256  9.7   69     5  12    cold
-13     11     290  9.2   66     5  13    cold
-14     14     274 10.9   68     5  14    cold
-15     18      65 13.2   58     5  15    cold
-16     14     334 11.5   64     5  16    cold
-17     34     307 12.0   66     5  17    cold
-18      6      78 18.4   57     5  18    cold
-19     30     322 11.5   68     5  19    cold
-20     11      44  9.7   62     5  20    cold
-21      1       8  9.7   59     5  21    cold
-22     11     320 16.6   73     5  22     hot
-23      4      25  9.7   61     5  23    cold
-24     32      92 12.0   61     5  24    cold
-25     NA      66 16.6   57     5  25    cold
-26     NA     266 14.9   58     5  26    cold
-27     NA      NA  8.0   57     5  27    cold
-28     23      13 12.0   67     5  28    cold
-29     45     252 14.9   81     5  29     hot
-30    115     223  5.7   79     5  30     hot
-31     37     279  7.4   76     5  31     hot
-32     NA     286  8.6   78     6   1     hot
-33     NA     287  9.7   74     6   2     hot
-34     NA     242 16.1   67     6   3    cold
-35     NA     186  9.2   84     6   4     hot
-36     NA     220  8.6   85     6   5     hot
-37     NA     264 14.3   79     6   6     hot
-38     29     127  9.7   82     6   7     hot
-39     NA     273  6.9   87     6   8     hot
-40     71     291 13.8   90     6   9     hot
-41     39     323 11.5   87     6  10     hot
-42     NA     259 10.9   93     6  11     hot
-43     NA     250  9.2   92     6  12     hot
-44     23     148  8.0   82     6  13     hot
-45     NA     332 13.8   80     6  14     hot
-46     NA     322 11.5   79     6  15     hot
-47     21     191 14.9   77     6  16     hot
-48     37     284 20.7   72     6  17     hot
-49     20      37  9.2   65     6  18    cold
-50     12     120 11.5   73     6  19     hot
-51     13     137 10.3   76     6  20     hot
-52     NA     150  6.3   77     6  21     hot
-53     NA      59  1.7   76     6  22     hot
-54     NA      91  4.6   76     6  23     hot
-55     NA     250  6.3   76     6  24     hot
-56     NA     135  8.0   75     6  25     hot
-57     NA     127  8.0   78     6  26     hot
-58     NA      47 10.3   73     6  27     hot
-59     NA      98 11.5   80     6  28     hot
-60     NA      31 14.9   77     6  29     hot
-61     NA     138  8.0   83     6  30     hot
-62    135     269  4.1   84     7   1     hot
-63     49     248  9.2   85     7   2     hot
-64     32     236  9.2   81     7   3     hot
-65     NA     101 10.9   84     7   4     hot
-66     64     175  4.6   83     7   5     hot
-67     40     314 10.9   83     7   6     hot
-68     77     276  5.1   88     7   7     hot
-69     97     267  6.3   92     7   8     hot
-70     97     272  5.7   92     7   9     hot
-71     85     175  7.4   89     7  10     hot
-72     NA     139  8.6   82     7  11     hot
-73     10     264 14.3   73     7  12     hot
-74     27     175 14.9   81     7  13     hot
-75     NA     291 14.9   91     7  14     hot
-76      7      48 14.3   80     7  15     hot
-77     48     260  6.9   81     7  16     hot
-78     35     274 10.3   82     7  17     hot
-79     61     285  6.3   84     7  18     hot
-80     79     187  5.1   87     7  19     hot
-81     63     220 11.5   85     7  20     hot
-82     16       7  6.9   74     7  21     hot
-83     NA     258  9.7   81     7  22     hot
-84     NA     295 11.5   82     7  23     hot
-85     80     294  8.6   86     7  24     hot
-86    108     223  8.0   85     7  25     hot
-87     20      81  8.6   82     7  26     hot
-88     52      82 12.0   86     7  27     hot
-89     82     213  7.4   88     7  28     hot
-90     50     275  7.4   86     7  29     hot
-91     64     253  7.4   83     7  30     hot
-92     59     254  9.2   81     7  31     hot
-93     39      83  6.9   81     8   1     hot
-94      9      24 13.8   81     8   2     hot
-95     16      77  7.4   82     8   3     hot
-96     78      NA  6.9   86     8   4     hot
-97     35      NA  7.4   85     8   5     hot
-98     66      NA  4.6   87     8   6     hot
-99    122     255  4.0   89     8   7     hot
-100    89     229 10.3   90     8   8     hot
-101   110     207  8.0   90     8   9     hot
-102    NA     222  8.6   92     8  10     hot
-103    NA     137 11.5   86     8  11     hot
-104    44     192 11.5   86     8  12     hot
-105    28     273 11.5   82     8  13     hot
-106    65     157  9.7   80     8  14     hot
-107    NA      64 11.5   79     8  15     hot
-108    22      71 10.3   77     8  16     hot
-109    59      51  6.3   79     8  17     hot
-110    23     115  7.4   76     8  18     hot
-111    31     244 10.9   78     8  19     hot
-112    44     190 10.3   78     8  20     hot
-113    21     259 15.5   77     8  21     hot
-114     9      36 14.3   72     8  22     hot
-115    NA     255 12.6   75     8  23     hot
-116    45     212  9.7   79     8  24     hot
-117   168     238  3.4   81     8  25     hot
-118    73     215  8.0   86     8  26     hot
-119    NA     153  5.7   88     8  27     hot
-120    76     203  9.7   97     8  28     hot
-121   118     225  2.3   94     8  29     hot
-122    84     237  6.3   96     8  30     hot
-123    85     188  6.3   94     8  31     hot
-124    96     167  6.9   91     9   1     hot
-125    78     197  5.1   92     9   2     hot
-126    73     183  2.8   93     9   3     hot
-127    91     189  4.6   93     9   4     hot
-128    47      95  7.4   87     9   5     hot
-129    32      92 15.5   84     9   6     hot
-130    20     252 10.9   80     9   7     hot
-131    23     220 10.3   78     9   8     hot
-132    21     230 10.9   75     9   9     hot
-133    24     259  9.7   73     9  10     hot
-134    44     236 14.9   81     9  11     hot
-135    21     259 15.5   76     9  12     hot
-136    28     238  6.3   77     9  13     hot
-137     9      24 10.9   71     9  14     hot
-138    13     112 11.5   71     9  15     hot
-139    46     237  6.9   78     9  16     hot
-140    18     224 13.8   67     9  17    cold
-141    13      27 10.3   76     9  18     hot
-142    24     238 10.3   68     9  19    cold
-143    16     201  8.0   82     9  20     hot
-144    13     238 12.6   64     9  21    cold
-145    23      14  9.2   71     9  22     hot
-146    36     139 10.3   81     9  23     hot
-147     7      49 10.3   69     9  24    cold
-148    14      20 16.6   63     9  25    cold
-149    30     193  6.9   70     9  26    cold
-150    NA     145 13.2   77     9  27     hot
-151    14     191 14.3   75     9  28     hot
-152    18     131  8.0   76     9  29     hot
-153    20     223 11.5   68     9  30    cold</code></pre>
+<pre><code>Latka A Latka B Latka C 
+     35      40      45 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href aria-label="1"></a><span class="fu">max</span>(maxima)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 45</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href aria-label="1"></a><span class="fu">which.max</span>(maxima) <span class="co">#pokud chceme zjistit nazev a pozici</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Latka C 
+      3 </code></pre>
 </div>
 </div></li>
 </ol>
 </div>
 </section>
-<section id="bonus" class="slide level2">
-<h2>Bonus</h2>
-<p>Pokuste se zjistit, jak si v nápovědě můžete najít seznam nahraných datasetů v R (<code>iris</code>, <code>cars</code>, <code>dplyr::starwars</code> a jiné)</p>
-<div class="fragment">
-<p>Pro vyhledání můžete použít následující funkci:</p>
+<section class="slide level2 scrollable">
+
+<h3 id="úloha-4">Úloha 4</h3>
+<p><strong>U pacientů byly naměřeny následující hodnoty glukózy v krvi (mmol/l):</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href aria-label="1"></a><span class="fu">data</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href aria-label="1"></a><span class="fu">c</span>(<span class="fl">8.5</span>, <span class="fl">3.9</span>, <span class="fl">5.9</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">9.0</span>, <span class="fl">6.3</span>, <span class="fl">5.1</span>, <span class="fl">7.0</span>, <span class="fl">4.8</span>, <span class="fl">7.2</span>, <span class="fl">4.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 8.5 3.9 5.9 4.0 4.5 9.0 6.3 5.1 7.0 4.8 7.2 4.2</code></pre>
 </div>
-<p>Díky této funkci si můžeme rychle zjisti, jaké datasety máme k dispozici v nahraných balíčcích, a <strong>které je proto možné rovnou použít bez jejich opakovaného ukládání do globálního prostředí.</strong></p>
+</div>
+<p><strong>Množství cukru v krvi se dělí dle následující tabulky:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Stav</th>
+<th>Hodnoty</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Norma nalačno</td>
+<td>3.9 - 5.5</td>
+</tr>
+<tr class="even">
+<td>Prediabetes</td>
+<td>5.6 - 6.9</td>
+</tr>
+<tr class="odd">
+<td>Cukrovka</td>
+<td>≥ 7.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vytvořte přehlednou tabulku, kdy pro každého pacienta napíšete jejich ID dle pořadí, jejich naměřenou hodnotu a stav podle tabulky.</strong></p>
+<div class="fragment">
+<ol type="1">
+<li>Pro snadnější práci si hodnoty uložíme do pojmenované proměnné.</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href aria-label="1"></a>glukoza <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">8.5</span>, <span class="fl">3.9</span>, <span class="fl">5.9</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">9.0</span>, <span class="fl">6.3</span>, <span class="fl">5.1</span>, <span class="fl">7.0</span>, <span class="fl">4.8</span>, <span class="fl">7.2</span>, <span class="fl">4.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Následně si vytvoříme nový data frame <code>pacienti</code>, kdy pro tvorbu jednotlivých sloupců použijeme hodnoty z <code>glukoza</code> a tabulku kategorizace.</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href aria-label="1"></a>  pacienti <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb23-2"><a href aria-label="2"></a>    <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(glukoza),</span>
+<span id="cb23-3"><a href aria-label="3"></a>    <span class="at">Hodnota =</span> glukoza,</span>
+<span id="cb23-4"><a href aria-label="4"></a>    <span class="at">Stav =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-5"><a href aria-label="5"></a>      glukoza <span class="sc">&gt;=</span> <span class="fl">3.9</span> <span class="sc">&amp;</span> glukoza <span class="sc">&lt;</span> <span class="fl">5.6</span> <span class="sc">~</span> <span class="st">&quot;Norma nalačno&quot;</span>,</span>
+<span id="cb23-6"><a href aria-label="6"></a>      glukoza <span class="sc">&gt;=</span> <span class="fl">5.6</span> <span class="sc">&amp;</span> glukoza <span class="sc">&lt;</span> <span class="dv">7</span> <span class="sc">~</span> <span class="st">&quot;Prediabetes&quot;</span>,</span>
+<span id="cb23-7"><a href aria-label="7"></a>      glukoza <span class="sc">&gt;=</span> <span class="fl">7.0</span> <span class="sc">~</span> <span class="st">&quot;Cukrovka&quot;</span>,</span>
+<span id="cb23-8"><a href aria-label="8"></a>      <span class="at">.default =</span> <span class="st">&quot;Mimo stanovené rozmezí&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </section>
 <section class="slide level2">
