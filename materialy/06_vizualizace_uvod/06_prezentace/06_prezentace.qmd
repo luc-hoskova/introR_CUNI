@@ -182,7 +182,7 @@ glukoza <- c(8.5, 3.9, 5.9, 4.0, 4.5, 9.0, 6.3, 5.1, 7.0, 4.8, 7.2, 4.2)
 :::
 
 ::: fragment
-2.  Následně si vytvoříme nový data frame `pacienti`, kdy pro tvorbu jednotlivých sloupců použijeme hodnoty z `glukoza` a tabulku kategorizace.
+2.  Následně si vytvoříme nový data frame `pacienti`, kdy pro tvorbu jednotlivých sloupců použijeme hodnoty z `glukoza` a tabulky kategorizace.
 ```{r}
   pacienti <- data.frame(
     ID = 1:length(glukoza),
@@ -191,7 +191,7 @@ glukoza <- c(8.5, 3.9, 5.9, 4.0, 4.5, 9.0, 6.3, 5.1, 7.0, 4.8, 7.2, 4.2)
       glukoza >= 3.9 & glukoza < 5.6 ~ "Norma nalačno",
       glukoza >= 5.6 & glukoza < 7 ~ "Prediabetes",
       glukoza >= 7.0 ~ "Cukrovka",
-      .default = "Mimo stanovené rozmezí"))
+      .default = "Mimo běžné rozmezí"))
 ```
 :::
 

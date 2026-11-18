@@ -89,14 +89,15 @@ Vytvořte list, který bude obsahovat informace o vašem oblíbeném filmu; jeho
 ::: fragment
 Vytvoříme list podle zadání.
 
-    ```{r}
-    film <- list(jmeno = "The Adventures of Priscilla, Queen of the Desert",
-                 rezie = "Stephan Elliott",
-                 rok = 1994,
-                 obsazeni = c("Hugo Weaving", "Guy Pearce", "Terence Stamp"),
-                 oceneni = c("Academy Awards", "BAFTA"),
-                 producenti = "Michael Hamlyn and Al Clark"); film
-    ```
+```{r}
+film <- list(jmeno = "The Adventures of Priscilla, Queen of the Desert",
+             rezie = "Stephan Elliott",
+             rok = 1994,
+             obsazeni = c("Hugo Weaving", "Guy Pearce", "Terence Stamp"),
+             oceneni = c("Academy Awards", "BAFTA"),
+             producenti = "Michael Hamlyn and Al Clark"); film
+```
+:::
 
 ------------------------------------------------------------------------
 
