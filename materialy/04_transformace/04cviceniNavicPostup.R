@@ -52,6 +52,7 @@ doPrahy <- ds %>%
 
 #1. kolik lidi dojizdi na studia do prahy
 sum(doPrahy$hodnota) #109128
+#opravit
 
 #2. z kolika obci dojizdi do prahy
 length(unique(doPrahy$bydliste)) #205
