@@ -42,6 +42,18 @@ execute:
 library(tidyverse)
 ```
 
+```{webr-r}
+#| context: setup
+library(tidyverse)
+dataNewborns <- read.delim("newborns.txt")
+str(dataNewborns)
+sum(is.na(dataNewborns)) #mame nejake chybejici hodnoty?
+dataNewborns <- na.omit(dataNewborns)
+
+dataNewborns$sex.C <- as.factor(dataNewborns$sex.C)
+dataNewborns$edu.M <- factor(dataNewborns$edu.M, labels = c("ZS", "SS", "SSm", "VS")) #copak znamena tato funkce?
+```
+
 ### Úloha 1
 
 **Byla naměřena následující koncentrace látky:**
@@ -262,7 +274,7 @@ plot(
 ::: callout-important
 ## Volba grafu je závislá na typu dat
 
-Není možné používat grafy náhodně - **specifické typy grafů jsou určené pro vizualizaci různých typů dat**.
+Není možné používat grafy náhodně - **specifické typy grafů jsou určené pro vizualizaci různých typů dat**. (A u analýz je tato informace důležitá dvojnásob.)
 :::
 
 ![](images/clipboard-2165304758.png){fig-align="center"}
@@ -322,7 +334,7 @@ Ano, například převedením intervalových nebo poměrových dat na ordináln�
 
 **R má pro spoustu grafů svoji vlastní funkci**. Před tím, než si je ovšem ukážeme, tak se naučíme argumenty, které mají společné - například určení barev, tloušťku čar, či ohraničení.
 
-Spousta těchto argumentů je totožná i pto grafy vytvořené pomocí balíčku `ggplot`, jak si ukážeme později.
+Spousta těchto argumentů je totožná či podobná i pto grafy vytvořené pomocí balíčku `ggplot`, jak si ukážeme později.
 
 ::: callout-note
 ## Proč nezačínat rovnou s `ggplot`?
@@ -429,6 +441,7 @@ text(
 ------------------------------------------------------------------------
 
 ## Procvičení
+
 1.  Máme dataset `women`, který obsahuje výšku žen v palcích a jejich váhu v librách (ano jedná se o americký dataset).
 
 ```{r}
@@ -459,7 +472,6 @@ countdown::countdown(minutes = 5,
                      warn_when = 120,
                      top = "0")
 ```
-
 
 Máme dataset `trees`, který v sobě obsahuje informace o měření obvodu stromů v palcích (`Girth`) a jejich výšky ve stopách (`Height`).
 
@@ -493,14 +505,14 @@ Budeme si ukazovat jejich provedení jak v baseR, tak pomocí balíčku `ggplot`
 
 ### Cheatsheet volby grafu
 
-| Co chci zjistit? | Jaký graf použít? |
-|----------------------------------|--------------------------------------|
-| Porovnání kategorií (skupin) | Bar plot, boxplot |
-| Rozložení numerických hodnot | Histogram, density plot, violin plot |
-| Vztah dvou numerických proměnných | Scatter plot |
-| Změny v čase | Line chart |
-| Podíly kategorií | Pie chart, stacked bar plot |
-| Odlehlé hodnoty | Boxplot, scatter plot |
+| Co chci zjistit?                  | Jaký graf použít?                    |
+|-----------------------------------|--------------------------------------|
+| Porovnání kategorií (skupin)      | Bar plot, boxplot                    |
+| Rozložení numerických hodnot      | Histogram, density plot, violin plot |
+| Vztah dvou numerických proměnných | Scatter plot                         |
+| Změny v čase                      | Line chart                           |
+| Podíly kategorií                  | Pie chart, stacked bar plot          |
+| Odlehlé hodnoty                   | Boxplot, scatter plot                |
 
 ------------------------------------------------------------------------
 
@@ -521,6 +533,10 @@ barplot(table(dataNewborns$edu.M),
 
 ### Co je funkce table?
 
+Pro barplot je třeba mít **soupis jednotlivých kategorií, které má zobrazit na ose x a jejich numerické hodnoty** (počet, průměr, medián...)
+
+> Funkce `table` vytvoří kontingenční tabulku absolutních četností jednotlivých úrovní faktoru.
+
 ```{r}
 table(dataNewborns$edu.M)
 ```
@@ -531,25 +547,289 @@ Ukázka: kolik máme novorozenců dle pohlaví?
 table(dataNewborns$sex.C)
 ```
 
+------------------------------------------------------------------------
 
-Barplot automaticky bere součet hodnot do y
+## Procvičení - barplot
+
+Zobraz kolik novorozenců bylo jakého pohlaví.
+
+```{webr-r}
+barplot(table(dataNewborns$sex.C),
+  xlab = "Vzdělání matky",
+  ylab = "Počet",
+  col = rainbow(2)) #prvni dve barvy z palety rainbow
+```
 
 ------------------------------------------------------------------------
 
-## Barvy v R
+## Histogram
+
+> graf zobrazující distribuci kontinuálních numerických dat
+
+Jaká je distribuce váhy novorozenců?
+
+```{r}
+hist(dataNewborns$weight.C,
+     labels = TRUE, #popisky jednotlivych 
+     ylim = c(0, 500) #urceni velikosti osy y - aby se nam tam ty popisky vesly
+    )
+```
+
+------------------------------------------------------------------------
+
+Jaká je distribuce délky okvětních plátků? (`iris$Petal.Width`)
+
+```{r}
+hist(iris$Petal.Length)
+```
+
+------------------------------------------------------------------------
+
+Hm... proč je najednou víc těch třídících kontejnerů?
+
+::: callout-note
+## Sturgesovo pravidlo počtu kontejnerů
+
+Počet kotejnerů (jednotlivých sloupců) je proměnlivý - čím větší rozptyl, tím více kontejnerů.
+
+Jeden z nejvíce používaných způsobů výpočtu počtu kontejnerů je takzvané **Sturgesovo pravidlo**.
+
+Funkce `hist` ho používá implicitně (argument `breaks = "Sturges"`), ale například u `ggplot` bude třeba si počet kontejnerů spočítat.
+
+```{r}
+#samotny vypocet
+ceiling(1 + 3.3 * log10(length(iris$Petal.Length)))
+#existuje pro to ovsem fce
+nclass.Sturges(iris$Petal.Length)
+```
+:::
+
+------------------------------------------------------------------------
+
+## Čárový graf (line chart)
+
+> graf který zobrazuje vývoj specifické numerické hodnoty - obvykle používán pro časové řady, kdy osa x je kontinuální vývoj ukazující trendy
+
+Dataset `Nile` obsahuje údaje o ročním průtoku vody v řece Nil v Egyptě v letech 1871-1970.
+
+## Po ukázce plotu si vysvěrlíme, co jsou to **časové řady**.
+
+```{r}
+plot(Nile,
+  type = "l", #l - line chart
+  col = "#4682b4", #hex kod barvy
+  lwd = 2, #sirka cary
+  xlab = "Rok",
+  ylab = "Průtok řeky",
+  main = "Vývoj ročních hodnot průtoku řeky Nil")
+```
+
+------------------------------------------------------------------------
+
+### Časové řady
+
+> Časová řada je soubor hodnot určité proměnné, které jsou zaznamenávány postupně v čase.
+
+**Jednoduše řečeno: sledujeme, jak se nějaká veličina mění v průběhu času.**
+
+- jak se mění teplota během jednotlivých měsíců
+- jak se mění počet narozených dětí v jednotlivých letech
+- jak se mění cena akcií během jednotlivých dnů
+
+```{r}
+Nile
+str(Nile)
+```
+
+------------------------------------------------------------------------
+
+## Procvičení - linechart
+
+Dataset `UKgas` obsahuje čtvrtletní spotřebu plynu ve Velké Británii v letech 1960–1986.
+
+**Zjisti, jak se vyvíjela spotřeba plynu.**
+
+------------------------------------------------------------------------
+
+## Bodový graf (scatter plot)
+
+> graf který zobrazuje vztah mezi dvěmi numerickými hodnotami, kdy každá hodnota je vyjádřena jedním bodem
+
+Scatter plot jsme si defakto ukazovali již na začátku dnešní lekce - jedná se o jeden z nejzákladnějších grafů v R.
+
+------------------------------------------------------------------------
+
+```{r}
+plot(
+  women$height ~ women$weight,
+  type = "p", #p - point typ grafu
+  pch = 14,
+  col = "purple")
+```
+
+------------------------------------------------------------------------
+
+## Samostatné cvičení - baseR vizualizace
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+V datasetu `chickwts` máme přehled váhy jednotlivých kuřat v závisosti na jejich krmivu. **Jak byla jednotlivá krmiva zastoupena?**
+
+------------------------------------------------------------------------
+
+## Řešení - baseR vizualizace
+
+V datasetu `chickwts` máme přehled váhy jednotlivých kuřat v závisosti na jejich krmivu. **Jak byla jednotlivá krmiva zastoupena?**
+
+```{r}
+barplot(table(chickwts$feed),
+        xlab = "druh krmiva",
+        ylab = "počet krmených kuřat",
+        main = "Zastoupení krmiv v datasetu",
+        col = rainbow(length(table(chickwts$feed))))
+```
+
+------------------------------------------------------------------------
+
+## Vizualizace pomocí balíčku `ggplot2`
+
+V předchozí části jsme se seznámili s principy základních typů grafů a ukázali si, jak je vytvořit v baseR. Nyní se přesuneme k balíčku `ggplot2`.
+
+### K čemu balíček slouží a čím se liší?
+
+Pomocí `ggplot2` si můžeme vytvářet grafy na publikační úrovni. Oproti baseR máme i **mnohem širší možnosti personifikace vzhledu grafu** a ve výsledku i přehlednější syntax.
+
+::: callout-warning
+## Každý graf bude pouze tak dobrý jako podkladová data
+
+Je extrémně důležité, abyste přemýšleli nejenom nad tím, jestli můžete daný graf používat na vašich datech, ale abyste **prováděli důslednou kontrolu a případnou úpravu dat, které budete vizualizovat**.
+
+Jsou všechna kategorická data faktory? Pokud je to relevantní, odstranili jste `NA` hodnoty?
+:::
+
+------------------------------------------------------------------------
+
+## `ggplot` syntax
+
+Samotná vizualizace se pak provádí pomocí funkce `ggplot`. V této sekci si probereme základní syntax, ze kterého vychází všechny následující vizualizace.
+
+- `ggplot()` funkce:
+  - argument `data`: jaká data chceme vizualizovat?
+  - argument `aes()`: Jak chceme tato data vizualizovat? Které sloupce/části? Co bude osa x/y? Chceme data rozdělit podle určitých skupin?
+    - veškeré paramtery definované v `aes` budou aplikované na celý graf, včetně `geom` hodnot
+
+- `geom_*()` vrstva: Který typ grafu má vzniknou? (point, histogram, bar...) Jak má samotný tento graf vypadat?
+  - je možné vrstvit několik `geom` vrstev na sebe
+  - pokud potřebují dodefinovat další data k mapování, provádí se to pomocí jejich vlastního `aes()`argumentu
+
+**Jednotlivé vstvy a funkce se spojují dohromady symbolem `+`.**
+
+------------------------------------------------------------------------
+
+### Barplot v `ggplot`
+
+Vytvořme si základní barplot, na kterém si prakticky ukážeme syntax a korespondující `geom_*` vrstvu.
+
+```{r}
+ggplot(data = dataNewborns, #mapujeme dataNeborns
+  aes(x = edu.M)) + #osa x maji byt hodnoty z edu.M
+  geom_bar() #chceme barplot
+```
+
+------------------------------------------------------------------------
+
+### Histogram v `ggplot`
+
+Jakým způsobem si vytvoříme základní histogram? Zobrazme si histogram ukazující distribuci váhy novorozenců.
+
+```{r}
+ggplot(dataNewborns,
+  aes(x = weight.C)) +
+  #vyzkousejte si co by se stalo bez argumentu bins
+  geom_histogram(bins = nclass.Sturges(dataNewborns$weight.C))
+```
+
+------------------------------------------------------------------------
+
+## Čárový graf v `ggplot`
+
+Narozdíl od baseR, v `ggplot` je tvorba line chartu o něco složitější - `ggplot` totiž **vyžaduje jasně definované hodnoty x a y**.
+
+Je potřeba proto dle těchto potřeb data upravit.
+
+```{r}
+Nile_df <- data.frame(
+  year = as.numeric(time(Nile)),
+  flow = as.numeric(Nile))
+head(Nile_df)
+```
+
+------------------------------------------------------------------------
+
+Nyní můžeme přejít k samotné vizualizaci.
+
+```{r}
+ggplot(Nile_df, aes(x = year, y = flow)) +
+  geom_line()
+```
+
+------------------------------------------------------------------------
+
+## Bodový graf v `ggplot`
+
+Přestože baseR umožňuje rychlou tvorbu tohoto typu grafu, byla by škoda neukázat si možnosti jeho vytvoření v `ggplot` a to nejenom kvůli možnosti rozdělování do skupin, jak si ukážeme v následující sekci.
+
+------------------------------------------------------------------------
+
+Vytvořme si graf závislosti šířky a délky okvětního kalichu v datatsetu `iris`.
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) + 
+    geom_point() #bodovy graf
+```
+
+------------------------------------------------------------------------
+
+A... to je všechno? Vždyť to ani nevypadá nijak hezky?
+
+ukázka toho co všechno si může člověk udělat v ggplotu - ukázka na histogramu protože tam můžou být i ty median hodnoty
+
+------------------------------------------------------------------------
+
+## Domácí úkol
+
+1.  
+
+Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
+
+------------------------------------------------------------------------
+
+## Tipy navíc pro samostudium
+
+### Barvy v R
 
 Všechny barvy dostupné v baseR:
+
 ```{r}
 colors()
 ```
 
 Hexcode
+
 ```{r}
 plot(cars$speed, cars$dist,
      col = "#1F77B4")
 ```
 
 rgb
+
 ```{r}
 plot(
   cars$speed,
@@ -559,14 +839,15 @@ plot(
 )
 ```
 
-
 Palety
+
 ```{r}
 heat.colors(5)
 rainbow(5)
 ```
 
 tvorba vlastní palety
+
 ```{r}
 my_cols <- c(
   "steelblue",
@@ -581,17 +862,3 @@ plot(
   pch = 19
 )
 ```
-
-------------------------------------------------------------------------
-
-## Domácí úkol
-
-1.  
-
-Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
-
-------------------------------------------------------------------------
-
-## Tipy navíc pro samostudium
-
-### Změna pořadí sloupců
