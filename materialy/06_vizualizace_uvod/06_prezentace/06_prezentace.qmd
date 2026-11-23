@@ -525,7 +525,12 @@ barplot(table(dataNewborns$edu.M),
 table(dataNewborns$edu.M)
 ```
 
-Funkce `table` vytvoří kontingenční tabulku, která bude obsahovat **součet výskytu všech úrovní faktoru**.
+Ukázka: kolik máme novorozenců dle pohlaví?
+
+```{r}
+table(dataNewborns$sex.C)
+```
+
 
 Barplot automaticky bere součet hodnot do y
 

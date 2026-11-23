@@ -2577,14 +2577,22 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 417 448 435  81 </code></pre>
 </div>
 </div>
-<p>Funkce <code>table</code> vytvoří kontingenční tabulku, která bude obsahovat <strong>součet výskytu všech úrovní faktoru</strong>.</p>
+<p>Ukázka: kolik máme novorozenců dle pohlaví?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href aria-label="1"></a><span class="fu">table</span>(dataNewborns<span class="sc">$</span>sex.C)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  f   m 
+662 719 </code></pre>
+</div>
+</div>
 <p>Barplot automaticky bere součet hodnot do y</p>
 </section>
 <section id="barvy-v-r" class="slide level2">
 <h2>Barvy v R</h2>
 <p>Všechny barvy dostupné v baseR:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href aria-label="1"></a><span class="fu">colors</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href aria-label="1"></a><span class="fu">colors</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] &quot;white&quot;                &quot;aliceblue&quot;            &quot;antiquewhite&quot;        
   [4] &quot;antiquewhite1&quot;        &quot;antiquewhite2&quot;        &quot;antiquewhite3&quot;       
@@ -2809,8 +2817,8 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 <p>Hexcode</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href aria-label="1"></a><span class="fu">plot</span>(cars<span class="sc">$</span>speed, cars<span class="sc">$</span>dist,</span>
-<span id="cb47-2"><a href aria-label="2"></a>     <span class="at">col =</span> <span class="st">&quot;#1F77B4&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href aria-label="1"></a><span class="fu">plot</span>(cars<span class="sc">$</span>speed, cars<span class="sc">$</span>dist,</span>
+<span id="cb49-2"><a href aria-label="2"></a>     <span class="at">col =</span> <span class="st">&quot;#1F77B4&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2821,12 +2829,12 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 <p>rgb</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href aria-label="1"></a><span class="fu">plot</span>(</span>
-<span id="cb48-2"><a href aria-label="2"></a>  cars<span class="sc">$</span>speed,</span>
-<span id="cb48-3"><a href aria-label="3"></a>  cars<span class="sc">$</span>dist,</span>
-<span id="cb48-4"><a href aria-label="4"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb48-5"><a href aria-label="5"></a>  <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
-<span id="cb48-6"><a href aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href aria-label="1"></a><span class="fu">plot</span>(</span>
+<span id="cb50-2"><a href aria-label="2"></a>  cars<span class="sc">$</span>speed,</span>
+<span id="cb50-3"><a href aria-label="3"></a>  cars<span class="sc">$</span>dist,</span>
+<span id="cb50-4"><a href aria-label="4"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb50-5"><a href aria-label="5"></a>  <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb50-6"><a href aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2837,29 +2845,29 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 <p>Palety</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href aria-label="1"></a><span class="fu">heat.colors</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href aria-label="1"></a><span class="fu">heat.colors</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;#FF0000&quot; &quot;#FF5500&quot; &quot;#FFAA00&quot; &quot;#FFFF00&quot; &quot;#FFFF80&quot;</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href aria-label="1"></a><span class="fu">rainbow</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href aria-label="1"></a><span class="fu">rainbow</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;#FF0000&quot; &quot;#CCFF00&quot; &quot;#00FF66&quot; &quot;#0066FF&quot; &quot;#CC00FF&quot;</code></pre>
 </div>
 </div>
 <p>tvorba vlastní palety</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href aria-label="1"></a>my_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb53-2"><a href aria-label="2"></a>  <span class="st">&quot;steelblue&quot;</span>,</span>
-<span id="cb53-3"><a href aria-label="3"></a>  <span class="st">&quot;darkorange&quot;</span>,</span>
-<span id="cb53-4"><a href aria-label="4"></a>  <span class="st">&quot;forestgreen&quot;</span></span>
-<span id="cb53-5"><a href aria-label="5"></a>)</span>
-<span id="cb53-6"><a href aria-label="6"></a></span>
-<span id="cb53-7"><a href aria-label="7"></a><span class="fu">plot</span>(</span>
-<span id="cb53-8"><a href aria-label="8"></a>  iris<span class="sc">$</span>Sepal.Length,</span>
-<span id="cb53-9"><a href aria-label="9"></a>  iris<span class="sc">$</span>Sepal.Width,</span>
-<span id="cb53-10"><a href aria-label="10"></a>  <span class="at">col =</span> my_cols[iris<span class="sc">$</span>Species],</span>
-<span id="cb53-11"><a href aria-label="11"></a>  <span class="at">pch =</span> <span class="dv">19</span></span>
-<span id="cb53-12"><a href aria-label="12"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href aria-label="1"></a>my_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb55-2"><a href aria-label="2"></a>  <span class="st">&quot;steelblue&quot;</span>,</span>
+<span id="cb55-3"><a href aria-label="3"></a>  <span class="st">&quot;darkorange&quot;</span>,</span>
+<span id="cb55-4"><a href aria-label="4"></a>  <span class="st">&quot;forestgreen&quot;</span></span>
+<span id="cb55-5"><a href aria-label="5"></a>)</span>
+<span id="cb55-6"><a href aria-label="6"></a></span>
+<span id="cb55-7"><a href aria-label="7"></a><span class="fu">plot</span>(</span>
+<span id="cb55-8"><a href aria-label="8"></a>  iris<span class="sc">$</span>Sepal.Length,</span>
+<span id="cb55-9"><a href aria-label="9"></a>  iris<span class="sc">$</span>Sepal.Width,</span>
+<span id="cb55-10"><a href aria-label="10"></a>  <span class="at">col =</span> my_cols[iris<span class="sc">$</span>Species],</span>
+<span id="cb55-11"><a href aria-label="11"></a>  <span class="at">pch =</span> <span class="dv">19</span></span>
+<span id="cb55-12"><a href aria-label="12"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
