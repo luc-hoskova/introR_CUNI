@@ -52,7 +52,6 @@ title: "Sylabus LS/27"
 -   denseploty
 -   heat mapy
 -   violin grafy
--   časové řady
 
 ## 8. Mapy, 3D a interaktivní grafy (28.04.2027)
 

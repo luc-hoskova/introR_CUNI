@@ -52,7 +52,6 @@ title: "Sylabus ZS/26"
 -   denseploty
 -   heat mapy
 -   violin grafy
--   časové řady
 
 ## 8. Mapy, 3D a interaktivní grafy (05.01.2026)
 
