@@ -1,26 +1,11 @@
-#1
-koncentrace <- 75
-
-if (koncentrace > 100) {
-  print("Vysoká koncentrace")
-} else if (koncentrace >= 50) {
-  print("Normální koncentrace")
-} else {
-  print("Nízká koncentrace")
-}
-
 #2
 bakterie <- 200
-vysledky <- NULL
 
 for (hodina in 1:8) {
   bakterie <- bakterie * 1.3
-  vysledky[hodina] <- bakterie
-  
-  print(bakterie)
 }
 
-print(vysledky)
+bakterie
 
 #3
 mereni <- matrix(c(

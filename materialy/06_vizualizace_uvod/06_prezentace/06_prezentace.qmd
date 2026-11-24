@@ -10,11 +10,7 @@ format:
     scrollable: true
 engine: knitr
 filters:
-  - webr
   - line-highlight
-webr:
-  packages:
-    - "dplyr"
 execute:
   echo: true
   warning: false
@@ -40,12 +36,6 @@ execute:
 ```{r}
 #| context: setup
 #| echo: false
-library(dplyr)
-library(ggplot2)
-```
-
-```{webr-r}
-#| context: setup
 library(dplyr)
 library(ggplot2)
 ```
@@ -77,10 +67,15 @@ koncentrace <- c("vzorek1" = "75 mg/l",
 2.  Přepišme si jednotlivé hodnoty pomocí zadaného klíče.
 
     ```{r}
+    #ifelse
+    ifelse(hodnoty > 100, "Vysoká koncentrace",
+           ifelse(hodnoty >= 50, "Normální koncentrace","Nízká koncentrace"))
+
+    #case_when
     hodnoty <- case_when(
-      hodnoty > 100 ~ "Vysoká koncentrace",
-      hodnoty >= 50 & hodnoty <= 100 ~ "Normální koncentrace",
-      .default = "Nízká koncentrace"); hodnoty
+      hodnoty < 50 ~ "Nizka koncentrace",
+      hodnoty < 100 ~ "Normalni koncentrace",
+      hodnoty > 100 ~ "Vysoka koncentrace"); hodnoty
     ```
 :::
 
@@ -115,7 +110,7 @@ koncentrace <- c("vzorek1" = "75 mg/l",
       bakterie <- bakterie * 1.3
     }
 
-    bakterie
+    floor(bakterie) #muzeme mit necely pocet bakterii? 
     ```
 :::
 
@@ -154,7 +149,7 @@ colnames(mereni) <- c("Latka A", "Latka B", "Latka C")
     maxima <- apply(mereni, 2, max); maxima
     max(maxima)
     which.max(maxima) #pokud chceme zjistit nazev a pozici
-    maxima[which.max(maxima)] #a pokud si ji chceme i vypsat
+    names(which.max(maxima)) #a pokud si ji chceme i vypsat
     ```
 :::
 

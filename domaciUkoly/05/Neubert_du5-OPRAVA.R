@@ -41,7 +41,6 @@ print(aver)
 #Jaké byly nejvyšší hodnoty způsobené reaktivity pro každou látku a která látka způsobila největší reaktivitu?
 apply(mereni, 2, max )
 
-
 colnames(mereni)[apply(mereni,1, which.max)]
 #dokazala bys mi vysvetlit jednotlive tyto funkce a proc je pouzivas? :]
 
@@ -56,13 +55,11 @@ stav<-case_when(Glc>=7 ~"Cukrovka", Glc>=5.67 & Glc <=6.9 ~ "Prediabetes", .defa
 #hm, opravdu jsou vsechny hodnoty pod 5.6 norma?
 #a co kdyby mel nekdo hodnotu 6.92? co potom?
 #a pozor, mas tam 5.67
-tabulka<-cbind(ID, Glc, stav)
+tabulka<-cbind(ID, Glc, stav) #opravdu cbind?
 
-tabulka
+tabulka #copak je na teto "tabulce" zvlastniho?
 
              
-             
-     
-             
+        
              
              

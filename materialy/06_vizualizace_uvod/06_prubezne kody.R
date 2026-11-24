@@ -47,3 +47,13 @@ plot(
   ylab = "Spotřeba plynu",
   col = "blue",
   lwd = 2)
+
+#SAMOSTATNE CVICENI BASE R
+head(chickwts)
+str(chickwts)
+
+barplot(table(chickwts$feed),
+        xlab = "druh krmiva",
+        ylab = "počet krmených kuřat",
+        main = "Zastoupení krmiv v datasetu",
+        col = rainbow(length(table(chickwts$feed))))

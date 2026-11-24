@@ -74,7 +74,8 @@ ukol4 %>%
 #problem - neprepsala jsi si to, pouze zobrazila - chybi ti na zacatku ukol4 <- 
 #jinak si proste jen zobrazis dvakrat tibble, jednou upraveny a jednou ten puvodni
 
-
+#to NA je zpusobeno tim, ze nekdy kvuli zaokrouhlovani "blbnou" cisla
+#5.9 napsane primo takhle a 5.9 vytvorene sekvenci, kdy se pokazde pricita 0.1, muze mit svoji hodnotu v pameti R ulozenou v jine podobe
 
 
 
