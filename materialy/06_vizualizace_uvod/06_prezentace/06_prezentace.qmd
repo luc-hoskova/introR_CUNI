@@ -11,11 +11,10 @@ format:
 engine: knitr
 filters:
   - webr
+  - line-highlight
 webr:
   packages:
     - "dplyr"
-    - "readxl"
-    - "readr"
 execute:
   echo: true
   warning: false
@@ -27,9 +26,11 @@ execute:
 ::: incremental
 - opakování z minulé hodiny
 - kontrola domácího úkolu
-- co je to a proč vizualizace
+- kdy a proč vizualizace
 - typy dat
 - vizualizace v R
+- vizualizace v `ggplot2`
+- kde hledat
 :::
 
 ------------------------------------------------------------------------
@@ -39,19 +40,14 @@ execute:
 ```{r}
 #| context: setup
 #| echo: false
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 ```
 
 ```{webr-r}
 #| context: setup
-library(tidyverse)
-dataNewborns <- read.delim("newborns.txt")
-str(dataNewborns)
-sum(is.na(dataNewborns)) #mame nejake chybejici hodnoty?
-dataNewborns <- na.omit(dataNewborns)
-
-dataNewborns$sex.C <- as.factor(dataNewborns$sex.C)
-dataNewborns$edu.M <- factor(dataNewborns$edu.M, labels = c("ZS", "SS", "SSm", "VS")) #copak znamena tato funkce?
+library(dplyr)
+library(ggplot2)
 ```
 
 ### Úloha 1
@@ -201,7 +197,7 @@ glukoza <- c(8.5, 3.9, 5.9, 4.0, 4.5, 9.0, 6.3, 5.1, 7.0, 4.8, 7.2, 4.2)
       glukoza >= 3.9 & glukoza < 5.6 ~ "Norma nalačno",
       glukoza >= 5.6 & glukoza < 7 ~ "Prediabetes",
       glukoza >= 7.0 ~ "Cukrovka",
-      .default = "Mimo běžné rozmezí"))
+      .default = "Mimo běžné rozmezí")); pacienti
 ```
 :::
 
@@ -239,7 +235,9 @@ plot(iris$Sepal.Length,
 
 ### Proč je potřeba znát s jakými daty pracujeme?
 
-Načtěme si dataset, který si chceme vizualizovat. V tomto případě pracujeme s datasetem `newborns`, který v sobě zahrnuje informace o skupině novorozenců; jejich pohlaví (`sex.C`), váhu v gramech (`weight.C`), počet starších sourozenců (`prch.N`) a úroveň vzdělání jejich matky při porodu (`edu.M`).
+Načtěme si dataset, který si chceme vizualizovat.
+
+V tomto případě pracujeme s datasetem `newborns`, který v sobě zahrnuje informace o skupině novorozenců; jejich pohlaví (`sex.C`), váhu v gramech (`weight.C`), počet starších sourozenců (`prch.N`) a úroveň vzdělání jejich matky při porodu (`edu.M`).
 
 S datasetem budeme pracovat dále během procvičení a samostatných cvičení - **je důležité, abyste si následující kód nahráli do R**.
 
@@ -250,7 +248,9 @@ sum(is.na(dataNewborns)) #mame nejake chybejici hodnoty?
 dataNewborns <- na.omit(dataNewborns)
 
 dataNewborns$sex.C <- as.factor(dataNewborns$sex.C)
-dataNewborns$edu.M <- factor(dataNewborns$edu.M, labels = c("ZS", "SS", "SSm", "VS")) #copak znamena tato funkce?
+dataNewborns$edu.M <- factor(dataNewborns$edu.M,
+                             labels = c("ZS", "SS", "SSm", "VS"))
+#copak znamena tato funkce a argument labels?
 str(dataNewborns)
 ```
 
@@ -294,7 +294,7 @@ Není možné používat grafy náhodně - **specifické typy grafů jsou určen
   - data, která lze rozdělit do kategorií a zároveň je lze seřadit podle určitého pořadí
     - jednu kategorii lze tedy zařadit výše nebo níže než jinou
   - novorozenec, batole, dítě, dospívající, dospělý, senior
-  - první, druhý, třetí
+  - první, druhý, třetí - 1, 2, 3
 
 ------------------------------------------------------------------------
 
@@ -334,7 +334,7 @@ Ano, například převedením intervalových nebo poměrových dat na ordináln�
 
 **R má pro spoustu grafů svoji vlastní funkci**. Před tím, než si je ovšem ukážeme, tak se naučíme argumenty, které mají společné - například určení barev, tloušťku čar, či ohraničení.
 
-Spousta těchto argumentů je totožná či podobná i pto grafy vytvořené pomocí balíčku `ggplot`, jak si ukážeme později.
+Spousta těchto argumentů je podobná i argumentům grafů vytvořených pomocí balíčku `ggplot`, jak si ukážeme později.
 
 ::: callout-note
 ## Proč nezačínat rovnou s `ggplot`?
@@ -346,7 +346,7 @@ Během této a následujících hodin budeme používat především balíček `
 
 ## Základní argumenty vizualizace v R
 
-![](images/clipboard-2455579946.png){fig-align="center"}
+![](images/clipboard-1490847542.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -370,7 +370,7 @@ A to je všechno? Co když si chceme udělat graf přesně dle našeho přání?
 
 ------------------------------------------------------------------------
 
-### Ukázka grafu s nejčastěji používanými argumenty
+### Ukázka grafu s nejčastěji používanými argumenty funkce `plot`
 
 ```{r}
 #| output: false
@@ -378,7 +378,6 @@ A to je všechno? Co když si chceme udělat graf přesně dle našeho přání?
 plot(
   x = iris$Sepal.Length, #data pro osu x
   y = iris$Sepal.Width, #data pro osu y
-  
   type = "p", #typ grafu - point
   
   #Body
@@ -551,14 +550,9 @@ table(dataNewborns$sex.C)
 
 ## Procvičení - barplot
 
-Zobraz kolik novorozenců bylo jakého pohlaví.
+Pracujeme s datasetem `dataNewborns`.
 
-```{webr-r}
-barplot(table(dataNewborns$sex.C),
-  xlab = "Vzdělání matky",
-  ylab = "Počet",
-  col = rainbow(2)) #prvni dve barvy z palety rainbow
-```
+**Zobraz kolik novorozenců bylo jakého pohlaví.**
 
 ------------------------------------------------------------------------
 
@@ -570,9 +564,8 @@ Jaká je distribuce váhy novorozenců?
 
 ```{r}
 hist(dataNewborns$weight.C,
-     labels = TRUE, #popisky jednotlivych 
-     ylim = c(0, 500) #urceni velikosti osy y - aby se nam tam ty popisky vesly
-    )
+     labels = TRUE, #popisky jednotlivych hodnot
+     ylim = c(0, 500)) #urceni velikosti osy y - aby se nam tam ty popisky vesly
 ```
 
 ------------------------------------------------------------------------
@@ -612,7 +605,9 @@ nclass.Sturges(iris$Petal.Length)
 
 Dataset `Nile` obsahuje údaje o ročním průtoku vody v řece Nil v Egyptě v letech 1871-1970.
 
-## Po ukázce plotu si vysvěrlíme, co jsou to **časové řady**.
+Po ukázce plotu si vysvětlíme, co jsou to **časové řady**.
+
+------------------------------------------------------------------------
 
 ```{r}
 plot(Nile,
@@ -655,7 +650,7 @@ Dataset `UKgas` obsahuje čtvrtletní spotřebu plynu ve Velké Británii v lete
 
 > graf který zobrazuje vztah mezi dvěmi numerickými hodnotami, kdy každá hodnota je vyjádřena jedním bodem
 
-Scatter plot jsme si defakto ukazovali již na začátku dnešní lekce - jedná se o jeden z nejzákladnějších grafů v R.
+Scatter plot jsme si defakto ukazovali již na začátku dnešní lekce - **jedná se o jeden z nejzákladnějších grafů v R**.
 
 ------------------------------------------------------------------------
 
@@ -680,13 +675,27 @@ countdown::countdown(minutes = 5,
                      top = "0")
 ```
 
-V datasetu `chickwts` máme přehled váhy jednotlivých kuřat v závisosti na jejich krmivu. **Jak byla jednotlivá krmiva zastoupena?**
+V datasetu `chickwts` máme přehled váhy jednotlivých kuřat v závisosti na jejich krmivu.
+
+**Jak byla jednotlivá krmiva zastoupena?**
 
 ------------------------------------------------------------------------
 
 ## Řešení - baseR vizualizace
 
 V datasetu `chickwts` máme přehled váhy jednotlivých kuřat v závisosti na jejich krmivu. **Jak byla jednotlivá krmiva zastoupena?**
+
+::: fragment
+1.  Zobrazíme si hlavičku a strukturu datasetu.
+
+```{r}
+head(chickwts)
+str(chickwts)
+```
+:::
+
+::: fragment
+2.  Vidíme, že se jedná o kategoriální data, použijeme proto barplot.
 
 ```{r}
 barplot(table(chickwts$feed),
@@ -695,6 +704,7 @@ barplot(table(chickwts$feed),
         main = "Zastoupení krmiv v datasetu",
         col = rainbow(length(table(chickwts$feed))))
 ```
+:::
 
 ------------------------------------------------------------------------
 
@@ -720,14 +730,13 @@ Jsou všechna kategorická data faktory? Pokud je to relevantní, odstranili jst
 
 Samotná vizualizace se pak provádí pomocí funkce `ggplot`. V této sekci si probereme základní syntax, ze kterého vychází všechny následující vizualizace.
 
-- `ggplot()` funkce:
-  - argument `data`: jaká data chceme vizualizovat?
-  - argument `aes()`: Jak chceme tato data vizualizovat? Které sloupce/části? Co bude osa x/y? Chceme data rozdělit podle určitých skupin?
-    - veškeré paramtery definované v `aes` budou aplikované na celý graf, včetně `geom` hodnot
-
-- `geom_*()` vrstva: Který typ grafu má vzniknou? (point, histogram, bar...) Jak má samotný tento graf vypadat?
+- **`ggplot()` funkce:**
+  - **argument `data`:** Jaká data chceme vizualizovat?
+  - **argument `aes()`:** Jak chceme tato data vizualizovat? Které sloupce/části? Co bude osa x/y? Chceme data rozdělit podle určitých skupin?
+    - veškeré parametry definované v `aes` budou aplikované na celý graf, včetně `geom` hodnot
+- **`geom_*()` vrstva:** Který typ grafu má vzniknou? (point, histogram, bar...) Jak má samotný tento graf vypadat?
   - je možné vrstvit několik `geom` vrstev na sebe
-  - pokud potřebují dodefinovat další data k mapování, provádí se to pomocí jejich vlastního `aes()`argumentu
+  - pokud potřebují dodefinovat další data k mapování, **provádí se to pomocí jejich vlastního `aes()`argumentu**
 
 **Jednotlivé vstvy a funkce se spojují dohromady symbolem `+`.**
 
@@ -760,9 +769,9 @@ ggplot(dataNewborns,
 
 ## Čárový graf v `ggplot`
 
-Narozdíl od baseR, v `ggplot` je tvorba line chartu o něco složitější - `ggplot` totiž **vyžaduje jasně definované hodnoty x a y**.
+Narozdíl od baseR, v `ggplot` je tvorba line chartu o něco složitější - `ggplot` **vyžaduje jasně definované hodnoty x/y**.
 
-Je potřeba proto dle těchto potřeb data upravit.
+Musíme proto dle těchto potřeb data upravit.
 
 ```{r}
 Nile_df <- data.frame(
@@ -799,13 +808,403 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 
 A... to je všechno? Vždyť to ani nevypadá nijak hezky?
 
-ukázka toho co všechno si může člověk udělat v ggplotu - ukázka na histogramu protože tam můžou být i ty median hodnoty
+Jak bylo řečeno, `ggplot` umožňuje nepřeberné množství úprav grafu.
+
+**Zkusme si proto třeba na barplotu ukázat, jaké veškeré kulišárny lze s tímto balíčkem provádět.**
+
+------------------------------------------------------------------------
+
+### Barvy a tvary (nejen) kontejneru
+
+```{r}
+#| code-line-numbers: "3-5"
+
+ggplot(data = dataNewborns,
+       aes(x = edu.M)) +
+  geom_bar(fill = "red", #jakou chceme barvu kontejneru
+           colour = "darkgreen", #jaky maji mit obrys
+           width = 0.7) #a jak maji byt siroke?
+```
+
+------------------------------------------------------------------------
+
+### Popisky
+
+Všimněte si **přidání nových vrstev `geom_text()` a `labs()`**!
+
+```{r}
+#| output: false
+#| code-line-numbers: "6-13"
+
+ggplot(data = dataNewborns,
+       aes(x = edu.M)) +
+  geom_bar(fill = "red",
+           colour = "darkgreen",
+           width = 0.7) +
+  #vypis hodnoty z osy y (soucet aka count) - podivejte se na puvodni popisek osy y
+  geom_text(stat = "count", 
+            aes(label = after_stat(count)), #namapuj to jako popisek kontejneru
+            size = 4, #velikost textu
+            vjust = 2) + #umisti popisky ve vzdalenosti 2 od okraje
+  labs(title = "Počet novorozenců dle úrovně vzdělání matky", #jaky ma byt nadpis 
+       x = "Úroveň vzdělání matky", #popis osy x
+       y = "Počet dětí") #popis osy y
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-1238430074.png)
+
+------------------------------------------------------------------------
+
+### Změna pozadí
+
+Je možné upravit si i pozadí a celkový vizuál podkladu grafu.
+
+```{r}
+#| output: false
+#| code-line-numbers: "12"
+
+ggplot(data = dataNewborns,
+       aes(x = edu.M)) +
+  geom_bar(fill = "red",
+           colour = "darkgreen",
+           width = 0.7) +
+  geom_text(stat = "count", 
+            aes(label = after_stat(count)),
+            vjust = 2) +
+  labs(title = "Počet mnovorozenců dle úrovně vzdělání matky", 
+       x = "Úroveň vzdělání matky",
+       y = "Počet dětí") +
+  theme_minimal() #chci tento typ vizualu
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-1670150025.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Rozdělení podle kategorii
+
+Co kdybychom chtěli mít hodnoty rozdělené nejenom podle jedné ale i dle více kategorií?
+
+::: callout-important
+## Rozdělení podle levels faktorů
+
+Při rozdělování je třeba, aby R dokázalo hodnoty brát jako samostatné kategorie - **dané hodnoty musí být faktor!**
+:::
+
+```{r}
+#| output: false
+#| code-line-numbers: "3,8,9,13"
+
+ggplot(data = dataNewborns,
+       aes(x = edu.M,
+           fill = sex.C)) + #rozdel kontejnery dle pohlavi
+  geom_bar(colour = "darkgreen",
+           width = 0.7) +
+  geom_text(stat = "count",
+            aes(label = after_stat(count)),
+            #musime si upravit pozici popisku
+            position = position_stack(vjust = 0.8)) +
+  labs(title = "Počet novorozenců dle úrovně vzdělání matky",
+       x = "Úroveň vzdělání matky",
+       y = "Počet dětí",
+       fill = "Sex") + #popisek legendy
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-2561111900.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+Co když ale **kategorie chceme mít vedle sebe**?
+
+```{r}
+#| output: false
+#| code-line-numbers: "6,9,10"
+
+ggplot(data = dataNewborns,
+       aes(x = edu.M,
+           fill = sex.C)) + 
+  geom_bar(colour = "darkgreen",
+           width = 0.7,
+           position = "dodge") + #popisky vedle sebe
+  geom_text(stat = "count",
+            aes(label = after_stat(count)),
+            #jak se maji vedle sebe popisky poskladat
+            position = position_dodge(width = 0.7),
+            vjust = -0.5) +
+  labs(title = "Počet novorozenců dle úrovně vzdělání matky",
+       x = "Úroveň vzdělání matky",
+       y = "Počet dětí",
+       fill = "Sex") +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-2755850306.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Samostatné cvičení - barplot
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 10,
+                     seconds = 0,
+                     start_immediately = FALSE,
+                     warn_when = 120,
+                     top = "0")
+```
+
+Z hodnot v datasetu `dataNewborns` pomocí funkcí z balíčku `ggplot2` vtvořte graf, který bude znázorňovat rozdělení novorozenců podle počtu jejich starších sourozenců (`prch.N`). Rozdělte novorozence dle pohlaví (`sex.C`).
+
+Nejdříve si vytvořte jednoduchý holý graf, abyste zjistili, že vám kód běží - **až později si do něj přidávejte další funkce a vylepšení**.
+
+Pohrajte si s barvami, velikostmi, pozadím... nebojte se googlit :\].
+
+------------------------------------------------------------------------
+
+## Řešení - barplot
+
+**Z hodnot v datasetu `dataNewborns` pomocí funkcí z balíčku `ggplot2` vtvořte graf, který bude znázorňovat rozdělení novorozenců podle počtu jejich starších sourozenců (`prch.N`). Rozdělte novorozence dle pohlaví (`sex.C`).**
+
+::: fragment
+1.  Podívejme se na to, s jakými daty pracujeme
+
+```{r}
+str(dataNewborns)
+```
+:::
+
+::: fragment
+2.  Hodnoty ve sloupci `prch.N` jsou numerické, je třeba je změnit na faktory.
+
+```{r}
+dataNewborns$prch.N <- as.factor(dataNewborns$prch.N)
+```
+:::
+
+::: fragment
+3.  Následně již můžeme vytvořit graf - zde je jedna z možných variant.
+
+```{r}
+#| output: false
+ggplot(dataNewborns, aes(x = prch.N, fill = sex.C)) +
+  geom_bar(
+    position = "dodge",
+    color = "white") +
+  geom_text(
+    stat = "count",
+    aes(label = after_stat(count)),
+    position = position_dodge(width = 1),
+    vjust = -0.3,
+    colour = "white", #barva textu
+    size = 3) + #velikost textu
+  labs(
+    title = "Počet dětí podle počtu starších sourozenců",
+    x = "Počet starších sourozenců",
+    y = "Počet dětí",
+    fill = "Pohlaví") +
+  theme_dark()
+```
+:::
+
+------------------------------------------------------------------------
+
+![](images/clipboard-2186984767.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+Existuje samozřejmě i mnoho dalších argumentů a `ggplot2` funkcí.
+
+**Bohužel, jediným způsobem, jakým se naučíte všechny ty funkce, které by se vám hodili nejvíc je, že si sami funkce budete opakovaně zkoušet.**
+
+Během dneška (a ani zítřka, či pozítří) bychom si všechny funkce projít nestihli, proto dostanete na [Kde hledat dál] odkazy na několik stránek, které vám mohou sloužit jako skvělý start pro vaše další sebevzdělávání.
+
+**A v mezičase si ukážeme pár funkcí a argumentů, co lze použít u histogramu.**
+
+------------------------------------------------------------------------
+
+### Linie statistických hodnot
+
+Přes histogram (a i jiné grafy) si **můžeme namapovat linie určující statistické hodnoty**.
+
+Zde si ukážeme vytvoření linie, která bude určovat průměr hodnot.
+
+```{r}
+#| output: false
+#| code-line-numbers: "6-10"
+ggplot(data = dataNewborns) +
+  aes(x = weight.C) +
+  geom_histogram(bins = nclass.Sturges(dataNewborns$weight.C),
+                 color = "black",
+                 fill = "pink") +
+  #urci prumer a namapuj ho na osu x
+  geom_vline(aes(xintercept = mean(weight.C)),
+             color = "blue",
+             linetype = "dashed", #typ linie
+             linewidth = 1) #sirka linie
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-733217104.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Překrývaní se grafů a průhlednost
+
+Při rozdělování histogramu podle kategorií se nám může stát, že **grafy se budou navzájem překrývat.** V takovém příadě se hodí udělat je částečně průhlednými.
+
+```{r}
+#| output: false
+#| code-line-numbers: "3,5,6"
+
+ggplot(data = dataNewborns) +
+  aes(x = weight.C,
+      fill = sex.C) + #rozdel podle pohlavi
+  geom_histogram(bins = nclass.Sturges(dataNewborns$weight.C),
+                 alpha = 0.4, #pruhlednost 40 %
+                 position = "identity") + #prekryj grafy pres sebe
+  geom_vline(aes(xintercept = mean(weight.C)),
+             color = "blue",
+             linetype = "dashed",
+             linewidth = 1) +
+  labs(title="Distribuce váhy novorozenců", 
+       x = "Váha (g)",
+       y = "Počet",
+       fill = "Sex")
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-1883994153.png)
+
+------------------------------------------------------------------------
+
+## Linie statistických hodnot pro každou kategorii
+
+Nejdříve si **musíme vytvořit hodnoty (v tomto případě průměry), které mají být namapovány**.
+
+```{r}
+meanWeightSex <- dataNewborns %>% 
+  group_by(sex.C) %>% 
+  summarise(mean_weight = mean(weight.C)); meanWeightSex
+```
+
+Následně je můžeme použít v grafu.
+
+```{r}
+#| output: false
+#| code-line-numbers: "7-9,16"
+
+ggplot(data = dataNewborns) +
+  aes(x = weight.C,
+      fill = sex.C) +
+  geom_histogram(bins = nclass.Sturges(dataNewborns$weight.C),
+                 alpha = 0.4,
+                 position = "identity") +
+  geom_vline(data = meanWeightSex, #namapuj udaje z meanWeightSex
+             aes(xintercept = mean_weight, #pouzij data z tohoto sloupce
+                 colour = sex.C), #delime grafy podle pohlavi tak at sedi barvy
+             linetype = "dashed",
+             linewidth = 1) +
+  labs(title="Distribuce váhy novorozenců", 
+       x = "Váha (g)",
+       y = "Počet",
+       fill = "Sex",
+       color = "Sex") #pridani car do legendy
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-437072751.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Rozdělení jednotlivých kategorií do individuálních grafů
+
+Co když ale chceme, aby **každá kategorie měla vlastní graf**?
+
+```{r}
+#| output: false
+#| code-line-numbers: "5-6"
+
+ggplot(data = dataNewborns,
+       aes(x = weight.C, fill = sex.C)) +
+  geom_histogram(
+    bins = nclass.Sturges(dataNewborns$weight.C)) +
+  facet_grid(sex.C ~ ., #rozdel do individualnich grafu dle levels sex.C
+             scales = "free") + #kazdy graf muze mit jine xlim a ylim
+  labs(
+    title = "Distribuce váhy novorozenců",
+    x = "Váha (g)",
+    y = "Počet",
+    fill = "Pohlaví") +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-487583457.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Upravení barev
+
+Argument `fill` určuje barvy automaticky. **Co když si ale chceme barvy kategorií vybrat?**
+
+```{r}
+#| output: false
+#| code-line-numbers: "5-6"
+
+ggplot(data = dataNewborns,
+       aes(x = weight.C, fill = sex.C)) +
+  geom_histogram(
+    bins = nclass.Sturges(dataNewborns$weight.C)) +
+  #nastaveni specifickych barev pro fill
+  scale_fill_manual(values = c("m" = "pink", "f" = "lightgreen")) +
+  labs(
+    title = "Distribuce váhy novorozenců",
+    x = "Váha (g)",
+    y = "Počet",
+    fill = "Pohlaví") +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+![](images/clipboard-2852643000.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Kde hledat dál
+
+[The R Graph Gallery](https://r-graph-gallery.com/)
+
+Jeden z nejlepších a nejpčehlednějších webů s ukázkou tvorby snad každého typu grafu.
+
+[R Graphics Cookbook](https://r-graphics.org/)
+
+Učebnice, která do podrobna rozebírá možnosti vizualizace dat. Pracuje především s `ggplot2`.
+
+[R Color Palettes: The Complete Reference](https://www.datanovia.com/blog/r-color-palettes)
+
+Seznámení se s barevnými paletami v R a jejich podrobný přehled.
 
 ------------------------------------------------------------------------
 
 ## Domácí úkol
 
-1.  
+1.  Z datasetu `datanewborns` zjistěte a zobrazte průměrnou váhu novorozence v závislosti na jeho pohlaví a počtu starších sourozenců.
+
+2.  Máme dataset `diamonds` v R, která v sobě obsahuje informace o typu a hodnotě jednotlivých diamantů. Pomocí grafu ukaž, jaká je distribuce ceny (`price`) na základě kvality zpracování (`cut`).
 
 Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [lucie.hoskova\@ruk.cuni.cz](mailto:lucie.hoskova@ruk.cuni.cz)
 
@@ -821,44 +1220,42 @@ Všechny barvy dostupné v baseR:
 colors()
 ```
 
-Hexcode
+Zápis pomocí hexcode:
 
 ```{r}
-plot(cars$speed, cars$dist,
+plot(cars$speed,
+     cars$dist,
      col = "#1F77B4")
 ```
 
-rgb
+Zápis pomocí RGB:
 
 ```{r}
 plot(
   cars$speed,
   cars$dist,
   pch = 19,
-  col = rgb(1, 0, 0, 0.5)
-)
+  col = rgb(1, 0, 0, 0.5))
 ```
 
-Palety
-
-```{r}
-heat.colors(5)
-rainbow(5)
-```
-
-tvorba vlastní palety
+Tvorba vlastní palety:
 
 ```{r}
 my_cols <- c(
   "steelblue",
   "darkorange",
-  "forestgreen"
-)
+  "forestgreen")
 
 plot(
   iris$Sepal.Length,
   iris$Sepal.Width,
   col = my_cols[iris$Species],
-  pch = 19
-)
+  pch = 19)
+
+legend(
+  "topright",
+  legend = levels(iris$Species),
+  col = my_cols,
+  pch = 19,
+  title = "Species")
 ```

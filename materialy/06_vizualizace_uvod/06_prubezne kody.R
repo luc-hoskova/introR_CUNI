@@ -24,3 +24,26 @@ text(
   pos = 1,
   cex = 0.7)
 
+#SAMOSTATNE CVICENI PLOT
+plot(
+  trees$Girth ~ trees$Height,
+  type = "p",
+  pch = 19,
+  col = "forestgreen")
+
+#PROCVICENI BARPLOT
+barplot(table(dataNewborns$sex.C),
+        xlab = "Vzdělání matky",
+        ylab = "Počet",
+        col = rainbow(2)) #prvni dve barvy z palety rainbow
+
+#PROCVICENI LINECHART
+head(UKgas)
+
+plot(
+  UKgas,
+  main = "Čtvrtletní spotřeba plynu ve Velké Británii (1960–1986)",
+  xlab = "Rok",
+  ylab = "Spotřeba plynu",
+  col = "blue",
+  lwd = 2)
