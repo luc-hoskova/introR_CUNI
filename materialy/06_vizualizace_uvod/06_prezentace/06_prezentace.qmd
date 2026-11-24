@@ -1225,11 +1225,7 @@ Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [
 colors()
 ```
 
-<<<<<<< Updated upstream
-Zápis pomocí hexcode:
-=======
-**Hexcode:**
->>>>>>> Stashed changes
+**Zápis pomocí hexcode:**
 
 ```{r}
 plot(cars$speed,
@@ -1237,11 +1233,7 @@ plot(cars$speed,
      col = "#1F77B4")
 ```
 
-<<<<<<< Updated upstream
-Zápis pomocí RGB:
-=======
-**RGB:**
->>>>>>> Stashed changes
+**Zápis pomocí RGB:**
 
 ```{r}
 plot(
@@ -1251,9 +1243,6 @@ plot(
   col = rgb(1, 0, 0, 0.5))
 ```
 
-<<<<<<< Updated upstream
-Tvorba vlastní palety:
-=======
 **Palety:**
 
 Palety jsou defacto funkce/objekty, které v sobě mají uložený seznam barev.
@@ -1264,7 +1253,6 @@ rainbow(5)
 ```
 
 **Tvorba vlastní palety:**
->>>>>>> Stashed changes
 
 ```{r}
 my_cols <- c(
@@ -1277,7 +1265,6 @@ plot(
   iris$Sepal.Width,
   col = my_cols[iris$Species],
   pch = 19)
-<<<<<<< Updated upstream
 
 legend(
   "topright",
@@ -1285,6 +1272,4 @@ legend(
   col = my_cols,
   pch = 19,
   title = "Species")
-=======
->>>>>>> Stashed changes
 ```

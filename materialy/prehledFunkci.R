@@ -100,4 +100,23 @@ dplyr::slice_min() #vyber radek s nejmensi hodnotou v x
 which.max() #ktera hodnota je nejvetsi
 
 #6. funkce
+barplot() #barplot v baseR vizualizaci
+colors() #barvy v baseR
+ggplot2::ggplot() #vytvor graf v ggplot
+ggplot2::geom_bar() #barplot vrstva v ggplot
+ggplot2::geom_histogram() #histogram vrstva v ggplot
+ggplot2::geom_line() #line chart vrstva v ggplot
+ggplot2::geom_point() #scatterplot vrstva v ggplot
+ggplot2::geom_text() #popisky hodnot v ggplot
+ggplot2::geom_vline() #referenci linie v ggplot
+ggplot2::facet_grid() #rozdeli grafy do jednotlivych subgrafu podle kategorii v ggplot
+ggplot2::labs() #popisky os v ggplot
+ggplot2::scale_fill_manual() #manualni urceni barev kategorii v ggplot
+ggplot2::theme_minimal() #jeden z moznych vizualu grafu v ggplot
+legend() #vytvoreni legendy pro plot()
 plot() #genericka funkce pro vizualizaci v R
+nclass.Sturges() #spocitej pocit tridicich kontejneru z hodnot pro histogram
+rgb() #vytvor barvu podle RGB hodnot
+table() #vytvor kontingencni tabulku kategorialnich hodnot
+text() #vytvoreni popisku hodnot pro plot()
+hist() #hstogram v baseR vizualizaci
