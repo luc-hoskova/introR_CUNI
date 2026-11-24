@@ -3268,7 +3268,8 @@ Frequency = 1
 <section id="tipy-navíc-pro-samostudium" class="slide level2">
 <h2>Tipy navíc pro samostudium</h2>
 <h3 id="barvy-v-r">Barvy v R</h3>
-<p>Všechny barvy dostupné v baseR:</p>
+<p><strong>Všechny barvy dostupné v baseR:</strong></p>
+<p><a href="luc-hoskova.github.io/introR_CUNI/materialy/06_vizualizace_uvod/Rcolors.pdf">PDF</a> s jejich názvy a zobrazením</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href aria-label="1"></a><span class="fu">colors</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -3493,7 +3494,11 @@ Frequency = 1
 [655] &quot;yellow3&quot;              &quot;yellow4&quot;              &quot;yellowgreen&quot;         </code></pre>
 </div>
 </div>
+<<<<<<< Updated upstream
 <p>Zápis pomocí hexcode:</p>
+=======
+<p><strong>Hexcode:</strong></p>
+>>>>>>> Stashed changes
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href aria-label="1"></a><span class="fu">plot</span>(cars<span class="sc">$</span>speed,</span>
 <span id="cb91-2"><a href aria-label="2"></a>     cars<span class="sc">$</span>dist,</span>
@@ -3506,6 +3511,7 @@ Frequency = 1
 </div>
 </div>
 </div>
+<<<<<<< Updated upstream
 <p>Zápis pomocí RGB:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href aria-label="1"></a><span class="fu">plot</span>(</span>
@@ -3513,6 +3519,15 @@ Frequency = 1
 <span id="cb92-3"><a href aria-label="3"></a>  cars<span class="sc">$</span>dist,</span>
 <span id="cb92-4"><a href aria-label="4"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
 <span id="cb92-5"><a href aria-label="5"></a>  <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+=======
+<p><strong>RGB:</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href aria-label="1"></a><span class="fu">plot</span>(</span>
+<span id="cb69-2"><a href aria-label="2"></a>  cars<span class="sc">$</span>speed,</span>
+<span id="cb69-3"><a href aria-label="3"></a>  cars<span class="sc">$</span>dist,</span>
+<span id="cb69-4"><a href aria-label="4"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb69-5"><a href aria-label="5"></a>  <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+>>>>>>> Stashed changes
 <div class="cell-output-display">
 <div>
 <figure>
@@ -3521,6 +3536,7 @@ Frequency = 1
 </div>
 </div>
 </div>
+<<<<<<< Updated upstream
 <p>Tvorba vlastní palety:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href aria-label="1"></a>my_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -3540,6 +3556,32 @@ Frequency = 1
 <span id="cb93-15"><a href aria-label="15"></a>  <span class="at">col =</span> my_cols,</span>
 <span id="cb93-16"><a href aria-label="16"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
 <span id="cb93-17"><a href aria-label="17"></a>  <span class="at">title =</span> <span class="st">&quot;Species&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+=======
+<p><strong>Palety:</strong></p>
+<p>Palety jsou defacto funkce/objekty, které v sobě mají uložený seznam barev.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href aria-label="1"></a><span class="fu">heat.colors</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;#FF0000&quot; &quot;#FF5500&quot; &quot;#FFAA00&quot; &quot;#FFFF00&quot; &quot;#FFFF80&quot;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href aria-label="1"></a><span class="fu">rainbow</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;#FF0000&quot; &quot;#CCFF00&quot; &quot;#00FF66&quot; &quot;#0066FF&quot; &quot;#CC00FF&quot;</code></pre>
+</div>
+</div>
+<p><strong>Tvorba vlastní palety:</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href aria-label="1"></a>my_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb74-2"><a href aria-label="2"></a>  <span class="st">&quot;steelblue&quot;</span>,</span>
+<span id="cb74-3"><a href aria-label="3"></a>  <span class="st">&quot;darkorange&quot;</span>,</span>
+<span id="cb74-4"><a href aria-label="4"></a>  <span class="st">&quot;forestgreen&quot;</span>)</span>
+<span id="cb74-5"><a href aria-label="5"></a></span>
+<span id="cb74-6"><a href aria-label="6"></a><span class="fu">plot</span>(</span>
+<span id="cb74-7"><a href aria-label="7"></a>  iris<span class="sc">$</span>Sepal.Length,</span>
+<span id="cb74-8"><a href aria-label="8"></a>  iris<span class="sc">$</span>Sepal.Width,</span>
+<span id="cb74-9"><a href aria-label="9"></a>  <span class="at">col =</span> my_cols[iris<span class="sc">$</span>Species],</span>
+<span id="cb74-10"><a href aria-label="10"></a>  <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+>>>>>>> Stashed changes
 <div class="cell-output-display">
 <div>
 <figure>

@@ -725,11 +725,19 @@ Jsou všechna kategorická data faktory? Pokud je to relevantní, odstranili jst
 
 Samotná vizualizace se pak provádí pomocí funkce `ggplot`. V této sekci si probereme základní syntax, ze kterého vychází všechny následující vizualizace.
 
+<<<<<<< Updated upstream
 - **`ggplot()` funkce:**
   - **argument `data`:** Jaká data chceme vizualizovat?
   - **argument `aes()`:** Jak chceme tato data vizualizovat? Které sloupce/části? Co bude osa x/y? Chceme data rozdělit podle určitých skupin?
     - veškeré parametry definované v `aes` budou aplikované na celý graf, včetně `geom` hodnot
 - **`geom_*()` vrstva:** Který typ grafu má vzniknou? (point, histogram, bar...) Jak má samotný tento graf vypadat?
+=======
+- `ggplot()` funkce:
+  - argument `data`: jaká data chceme vizualizovat?
+  - argument `aes()`: Jak chceme tato data vizualizovat? Které sloupce/části? Co bude osa x/y? Chceme data rozdělit podle určitých skupin?
+    - veškeré paramtery definované v `aes` budou aplikované na celý graf, včetně `geom` hodnot
+- `geom_*()` vrstva: Který typ grafu má vzniknou? (point, histogram, bar...) Jak má samotný tento graf vypadat?
+>>>>>>> Stashed changes
   - je možné vrstvit několik `geom` vrstev na sebe
   - pokud potřebují dodefinovat další data k mapování, **provádí se to pomocí jejich vlastního `aes()`argumentu**
 
@@ -1209,13 +1217,19 @@ Skript s výpočtem zašlete nejpozději do pátku před příští hodinou na [
 
 ### Barvy v R
 
-Všechny barvy dostupné v baseR:
+**Všechny barvy dostupné v baseR:**
+
+[PDF](luc-hoskova.github.io/introR_CUNI/materialy/06_vizualizace_uvod/Rcolors.pdf) s jejich názvy a zobrazením
 
 ```{r}
 colors()
 ```
 
+<<<<<<< Updated upstream
 Zápis pomocí hexcode:
+=======
+**Hexcode:**
+>>>>>>> Stashed changes
 
 ```{r}
 plot(cars$speed,
@@ -1223,7 +1237,11 @@ plot(cars$speed,
      col = "#1F77B4")
 ```
 
+<<<<<<< Updated upstream
 Zápis pomocí RGB:
+=======
+**RGB:**
+>>>>>>> Stashed changes
 
 ```{r}
 plot(
@@ -1233,7 +1251,20 @@ plot(
   col = rgb(1, 0, 0, 0.5))
 ```
 
+<<<<<<< Updated upstream
 Tvorba vlastní palety:
+=======
+**Palety:**
+
+Palety jsou defacto funkce/objekty, které v sobě mají uložený seznam barev.
+
+```{r}
+heat.colors(5)
+rainbow(5)
+```
+
+**Tvorba vlastní palety:**
+>>>>>>> Stashed changes
 
 ```{r}
 my_cols <- c(
@@ -1246,6 +1277,7 @@ plot(
   iris$Sepal.Width,
   col = my_cols[iris$Species],
   pch = 19)
+<<<<<<< Updated upstream
 
 legend(
   "topright",
@@ -1253,4 +1285,6 @@ legend(
   col = my_cols,
   pch = 19,
   title = "Species")
+=======
+>>>>>>> Stashed changes
 ```

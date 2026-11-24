@@ -51,8 +51,10 @@ doPrahy <- ds %>%
 ###########################################################################
 
 #1. kolik lidi dojizdi na studia do prahy
-sum(doPrahy$hodnota) #109128
-#opravit
+doPrahy %>%
+  filter(is.na(pohlavi)) %>%
+  summarize(celkem_osob = sum(hodnota))
+#54564
 
 #2. z kolika obci dojizdi do prahy
 length(unique(doPrahy$bydliste)) #205
