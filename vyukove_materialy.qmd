@@ -84,10 +84,12 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
 ## 5. Funkce (10.11.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/05_funkce/05_prezentace/05_prezentace.html#/title-slide)
+  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/05_funkce/05_poznamky.R) průběžných a samostatných cvičení
 
 ## 6. Základy vizualizace dat a práce s grafy v R (24.11.2026)
 
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/06_vizualizace_uvod/06_prezentace/06_prezentace.html)
+  - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/06_vizualizace_uvod/06_prubezne kody.R) průběžných a samostatných cvičení
 - Materiály k hodině
   - stažený a jasně uložený soubor:
     - [newborns.txt](https://luc-hoskova.github.io/introR_CUNI/materialy/06_vizualizace_uvod/06_prezentace/newborns.txt)

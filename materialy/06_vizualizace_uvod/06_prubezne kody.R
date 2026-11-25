@@ -57,3 +57,25 @@ barplot(table(chickwts$feed),
         ylab = "počet krmených kuřat",
         main = "Zastoupení krmiv v datasetu",
         col = rainbow(length(table(chickwts$feed))))
+
+#SAMOSTATNE CVICENI GGPLOT
+str(dataNewborns)
+dataNewborns$prch.N <- as.factor(dataNewborns$prch.N)
+
+ggplot(dataNewborns, aes(x = prch.N, fill = sex.C)) +
+  geom_bar(
+    position = "dodge",
+    color = "white") +
+  geom_text(
+    stat = "count",
+    aes(label = after_stat(count)),
+    position = position_dodge(width = 1),
+    vjust = -0.3,
+    colour = "white", #barva textu
+    size = 3) + #velikost textu
+  labs(
+    title = "Počet dětí podle počtu starších sourozenců",
+    x = "Počet starších sourozenců",
+    y = "Počet dětí",
+    fill = "Pohlaví") +
+  theme_dark()
