@@ -20,10 +20,10 @@ Výsledky
 Méně než 1500 g
 
 3)
-Méně než 1500 g	2854
-1500–2499 g	10081
-2500–3499 g	21555
-3500 g a více	60255
+<= 31+6 týden těhotenství	2854
+32+0–36+6 týden těhotenství	10081
+37+0–38+6 týden těhotenství	21555
+>= 39+0 týden těhotenství	60255
 
 4)
 Chlapci
