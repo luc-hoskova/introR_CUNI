@@ -1464,4 +1464,101 @@ Pokud se na něčem zaseknete, **ozvěte se**. Narozdíl od domácích úkolů z
 
 ## Tipy navíc pro samostudium
 
-**Budou doplněny během středy/čtvrtka.**
+### Alternativa funkce `apply` pro specifické sloupce
+
+Funkce `apply`, se kterou jsme se během této hodiny seznámili, **umí samozřejmě aplikovat jiné funkce i na pouhé části datasetu**.
+
+```{r}
+apply(iris[,c("Sepal.Width", "Sepal.Length")],2,mean)
+```
+
+**Existuje ovšem mnohem elegantnější způsob**, jak aplikovat funkce na jednotlivé sloupce, a to pomocí funkce `across`.
+
+```{r}
+iris %>%
+  summarise(across(starts_with("Sepal"), mean))
+```
+
+Funkce `across` umožňuje aplikaci funkcí na specifické sloupce, přičemž obsahuje funkční podargumenty jako `starts_with` a `ends_with`, které používání této funkce mohou ještě urychlit.
+
+::: callout-warning
+## Funkce `apply` vždy uvnitř `summarise` či `mutate`
+
+`across` je třeba používat vždy uvnitř funkcí jako jsou `summarise`, `mutate` či `filter`.
+:::
+
+------------------------------------------------------------------------
+
+### Tvorba vlastních funkcí
+
+R taktéž umožňuje tvorbu vlastní funkce. 
+
+1.  Pro vytvoření funkce je potřeba definovat, že se jedná o funkci, pomocí `function`.
+2.  Dovnitř `function` se vloží definice toho, na co bude funkce aplikována.
+3.  V zobáčkových závorkách se poté definuje, co přesně se má s touto funkcí provést.
+
+V následujícím kódu si vytvoříme funkci, která nám vše, na co bude aplikována, vynásobí dvakrát.
+**Zkuste si pohrát s hodnotami, které do ní vkládáte, a i se samotným parametrem funkce.**
+
+```{webr-r}
+dvakrat <- function(x) {
+  x * 2
+}
+
+dvakrat(5)
+```
+
+Můžeme vytvářet i rozsáhlejší funkce. Co třeba tuto, kterou **můžeme aplikovat kdykoliv, kdy ji budeme potřebovat**. 
+
+```{r}
+#vytvoreni fce
+tlakHodnoty <- function(tlak) {
+  case_when(
+    is.na(tlak) ~ NA_character_,
+    tlak < 90 ~ "Nízký",
+    tlak < 120 ~ "Optimální",
+    tlak < 130 ~ "Normální",
+    tlak < 140 ~ "Vyšší normální",
+    tlak < 160 ~ "Hypertenze 1. stupně",
+    tlak < 180 ~ "Hypertenze 2. stupně",
+    tlak >= 180 ~ "Hypertenze 3. stupně")
+}
+```
+
+**Takto vytvořenou funkci, která nám určuje dignózu tlaku z hodnot, můžeme aplikovat na naměřené pacienty jak je třeba.**
+
+```{r}
+#pacienti
+pacienti1A <- data.frame(
+  jmeno = c("Anna", "Petr", "Jana", "Karel"),
+  tlak = c(118, 145, 165, 85))
+
+pacienti1B <- data.frame(
+  jmeno = c("Jakub", "Felix", "Hana", "Eva"),
+  tlak = c(132, 175, NA, 95))
+
+#pridani diagnozy
+pacienti1A <- pacienti1A %>%
+  mutate(
+    diagnoza = tlakHodnoty(tlak)); pacienti1A
+
+pacienti1B <- pacienti1B %>%
+  mutate(
+    diagnoza = tlakHodnoty(tlak)); pacienti1B
+```
+
+------------------------------------------------------------------------
+
+### Co dělá funkce `ifelse` s hodnotami?
+
+**`ifelse` mění hodnoty na jejich atomické podoby** - atomická podoba faktoru je integer, takže pozor na případnou potřebu faktorizace.
+
+```{r}
+str(iris) #jaka je struktura iris pred upravou
+
+iris <- iris %>%
+  mutate(Species =
+           ifelse(Species == "setosa", "setosa", "invasiveSpecies"))
+
+str(iris) #a struktura po uprave
+```

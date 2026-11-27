@@ -88,10 +88,12 @@ startsWith() #zacina charakter string s temito znaky?
 dplyr::summarise() #vytvor novy dataframe obsahujici vysledky funkci provedenych na grouped datech
 
 #5. funkce
+any() #je alespon jedna hodnota z x TRUE
 apply() #aplikuj funkci x na vsechny radky/sloupce data frame - jsou podtypy pro specificke input data
 dplyr::case_when() #promen hodnoty na zaklade podminek
 ceiling() #zaokrouhli k nejblizsimu vyssimu celemu cislu
 floor() #zaokrouhli k nejblizsimu nizsimu celemu cislu
+function() #vytvor funkci
 ifelse() #pokud je podminka TRUE, proved x, jinak proved y
 dplyr::na_if(x, y) #pokud x a y jsou identicke, x zmeneno na NA
 print() #zobraz x - totozne jako zavolani jmena ulozene promenne
