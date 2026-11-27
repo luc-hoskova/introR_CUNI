@@ -86,8 +86,8 @@ materiálů) či po jejím průběhu (shrutí a doporučení).
 - [Prezentace](https://luc-hoskova.github.io/introR_CUNI/materialy/05_funkce/05_prezentace/05_prezentace.html#/title-slide)
   - [kód](https://luc-hoskova.github.io/introR_CUNI/materialy/05_funkce/05_poznamky.R) průběžných a samostatných cvičení
 - Cvičení navíc
-  - [zadání](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_cviceninavic.R)
-  - [řešení](https://luc-hoskova.github.io/introR_CUNI/materialy/03_indexace/03_cviceninavic-reseni.R)
+  - [zadání](https://luc-hoskova.github.io/introR_CUNI/materialy/05_funkce/05_cviceniNavic.R)
+  - [řešení](https://luc-hoskova.github.io/introR_CUNI/materialy/05_funkce/05_cviceniNavicReseni.R)
 
 ## 6. Základy vizualizace dat a práce s grafy v R (24.11.2026)
 
